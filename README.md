@@ -73,7 +73,7 @@ npm run lint
 npm run build
 ```
 
-**Windows:** If `npm ci` fails with `EPERM` / `ENOTEMPTY`, stop every `npm run dev`, IDE processes touching `node_modules`, and retry `npm run clean` then `npm install`. See also GitHub Actions **CI** on [`main`](https://github.com/pranshu-zoveto/Zoveto-website) after push (clean Linux install).
+**Windows:** If `npm ci` fails with `EPERM` / `ENOTEMPTY`, stop every `npm run dev`, IDE processes touching `node_modules`, and retry `npm run clean` then `npm install`. After code is pushed, trust [GitHub Actions CI](https://github.com/pranshu-zoveto/Zoveto-website/actions) for a clean `npm ci` verification on Ubuntu.
 
 ---
 

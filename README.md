@@ -12,6 +12,20 @@ Public marketing site with a controlled early-access signup funnel. Signup reque
 
 Browser-facing env vars must be set at **build time** (`NEXT_PUBLIC_*`). Server env (`COS_API_BASE_URL`, `WEB_CONTACT_SECRET`) is read at **runtime** in Route Handlers.
 
+### Vercel / production (forms and leads)
+
+Server route handlers try **SMTP first** (optional), then **COS** (`POST /api/leads` or `/api/demo`). On **Vercel**, if **`COS_API_BASE_URL` is not set**, the app **does not** default to `localhost` — it skips COS and **signup / contact / demo still succeed** when mail is delivered to `info@zoveto.com`. Add **`COS_API_BASE_URL`** when you want leads stored in COS as well.
+
+The **`/api/leads`** browser proxy requires **`COS_API_BASE_URL`** on Vercel (no SMTP fallback).
+
+| Variable | Required | Notes |
+|----------|----------|--------|
+| `COS_API_BASE_URL` | **Yes for `/api/leads` proxy**; optional for `/signup`, `/api/contact`, `/api/demo` if SMTP works | Public COS base including `/api` (e.g. `https://api.yourdomain.com/api`). Runtime env — add in Vercel and **redeploy**. |
+| `WEB_CONTACT_SECRET` | If COS enforces it | Must match COS `WEB_CONTACT_SECRET` or COS returns 401/403. |
+| `SMTP_*` + `MAIL_FROM` | Recommended on Vercel | Required if COS is not configured yet, or as backup when COS errors. Use port **587** + `SMTP_SECURE=false` for typical STARTTLS; port **465** often needs `SMTP_SECURE=true`. |
+
+After changing env vars, **redeploy** so serverless functions pick up runtime values.
+
 ## Local development
 
 1. Run COS API on the host (e.g. `http://127.0.0.1:4000` with global prefix `/api`).

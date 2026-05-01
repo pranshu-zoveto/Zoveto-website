@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import {
-  cosServerApiBase,
+  resolveCosApiBase,
   cosWebsiteContactHeaders,
   stripForbiddenCosContactFields,
 } from "@/lib/cos-forward";
@@ -17,7 +17,19 @@ export async function POST(req: Request) {
     } catch {
       // Keep original body if caller sends non-JSON; COS will validate.
     }
-    const res = await fetch(`${cosServerApiBase()}/leads`, {
+
+    const cosBase = resolveCosApiBase();
+    if (!cosBase) {
+      return NextResponse.json(
+        {
+          message:
+            "Lead intake is not configured. Set COS_API_BASE_URL (server env in Vercel) to your public COS API base including /api, then redeploy.",
+        },
+        { status: 503 },
+      );
+    }
+
+    const res = await fetch(`${cosBase}/leads`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

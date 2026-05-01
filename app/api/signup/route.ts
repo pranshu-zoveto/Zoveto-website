@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import {
-  cosServerApiBase,
+  resolveCosApiBase,
   cosWebsiteContactHeaders,
   stripForbiddenCosContactFields,
 } from "@/lib/cos-forward";
@@ -51,14 +51,54 @@ export async function POST(req: NextRequest) {
       ].join("\n"),
     });
 
-    const res = await fetch(`${cosServerApiBase()}/leads`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        ...cosWebsiteContactHeaders(),
-      },
-      body: JSON.stringify(leadPayload),
-    });
+    const cosBase = resolveCosApiBase();
+    if (!cosBase) {
+      if (emailResult.sent) {
+        return NextResponse.json({
+          ok: true,
+          status: "waitlist_pending",
+          message:
+            "Your early access request is received and sent to info@zoveto.com. We will email you after founder review.",
+        });
+      }
+      return NextResponse.json(
+        {
+          message:
+            "Early access could not be delivered. Add COS_API_BASE_URL or fix SMTP (MAIL_FROM, SMTP_*) in Vercel, then redeploy.",
+        },
+        { status: 503 },
+      );
+    }
+
+    let res: Response;
+    try {
+      res = await fetch(`${cosBase}/leads`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          ...cosWebsiteContactHeaders(),
+        },
+        body: JSON.stringify(leadPayload),
+      });
+    } catch (err) {
+      // Network / DNS / wrong COS_API_BASE_URL (e.g. still pointing at localhost on Vercel)
+      console.error("[signup] COS /leads fetch failed", err);
+      if (emailResult.sent) {
+        return NextResponse.json({
+          ok: true,
+          status: "waitlist_pending",
+          message:
+            "Your early access request is received and sent to info@zoveto.com. We will email you after founder review.",
+        });
+      }
+      return NextResponse.json(
+        {
+          message:
+            "Early access request failed. If this persists, email info@zoveto.com with your company name and work email.",
+        },
+        { status: 502 },
+      );
+    }
 
     const parsed = await readResponseJsonUnknown(res);
     const data: Record<string, unknown> =

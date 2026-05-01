@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { cosServerApiBase, cosWebsiteContactHeaders } from "@/lib/cos-forward";
+import { resolveCosApiBase, cosWebsiteContactHeaders } from "@/lib/cos-forward";
 import { readResponseJsonUnknown } from "@/lib/http-json";
 import { sendFormNotificationEmail } from "@/lib/server-mail";
 
@@ -58,14 +58,55 @@ export async function POST(request: Request) {
       ].join("\n"),
     });
 
-    const res = await fetch(`${cosServerApiBase()}/leads`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        ...cosWebsiteContactHeaders(),
-      },
-      body: JSON.stringify(payload),
-    });
+    const cosBase = resolveCosApiBase();
+    if (!cosBase) {
+      if (emailResult.sent) {
+        return NextResponse.json(
+          {
+            ok: true,
+            message: "Thanks. Your request is received and sent to info@zoveto.com.",
+          },
+          { status: 200 },
+        );
+      }
+      return NextResponse.json(
+        {
+          message:
+            "Contact could not be delivered. Add COS_API_BASE_URL or fix SMTP (MAIL_FROM, SMTP_*) in Vercel, then redeploy.",
+        },
+        { status: 503 },
+      );
+    }
+
+    let res: Response;
+    try {
+      res = await fetch(`${cosBase}/leads`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          ...cosWebsiteContactHeaders(),
+        },
+        body: JSON.stringify(payload),
+      });
+    } catch (err) {
+      console.error("[contact] COS /leads fetch failed", err);
+      if (emailResult.sent) {
+        return NextResponse.json(
+          {
+            ok: true,
+            message: "Thanks. Your request is received and sent to info@zoveto.com.",
+          },
+          { status: 200 },
+        );
+      }
+      return NextResponse.json(
+        {
+          message:
+            "Contact submission failed. Please try again or email info@zoveto.com.",
+        },
+        { status: 502 },
+      );
+    }
     const data = await readResponseJsonUnknown(res);
     const id =
       typeof data === "object" && data !== null && "id" in data

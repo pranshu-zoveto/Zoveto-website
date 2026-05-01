@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import {
-  cosServerApiBase,
+  resolveCosApiBase,
   cosWebsiteContactHeaders,
   stripForbiddenCosContactFields,
 } from "@/lib/cos-forward";
@@ -43,14 +43,55 @@ export async function POST(req: Request) {
       ].join("\n"),
     });
 
-    const res = await fetch(`${cosServerApiBase()}/demo`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        ...cosWebsiteContactHeaders(),
-      },
-      body,
-    });
+    const cosBase = resolveCosApiBase();
+    if (!cosBase) {
+      if (emailResult.sent) {
+        return NextResponse.json(
+          {
+            ok: true,
+            message: "Demo request received and sent to info@zoveto.com. We will confirm by email.",
+          },
+          { status: 200 },
+        );
+      }
+      return NextResponse.json(
+        {
+          message:
+            "Demo request could not be delivered. Add COS_API_BASE_URL or fix SMTP (MAIL_FROM, SMTP_*) in Vercel, then redeploy.",
+        },
+        { status: 503 },
+      );
+    }
+
+    let res: Response;
+    try {
+      res = await fetch(`${cosBase}/demo`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          ...cosWebsiteContactHeaders(),
+        },
+        body,
+      });
+    } catch (err) {
+      console.error("[demo] COS /demo fetch failed", err);
+      if (emailResult.sent) {
+        return NextResponse.json(
+          {
+            ok: true,
+            message: "Demo request received and sent to info@zoveto.com. We will confirm by email.",
+          },
+          { status: 200 },
+        );
+      }
+      return NextResponse.json(
+        {
+          message:
+            "Demo booking failed. Please try again or email info@zoveto.com.",
+        },
+        { status: 502 },
+      );
+    }
     const json = await readResponseJsonUnknown(res);
     if (!res.ok && emailResult.sent) {
       return NextResponse.json(

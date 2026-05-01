@@ -56,7 +56,8 @@ export async function sendFormNotificationEmail(input: FormMailInput): Promise<{
       html: input.html,
     });
     return { sent: true };
-  } catch {
+  } catch (err) {
+    console.error("[server-mail] SMTP send failed", err);
     return { sent: false, reason: "SMTP send failed" };
   }
 }

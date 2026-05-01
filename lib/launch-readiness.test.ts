@@ -53,6 +53,20 @@ describe("launch readiness static checks", () => {
     const chrome = read("components/layout/SiteChromeClients.tsx");
     assert.ok(chrome.includes("CookieConsentBar"), "SiteChromeClients must include cookie banner");
     assert.ok(chrome.includes("ConditionalAnalyticsLoader"), "SiteChromeClients must load GA after consent");
+
+    const gaLoader = read("components/tracking/ConditionalAnalyticsLoader.tsx");
+    assert.ok(
+      gaLoader.includes("send_page_view: false"),
+      "GA4 config must disable auto page_view (AnalyticsRouteTracker sends page_view)",
+    );
+
+    const clarityLoader = read("components/tracking/ConditionalClarityLoader.tsx");
+    assert.ok(clarityLoader.includes("zoveto-clarity"), "Clarity loader must use a single dedupe script id");
+    assert.ok(
+      clarityLoader.includes("https://www.clarity.ms/tag/") && clarityLoader.includes("NEXT_PUBLIC_CLARITY_PROJECT_ID"),
+      "Clarity loader must use official clarity.ms tag URL and env-based project id",
+    );
+    assert.ok(chrome.includes("ConditionalClarityLoader"), "SiteChromeClients must load Clarity after consent");
   });
 
   it("keeps required trust links in footer", () => {

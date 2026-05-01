@@ -25,6 +25,20 @@ describe("home landing critical path (LCP)", () => {
     assert.ok(src.includes("HomeHeroLcpShell"));
   });
 
+  it("uses a static mobile hero module (no GSAP) and defers mobile modules chunk", () => {
+    assert.ok(
+      fs.existsSync(path.join(process.cwd(), "components/sections/home/StaticDashboardHero.tsx")),
+      "StaticDashboardHero for mobile LCP",
+    );
+    const shell = fs.readFileSync(
+      path.join(process.cwd(), "components/sections/home/HomeHeroLcpShell.tsx"),
+      "utf8",
+    );
+    assert.match(shell, /StaticDashboardHero/);
+    const page = readPageSource();
+    assert.match(page, /dynamic\(\s*\(\)\s*=>\s*import\(".*dashboard-scroll-mobile/);
+  });
+
   it("splits mobile dashboard from desktop (no ScrollTrigger in shared path)", () => {
     assert.ok(fs.existsSync(path.join(process.cwd(), "components/sections/dashboard-scroll-mobile.tsx")));
     assert.ok(fs.existsSync(path.join(process.cwd(), "components/sections/dashboard-scroll-desktop.tsx")));

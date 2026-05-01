@@ -9,8 +9,6 @@ import { WebSiteSchema } from "@/components/seo/WebSiteSchema";
 import { FluidMarketingSection, MarketingHeroFeather } from "@/components/layout/FluidMarketingSection";
 import { HomeHeroLcpShell } from "@/components/sections/home/HomeHeroLcpShell";
 import { DashboardDesktopLoadingFallback } from "@/components/sections/home/DashboardDesktopLoadingFallback";
-import { DashboardMobileModules } from "@/components/sections/dashboard-scroll-mobile";
-
 const LogoStrip = dynamic(() => import("@/components/sections/LogoStrip"));
 const ProblemSection = dynamic(() => import("@/components/sections/ProblemSection"));
 const ProductSystemLayers = dynamic(() => import("@/components/sections/ProductSystemLayers"));
@@ -25,6 +23,15 @@ const FinalCTASection = dynamic(() => import("@/components/sections/FinalCTASect
 const DashboardScrollDesktop = dynamic(() => import("@/components/sections/dashboard-scroll-desktop"), {
   loading: () => <DashboardDesktopLoadingFallback />,
 });
+
+/** Mobile modules strip — client-only (Lucide + observers); split chunk so it is not on the LCP-critical path. */
+const DashboardMobileModules = dynamic(
+  () => import("@/components/sections/dashboard-scroll-mobile").then((m) => ({ default: m.DashboardMobileModules })),
+  {
+    loading: () => <div className="min-h-[120px] bg-[#f5f5f7] lg:hidden" aria-hidden />,
+    ssr: true,
+  },
+);
 
 const FeaturesSection = dynamic(() => import("@/components/sections/FeaturesSection"), {
   loading: () => (

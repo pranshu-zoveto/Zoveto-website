@@ -79,6 +79,7 @@ export default function SecurityPage() {
           <li>Amazon Web Services (AWS) - cloud infrastructure hosting.</li>
           <li>Google (Gmail SMTP) - transactional and operational email delivery.</li>
           <li>Google Analytics - website analytics when consent is enabled.</li>
+          <li>Microsoft Clarity - session replay and behavioral diagnostics when analytics consent is enabled.</li>
           <li>Razorpay - payment processing and billing transactions.</li>
         </ul>
         <p>

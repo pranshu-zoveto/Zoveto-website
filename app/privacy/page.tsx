@@ -97,8 +97,8 @@ export default function PrivacyPage() {
             apply to payment fields they collect directly);
           </li>
           <li>
-            <strong>Analytics</strong>: where enabled and only if you consent (e.g. Google Analytics), to understand
-            aggregated traffic patterns on our marketing site.
+            <strong>Analytics</strong>: where enabled and only if you consent (e.g. Google Analytics, Microsoft Clarity),
+            to understand aggregated traffic and UX diagnostics on our marketing site.
           </li>
           <li>
             <strong>Communication providers</strong>: transactional email services (including Google Gmail SMTP), for account

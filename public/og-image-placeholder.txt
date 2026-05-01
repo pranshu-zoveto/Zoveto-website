@@ -1,0 +1,6 @@
+REQUIRED: Create og-image.png (1200x630px) — dark #050508 background,
+Zoveto logo top-left, tagline 'AI Operating System for Indian Business'
+center in white Syne font, green #1D9E75 accent line at bottom.
+
+A minimal placeholder PNG is committed as public/og-image.png for builds;
+replace it with the final designed asset before launch.

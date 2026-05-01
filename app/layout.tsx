@@ -7,6 +7,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { SiteChromeClients } from "@/components/layout/SiteChromeClients";
 import Cursor from "@/components/ui/cursor";
+import { Analytics } from "@vercel/analytics/next";
 
 /** Fewer masters = shorter font download chain (was 300–900, six files). */
 const inter = Inter({
@@ -119,6 +120,7 @@ export default function RootLayout({
         </div>
         <SiteChromeClients />
         <Cursor />
+        <Analytics />
       </body>
     </html>
   );

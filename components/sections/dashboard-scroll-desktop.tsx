@@ -58,7 +58,7 @@ function SectionIntro({ introRef }: { introRef: React.RefObject<HTMLDivElement> 
       }}
     >
       <div style={{ display: "flex", gap: 8, flexWrap: "wrap", justifyContent: "center", marginBottom: 20 }}>
-        {["Founder-reviewed access", "No instant account", "Qualified onboarding", "Compliance-ready"].map((item) => (
+        {["Execution clarity", "Unified business system", "Qualified onboarding", "Compliance-ready"].map((item) => (
           <span
             key={item}
             style={{

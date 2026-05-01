@@ -2,8 +2,8 @@ import { BrandHeroWordmark } from "@/components/brand/BrandHeroWordmark";
 import { cn } from "@/lib/utils";
 
 const PILLS = [
-  "Founder-reviewed access",
-  "No instant account",
+  "Execution clarity",
+  "Unified business system",
   "Qualified onboarding",
   "Compliance-ready",
 ] as const;

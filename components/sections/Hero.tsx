@@ -36,8 +36,8 @@ export function Hero() {
       <div className="container relative z-10 mx-auto max-w-content px-4 pb-20 pt-28 sm:px-6 sm:pb-24 sm:pt-32 md:pb-28 md:pt-36">
         <div className="trust-badges mb-8 flex flex-wrap justify-center gap-2 sm:mb-9">
           {[
-            "Founder-reviewed access",
-            "No instant account",
+            "Execution clarity",
+            "Unified business system",
             "Qualified onboarding",
             "Compliance-ready",
           ].map((item) => (

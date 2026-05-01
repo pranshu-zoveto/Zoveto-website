@@ -96,41 +96,49 @@ export function CookieConsentBar() {
           role="dialog"
           aria-label="Cookie preferences"
           aria-describedby="cookie-consent-desc"
-          className="fixed bottom-28 left-0 right-0 z-[120] p-4 pb-[max(0.75rem,env(safe-area-inset-bottom))] sm:bottom-32 sm:p-6 pointer-events-none"
+          className="pointer-events-none fixed inset-x-0 bottom-0 z-[120] flex flex-col justify-end pb-[calc(7.25rem+env(safe-area-inset-bottom,0px))] sm:pb-[calc(8.25rem+env(safe-area-inset-bottom,0px))]"
         >
-          <div className="pointer-events-auto mx-auto max-w-2xl rounded-xl border border-neutral-200/90 bg-neutral-50/95 px-4 py-4 shadow-lg backdrop-blur-md sm:px-5 sm:py-4">
-            <p id="cookie-consent-desc" className="mb-4 text-sm leading-relaxed text-neutral-700">
-              We use cookies to improve your experience. You can choose what you allow. See our{" "}
-              <Link
-                href="/privacy#cookies"
-                className="font-medium text-teal underline underline-offset-2 hover:text-neutral-950"
-              >
-                Privacy Policy
-              </Link>{" "}
-              for details.
-            </p>
-            <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:justify-end">
-              <button
-                type="button"
-                onClick={rejectAll}
-                className="rounded-lg border border-neutral-300 bg-white px-4 py-2.5 text-sm font-medium text-neutral-900 transition-colors hover:bg-neutral-50"
-              >
-                Essential only
-              </button>
-              <button
-                type="button"
-                onClick={openCustomize}
-                className="rounded-lg border border-neutral-300 bg-white px-4 py-2.5 text-sm font-medium text-neutral-900 transition-colors hover:bg-neutral-50"
-              >
-                Customize
-              </button>
-              <button
-                type="button"
-                onClick={acceptAll}
-                className="rounded-lg bg-teal px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-teal/90"
-              >
-                Accept
-              </button>
+          {/* Reserve bottom padding for StickyDemoCTA (z-90); bar sits above it flush to edges */}
+          <div className="pointer-events-auto w-full border-t border-border/90 bg-card/95 shadow-[0_-10px_36px_-18px_rgba(29,29,31,0.22)] backdrop-blur-md">
+            <div className="container mx-auto max-w-content px-4 py-3.5 sm:px-6 sm:py-4">
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between sm:gap-8">
+                <p
+                  id="cookie-consent-desc"
+                  className="max-w-[65ch] text-sm leading-relaxed text-muted sm:text-[0.9375rem] sm:leading-6"
+                >
+                  We use cookies to improve your experience. You can choose what you allow. See our{" "}
+                  <Link
+                    href="/privacy#cookies"
+                    className="font-medium text-teal underline underline-offset-2 hover:text-foreground"
+                  >
+                    Privacy Policy
+                  </Link>{" "}
+                  for details.
+                </p>
+                <div className="flex shrink-0 flex-col gap-2 sm:flex-row sm:flex-wrap sm:justify-end sm:gap-2">
+                  <button
+                    type="button"
+                    onClick={rejectAll}
+                    className="rounded-lg border border-border bg-transparent px-4 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-surface"
+                  >
+                    Essential only
+                  </button>
+                  <button
+                    type="button"
+                    onClick={openCustomize}
+                    className="rounded-lg border border-border bg-transparent px-4 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-surface"
+                  >
+                    Customize
+                  </button>
+                  <button
+                    type="button"
+                    onClick={acceptAll}
+                    className="rounded-lg bg-teal px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-teal/90"
+                  >
+                    Accept
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>

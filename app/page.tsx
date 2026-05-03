@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import dynamic from "next/dynamic";
-import { canonicalUrl } from "@/lib/site";
+import { BRAND_CANONICAL_ORIGIN } from "@/lib/branding";
 import { bandIndexForSection } from "@/lib/marketing-bands";
 import { BreadcrumbSchema } from "@/components/seo/BreadcrumbSchema";
 import { OrganizationSchema } from "@/components/seo/OrganizationSchema";
@@ -58,13 +58,13 @@ export const metadata: Metadata = {
     "distribution operating system",
     "manufacturer ERP",
   ],
-  alternates: { canonical: canonicalUrl("/") },
+  alternates: { canonical: BRAND_CANONICAL_ORIGIN },
   openGraph: {
     type: "website",
     title: "One system. Entire company. | Zoveto",
     description:
       "Zoveto gives inventory, sales, warehouse, finance, and HR one operating record, so teams stop rebuilding the truth in spreadsheets.",
-    url: canonicalUrl("/"),
+    url: BRAND_CANONICAL_ORIGIN,
     images: ["/og-image.png"],
   },
   twitter: {

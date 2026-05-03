@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
+import { PAID_PLAN_PRICING } from "@/lib/pricing-display";
 import { getAllBlogPosts } from "@/lib/blog-posts";
 import { COMPARE_PAGES } from "@/lib/compare-pages";
 import { buildSitemapEntries } from "@/app/sitemap";
@@ -15,9 +16,11 @@ function sentenceCount(text: string): number {
 }
 
 describe("enterprise seo/aeo readiness", () => {
-  it("keeps question-led blog H1s with direct-answer first paragraph", () => {
+  it("keeps question-led blog H1s with AEO directAnswer and substantive opening section", () => {
     for (const post of getAllBlogPosts()) {
       assert.match(post.h1, /\?$/, `Expected question H1 for ${post.slug}`);
+      assert.ok(post.directAnswer.length >= 80, `directAnswer should be substantive for ${post.slug}`);
+      assert.ok(sentenceCount(post.directAnswer) >= 2, `directAnswer should include at least two sentences for ${post.slug}`);
       const firstParagraph = post.sections[0]?.paragraphs[0] ?? "";
       assert.ok(firstParagraph.length >= 80, `First paragraph should be substantive for ${post.slug}`);
       assert.ok(sentenceCount(firstParagraph) >= 2, `First paragraph should include at least two sentences for ${post.slug}`);
@@ -52,5 +55,9 @@ describe("enterprise seo/aeo readiness", () => {
     const names = offers.map((offer) => offer.name);
     assert.ok(names.includes("Starter"), "Missing Starter offer");
     assert.ok(names.includes("Growth"), "Missing Growth offer");
+    const starter = offers.find((o) => o.name === "Starter") as Record<string, unknown> | undefined;
+    assert.equal(starter?.price, String(PAID_PLAN_PRICING.starter.yearlyEffective));
+    const growth = offers.find((o) => o.name === "Growth") as Record<string, unknown> | undefined;
+    assert.equal(growth?.price, String(PAID_PLAN_PRICING.growth.yearlyEffective));
   });
 });

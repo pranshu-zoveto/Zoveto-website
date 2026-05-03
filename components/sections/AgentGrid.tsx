@@ -17,7 +17,7 @@ export function AgentGrid() {
       <div className="container max-w-content mx-auto px-5 sm:px-6">
         <p className="text-xs font-semibold uppercase tracking-wide text-blue mb-3">Zoveto AI</p>
         <h2 className="text-3xl md:text-5xl font-semibold text-foreground tracking-tight mb-4">
-          23 Agents. Running your business while you sleep.
+          AI agents. Running your business while you sleep.
         </h2>
         <div className="flex gap-2 overflow-auto no-scrollbar mb-6">
           {tabs.map((tab) => (
@@ -40,7 +40,7 @@ export function AgentGrid() {
                 <div className="text-sm font-semibold text-foreground">{name}</div>
                 <span className="h-2.5 w-2.5 rounded-full bg-green animate-pulse" />
               </div>
-              <p className="text-xs text-muted">Runs every 30 minutes · Autonomous mode active</p>
+              <p className="text-xs text-muted">Runs on a schedule · Autonomous mode active</p>
             </article>
           ))}
         </div>

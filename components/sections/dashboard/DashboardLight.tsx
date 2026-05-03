@@ -33,21 +33,33 @@ const MODULE_ICON: Record<DashboardModule["icon"], LucideIcon> = {
   DollarSign,
 };
 
-const TILES_ROW1: Tile[] = [
-  { id: "command-center", label: "Command Center", sub: "Priorities and daily control", Icon: Terminal },
-  ...MODULES.map((m) => ({
-    id: m.id,
-    label: m.label,
-    sub: m.sub,
-    Icon: MODULE_ICON[m.icon],
-  })),
-];
+const COMMAND_TILE: Tile = {
+  id: "command-center",
+  label: "Command Center",
+  sub: "Priorities and daily control",
+  Icon: Terminal,
+};
 
-const TILES_ROW2: Tile[] = [
+const MODULE_TILES: Tile[] = MODULES.map((m) => ({
+  id: m.id,
+  label: m.label,
+  sub: m.sub,
+  Icon: MODULE_ICON[m.icon],
+}));
+
+const SECONDARY_TILES: Tile[] = [
   { id: "marketing", label: "Marketing & Content", sub: "Content, growth & campaigns", Icon: Megaphone },
   { id: "service", label: "Service Center", sub: "Repairs and jobs", Icon: Wrench },
   { id: "settings", label: "Settings", sub: "Company, access, and billing", Icon: Settings },
   { id: "admin", label: "Zoveto Admin", sub: "Platform operations", Icon: Shield },
+];
+
+/** Balanced 5×2 grid: row1 command + first four modules; row2 finance + secondary apps (same `data-module` ids for GSAP). */
+const DASH_TILES: Tile[] = [
+  COMMAND_TILE,
+  ...MODULE_TILES.slice(0, 4),
+  MODULE_TILES[4]!,
+  ...SECONDARY_TILES,
 ];
 
 function DashTile({ id, label, sub, Icon }: Tile) {
@@ -187,20 +199,21 @@ export function DashboardLight() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
-          gap: 14,
         }}
       >
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(6, minmax(140px, 1fr))", gap: 14, maxWidth: 1480, margin: "0 auto", width: "100%" }}>
-          {TILES_ROW1.map((tile) => (
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(5, minmax(0, 1fr))",
+            gap: 14,
+            maxWidth: 1240,
+            margin: "0 auto",
+            width: "100%",
+          }}
+        >
+          {DASH_TILES.map((tile) => (
             <DashTile key={tile.id} {...tile} />
           ))}
-        </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(6, minmax(140px, 1fr))", gap: 14, maxWidth: 1480, margin: "0 auto", width: "100%" }}>
-          {TILES_ROW2.map((tile) => (
-            <DashTile key={tile.id} {...tile} />
-          ))}
-          <div />
-          <div />
         </div>
       </div>
     </div>

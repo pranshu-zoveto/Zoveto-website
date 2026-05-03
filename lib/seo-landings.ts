@@ -19,6 +19,8 @@ export type SeoLanding = {
   metaTitle: string;
   metaDescription: string;
   h1: string;
+  /** 2-line quotable answer directly under H1 (AEO). */
+  directAnswer: string;
   intro: string;
   sections: SeoLandingSection[];
   faqs: SeoLandingFaq[];
@@ -34,6 +36,8 @@ const landings: SeoLanding[] = [
     metaDescription:
       "Evaluate warehouse management software for Indian SMEs: bin tracking, GST-ready flows, multi-site stock, and scan-first ops. Book a demo with Zoveto.",
     h1: "Warehouse management system in India",
+    directAnswer:
+      "For Indian SMEs, warehouse success means bin-level stock truth, dispatch speed, and GST-aligned documents tied to the same ledger—not spreadsheets.\nZoveto is a Company Operating System that runs warehouse execution together with inventory and finance.",
     intro:
       "If you run a warehouse management system in India, you need bin-level accuracy, fast dispatch, and numbers that finance and operations agree on—without spreadsheets as the source of truth.",
     sections: [
@@ -81,6 +85,14 @@ const landings: SeoLanding[] = [
         q: "Can we start with one warehouse?",
         a: "Yes. Many customers prove value at a hub first, then extend putaway and picking standards to branches once the playbook is stable.",
       },
+      {
+        q: "What should a WMS in India prove in the first 90 days?",
+        a: "Fewer mis-picks, faster gate-to-invoice time, and one on-hand number that purchasing and finance both accept. If those three do not move, the implementation focus is wrong.",
+      },
+      {
+        q: "How does Zoveto handle RTO and returns without stock drift?",
+        a: "Returns should reopen stock with reason codes tied to the customer and original dispatch. Zoveto keeps that inside the same OS as forward fulfilment so finance does not chase parallel sheets.",
+      },
     ],
     deepLink: { href: "/modules/wms", label: "Explore WMS capabilities" },
   },
@@ -91,6 +103,8 @@ const landings: SeoLanding[] = [
     metaDescription:
       "ERP software for small businesses in India: inventory, CRM, finance, and ops on one stack—without duct-taping spreadsheets. Plans, trial, and demo inside.",
     h1: "ERP software for small businesses in India",
+    directAnswer:
+      "Small businesses in India need one execution stack for orders, stock, GST billing, and collections—not another silo next to WhatsApp and Excel.\nZoveto is a Company Operating System built for that daily operating reality.",
     intro:
       "ERP software for small businesses in India should reduce chaos across inventory, sales, and money—not add another silo. The goal is one place to run the business day-to-day, with GST-aware workflows your team can actually adopt.",
     sections: [
@@ -130,6 +144,14 @@ const landings: SeoLanding[] = [
         q: "Do you offer a trial?",
         a: "Paid tiers include a trial window; see current plans on the pricing page or ask on a demo call for eligibility.",
       },
+      {
+        q: "What is the fastest way to judge fit for an Indian SMB?",
+        a: "Bring your highest-frequency workflow—usually quote-to-cash or purchase-to-pay—and we walk the exact screens and postings on a demo. Fit is about execution continuity, not brochure checklists.",
+      },
+      {
+        q: "Does Zoveto replace CRM or sit beside it?",
+        a: "For the workflows Zoveto targets, CRM, orders, and billing share the same operating record. If you only need a standalone CRM with no inventory depth, a narrower tool may be enough.",
+      },
     ],
     deepLink: { href: "/product", label: "See how the Zoveto OS fits together" },
   },
@@ -140,6 +162,8 @@ const landings: SeoLanding[] = [
     metaDescription:
       "Inventory management software for Indian businesses: multi-location stock, GRN, expiry, and finance-aligned ledgers. Compare plans and book a Zoveto demo.",
     h1: "Inventory management software in India",
+    directAnswer:
+      "Indian firms lose margin when branches disagree on stock, finance posts adjustments late, and dispatch runs ahead of the ledger.\nZoveto is a Company Operating System that keeps inventory, orders, and finance on one posted record.",
     intro:
       "Inventory management software in India should give you one truthful view of stock across branches, in-transit, and returns—before margin leaks into expedite shipping and write-offs.",
     sections: [
@@ -179,8 +203,76 @@ const landings: SeoLanding[] = [
         q: "Where can I see pricing?",
         a: "Public plans and GST notes are on the pricing page. Enterprise volumes are scoped with sales.",
       },
+      {
+        q: "Can inventory software fix a broken branch process?",
+        a: "Software exposes bad discipline faster—it does not replace ownership. We pair rollout with clear rules for who owns masters, counts, and exceptions so accuracy sticks.",
+      },
+      {
+        q: "How is in-transit stock represented for multi-branch teams?",
+        a: "Transfers should show expected receipt dates and quantities so sales and purchasing stop guessing. Zoveto models those states so available-to-promise stays honest between sites.",
+      },
     ],
     deepLink: { href: "/modules/inventory", label: "Explore inventory capabilities" },
+  },
+  {
+    path: "/company-operating-system-india",
+    breadcrumbName: "Company Operating System India",
+    metaTitle: "Company Operating System India | Zoveto SMB stack",
+    metaDescription:
+      "Company Operating System for Indian SMBs: inventory, GST billing, CRM & warehouse on one execution stack—not stitched ERP silos. Honest Zoveto fit guide—book a demo.",
+    h1: "Company Operating System for Indian SMBs",
+    directAnswer:
+      "A Company Operating System runs your core workflows—quote, stock, pick, dispatch, invoice, collect—on one posted record instead of WhatsApp + Excel bridges.\nZoveto is that OS for operations-heavy Indian SMBs; traditional ERP checklists alone rarely fix execution seams.",
+    intro:
+      "If you are evaluating a Company Operating System in India, you are really asking whether sales, warehouse, and finance can trust the same numbers before month-end. Zoveto narrows scope to the operating spine SMBs actually run daily, then links modules so handoffs do not become integration projects.",
+    sections: [
+      {
+        h2: "Why “ERP” buying checklists miss the point",
+        paragraphs: [
+          "ERP evaluations often optimise feature breadth while execution still breaks at the seam between CRM promises, warehouse reality, and GST lines. A Company Operating System optimises continuity of those steps for the industries it targets—not infinite vertical coverage.",
+        ],
+      },
+      {
+        h2: "How Zoveto differs from stitched stacks",
+        paragraphs: [
+          "Zoveto combines inventory, warehouse execution, CRM, finance, and optional AI assistance where teams define rules—aimed at Indian trading, distribution, parts, and manufacturing patterns. Read the FAQ hub for cross-topic answers, then compare plans when you want numbers on the table.",
+        ],
+        bullets: [
+          "Posted movements instead of reconciled extracts every Friday.",
+          "Credit and availability enforced where orders are saved—not only in analysis decks.",
+          "Branch-aware stock with in-transit states your sales team can quote against.",
+        ],
+      },
+      {
+        h2: "Next steps",
+        paragraphs: [
+          "Start with the product overview, skim the India FAQ hub, and book a demo so we can map your quote-to-cash or inventory chain honestly—without forcing a category label that does not match your pain.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: "Is a Company Operating System the same as ERP?",
+        a: "ERP is often part of the stack, but the OS framing centres on execution continuity. Buyers should score how orders, stock, dispatch, and billing post—not how long the module menu is.",
+      },
+      {
+        q: "When should an Indian SMB choose an OS-first product?",
+        a: "When throughput, branch complexity, or GST reconciliation drag is driven by handoffs—not by missing a single GL report. If seams cost margin weekly, OS-first fit matters.",
+      },
+      {
+        q: "Does Zoveto replace WhatsApp entirely?",
+        a: "WhatsApp may remain for external chatter, but operational truth should live in posted records. Zoveto targets teams ready to move approvals, stock, and tasks into the OS instead of informal channels.",
+      },
+      {
+        q: "How does this relate to AI automation?",
+        a: "Automation should sit on clean posted events with guardrails—Zoveto applies AI where repeat decisions are policy-bound, not as a black box on money postings.",
+      },
+      {
+        q: "Where can I read broader questions beyond this page?",
+        a: "Use the site FAQ hub for grouped answers across GST, inventory, CRM, and automation—then return here for category framing versus traditional ERP buying.",
+      },
+    ],
+    deepLink: { href: "/faq", label: "Browse the FAQ hub" },
   },
 ];
 

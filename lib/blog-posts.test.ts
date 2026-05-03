@@ -25,6 +25,10 @@ describe("blog-posts", () => {
       assert.ok(p.h1.length >= 20, `h1 ${p.slug}`);
       assert.ok(p.excerpt.length >= 40, `excerpt ${p.slug}`);
       assert.ok(p.sections.length >= 2, `sections ${p.slug}`);
+      assert.ok(p.directAnswer.length >= 40, `directAnswer ${p.slug}`);
+      assert.ok(p.faqs.length >= 5, `faqs ${p.slug}`);
+      const fq = p.faqs.map((x) => x.question);
+      assert.equal(new Set(fq).size, fq.length, `unique blog FAQ questions ${p.slug}`);
       assert.ok(p.relatedLinks.length >= 2, `relatedLinks ${p.slug}`);
       for (const r of p.relatedLinks) {
         assert.ok(r.href.startsWith("/"), `href ${p.slug} ${r.href}`);

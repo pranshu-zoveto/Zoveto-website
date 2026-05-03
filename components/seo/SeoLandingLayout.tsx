@@ -1,9 +1,11 @@
 import Link from "next/link";
+import { DirectAnswerLead } from "@/components/aeo/DirectAnswerLead";
 import { BreadcrumbSchema } from "@/components/seo/BreadcrumbSchema";
 import { FAQPageSchema } from "@/components/seo/FAQPageSchema";
 import { Button } from "@/components/ui/Button";
 import { Text } from "@/components/ui/Text";
 import type { SeoLanding } from "@/lib/seo-landings";
+import { canonicalUrl } from "@/lib/site";
 
 type Props = {
   landing: SeoLanding;
@@ -18,7 +20,7 @@ export function SeoLandingLayout({ landing }: Props) {
   return (
     <main className="relative overflow-hidden bg-background pb-16 pt-36 md:pb-24 md:pt-44">
       <BreadcrumbSchema items={crumbs} />
-      <FAQPageSchema faqs={landing.faqs} />
+      <FAQPageSchema faqs={landing.faqs} url={canonicalUrl(landing.path)} />
       <div className="container relative z-10 mx-auto max-w-content px-4 sm:px-6">
         <article className="mx-auto max-w-3xl">
           <Text variant="label-uppercase" className="mb-4 text-muted-2">
@@ -27,6 +29,7 @@ export function SeoLandingLayout({ landing }: Props) {
           <Text variant="display-2" as="h1" className="mb-6 text-balance text-foreground">
             {landing.h1}
           </Text>
+          <DirectAnswerLead text={landing.directAnswer} />
           <Text variant="body-lg" as="p" className="mb-12 text-pretty text-muted">
             {landing.intro}
           </Text>

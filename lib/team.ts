@@ -2,8 +2,31 @@
  * About page — founders / leadership team.
  *
  * Headshots are served from Cloudinary (`res.cloudinary.com`); tune crops via `imageObjectClass` per portrait.
- * Set `linkedinUrl` on each member when personal profiles are ready (button stays hidden while null).
+ *
+ * **LinkedIn (smart redirect):** set `linkedinUrl` to the full profile URL, e.g.
+ * `https://www.linkedin.com/in/your-handle`. The site CTA links to `/go/linkedin/{id}` which validates
+ * and redirects (HTTPS + linkedin.com `/in/` or `/pub/` only). Swap the URL in this file only—no other
+ * pages need updating.
  */
+
+/** Public path for outbound LinkedIn (use in UI instead of raw profile URL). */
+export function teamLinkedInSmartPath(memberId: string): `/go/linkedin/${string}` {
+  return `/go/linkedin/${memberId}`;
+}
+
+/** Safe redirect targets only (prevents open redirects if data is mistyped). */
+export function isAllowedLinkedInProfileUrl(url: string): boolean {
+  const t = url.trim();
+  if (!t.startsWith("https://")) return false;
+  try {
+    const u = new URL(t);
+    const host = u.hostname.replace(/^www\./, "");
+    if (host !== "linkedin.com") return false;
+    return u.pathname.startsWith("/in/") || u.pathname.startsWith("/pub/");
+  } catch {
+    return false;
+  }
+}
 
 export type TeamMember = {
   id: string;
@@ -20,7 +43,10 @@ export type TeamMember = {
   cardTagline: string;
   /** Modal body — 2–3 short paragraphs */
   bio: readonly [string, string, string] | readonly [string, string];
-  /** Personal LinkedIn profile URL, or null to hide the personal button */
+  /**
+   * Full `https://www.linkedin.com/in/...` (or `/pub/...`) profile URL.
+   * UI uses `/go/linkedin/{id}` → this value. Null hides the LinkedIn CTA until you set it.
+   */
   linkedinUrl: string | null;
 };
 
@@ -45,7 +71,7 @@ export const TEAM_MEMBERS: readonly TeamMember[] = [
       "Gourvansh co-founded Zoveto. He studied software engineering at MIT Manipal and ships web and data systems tied to operator needs.",
       "He builds crisp customer journeys and keeps performance honest under load. He cares about small details that save hours at work.",
     ],
-    linkedinUrl: null,
+    linkedinUrl: "https://www.linkedin.com/in/gourvanssh-raina-654122222/",
   },
   {
     id: "pranshu-gupta",
@@ -60,7 +86,7 @@ export const TEAM_MEMBERS: readonly TeamMember[] = [
       "He ships fast feedback loops with scaling operations teams so the product matches how stock and cash really move.",
       "He is building one company OS so teams stop exporting the same facts into five tools.",
     ],
-    linkedinUrl: null,
+    linkedinUrl: "https://www.linkedin.com/in/pranshu-g1903/",
   },
 ] as const;
 

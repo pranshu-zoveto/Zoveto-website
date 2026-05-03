@@ -41,18 +41,49 @@ export interface WorkflowStage {
   after: string;
 }
 
+/** Zoveto area playbooks shown on industry landings (Command Center → Finance). */
+export interface IndustryModulePlaybook {
+  id: string;
+  title: string;
+  body: string;
+  /** Internal link to a module or product surface */
+  href: string;
+}
+
+export interface IndustrySystemFlowStep {
+  title: string;
+  detail: string;
+}
+
+export interface IndustryFaqItem {
+  q: string;
+  a: string;
+}
+
 export interface Industry {
   slug: string;
   name: string;
+  /** Phrase inserted in the fixed hero H1 after “entire …” (e.g. “manufacturing”, “spare parts trading”). */
+  h1IndustryPhrase: string;
+  /** Legacy short hook; optional eyebrow or secondary line where useful */
   headline: string;
+  heroSub: string;
+  /** Two-line AEO answer under hero (use `\\n` for line break). */
+  directAnswer: string;
+  /** Min 5; must match FAQPage JSON-LD on the industry route. */
+  faqs: IndustryFaqItem[];
   metaTitle: string;
   metaDescription: string;
   painPoints: PainPoint[];
   workflow: WorkflowStage[];
   relevantModules: string[];
-  moduleRelevance: Record<string, string>; // Mapping slug -> industry-specific relevance
-  metrics: Metric[];
-  testimonialQuote: string;
+  moduleRelevance: Record<string, string>;
+  modulePlaybooks: IndustryModulePlaybook[];
+  systemFlowSteps: IndustrySystemFlowStep[];
+  outcomes: string[];
+  proofPoints: string[];
+  /** Short tags for homepage industry cards */
+  homepageFeatures: string[];
 }
 
 /** Product-area labels for “Inside Zoveto” operating-pattern flows */

@@ -1,4 +1,6 @@
 import React from "react";
+import { ZOVETO_ORGANIZATION_DESCRIPTION } from "@/lib/brand-entity";
+import { PAID_PLAN_PRICING } from "@/lib/pricing-display";
 import { siteUrl } from "@/lib/site";
 
 /** SoftwareApplication JSON-LD for the product marketing page. */
@@ -10,19 +12,18 @@ export function ProductSoftwareApplicationSchema() {
     name: "Zoveto",
     applicationCategory: "BusinessApplication",
     operatingSystem: "Web",
-    description:
-      "Web-based AI operating system unifying inventory, warehouse, sales, operations, and finance for scaling enterprises.",
+    description: ZOVETO_ORGANIZATION_DESCRIPTION,
     url: `${base}/product`,
     image: `${base}/og-image.png`,
     offers: [
       {
         "@type": "Offer",
         name: "Starter",
-        price: "4999",
+        price: String(PAID_PLAN_PRICING.starter.yearlyEffective),
         priceCurrency: "INR",
         priceSpecification: {
           "@type": "UnitPriceSpecification",
-          price: "4999",
+          price: String(PAID_PLAN_PRICING.starter.yearlyEffective),
           priceCurrency: "INR",
           unitText: "MONTH",
           billingDuration: "P1Y",
@@ -31,11 +32,11 @@ export function ProductSoftwareApplicationSchema() {
       {
         "@type": "Offer",
         name: "Growth",
-        price: "14999",
+        price: String(PAID_PLAN_PRICING.growth.yearlyEffective),
         priceCurrency: "INR",
         priceSpecification: {
           "@type": "UnitPriceSpecification",
-          price: "14999",
+          price: String(PAID_PLAN_PRICING.growth.yearlyEffective),
           priceCurrency: "INR",
           unitText: "MONTH",
           billingDuration: "P1Y",

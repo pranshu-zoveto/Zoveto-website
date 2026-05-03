@@ -51,7 +51,7 @@ export function ContactClient() {
           <div>
             <section
               id="demo"
-              className="p-8 md:p-10 rounded-2xl bg-card border border-border shadow-sm relative overflow-hidden scroll-mt-28"
+              className="scroll-mt-28 rounded-2xl border border-border bg-card p-5 shadow-sm relative overflow-hidden sm:p-8 md:p-10"
               aria-labelledby="demo-heading"
             >
               <BackgroundComponents variant="cool" intensity="subtle" />

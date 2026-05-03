@@ -4,6 +4,7 @@ import { modules } from "@/lib/modules";
 import { getAllProofSlugs } from "@/lib/operational-proof";
 import { SEO_LANDING_PATHS } from "@/lib/seo-landings";
 import { COMPARE_PAGES } from "@/lib/compare-pages";
+import { PUBLIC_INDUSTRY_SLUGS } from "@/lib/industries";
 import { siteUrl } from "@/lib/site";
 
 function lastModIso(value: string | Date): string {
@@ -33,7 +34,10 @@ export function buildSitemapEntries(): MetadataRoute.Sitemap {
     { url: `${BASE}/contact`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE}/careers`, lastModified: now, changeFrequency: "monthly", priority: 0.65 },
     { url: `${BASE}/blog`, lastModified: now, changeFrequency: "weekly", priority: 0.75 },
+    { url: `${BASE}/faq`, lastModified: now, changeFrequency: "weekly", priority: 0.82 },
     { url: `${BASE}/compare`, lastModified: now, changeFrequency: "weekly", priority: 0.75 },
+    { url: `${BASE}/case-studies`, lastModified: now, changeFrequency: "monthly", priority: 0.72 },
+    { url: `${BASE}/case-studies/rock-tear-parts`, lastModified: now, changeFrequency: "monthly", priority: 0.74 },
     { url: `${BASE}/system`, lastModified: now, changeFrequency: "monthly", priority: 0.72 },
   ];
 
@@ -72,7 +76,22 @@ export function buildSitemapEntries(): MetadataRoute.Sitemap {
     priority: 0.74,
   }));
 
-  return [...staticPages, ...seoLandings, ...blogPosts, ...modulePages, ...operationalProofPages, ...comparePages];
+  const industryPages: MetadataRoute.Sitemap = PUBLIC_INDUSTRY_SLUGS.map((slug) => ({
+    url: `${BASE}/industries/${slug}`,
+    lastModified: now,
+    changeFrequency: "monthly" as const,
+    priority: 0.77,
+  }));
+
+  return [
+    ...staticPages,
+    ...seoLandings,
+    ...blogPosts,
+    ...modulePages,
+    ...operationalProofPages,
+    ...comparePages,
+    ...industryPages,
+  ];
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {

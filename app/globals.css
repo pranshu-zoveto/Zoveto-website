@@ -105,6 +105,16 @@
     scroll-padding-top: 5rem;
     scroll-behavior: smooth;
     color-scheme: light;
+    /* Prevent iOS from inflating small body copy past authored sizes */
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  @media (max-width: 767px) {
+    html {
+      /* Room for sticky demo bar + WhatsApp + home indicator when jumping to anchors */
+      scroll-padding-bottom: calc(5.5rem + env(safe-area-inset-bottom, 0px));
+    }
   }
 
   *,

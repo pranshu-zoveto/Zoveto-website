@@ -36,3 +36,4 @@ jobs:
           NEXT_PUBLIC_COS_API_URL: https://api.example.com/api
           NEXT_PUBLIC_COS_APP_URL: https://app.example.com
           COS_API_BASE_URL: https://api.example.com/api
+          # Optional: add repo secrets SENTRY_ORG, SENTRY_PROJECT, SENTRY_AUTH_TOKEN for upload + CI builds.

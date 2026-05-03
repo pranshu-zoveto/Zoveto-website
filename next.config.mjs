@@ -2,11 +2,12 @@
 function buildContentSecurityPolicy(isDev) {
   return [
     "default-src 'self'",
-    `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ""} https://www.googletagmanager.com https://www.google-analytics.com https://www.clarity.ms`,
+    `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ""} https://www.googletagmanager.com https://www.google-analytics.com https://www.clarity.ms https://*.posthog.com`,
     "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
     "font-src 'self' https://fonts.gstatic.com",
     "img-src 'self' data: blob: https:",
-    `connect-src 'self' https://api.zoveto.com https://*.zoveto.com https://www.google-analytics.com https://www.googletagmanager.com https://analytics.google.com https://*.clarity.ms https://www.clarity.ms${isDev ? " http://localhost:* ws://localhost:* wss://localhost:*" : ""}`,
+    "worker-src 'self' blob:",
+    `connect-src 'self' https://api.zoveto.com https://*.zoveto.com https://www.google-analytics.com https://www.googletagmanager.com https://analytics.google.com https://*.clarity.ms https://www.clarity.ms https://*.posthog.com https://*.i.posthog.com https://*.ingest.sentry.io https://*.sentry.io${isDev ? " http://localhost:* ws://localhost:* wss://localhost:*" : ""}`,
     "frame-ancestors 'none'",
   ].join("; ");
 }
@@ -17,7 +18,7 @@ const nextConfig = {
   output: "standalone",
 
   experimental: {
-    optimizePackageImports: ["lucide-react", "@radix-ui/react-dialog", "framer-motion"],
+    optimizePackageImports: ["lucide-react", "@radix-ui/react-dialog", "framer-motion", "posthog-js"],
   },
 
   // Next 16: default `next build` may use Turbopack; this repo still defines `webpack()` for prod cache + dev HMR.

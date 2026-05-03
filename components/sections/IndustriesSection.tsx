@@ -1,50 +1,19 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
-import { Factory, ShoppingCart, Warehouse, Rocket, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Text } from "@/components/ui/Text";
-
-const INDUSTRIES = [
-  {
-    icon: Factory,
-    name: "MANUFACTURING",
-    tagline: "BOM, production tracking, raw material planning",
-    metric: "34% wastage reduction",
-    features: ["Production Planning", "BOM Management", "Quality Checks", "Batch Tracking"],
-    quote: "Finally know exactly what's on our shop floor in real time.",
-  },
-  {
-    icon: ShoppingCart,
-    name: "TRADING & DISTRIBUTION",
-    tagline: "Purchase orders, multi-party ledgers, margin tracking",
-    metric: "2× order speed",
-    features: ["Vendor Management", "Pricing Rules", "Credit Limits", "Multi-ledger"],
-    quote: "Replaced 3 tools and 1 ops hire. Margins finally visible.",
-  },
-  {
-    icon: Warehouse,
-    name: "WAREHOUSING",
-    tagline: "Multi-location tracking, barcode ops, dispatch management",
-    metric: "Zero wrong dispatches",
-    features: ["Bin Management", "Inward / Outward", "Gate Entry", "Returns"],
-    quote: "Barcode scanning removed all our entry errors overnight.",
-  },
-  {
-    icon: Rocket,
-    name: "GROWING STARTUPS",
-    tagline: "Scale without hiring 5 extra ops people",
-    metric: "Replaced 3 tools + 1 hire",
-    features: ["Lean ops team", "Fast rollout", "Owner reporting", "Approval controls"],
-    quote: "We were live in 10 days. No consultant. No 6-month drama.",
-  },
-];
+import { getPublicIndustries } from "@/lib/industries";
 
 export function IndustriesSection() {
+  const publicIndustries = getPublicIndustries();
+
   return (
     <motion.section
       id="industries"
-      className="relative py-20 md:py-28 lg:py-36 bg-surface border-t border-border overflow-hidden"
+      className="relative border-t border-border bg-surface py-20 md:py-28 lg:py-36 overflow-hidden"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
@@ -65,59 +34,59 @@ export function IndustriesSection() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {INDUSTRIES.map((ind, i) => (
-            <div
-              key={i}
-              className="group p-8 md:p-10 rounded-2xl bg-card border border-border overflow-hidden flex flex-col relative shadow-sm"
-            >
-              <div className="flex items-start justify-between mb-8 pb-6 border-b border-border gap-4">
-                <div className="flex items-center gap-5 min-w-0">
-                  <div className="w-14 h-14 rounded-xl bg-teal-dim flex items-center justify-center border border-teal/20 shrink-0">
-                    <ind.icon className="w-7 h-7 text-teal stroke-[1.5]" />
+          {publicIndustries.map((ind) => {
+            const href = `/industries/${ind.slug}`;
+            const Icon = ind.icon;
+            return (
+              <Link
+                key={ind.slug}
+                href={href}
+                className="group flex flex-col rounded-2xl border border-border bg-card p-8 shadow-sm transition-colors hover:border-teal/35 md:p-10"
+              >
+                <div className="mb-8 flex items-start justify-between gap-4 border-b border-border pb-6">
+                  <div className="flex min-w-0 items-center gap-5">
+                    <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl border border-teal/20 bg-teal-dim">
+                      <Icon className="h-7 w-7 stroke-[1.5] text-teal" />
+                    </div>
+                    <div className="min-w-0">
+                      <Text variant="heading-1" as="h3" className="mb-1 leading-tight text-foreground">
+                        {ind.name.toUpperCase()}
+                      </Text>
+                      <Text variant="body-sm" className="text-muted-2">
+                        {ind.headline}
+                      </Text>
+                    </div>
                   </div>
-                  <div className="min-w-0">
-                    <Text variant="heading-1" as="h3" className="text-foreground mb-1 leading-tight">
-                      {ind.name}
-                    </Text>
-                    <Text variant="body-sm" className="text-muted-2">
-                      {ind.tagline}
-                    </Text>
-                  </div>
-                </div>
-                <div className="w-10 h-10 rounded-full bg-surface border border-border flex items-center justify-center text-muted shrink-0">
-                  <ArrowRight size={18} />
-                </div>
-              </div>
-
-              <div className="mb-8 flex flex-col gap-6 md:flex-row md:items-center justify-between">
-                <div className="space-y-3">
-                  <div className="text-xs font-semibold text-muted-2 uppercase tracking-wide">Core capabilities</div>
-                  <div className="flex flex-wrap gap-2">
-                    {ind.features.map((feat, j) => (
-                      <span
-                        key={j}
-                        className="text-xs font-medium px-2.5 py-1 rounded-md bg-surface text-muted border border-border"
-                      >
-                        {feat}
-                      </span>
-                    ))}
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-border bg-surface text-muted transition-colors group-hover:border-teal/30 group-hover:text-teal">
+                    <ArrowRight size={18} />
                   </div>
                 </div>
 
-                <div className="p-5 rounded-xl bg-teal-dim border border-teal/15 text-center min-w-[180px]">
-                  <div className="text-xs font-semibold text-teal uppercase tracking-wide mb-1">Proven ROI</div>
-                  <div className="text-lg font-bold text-teal">{ind.metric}</div>
+                <div className="mb-2 text-xs font-semibold uppercase tracking-wide text-muted-2">Core capabilities</div>
+                <div className="mb-6 flex flex-wrap gap-2">
+                  {ind.homepageFeatures.map((feat) => (
+                    <span
+                      key={feat}
+                      className="rounded-md border border-border bg-surface px-2.5 py-1 text-xs font-medium text-muted"
+                    >
+                      {feat}
+                    </span>
+                  ))}
                 </div>
-              </div>
 
-              <div className="mt-auto pt-6 border-t border-border text-muted">
-                <Text variant="body-sm" className="italic leading-relaxed">
-                  &quot;{ind.quote}&quot;
-                </Text>
-              </div>
-            </div>
-          ))}
+                <p className="mt-auto text-sm font-semibold text-teal">Read operational fit →</p>
+              </Link>
+            );
+          })}
         </div>
+
+        <p className="mt-10 max-w-2xl text-sm text-muted">
+          Other business models (startups, D2C, pharma, and more) are onboarded with the same manual setup process—
+          <Link href="/signup" className="font-medium text-teal underline-offset-2 hover:underline">
+            request setup
+          </Link>{" "}
+          and we map your workflow first.
+        </p>
       </div>
     </motion.section>
   );

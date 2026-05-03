@@ -14,13 +14,11 @@ Browser-facing env vars must be set at **build time** (`NEXT_PUBLIC_*`). Server 
 
 ### Vercel / production (forms and leads)
 
-Server route handlers try **SMTP first** (optional), then **COS** (`POST /api/leads` or `/api/demo`). On **Vercel**, if **`COS_API_BASE_URL` is not set**, the app **does not** default to `localhost` — it skips COS and **signup / contact / demo still succeed** when mail is delivered to `info@zoveto.com`. Add **`COS_API_BASE_URL`** when you want leads stored in COS as well.
-
-The **`/api/leads`** browser proxy requires **`COS_API_BASE_URL`** on Vercel (no SMTP fallback).
+Server route handlers try **SMTP first** (optional), then **COS** (`POST /api/leads` or `/api/demo`). On **Vercel**, if **`COS_API_BASE_URL` is not set**, the app **does not** default to `localhost` — it skips COS and **signup, contact, demo, and footer product-updates (`POST /api/leads`)** still succeed when mail is delivered to **`info@zoveto.com`**. Add **`COS_API_BASE_URL`** when you want leads stored in COS as well.
 
 | Variable | Required | Notes |
 |----------|----------|--------|
-| `COS_API_BASE_URL` | **Yes for `/api/leads` proxy**; optional for `/signup`, `/api/contact`, `/api/demo` if SMTP works | Public COS base including `/api` (e.g. `https://api.yourdomain.com/api`). Runtime env — add in Vercel and **redeploy**. |
+| `COS_API_BASE_URL` | Optional if **SMTP** (`MAIL_FROM`, `SMTP_*`) is configured — routes notify **`info@zoveto.com`** and return success | Public COS base including `/api` (e.g. `https://api.yourdomain.com/api`). Runtime env — add in Vercel and **redeploy**. |
 | `WEB_CONTACT_SECRET` | If COS enforces it | Must match COS `WEB_CONTACT_SECRET` or COS returns 401/403. |
 | `SMTP_*` + `MAIL_FROM` | Recommended on Vercel | Required if COS is not configured yet, or as backup when COS errors. Use port **587** + `SMTP_SECURE=false` for typical STARTTLS; port **465** often needs `SMTP_SECURE=true`. |
 
@@ -67,9 +65,40 @@ Browser still uses `NEXT_PUBLIC_COS_API_URL` (default `http://localhost:4000/api
 ## Email
 
 - **Primary pipeline:** leads and demos are stored and notified through **COS** (`POST /api/leads`, etc.).
-- **Optional (this repo):** if `SMTP_*` and `MAIL_FROM` are set, `lib/server-mail.ts` can send inward notifications for signup/contact/demo. Leave them unset locally if you rely on COS only; routes skip mail when SMTP is not configured.
+- **Optional (this repo):** if `SMTP_*` and `MAIL_FROM` are set, `lib/server-mail.ts` sends inward notifications to **`info@zoveto.com`** for signup, contact, demo, and **`/api/leads`** (including the footer product-updates form). Leave them unset locally if you rely on COS only; routes skip mail when SMTP is not configured.
 
 **Security:** rotate any SMTP or app password that was ever pasted into a committed file or shared chat—even if `.env*` is gitignored.
+
+## Sentry (errors — browser + API routes + Edge)
+
+Integrated via `@sentry/nextjs`:
+
+- **`instrumentation.ts`** — loads server + edge SDKs; exports **`onRequestError`** (`captureRequestError`) for App Router request failures.
+- **`instrumentation-client.ts`** — browser bundle; exports **`onRouterTransitionStart`** for navigation spans.
+- **`sentry.server.config.ts`**, **`sentry.edge.config.ts`** — runtime `Sentry.init` when `SENTRY_DSN` / `NEXT_PUBLIC_SENTRY_DSN` is set.
+- **`app/global-error.tsx`** — captures React root render errors.
+
+CSP allows **`https://*.ingest.sentry.io`** and **`https://*.sentry.io`**. **`worker-src 'self' blob:`** is included so you can enable Session Replay later without a CSP change.
+
+This repo does **not** wrap `next.config` with **`withSentryConfig`** (avoids loading the full Sentry webpack plugin stack during config evaluation; keeps Windows/`node_modules` flaky installs from breaking `next build`). **Source maps** in production: use the **Sentry Vercel integration** (recommended) or upload releases with **`sentry-cli`** / CI using `SENTRY_AUTH_TOKEN`, `SENTRY_ORG`, `SENTRY_PROJECT`.
+
+**Vercel (production):**
+
+1. Create a Sentry project → **Settings → Client Keys (DSN)**.
+2. Set **`NEXT_PUBLIC_SENTRY_DSN`** and **`SENTRY_DSN`** to the **same DSN** (server reads `SENTRY_DSN` first, then falls back to the public DSN).
+3. Redeploy. Open **Issues** in Sentry and confirm events (or temporarily throw in an API route and remove).
+4. Optional: enable the **Sentry integration** on the Vercel project for automatic release + source map association.
+
+**Preview vs production:** set **`NEXT_PUBLIC_SENTRY_ENVIRONMENT=preview`** on Preview deployments if you want separate issue streams (optional).
+
+**Audit (this repo — code):** Sentry is **installed and wired** (`@sentry/nextjs` 10.x, `instrumentation.ts` + `instrumentation-client.ts`, `sentry.server.config.ts`, `sentry.edge.config.ts`, `app/global-error.tsx`, CSP ingest allowlist). There is **no** `sentry.client.config.ts` (Next uses `instrumentation-client.ts` instead). **You must confirm in Vercel** that **`NEXT_PUBLIC_SENTRY_DSN`** and **`SENTRY_DSN`** are set for **Production** (not Preview-only unless intentional). **`NODE_ENV=production`** is automatic on Vercel production builds. **AWS:** this package is the marketing Next.js app on Vercel; separate AWS APIs need their own Sentry SDK (`@sentry/node` / OpenTelemetry) in those services — not duplicated here.
+
+**Manual verify after deploy:**
+
+1. **Browser (optional, disruptive):** set **`NEXT_PUBLIC_SENTRY_VERIFICATION=1`**, redeploy Production, load any page → expect one **“Sentry Frontend Test Error”** in Issues → **remove the env var** and redeploy.
+2. **API (non-disruptive):** set **`SENTRY_VERIFY_SECRET`** to a long random value on Vercel (Production). Then:  
+   `curl -sS -X POST https://zoveto.com/api/v1/sentry-verify -H "Content-Type: application/json" -d "{\"secret\":\"YOUR_SECRET\"}"`  
+   → check Sentry → **delete `SENTRY_VERIFY_SECRET`** (route returns 404 when unset).
 
 ## Documentation
 
@@ -106,10 +135,12 @@ Copy from `.env.example`. Public vars must match **HTTPS** origins (no trailing 
 | `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` | Optional | Search Console |
 | `NEXT_PUBLIC_CLARITY_PROJECT_ID` | Optional | Loads only after analytics consent |
 | `SMTP_*` / `MAIL_FROM` | Optional | Inward notifications via `server-mail`; omit if unused |
+| `NEXT_PUBLIC_SENTRY_DSN` / `SENTRY_DSN` | Recommended | Same DSN string for browser + server error tracking |
+| `SENTRY_AUTH_TOKEN` / `SENTRY_ORG` / `SENTRY_PROJECT` | Optional | Source maps + release association on `next build` |
 | `VERCEL` | Auto on Vercel | Enables HSTS path when `NODE_ENV=production` |
 | `HSTS_PRELOAD` | Optional | Set `1` only after TLS validation |
 | `API_RATE_LIMIT_DISABLED` | Never in prod | Disables middleware rate limiting |
 
 Operational: COS `FRONTEND_URL` / `PUBLIC_WEBSITE_ORIGINS` must include your marketing domain; run `npm run test && npm run typecheck && npm run build && npm run lint` before deploy.
 
-**Supply chain:** `npm audit` may report moderate issues in nested dependencies (for example PostCSS inside Next). Do not run `npm audit fix --force` without review—it can pin incompatible Next versions. Prefer upgrading `next` within the same major line when advisories are addressed upstream.
+**Supply chain:** `npm audit` may report moderate issues in nested dependencies (for example PostCSS inside Next). Do not run `npm audit fix --force` without review—it can pin incompatible Next versions. Prefer upgrading `next` within the same major line when advisories are addressed upstream, or use **`overrides`** in `package.json` when a patched transitive version is compatible (see [docs/security/dependency-audit.md](docs/security/dependency-audit.md)). **Dependabot** runs weekly via [`.github/dependabot.yml`](.github/dependabot.yml).

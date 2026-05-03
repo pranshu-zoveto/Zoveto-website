@@ -10,9 +10,15 @@ import { FormToast } from "@/components/ui/FormToast";
 import { formatCosApiErrorMessage } from "@/lib/http-json";
 
 const BULLETS = [
-  "Every request enters a founder-reviewed waitlist",
-  "No automatic workspace access or demo data",
-  "Qualified teams are onboarded manually with context",
+  "Every request is reviewed within 24 - 48 hours",
+  "Your system is set up before access is given",
+  "You get a guided onboarding session",
+] as const;
+
+const WHAT_NEXT_STEPS = [
+  "Submit your details",
+  "We review and prepare your system",
+  "You get onboarding + access to your workspace",
 ] as const;
 
 const TEAM_SIZE_OPTIONS = ["1-10", "11-50", "51-200", "200+"] as const;
@@ -106,7 +112,7 @@ export default function SignupClient() {
   }
 
   const inputClass = cn(
-    "w-full rounded-xl border border-border bg-surface px-4 py-3.5 text-sm text-foreground shadow-sm",
+    "w-full min-h-[48px] rounded-xl border border-border bg-surface px-4 py-3.5 text-base text-foreground shadow-sm",
     "placeholder:text-muted-2",
     "transition-[border-color,box-shadow] duration-200",
     "focus:outline-none focus:border-blue/40 focus:ring-2 focus:ring-blue/15",
@@ -126,22 +132,23 @@ export default function SignupClient() {
       <div className="pointer-events-none absolute bottom-0 right-0 h-[32rem] w-[32rem] rounded-full bg-teal-dim opacity-60 blur-3xl" />
 
       <div className="container relative z-10 mx-auto max-w-content px-4 pb-12 pt-24 sm:px-6 md:pb-16 md:pt-28 lg:pb-20 lg:pt-32">
-        <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2 lg:gap-16 xl:gap-20">
+        <div className="mx-auto grid max-w-6xl items-start gap-12 lg:grid-cols-2 lg:gap-16 xl:gap-20">
           <div className="order-2 text-center lg:order-1 lg:text-left">
             <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-blue/20 bg-blue-light/80 px-3 py-1.5 text-xs font-semibold text-blue">
               <Sparkles className="h-3.5 w-3.5" aria-hidden />
               Controlled early access
             </div>
             <h1 className="mb-5 text-balance text-3xl font-bold leading-[1.15] tracking-tight text-foreground sm:text-4xl md:text-[2.75rem]">
-              Request Founder-Reviewed Access
+              Get started with Zoveto
             </h1>
-            <p className="mx-auto mb-10 max-w-md text-lg leading-relaxed text-muted lg:mx-0">
-              Zoveto is onboarding deliberately. Tell us where your operations are breaking, and the
-              founding team will decide whether you are a fit for the next batch.
+            <p className="mx-auto mb-8 max-w-xl text-pretty text-base leading-relaxed text-muted sm:text-lg lg:mx-0">
+              We onboard every business manually to ensure the system is configured to your operations from day
+              one. Tell us where your operations are breaking, and we&apos;ll prepare your system for a structured
+              onboarding.
             </p>
-            <ul className="mx-auto max-w-md space-y-4 lg:mx-0">
+            <ul className="mx-auto max-w-xl space-y-3.5 text-left sm:space-y-4 lg:mx-0">
               {BULLETS.map((line) => (
-                <li key={line} className="flex items-start gap-3 text-left">
+                <li key={line} className="flex items-start gap-3">
                   <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-teal/20 bg-teal-dim">
                     <Check className="h-3.5 w-3.5 text-teal" strokeWidth={2.5} aria-hidden />
                   </span>
@@ -152,12 +159,15 @@ export default function SignupClient() {
               ))}
             </ul>
 
-            <div className="mx-auto mt-8 max-w-md rounded-2xl border border-border bg-card/70 p-4 text-left shadow-sm lg:mx-0">
-              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-muted-2">Access rule</p>
-              <p className="mt-2 text-sm leading-relaxed text-muted">
-                Submitting this form does not create an account. Qualified users receive manual
-                onboarding after review.
-              </p>
+            <div className="mx-auto mt-8 max-w-xl rounded-2xl border border-border bg-surface-2/50 p-5 text-left shadow-sm ring-1 ring-black/[0.03] sm:p-6 lg:mx-0">
+              <p className="text-sm font-semibold text-foreground">What happens next:</p>
+              <ol className="mt-3 list-decimal space-y-2.5 pl-5 text-sm leading-relaxed text-muted marker:font-semibold marker:text-foreground">
+                {WHAT_NEXT_STEPS.map((step) => (
+                  <li key={step} className="pl-1">
+                    {step}
+                  </li>
+                ))}
+              </ol>
             </div>
           </div>
 
@@ -209,11 +219,9 @@ export default function SignupClient() {
                       transition={{ duration: 0.2 }}
                     >
                       <div className="mb-8">
-                        <h2 className="mb-1 text-lg font-semibold text-foreground">
-                          Join the early access queue
-                        </h2>
+                        <h2 className="mb-1 text-lg font-semibold text-foreground">Tell us about your operations</h2>
                         <p className="text-sm text-muted-2">
-                          This is a qualification form. The founder team controls onboarding.
+                          Qualification form — we review each submission and prepare your workspace before access.
                         </p>
                       </div>
 
@@ -384,6 +392,8 @@ export default function SignupClient() {
                         </button>
 
                         <p className="pt-1 text-center text-xs leading-relaxed text-muted-2">
+                          Typical response time: within 24 - 48 hours
+                          <span className="my-2 block h-px w-full max-w-[16rem] mx-auto bg-border/80" aria-hidden />
                           By requesting access you agree to our{" "}
                           <Link href="/terms" className="text-blue underline-offset-2 hover:underline">
                             Terms

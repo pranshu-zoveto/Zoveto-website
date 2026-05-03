@@ -13,7 +13,8 @@ import {
  * not a Google Tag Manager container.
  * `send_page_view: false` avoids double-counting: {@link AnalyticsRouteTracker} sends page_view.
  *
- * Set `NEXT_PUBLIC_GA_MEASUREMENT_ID` (e.g. G-XXXXXXXXXX) in `.env.local` / Vercel.
+ * Set `NEXT_PUBLIC_GA_MEASUREMENT_ID` in `.env.local` / Vercel (must match GA Admin → Data streams).
+ * Only this component injects the Google tag — do not add a second gtag snippet in `layout` or per-page.
  */
 export function ConditionalAnalyticsLoader() {
   const [enabled, setEnabled] = useState(false);
@@ -45,6 +46,7 @@ export function ConditionalAnalyticsLoader() {
 
     const s2 = document.createElement("script");
     s2.id = "zoveto-ga4-config";
+    s2.type = "text/javascript";
     s2.text = `
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}

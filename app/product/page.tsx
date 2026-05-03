@@ -56,14 +56,14 @@ export default function ProductOSPage() {
 
           <div className="relative z-10 flex flex-col items-center">
             <div className="w-full max-w-5xl overflow-hidden rounded-[var(--float-radius)] border border-border shadow-[var(--shadow-float)]">
-              <div className="group grid grid-cols-12 items-center gap-8 border-b border-border bg-card p-8 md:p-10">
-                <div className="col-span-12 lg:col-span-4">
-                  <div className="text-xs font-semibold text-blue tracking-wide uppercase mb-2">L3: Interface</div>
-                  <Text variant="heading-1" as="h3" className="text-foreground group-hover:text-blue transition-colors text-2xl">
+              <div className="group grid grid-cols-12 items-start gap-x-8 gap-y-6 border-b border-border bg-card p-8 md:p-10 lg:items-center lg:gap-y-8">
+                <div className="col-span-12 lg:col-span-4 lg:max-w-md">
+                  <div className="mb-2 text-xs font-semibold uppercase tracking-wide text-blue">L3: Interface</div>
+                  <Text variant="heading-1" as="h3" className="text-2xl text-foreground transition-colors group-hover:text-blue">
                     Command center
                   </Text>
                 </div>
-                <div className="col-span-12 lg:col-span-8 flex flex-wrap gap-2 opacity-70 group-hover:opacity-100 transition-opacity">
+                <div className="col-span-12 flex flex-wrap content-start gap-2 opacity-70 transition-opacity group-hover:opacity-100 lg:col-span-8">
                   {["Dashboard", "Reports", "Responsive web", "WhatsApp notifications"].map((f) => (
                     <span
                       key={f}
@@ -75,15 +75,15 @@ export default function ProductOSPage() {
                 </div>
               </div>
 
-              <div className="group relative grid grid-cols-12 items-center gap-8 border-x border-b border-border bg-card p-8 md:p-10">
+              <div className="group relative grid grid-cols-12 items-start gap-x-8 gap-y-6 border-x border-b border-border bg-card p-8 md:p-10 lg:items-center lg:gap-y-8">
                 <div className="absolute inset-x-0 -top-px h-px bg-gradient-to-r from-transparent via-teal/30 to-transparent" />
-                <div className="col-span-12 lg:col-span-4">
-                  <div className="text-xs font-semibold text-teal tracking-wide uppercase mb-2">L2: Process</div>
-                  <Text variant="heading-1" as="h3" className="text-foreground group-hover:text-teal transition-colors text-2xl">
+                <div className="col-span-12 lg:col-span-4 lg:max-w-md">
+                  <div className="mb-2 text-xs font-semibold uppercase tracking-wide text-teal">L2: Process</div>
+                  <Text variant="heading-1" as="h3" className="text-2xl text-foreground transition-colors group-hover:text-teal">
                     Process logic
                   </Text>
                 </div>
-                <div className="col-span-12 lg:col-span-8 flex flex-wrap gap-2 opacity-70 group-hover:opacity-100 transition-opacity">
+                <div className="col-span-12 flex flex-wrap content-start gap-2 opacity-70 transition-opacity group-hover:opacity-100 lg:col-span-8">
                   {["Inventory Sync", "CRM Automation", "WMS Routing", "Finance Posting"].map((f) => (
                     <span
                       key={f}
@@ -95,14 +95,14 @@ export default function ProductOSPage() {
                 </div>
               </div>
 
-              <div className="group grid grid-cols-12 items-center gap-8 border-x border-border bg-surface p-8 md:p-10">
-                <div className="col-span-12 lg:col-span-4">
-                  <div className="text-xs font-semibold text-muted-2 tracking-wide uppercase mb-2">L1: Foundation</div>
-                  <Text variant="heading-1" as="h3" className="text-foreground text-2xl">
+              <div className="group grid grid-cols-12 items-start gap-x-8 gap-y-6 border-x border-border bg-surface p-8 md:p-10 lg:items-center lg:gap-y-8">
+                <div className="col-span-12 lg:col-span-4 lg:max-w-md">
+                  <div className="mb-2 text-xs font-semibold uppercase tracking-wide text-muted-2">L1: Foundation</div>
+                  <Text variant="heading-1" as="h3" className="text-2xl text-foreground">
                     Operating record
                   </Text>
                 </div>
-                <div className="col-span-12 lg:col-span-8 flex flex-wrap gap-2 opacity-60">
+                <div className="col-span-12 flex flex-wrap content-start gap-2 opacity-60 lg:col-span-8">
                   {["PostgreSQL", "TLS encryption", "Tenant-isolated data", "Role-based access"].map(
                     (f) => (
                       <span
@@ -124,7 +124,7 @@ export default function ProductOSPage() {
         <ProductClient />
         </FluidMarketingSection>
 
-        <FluidMarketingSection band={bandIndexForSection(2)} overlapTop stackBase>
+        <FluidMarketingSection band={bandIndexForSection(2)} stackBase>
         <section className="flex flex-col items-center border-t border-border bg-transparent py-20 text-center md:py-28">
           <Text variant="display-2" as="h2" className="mb-8 max-w-3xl text-foreground font-bold">
             Move from tools to <span className="text-blue">architectural unity</span>

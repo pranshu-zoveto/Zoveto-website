@@ -7,7 +7,7 @@ const ROWS = [
   ["MIS reports", "Hours every Monday", "7:45 AM, on WhatsApp"],
   ["Payment reminders", "Awkward calls", "AI-sent, automated"],
   ["Data security", "Files on hard drives", "Bank-grade, cloud"],
-  ["Cost", "₹50K+ fragmented", "From ₹5,999/mo (Starter)"],
+  ["Cost", "₹50K+ fragmented", "From ₹7,999/mo (Starter, monthly)"],
 ];
 
 export function ComparisonTable() {

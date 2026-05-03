@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import { AnimatePresence, motion, useInView, useMotionTemplate, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { AnimatePresence, motion, useInView } from "framer-motion";
 import { BarChart3, Inbox, Settings2, Table2 } from "lucide-react";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 
@@ -70,7 +70,6 @@ function pathFromNodeToCard(cardIdx: number): string {
 }
 
 export function ProblemSection() {
-  const reduceMotion = useReducedMotion();
   const [activeStep, setActiveStep] = useState<FlowStep>("Inbox");
   const [isSectionHovering, setIsSectionHovering] = useState(false);
   const [hasUserInteracted, setHasUserInteracted] = useState(false);
@@ -79,13 +78,6 @@ export function ProblemSection() {
   const sectionRef = useRef<HTMLElement | null>(null);
   const mobileCardRefs = useRef<Record<string, HTMLDivElement | null>>({});
   const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start start", "end start"],
-  });
-  const sectionOpacity = useTransform(scrollYProgress, [0, 1], [1, 0.3]);
-  const sectionBlur = useTransform(scrollYProgress, [0, 1], [0, reduceMotion ? 0 : 4]);
-  const sectionFilter = useMotionTemplate`blur(${sectionBlur}px)`;
 
   useEffect(() => {
     if (isSectionHovering || hasUserInteracted) return;
@@ -129,10 +121,6 @@ export function ProblemSection() {
       className="relative scroll-mt-24 overflow-hidden bg-gradient-to-b from-white to-[#f7f9fc] py-20 md:py-24 lg:py-28"
       onMouseEnter={() => setIsSectionHovering(true)}
       onMouseLeave={() => setIsSectionHovering(false)}
-      style={{
-        opacity: reduceMotion ? 1 : sectionOpacity,
-        filter: sectionFilter,
-      }}
     >
       <div className="container relative z-10 mx-auto max-w-content px-4 sm:px-6">
         <div className="grid gap-10 lg:grid-cols-12 lg:items-start lg:gap-[56px]">
@@ -153,7 +141,7 @@ export function ProblemSection() {
                 until your day is spent fixing avoidable issues.
               </p>
             </div>
-            <div className="mt-10 max-w-[520px] rounded-2xl border border-[#e5e7eb] bg-white/70 px-4 py-4 backdrop-blur-[1px] md:px-5">
+            <div className="mt-10 max-w-[520px] rounded-2xl border border-[#e5e7eb] bg-white px-4 py-4 md:px-5">
               <div className="hidden flex-wrap items-center gap-y-2 text-xs font-medium tracking-wide text-[#6b7280] sm:text-[0.8rem] lg:flex">
                 {FLOW_STEPS.map((step) => {
                   const isActive = activeStep === step;

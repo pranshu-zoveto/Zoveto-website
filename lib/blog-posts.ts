@@ -8,6 +8,8 @@ export type BlogSection = {
   bullets?: string[];
 };
 
+export type BlogPostFaq = { question: string; answer: string };
+
 export type BlogPost = {
   slug: string;
   /** Last segment of BreadcrumbList */
@@ -15,9 +17,13 @@ export type BlogPost = {
   metaTitle: string;
   metaDescription: string;
   h1: string;
+  /** Two-line AEO lead directly under H1. */
+  directAnswer: string;
   publishedAt: string;
   excerpt: string;
   sections: BlogSection[];
+  /** Min 5; visible copy must match FAQPage JSON-LD. */
+  faqs: readonly BlogPostFaq[];
   /** In-body internal links (rendered after sections; asserted in tests). */
   relatedLinks: readonly { href: string; label: string }[];
   comparisonTable?: readonly { feature: string; zoveto: string; alternative: string }[];
@@ -31,9 +37,38 @@ const posts: BlogPost[] = [
     metaDescription:
       "Understand ERP cost in India: per-user fees, modules, implementation, GST, and support. Practical framing for SMBs—no hype. Links to pricing and demos.",
     h1: "What actually drives ERP cost in India?",
+    directAnswer:
+      "ERP cost in India is mostly implementation, migration, adoption, and support—not the license line alone.\nModel total cost against outcomes like stock accuracy and quote-to-cash speed before you compare vendors.",
     publishedAt: "2026-04-28",
     excerpt:
       "License lines are only part of the story. Here is how Indian SMBs should think about ERP total cost—before the invoice hits.",
+    faqs: [
+      {
+        question: "What drives ERP cost in India beyond per-user fees?",
+        answer:
+          "Implementation days, data migration from Tally or Excel, branch rollout, training, and support response tiers dominate lifetime cost. Ask vendors for a phased plan with milestones tied to your volumes.",
+      },
+      {
+        question: "How should Indian SMBs compare ERP quotes fairly?",
+        answer:
+          "Normalize quotes on the same workflow depth—GST, inventory, warehouse, CRM—and who performs cutover work. A cheaper license with heavy partner days can exceed a higher license with productized onboarding.",
+      },
+      {
+        question: "Does GST scope change ERP pricing?",
+        answer:
+          "GST-ready invoicing, credit notes, e-way context, and multi-entity registrations change configuration and testing scope. Under-scope tax and you pay twice in rework after go-live.",
+      },
+      {
+        question: "When is a big-bang ERP go-live a bad idea?",
+        answer:
+          "When peak season, weak master data, or untested branch users collide with a single cutover weekend. Phased workflows reduce risk more than heroic timelines.",
+      },
+      {
+        question: "Where does Zoveto fit in an ERP cost conversation?",
+        answer:
+          "Zoveto is a Company Operating System for Indian SMBs—plans are public on the pricing page, and demos map your rollout honestly to branches, SKUs, and GST structure.",
+      },
+    ],
     sections: [
       {
         h2: "The components buyers forget",
@@ -77,9 +112,38 @@ const posts: BlogPost[] = [
     metaDescription:
       "Compare ERP software for Indian SMEs by fit, adoption, GST, inventory, and support without fake leaderboards. Links to guides and pricing.",
     h1: "What is the best ERP software for Indian SMEs?",
+    directAnswer:
+      "The best ERP for Indian SMEs is the system that runs your anchor workflow end-to-end with one posted record—not the vendor with the longest brochure list.\nScore finalists on inventory truth, quote-to-cash continuity, and implementation risk for your branch pattern.",
     publishedAt: "2026-04-28",
     excerpt:
       "Skip arbitrary “Top 10” lists. Use a buying method that matches how Indian SMBs actually choose and run ERP.",
+    faqs: [
+      {
+        question: "Why do generic ERP rankings fail for Indian SMEs?",
+        answer:
+          "Rankings rarely weight GST discipline, branch stock, or warehouse throughput the way your business does. Anchor on the workflow that loses money today and score vendors against that chain only.",
+      },
+      {
+        question: "What dimensions matter most in an SME ERP shortlist?",
+        answer:
+          "Single stock ledger across branches, CRM tied to availability, partner quality, mobile usability for field users, and honest implementation timelines—not slide counts.",
+      },
+      {
+        question: "How do we avoid buying another silo?",
+        answer:
+          "Demand a live walkthrough of order → pick → dispatch → invoice with the same user roles you employ. If the demo hops between disconnected apps, expect that in production.",
+      },
+      {
+        question: "Is cloud mandatory for Indian SME ERP?",
+        answer:
+          "Cloud is common for uptime and remote branches, but governance matters more than hosting labels. Evaluate backups, access control, and data residency expectations with your IT lead.",
+      },
+      {
+        question: "How does Zoveto position in SME ERP evaluations?",
+        answer:
+          "Zoveto is a Company Operating System—inventory, CRM, finance, and execution modules for teams that outgrew stitched spreadsheets. Use pricing and a demo to map fit to your volumes.",
+      },
+    ],
     sections: [
       {
         h2: "Why generic rankings fail",
@@ -127,9 +191,38 @@ const posts: BlogPost[] = [
     metaDescription:
       "Problems with Excel inventory: broken formulas, branch conflicts, no audit trail, and slow decisions. When to move to inventory software—and how to plan the jump.",
     h1: "When should you replace Excel inventory with software?",
+    directAnswer:
+      "Replace Excel inventory when version conflicts, branch disagreements, and delayed finance truth start affecting fulfilment or cash—not when someone dislikes spreadsheets.\nSoftware should create one authoritative ledger your whole team posts against daily.",
     publishedAt: "2026-04-28",
     excerpt:
       "Excel is flexible until it becomes your risk surface. Here is how teams know they have crossed the line.",
+    faqs: [
+      {
+        question: "What are early warning signs Excel inventory is failing?",
+        answer:
+          "Parallel branch sheets, frequent stockouts on fast movers, finance discovering truth after dispatch, and weak audit trails on who changed quantities before a customer escalates.",
+      },
+      {
+        question: "What should good inventory software deliver in week one?",
+        answer:
+          "Authoritative on-hand by site, GRN discipline tied to POs, and aging views purchasing and finance agree on. If those three are not credible, the rollout focus is wrong.",
+      },
+      {
+        question: "Can we migrate Excel inventory gradually?",
+        answer:
+          "Yes—prove masters and branch ownership first, then migrate top SKUs and high-volume locations before long-tail items. Phasing beats a single-night import of dirty rows.",
+      },
+      {
+        question: "How does inventory tie to GST in India?",
+        answer:
+          "Invoices and credit notes should inherit quantities from posted movements—not retyped totals. That reduces reconciliation drag during returns and branch transfers.",
+      },
+      {
+        question: "Where should Indian teams read next after this article?",
+        answer:
+          "Review the India inventory landing page, the inventory module detail, then book a demo so Zoveto can map SKUs, branches, and GST context without a generic pitch.",
+      },
+    ],
     sections: [
       {
         h2: "Where spreadsheets crack",
@@ -172,9 +265,38 @@ const posts: BlogPost[] = [
     metaDescription:
       "Learn what a company operating system is and why modern teams replace disconnected ERP, CRM, and warehouse tools with one operational backbone.",
     h1: "What is a company operating system?",
+    directAnswer:
+      "A company operating system is the layer where orders, inventory, warehouse moves, billing, and collections execute on one shared truth—not another dashboard bolted on top.\nIt is how Indian SMBs replace WhatsApp + Excel chaos with posted discipline.",
     publishedAt: "2026-04-29",
     excerpt:
       "A company operating system is not another dashboard. It is the execution layer that keeps sales, stock, finance, and teams aligned daily.",
+    faqs: [
+      {
+        question: "Is a company operating system the same as ERP?",
+        answer:
+          "ERP is often a component, but the OS idea centres on continuity of execution across modules your teams run daily. The buying lens is workflows and postings, not category labels alone.",
+      },
+      {
+        question: "When should a team consider shifting to an OS model?",
+        answer:
+          "When leadership spends cycles reconciling tools instead of improving throughput—especially if stock, dispatch, and billing disagree weekly.",
+      },
+      {
+        question: "Does an operating system replace people?",
+        answer:
+          "No. It removes duplicate data entry and makes exceptions visible earlier so managers coach process instead of reconstructing facts Friday night.",
+      },
+      {
+        question: "How is this different from stitched SaaS stacks?",
+        answer:
+          "Stacks optimise app depth; an OS optimises handoff quality—fewer seams between CRM, warehouse, and finance for the workflows you actually run.",
+      },
+      {
+        question: "How does Zoveto relate to a company operating system?",
+        answer:
+          "Zoveto is built as a Company Operating System for Indian SMBs—see the product overview and pricing when you want to map modules to your operating reality.",
+      },
+    ],
     sections: [
       {
         h2: "Definition without hype",
@@ -209,9 +331,38 @@ const posts: BlogPost[] = [
     metaDescription:
       "A practical migration path to replace Excel with ERP: data cleanup, process mapping, phased rollout, and adoption controls for small operations teams.",
     h1: "How do you replace Excel with ERP for small businesses?",
+    directAnswer:
+      "Replace Excel by phasing one critical workflow first—usually inventory or quote-to-cash—then expand once posting discipline sticks.\nSmall businesses win when migration is process-led, not row-import-led.",
     publishedAt: "2026-04-29",
     excerpt:
       "Excel replacement succeeds when rollout is phased and process-first. The goal is stable execution, not just importing rows into a new app.",
+    faqs: [
+      {
+        question: "Which workflow should SMBs replace first?",
+        answer:
+          "Pick the workflow causing the most operational or cash risk—often inventory or collections. Prove value there before expanding modules.",
+      },
+      {
+        question: "What data must be clean before cutover?",
+        answer:
+          "Item masters, UOMs, branch mappings, tax profiles, and opening balances. Dirty masters become system mistrust faster than missing features.",
+      },
+      {
+        question: "Should we run parallel with Excel?",
+        answer:
+          "A short parallel for one branch or SKU family can reduce panic, but parallel forever trains people to ignore the system of record. Set an explicit sunset date.",
+      },
+      {
+        question: "How do we keep adoption high?",
+        answer:
+          "Weekly exception reviews, one rollout owner, and training tied to daily screens—not generic slide decks. Remove obvious manual pain in week one.",
+      },
+      {
+        question: "How can Zoveto help plan an Excel exit?",
+        answer:
+          "Book a demo to map masters and branches; Zoveto is a Company Operating System aimed at Indian SMB execution—not a generic import tool.",
+      },
+    ],
     sections: [
       {
         h2: "Start with one critical workflow",
@@ -246,9 +397,38 @@ const posts: BlogPost[] = [
     metaDescription:
       "Explore how one operating record can connect ERP, CRM, and WMS workflows to reduce handoff failures, improve speed, and keep finance and operations aligned.",
     h1: "Can ERP, CRM, and warehouse workflows run on one operating record?",
+    directAnswer:
+      "Yes—when stock, orders, dispatch, and billing post to the same chain instead of syncing across silos.\nThat is the core promise of a Company Operating System for teams tired of Friday-night reconciliation.",
     publishedAt: "2026-04-29",
     excerpt:
       "Shared operating records reduce handoff failures between teams. The real advantage is faster execution with fewer reconciliation cycles.",
+    faqs: [
+      {
+        question: "Why do handoffs break across CRM, ERP, and WMS?",
+        answer:
+          "Each tool optimises locally while humans bridge gaps in chats and sheets. One operating record removes many of those seams for the core loop.",
+      },
+      {
+        question: "What should be unified first?",
+        answer:
+          "Stock truth, order lifecycle states, and posting logic so finance and operations agree on what happened before you chase analytics polish.",
+      },
+      {
+        question: "Is one record realistic for every edge case?",
+        answer:
+          "No system removes every exception. The goal is fewer reconciliations and earlier visibility when reality diverges from plan.",
+      },
+      {
+        question: "How should phased rollout work?",
+        answer:
+          "Cut over by workflow slices—quote-to-cash or purchase-to-pay—not by department labels alone. That keeps customer impact bounded while adoption builds.",
+      },
+      {
+        question: "Does Zoveto run CRM, inventory, and warehouse together?",
+        answer:
+          "Zoveto targets that unified model for Indian SMBs—review modules and pricing, then demo the chain with your roles.",
+      },
+    ],
     sections: [
       {
         h2: "Why handoffs break in multi-tool stacks",
@@ -283,9 +463,38 @@ const posts: BlogPost[] = [
     metaDescription:
       "A practical method to automate invoice generation from sales and dispatch events while preserving tax compliance, accuracy, and approval controls.",
     h1: "How can you automate invoice generation without losing control?",
+    directAnswer:
+      "Automate invoices from validated dispatch and order states—not from informal requests—so billed quantities match what actually moved.\nKeep approvals, tax checks, and exception queues in front of posting so finance keeps control.",
     publishedAt: "2026-04-29",
     excerpt:
       "Invoice automation should remove manual repetition, not financial governance. Good systems automate with approval rules and traceable exceptions.",
+    faqs: [
+      {
+        question: "What is the safest trigger for invoice automation?",
+        answer:
+          "Posted dispatch or service completion signals tied to price locks and tax profiles. Triggers based on intent alone recreate manual risk faster.",
+      },
+      {
+        question: "Which controls prevent silent billing errors?",
+        answer:
+          "Threshold approvals, variance queues for tax lines, and immutable links from invoice lines back to operational documents.",
+      },
+      {
+        question: "How do Indian GST rules affect automation?",
+        answer:
+          "Credit notes, returns, and branch transfers need clean lineage to original invoices. Automation should inherit context, not retype it.",
+      },
+      {
+        question: "What KPIs prove invoice automation worked?",
+        answer:
+          "Invoice cycle time, correction rate after posting, and reconciliation lag versus bank and GST filings—track weekly after launch.",
+      },
+      {
+        question: "How does Zoveto support invoice automation?",
+        answer:
+          "Zoveto ties finance to operational events for covered workflows—see finance and CRM modules, then walk scenarios on a demo.",
+      },
+    ],
     sections: [
       {
         h2: "Automation should start from process signals",
@@ -320,9 +529,38 @@ const posts: BlogPost[] = [
     metaDescription:
       "Understand where AI agents help inventory teams most: anomaly detection, reorder guidance, and exception triage tied to real operational workflows.",
     h1: "How do AI agents help with inventory management?",
+    directAnswer:
+      "AI agents help inventory teams by flagging anomalies, suggesting reorders inside policy bands, and triaging exceptions—on top of clean posted data.\nThey amplify planners; they do not replace discipline on GRN and counts.",
     publishedAt: "2026-04-29",
     excerpt:
       "AI in inventory works best on repetitive decision loops. It should assist planners and operators, not hide process logic behind black boxes.",
+    faqs: [
+      {
+        question: "Where do AI inventory assistants add the most value?",
+        answer:
+          "High-frequency checks: unusual consumption spikes, slow movers hiding in branches, and suggested safety stock inside limits your team sets.",
+      },
+      {
+        question: "What guardrails keep AI trustworthy for ops?",
+        answer:
+          "Transparent reasons for suggestions, reversible actions, and hard caps so automation cannot silently override policy.",
+      },
+      {
+        question: "Does AI fix bad stock masters?",
+        answer:
+          "No. Clean items, UOMs, and branch ownership come first; AI on dirty masters amplifies noise instead of signal.",
+      },
+      {
+        question: "How should we measure AI impact on inventory?",
+        answer:
+          "Stockout rate, excess inventory value, planner response time to exceptions, and forecast bias versus actuals over a full season.",
+      },
+      {
+        question: "How does Zoveto use AI for inventory?",
+        answer:
+          "Zoveto focuses AI on operational workflows where rules exist—see product and inventory module pages, then discuss your exception patterns on a demo.",
+      },
+    ],
     sections: [
       {
         h2: "High-value AI use cases",
@@ -357,9 +595,38 @@ const posts: BlogPost[] = [
     metaDescription:
       "A practical ERP evaluation guide for distributors: inventory velocity, margin visibility, branch control, and route-to-cash continuity in one system.",
     h1: "What ERP software is best for distributors?",
+    directAnswer:
+      "The best distributor ERP in India is the one that keeps branch stock, credit, dispatch, and GST billing on one chain your team actually posts daily.\nJudge vendors on route-to-cash speed and margin leakage—not slide decks.",
     publishedAt: "2026-04-29",
     excerpt:
       "Distributors need execution speed and margin control at the same time. The right ERP balances stock velocity, branch governance, and cash discipline.",
+    faqs: [
+      {
+        question: "What criteria matter most for distributor ERP?",
+        answer:
+          "Stock turn by branch, credit enforcement at order save, returns discipline, and dispatch proof tied to invoices—those protect margin under growth pressure.",
+      },
+      {
+        question: "Why do distributors fail multi-tool architectures?",
+        answer:
+          "Sales, warehouse, and finance drift into separate truths; sync projects become permanent headcount. Unified execution models reduce that tax.",
+      },
+      {
+        question: "How should rollout prioritise SKUs?",
+        answer:
+          "Start with highest velocity SKUs and branches that drive most revenue or returns pain. Expand after two stable reporting cycles.",
+      },
+      {
+        question: "What role does CRM play for distributors?",
+        answer:
+          "Dealer and field demand should respect posted availability and credit—not parallel WhatsApp promises that warehouse cannot honour.",
+      },
+      {
+        question: "Does Zoveto target Indian distributors?",
+        answer:
+          "Yes—Zoveto is a Company Operating System for ops-heavy SMBs; use warehouse and inventory guides plus a demo to map your branch pattern.",
+      },
+    ],
     sections: [
       {
         h2: "Distribution-specific decision criteria",
@@ -394,9 +661,38 @@ const posts: BlogPost[] = [
     metaDescription:
       "Use this manufacturing ERP checklist to assess production planning, inventory control, quality traceability, and finance integration before buying.",
     h1: "How should you evaluate manufacturing ERP software?",
+    directAnswer:
+      "Evaluate manufacturing ERP on whether shop-floor events, inventory, and finance post to the same record without re-keying—not on demo feature counts alone.\nStart with BOM discipline, traceability, and how WIP shows up before month-end.",
     publishedAt: "2026-04-29",
     excerpt:
       "Manufacturing ERP decisions fail when buyers optimize demo features over plant execution reality. A checklist approach keeps evaluation grounded.",
+    faqs: [
+      {
+        question: "What should a manufacturing ERP checklist include first?",
+        answer:
+          "Production planning reliability, BOM accuracy versus actual issue, batch trace forward and back, and automatic finance reflection from receipts and dispatches.",
+      },
+      {
+        question: "How do you test cross-functional alignment?",
+        answer:
+          "Trace one work order from material issue through QC to dispatch and invoice in the demo with your roles—if finance still retypes, the bridge is weak.",
+      },
+      {
+        question: "What governance prevents adoption failure?",
+        answer:
+          "Clear owners for masters, exception rules, and weekly reviews of variances—not only go-live training slides.",
+      },
+      {
+        question: "When is a lighter OS better than a full ERP suite?",
+        answer:
+          "When your bottleneck is execution coherence at SMB scale, not global multi-plant MRP on day one—match scope to throughput and team size.",
+      },
+      {
+        question: "How does Zoveto approach manufacturing SMBs?",
+        answer:
+          "Zoveto focuses on unified operations for qualifying Indian SMBs—review inventory and finance modules, then book a manufacturing discovery call.",
+      },
+    ],
     sections: [
       {
         h2: "Execution-first checklist",

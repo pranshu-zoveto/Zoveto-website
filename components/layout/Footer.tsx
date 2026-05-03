@@ -9,6 +9,8 @@ const LINK_COLS: { title: string; links: { label: string; href: string }[] }[] =
     title: "Product",
     links: [
       { label: "Pricing", href: "/pricing" },
+      { label: "Compare", href: "/compare" },
+      { label: "FAQ", href: "/faq" },
       { label: "Modules", href: "/product" },
     ],
   },

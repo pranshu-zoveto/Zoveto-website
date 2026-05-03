@@ -3,21 +3,23 @@ import SignupClient from "./_SignupClient";
 import { canonicalUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Request Early Access | Zoveto",
+  title: "Get started with Zoveto | Zoveto",
   description:
-    "Join the founder-reviewed Zoveto early access queue. Qualified operations teams are onboarded manually.",
+    "Manual onboarding for every business: share your operations pain, we review within 24–48 hours and prepare your workspace before access.",
   alternates: { canonical: canonicalUrl("/signup") },
   robots: { index: true, follow: false },
   openGraph: {
-    title: "Request Early Access | Zoveto",
-    description: "Apply for founder-reviewed onboarding into the Zoveto operating system.",
+    title: "Get started with Zoveto | Zoveto",
+    description:
+      "Structured onboarding with your system configured before access. Typical response within 24–48 hours.",
     url: canonicalUrl("/signup"),
     images: ["/og-image.png"],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Request Early Access | Zoveto",
-    description: "Join the controlled early access queue for qualified operations teams.",
+    title: "Get started with Zoveto | Zoveto",
+    description:
+      "Tell us where operations are breaking; we review, prepare your system, then onboard you with guided access.",
     images: ["/og-image.png"],
   },
 };

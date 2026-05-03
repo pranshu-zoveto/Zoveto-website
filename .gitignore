@@ -32,6 +32,9 @@ yarn-error.log*
 !.env.example
 !.env.local.example
 
+# Sentry build plugin (local auth token — optional)
+.env.sentry-build-plugin
+
 # vercel
 .vercel
 

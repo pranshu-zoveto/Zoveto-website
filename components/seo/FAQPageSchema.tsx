@@ -1,12 +1,27 @@
 type FaqItem = { q: string; a: string };
+type FaqQuestionAnswer = { question: string; answer: string };
+export type FaqSchemaInput = FaqItem | FaqQuestionAnswer;
 
-/** FAQPage JSON-LD — keep answers factual; match visible FAQ copy. */
-export function FAQPageSchema({ faqs }: { faqs: readonly FaqItem[] }) {
+function normalizeFaq(f: FaqSchemaInput): FaqItem {
+  return "question" in f ? { q: f.question, a: f.answer } : f;
+}
+
+/** FAQPage JSON-LD — keep answers factual; match visible FAQ copy. Optional `url` helps validators associate markup with the page. */
+export function FAQPageSchema({
+  faqs,
+  url,
+}: {
+  faqs: readonly FaqSchemaInput[];
+  /** Canonical URL of the page that contains these FAQs (recommended for Rich Results). */
+  url?: string;
+}) {
   if (faqs.length === 0) return null;
+  const normalized = faqs.map(normalizeFaq);
   const schema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: faqs.map((f) => ({
+    ...(url ? { url } : {}),
+    mainEntity: normalized.map((f) => ({
       "@type": "Question",
       name: f.q,
       acceptedAnswer: {

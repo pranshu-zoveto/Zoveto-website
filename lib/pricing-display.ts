@@ -12,8 +12,8 @@ export type PaidPlanPricing = {
 /** Canonical INR pricing source for paid tiers. */
 export const PAID_PLAN_PRICING = {
   starter: {
-    monthly: 5999,
-    yearlyEffective: 4999,
+    monthly: 7999,
+    yearlyEffective: 5999,
   },
   growth: {
     monthly: 17999,

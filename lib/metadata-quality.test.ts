@@ -1,6 +1,9 @@
 import assert from "node:assert/strict";
+import fs from "node:fs";
+import path from "node:path";
 import { describe, it } from "node:test";
 import type { Metadata } from "next";
+import { BRAND_CANONICAL_ORIGIN } from "@/lib/branding";
 import { metadata as homeMetadata } from "@/app/page";
 import { metadata as pricingMetadata } from "@/app/pricing/page";
 import { metadata as contactMetadata } from "@/app/contact/page";
@@ -68,5 +71,14 @@ describe("metadata quality for key routes", () => {
     for (const route of routes) {
       assert.ok(hasOgImage(route.metadata), `missing openGraph.images for ${route.route}`);
     }
+  });
+
+  it("root layout alternates and homepage canonical stay aligned (hreflang + no slash mismatch)", () => {
+    const layoutSource = fs.readFileSync(path.join(process.cwd(), "app/layout.tsx"), "utf8");
+    assert.ok(layoutSource.includes("alternates:"), "root layout must define metadata.alternates");
+    assert.ok(layoutSource.includes("languages:"), "root layout alternates must include hreflang languages");
+    assert.ok(layoutSource.includes('"en-IN"') && layoutSource.includes("en:"), "hreflang must include en and en-IN");
+    assert.ok(layoutSource.includes("canonical:"), "root layout must set canonical");
+    assert.equal(homeMetadata.alternates?.canonical, BRAND_CANONICAL_ORIGIN);
   });
 });

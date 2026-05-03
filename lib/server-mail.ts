@@ -1,4 +1,5 @@
 import nodemailer from "nodemailer";
+import { LEAD_STAFF_INBOX } from "@/lib/lead-intake-mail";
 
 type FormMailInput = {
   subject: string;
@@ -49,7 +50,7 @@ export async function sendFormNotificationEmail(input: FormMailInput): Promise<{
   try {
     await mail.transporter.sendMail({
       from: mail.from,
-      to: "info@zoveto.com",
+      to: LEAD_STAFF_INBOX,
       replyTo: input.replyTo,
       subject: input.subject,
       text: input.text,

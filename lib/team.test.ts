@@ -1,6 +1,14 @@
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import { describe, it } from "node:test";
-import { getTeamMember, TEAM_MEMBERS, TEAM_SECTION_INTRO } from "@/lib/team";
+import {
+  getTeamMember,
+  isAllowedLinkedInProfileUrl,
+  teamLinkedInSmartPath,
+  TEAM_MEMBERS,
+  TEAM_SECTION_INTRO,
+} from "@/lib/team";
 
 describe("team data", () => {
   it("lists exactly two founders with Gourvansh then Pranshu in display order", () => {
@@ -40,5 +48,26 @@ describe("team data", () => {
 
   it("keeps leadership intro", () => {
     assert.ok(TEAM_SECTION_INTRO.includes("operating system"));
+  });
+
+  it("builds stable on-domain LinkedIn paths for smart redirect", () => {
+    assert.equal(teamLinkedInSmartPath("gourvansh-raina"), "/go/linkedin/gourvansh-raina");
+  });
+
+  it("allows only HTTPS linkedin.com profile paths for redirect targets", () => {
+    assert.equal(isAllowedLinkedInProfileUrl("https://www.linkedin.com/in/example"), true);
+    assert.equal(isAllowedLinkedInProfileUrl("https://linkedin.com/in/example"), true);
+    assert.equal(isAllowedLinkedInProfileUrl("https://www.linkedin.com/pub/example"), true);
+    assert.equal(isAllowedLinkedInProfileUrl("http://www.linkedin.com/in/example"), false);
+    assert.equal(isAllowedLinkedInProfileUrl("https://www.linkedin.com/company/acme"), false);
+    assert.equal(isAllowedLinkedInProfileUrl("https://evil.test/in/foo"), false);
+    assert.equal(isAllowedLinkedInProfileUrl("not a url"), false);
+  });
+
+  it("TeamModal LinkedIn CTA opens the smart redirect in a new tab", () => {
+    const src = readFileSync(join(process.cwd(), "components/team/TeamModal.tsx"), "utf8");
+    assert.ok(src.includes('target="_blank"'), "LinkedIn link should open a new browsing context");
+    assert.ok(src.includes('rel="noopener noreferrer"'), "LinkedIn new-tab link should set rel");
+    assert.ok(src.includes("teamLinkedInSmartPath(member.id)"), "LinkedIn href should use on-domain smart path");
   });
 });

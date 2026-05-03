@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import { Text } from "@/components/ui/Text";
 import AnimatedTextCycle from "@/components/ui/animated-text-cycle";
 import { X, Check } from "lucide-react";
@@ -95,6 +96,13 @@ export function ComparisonSection() {
             </div>
             <p className="mt-3 px-1 text-center text-xs text-muted-2">
               Comparative percentages reflect anonymized implementation observations and vary by workflow maturity.
+            </p>
+            <p className="mt-4 px-1 text-center text-xs text-muted">
+              Evaluating named vendors? See{" "}
+              <Link href="/compare" className="font-medium text-blue underline-offset-4 hover:underline">
+                Zoveto vs Zoho, Tally, Odoo, and more
+              </Link>
+              .
             </p>
           </div>
         </RevealOnScroll>

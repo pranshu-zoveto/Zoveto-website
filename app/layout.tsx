@@ -1,12 +1,15 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { BRAND_LOGO_ICON } from "@/lib/branding";
-import { canonicalUrl, siteUrl } from "@/lib/site";
+import { ZOVETO_ORGANIZATION_DESCRIPTION, ZOVETO_SITE_DEFAULT_TITLE } from "@/lib/brand-entity";
+import { BRAND_CANONICAL_ORIGIN, BRAND_LOGO_ICON } from "@/lib/branding";
+import { siteUrl } from "@/lib/site";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { SiteChromeClients } from "@/components/layout/SiteChromeClients";
-import Cursor from "@/components/ui/cursor";
+import { WhatsAppFloatButton } from "@/components/layout/WhatsAppFloatButton";
+import { DeferredCursor } from "@/components/layout/DeferredCursor";
+import { VercelWebMetrics } from "@/components/layout/VercelWebMetrics";
 
 /** Fewer masters = shorter font download chain (was 300–900, six files). */
 const inter = Inter({
@@ -14,7 +17,7 @@ const inter = Inter({
   variable: "--font-inter",
   display: "swap",
   preload: true,
-  weight: ["300", "400", "500", "600", "700", "800"],
+  weight: ["400", "500", "600", "700"],
   adjustFontFallback: true,
 });
 
@@ -32,11 +35,10 @@ export const metadata: Metadata = {
     shortcut: [BRAND_LOGO_ICON],
   },
   title: {
-    default: "Zoveto | ERP, CRM & ops for businesses that run on real operations",
+    default: ZOVETO_SITE_DEFAULT_TITLE,
     template: "%s | Zoveto",
   },
-  description:
-    "ERP, CRM, inventory, finance, and AI agents connected around one operating record for manufacturers, distributors, and scaling operations teams.",
+  description: ZOVETO_ORGANIZATION_DESCRIPTION,
   keywords: [
     "company operating system",
     "integrated ERP CRM",
@@ -56,25 +58,23 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_IN",
-    url: canonicalUrl("/"),
+    url: BRAND_CANONICAL_ORIGIN,
     siteName: "Zoveto",
-    title: "Zoveto | Company operating system for scaling businesses",
-    description:
-      "One stack for ERP, WMS, CRM, finance, and AI automations—built for operations teams that have outgrown spreadsheets and inbox chaos.",
+    title: ZOVETO_SITE_DEFAULT_TITLE,
+    description: ZOVETO_ORGANIZATION_DESCRIPTION,
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Zoveto — company operating system for scaling businesses.",
+        alt: "Zoveto — Company Operating System for Indian SMBs.",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Zoveto | Company operating system for scaling businesses",
-    description:
-      "Inventory, orders, finance, and execution in one operating record for teams that have outgrown chats and spreadsheets.",
+    title: ZOVETO_SITE_DEFAULT_TITLE,
+    description: ZOVETO_ORGANIZATION_DESCRIPTION,
     images: ["/og-image.png"],
     creator: "@zoveto",
     site: "@zoveto",
@@ -91,7 +91,11 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: canonicalUrl("/"),
+    canonical: BRAND_CANONICAL_ORIGIN,
+    languages: {
+      en: BRAND_CANONICAL_ORIGIN,
+      "en-IN": BRAND_CANONICAL_ORIGIN,
+    },
   },
   verification: {
     google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || undefined,
@@ -112,13 +116,18 @@ export default function RootLayout({
         </a>
         <Navbar />
         <div className="flex min-h-screen flex-col">
-          <main id="main-content" className="scroll-mt-[4.5rem] flex-1 pb-24 sm:pb-28 md:pb-0">
+          <main
+            id="main-content"
+            className="scroll-mt-[4.5rem] flex-1 pb-[max(7rem,calc(5.5rem+env(safe-area-inset-bottom,0px)))] sm:pb-32 md:pb-0"
+          >
             {children}
           </main>
           <Footer />
         </div>
         <SiteChromeClients />
-        <Cursor />
+        <WhatsAppFloatButton />
+        <VercelWebMetrics />
+        <DeferredCursor />
       </body>
     </html>
   );

@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { afterEach, describe, it } from "node:test";
 import { buildSitemapEntries } from "@/app/sitemap";
+import { PUBLIC_INDUSTRY_SLUGS } from "@/lib/industries";
 import { getAllProofSlugs } from "@/lib/operational-proof";
 
 describe("sitemap buildSitemapEntries", () => {
@@ -22,7 +23,6 @@ describe("sitemap buildSitemapEntries", () => {
       assert.ok(!e.url.includes("127.0.0.1"), e.url);
       assert.ok(!e.url.includes("www.zoveto.com"), e.url);
       assert.ok(!e.url.includes("/login"), `unexpected login: ${e.url}`);
-      assert.ok(!e.url.includes("/case-studies"), `legacy path should not appear: ${e.url}`);
     }
 
     assert.ok(entries.some((e) => e.url === "https://zoveto.com/team"));
@@ -31,7 +31,15 @@ describe("sitemap buildSitemapEntries", () => {
       assert.ok(entries.some((e) => e.url === `https://zoveto.com/operational-proof/${slug}`), slug);
     }
 
+    assert.ok(entries.some((e) => e.url === "https://zoveto.com/faq"));
+    assert.ok(entries.some((e) => e.url === "https://zoveto.com/company-operating-system-india"));
     assert.ok(entries.some((e) => e.url === "https://zoveto.com/system"));
+    assert.ok(entries.some((e) => e.url === "https://zoveto.com/case-studies"));
+    assert.ok(entries.some((e) => e.url === "https://zoveto.com/case-studies/rock-tear-parts"));
+
+    for (const slug of PUBLIC_INDUSTRY_SLUGS) {
+      assert.ok(entries.some((e) => e.url === `https://zoveto.com/industries/${slug}`), slug);
+    }
   });
 
   it("respects NEXT_PUBLIC_SITE_URL override", () => {

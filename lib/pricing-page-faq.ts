@@ -7,6 +7,11 @@ export type PricingPageFaqItem = {
 
 export const PRICING_PAGE_FAQ: PricingPageFaqItem[] = [
   {
+    question: "How much does Zoveto cost?",
+    answer:
+      "Zoveto pricing starts with a Free tier for structured testing, annual paid plans with Starter from ₹5,999/mo effective on yearly billing or ₹7,999/mo when billed monthly (up to 10 users), and Growth from ₹14,999/mo effective (15 users including HRMS and higher automation limits), plus Enterprise scoped after discovery. Listed amounts exclude GST; invoices follow Indian GST rules where applicable. Yearly billing is the default on the pricing page; monthly is available if you prefer shorter commitments.",
+  },
+  {
     question: "What happens after we request access?",
     answer:
       "Your request enters founder review. If the use case is a fit for the current batch, we schedule manual onboarding before opening a workspace. This keeps early access controlled instead of creating instant trial accounts.",

@@ -1,10 +1,13 @@
 import Link from "next/link";
+import { DirectAnswerLead } from "@/components/aeo/DirectAnswerLead";
 import { BreadcrumbSchema } from "@/components/seo/BreadcrumbSchema";
 import { BlogPostingSchema } from "@/components/seo/BlogPostingSchema";
+import { FAQPageSchema } from "@/components/seo/FAQPageSchema";
 import { Button } from "@/components/ui/Button";
 import { Text } from "@/components/ui/Text";
 import BackgroundComponents from "@/components/ui/background-components";
 import type { BlogPost } from "@/lib/blog-posts";
+import { canonicalUrl } from "@/lib/site";
 
 type Props = {
   post: BlogPost;
@@ -21,6 +24,7 @@ export function BlogArticleLayout({ post }: Props) {
     <main className="relative overflow-hidden bg-background pb-16 pt-36 md:pb-24 md:pt-44">
       <BreadcrumbSchema items={crumbs} />
       <BlogPostingSchema post={post} />
+      <FAQPageSchema faqs={post.faqs} url={canonicalUrl(`/blog/${post.slug}`)} />
       <BackgroundComponents variant="editorial" intensity="subtle" className="top-[50%]" />
       <div className="container relative z-10 mx-auto max-w-content px-4 sm:px-6">
         <article className="mx-auto max-w-3xl">
@@ -30,6 +34,7 @@ export function BlogArticleLayout({ post }: Props) {
           <Text variant="display-2" as="h1" className="mb-6 text-balance text-foreground">
             {post.h1}
           </Text>
+          <DirectAnswerLead text={post.directAnswer} />
           <Text variant="body-lg" as="p" className="mb-12 text-pretty text-muted">
             {post.excerpt}
           </Text>
@@ -76,6 +81,20 @@ export function BlogArticleLayout({ post }: Props) {
               ) : null}
             </section>
           ))}
+
+          <section className="mb-12 rounded-2xl border border-border bg-card p-6 md:p-8" aria-labelledby="blog-faq-heading">
+            <Text variant="heading-1" as="h2" id="blog-faq-heading" className="mb-6 text-xl text-foreground">
+              Frequently asked questions
+            </Text>
+            <dl className="space-y-6">
+              {post.faqs.map((f) => (
+                <div key={f.question}>
+                  <dt className="font-semibold text-foreground">{f.question}</dt>
+                  <dd className="mt-2 text-sm leading-relaxed text-muted">{f.answer}</dd>
+                </div>
+              ))}
+            </dl>
+          </section>
 
           <section className="mb-12 rounded-2xl border border-border bg-card p-6" aria-labelledby="related-heading">
             <h2 id="related-heading" className="mb-4 text-lg font-semibold text-foreground">

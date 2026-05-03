@@ -20,7 +20,7 @@ function FieldLabel({ children }: { children: React.ReactNode }) {
 }
 
 const inputClass =
-  "w-full min-h-[48px] bg-card border border-border rounded-xl px-4 text-foreground placeholder:text-muted-2 focus:outline-none focus:border-blue focus:ring-2 focus:ring-blue/15 transition-all text-sm";
+  "w-full min-h-[48px] bg-card border border-border rounded-xl px-4 text-base text-foreground placeholder:text-muted-2 focus:outline-none focus:border-blue focus:ring-2 focus:ring-blue/15 transition-all";
 
 export function LeadForm() {
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
@@ -161,7 +161,7 @@ export function LeadForm() {
           onChange={(e) => setPainPoint(e.target.value)}
           placeholder="Describe current Excel, Tally, or WhatsApp friction…"
           rows={4}
-          className="w-full bg-card border border-border rounded-xl p-4 text-foreground placeholder:text-muted-2 focus:outline-none focus:border-blue focus:ring-2 focus:ring-blue/15 transition-all text-sm resize-y min-h-[120px]"
+          className="w-full bg-card border border-border rounded-xl p-4 text-base text-foreground placeholder:text-muted-2 focus:outline-none focus:border-blue focus:ring-2 focus:ring-blue/15 transition-all resize-y min-h-[120px]"
         />
       </div>
 

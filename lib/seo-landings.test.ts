@@ -23,7 +23,10 @@ describe("seo-landings", () => {
       );
       assert.ok(l.intro.includes("India") || l.h1.includes("India"), `India intent for ${l.path}`);
       assert.ok(l.sections.length >= 2, `sections for ${l.path}`);
-      assert.ok(l.faqs.length >= 2, `faqs for ${l.path}`);
+      assert.ok(l.directAnswer.length >= 40, `directAnswer for ${l.path}`);
+      assert.ok(l.faqs.length >= 5, `faqs for ${l.path}`);
+      const faqQs = l.faqs.map((f) => f.q);
+      assert.equal(new Set(faqQs).size, faqQs.length, `unique FAQ questions for ${l.path}`);
       assert.ok(l.deepLink.href.startsWith("/"), `deep link for ${l.path}`);
       assert.ok(l.breadcrumbName.length >= 8, `breadcrumb for ${l.path}`);
     }

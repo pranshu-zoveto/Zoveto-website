@@ -107,7 +107,7 @@ export function DemoModalProvider({ children }: { children: React.ReactNode }) {
         <Dialog.Portal>
           <Dialog.Overlay className="fixed inset-0 z-[200] bg-foreground/20 backdrop-blur-sm data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0" />
           <Dialog.Content
-            className="fixed left-1/2 top-1/2 z-[201] w-[min(100%,28rem)] -translate-x-1/2 -translate-y-1/2 rounded-2xl border border-border bg-card p-6 shadow-xl focus:outline-none data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95"
+            className="fixed left-1/2 top-1/2 z-[201] w-[min(100%,calc(100vw-1.5rem),28rem)] max-h-[min(90dvh,calc(100dvh-2rem))] -translate-x-1/2 -translate-y-1/2 overflow-y-auto overscroll-contain rounded-2xl border border-border bg-card p-5 shadow-xl focus:outline-none data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 sm:p-6"
             onOpenAutoFocus={(e) => e.preventDefault()}
           >
             <Dialog.Description className="sr-only">
@@ -118,10 +118,10 @@ export function DemoModalProvider({ children }: { children: React.ReactNode }) {
                 Book a free demo
               </Dialog.Title>
               <Dialog.Close
-                className="rounded-lg p-2 text-muted-2 hover:bg-surface hover:text-foreground"
+                className="inline-flex min-h-[44px] min-w-[44px] shrink-0 items-center justify-center rounded-lg text-muted-2 hover:bg-surface hover:text-foreground"
                 aria-label="Close"
               >
-                <X size={18} />
+                <X size={20} aria-hidden />
               </Dialog.Close>
             </div>
 
@@ -146,7 +146,7 @@ export function DemoModalProvider({ children }: { children: React.ReactNode }) {
                   <label className="text-xs font-medium text-muted-2">Full name *</label>
                   <input
                     required
-                    className="mt-1 w-full rounded-lg border border-border bg-background px-3 py-2.5 text-sm text-foreground"
+                    className="mt-1 min-h-[48px] w-full rounded-lg border border-border bg-background px-3 py-2.5 text-base text-foreground"
                     value={form.fullName}
                     onChange={(e) => setForm((f) => ({ ...f, fullName: e.target.value }))}
                   />
@@ -156,7 +156,7 @@ export function DemoModalProvider({ children }: { children: React.ReactNode }) {
                   <input
                     type="email"
                     required
-                    className="mt-1 w-full rounded-lg border border-border bg-background px-3 py-2.5 text-sm text-foreground"
+                    className="mt-1 min-h-[48px] w-full rounded-lg border border-border bg-background px-3 py-2.5 text-base text-foreground"
                     value={form.email}
                     onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
                   />
@@ -165,17 +165,20 @@ export function DemoModalProvider({ children }: { children: React.ReactNode }) {
                   <label className="text-xs font-medium text-muted-2">Company *</label>
                   <input
                     required
-                    className="mt-1 w-full rounded-lg border border-border bg-background px-3 py-2.5 text-sm text-foreground"
+                    className="mt-1 min-h-[48px] w-full rounded-lg border border-border bg-background px-3 py-2.5 text-base text-foreground"
                     value={form.organization}
                     onChange={(e) => setForm((f) => ({ ...f, organization: e.target.value }))}
                   />
                 </div>
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                   <div>
                     <label className="text-xs font-medium text-muted-2">Phone *</label>
                     <input
                       required
-                      className="mt-1 w-full rounded-lg border border-border bg-background px-3 py-2.5 text-sm text-foreground"
+                      type="tel"
+                      inputMode="tel"
+                      autoComplete="tel"
+                      className="mt-1 min-h-[48px] w-full rounded-lg border border-border bg-background px-3 py-2.5 text-base text-foreground"
                       value={form.phone}
                       onChange={(e) => setForm((f) => ({ ...f, phone: e.target.value }))}
                     />
@@ -183,7 +186,7 @@ export function DemoModalProvider({ children }: { children: React.ReactNode }) {
                   <div>
                     <label className="text-xs font-medium text-muted-2">Employees</label>
                     <select
-                      className="mt-1 w-full rounded-lg border border-border bg-card px-3 py-2.5 text-sm text-foreground"
+                      className="mt-1 min-h-[48px] w-full rounded-lg border border-border bg-card px-3 py-2.5 text-base text-foreground"
                       value={form.teamSize}
                       onChange={(e) => setForm((f) => ({ ...f, teamSize: e.target.value }))}
                     >
@@ -195,10 +198,10 @@ export function DemoModalProvider({ children }: { children: React.ReactNode }) {
                     </select>
                   </div>
                 </div>
-                  <div>
-                    <label className="text-xs font-medium text-muted-2">Company type</label>
+                <div>
+                  <label className="text-xs font-medium text-muted-2">Company type</label>
                   <select
-                    className="mt-1 w-full rounded-lg border border-border bg-card px-3 py-2.5 text-sm text-foreground"
+                    className="mt-1 min-h-[48px] w-full rounded-lg border border-border bg-card px-3 py-2.5 text-base text-foreground"
                     value={form.industry}
                     onChange={(e) => setForm((f) => ({ ...f, industry: e.target.value }))}
                   >
@@ -218,12 +221,12 @@ export function DemoModalProvider({ children }: { children: React.ReactNode }) {
                   <label className="text-xs font-medium text-muted-2">Notes</label>
                   <textarea
                     rows={3}
-                    className="mt-1 w-full rounded-lg border border-border bg-background px-3 py-2.5 text-sm text-foreground"
+                    className="mt-1 w-full rounded-lg border border-border bg-background px-3 py-2.5 text-base text-foreground"
                     value={form.message}
                     onChange={(e) => setForm((f) => ({ ...f, message: e.target.value }))}
                   />
                 </div>
-                <Button type="submit" variant="primary" className="w-full" disabled={status === "loading"}>
+                <Button type="submit" variant="primary" className="min-h-[52px] w-full" disabled={status === "loading"}>
                   {status === "loading" ? "Sending…" : "Request demo"}
                 </Button>
                 <p className="text-xs text-muted-2 text-center">

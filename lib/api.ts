@@ -1,8 +1,9 @@
 // lib/api.ts — Production COS Integration for Zoveto Website
 
 import { readErrorMessageFromResponse } from "@/lib/http-json";
+import { LEAD_STAFF_INBOX } from "@/lib/lead-intake-mail";
 
-export const WEBSITE_FORM_NOTIFICATION_EMAIL = "info@zoveto.com";
+export const WEBSITE_FORM_NOTIFICATION_EMAIL = LEAD_STAFF_INBOX;
 
 function attachUtm(payload: Record<string, unknown>): Record<string, unknown> {
   if (typeof window === "undefined") return payload;

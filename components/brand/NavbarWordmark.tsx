@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 const DEFAULT_SUFFIXES = ["ERP", "WMS", "CRM", "HRMS", "AI"] as const;
@@ -9,19 +8,12 @@ const DEFAULT_SUFFIXES = ["ERP", "WMS", "CRM", "HRMS", "AI"] as const;
 const WIDTH_REF = "HRMS";
 
 const INTERVAL_MS = 2000;
-const TRANSITION_S = 0.35;
-const EASE_IN_OUT = [0.42, 0, 0.58, 1] as const;
 const LG_MEDIA = "(min-width: 1024px)";
 
 const staticWordClasses =
   "inline-block align-middle leading-none font-semibold tracking-[0.08em] text-[1.45rem]";
 const suffixClasses =
   "inline-block align-middle leading-none font-medium tracking-[0.08em] text-[1.45rem] text-foreground";
-
-const motionTransition = {
-  duration: TRANSITION_S,
-  ease: EASE_IN_OUT,
-} as const;
 
 export type NavbarWordmarkProps = {
   suffixes?: readonly string[];
@@ -35,8 +27,8 @@ export function NavbarWordmark({
   className,
   freeze = false,
 }: NavbarWordmarkProps) {
-  const reducedMotion = useReducedMotion() === true;
   const [mounted, setMounted] = useState(false);
+  const [reducedMotion, setReducedMotion] = useState(false);
   const [isDesktop, setIsDesktop] = useState(false);
   const [index, setIndex] = useState(0);
   const freezeRef = useRef(freeze);
@@ -44,6 +36,14 @@ export function NavbarWordmark({
 
   useEffect(() => {
     setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const sync = () => setReducedMotion(mq.matches);
+    sync();
+    mq.addEventListener("change", sync);
+    return () => mq.removeEventListener("change", sync);
   }, []);
 
   useEffect(() => {
@@ -57,9 +57,7 @@ export function NavbarWordmark({
   const shouldRotate = mounted && isDesktop && !reducedMotion;
   const suffixLen = suffixes.length;
   const widthToken =
-    suffixLen > 0
-      ? suffixes.reduce((a, b) => (a.length >= b.length ? a : b), "")
-      : WIDTH_REF;
+    suffixLen > 0 ? suffixes.reduce((a, b) => (a.length >= b.length ? a : b), "") : WIDTH_REF;
 
   const prevRotateRef = useRef(false);
   useEffect(() => {
@@ -101,27 +99,21 @@ export function NavbarWordmark({
         className="relative inline-grid shrink-0 grid-cols-1 grid-rows-1 justify-items-start overflow-visible"
         aria-hidden
       >
-        <span
-          className={cn(suffixClasses, "invisible col-start-1 row-start-1")}
-          aria-hidden
-        >
+        <span className={cn(suffixClasses, "invisible col-start-1 row-start-1")} aria-hidden>
           {widthToken}
         </span>
 
         <span className="col-start-1 row-start-1 overflow-visible">
           {shouldRotate ? (
-            <AnimatePresence mode="wait" initial={false}>
-              <motion.span
-                key={current}
-                className={cn(suffixClasses, "block will-change-[transform,opacity,filter]")}
-                initial={{ opacity: 0, y: 6, filter: "blur(4px)" }}
-                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                exit={{ opacity: 0, y: -6, filter: "blur(4px)" }}
-                transition={motionTransition}
-              >
-                {current}
-              </motion.span>
-            </AnimatePresence>
+            <span
+              key={current}
+              className={cn(
+                suffixClasses,
+                "block motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-bottom-1 motion-safe:duration-300",
+              )}
+            >
+              {current}
+            </span>
           ) : (
             <span className={suffixClasses}>ERP</span>
           )}

@@ -1,4 +1,5 @@
 import React from "react";
+import { ZOVETO_ORGANIZATION_DESCRIPTION } from "@/lib/brand-entity";
 import { BRAND_LOGO_ICON } from "@/lib/branding";
 import { LINKEDIN_COMPANY_URL_ENTITY } from "@/lib/social";
 import { siteUrl } from "@/lib/site";
@@ -24,8 +25,7 @@ export function OrganizationSchema() {
       "https://twitter.com/zoveto",
       "https://www.g2.com/products/zoveto",
     ],
-    description:
-      "ERP, WMS, CRM, finance, and automation for businesses that run on real operations—on one operating stack.",
+    description: ZOVETO_ORGANIZATION_DESCRIPTION,
     contactPoint: {
       "@type": "ContactPoint",
       contactType: "customer support",

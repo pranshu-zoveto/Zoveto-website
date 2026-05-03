@@ -28,7 +28,7 @@
     "@hookform/resolvers": "^5.2.2",
     "@opentelemetry/core": "^1.30.0",
     "@opentelemetry/resources": "^1.30.0",
-    "@opentelemetry/sdk-trace-base": "^1.30.0",
+    "@opentelemetry/sdk-trace-base": "^2.7.1",
     "@opentelemetry/semantic-conventions": "^1.30.0",
     "@radix-ui/react-dialog": "^1.1.15",
     "@sentry/nextjs": "10.51.0",

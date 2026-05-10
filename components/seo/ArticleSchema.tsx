@@ -7,6 +7,7 @@ interface ArticleSchemaProps {
   datePublished: string; // ISO 8601
   dateModified?: string; // ISO 8601
   authorName?: string;
+  image?: string; // absolute URL of the article cover image
 }
 
 export function ArticleSchema({
@@ -16,6 +17,7 @@ export function ArticleSchema({
   datePublished,
   dateModified,
   authorName = "Zoveto",
+  image,
 }: ArticleSchemaProps) {
   const schema = {
     "@context": "https://schema.org",
@@ -23,6 +25,7 @@ export function ArticleSchema({
     headline: title,
     description,
     url,
+    ...(image ? { image: [image] } : {}),
     datePublished,
     dateModified: dateModified ?? datePublished,
     author: {

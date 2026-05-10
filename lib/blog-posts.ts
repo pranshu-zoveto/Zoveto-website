@@ -24,6 +24,8 @@ export const BLOG_POSTS: BlogPost[] = [
     readingTime: "9 min read",
     category: "ERP Guide",
     tags: ["company operating system", "ERP", "India", "SMB"],
+    coverImage:
+      "https://res.cloudinary.com/dnldtmbg5/image/upload/blog001_b4sbzu.jpg",
   },
 ];
 

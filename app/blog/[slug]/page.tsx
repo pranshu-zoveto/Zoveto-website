@@ -3,6 +3,7 @@
 import type { Metadata } from "next";
 import type { ComponentType } from "react";
 import { notFound } from "next/navigation";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, Clock, Calendar, Tag } from "lucide-react";
 import { BreadcrumbSchema } from "@/components/seo/BreadcrumbSchema";
@@ -85,6 +86,7 @@ export default async function BlogPostPage({
         description={post.excerpt}
         url={canonicalUrl(`/blog/${slug}`)}
         datePublished={post.date}
+        image={post.coverImage}
       />
 
       <div className="container mx-auto max-w-[min(100%,72rem)] px-4 sm:px-6">
@@ -102,6 +104,21 @@ export default async function BlogPostPage({
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1fr_280px]">
           {/* ── Main column ── */}
           <div className="min-w-0">
+            {/* Cover image (full bleed of the article column, full image visible, no crop) */}
+            {post.coverImage && (
+              <figure className="mb-10 overflow-hidden rounded-2xl border border-border bg-surface shadow-[0_4px_24px_rgba(15,23,42,0.06)]">
+                <Image
+                  src={post.coverImage}
+                  alt={`Cover image for ${post.title}`}
+                  width={1220}
+                  height={861}
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 820px"
+                  priority
+                  className="block h-auto w-full"
+                />
+              </figure>
+            )}
+
             {/* Post header */}
             <header className="mb-10">
               <div className="mb-4 flex flex-wrap items-center gap-3">

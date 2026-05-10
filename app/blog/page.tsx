@@ -13,20 +13,20 @@ import { Button } from "@/components/ui/Button";
 export const revalidate = 3600; // ISR: refresh every hour
 
 export const metadata: Metadata = {
-  title: "Zoveto Blog — ERP, CRM & Ops Insights for Indian SMBs",
+  title: "Zoveto Blog: ERP, CRM & Ops Insights for Indian SMBs",
   description:
     "Practical guides on ERP software, GST compliance, warehouse management, and AI operations for Indian distributors and manufacturers.",
   alternates: { canonical: canonicalUrl("/blog") },
   openGraph: {
-    title: "Zoveto Blog — ERP & Ops Insights for Indian SMBs",
+    title: "Zoveto Blog: ERP & Ops Insights for Indian SMBs",
     description:
-      "Practical, authoritative guides on ERP, GST compliance, WMS, and AI for Indian SMBs — no filler, no fluff.",
+      "Practical, authoritative guides on ERP, GST compliance, WMS, and AI for Indian SMBs. No filler, no fluff.",
     url: canonicalUrl("/blog"),
     images: ["/og-image.png"],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Zoveto Blog — ERP & Ops Insights for Indian SMBs",
+    title: "Zoveto Blog: ERP & Ops Insights for Indian SMBs",
     description:
       "Practical, authoritative guides on ERP, GST compliance, WMS, and AI for Indian SMBs.",
     images: ["/og-image.png"],
@@ -88,7 +88,7 @@ export default function BlogIndexPage() {
             See Zoveto in action for your business.
           </Text>
           <Text variant="body-lg" className="mb-8 text-muted">
-            Book a 30-minute demo tailored to your industry — distributor, manufacturer, or spare parts dealer.
+            Book a 30-minute demo tailored to your industry: distributor, manufacturer, or spare parts dealer.
           </Text>
           <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Link href="/signup">

@@ -17,9 +17,9 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     slug: "what-is-company-operating-system",
     title: "What Is a Company Operating System?",
-    subtitle: "The Next Evolution Beyond ERP — A Guide for Indian SMBs",
+    subtitle: "The Next Evolution Beyond ERP. A Guide for Indian SMBs.",
     excerpt:
-      "A Company Operating System unifies ERP, CRM, WMS, Finance, and HR into one data model. Here is why Indian SMBs are switching — and what it actually means in practice.",
+      "A Company Operating System unifies ERP, CRM, WMS, Finance, and HR into one data model. Here is why Indian SMBs are switching, and what it actually means in practice.",
     date: "2026-05-10",
     readingTime: "9 min read",
     category: "ERP Guide",
@@ -32,7 +32,7 @@ export function getBlogPost(slug: string): BlogPost | undefined {
   return BLOG_POSTS.find((p) => p.slug === slug);
 }
 
-/** Returns all slugs — used by generateStaticParams. */
+/** Returns all slugs, used by generateStaticParams. */
 export function getAllBlogSlugs(): string[] {
   return BLOG_POSTS.map((p) => p.slug);
 }

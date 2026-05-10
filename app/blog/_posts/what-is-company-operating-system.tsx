@@ -1,170 +1,309 @@
+// /app/blog/_posts/what-is-company-operating-system.tsx
+
+// Each blog post content file exports a single default React component.
+// Use only Tailwind classes that mirror the site's design tokens.
+// Do NOT import anything from outside; keep this file self-contained.
+
 import React from "react";
 
 export default function WhatIsCompanyOperatingSystem() {
   return (
     <article className="blog-prose">
       <p className="blog-lead">
-        A Company Operating System is one piece of software that runs the whole
-        business — orders, stock, dispatch, invoices, GST, CRM, payroll — on a
-        single shared database. No sync, no integrations between modules, no
-        reconciling spreadsheets at month-end. ERP was the 1970s answer to this
-        problem. It hasn&apos;t aged well, especially in India.
+        A <strong>Company Operating System (COS)</strong> is a unified software platform that integrates ERP, CRM,
+        WMS, Finance, and HR into a single connected system, sharing one data model across all functions. Unlike
+        traditional ERP or a stack of SaaS tools, a COS eliminates data silos entirely and enables real-time
+        cross-module intelligence.
       </p>
 
-      <h2>What you actually run today</h2>
+      <hr className="blog-rule" />
+
+      <h2>Why the Old Model Is Broken</h2>
       <p>
-        Walk into a typical mid-sized Indian business — a paint distributor in
-        Pune, a fasteners trader in Coimbatore, a 30-person manufacturer outside
-        Ludhiana — and the stack is almost always the same. Tally for the books.
-        WhatsApp for orders. Excel for stock. A CRM the sales team logs into
-        twice a year. A payroll tool the HR person owns alone. Each tool, on its
-        own, does its job.
-      </p>
-      <p>
-        The problem isn&apos;t the tools. It&apos;s the seams between them. Your
-        warehouse doesn&apos;t know which orders are blocked by overdue payments.
-        Sales is quoting against stock figures that are six hours stale. Finance
-        only finds out a dispatch went wrong when a customer escalates. Every
-        Friday evening someone is reconciling spreadsheets so the books close on
-        Monday.
-      </p>
-      <p>
-        Deloitte&apos;s 2024 SMB study put a number on this: employees spend
-        about 2.5 hours a day moving data between tools. At ₹400/hour loaded
-        cost, that&apos;s ₹7,800 per employee per month — roughly ₹19 lakh a
-        year for a 20-person team — burned on coordination instead of work. And
-        that&apos;s before the errors that show up later: the dispatch sent
-        against an overdue ledger, the stockout no one flagged, the GST mismatch
-        the CA finds three weeks before filing.
+        Walk into any mid-sized Indian business today, whether a distributor in Pune, a manufacturer in Ludhiana, or a
+        spare parts dealer in Coimbatore, and you will find the same scene:{" "}
+        <strong>
+          Tally for accounts, WhatsApp for orders, Excel for inventory, a separate CRM nobody updates,
+        </strong>{" "}
+        and a payroll tool the HR person manages in isolation. Each of these tools does its job reasonably well. The
+        problem is not any individual tool. The problem is what happens <strong>between</strong> them.
       </p>
 
-      <h2>Why ERP didn&apos;t fix this</h2>
+      <h3>The Cost of Disconnected Data</h3>
       <p>
-        ERP was supposed to be exactly the answer to this. For SAP-scale
-        enterprises with a dedicated IT team, it still works fine. For Indian
-        SMBs in 2026, it has three structural issues:
+        A 2024 Deloitte study found that SMB employees spend an average of{" "}
+        <strong>2.5 hours per day reconciling data across systems</strong>: re-entering invoices from WhatsApp into
+        Tally, updating delivery status from WMS into CRM, pushing payroll figures into the P&amp;L. At a loaded cost
+        of ₹400/hour, that is <strong>₹7,800 per employee per month</strong> in pure overhead, or ₹18.7 lakh annually
+        for a 20-person company. And that is before the errors: dispatches against overdue credit limits, stockouts
+        nobody flagged, GST mismatches.
+      </p>
+
+      <hr className="blog-rule" />
+
+      <h2>What Traditional ERP Gets Wrong</h2>
+      <p>
+        ERP software was invented in the 1970s to solve exactly this problem. For large enterprises with dedicated IT
+        teams, it still works. But the ERP model has three fundamental problems for Indian SMBs in 2026:
       </p>
 
       <div className="blog-numbered-list">
         <div className="blog-numbered-item">
           <span className="blog-number">1</span>
           <div>
-            <strong>Modules look unified, databases aren&apos;t.</strong>
+            <strong>Bolted-together modules, not a unified system.</strong>
             <p>
-              Most &ldquo;integrated&rdquo; ERPs still keep finance, CRM, and
-              warehouse on separate tables. Data flows between them through
-              scheduled jobs or middleware. By the time finance sees a dispatch,
-              the customer has already received their goods.
+              Even modern integrated ERPs have separate databases for finance, CRM, and WMS. Data sync happens via
+              scheduled jobs or middleware, not in real time.
             </p>
           </div>
         </div>
         <div className="blog-numbered-item">
           <span className="blog-number">2</span>
           <div>
-            <strong>India tax is treated as a plugin.</strong>
+            <strong>Not built for India&apos;s compliance environment.</strong>
             <p>
-              GST, e-invoicing, IRN, GSTR-1, GSTR-3B, HSN, TDS, TCS — for most
-              legacy ERPs these are bolt-ons. When the GSTN updates a schema,
-              the bolt-on is the first thing that breaks.
+              GST, e-invoicing, IRN, GSTR-1, GSTR-3B, HSN codes, TDS, TCS: most legacy ERPs treat Indian tax
+              compliance as a plugin. It needs to be core architecture.
             </p>
           </div>
         </div>
         <div className="blog-numbered-item">
           <span className="blog-number">3</span>
           <div>
-            <strong>The implementation eats the ROI.</strong>
+            <strong>Implementation cost kills ROI before you see it.</strong>
             <p>
-              SAP Business One typically runs ₹15–40 lakh in consulting alone.
-              Odoo needs significant Python work to fit an Indian
-              distributor&apos;s workflow. By the time you&apos;ve paid for the
-              rollout, the operational savings you bought are eighteen months
-              out.
+              SAP Business One implementations typically cost ₹15–40 lakh in consulting fees alone. Odoo requires
+              significant technical customisation. For a ₹50 crore distributor, this is prohibitive.
             </p>
           </div>
         </div>
       </div>
 
-      <h2>So what is a Company Operating System?</h2>
+      <hr className="blog-rule" />
+
+      <h2>The Company Operating System: A Different Architecture</h2>
       <p>
-        A COS is built around one premise: every customer, every SKU, every
-        transaction is a single record, and every part of the business — sales,
-        purchase, stock, finance, CRM, HR — reads and writes to the same store.
-        There is no sync layer because there is nothing to sync.
-      </p>
-      <p>
-        The architectural shift sounds small. The operational difference is not.
-        Stock visibility is live across all warehouses by default. Credit limits
-        get checked at order entry, not at billing. A salesperson who picks up a
-        customer call sees their payment history on the same screen. GST returns
-        are populated from the invoices that already exist, not regenerated from
-        a separate system.
+        A Company Operating System is built from the ground up on a <strong>single, shared data model</strong>. There
+        is one record for every customer, one record for every SKU, and one record for every transaction. Every module
+        (sales, purchase, inventory, finance, CRM, HR) reads from and writes to the same data. This is not just a
+        terminology shift. It is an architectural decision that changes what is possible.
       </p>
 
-      <h2>A Tuesday afternoon, two ways</h2>
+      <h3>What a COS Enables That Traditional ERP Cannot</h3>
+      <div className="blog-table-wrapper">
+        <table className="blog-table">
+          <thead>
+            <tr>
+              <th>Capability</th>
+              <th>Traditional ERP</th>
+              <th>Company Operating System</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Real-time stock visibility across all warehouses</td>
+              <td>
+                <span className="blog-badge blog-badge--no">❌ Manual sync or batch jobs</span>
+              </td>
+              <td>
+                <span className="blog-badge blog-badge--yes">✅ Native, always live</span>
+              </td>
+            </tr>
+            <tr>
+              <td>Customer credit limit enforcement at order entry</td>
+              <td>
+                <span className="blog-badge blog-badge--no">❌ Requires CRM-Finance integration</span>
+              </td>
+              <td>
+                <span className="blog-badge blog-badge--yes">✅ Built-in, automatic</span>
+              </td>
+            </tr>
+            <tr>
+              <td>GST-compliant invoicing with IRN generation</td>
+              <td>
+                <span className="blog-badge blog-badge--warn">⚠️ Plugin or add-on</span>
+              </td>
+              <td>
+                <span className="blog-badge blog-badge--yes">✅ Core module</span>
+              </td>
+            </tr>
+            <tr>
+              <td>Salesperson seeing a customer&apos;s payment history</td>
+              <td>
+                <span className="blog-badge blog-badge--no">❌ Requires CRM to query Finance</span>
+              </td>
+              <td>
+                <span className="blog-badge blog-badge--yes">✅ Same screen, same data</span>
+              </td>
+            </tr>
+            <tr>
+              <td>AI-based demand forecasting using actual order history</td>
+              <td>
+                <span className="blog-badge blog-badge--no">❌ Needs data pipeline from multiple systems</span>
+              </td>
+              <td>
+                <span className="blog-badge blog-badge--yes">✅ Runs on native data</span>
+              </td>
+            </tr>
+            <tr>
+              <td>WhatsApp or portal-based customer ordering</td>
+              <td>
+                <span className="blog-badge blog-badge--no">❌ Custom integration required</span>
+              </td>
+              <td>
+                <span className="blog-badge blog-badge--yes">✅ Native feature</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <hr className="blog-rule" />
+
+      <h2>The India-Specific Imperative</h2>
       <p>
-        Picture an auto spare-parts distributor in Nashik — 8 salespeople, 2
-        warehouses, ~400 active dealers, ₹35 crore turnover. Same dealer, same
-        order, two stacks:
+        India&apos;s regulatory environment makes the COS architecture not just convenient but <strong>essential</strong>.
+        GST alone generates compliance events across 6 different business functions:
+      </p>
+      <ul>
+        <li>
+          <strong>Sales</strong> → e-invoice generation → IRN → e-way bill
+        </li>
+        <li>
+          <strong>Purchase</strong> → GSTR-2A reconciliation with vendor invoices
+        </li>
+        <li>
+          <strong>Finance</strong> → GSTR-3B filing → ITC claims
+        </li>
+        <li>
+          <strong>Inventory</strong> → HSN-wise movement tracking for audit
+        </li>
+        <li>
+          <strong>HR</strong> → TDS on salary → Form 16
+        </li>
+        <li>
+          <strong>Exports</strong> → IGST refund claims → LUT compliance
+        </li>
+      </ul>
+      <p>
+        When these functions live in different software, every GST filing cycle becomes a manual reconciliation exercise.
+        When they share one data model, GST compliance is a byproduct of doing business normally.
+      </p>
+
+      <hr className="blog-rule" />
+
+      <h2>What a Company Operating System Looks Like in Practice</h2>
+      <p>
+        Consider a mid-sized auto spare parts distributor in Nashik: 8 salespeople, 2 warehouses, 400 active dealers,
+        ₹35 crore annual turnover.
       </p>
 
       <div className="blog-before-after">
         <div className="blog-before-after__col blog-before-after__col--before">
-          <div className="blog-before-after__label">On the old stack</div>
+          <div className="blog-before-after__label">Before a COS</div>
           <ul>
-            <li>Dealer WhatsApps the order to the salesperson</li>
-            <li>Ops keys it into Tally an hour later</li>
+            <li>Sales team raises orders on WhatsApp</li>
+            <li>Operations manually enters them into Tally</li>
             <li>Warehouse gets a printed picklist</li>
             <li>Dispatch updates a Google Sheet</li>
-            <li>CRM has no idea any of this happened</li>
-            <li>Finance reconciles at month-end</li>
-            <li>GST takes the CA three days a month</li>
+            <li>CRM has no idea what was ordered or delivered</li>
+            <li>Finance reconciles manually at month-end</li>
+            <li>GST filing takes 3 days of a CA&apos;s time every month</li>
           </ul>
         </div>
         <div className="blog-before-after__col blog-before-after__col--after">
-          <div className="blog-before-after__label">On a COS</div>
+          <div className="blog-before-after__label">After a COS</div>
           <ul>
-            <li>Dealer places the order via the portal or WhatsApp bot</li>
-            <li>Credit, stock and price are validated in the same second</li>
-            <li>Warehouse gets a digital pick-pack instruction</li>
-            <li>Invoice generates with IRN and e-way bill</li>
-            <li>CRM reflects the full dealer history automatically</li>
-            <li>GSTR-1 populates from real invoices, not a re-export</li>
-            <li>Books close in two days, not seven</li>
+            <li>Dealer places order via customer portal or WhatsApp integration</li>
+            <li>System checks credit limit, stock availability, and pricing in real time</li>
+            <li>Warehouse receives digital pick-and-pack instruction</li>
+            <li>Invoice is auto-generated with IRN and e-way bill</li>
+            <li>CRM shows the full interaction history for every dealer</li>
+            <li>GSTR-1 is auto-populated from actual invoices</li>
+            <li>Finance closes books within 2 days of month-end</li>
           </ul>
         </div>
       </div>
 
-      <h2>Isn&apos;t this what Zoho One does?</h2>
+      <hr className="blog-rule" />
+
+      <h2>Why Zoho One or an ERP Suite Is Not the Same Thing</h2>
       <p>
-        Not quite. Zoho One is a bundle — 45+ separate applications behind one
-        login. Zoho CRM and Zoho Inventory have their own databases; data moves
-        between them through Zoho Flow, which is an integration layer. That is a
-        stack-of-SaaS model, not a shared data model. Sync delays of 15–30
-        minutes, mapping errors when objects diverge, and the absence of real
-        transactional atomicity are inherent to the architecture, not bugs that
-        get fixed in the next release.
+        Zoho One markets itself as the operating system for business: 45+ applications on one subscription. But Zoho
+        CRM and Zoho Inventory are <strong>separate applications with separate databases</strong>. Data flows between
+        them via Zoho Flow, an integration layer, not a shared data model. When you integrate via API, you get sync
+        delays (15 to 30 minutes), mapping errors, and no true transaction atomicity. A true Company Operating System
+        has none of these problems by design.
       </p>
 
-      <h2>Where Zoveto fits</h2>
+      <hr className="blog-rule" />
+
+      <h2>Is Zoveto a Company Operating System?</h2>
       <p>
-        Zoveto is built as a COS from day one — not a CRM that grew an inventory
-        module, not an inventory tool that bolted on accounts. Sales, purchase,
-        inventory, warehousing, finance, CRM and HR all sit on one data layer.
-        There is no integration tax because there is nothing to integrate.
+        Yes. Zoveto was built from day one on a unified data model, not assembled from acquired products or
+        bolted-together modules. Every function (purchase, sales, inventory, warehousing, finance, CRM, and HR) shares
+        one data layer. <strong>There is no sync, no middleware, no integration tax.</strong>
       </p>
       <p>
-        It is also designed for India specifically. GST is core, not a plugin.
-        The product assumes you have dealers, multiple warehouses, dispatch
-        lists in Hindi, payments in cash and UPI, and a CA who needs clean
-        GSTR-1 by the 11th. That isn&apos;t a feature list — it&apos;s the
-        starting point.
+        It is also built specifically for the Indian market: GST-native (e-invoicing, IRN, GSTR), designed for
+        distributors, manufacturers, and dealer networks, and priced for SMBs rather than enterprises.
       </p>
-      <p>
-        If your stack today is Tally + WhatsApp + Excel + a CRM nobody updates,
-        you&apos;re not running a business with software. You&apos;re running
-        software on top of your business. A Company Operating System reverses
-        that.
-      </p>
+
+      <hr className="blog-rule" />
+
+      <h2>The Bottom Line</h2>
+      <div className="blog-callout">
+        If you are currently managing your business across Tally + WhatsApp + Excel + a CRM nobody updates, you are not
+        running a business with software. You are running software on top of your business. A Company Operating System
+        reverses that equation.
+      </div>
+
+      <hr className="blog-rule" />
+
+      <h2>Frequently Asked Questions</h2>
+      <div className="blog-faq">
+        <details className="blog-faq__item">
+          <summary className="blog-faq__question">What is a Company Operating System (COS)?</summary>
+          <p className="blog-faq__answer">
+            A Company Operating System is a unified business software platform that integrates ERP, CRM, WMS, Finance,
+            and HR into one system with a shared data model. Unlike ERP suites with separate databases, a COS processes
+            all business functions on a single data layer, enabling real-time cross-module intelligence.
+          </p>
+        </details>
+        <details className="blog-faq__item">
+          <summary className="blog-faq__question">How is a Company Operating System different from ERP?</summary>
+          <p className="blog-faq__answer">
+            Traditional ERP modules store data in separate databases and sync via integrations or batch jobs. A COS
+            shares one database across all modules. No sync delays, no reconciliation errors, no data inconsistencies
+            between departments.
+          </p>
+        </details>
+        <details className="blog-faq__item">
+          <summary className="blog-faq__question">Is Zoho One a Company Operating System?</summary>
+          <p className="blog-faq__answer">
+            No. Zoho One is a bundle of 45+ separate applications. While they share a login and can integrate via Zoho
+            Flow, each application maintains its own database. A true COS has one shared data model across all functions.
+          </p>
+        </details>
+        <details className="blog-faq__item">
+          <summary className="blog-faq__question">
+            What is the best Company Operating System for Indian businesses?
+          </summary>
+          <p className="blog-faq__answer">
+            Zoveto is built as a native COS for Indian SMBs, with GST compliance (e-invoicing, IRN, GSTR),
+            multi-warehouse WMS, CRM, and finance in one unified platform.
+          </p>
+        </details>
+        <details className="blog-faq__item">
+          <summary className="blog-faq__question">What size companies need a Company Operating System?</summary>
+          <p className="blog-faq__answer">
+            Any Indian SMB with more than 10 employees, multiple departments, or GST filing obligations will benefit from
+            a COS. It is particularly valuable for distributors, manufacturers, and dealer networks managing high
+            transaction volumes.
+          </p>
+        </details>
+      </div>
     </article>
   );
 }

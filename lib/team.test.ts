@@ -16,7 +16,7 @@ describe("team data", () => {
     assert.equal(TEAM_MEMBERS[0]!.id, "gourvansh-raina");
     assert.equal(TEAM_MEMBERS[1]!.id, "pranshu-gupta");
     assert.match(TEAM_MEMBERS[0]!.role, /Co-Founder,\s*Zoveto/i);
-    assert.match(TEAM_MEMBERS[1]!.role, /Chief Executive Officer/i);
+    assert.match(TEAM_MEMBERS[1]!.role, /Co-Founder,\s*Zoveto/i);
   });
 
   it("requires image URLs and 2–3 bio paragraphs", () => {

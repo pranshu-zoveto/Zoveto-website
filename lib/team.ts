@@ -76,7 +76,7 @@ export const TEAM_MEMBERS: readonly TeamMember[] = [
   {
     id: "pranshu-gupta",
     name: "Pranshu Gupta",
-    role: "Co-Founder & Chief Executive Officer",
+    role: "Co-Founder, Zoveto",
     image:
       "https://res.cloudinary.com/dnldtmbg5/image/upload/pranshu_u8xknw.jpg",
     imageObjectClass: "object-[50%_15%]",

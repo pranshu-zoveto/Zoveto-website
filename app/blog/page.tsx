@@ -1,61 +1,111 @@
+// /app/blog/page.tsx
+
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { BreadcrumbSchema } from "@/components/seo/BreadcrumbSchema";
-import { Text } from "@/components/ui/Text";
-import BackgroundComponents from "@/components/ui/background-components";
-import { getAllBlogPosts } from "@/lib/blog-posts";
+import { BlogCard } from "@/components/blog/BlogCard";
+import { BLOG_POSTS } from "@/lib/blog-posts";
 import { canonicalUrl } from "@/lib/site";
+import { Text } from "@/components/ui/Text";
+import { Button } from "@/components/ui/Button";
+
+export const revalidate = 3600; // ISR: refresh every hour
 
 export const metadata: Metadata = {
-  title: "Blog | Zoveto — ERP, inventory, and operations for scaling businesses",
+  title: "Zoveto Blog — ERP, CRM & Ops Insights for Indian SMBs",
   description:
-    "Practical guides on ERP cost, software comparison, and inventory discipline for operations teams—plus links to pricing and demos.",
+    "Practical guides on ERP software, GST compliance, warehouse management, and AI operations for Indian distributors and manufacturers.",
   alternates: { canonical: canonicalUrl("/blog") },
+  openGraph: {
+    title: "Zoveto Blog — ERP & Ops Insights for Indian SMBs",
+    description:
+      "Practical, authoritative guides on ERP, GST compliance, WMS, and AI for Indian SMBs — no filler, no fluff.",
+    url: canonicalUrl("/blog"),
+    images: ["/og-image.png"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Zoveto Blog — ERP & Ops Insights for Indian SMBs",
+    description:
+      "Practical, authoritative guides on ERP, GST compliance, WMS, and AI for Indian SMBs.",
+    images: ["/og-image.png"],
+  },
 };
 
 export default function BlogIndexPage() {
-  const posts = getAllBlogPosts();
+  const [featured, ...rest] = BLOG_POSTS;
   return (
-    <main className="relative overflow-hidden bg-background pb-16 pt-36 md:pb-24 md:pt-44">
+    <main className="relative bg-background pb-24 pt-28 md:pt-36">
       <BreadcrumbSchema
         items={[
           { name: "Home", path: "/" },
           { name: "Blog", path: "/blog" },
         ]}
       />
-      <BackgroundComponents variant="editorial" intensity="subtle" className="top-[48%]" />
-      <div className="container relative z-10 mx-auto max-w-content px-4 sm:px-6">
-        <div className="mx-auto max-w-3xl">
-          <Text variant="label-uppercase" className="mb-4 text-muted-2">
-            Resources
+      <div className="container mx-auto max-w-[min(100%,72rem)] px-4 sm:px-6">
+        {/* ── Page header ── */}
+        <div className="mb-14 max-w-2xl md:mb-20">
+          <p className="mb-4 font-mono text-[11px] font-medium uppercase tracking-[0.2em] text-muted-2">
+            Zoveto Blog
+          </p>
+          <Text variant="display-1" as="h1" className="mb-5 text-balance">
+            Ops insights for <span className="text-blue">Indian SMBs.</span>
           </Text>
-          <Text variant="display-2" as="h1" className="mb-6 text-foreground">
-            Blog
+          <Text variant="body-lg" className="text-pretty text-muted">
+            Practical, authoritative guides on ERP, GST compliance, warehouse management, and AI operations. No filler.
+            No testimonials. Just technical depth.
           </Text>
-          <Text variant="body-lg" className="mb-12 text-muted">
-            Short reads for teams evaluating ERP, inventory, and warehouse software—written to support decisions, not fill keyword quotas.
+        </div>
+
+        {/* ── Featured post ── */}
+        {featured && (
+          <section className="mb-10">
+            <BlogCard post={featured} featured />
+          </section>
+        )}
+
+        {/* ── Grid of remaining posts ── */}
+        {rest.length > 0 && (
+          <section>
+            <div className="mb-6 flex items-center justify-between">
+              <h2 className="text-base font-semibold text-foreground">More articles</h2>
+            </div>
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {rest.map((post) => (
+                <BlogCard key={post.slug} post={post} />
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* ── CTA strip ── */}
+        <div className="mt-20 rounded-2xl border border-border bg-card px-8 py-10 text-center md:mt-28">
+          <p className="mb-2 font-mono text-[11px] font-medium uppercase tracking-[0.2em] text-muted-2">
+            Ready to go further?
+          </p>
+          <Text variant="headline-md" as="h2" className="mb-4 text-balance">
+            See Zoveto in action for your business.
           </Text>
-          <ul className="space-y-10">
-            {posts.map((p) => (
-              <li key={p.slug} className="border-b border-border pb-10 last:border-0">
-                <article>
-                  <h2 className="text-xl font-semibold tracking-tight text-foreground md:text-2xl">
-                    <Link href={`/blog/${p.slug}`} className="hover:text-blue">
-                      {p.h1}
-                    </Link>
-                  </h2>
-                  <p className="mb-2 mt-2 text-sm text-muted-2">{p.publishedAt}</p>
-                  <p className="text-muted leading-relaxed">{p.excerpt}</p>
-                  <Link
-                    href={`/blog/${p.slug}`}
-                    className="mt-3 inline-block text-sm font-medium text-blue underline-offset-2 hover:underline"
-                  >
-                    Read article
-                  </Link>
-                </article>
-              </li>
-            ))}
-          </ul>
+          <Text variant="body-lg" className="mb-8 text-muted">
+            Book a 30-minute demo tailored to your industry — distributor, manufacturer, or spare parts dealer.
+          </Text>
+          <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <Link href="/signup">
+              <Button
+                variant="primary"
+                size="lg"
+                className="gap-2 rounded-xl border border-blue/80 px-6 shadow-[0_8px_24px_rgba(0,113,227,0.26)] transition-shadow hover:shadow-[0_10px_30px_rgba(0,113,227,0.32)]"
+              >
+                Request early access <ArrowRight size={15} className="shrink-0" />
+              </Button>
+            </Link>
+            <Link href="/contact">
+              <Button variant="outline" size="lg" className="rounded-xl px-6">
+                Book a demo
+              </Button>
+            </Link>
+          </div>
         </div>
       </div>
     </main>

@@ -90,8 +90,8 @@ export function SparePartsPhase1Sections() {
             </Link>
           </li>
           <li>
-            <Link href="/blog/erp-cost-in-india" className="font-medium text-blue underline-offset-4 hover:underline">
-              ERP cost in India: what drives SMB total cost of ownership
+            <Link href="/blog/what-is-company-operating-system" className="font-medium text-blue underline-offset-4 hover:underline">
+              What is a Company Operating System? Guide for Indian SMBs
             </Link>
           </li>
           <li>

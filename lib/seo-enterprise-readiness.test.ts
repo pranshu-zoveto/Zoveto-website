@@ -1,29 +1,17 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import { PAID_PLAN_PRICING } from "@/lib/pricing-display";
-import { getAllBlogPosts } from "@/lib/blog-posts";
+import { BLOG_POSTS } from "@/lib/blog-posts";
 import { COMPARE_PAGES } from "@/lib/compare-pages";
 import { buildSitemapEntries } from "@/app/sitemap";
 import { OrganizationSchema } from "@/components/seo/OrganizationSchema";
 import { ProductSoftwareApplicationSchema } from "@/components/seo/ProductSoftwareApplicationSchema";
 
-function sentenceCount(text: string): number {
-  const parts = text
-    .split(/[.!?]+/)
-    .map((p) => p.trim())
-    .filter(Boolean);
-  return parts.length;
-}
-
 describe("enterprise seo/aeo readiness", () => {
-  it("keeps question-led blog H1s with AEO directAnswer and substantive opening section", () => {
-    for (const post of getAllBlogPosts()) {
-      assert.match(post.h1, /\?$/, `Expected question H1 for ${post.slug}`);
-      assert.ok(post.directAnswer.length >= 80, `directAnswer should be substantive for ${post.slug}`);
-      assert.ok(sentenceCount(post.directAnswer) >= 2, `directAnswer should include at least two sentences for ${post.slug}`);
-      const firstParagraph = post.sections[0]?.paragraphs[0] ?? "";
-      assert.ok(firstParagraph.length >= 80, `First paragraph should be substantive for ${post.slug}`);
-      assert.ok(sentenceCount(firstParagraph) >= 2, `First paragraph should include at least two sentences for ${post.slug}`);
+  it("keeps blog metadata with excerpts suitable for SERP snippets", () => {
+    for (const post of BLOG_POSTS) {
+      assert.ok(post.excerpt.length >= 40, `excerpt should be substantive for ${post.slug}`);
+      assert.ok(post.title.length >= 10, `title for ${post.slug}`);
     }
   });
 

@@ -1,0 +1,77 @@
+// /components/blog/BlogCard.tsx
+
+"use client";
+
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { BlogPost, formatBlogDate } from "@/lib/blog-posts";
+
+interface BlogCardProps {
+  post: BlogPost;
+  featured?: boolean; // first/hero card gets a larger layout
+}
+
+export function BlogCard({ post, featured = false }: BlogCardProps) {
+  return (
+    <Link
+      href={`/blog/${post.slug}`}
+      className={cn(
+        "group flex flex-col rounded-2xl border border-border bg-card transition-all duration-300 hover:border-blue/30 hover:shadow-[0_8px_24px_rgba(0,113,227,0.10)]",
+        featured ? "md:flex-row" : "",
+      )}
+    >
+      {/* Optional cover image placeholder – renders a gradient swatch if no image */}
+      <div
+        className={cn(
+          "flex-shrink-0 overflow-hidden rounded-t-2xl bg-gradient-to-br from-[#e8f1fd] to-[#f0f7ff]",
+          featured
+            ? "h-52 md:h-auto md:w-[44%] md:rounded-l-2xl md:rounded-tr-none"
+            : "h-44",
+        )}
+        aria-hidden
+      >
+        {post.coverImage ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img src={post.coverImage} alt="" className="h-full w-full object-cover" />
+        ) : (
+          <div className="flex h-full w-full items-center justify-center">
+            <span className="text-4xl opacity-20">📘</span>
+          </div>
+        )}
+      </div>
+
+      {/* Content */}
+      <div className="flex flex-1 flex-col p-6 md:p-7">
+        <div className="mb-3 flex items-center gap-3">
+          <span className="inline-flex items-center rounded-full bg-blue-dim px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wider text-blue">
+            {post.category}
+          </span>
+          <span className="text-xs text-muted-2">{post.readingTime}</span>
+        </div>
+
+        <h2
+          className={cn(
+            "font-bold leading-tight tracking-tight text-foreground transition-colors group-hover:text-blue",
+            featured ? "mb-3 text-2xl md:text-3xl" : "mb-2 text-lg",
+          )}
+        >
+          {post.title}
+        </h2>
+
+        {post.subtitle && <p className="mb-3 text-sm font-medium text-muted">{post.subtitle}</p>}
+
+        <p className="mb-5 flex-1 text-sm leading-relaxed text-muted-2">{post.excerpt}</p>
+
+        <div className="flex items-center justify-between">
+          <time dateTime={post.date} className="text-xs text-muted-2">
+            {formatBlogDate(post.date)}
+          </time>
+          <span className="inline-flex items-center gap-1 text-sm font-semibold text-blue transition-all group-hover:gap-2">
+            Read article <ArrowRight size={14} className="shrink-0" />
+          </span>
+        </div>
+      </div>
+    </Link>
+  );
+}

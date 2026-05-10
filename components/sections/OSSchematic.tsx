@@ -37,7 +37,7 @@ export function OSSchematic() {
           </div>
         </div>
 
-        <div className="relative aspect-square lg:aspect-auto min-h-[420px] lg:h-[520px] bg-card border border-border rounded-2xl p-8 md:p-12 overflow-hidden flex items-center justify-center shadow-sm">
+        <div className="relative aspect-square lg:aspect-auto min-h-[420px] lg:h-[520px] bg-card border border-border rounded-2xl p-5 sm:p-8 md:p-12 overflow-hidden flex items-center justify-center shadow-sm">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 border border-border rounded-full" />
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[22rem] h-[22rem] border border-border rounded-full opacity-60" />
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[26rem] h-[26rem] border border-border/50 rounded-full opacity-40" />
@@ -55,11 +55,11 @@ export function OSSchematic() {
                 aria-hidden
               />
             </div>
-            <div className="grid grid-cols-2 gap-x-16 gap-y-8 md:gap-x-20 md:gap-y-10">
+            <div className="grid grid-cols-2 gap-x-6 gap-y-6 sm:gap-x-12 sm:gap-y-8 md:gap-x-20 md:gap-y-10">
               {["CRM", "STOCK", "WMS", "FINANCE"].map((node) => (
                 <div
                   key={node}
-                  className="p-5 bg-surface border border-border rounded-xl min-w-[120px] md:min-w-[140px] text-center space-y-1.5 group hover:border-blue/40 transition-colors shadow-sm"
+                  className="p-4 bg-surface border border-border rounded-xl min-w-0 sm:p-5 sm:min-w-[120px] md:min-w-[140px] text-center space-y-1.5 group hover:border-blue/40 transition-colors shadow-sm"
                 >
                   <div className="text-xs font-semibold text-muted-2">{node}</div>
                   <div className="text-xs text-muted group-hover:text-foreground transition-colors">Active node</div>

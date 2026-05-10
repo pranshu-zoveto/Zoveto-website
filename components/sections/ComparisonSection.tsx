@@ -44,19 +44,19 @@ export function ComparisonSection() {
 
         <RevealOnScroll className="lg:col-span-7">
           <div className="reveal-item space-y-0">
-            <div className="mb-2 grid grid-cols-2 gap-px">
-              <div className="p-6 pb-3 text-center">
+            <div className="mb-2 grid grid-cols-1 gap-px sm:grid-cols-2">
+              <div className="p-4 pb-3 text-center sm:p-6">
                 <div className="mb-2 text-xs font-semibold uppercase tracking-wide text-muted-2">Legacy friction</div>
                 <div className="text-base font-semibold italic text-muted">The old way</div>
               </div>
-              <div className="rounded-t-[var(--float-radius)] border border-b-0 border-border bg-blue-light/80 p-6 pb-3 text-center">
+              <div className="rounded-t-[var(--float-radius)] border border-b-0 border-border bg-blue-light/80 p-4 pb-3 text-center sm:p-6">
                 <div className="mb-2 text-xs font-semibold uppercase tracking-wide text-blue">The Zoveto standard</div>
                 <div className="text-base font-semibold text-foreground">The new way</div>
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-px overflow-hidden rounded-b-[var(--float-radius)] border border-border bg-border">
-              <div className="space-y-8 bg-card p-6 md:space-y-10 md:p-8">
+            <div className="grid grid-cols-1 gap-px overflow-hidden rounded-b-[var(--float-radius)] border border-border bg-border sm:grid-cols-2">
+              <div className="space-y-6 bg-card p-5 sm:space-y-8 sm:p-6 md:space-y-10 md:p-8">
                 {COMPARISON.map((item, i) => (
                   <div key={i} className="flex items-start gap-3">
                     <div className="mt-0.5 shrink-0 rounded-full border border-border bg-surface p-1">
@@ -69,8 +69,8 @@ export function ComparisonSection() {
                   </div>
                 ))}
               </div>
-              <div className="relative bg-blue-light/40 p-6 md:p-8">
-                <div className="relative z-10 space-y-8 md:space-y-10">
+              <div className="relative bg-blue-light/40 p-5 sm:p-6 md:p-8">
+                <div className="relative z-10 space-y-6 sm:space-y-8 md:space-y-10">
                   {COMPARISON.map((item, i) => (
                     <div key={i} className="flex items-start gap-3">
                       <div className="mt-0.5 shrink-0 rounded-full border border-blue/20 bg-card p-1">
@@ -86,11 +86,11 @@ export function ComparisonSection() {
               </div>
             </div>
 
-            <div className="mt-4 grid grid-cols-2 gap-px">
-              <div className="p-6 text-center text-xs font-medium uppercase tracking-wide text-muted-2">
+            <div className="mt-4 grid grid-cols-1 gap-px sm:grid-cols-2">
+              <div className="p-4 text-center text-xs font-medium uppercase tracking-wide text-muted-2 sm:p-6">
                 Missing 30% operational data
               </div>
-              <div className="float-card reveal-item rounded-[var(--float-radius)] p-6 text-center text-xs font-semibold uppercase tracking-wide text-teal">
+              <div className="float-card reveal-item rounded-[var(--float-radius)] p-4 text-center text-xs font-semibold uppercase tracking-wide text-teal sm:p-6">
                 Zero revenue leakage architecture
               </div>
             </div>

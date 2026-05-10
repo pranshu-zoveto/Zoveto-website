@@ -131,6 +131,12 @@ export function Navbar() {
               System Flow
             </Link>
             <Link
+              href="/blog"
+              className="inline-flex h-9 items-center whitespace-nowrap text-sm font-medium leading-none text-muted transition-colors hover:text-foreground"
+            >
+              Blog
+            </Link>
+            <Link
               href="/about"
               className="inline-flex h-9 items-center whitespace-nowrap text-sm font-medium leading-none text-muted transition-colors hover:text-foreground"
             >
@@ -239,6 +245,13 @@ export function Navbar() {
               className="block text-2xl font-semibold text-foreground"
             >
               System Flow
+            </Link>
+            <Link
+              href="/blog"
+              onClick={() => setIsOpen(false)}
+              className="block text-2xl font-semibold text-foreground"
+            >
+              Blog
             </Link>
             <Link href="/about" onClick={() => setIsOpen(false)} className="block text-2xl font-semibold text-foreground">
               About

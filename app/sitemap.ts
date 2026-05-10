@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { getAllBlogPosts } from "@/lib/blog-posts";
+import { BLOG_POSTS } from "@/lib/blog-posts";
 import { modules } from "@/lib/modules";
 import { getAllProofSlugs } from "@/lib/operational-proof";
 import { SEO_LANDING_PATHS } from "@/lib/seo-landings";
@@ -48,9 +48,9 @@ export function buildSitemapEntries(): MetadataRoute.Sitemap {
     priority: 0.78,
   }));
 
-  const blogPosts: MetadataRoute.Sitemap = getAllBlogPosts().map((post) => ({
+  const blogPosts: MetadataRoute.Sitemap = BLOG_POSTS.map((post) => ({
     url: `${BASE}/blog/${post.slug}`,
-    lastModified: lastModIso(post.publishedAt),
+    lastModified: lastModIso(post.date),
     changeFrequency: "monthly" as const,
     priority: 0.72,
   }));

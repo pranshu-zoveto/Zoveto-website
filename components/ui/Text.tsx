@@ -12,6 +12,7 @@ interface TextProps {
     | "display-2"
     | "heading-1"
     | "heading-2"
+    | "headline-md"
     | "body-lg"
     | "body-base"
     | "body-sm"
@@ -33,6 +34,8 @@ export function Text({
       "text-3xl md:text-5xl font-sans font-semibold leading-tight tracking-tight text-foreground",
     "heading-1": "text-2xl md:text-4xl font-sans font-semibold tracking-tight text-foreground",
     "heading-2": "text-xl md:text-2xl font-sans font-semibold tracking-tight text-foreground",
+    "headline-md":
+      "text-xl md:text-[28px] font-sans font-semibold leading-8 tracking-tight text-foreground",
     "body-lg": "text-lg md:text-xl font-sans font-normal leading-relaxed text-muted",
     "body-base": "text-base font-sans font-normal leading-relaxed text-muted",
     "body-sm": "text-sm font-sans font-normal leading-relaxed text-muted-2",

@@ -101,6 +101,22 @@
     -webkit-tap-highlight-color: transparent;
   }
 
+  /* ── MOBILE GLOBAL OVERFLOW LOCKDOWN ────────────────────────────────────────
+     Single absolutely-positioned child that bleeds right is the #1 cause of
+     horizontal page scroll on mobile. Clamp the root scroll container.
+     Sticky positioning inside descendants is unaffected — only the document
+     scroll axis is constrained.
+  ─────────────────────────────────────────────────────────────────────────── */
+  html,
+  body {
+    overflow-x: clip;
+    max-width: 100%;
+  }
+
+  body {
+    position: relative;
+  }
+
   html {
     scroll-padding-top: 5rem;
     scroll-behavior: smooth;
@@ -476,4 +492,365 @@
 
 .crm-atmosphere {
   animation: crmFloat 14s ease-in-out infinite;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Blog Typography & Components
+   Scoped under .blog-prose to prevent bleed into the rest of the site.
+───────────────────────────────────────────────────────────────────────────── */
+
+.blog-prose {
+  font-family: var(--font-sans);
+  color: var(--foreground);
+  font-size: 17px;
+  line-height: 1.75;
+  letter-spacing: -0.022em;
+}
+
+.blog-lead {
+  font-size: 19px;
+  line-height: 1.65;
+  color: var(--foreground);
+  margin-bottom: 2rem;
+  padding: 1.25rem 1.5rem;
+  background: var(--blue-dim);
+  border-left: 3px solid var(--blue);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+
+.blog-prose h2 {
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.03em;
+  color: var(--foreground);
+  margin-top: 2.75rem;
+  margin-bottom: 1rem;
+}
+
+.blog-prose h3 {
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  color: var(--foreground);
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.blog-prose p {
+  margin-bottom: 1.25rem;
+  color: #374151;
+}
+
+.blog-prose a {
+  color: var(--blue);
+  text-decoration: underline;
+  text-decoration-color: rgba(0, 113, 227, 0.35);
+  text-underline-offset: 3px;
+  transition: text-decoration-color 150ms;
+}
+
+.blog-prose a:hover {
+  text-decoration-color: var(--blue);
+}
+
+.blog-prose strong {
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+.blog-prose ul {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.blog-prose ul li {
+  position: relative;
+  padding-left: 1.5rem;
+  color: #374151;
+}
+
+.blog-prose ul li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--blue);
+  font-weight: 600;
+}
+
+.blog-rule {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 2.5rem 0;
+}
+
+/* ── Callout block ── */
+.blog-callout {
+  background: var(--blue-dim);
+  border-left: 3px solid var(--blue);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  padding: 1.25rem 1.5rem;
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--foreground);
+  font-style: italic;
+  margin: 1.5rem 0;
+}
+
+/* ── Numbered list ── */
+.blog-numbered-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin: 1.5rem 0;
+}
+
+.blog-numbered-item {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.blog-number {
+  flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--blue);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  border-radius: 50%;
+  margin-top: 2px;
+}
+
+.blog-numbered-item > div > strong {
+  display: block;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--foreground);
+  margin-bottom: 0.25rem;
+}
+
+.blog-numbered-item > div > p {
+  margin: 0;
+  font-size: 15px;
+  color: #6e6e73;
+}
+
+/* ── Table ── */
+.blog-table-wrapper {
+  overflow-x: auto;
+  margin: 1.75rem 0;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-card);
+}
+
+.blog-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.blog-table thead {
+  background: #f3f5f9;
+}
+
+.blog-table th {
+  padding: 0.875rem 1rem;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--muted);
+  white-space: nowrap;
+  border-bottom: 1px solid var(--border);
+}
+
+.blog-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+  color: #374151;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.blog-table tr:last-child td {
+  border-bottom: none;
+}
+
+.blog-table tr:hover td {
+  background: var(--surface);
+}
+
+.blog-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.blog-badge--yes {
+  color: #15803d;
+}
+.blog-badge--no {
+  color: #dc2626;
+}
+.blog-badge--warn {
+  color: #92400e;
+}
+
+/* ── Before / After ── */
+.blog-before-after {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin: 1.75rem 0;
+}
+
+@media (min-width: 640px) {
+  .blog-before-after {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.blog-before-after__col {
+  border-radius: var(--radius-md);
+  padding: 1.25rem 1.5rem;
+}
+
+.blog-before-after__col--before {
+  background: #fff7f7;
+  border: 1px solid #fecaca;
+}
+
+.blog-before-after__col--after {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+}
+
+.blog-before-after__label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 0.875rem;
+}
+
+.blog-before-after__col--before .blog-before-after__label {
+  color: #b91c1c;
+}
+.blog-before-after__col--after .blog-before-after__label {
+  color: #15803d;
+}
+
+.blog-before-after ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  list-style: none;
+}
+
+.blog-before-after li {
+  position: relative;
+  padding-left: 1.375rem;
+  font-size: 14px;
+  color: #374151;
+  line-height: 1.5;
+}
+
+.blog-before-after__col--before li::before {
+  content: "✕";
+  position: absolute;
+  left: 0;
+  color: #b91c1c;
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.blog-before-after__col--after li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #15803d;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+/* ── FAQ accordion ── */
+.blog-faq {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin: 1.5rem 0;
+}
+
+.blog-faq__item {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--card);
+  overflow: hidden;
+  transition: border-color 200ms;
+}
+
+.blog-faq__item[open] {
+  border-color: var(--blue);
+}
+
+.blog-faq__question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--foreground);
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+  transition: background 150ms;
+}
+
+.blog-faq__question::-webkit-details-marker {
+  display: none;
+}
+
+.blog-faq__question::after {
+  content: "+";
+  font-size: 20px;
+  font-weight: 300;
+  color: var(--blue);
+  flex-shrink: 0;
+  transition: transform 200ms;
+}
+
+.blog-faq__item[open] .blog-faq__question::after {
+  transform: rotate(45deg);
+}
+
+.blog-faq__question:hover {
+  background: var(--surface);
+}
+
+.blog-faq__answer {
+  padding: 0 1.25rem 1rem;
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.7;
+  margin: 0;
 }

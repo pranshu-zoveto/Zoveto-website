@@ -17,7 +17,7 @@ describe("lead-intake-mail", () => {
       painPoint: "Requested updates\n\nSource: footer_product_updates",
     });
     assert.ok(p);
-    assert.match(p!.subject, /Product updates — u@example\.com/);
+    assert.match(p!.subject, /Product updates, u@example\.com/);
     assert.equal(p!.replyTo, "u@example.com");
     assert.match(p!.text, /footer_product_updates/);
   });
@@ -29,7 +29,7 @@ describe("lead-intake-mail", () => {
       painPoint: "Hello",
     });
     assert.ok(p);
-    assert.match(p!.subject, /Lead — Website lead/);
+    assert.match(p!.subject, /Lead, Website lead/);
     assert.match(p!.text, /Jane/);
   });
 

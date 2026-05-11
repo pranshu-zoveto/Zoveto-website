@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 
 const DEFAULT_SUFFIXES = ["ERP", "WMS", "CRM", "HRMS", "AI"] as const;
-/** Width reference — longest token in default set */
+/** Width reference - longest token in default set */
 const WIDTH_REF = "HRMS";
 
 const INTERVAL_MS = 2000;

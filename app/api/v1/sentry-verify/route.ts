@@ -32,10 +32,10 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  Sentry.captureException(new Error("Sentry API verification (manual test — zoveto-website)"));
+  Sentry.captureException(new Error("Sentry API verification (manual test, zoveto-website)"));
 
   return NextResponse.json(
-    { ok: true, message: "Event sent — check Sentry Issues for this project." },
+    { ok: true, message: "Event sent, check Sentry Issues for this project." },
     { headers: { "Cache-Control": "no-store" } },
   );
 }

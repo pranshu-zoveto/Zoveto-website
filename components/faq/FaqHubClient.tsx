@@ -103,7 +103,7 @@ export function FaqHubClient() {
                 </span>
               </h1>
               <p className="mt-6 max-w-[48ch] text-base leading-relaxed text-muted md:text-[17px] md:leading-relaxed">
-                Answers for finance, ops, and commercial leads evaluating Zoveto in India—same wording we ship in FAQ
+                Answers for finance, ops, and commercial leads evaluating Zoveto in India, same wording we ship in FAQ
                 structured data.
               </p>
 

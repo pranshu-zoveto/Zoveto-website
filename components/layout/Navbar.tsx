@@ -62,7 +62,7 @@ export function Navbar() {
       >
         <div
           className={cn(
-            "container max-w-content mx-auto px-5 sm:px-6 flex items-center justify-between safe-top overflow-visible transition-[height] duration-300 [transition-timing-function:cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none",
+            "container relative max-w-content mx-auto px-5 sm:px-6 flex items-center justify-between safe-top overflow-visible transition-[height] duration-300 [transition-timing-function:cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none",
             isCompact ? "h-[54px] lg:h-[58px]" : "h-[56px] lg:h-[60px]",
           )}
         >
@@ -70,7 +70,7 @@ export function Navbar() {
             href="/"
             id="site-nav-brand-lockup"
             aria-label="Zoveto home"
-            className="inline-flex items-center gap-2.5 shrink-0 mr-2 text-foreground whitespace-nowrap sm:mr-4"
+            className="inline-flex max-w-[13rem] items-center gap-2.5 overflow-hidden text-foreground whitespace-nowrap sm:mr-4 sm:max-w-none"
             onMouseEnter={() => setBrandWordmarkFreeze(true)}
             onMouseLeave={() => setBrandWordmarkFreeze(false)}
           >
@@ -125,6 +125,12 @@ export function Navbar() {
               Pricing
             </Link>
             <Link
+              href="/compare"
+              className="inline-flex h-9 items-center whitespace-nowrap text-sm font-medium leading-none text-muted transition-colors hover:text-foreground"
+            >
+              Compare
+            </Link>
+            <Link
               href="/operational-proof"
               className="inline-flex h-9 items-center whitespace-nowrap text-sm font-medium leading-none text-muted transition-colors hover:text-foreground"
             >
@@ -145,37 +151,34 @@ export function Navbar() {
           </div>
 
           <div className="hidden lg:flex h-9 items-center gap-3 self-center">
-            <Link
-              href="/contact"
-              className="inline-flex h-9 items-center whitespace-nowrap px-2.5 text-sm font-medium leading-none text-muted transition-colors hover:text-foreground"
-            >
-              Book demo
-            </Link>
-            <Link href="/signup">
+            <Link href="/contact" className="inline-flex">
               <Button
                 variant="primary"
                 size="sm"
                 className="gap-2 rounded-xl border border-blue/80 px-5 text-sm leading-none shadow-[0_8px_24px_rgba(0,113,227,0.26)] transition-shadow hover:shadow-[0_10px_30px_rgba(0,113,227,0.32)]"
               >
-                Request Access <ArrowRight size={14} className="shrink-0" />
+                Book a 20-min demo <ArrowRight size={14} className="shrink-0" />
               </Button>
             </Link>
           </div>
 
-          <div className="flex shrink-0 items-center gap-1 sm:gap-2 lg:hidden">
-            <Link href="/signup" className="min-w-0">
+          <div
+            className="flex shrink-0 items-center gap-1 sm:gap-2 lg:hidden"
+            style={{ position: "fixed", left: "min(330px, calc(100vw - 60px))", top: 8, zIndex: 115 }}
+          >
+            <Link href="/contact" className="hidden min-w-0 sm:block">
               <Button
                 variant="primary"
                 size="sm"
-                className="min-h-[44px] max-w-[9.5rem] truncate rounded-lg px-2.5 text-[11px] font-semibold tracking-tight sm:max-w-none sm:px-3.5 sm:text-xs"
+                className="min-h-[44px] max-w-[10.5rem] truncate rounded-lg px-2.5 text-[11px] font-semibold tracking-tight sm:max-w-none sm:px-3.5 sm:text-xs"
               >
-                Request access
+                20-min demo
               </Button>
             </Link>
 
             <button
               type="button"
-              className="-mr-1 inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-lg p-2 text-foreground tap-active hover:bg-surface sm:-mr-2"
+              className="-mr-1 inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-lg border border-border bg-card p-2 text-foreground shadow-sm tap-active hover:bg-surface sm:-mr-2"
               aria-label={isOpen ? "Close menu" : "Open menu"}
               aria-expanded={isOpen}
               onClick={() => setIsOpen(!isOpen)}
@@ -240,6 +243,13 @@ export function Navbar() {
               Pricing
             </Link>
             <Link
+              href="/compare"
+              onClick={() => setIsOpen(false)}
+              className="block text-2xl font-semibold text-foreground"
+            >
+              Compare
+            </Link>
+            <Link
               href="/operational-proof"
               onClick={() => setIsOpen(false)}
               className="block text-2xl font-semibold text-foreground"
@@ -259,17 +269,17 @@ export function Navbar() {
           </div>
 
           <div className="flex flex-col gap-3 border-t border-border pt-8">
-            <Link href="/signup" onClick={() => setIsOpen(false)}>
+            <Link href="/contact" onClick={() => setIsOpen(false)}>
               <Button
                 variant="primary"
                 className="h-12 w-full rounded-xl border border-blue/80 shadow-[0_8px_24px_rgba(0,113,227,0.26)] transition-shadow hover:shadow-[0_10px_30px_rgba(0,113,227,0.32)]"
               >
-                Request Access
+                Book a 20-min demo
               </Button>
             </Link>
-            <Link href="/contact" onClick={() => setIsOpen(false)}>
+            <Link href="/implementation" onClick={() => setIsOpen(false)}>
               <Button type="button" variant="outline" className="h-12 w-full">
-                Book a demo
+                See implementation path
               </Button>
             </Link>
           </div>

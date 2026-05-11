@@ -31,7 +31,7 @@ const FAQ_CATEGORIES: FAQCategory[] = [
       {
         question: "Can inventory software push MIS updates over WhatsApp, email, or SMS?",
         answer:
-          "Leaders often wait for manual reports that arrive after decisions are due. Spreadsheet-based MIS usually depends on one person being available every morning. Zoveto automates MIS summaries—with live operational and cash signals—over WhatsApp, email, or SMS, so your channel matches how the team already works.",
+          "Leaders often wait for manual reports that arrive after decisions are due. Spreadsheet-based MIS usually depends on one person being available every morning. Zoveto automates MIS summaries, with live operational and cash signals, over WhatsApp, email, or SMS, so your channel matches how the team already works.",
       },
     ],
   },
@@ -63,7 +63,7 @@ const FAQ_CATEGORIES: FAQCategory[] = [
       {
         question: "Is Zoveto tax- and compliance-ready for regulated markets?",
         answer:
-          "Finance teams struggle when tax reporting depends on manual consolidation from multiple tools. Errors usually appear late, close to filing deadlines. Zoveto keeps invoicing and ledger data compliance-ready—including GST when you operate in India—with reconciliation support built into daily operations.",
+          "Finance teams struggle when tax reporting depends on manual consolidation from multiple tools. Errors usually appear late, close to filing deadlines. Zoveto keeps invoicing and ledger data compliance-ready, including GST when you operate in India, with reconciliation support built into daily operations.",
       },
     ],
   },

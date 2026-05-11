@@ -5,7 +5,7 @@ import { bookDemo } from "@/lib/api";
 import { Button } from "@/components/ui/Button";
 import { Text } from "@/components/ui/Text";
 import { CalendarDays, CheckCircle2 } from "lucide-react";
-import { trackEvent } from "@/lib/tracking";
+import { trackEvent, trackMarketingEvent } from "@/lib/tracking";
 import { FormToast } from "@/components/ui/FormToast";
 
 function FieldLabel({ children }: { children: React.ReactNode }) {
@@ -50,6 +50,13 @@ export function DemoBookingForm() {
         message: message.trim() || undefined,
       });
       setStatus("success");
+      trackMarketingEvent("demo_request_submit", {
+        form: "demo_booking_form",
+        company_type: companyType,
+        employee_band: employeeBand,
+        preferred_date: preferredDate,
+        preferred_time: preferredTime,
+      });
       trackEvent("generate_lead", {
         method: "demo_booking_form",
       });

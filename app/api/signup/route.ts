@@ -37,7 +37,7 @@ export async function POST(req: NextRequest) {
     );
 
     const emailResult = await sendFormNotificationEmail({
-      subject: `[Website] Early access request — ${input.companyName || "Unknown company"}`,
+      subject: `[Website] Early access request, ${input.companyName || "Unknown company"}`,
       replyTo: input.email,
       text: [
         "New early access request",

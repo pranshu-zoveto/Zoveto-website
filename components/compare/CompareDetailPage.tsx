@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Check, X } from "lucide-react";
 import { DirectAnswerLead } from "@/components/aeo/DirectAnswerLead";
 import { Text } from "@/components/ui/Text";
+import { FaqAccordion } from "@/components/ui/FaqAccordion";
 import { cn } from "@/lib/utils";
 import type { ComparePage } from "@/lib/compare-pages";
 import { comparePageH1, getComparePageAeoLead, getComparePageFaqs } from "@/lib/compare-pages";
@@ -24,7 +25,7 @@ function CompareCrossLinks({ currentSlug }: { currentSlug: string }) {
   const currentLabel = RELATED_COMPARE.find((l) => l.slug === currentSlug)?.label ?? "this comparison";
   const others = RELATED_COMPARE.filter((l) => l.slug !== currentSlug);
   return (
-    <div className="mt-6 space-y-3 text-sm leading-relaxed text-muted">
+    <div className="prose-justify mt-6 space-y-3 text-sm leading-relaxed text-muted">
       <p>
         Unlike traditional accounting tools like{" "}
         <Link href="/compare/tally-vs-zoveto" className="font-medium text-blue underline-offset-4 hover:underline">
@@ -38,7 +39,7 @@ function CompareCrossLinks({ currentSlug }: { currentSlug: string }) {
         <Link href="/compare/zoho-vs-zoveto" className="font-medium text-blue underline-offset-4 hover:underline">
           Zoho
         </Link>
-        , Zoveto is positioned as one operating record for execution — not a single app silo.
+        , Zoveto is positioned as one operating record for execution, not a single app silo.
       </p>
       <p>
         You are reading <span className="font-medium text-foreground">{currentLabel}</span>. Also see{" "}
@@ -143,14 +144,6 @@ function Phase1InternalLinks({ slug }: { slug: string }) {
             Zoveto Company Operating System for Indian SMB operations
           </Link>
         </li>
-        <li>
-          <Link
-            href="/case-studies/rock-tear-parts"
-            className="font-medium text-blue underline-offset-4 hover:underline"
-          >
-            Rock Tear Parts case study: spare parts execution on one system
-          </Link>
-        </li>
       </ul>
     </section>
   );
@@ -171,7 +164,7 @@ function CompareDetailPagePhase1({ page, p1 }: { page: ComparePage; p1: Phase1Co
             {p1.h1}
           </Text>
           <DirectAnswerLead text={p1.aeoUnderH1} />
-          <Text variant="body-lg" className="mb-8 max-w-3xl text-pretty text-muted">
+          <Text variant="body-lg" className="prose-justify mb-8 max-w-3xl text-pretty text-muted">
             {p1.directAnswer}
           </Text>
           <div className="flex flex-wrap gap-3">
@@ -190,7 +183,7 @@ function CompareDetailPagePhase1({ page, p1 }: { page: ComparePage; p1: Phase1Co
           </Text>
           <div className="space-y-4">
             {p1.problemIndiaParagraphs.map((para, i) => (
-              <Text key={`p-india-${i}`} variant="body-base" className="max-w-3xl text-pretty text-muted">
+              <Text key={`p-india-${i}`} variant="body-base" className="prose-justify max-w-3xl text-pretty text-muted">
                 {para}
               </Text>
             ))}
@@ -203,7 +196,7 @@ function CompareDetailPagePhase1({ page, p1 }: { page: ComparePage; p1: Phase1Co
           </Text>
           <div className="space-y-4">
             {p1.solutionParagraphs.map((para, i) => (
-              <Text key={`p-sol-${i}`} variant="body-base" className="max-w-3xl text-pretty text-muted">
+              <Text key={`p-sol-${i}`} variant="body-base" className="prose-justify max-w-3xl text-pretty text-muted">
                 {para}
               </Text>
             ))}
@@ -218,7 +211,7 @@ function CompareDetailPagePhase1({ page, p1 }: { page: ComparePage; p1: Phase1Co
           </Text>
           <div className="space-y-4">
             {p1.useCaseParagraphs.map((para, i) => (
-              <Text key={`p-uc-${i}`} variant="body-base" className="max-w-3xl text-pretty text-muted">
+              <Text key={`p-uc-${i}`} variant="body-base" className="prose-justify max-w-3xl text-pretty text-muted">
                 {para}
               </Text>
             ))}
@@ -240,18 +233,7 @@ function CompareDetailPagePhase1({ page, p1 }: { page: ComparePage; p1: Phase1Co
           <Text variant="heading-1" as="h2" id="faq-heading" className="mb-6 text-xl text-foreground md:text-2xl">
             Frequently asked questions
           </Text>
-          <div className="space-y-8">
-            {p1.faqs.map((f) => (
-              <div key={f.question}>
-                <Text variant="heading-1" as="h3" className="mb-2 text-base font-semibold text-foreground md:text-lg">
-                  {f.question}
-                </Text>
-                <Text variant="body-base" className="text-pretty text-muted">
-                  {f.answer}
-                </Text>
-              </div>
-            ))}
-          </div>
+          <FaqAccordion items={p1.faqs} idPrefix={`compare-${page.slug}-phase1`} />
         </section>
 
         <Phase1InternalLinks slug={page.slug} />
@@ -263,8 +245,8 @@ function CompareDetailPagePhase1({ page, p1 }: { page: ComparePage; p1: Phase1Co
           <Text variant="heading-1" as="h2" id="phase1-cta-heading" className="mb-4 text-xl text-foreground md:text-2xl">
             Book a 20-minute demo
           </Text>
-          <Text variant="body-base" className="mb-6 max-w-2xl text-pretty text-muted">
-            Walk through quote-to-cash, inventory, and dispatch on one posted record with a Zoveto operator—not a
+          <Text variant="body-base" className="prose-justify mb-6 max-w-2xl text-pretty text-muted">
+            Walk through quote-to-cash, inventory, and dispatch on one posted record with a Zoveto operator, not a
             generic sales deck.
           </Text>
           <div className="flex flex-wrap gap-3">
@@ -354,7 +336,7 @@ export function CompareDetailPage({ page }: Props) {
             {h1}
           </Text>
           <DirectAnswerLead text={getComparePageAeoLead(page)} />
-          <Text variant="body-lg" className="mb-8 max-w-3xl text-pretty text-muted">
+          <Text variant="body-lg" className="prose-justify mb-8 max-w-3xl text-pretty text-muted">
             {page.hero.subtext}
           </Text>
           <div className="flex flex-wrap gap-3">
@@ -441,7 +423,7 @@ export function CompareDetailPage({ page }: Props) {
           <div className="space-y-6 rounded-2xl border border-border bg-card p-6 md:p-8">
             <div>
               <div className="mb-2 text-xs font-semibold uppercase tracking-wide text-blue">Zoveto</div>
-              <Text variant="body-base" className="text-pretty text-muted">
+              <Text variant="body-base" className="prose-justify text-pretty text-muted">
                 {page.workflow.zoveto}
               </Text>
               <p className="mt-3 font-mono text-xs text-muted-2">
@@ -450,11 +432,11 @@ export function CompareDetailPage({ page }: Props) {
             </div>
             <div className="border-t border-border pt-6">
               <div className="mb-2 text-xs font-semibold uppercase tracking-wide text-muted-2">{page.competitor}</div>
-              <Text variant="body-base" className="text-pretty text-muted">
+              <Text variant="body-base" className="prose-justify text-pretty text-muted">
                 {page.workflow.competitor}
               </Text>
               <p className="mt-3 font-mono text-xs text-muted-2">
-                Often multiple steps, apps, or modules — coordination is your responsibility
+                Often multiple steps, apps, or modules, coordination is your responsibility
               </p>
             </div>
           </div>
@@ -490,8 +472,8 @@ export function CompareDetailPage({ page }: Props) {
             Built and running
           </Text>
           <div className="rounded-2xl border border-teal/25 bg-teal-dim/25 p-6 md:p-8">
-            <Text variant="body-base" className="text-pretty text-muted">
-              Zoveto is already deployed as a full operations system — not a slide-deck concept. Live workspaces use it
+            <Text variant="body-base" className="prose-justify text-pretty text-muted">
+              Zoveto is already deployed as a full operations system, not a slide-deck concept. Live workspaces use it
               for day-to-day execution across stock, orders, and fulfilment.
             </Text>
             <ul className="mt-4 list-disc space-y-2 pl-5 text-sm font-medium text-foreground marker:text-teal">
@@ -508,9 +490,9 @@ export function CompareDetailPage({ page }: Props) {
           <Text variant="heading-1" as="h2" id="verdict-heading" className="mb-6 text-xl text-foreground md:text-2xl">
             Final verdict
           </Text>
-          <div className="space-y-4 text-pretty">
+          <div className="prose-justify space-y-4 text-pretty">
             {page.finalVerdict.map((para) => (
-              <Text key={para} variant="body-lg" className="text-muted">
+              <Text key={para} variant="body-lg" className="prose-justify text-muted">
                 {para}
               </Text>
             ))}
@@ -521,14 +503,7 @@ export function CompareDetailPage({ page }: Props) {
           <Text variant="heading-1" as="h2" id="compare-faq-heading" className="mb-6 text-xl text-foreground md:text-2xl">
             Frequently asked questions
           </Text>
-          <dl className="space-y-6 rounded-2xl border border-border bg-card p-6 md:p-8">
-            {getComparePageFaqs(page).map((f) => (
-              <div key={f.q}>
-                <dt className="font-semibold text-foreground">{f.q}</dt>
-                <dd className="mt-2 text-sm leading-relaxed text-muted">{f.a}</dd>
-              </div>
-            ))}
-          </dl>
+          <FaqAccordion items={getComparePageFaqs(page)} idPrefix={`compare-${page.slug}`} />
         </section>
 
         {/* 9. Switch trigger */}

@@ -10,7 +10,7 @@ const PATH = "/faq";
 export const metadata: Metadata = {
   title: "FAQ | Zoveto Company Operating System",
   description:
-    "Answers on Zoveto as a Company Operating System for Indian SMBs—GST, inventory, warehouse, CRM, sales, and automation. Same copy as on-page FAQs for transparency.",
+    "Answers on Zoveto as a Company Operating System for Indian SMBs, GST, inventory, warehouse, CRM, sales, and automation. Same copy as on-page FAQs for transparency.",
   alternates: { canonical: canonicalUrl(PATH) },
 };
 

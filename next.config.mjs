@@ -1,4 +1,9 @@
 /** @type {import('next').NextConfig} */
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
 function buildContentSecurityPolicy(isDev) {
   return [
     "default-src 'self'",
@@ -51,6 +56,39 @@ const nextConfig = {
     // Disabling symlink resolution avoids the readlink path and keeps webpack builds stable.
     config.resolve = config.resolve || {};
     config.resolve.symlinks = false;
+
+    // No Prisma in this app; `@sentry/node` still requires Prisma tracing, which pulls
+    // `@prisma/instrumentation` → noisy webpack "Critical dependency" + slower instrumentation compile.
+    // We skip `withSentryConfig`, so Sentry's built-in ignoreWarnings for this path never runs — alias fixes both.
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      "@prisma/instrumentation": path.join(__dirname, "scripts/shims/prisma-instrumentation-stub.cjs"),
+    };
+
+    const sentryOtelWarningFilter = (warning, compilation) => {
+      try {
+        if (!warning.module) return false;
+        const id = warning.module.readableIdentifier(compilation.requestShortener);
+        const noisy =
+          /@opentelemetry\/instrumentation/.test(id) ||
+          /@prisma\/instrumentation/.test(id) ||
+          /require-in-the-middle/.test(id);
+        return noisy && /Critical dependency/.test(warning.message);
+      } catch {
+        return false;
+      }
+    };
+    const extraIgnores = [
+      sentryOtelWarningFilter,
+      { module: /@opentelemetry\/instrumentation/, message: /Critical dependency/ },
+      { module: /@prisma\/instrumentation/, message: /Critical dependency/ },
+      { module: /require-in-the-middle/, message: /Critical dependency/ },
+    ];
+    if (config.ignoreWarnings === undefined) {
+      config.ignoreWarnings = extraIgnores;
+    } else if (Array.isArray(config.ignoreWarnings)) {
+      config.ignoreWarnings.push(...extraIgnores);
+    }
 
     // Production: cold cache (CI-friendly).
     if (!dev) {

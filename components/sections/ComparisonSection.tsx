@@ -27,7 +27,7 @@ export function ComparisonSection() {
             Excel is your assistant. Zoveto is your assistant&apos;s{" "}
             <span className="text-blue">operating system.</span>
           </Text>
-          <Text variant="body-lg" className="text-muted">
+          <Text variant="body-lg" className="prose-justify text-muted">
             Most operating leaks start between tools: quote to stock, pick to invoice, receipt to ledger. Zoveto closes
             those gaps at the record level.
           </Text>

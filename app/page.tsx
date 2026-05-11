@@ -18,13 +18,16 @@ const HeardThisBeforeSection = dynamic(() => import("@/components/sections/Heard
 const HowItWorksLandingSection = dynamic(() => import("@/components/sections/HowItWorksLandingSection"));
 const LandingFAQSection = dynamic(() => import("@/components/sections/LandingFAQSection"));
 const FinalCTASection = dynamic(() => import("@/components/sections/FinalCTASection"));
+const ZeroClientTrustSection = dynamic(() =>
+  import("@/components/sections/ZeroClientTrustSection").then((m) => ({ default: m.ZeroClientTrustSection })),
+);
 
-/** Desktop GSAP pinned hero — defer parse/execute behind `next/dynamic` + `loading` placeholder below. */
+/** Desktop GSAP pinned hero - defer parse/execute behind `next/dynamic` + `loading` placeholder below. */
 const DashboardScrollDesktop = dynamic(() => import("@/components/sections/dashboard-scroll-desktop"), {
   loading: () => <DashboardDesktopLoadingFallback />,
 });
 
-/** Mobile modules strip — client-only (Lucide + observers); split chunk so it is not on the LCP-critical path. */
+/** Mobile modules strip - client-only (Lucide + observers); split chunk so it is not on the LCP-critical path. */
 const DashboardMobileModules = dynamic(
   () => import("@/components/sections/dashboard-scroll-mobile").then((m) => ({ default: m.DashboardMobileModules })),
   {
@@ -46,7 +49,7 @@ const PricingSection = dynamic(() => import("@/components/sections/PricingSectio
 });
 
 export const metadata: Metadata = {
-  title: "Zoveto — Company Operating System | ERP, CRM, Warehouse & AI in One",
+  title: "Zoveto, Company Operating System | ERP, CRM, Warehouse & AI in One",
   description:
     "Stop running your business on disconnected tools. Zoveto connects inventory, sales, warehouse, finance, HR, and AI agents around one operating record. Go live in 2-4 weeks.",
   keywords: [
@@ -119,12 +122,15 @@ export default function Home() {
         <HowItWorksLandingSection />
       </FluidMarketingSection>
       <FluidMarketingSection band={bandIndexForSection(9)} overlapTop stackBase>
-        <PricingSection />
+        <ZeroClientTrustSection context="home" />
       </FluidMarketingSection>
       <FluidMarketingSection band={bandIndexForSection(10)} overlapTop stackBase>
-        <LandingFAQSection />
+        <PricingSection />
       </FluidMarketingSection>
       <FluidMarketingSection band={bandIndexForSection(11)} overlapTop stackBase>
+        <LandingFAQSection />
+      </FluidMarketingSection>
+      <FluidMarketingSection band={bandIndexForSection(12)} overlapTop stackBase>
         <FinalCTASection />
       </FluidMarketingSection>
     </main>

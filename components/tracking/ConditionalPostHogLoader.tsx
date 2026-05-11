@@ -11,7 +11,7 @@ let posthogInitialized = false;
 
 /**
  * PostHog (product analytics + session replay) via `posthog-js`, loaded only after analytics consent.
- * Matches the GA4 / Clarity gate — no tracking before the user opts in.
+ * Matches the GA4 / Clarity gate - no tracking before the user opts in.
  *
  * Set `NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN` and `NEXT_PUBLIC_POSTHOG_HOST` (Project settings → API keys;
  * host is usually `https://us.i.posthog.com` or `https://eu.i.posthog.com`). Omit both to disable.

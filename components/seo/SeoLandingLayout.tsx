@@ -4,6 +4,7 @@ import { BreadcrumbSchema } from "@/components/seo/BreadcrumbSchema";
 import { FAQPageSchema } from "@/components/seo/FAQPageSchema";
 import { Button } from "@/components/ui/Button";
 import { Text } from "@/components/ui/Text";
+import { FaqAccordion } from "@/components/ui/FaqAccordion";
 import type { SeoLanding } from "@/lib/seo-landings";
 import { canonicalUrl } from "@/lib/site";
 
@@ -30,7 +31,7 @@ export function SeoLandingLayout({ landing }: Props) {
             {landing.h1}
           </Text>
           <DirectAnswerLead text={landing.directAnswer} />
-          <Text variant="body-lg" as="p" className="mb-12 text-pretty text-muted">
+          <Text variant="body-lg" as="p" className="prose-justify mb-12 text-pretty text-muted">
             {landing.intro}
           </Text>
 
@@ -40,7 +41,7 @@ export function SeoLandingLayout({ landing }: Props) {
                 {s.h2}
               </Text>
               {s.paragraphs.map((para, i) => (
-                <Text key={`${s.h2}-${i}`} variant="body-base" as="p" className="mb-4 text-muted leading-relaxed">
+                <Text key={`${s.h2}-${i}`} variant="body-base" as="p" className="prose-justify mb-4 text-muted leading-relaxed">
                   {para}
                 </Text>
               ))}
@@ -65,23 +66,24 @@ export function SeoLandingLayout({ landing }: Props) {
                 View pricing
               </Button>
             </Link>
+            <Link href="/implementation">
+              <Button variant="outline" size="lg" className="w-full sm:w-auto">
+                See setup path
+              </Button>
+            </Link>
             <Link href={landing.deepLink.href} className="text-sm font-medium text-blue underline-offset-2 hover:underline">
               {landing.deepLink.label}
             </Link>
           </div>
 
-          <section className="rounded-2xl border border-border bg-card p-6 md:p-8" aria-labelledby="faq-heading">
-            <Text variant="heading-1" as="h2" id="faq-heading" className="mb-6 text-xl text-foreground">
+          <section className="space-y-6" aria-labelledby="faq-heading">
+            <Text variant="heading-1" as="h2" id="faq-heading" className="text-xl text-foreground">
               Frequently asked questions
             </Text>
-            <dl className="space-y-6">
-              {landing.faqs.map((f) => (
-                <div key={f.q}>
-                  <dt className="font-semibold text-foreground">{f.q}</dt>
-                  <dd className="mt-2 text-sm leading-relaxed text-muted">{f.a}</dd>
-                </div>
-              ))}
-            </dl>
+            <FaqAccordion
+              items={landing.faqs}
+              idPrefix={`seo-${landing.path.replace(/^\//, "").replace(/\//g, "-")}`}
+            />
           </section>
         </article>
       </div>

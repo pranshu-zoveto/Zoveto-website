@@ -18,7 +18,7 @@ export const FAQ_HUB_CATEGORIES: readonly FaqHubCategory[] = [
       {
         question: "What does “Company Operating System” mean at Zoveto?",
         answer:
-          "It is the execution layer where orders, stock, warehouse moves, billing, and collections post as one chain for Indian SMBs—so teams stop reconciling WhatsApp, Excel, and siloed apps at month-end.",
+          "It is the execution layer where orders, stock, warehouse moves, billing, and collections post as one chain for Indian SMBs, so teams stop reconciling WhatsApp, Excel, and siloed apps at month-end.",
       },
       {
         question: "How is a Company Operating System different from buying “an ERP plus apps”?",
@@ -38,7 +38,7 @@ export const FAQ_HUB_CATEGORIES: readonly FaqHubCategory[] = [
       {
         question: "How fast can teams expect to go live?",
         answer:
-          "Zoveto uses qualification-first onboarding—timelines depend on branches, SKU hygiene, and data readiness. Expect a structured rollout, not anonymous instant provisioning for every edge case.",
+          "Zoveto uses qualification-first onboarding, timelines depend on branches, SKU hygiene, and data readiness. Expect a structured rollout, not anonymous instant provisioning for every edge case.",
       },
       {
         question: "Where should I start learning the product?",
@@ -64,12 +64,12 @@ export const FAQ_HUB_CATEGORIES: readonly FaqHubCategory[] = [
       {
         question: "Is Zoveto built for Indian GST workflows?",
         answer:
-          "Yes—invoice and credit-note patterns are designed around posted operational events typical for Indian SMBs. Your configuration, masters, and CA review still define filing correctness.",
+          "Yes, invoice and credit-note patterns are designed around posted operational events typical for Indian SMBs. Your configuration, masters, and CA review still define filing correctness.",
       },
       {
         question: "How does Zoveto reduce GST reconciliation pain?",
         answer:
-          "By tying dispatch and return context to billing lines instead of retyping parallel sheets—fewer mismatches between what moved and what was invoiced.",
+          "By tying dispatch and return context to billing lines instead of retyping parallel sheets, fewer mismatches between what moved and what was invoiced.",
       },
       {
         question: "Can Zoveto handle multiple GST registrations?",
@@ -84,7 +84,7 @@ export const FAQ_HUB_CATEGORIES: readonly FaqHubCategory[] = [
       {
         question: "What should finance verify before go-live?",
         answer:
-          "Chart mapping, opening balances, credit workflows, and return reason codes tied to stock—those controls matter more than generic “GST ready” labels.",
+          "Chart mapping, opening balances, credit workflows, and return reason codes tied to stock, those controls matter more than generic “GST ready” labels.",
       },
       {
         question: "How should branch transfers appear to auditors?",
@@ -100,17 +100,17 @@ export const FAQ_HUB_CATEGORIES: readonly FaqHubCategory[] = [
       {
         question: "How does Zoveto improve stock accuracy?",
         answer:
-          "Through posted GRN, reservations against orders, scan-backed picks where you adopt them, and branch-aware availability—accuracy is a behaviour plus software discipline.",
+          "Through posted GRN, reservations against orders, scan-backed picks where you adopt them, and branch-aware availability, accuracy is a behaviour plus software discipline.",
       },
       {
         question: "Can Zoveto model multi-branch and in-transit stock?",
         answer:
-          "Yes for the footprint Zoveto targets—walk your transfer and RTO patterns on a demo so in-transit states match how your team actually moves goods.",
+          "Yes for the footprint Zoveto targets, walk your transfer and RTO patterns on a demo so in-transit states match how your team actually moves goods.",
       },
       {
         question: "What warehouse capabilities should I validate in a demo?",
         answer:
-          "Pick tasks, dispatch closure, exception handling, and finance visibility on the same timeline—skip checklist theatre that never touches your dock process.",
+          "Pick tasks, dispatch closure, exception handling, and finance visibility on the same timeline, skip checklist theatre that never touches your dock process.",
       },
       {
         question: "How do returns affect inventory and GST together?",
@@ -120,17 +120,17 @@ export const FAQ_HUB_CATEGORIES: readonly FaqHubCategory[] = [
       {
         question: "When is a dedicated WMS still required?",
         answer:
-          "When automation depth, robotics, or carrier constraints exceed Zoveto’s current target footprint—be honest about pick volume and error cost in discovery.",
+          "When automation depth, robotics, or carrier constraints exceed Zoveto’s current target footprint, be honest about pick volume and error cost in discovery.",
       },
       {
         question: "What is cycle counting discipline in plain terms?",
         answer:
-          "Count subsets of bins on a cadence, post variances immediately, and investigate root causes—software makes variance visible; process makes it shrink.",
+          "Count subsets of bins on a cadence, post variances immediately, and investigate root causes, software makes variance visible; process makes it shrink.",
       },
       {
         question: "How does Zoveto help with slow-moving and dead stock?",
         answer:
-          "Aging and velocity views tied to the same ledger as sales—so purchasing and finance agree which SKUs tie cash before write-offs surprise leadership.",
+          "Aging and velocity views tied to the same ledger as sales, so purchasing and finance agree which SKUs tie cash before write-offs surprise leadership.",
       },
     ],
   },
@@ -146,12 +146,12 @@ export const FAQ_HUB_CATEGORIES: readonly FaqHubCategory[] = [
       {
         question: "Can field teams work without constant WhatsApp checks?",
         answer:
-          "The goal is that commitments, tasks, and customer timelines read from the same record as dispatch—reducing phone round-trips when discipline is maintained.",
+          "The goal is that commitments, tasks, and customer timelines read from the same record as dispatch, reducing phone round-trips when discipline is maintained.",
       },
       {
         question: "Does Zoveto include pipeline automation like large CRM suites?",
         answer:
-          "Zoveto focuses CRM depth on operational continuity for Indian SMB distribution patterns—not every marketing automation bell found in enterprise CRM catalogs.",
+          "Zoveto focuses CRM depth on operational continuity for Indian SMB distribution patterns, not every marketing automation bell found in enterprise CRM catalogs.",
       },
       {
         question: "How should we evaluate credit control?",
@@ -161,7 +161,7 @@ export const FAQ_HUB_CATEGORIES: readonly FaqHubCategory[] = [
       {
         question: "How do dealer schemes and price lists stay governable?",
         answer:
-          "Master data ownership, approval on exceptions, and posted evidence for special pricing—so promotions do not become unauditable side deals in inboxes.",
+          "Master data ownership, approval on exceptions, and posted evidence for special pricing, so promotions do not become unauditable side deals in inboxes.",
       },
     ],
   },
@@ -172,7 +172,7 @@ export const FAQ_HUB_CATEGORIES: readonly FaqHubCategory[] = [
       {
         question: "Where does Zoveto apply AI responsibly?",
         answer:
-          "On repeatable exception loops with transparent rules—think triage, suggestions inside policy bands, and surfacing anomalies—not black-box autopilot on money postings.",
+          "On repeatable exception loops with transparent rules, think triage, suggestions inside policy bands, and surfacing anomalies, not black-box autopilot on money postings.",
       },
       {
         question: "Do I need clean masters before turning on automation?",
@@ -182,7 +182,7 @@ export const FAQ_HUB_CATEGORIES: readonly FaqHubCategory[] = [
       {
         question: "What outcomes should we measure after automation?",
         answer:
-          "Planner response time to exceptions, invoice correction rate, stockout frequency on protected SKUs, and cash collection cadence—pick three and review weekly.",
+          "Planner response time to exceptions, invoice correction rate, stockout frequency on protected SKUs, and cash collection cadence, pick three and review weekly.",
       },
       {
         question: "Can automation replace approvals for GST-sensitive flows?",
@@ -192,7 +192,7 @@ export const FAQ_HUB_CATEGORIES: readonly FaqHubCategory[] = [
       {
         question: "What is a safe first automation for an Indian SMB?",
         answer:
-          "Low-risk reminders on overdue tasks with clear owners—prove adoption before automating postings that touch tax or cash.",
+          "Low-risk reminders on overdue tasks with clear owners, prove adoption before automating postings that touch tax or cash.",
       },
     ],
   },

@@ -127,7 +127,7 @@ export function CompareIndexHub() {
             </Text>
             <Text variant="body-lg" as="p" className="max-w-prose text-pretty text-muted md:text-[17px] md:leading-relaxed">
               Side-by-side guides for teams who cannot afford vague “ERP vs ERP” marketing. Each page states where the
-              alternative is legitimately strong—and where execution, inventory, and handoffs diverge from how Zoveto
+              alternative is legitimately strong, and where execution, inventory, and handoffs diverge from how Zoveto
               is built.
             </Text>
           </div>
@@ -141,11 +141,11 @@ export function CompareIndexHub() {
               <ul className="space-y-2.5 text-sm leading-snug text-muted">
                 <li className="flex gap-2">
                   <span className="mt-1.5 size-1 shrink-0 rounded-full bg-blue/80" aria-hidden />
-                  <span>Start with positioning and the decision matrix—same row names on every guide so you can scan.</span>
+                  <span>Start with positioning and the decision matrix, same row names on every guide so you can scan.</span>
                 </li>
                 <li className="flex gap-2">
                   <span className="mt-1.5 size-1 shrink-0 rounded-full bg-blue/80" aria-hidden />
-                  <span>Then read workflow and “who should choose which”—we credit competitor strengths, not only gaps.</span>
+                  <span>Then read workflow and “who should choose which”, we credit competitor strengths, not only gaps.</span>
                 </li>
                 <li className="flex gap-2">
                   <span className="mt-1.5 size-1 shrink-0 rounded-full bg-blue/80" aria-hidden />
@@ -187,7 +187,7 @@ export function CompareIndexHub() {
           </Text>
           <p className="mb-6 max-w-prose text-sm leading-relaxed text-muted md:text-[15px]">
             If your stack is not listed, we still map Zoveto to how you move stock, cash, and orders today. Send what
-            you run—we reply with fit notes, not a generic deck.
+            you run. We reply with fit notes, not a generic deck.
           </p>
           <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <Link

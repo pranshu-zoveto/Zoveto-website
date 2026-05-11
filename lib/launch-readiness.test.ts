@@ -89,6 +89,69 @@ describe("launch readiness static checks", () => {
     assert.ok(posthogLoader.includes(`defaults: "2026-01-30"`), "PostHog init must use SDK defaults 2026-01-30");
   });
 
+  it("wires named marketing conversion events", () => {
+    const tracking = read("lib/tracking.ts");
+    for (const eventName of [
+      "demo_request_submit",
+      "access_request_submit",
+      "contact_form_submit",
+      "demo_schedule_click",
+      "pricing_view",
+      "compare_page_view",
+      "whatsapp_click",
+      "newsletter_signup",
+      "calculator_used",
+      "calculator_export_request",
+    ]) {
+      assert.ok(tracking.includes(eventName), `tracking contract missing ${eventName}`);
+    }
+
+    assert.ok(read("components/forms/DemoBookingForm.tsx").includes("demo_request_submit"));
+    assert.ok(read("app/contact/ContactClient.tsx").includes("NEXT_PUBLIC_CALENDLY_DEMO_URL"));
+    assert.ok(read("app/contact/ContactClient.tsx").includes("demo_schedule_click"));
+    assert.ok(read("app/signup/_SignupClient.tsx").includes("access_request_submit"));
+    assert.ok(read("components/forms/LeadForm.tsx").includes("contact_form_submit"));
+    assert.ok(read("app/pricing/PricingClient.tsx").includes("pricing_view"));
+    assert.ok(read("app/compare/[slug]/page.tsx").includes("compare_page_view"));
+    assert.ok(read("components/layout/WhatsAppFloatButton.tsx").includes("whatsapp_click"));
+    assert.ok(read("components/layout/FooterNewsletter.tsx").includes("newsletter_signup"));
+    assert.ok(read("app/reorder-point-calculator/ReorderPointCalculatorClient.tsx").includes("calculator_used"));
+  });
+
+  it("exposes compare navigation and zero-client implementation trust path", () => {
+    const navbar = read("components/layout/Navbar.tsx");
+    assert.ok(navbar.includes("/compare") && navbar.includes("Compare"), "navbar must link to compare hub");
+    assert.ok(navbar.includes("Book a 20-min demo"), "primary nav CTA should be demo-led");
+
+    const implementation = read("app/implementation/page.tsx");
+    assert.ok(implementation.includes("Founder-led implementation"), "implementation page needs clear positioning");
+    assert.ok(implementation.includes("No fake review schema"), "implementation page must avoid fake-review claims");
+
+    const contact = read("app/contact/ContactClient.tsx");
+    assert.ok(contact.includes("<DemoBookingForm />"), "contact should fall back to internal demo form");
+  });
+
+  it("keeps zero-client public copy honest", () => {
+    const checkedFiles = [
+      "app/implementation/page.tsx",
+      "components/sections/ZeroClientTrustSection.tsx",
+      "app/contact/ContactClient.tsx",
+      "app/pricing/PricingClient.tsx",
+      "components/trust/ClientProofSlots.tsx",
+    ];
+
+    for (const rel of checkedFiles) {
+      const src = read(rel);
+      assert.ok(!src.includes("Rock Tear"), `${rel} must not mention excluded case-study material`);
+      assert.ok(!src.includes("Trusted by 100"), `${rel} must not invent customer proof`);
+      assert.ok(!src.includes("★★★★★"), `${rel} must not invent ratings`);
+    }
+
+    const pricing = read("lib/pricing-plans.ts");
+    assert.ok(pricing.includes("Explore the system before committing. No credit card, no time limit."));
+    assert.ok(!pricing.includes("Request access"), "paid pricing CTAs should be demo-led");
+  });
+
   it("keeps required trust links in footer", () => {
     const footer = read("components/layout/Footer.tsx");
     const required = ['"/security"', '"/privacy"', '"/terms"'];
@@ -124,6 +187,14 @@ describe("launch readiness static checks", () => {
       nconf.includes("https://*.posthog.com") && nconf.includes("https://*.i.posthog.com"),
       "CSP must allow PostHog API / ingest hosts",
     );
+    assert.ok(
+      nconf.includes("prisma-instrumentation-stub"),
+      "next.config must alias @prisma/instrumentation (no Prisma app; avoids Sentry→Prisma webpack noise)",
+    );
+    assert.ok(
+      fs.existsSync(path.join(process.cwd(), "scripts/shims/prisma-instrumentation-stub.cjs")),
+      "Prisma instrumentation stub shim must exist",
+    );
   });
 
   it("keeps primary conversion CTAs at or above 44px touch target", () => {
@@ -141,5 +212,13 @@ describe("launch readiness static checks", () => {
     assert.ok(demoForm.includes("min-h-[52px]"), "demo form submit must stay >=44px");
     assert.ok(buttonVariantsFile.includes('default: "h-11'), "button default size must stay >=44px");
     assert.ok(buttonVariantsFile.includes('lg: "h-12'), "button lg size must stay >=44px");
+  });
+
+  it("keeps desktop GSAP hero behind responsive and reduced-motion guards", () => {
+    const hero = read("components/sections/dashboard-scroll-desktop.tsx");
+    assert.ok(hero.includes("gsap.matchMedia"), "desktop GSAP hero should be matchMedia-gated");
+    assert.ok(hero.includes("prefers-reduced-motion"), "desktop GSAP hero must respect reduced motion");
+    assert.ok(!hero.includes("normalizeScroll(true)"), "desktop GSAP hero should not normalize global scroll by default");
+    assert.ok(!hero.includes('filter: "blur'), "desktop GSAP hero should avoid expensive filter animation");
   });
 });

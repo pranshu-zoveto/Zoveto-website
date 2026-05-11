@@ -12,9 +12,9 @@ export const PRICING_PAGE_FAQ: PricingPageFaqItem[] = [
       "Zoveto pricing starts with a Free tier for structured testing, annual paid plans with Starter from ₹5,999/mo effective on yearly billing or ₹7,999/mo when billed monthly (up to 10 users), and Growth from ₹14,999/mo effective (15 users including HRMS and higher automation limits), plus Enterprise scoped after discovery. Listed amounts exclude GST; invoices follow Indian GST rules where applicable. Yearly billing is the default on the pricing page; monthly is available if you prefer shorter commitments.",
   },
   {
-    question: "What happens after we request access?",
+    question: "What happens after we book a demo?",
     answer:
-      "Your request enters founder review. If the use case is a fit for the current batch, we schedule manual onboarding before opening a workspace. This keeps early access controlled instead of creating instant trial accounts.",
+      "We run a short founder-led fit check, review your current operating workflow, and recommend a practical first rollout path if Zoveto is a fit. The goal is honest scope, not instant trial accounts that leave your team guessing.",
   },
   {
     question: "How does yearly billing compare to monthly?",
@@ -24,12 +24,12 @@ export const PRICING_PAGE_FAQ: PricingPageFaqItem[] = [
   {
     question: "Can we start on Starter and move to Growth later?",
     answer:
-      "Yes. Most teams begin on Starter or Growth and upgrade when locations, users, or automation volume grows. Upgrades are designed to keep your data and workflows on the same stack—no replatforming project.",
+      "Yes. Most teams begin on Starter or Growth and upgrade when locations, users, or automation volume grows. Upgrades are designed to keep your data and workflows on the same stack, no replatforming project.",
   },
   {
     question: "What does Enterprise cover versus public plans?",
     answer:
-      "Enterprise is for larger orgs that need custom SLAs, deeper integrations, dedicated success coverage, and procurement-friendly terms. Pricing is scoped to your footprint after a short discovery call—not a generic per-seat grid.",
+      "Enterprise is for larger orgs that need custom SLAs, deeper integrations, dedicated success coverage, and procurement-friendly terms. Pricing is scoped to your footprint after a short discovery call, not a generic per-seat grid.",
   },
   {
     question: "Are prices inclusive of GST?",

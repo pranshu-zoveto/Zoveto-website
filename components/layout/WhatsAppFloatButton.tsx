@@ -1,10 +1,13 @@
+"use client";
+
 import { getWhatsAppFloatHref } from "@/lib/whatsapp-float";
+import { trackMarketingEvent } from "@/lib/tracking";
 
 const focusRing =
   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue/50 focus-visible:ring-offset-2 focus-visible:ring-offset-card";
 
 /**
- * Fixed WhatsApp chat entry — plain anchor (no extra JS), fixed size (no CLS),
+ * Fixed WhatsApp chat entry - plain anchor (no extra JS), fixed size (no CLS),
  * z-[95] so it stays below the cookie banner (z-[120]) and settings modal (z-[210]),
  * above the centered sticky promo (z-[90]) on the right gutter.
  */
@@ -24,6 +27,7 @@ export function WhatsAppFloatButton() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat with Zoveto on WhatsApp"
+        onClick={() => trackMarketingEvent("whatsapp_click", { source: "floating_button" })}
         className={
           "pointer-events-auto flex h-14 w-14 items-center justify-center rounded-full border border-border/90 " +
           "bg-card shadow-[var(--shadow-float)] transition-transform motion-safe:duration-200 " +

@@ -323,6 +323,19 @@
 }
 
 @layer utilities {
+  .prose-justify {
+    text-align: left;
+    text-wrap: pretty;
+  }
+
+  @media (min-width: 768px) {
+    .prose-justify {
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+    }
+  }
+
   .cursor-dot,
   .cursor-ring {
     position: fixed;

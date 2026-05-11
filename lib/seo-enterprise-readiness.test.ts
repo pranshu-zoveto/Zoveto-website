@@ -16,7 +16,7 @@ describe("enterprise seo/aeo readiness", () => {
   });
 
   it("ships competitor comparison pages and includes them in sitemap", () => {
-    assert.equal(COMPARE_PAGES.length, 5, "Expected 5 competitor pages");
+    assert.equal(COMPARE_PAGES.length, 8, "Expected 8 competitor pages after growth update");
     const entries = buildSitemapEntries().map((entry) => entry.url);
     for (const page of COMPARE_PAGES) {
       assert.ok(entries.some((url) => url.endsWith(`/compare/${page.slug}`)), `Missing sitemap entry for /compare/${page.slug}`);

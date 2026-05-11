@@ -3,6 +3,7 @@ import Link from "next/link";
 import { BreadcrumbSchema } from "@/components/seo/BreadcrumbSchema";
 import { FAQPageSchema } from "@/components/seo/FAQPageSchema";
 import { Text } from "@/components/ui/Text";
+import { FaqAccordion } from "@/components/ui/FaqAccordion";
 import { FluidMarketingSection } from "@/components/layout/FluidMarketingSection";
 import { bandIndexForSection } from "@/lib/marketing-bands";
 import {
@@ -113,17 +114,8 @@ export default function RockTearCaseStudyPage() {
           <Text variant="heading-1" as="h2" className="mb-6 text-xl text-foreground md:text-2xl">
             Frequently asked questions
           </Text>
-          <div className="max-w-3xl space-y-8">
-            {ROCK_TEAR_FAQS.map((f) => (
-              <div key={f.question}>
-                <Text variant="heading-1" as="h3" className="mb-2 text-base font-semibold text-foreground md:text-lg">
-                  {f.question}
-                </Text>
-                <Text variant="body-base" className="text-pretty text-muted">
-                  {f.answer}
-                </Text>
-              </div>
-            ))}
+          <div className="max-w-3xl">
+            <FaqAccordion items={ROCK_TEAR_FAQS} idPrefix="case-rock-tear-parts" />
           </div>
         </FluidMarketingSection>
 
@@ -164,7 +156,7 @@ export default function RockTearCaseStudyPage() {
           <div className="mx-auto max-w-3xl rounded-2xl border border-blue/25 bg-blue/[0.06] px-8 py-12 text-center md:px-12 md:py-16">
             <h2 className="text-2xl font-bold tracking-tight text-foreground md:text-3xl">Book a 20-minute demo</h2>
             <p className="mx-auto mt-4 max-w-lg text-sm leading-relaxed text-muted md:text-base">
-              Walk quote-to-cash and dispatch with a Zoveto operator using your own scenario questions—not a canned
+              Walk quote-to-cash and dispatch with a Zoveto operator using your own scenario questions, not a canned
               slide deck.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">

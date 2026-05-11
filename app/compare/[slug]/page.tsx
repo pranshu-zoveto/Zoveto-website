@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { CompareDetailPage } from "@/components/compare/CompareDetailPage";
 import { BreadcrumbSchema } from "@/components/seo/BreadcrumbSchema";
 import { FAQPageSchema } from "@/components/seo/FAQPageSchema";
+import { MarketingPageView } from "@/components/tracking/MarketingPageView";
 import { canonicalUrl } from "@/lib/site";
 import { COMPARE_PAGES, getComparePageBySlug, getComparePageFaqs } from "@/lib/compare-pages";
 
@@ -22,7 +23,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const year = new Date().getFullYear();
   const title = page.phase1
     ? page.phase1.metaTitle
-    : `Zoveto vs ${page.competitor} — Full Comparison for ${year}`;
+    : `Zoveto vs ${page.competitor}, Full Comparison for ${year}`;
   const description = page.phase1 ? page.phase1.metaDescription : page.description;
   return {
     title,
@@ -71,6 +72,10 @@ export default async function ComparePage({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(comparisonSchema) }}
       />
       <FAQPageSchema faqs={getComparePageFaqs(page)} url={canonicalUrl(`/compare/${page.slug}`)} />
+      <MarketingPageView
+        eventName="compare_page_view"
+        params={{ compare_slug: page.slug, competitor: page.competitor }}
+      />
       <div className="container relative z-10 mx-auto max-w-content px-4 sm:px-6">
         <CompareDetailPage page={page} />
       </div>

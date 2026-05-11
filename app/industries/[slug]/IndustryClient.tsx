@@ -15,6 +15,7 @@ import { DashboardLight } from "@/components/sections/dashboard/DashboardLight";
 import { OperationalFlowPreview } from "@/components/operational-proof/OperationalFlowPreview";
 import { InventoryLedgerPreview } from "@/components/industry/InventoryLedgerPreview";
 import { SparePartsPhase1Sections } from "@/components/industry/SparePartsPhase1Sections";
+import { FaqAccordion } from "@/components/ui/FaqAccordion";
 
 export function IndustryClient({ slug }: { slug: string }) {
   const data = getIndustryBySlug(slug);
@@ -33,7 +34,7 @@ export function IndustryClient({ slug }: { slug: string }) {
             {h1}
           </h1>
           <DirectAnswerLead text={data.directAnswer} />
-          <p className="max-w-prose text-base leading-relaxed text-muted md:text-lg">{data.heroSub}</p>
+          <p className="prose-justify max-w-prose text-base leading-relaxed text-muted md:text-lg">{data.heroSub}</p>
           <div className="flex flex-col gap-3 pt-2 sm:flex-row sm:items-center">
             <Link href="/signup">
               <Button variant="primary" size="lg" className="min-h-[48px] w-full sm:w-auto">
@@ -55,8 +56,8 @@ export function IndustryClient({ slug }: { slug: string }) {
             <h2 className="text-xl font-semibold tracking-tight text-foreground md:text-2xl">
               Where operations break today
             </h2>
-            <p className="mt-2 text-sm leading-relaxed text-muted">
-              Specific failure modes for {data.name.toLowerCase()} teams—not generic “efficiency” language.
+            <p className="prose-justify mt-2 text-sm leading-relaxed text-muted">
+              Specific failure modes for {data.name.toLowerCase()} teams, not generic “efficiency” language.
             </p>
           </div>
           <div className="grid gap-6 md:gap-8 lg:grid-cols-2">
@@ -73,7 +74,7 @@ export function IndustryClient({ slug }: { slug: string }) {
                 </div>
                 <div className="space-y-2">
                   <h3 className="text-sm font-semibold text-foreground">{p.title}</h3>
-                  <p className="text-sm leading-relaxed text-muted">{p.description}</p>
+                  <p className="prose-justify text-sm leading-relaxed text-muted">{p.description}</p>
                 </div>
               </article>
             ))}
@@ -86,9 +87,9 @@ export function IndustryClient({ slug }: { slug: string }) {
           <h2 className="max-w-2xl text-2xl font-semibold tracking-tight text-foreground md:text-3xl">
             How Zoveto maps to your workflows
           </h2>
-          <p className="max-w-prose text-sm leading-relaxed text-muted md:text-base">
+          <p className="prose-justify max-w-prose text-sm leading-relaxed text-muted md:text-base">
             {data.name} operations on the Zoveto Company Operating System stay coherent when Command Center, Operations,
-            Inventory, CRM, and Finance read the same posted events—not parallel spreadsheets or siloed “ERP vs CRM vs
+            Inventory, CRM, and Finance read the same posted events, not parallel spreadsheets or siloed “ERP vs CRM vs
             WMS” stacks.
           </p>
         </div>
@@ -96,7 +97,7 @@ export function IndustryClient({ slug }: { slug: string }) {
           {data.modulePlaybooks.map((p) => (
             <article key={p.id} className="float-card flex flex-col gap-4 p-8 md:p-9">
               <h3 className="text-lg font-semibold text-foreground">{p.title}</h3>
-              <p className="flex-1 text-sm leading-relaxed text-muted">{p.body}</p>
+              <p className="prose-justify flex-1 text-sm leading-relaxed text-muted">{p.body}</p>
               <Link
                 href={p.href}
                 className="text-sm font-semibold text-teal underline-offset-4 hover:text-foreground hover:underline"
@@ -117,8 +118,8 @@ export function IndustryClient({ slug }: { slug: string }) {
             <h2 className="text-2xl font-semibold tracking-tight text-foreground md:text-3xl">
               Real system workflow
             </h2>
-            <p className="mt-2 max-w-prose text-sm leading-relaxed text-muted md:text-base">
-              One chain from commercial demand to posted dispatch and finance—executed inside Zoveto without retyping
+            <p className="prose-justify mt-2 max-w-prose text-sm leading-relaxed text-muted md:text-base">
+              One chain from commercial demand to posted dispatch and finance, executed inside Zoveto without retyping
               the same facts into a second “system of record.”
             </p>
           </div>
@@ -131,7 +132,7 @@ export function IndustryClient({ slug }: { slug: string }) {
               </span>
               <div>
                 <h3 className="text-base font-semibold text-foreground">{step.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted">{step.detail}</p>
+                <p className="prose-justify mt-2 text-sm leading-relaxed text-muted">{step.detail}</p>
               </div>
             </li>
           ))}
@@ -144,8 +145,8 @@ export function IndustryClient({ slug }: { slug: string }) {
           <h2 className="text-2xl font-semibold tracking-tight text-foreground md:text-3xl">
             Command surface, execution flow, and stock structure
           </h2>
-          <p className="text-sm leading-relaxed text-muted">
-            Representative UI from the same product surface your teams would run day to day—not decorative mockups.
+          <p className="prose-justify text-sm leading-relaxed text-muted">
+            Representative UI from the same product surface your teams would run day to day, not decorative mockups.
           </p>
         </div>
         <div className="grid gap-8 lg:grid-cols-3">
@@ -201,7 +202,7 @@ export function IndustryClient({ slug }: { slug: string }) {
         <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
           <div className="space-y-5">
             <h2 className="text-2xl font-semibold tracking-tight text-foreground md:text-3xl">Outcomes you can stand behind</h2>
-            <p className="text-sm leading-relaxed text-muted">
+            <p className="prose-justify text-sm leading-relaxed text-muted">
               We do not quote fabricated percentages or rupee savings. Below is the qualitative impact shape teams
               target when execution is posted in one system.
             </p>
@@ -228,7 +229,7 @@ export function IndustryClient({ slug }: { slug: string }) {
               ))}
             </ul>
             <p className="text-sm font-medium text-foreground">
-              Modular ERP + WMS + CRM, deployed as one operating architecture—not a slide deck.
+              Modular ERP + WMS + CRM, deployed as one operating architecture, not a slide deck.
             </p>
           </div>
         </div>
@@ -236,16 +237,9 @@ export function IndustryClient({ slug }: { slug: string }) {
 
       {slug !== "spare-parts-trading" ? (
         <FluidMarketingSection band={bandIndexForSection(0)} overlapTop stackBase>
-          <div className="mx-auto max-w-3xl space-y-6 rounded-2xl border border-border bg-card px-6 py-10 md:px-10 md:py-12">
+          <div className="mx-auto max-w-3xl space-y-6">
             <h2 className="text-xl font-semibold tracking-tight text-foreground md:text-2xl">Industry FAQs</h2>
-            <dl className="space-y-6 text-left">
-              {data.faqs.map((f) => (
-                <div key={f.q}>
-                  <dt className="font-semibold text-foreground">{f.q}</dt>
-                  <dd className="mt-2 text-sm leading-relaxed text-muted">{f.a}</dd>
-                </div>
-              ))}
-            </dl>
+            <FaqAccordion items={data.faqs} idPrefix={`industry-${slug}`} />
           </div>
         </FluidMarketingSection>
       ) : null}
@@ -255,8 +249,8 @@ export function IndustryClient({ slug }: { slug: string }) {
           <h2 className="text-2xl font-bold tracking-tight text-foreground md:text-3xl">
             Get your operations set up on Zoveto
           </h2>
-          <p className="mx-auto mt-4 max-w-lg text-sm leading-relaxed text-muted md:text-base">
-            We onboard every business manually—configuration, data cutover, and training are part of the rollout, not
+          <p className="prose-justify mx-auto mt-4 max-w-lg text-sm leading-relaxed text-muted md:text-base">
+            We onboard every business manually, configuration, data cutover, and training are part of the rollout, not
             an afterthought.
           </p>
           <div className="mt-8 flex justify-center">

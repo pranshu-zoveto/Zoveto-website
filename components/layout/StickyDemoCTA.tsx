@@ -16,7 +16,7 @@ export function StickyDemoCTA() {
 
   const isExcludedPage =
     pathname === "/contact" || pathname === "/signup" || pathname?.startsWith("/signup");
-  const primaryLabel = pathname === "/pricing" ? "Talk to us" : "Request Access";
+  const primaryLabel = pathname === "/pricing" ? "Talk to us" : "See setup path";
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -81,7 +81,7 @@ export function StickyDemoCTA() {
               Book demo
             </Button>
           </Link>
-          <Link href="/signup" className="w-full sm:flex-none sm:w-auto">
+          <Link href="/implementation" className="w-full sm:flex-none sm:w-auto">
             <Button className="min-h-[44px] w-full gap-1.5 whitespace-nowrap px-3 text-xs font-semibold sm:w-auto sm:px-6 sm:text-sm">
               {primaryLabel} <ArrowRight size={14} />
             </Button>

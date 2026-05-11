@@ -114,7 +114,7 @@ export const MODULES: DashboardModule[] = [
       { value: "1 click", label: "GST return filing" },
     ],
     bullets: [
-      "Double-entry accounting - auto-posted",
+      "Double-entry accounting: auto-posted",
       "GSTR-1, GSTR-3B, and e-invoice reconciliation",
       "Multi-branch consolidated P&L",
       "Bank reconciliation and payment matching",

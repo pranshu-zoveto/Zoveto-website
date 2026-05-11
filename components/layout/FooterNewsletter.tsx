@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { cn } from "@/lib/utils";
 import { createLead } from "@/lib/api";
+import { trackMarketingEvent } from "@/lib/tracking";
 import { FormToast } from "@/components/ui/FormToast";
 
 type FooterNewsletterProps = {
@@ -33,6 +34,10 @@ export function FooterNewsletter({ inputId = "footer-newsletter-email", variant 
         source: "footer_product_updates",
       });
       setEmail("");
+      trackMarketingEvent("newsletter_signup", {
+        form: "footer_product_updates",
+        variant,
+      });
       setStatus({
         kind: "success",
         message: "You are in. We will send product updates and early-access invites.",

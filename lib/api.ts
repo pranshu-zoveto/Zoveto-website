@@ -1,4 +1,4 @@
-// lib/api.ts — Production COS Integration for Zoveto Website
+// lib/api.ts - Production COS Integration for Zoveto Website
 
 import { readErrorMessageFromResponse } from "@/lib/http-json";
 import { LEAD_STAFF_INBOX } from "@/lib/lead-intake-mail";
@@ -52,7 +52,7 @@ export interface DemoPayload {
 
 // ── API FUNCTIONS ────────────────────────────────────────────
 
-/** COS `WebsiteContactController` — POST /api/leads (`WebsiteLeadDto`). */
+/** COS `WebsiteContactController` - POST /api/leads (`WebsiteLeadDto`). */
 export async function createLead(data: LeadPayload): Promise<LeadResponse> {
   const fullName =
     [data.firstName, data.lastName].filter((s) => s?.trim()).join(" ").trim() || data.firstName.trim();
@@ -82,7 +82,7 @@ export async function createLead(data: LeadPayload): Promise<LeadResponse> {
   return res.json() as Promise<LeadResponse>;
 }
 
-/** COS `WebsiteContactController` — POST /api/demo (`WebsiteDemoDto`). */
+/** COS `WebsiteContactController` - POST /api/demo (`WebsiteDemoDto`). */
 export async function bookDemo(data: DemoPayload): Promise<{ message: string }> {
   const fullName =
     [data.firstName, data.lastName].filter((s) => s?.trim()).join(" ").trim() || data.firstName.trim();

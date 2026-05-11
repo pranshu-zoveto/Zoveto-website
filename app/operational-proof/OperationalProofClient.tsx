@@ -22,7 +22,7 @@ export function OperationalProofClient() {
               <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-blue">Operating Patterns</p>
               <p className="mt-3 text-sm font-medium text-muted md:text-base">Observed workflows. Broken handoffs. Cleaner operating paths.</p>
               <h1 className="mt-4 max-w-xl text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-[2.75rem] lg:leading-[1.08]">
-                How operations actually run — and how they should
+                How operations actually run, and how they should
               </h1>
               <p className="mt-5 max-w-lg text-base leading-relaxed text-muted md:text-lg">
                 Patterns from inventory, orders, finance, and team workflows where the record trail breaks.
@@ -77,7 +77,7 @@ export function OperationalProofClient() {
               <div className="relative z-10">
                 <h3 className="text-xl font-bold tracking-tight text-foreground md:text-2xl">See this in your business</h3>
                 <p className="mx-auto mt-3 max-w-lg text-sm text-muted md:text-base">
-                  Walk the same flows with your SKUs, stages, and roles — demo on your reality, not a slide deck.
+                  Walk the same flows with your SKUs, stages, and roles, demo on your reality, not a slide deck.
                 </p>
                 <div className="mt-8 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
                   <Link href="/contact#demo" className="sm:inline-flex">

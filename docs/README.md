@@ -5,3 +5,4 @@ Only **contributor-facing** notes live here. Strategy decks, growth loops, and a
 | Doc | Purpose |
 | --- | --- |
 | [copy-style-guide.md](./copy-style-guide.md) | Voice and wording for marketing UI copy |
+| [../CHANGELOG.md](../CHANGELOG.md) | Daily team updates, release notes, and upgrade log |

@@ -9,12 +9,12 @@ import {
 
 /**
  * Loads GA4 via the Google tag (gtag.js) only after analytics consent.
- * Script URL is `googletagmanager.com/gtag/js` — that is the official GA4 loader,
+ * Script URL is `googletagmanager.com/gtag/js` - that is the official GA4 loader,
  * not a Google Tag Manager container.
  * `send_page_view: false` avoids double-counting: {@link AnalyticsRouteTracker} sends page_view.
  *
  * Set `NEXT_PUBLIC_GA_MEASUREMENT_ID` in `.env.local` / Vercel (must match GA Admin → Data streams).
- * Only this component injects the Google tag — do not add a second gtag snippet in `layout` or per-page.
+ * Only this component injects the Google tag - do not add a second gtag snippet in `layout` or per-page.
  */
 export function ConditionalAnalyticsLoader() {
   const [enabled, setEnabled] = useState(false);

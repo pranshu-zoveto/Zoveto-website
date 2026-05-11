@@ -29,7 +29,7 @@ export async function POST(req: Request) {
     const message = typeof parsedBody.message === "string" ? parsedBody.message.trim() : "";
 
     const emailResult = await sendFormNotificationEmail({
-      subject: `[Website] Demo request — ${company}`,
+      subject: `[Website] Demo request, ${company}`,
       replyTo: email || undefined,
       text: [
         "New demo request",

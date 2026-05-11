@@ -10,7 +10,14 @@ import {
 } from "@/lib/compare-pages";
 import { phase1CompareWordCount } from "@/lib/phase1-compare-zoho-tally";
 
-const REQUIRED_SLUGS = ["zoho-vs-zoveto", "tally-vs-zoveto", "odoo-vs-zoveto"] as const;
+const REQUIRED_SLUGS = [
+  "zoho-vs-zoveto",
+  "tally-vs-zoveto",
+  "odoo-vs-zoveto",
+  "vyapar-vs-zoveto",
+  "freshsales-vs-zoveto",
+  "gohighlevel-vs-zoveto",
+] as const;
 
 describe("compare-pages", () => {
   it("includes high-intent slugs and unique competitors", () => {
@@ -100,5 +107,15 @@ describe("compare-pages", () => {
     assert.equal(new Set(teasers).size, teasers.length);
     const lenses = COMPARE_PAGES.map((p) => p.hubLens.trim().toLowerCase());
     assert.equal(new Set(lenses).size, lenses.length);
+  });
+
+  it("new compare pages avoid excluded case-study references", () => {
+    const newSlugs = ["vyapar-vs-zoveto", "freshsales-vs-zoveto", "gohighlevel-vs-zoveto"];
+    for (const slug of newSlugs) {
+      const page = getComparePageBySlug(slug);
+      assert.ok(page, slug);
+      const haystack = JSON.stringify(page).toLowerCase();
+      assert.doesNotMatch(haystack, /rock\s*tear|rtp/);
+    }
   });
 });

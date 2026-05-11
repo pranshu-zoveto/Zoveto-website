@@ -47,7 +47,7 @@ export async function POST(request: Request) {
     };
 
     const emailResult = await sendFormNotificationEmail({
-      subject: `[Website] Contact request — ${company}`,
+      subject: `[Website] Contact request, ${company}`,
       replyTo: email,
       text: [
         "New contact request",

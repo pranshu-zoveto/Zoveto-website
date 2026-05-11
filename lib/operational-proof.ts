@@ -14,7 +14,7 @@ export const operationalProofs: OperationalProof[] = [
       "Stock truth lives in spreadsheets and memory. Dispatch runs on verbal handoffs, so mismatches surface only when customers complain.",
     metaTitle: "Inventory chaos to warehouse execution | Zoveto Operating Pattern",
     metaDescription:
-      "Observed SME pattern: no SKU discipline, manual counts, dispatch errors. How barcode, zones, and scan validation redesign the flow—no client names.",
+      "Observed SME pattern: no SKU discipline, manual counts, dispatch errors. How barcode, zones, and scan validation redesign the flow, no client names.",
     currentRealitySteps: [
       { label: "Inbound", detail: "GRN on paper or WhatsApp photo; SKU optional" },
       { label: "Storage", detail: "Bin location in someone’s head; recount when disputed" },
@@ -54,10 +54,10 @@ export const operationalProofs: OperationalProof[] = [
     outcomeMetrics: ["65% faster processing", "90% fewer errors"],
     ctaLabel: "View system flow",
     problemSummary:
-      "Orders arrive on calls and chats, get retyped into sheets, and lose linkage to stock and billing—so revenue recognition lags and mistakes multiply.",
+      "Orders arrive on calls and chats, get retyped into sheets, and lose linkage to stock and billing, so revenue recognition lags and mistakes multiply.",
     metaTitle: "Manual orders to flow control | Zoveto Operating Pattern",
     metaDescription:
-      "Pattern: WhatsApp orders, duplicates, missed dispatch, late invoices. One pipeline, one record, warehouse sync, instant invoice trigger—pattern-based, not a client story.",
+      "Pattern: WhatsApp orders, duplicates, missed dispatch, late invoices. One pipeline, one record, warehouse sync, instant invoice trigger, pattern-based, not a client story.",
     currentRealitySteps: [
       { label: "Capture", detail: "Screenshots and voice notes to an order desk" },
       { label: "Entry", detail: "Parallel Excel and Tally entries; version drift" },
@@ -92,10 +92,10 @@ export const operationalProofs: OperationalProof[] = [
     outcomeMetrics: ["50% faster reconciliation", "Single dashboard truth"],
     ctaLabel: "View system flow",
     problemSummary:
-      "Sales and ops live in Excel while finance lives in Tally—so nobody sees the same numbers until week-end merges and arguments.",
+      "Sales and ops live in Excel while finance lives in Tally, so nobody sees the same numbers until week-end merges and arguments.",
     metaTitle: "Excel + Tally to one operating system | Zoveto Operating Pattern",
     metaDescription:
-      "Split systems and manual reconciliation. How connected teams, live financial ops, and one dashboard replace the merge cycle—pattern-led proof.",
+      "Split systems and manual reconciliation. How connected teams, live financial ops, and one dashboard replace the merge cycle, pattern-led proof.",
     currentRealitySteps: [
       { label: "Sales sheet", detail: "Prices and schemes edited without version control" },
       { label: "Ops tracker", detail: "Second workbook for orders and dispatch" },

@@ -7,10 +7,28 @@ const MIN_DESC = 130;
 const MAX_DESC = 165;
 
 describe("seo-landings", () => {
+  const requiredNewPaths = [
+    "/crm-software-india",
+    "/hr-payroll-software-india",
+    "/ai-business-automation-india",
+    "/gst-billing-software-india",
+    "/tally-alternative-india",
+    "/erp-software-distributors-india",
+    "/migrate-from-tally",
+    "/migrate-from-zoho",
+    "/migrate-from-excel",
+  ] as const;
+
   it("has unique paths and slugs", () => {
     const paths = getAllSeoLandings().map((l) => l.path);
     assert.equal(new Set(paths).size, paths.length);
     assert.deepEqual(paths, [...SEO_LANDING_PATHS]);
+  });
+
+  it("includes new non-blog landing and migration pages", () => {
+    for (const path of requiredNewPaths) {
+      assert.ok(SEO_LANDING_PATHS.includes(path), `missing ${path}`);
+    }
   });
 
   it("each landing has optimized meta and readable H1", () => {
@@ -29,6 +47,14 @@ describe("seo-landings", () => {
       assert.equal(new Set(faqQs).size, faqQs.length, `unique FAQ questions for ${l.path}`);
       assert.ok(l.deepLink.href.startsWith("/"), `deep link for ${l.path}`);
       assert.ok(l.breadcrumbName.length >= 8, `breadcrumb for ${l.path}`);
+    }
+  });
+
+  it("new landing pages avoid excluded case-study references", () => {
+    const newPathSet = new Set<string>(requiredNewPaths);
+    for (const l of getAllSeoLandings().filter((item) => newPathSet.has(item.path))) {
+      const haystack = JSON.stringify(l).toLowerCase();
+      assert.doesNotMatch(haystack, /rock\s*tear|rtp/);
     }
   });
 });

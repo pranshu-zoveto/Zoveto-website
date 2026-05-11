@@ -43,13 +43,13 @@ export default function CookiePolicyPage() {
         <p>Our cookie controls provide three actions:</p>
         <ul>
           <li>
-            <strong>Reject all</strong> - only necessary cookies remain active.
+            <strong>Reject all</strong>: only necessary cookies remain active.
           </li>
           <li>
-            <strong>Customize</strong> - choose analytics and/or marketing categories.
+            <strong>Customize</strong>: choose analytics and/or marketing categories.
           </li>
           <li>
-            <strong>Accept all</strong> - allows necessary, analytics, and marketing categories.
+            <strong>Accept all</strong>: allows necessary, analytics, and marketing categories.
           </li>
         </ul>
         <p>Optional categories are disabled by default until you provide consent.</p>

@@ -14,7 +14,7 @@ declare global {
 }
 
 /**
- * Microsoft Clarity — official bootstrap (`clarity.ms/tag/{projectId}`), injected once into `document.head`.
+ * Microsoft Clarity - official bootstrap (`clarity.ms/tag/{projectId}`), injected once into `document.head`.
  * Loads only after analytics consent (same gate as GA4). Disable by omitting `NEXT_PUBLIC_CLARITY_PROJECT_ID`.
  *
  * Set env to your Clarity project ID only (the last argument in the dashboard snippet), e.g. `NEXT_PUBLIC_CLARITY_PROJECT_ID=abcd123456`.

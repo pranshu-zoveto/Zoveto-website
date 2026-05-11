@@ -7,7 +7,7 @@ export const WHATSAPP_FLOAT_PHONE = "919217380146";
 const DEFAULT_MESSAGE =
   "Hi Zoveto team, I want to learn about your Company Operating System for my business.";
 
-/** Full deeplink — matches wa.me / api.whatsapp.com prefilled chat behavior. */
+/** Full deeplink - matches wa.me / api.whatsapp.com prefilled chat behavior. */
 export function getWhatsAppFloatHref(): string {
   const params = new URLSearchParams({
     phone: WHATSAPP_FLOAT_PHONE,

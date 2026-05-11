@@ -32,8 +32,22 @@ describe("sitemap buildSitemapEntries", () => {
     }
 
     assert.ok(entries.some((e) => e.url === "https://zoveto.com/faq"));
+    assert.ok(entries.some((e) => e.url === "https://zoveto.com/implementation"));
     assert.ok(entries.some((e) => e.url === "https://zoveto.com/company-operating-system-india"));
     assert.ok(entries.some((e) => e.url === "https://zoveto.com/system"));
+    assert.ok(entries.some((e) => e.url === "https://zoveto.com/reorder-point-calculator"));
+    assert.ok(entries.some((e) => e.url === "https://zoveto.com/crm-software-india"));
+    assert.ok(entries.some((e) => e.url === "https://zoveto.com/hr-payroll-software-india"));
+    assert.ok(entries.some((e) => e.url === "https://zoveto.com/ai-business-automation-india"));
+    assert.ok(entries.some((e) => e.url === "https://zoveto.com/gst-billing-software-india"));
+    assert.ok(entries.some((e) => e.url === "https://zoveto.com/tally-alternative-india"));
+    assert.ok(entries.some((e) => e.url === "https://zoveto.com/erp-software-distributors-india"));
+    assert.ok(entries.some((e) => e.url === "https://zoveto.com/migrate-from-tally"));
+    assert.ok(entries.some((e) => e.url === "https://zoveto.com/migrate-from-zoho"));
+    assert.ok(entries.some((e) => e.url === "https://zoveto.com/migrate-from-excel"));
+    assert.ok(entries.some((e) => e.url === "https://zoveto.com/compare/vyapar-vs-zoveto"));
+    assert.ok(entries.some((e) => e.url === "https://zoveto.com/compare/freshsales-vs-zoveto"));
+    assert.ok(entries.some((e) => e.url === "https://zoveto.com/compare/gohighlevel-vs-zoveto"));
     assert.ok(entries.some((e) => e.url === "https://zoveto.com/case-studies"));
     assert.ok(entries.some((e) => e.url === "https://zoveto.com/case-studies/rock-tear-parts"));
 

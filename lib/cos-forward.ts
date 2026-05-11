@@ -26,7 +26,7 @@ export function resolveCosApiBase(): string | null {
 
 /**
  * COS base URL for local/dev when env is unset. On Vercel without COS_API_BASE_URL, returns localhost
- * — prefer {@link resolveCosApiBase} in Route Handlers so production never calls it blindly.
+ * - prefer {@link resolveCosApiBase} in Route Handlers so production never calls it blindly.
  */
 export function cosServerApiBase(): string {
   return resolveCosApiBase() ?? normalizeCosApiBase("http://127.0.0.1:4000/api");
@@ -39,7 +39,7 @@ export function cosWebsiteContactHeaders(): Record<string, string> {
   return { "X-Website-Contact-Secret": secret };
 }
 
-/** COS lead/demo DTOs use strict validation — these keys must not appear on the JSON body. */
+/** COS lead/demo DTOs use strict validation - these keys must not appear on the JSON body. */
 const FORBIDDEN_COS_CONTACT_KEYS = ["notificationEmail", "notifyEmail", "source"] as const;
 
 /** Removes fields that trigger `property X should not exist` from upstream validators. */

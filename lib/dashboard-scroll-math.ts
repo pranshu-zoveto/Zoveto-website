@@ -40,7 +40,7 @@ export function getTileZoomParams(
   return { scale, x, y };
 }
 
-/** Pinned dashboard zoom segment length — bounded so ScrollTrigger never gets a near-zero range. */
+/** Pinned dashboard zoom segment length - bounded so ScrollTrigger never gets a near-zero range. */
 export function dashboardScrollDistancePx(innerHeight: number): number {
   const h = Number.isFinite(innerHeight) && innerHeight > 0 ? innerHeight : 800;
   return Math.max(320, h) * 6.5;

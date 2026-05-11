@@ -70,8 +70,8 @@ const plans: MarketingPricingPlan[] = [
   {
     id: "free",
     name: "Free",
-    subtitle: "Best for testing the system",
-    segmentTagline: "Single user only",
+    subtitle: "Explore the system before committing. No credit card, no time limit.",
+    segmentTagline: "Single user exploration",
     pricing: PRICING_FREE,
     features: freeFeatures,
     ctaHref: "/signup",
@@ -85,8 +85,8 @@ const plans: MarketingPricingPlan[] = [
     segmentTagline: "Focused teams · up to 10 users",
     pricing: PRICING_PROFESSIONAL,
     features: starterFeatures,
-    ctaHref: "/signup",
-    ctaLabel: "Request access",
+    ctaHref: "/contact",
+    ctaLabel: "Book a demo",
     popular: false,
   },
   {
@@ -96,8 +96,8 @@ const plans: MarketingPricingPlan[] = [
     segmentTagline: "Scaling operations · up to 15 users",
     pricing: PRICING_BUSINESS,
     features: growthFeatures,
-    ctaHref: "/signup",
-    ctaLabel: "Request access",
+    ctaHref: "/contact",
+    ctaLabel: "Book a demo",
     popular: true,
   },
   {

@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { createLead } from "@/lib/api";
+import { trackMarketingEvent } from "@/lib/tracking";
 import { Button } from "@/components/ui/Button";
 import { Text } from "@/components/ui/Text";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
@@ -51,6 +52,10 @@ export function LeadForm() {
         phone: phone.trim() || undefined,
       });
       setStatus("success");
+      trackMarketingEvent("contact_form_submit", {
+        form: "lead_form",
+        annual_revenue: annualRevenue,
+      });
     } catch (err) {
       setStatus("error");
       setError(err instanceof Error ? err.message : "Something went wrong.");

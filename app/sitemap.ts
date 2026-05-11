@@ -28,6 +28,7 @@ export function buildSitemapEntries(): MetadataRoute.Sitemap {
     { url: `${BASE}/dpa`, lastModified: now, changeFrequency: "yearly", priority: 0.35 },
     { url: `${BASE}/acceptable-use`, lastModified: now, changeFrequency: "yearly", priority: 0.35 },
     { url: `${BASE}/security`, lastModified: now, changeFrequency: "yearly", priority: 0.4 },
+    { url: `${BASE}/implementation`, lastModified: now, changeFrequency: "monthly", priority: 0.82 },
     { url: `${BASE}/subprocessors`, lastModified: now, changeFrequency: "yearly", priority: 0.35 },
     { url: `${BASE}/signup`, lastModified: now, changeFrequency: "monthly", priority: 0.85 },
     { url: `${BASE}/operational-proof`, lastModified: now, changeFrequency: "monthly", priority: 0.82 },
@@ -39,6 +40,7 @@ export function buildSitemapEntries(): MetadataRoute.Sitemap {
     { url: `${BASE}/case-studies`, lastModified: now, changeFrequency: "monthly", priority: 0.72 },
     { url: `${BASE}/case-studies/rock-tear-parts`, lastModified: now, changeFrequency: "monthly", priority: 0.74 },
     { url: `${BASE}/system`, lastModified: now, changeFrequency: "monthly", priority: 0.72 },
+    { url: `${BASE}/reorder-point-calculator`, lastModified: now, changeFrequency: "monthly", priority: 0.76 },
   ];
 
   const seoLandings: MetadataRoute.Sitemap = SEO_LANDING_PATHS.map((path) => ({

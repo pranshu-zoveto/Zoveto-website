@@ -6,7 +6,7 @@ export interface IndustryWithIcon extends Industry {
   icon: LucideIcon;
 }
 
-/** Shipped industry URLs — single source for SSG, sitemap, and internal links. */
+/** Shipped industry URLs - single source for SSG, sitemap, and internal links. */
 export const PUBLIC_INDUSTRY_SLUGS = [
   "manufacturing",
   "distribution",
@@ -61,7 +61,7 @@ export const industries: IndustryWithIcon[] = [
     icon: Factory,
     headline: "Shop orders, BOM, and stock on one posted record",
     heroSub:
-      "When purchase, production, QC, warehouse, and finance each live in a different file, you get production delays from disconnected systems, no trustworthy real-time inventory picture, and dispatch coordination that still runs on calls. Zoveto is built so a shop-floor event, a stock move, and a finance voucher trace back to the same transaction—not three versions of the truth.",
+      "When purchase, production, QC, warehouse, and finance each live in a different file, you get production delays from disconnected systems, no trustworthy real-time inventory picture, and dispatch coordination that still runs on calls. Zoveto is built so a shop-floor event, a stock move, and a finance voucher trace back to the same transaction, not three versions of the truth.",
     metaTitle: "Manufacturing ERP Software | Zoveto",
     metaDescription:
       "Run your entire manufacturing operations on one system. Inventory, orders, dispatch, and finance in one platform.",
@@ -132,7 +132,7 @@ export const industries: IndustryWithIcon[] = [
     relevantModules: ["inventory", "wms", "crm", "finance", "analytics"],
     moduleRelevance: {
       inventory:
-        "Multi-location raw, WIP, and FG with movements tied to production and dispatch—not a parallel sheet.",
+        "Multi-location raw, WIP, and FG with movements tied to production and dispatch, not a parallel sheet.",
       wms: "Directed putaway, pick, pack, and gate discipline so dispatch is executed, not negotiated in chat.",
       crm: "Customer commitments and delivery promises stay next to order history so sales does not over-promise capacity.",
       finance: "GST-aligned vouchers and costing that inherit quantities and values from posted operations work.",
@@ -143,19 +143,19 @@ export const industries: IndustryWithIcon[] = [
         id: "command-center",
         title: "Command Center",
         href: "/modules/analytics",
-        body: "Manufacturing leadership needs one place where orders, material risk, dock pressure, and cash signals read from the same operational spine—not a Friday pack of screenshots. Command Center in Zoveto is the control view over posted work: what is late, what is blocked, where inventory is breaching rules, and which customer commitments are riding on today’s run. Because the underlying data is shared with execution modules, the view is not a second model you have to reconcile; it is the same movements your teams already captured when they received, issued, produced, and shipped.",
+        body: "Manufacturing leadership needs one place where orders, material risk, dock pressure, and cash signals read from the same operational spine, not a Friday pack of screenshots. Command Center in Zoveto is the control view over posted work: what is late, what is blocked, where inventory is breaching rules, and which customer commitments are riding on today’s run. Because the underlying data is shared with execution modules, the view is not a second model you have to reconcile; it is the same movements your teams already captured when they received, issued, produced, and shipped.",
       },
       {
         id: "operations",
         title: "Operations",
         href: "/modules/wms",
-        body: "Operations for a plant is the chain from work order release to FG ready to ship: staging, picking, packing, gate control, and handoff to transport. Zoveto treats that as an accountable queue rather than a set of heroic habits. Tasks are issued from posted stock, exceptions surface when scans or checks fail, and dispatch is not “someone called the transporter.” That is how you reduce coordination drag without pretending software replaces judgment—judgment gets cleaner inputs and an audit trail.",
+        body: "Operations for a plant is the chain from work order release to FG ready to ship: staging, picking, packing, gate control, and handoff to transport. Zoveto treats that as an accountable queue rather than a set of heroic habits. Tasks are issued from posted stock, exceptions surface when scans or checks fail, and dispatch is not “someone called the transporter.” That is how you reduce coordination drag without pretending software replaces judgment, judgment gets cleaner inputs and an audit trail.",
       },
       {
         id: "inventory",
         title: "Inventory",
         href: "/modules/inventory",
-        body: "Manufacturing inventory is not only “how many boxes.” It is batches, locations, reservations against orders, and the integrity of BOM consumption. Zoveto inventory is written by operational events: GRN, issue to WO, return from production, FG receipt, transfer, dispatch. When purchasing looks at on-hand, they are looking at what operations already proved—not a number that was true last Sunday after a wall count.",
+        body: "Manufacturing inventory is not only “how many boxes.” It is batches, locations, reservations against orders, and the integrity of BOM consumption. Zoveto inventory is written by operational events: GRN, issue to WO, return from production, FG receipt, transfer, dispatch. When purchasing looks at on-hand, they are looking at what operations already proved, not a number that was true last Sunday after a wall count.",
       },
       {
         id: "crm",
@@ -167,7 +167,7 @@ export const industries: IndustryWithIcon[] = [
         id: "finance",
         title: "Finance",
         href: "/modules/finance",
-        body: "Finance should post what operations already decided in weight, quantity, and value—not rebuild it from PDFs. Zoveto finance is designed around vouchers that trace to source movements: purchase, production, dispatch, and returns. That is how you get faster reconciliation, cleaner GST treatment, and less month-end rescue work—because the operational story and the ledger story are the same story told once.",
+        body: "Finance should post what operations already decided in weight, quantity, and value, not rebuild it from PDFs. Zoveto finance is designed around vouchers that trace to source movements: purchase, production, dispatch, and returns. That is how you get faster reconciliation, cleaner GST treatment, and less month-end rescue work, because the operational story and the ledger story are the same story told once.",
       },
     ],
     systemFlowSteps: [
@@ -203,8 +203,8 @@ export const industries: IndustryWithIcon[] = [
       "Better visibility across teams when planning, plant, warehouse, and accounts share one spine",
     ],
     proofPoints: [
-      "Not a concept. A working system architecture built for Indian operating reality—GST, multi-site, and high-touch dispatch.",
-      "Real workflows across ERP, WMS, and CRM—not a dashboard that decorates spreadsheets still living underneath.",
+      "Not a concept. A working system architecture built for Indian operating reality, GST, multi-site, and high-touch dispatch.",
+      "Real workflows across ERP, WMS, and CRM, not a dashboard that decorates spreadsheets still living underneath.",
       "Modular by design so you can tighten one execution layer without re-buying the whole stack.",
     ],
     homepageFeatures: [
@@ -222,7 +222,7 @@ export const industries: IndustryWithIcon[] = [
       },
       {
         q: "How does Zoveto help with production delays from disconnected systems?",
-        a: "By tying planning signals to posted availability and shop-floor events so purchasing and plant see the same bottleneck at the same time—not three reconciled versions on Monday.",
+        a: "By tying planning signals to posted availability and shop-floor events so purchasing and plant see the same bottleneck at the same time, not three reconciled versions on Monday.",
       },
       {
         q: "Can Zoveto handle GST for job work and returns in manufacturing?",
@@ -230,11 +230,11 @@ export const industries: IndustryWithIcon[] = [
       },
       {
         q: "When is Zoveto not the right fit for a plant?",
-        a: "When you need deep global MRP, PLM, or multi-country consolidation on day one beyond Zoveto’s current SMB-focused footprint—be honest about template depth versus team size.",
+        a: "When you need deep global MRP, PLM, or multi-country consolidation on day one beyond Zoveto’s current SMB-focused footprint, be honest about template depth versus team size.",
       },
       {
         q: "How do we onboard without stopping the line?",
-        a: "Phased cutover by workflow—raw issue, production posting, dispatch—so training tracks real daily screens instead of big-bang go-live roulette.",
+        a: "Phased cutover by workflow, raw issue, production posting, dispatch, so training tracks real daily screens instead of big-bang go-live roulette.",
       },
     ],
   },
@@ -319,14 +319,14 @@ export const industries: IndustryWithIcon[] = [
       wms: "Pick waves and dispatch execution that do not depend on tribal route memory.",
       inventory: "Depot, van, and in-transit visibility with FEFO discipline where shelf life matters.",
       finance: "Invoices, credit notes, and party ledgers aligned to posted dispatch and returns.",
-      analytics: "Route and depot scorecards from posted sales—not a parallel MIS rebuild.",
+      analytics: "Route and depot scorecards from posted sales, not a parallel MIS rebuild.",
     },
     modulePlaybooks: [
       {
         id: "command-center",
         title: "Command Center",
         href: "/modules/analytics",
-        body: "Distribution control is coverage, stock posture, and cash risk at once. Command Center pulls those signals from posted beats, transfers, picks, and collections so you can steer daily—not after the damage is already in the depot. Because it reads the same transactions your teams already captured, it avoids the classic “dashboard vs reality” split that makes leadership stop trusting software.",
+        body: "Distribution control is coverage, stock posture, and cash risk at once. Command Center pulls those signals from posted beats, transfers, picks, and collections so you can steer daily, not after the damage is already in the depot. Because it reads the same transactions your teams already captured, it avoids the classic “dashboard vs reality” split that makes leadership stop trusting software.",
       },
       {
         id: "operations",
@@ -338,7 +338,7 @@ export const industries: IndustryWithIcon[] = [
         id: "inventory",
         title: "Inventory",
         href: "/modules/inventory",
-        body: "Multi-location inventory for distributors is only useful if transfers, reservations, and van stock are first-class citizens. Zoveto ties stock to movements your hubs already perform, which is how you stop mismatches between what the system says and what the floor can actually ship. When expiry matters, FEFO is an execution rule—not a sticker on a process document.",
+        body: "Multi-location inventory for distributors is only useful if transfers, reservations, and van stock are first-class citizens. Zoveto ties stock to movements your hubs already perform, which is how you stop mismatches between what the system says and what the floor can actually ship. When expiry matters, FEFO is an execution rule, not a sticker on a process document.",
       },
       {
         id: "crm",
@@ -369,7 +369,7 @@ export const industries: IndustryWithIcon[] = [
       "Clearer leadership visibility when route and depot performance read from posted activity",
     ],
     proofPoints: [
-      "Built as a modular operating system—add discipline to WMS without abandoning your commercial workflow.",
+      "Built as a modular operating system, add discipline to WMS without abandoning your commercial workflow.",
       "Deployed architecture meant for real Indian distribution: beats, depots, GST, and high SKU counts.",
       "Workflow-first: the product is judged by posted movements, not by how pretty an empty dashboard looks.",
     ],
@@ -384,15 +384,15 @@ export const industries: IndustryWithIcon[] = [
     faqs: [
       {
         q: "How does Zoveto reduce depot stock mismatch for distributors?",
-        a: "Posted transfers, reservations at quote time, and dispatch closure that finance reads—fewer shadow sheets at branches when everyone pulls from the same ledger.",
+        a: "Posted transfers, reservations at quote time, and dispatch closure that finance reads, fewer shadow sheets at branches when everyone pulls from the same ledger.",
       },
       {
         q: "What credit controls should distributors expect?",
-        a: "Limits enforced when orders are saved, overdue tasks tied to customers, and visibility for leadership before trucks leave—not only after month-end aging reports.",
+        a: "Limits enforced when orders are saved, overdue tasks tied to customers, and visibility for leadership before trucks leave, not only after month-end aging reports.",
       },
       {
         q: "Can van sales and HO run on the same OS?",
-        a: "Yes for the workflows Zoveto targets—mobile usability and branch governance still need process owners; software exposes violations faster when rules exist.",
+        a: "Yes for the workflows Zoveto targets, mobile usability and branch governance still need process owners; software exposes violations faster when rules exist.",
       },
       {
         q: "How is GST handled across depots?",
@@ -481,10 +481,10 @@ export const industries: IndustryWithIcon[] = [
     ],
     relevantModules: ["crm", "inventory", "wms", "finance", "analytics"],
     moduleRelevance: {
-      crm: "Dealer relationships, quote history, and fitment notes in one row—no more losing context between wins.",
+      crm: "Dealer relationships, quote history, and fitment notes in one row, no more losing context between wins.",
       inventory: "Normalize SKUs, show branch on-hand, and reserve stock when a quote becomes an order.",
       wms: "Dense rack operations with scan gates that reduce wrong-part exits at the bench.",
-      finance: "Receivables, limits, and GST lines tied to posted sales and returns—not parallel ledgers.",
+      finance: "Receivables, limits, and GST lines tied to posted sales and returns, not parallel ledgers.",
       analytics: "Slow movers, branch skew, and margin pressure visible from posted transactions.",
     },
     modulePlaybooks: [
@@ -492,19 +492,19 @@ export const industries: IndustryWithIcon[] = [
         id: "command-center",
         title: "Command Center",
         href: "/modules/analytics",
-        body: "Parts trading leadership needs visibility into quote backlog, pick errors, branch skew, and overdue receivables without waiting for a monthly pack. Command Center reads posted CRM, inventory, dispatch, and finance activity so you can intervene when the pattern is forming—not after the quarter already absorbed the damage. The point is operational signal density: what is stuck, what is drifting, and what is about to breach a rule you already decided matters.",
+        body: "Parts trading leadership needs visibility into quote backlog, pick errors, branch skew, and overdue receivables without waiting for a monthly pack. Command Center reads posted CRM, inventory, dispatch, and finance activity so you can intervene when the pattern is forming, not after the quarter already absorbed the damage. The point is operational signal density: what is stuck, what is drifting, and what is about to breach a rule you already decided matters.",
       },
       {
         id: "operations",
         title: "Operations",
         href: "/modules/wms",
-        body: "Operations for parts traders is the bench-and-gate reality: pick accuracy, pack verification, and dispatch evidence. Zoveto issues tasks from posted availability and closes them with scans so “almost right” does not become a credit note. That is how you reduce wrong-part incidents without pretending you can eliminate human judgment—you give humans a system that catches slips before they leave the building.",
+        body: "Operations for parts traders is the bench-and-gate reality: pick accuracy, pack verification, and dispatch evidence. Zoveto issues tasks from posted availability and closes them with scans so “almost right” does not become a credit note. That is how you reduce wrong-part incidents without pretending you can eliminate human judgment, you give humans a system that catches slips before they leave the building.",
       },
       {
         id: "inventory",
         title: "Inventory",
         href: "/modules/inventory",
-        body: "Spare parts inventory is a catalog problem and a movement problem at the same time. Zoveto keeps branch balances honest through GRN, transfers, reservations, and dispatch postings so a quote is not a phone call to the warehouse. When supersession and pack-size rules exist, they belong in the same system that issues picks—otherwise the warehouse becomes the catalog, and scale breaks.",
+        body: "Spare parts inventory is a catalog problem and a movement problem at the same time. Zoveto keeps branch balances honest through GRN, transfers, reservations, and dispatch postings so a quote is not a phone call to the warehouse. When supersession and pack-size rules exist, they belong in the same system that issues picks, otherwise the warehouse becomes the catalog, and scale breaks.",
       },
       {
         id: "crm",
@@ -535,9 +535,9 @@ export const industries: IndustryWithIcon[] = [
       "Better branch control when transfers and pricing policy are enforced centrally",
     ],
     proofPoints: [
-      "A working modular system—ERP, WMS, and CRM connected by design, not duct-taped integrations.",
+      "A working modular system, ERP, WMS, and CRM connected by design, not duct-taped integrations.",
       "Built for high-line-count trading realities: GST, returns, and branch operations included.",
-      "Not a slide-deck OS—measured by whether daily posting actually happens.",
+      "Not a slide-deck OS, measured by whether daily posting actually happens.",
     ],
     homepageFeatures: [
       "SKU and branch discipline",
@@ -546,7 +546,7 @@ export const industries: IndustryWithIcon[] = [
       "Credit and GST alignment",
     ],
     directAnswer:
-      "Spare parts trading dies when dense SKUs, branch rules, and dealer WhatsApp promises diverge from bin truth.\nZoveto is a Company Operating System for quotes, picks, dispatch proof, and dues on one chain—so hero clerks are not your architecture.",
+      "Spare parts trading dies when dense SKUs, branch rules, and dealer WhatsApp promises diverge from bin truth.\nZoveto is a Company Operating System for quotes, picks, dispatch proof, and dues on one chain, so hero clerks are not your architecture.",
     faqs: SPARE_PARTS_PHASE1_FAQS.map((f) => ({ q: f.question, a: f.answer })),
   },
   {
@@ -556,7 +556,7 @@ export const industries: IndustryWithIcon[] = [
     icon: Warehouse,
     headline: "Bins, waves, gate, and dispatch without spreadsheet recon",
     heroSub:
-      "Warehousing breaks when you lack zone-level tracking, when picking stays inefficient because tasks are not sequenced, and when dispatch errors slip through because pack-out lacks verification. Zoveto is built for scan-first inwarding, directed putaway, wave-friendly picking, and dispatch closure that finance can invoice from—inside one operating record shared with inventory and order teams.",
+      "Warehousing breaks when you lack zone-level tracking, when picking stays inefficient because tasks are not sequenced, and when dispatch errors slip through because pack-out lacks verification. Zoveto is built for scan-first inwarding, directed putaway, wave-friendly picking, and dispatch closure that finance can invoice from, inside one operating record shared with inventory and order teams.",
     metaTitle: "Warehousing ERP Software | Zoveto",
     metaDescription:
       "Run your entire warehousing operations on one system. Inventory, orders, dispatch, and finance in one platform.",
@@ -569,7 +569,7 @@ export const industries: IndustryWithIcon[] = [
       {
         title: "Picking inefficiencies",
         description:
-          "Waves and cutoffs are not operational objects—so the floor improvises and dock windows get missed.",
+          "Waves and cutoffs are not operational objects, so the floor improvises and dock windows get missed.",
       },
       {
         title: "Dispatch errors at pack-out",
@@ -626,10 +626,10 @@ export const industries: IndustryWithIcon[] = [
     ],
     relevantModules: ["wms", "inventory", "finance", "analytics", "crm"],
     moduleRelevance: {
-      wms: "Putaway, pick, pack, gate, and dispatch as first-class tasks—not a PDF SOP.",
+      wms: "Putaway, pick, pack, gate, and dispatch as first-class tasks, not a PDF SOP.",
       inventory: "Bin-level stock and movements that finance and customer service can trust.",
       finance: "Invoices and credit notes aligned to posted dispatch and returns.",
-      analytics: "Units per hour, dock turns, and error classes from posted work—not anecdote.",
+      analytics: "Units per hour, dock turns, and error classes from posted work, not anecdote.",
       crm: "Customer promise dates and exceptions visible next to operational queues when service gets involved.",
     },
     modulePlaybooks: [
@@ -637,13 +637,13 @@ export const industries: IndustryWithIcon[] = [
         id: "command-center",
         title: "Command Center",
         href: "/modules/analytics",
-        body: "Warehouse leadership needs to see dock pressure, pick productivity, backlog age, and exception volume in one place. Command Center reads posted WMS and inventory events so the morning meeting is about decisions, not about reconciling three tabs. When something is red, it should be red because a rule was breached in data—not because someone’s gut says the floor “feels busy.”",
+        body: "Warehouse leadership needs to see dock pressure, pick productivity, backlog age, and exception volume in one place. Command Center reads posted WMS and inventory events so the morning meeting is about decisions, not about reconciling three tabs. When something is red, it should be red because a rule was breached in data, not because someone’s gut says the floor “feels busy.”",
       },
       {
         id: "operations",
         title: "Operations",
         href: "/modules/wms",
-        body: "Operations in warehousing is the full execution chain: inwarding tasks, putaway directives, replenishment, wave release, pick pathing, pack verification, and gate closure. Zoveto WMS is designed so tasks are issued, consumed, and audited—so picking efficiency improves because work is sequenced and visible, not because you hired a louder supervisor. Dispatch errors drop when pack-out becomes a checkpoint, not a hope.",
+        body: "Operations in warehousing is the full execution chain: inwarding tasks, putaway directives, replenishment, wave release, pick pathing, pack verification, and gate closure. Zoveto WMS is designed so tasks are issued, consumed, and audited, so picking efficiency improves because work is sequenced and visible, not because you hired a louder supervisor. Dispatch errors drop when pack-out becomes a checkpoint, not a hope.",
       },
       {
         id: "inventory",
@@ -680,8 +680,8 @@ export const industries: IndustryWithIcon[] = [
       "Better visibility across warehouse, sales, and finance when dispatch closure is posted once",
     ],
     proofPoints: [
-      "Not a concept—a deployed modular architecture for warehouse execution tied to ERP inventory and finance.",
-      "Workflow-first WMS thinking: tasks, scans, and exceptions—not a pretty map with no enforcement.",
+      "Not a concept, a deployed modular architecture for warehouse execution tied to ERP inventory and finance.",
+      "Workflow-first WMS thinking: tasks, scans, and exceptions, not a pretty map with no enforcement.",
       "Designed for Indian operating load: GST, returns, multi-site, and noisy dock realities.",
     ],
     homepageFeatures: [
@@ -691,19 +691,19 @@ export const industries: IndustryWithIcon[] = [
       "Dispatch-to-invoice chain",
     ],
     directAnswer:
-      "Warehouses fail when bins, waves, and gate proof do not post to the same stock ledger finance uses.\nZoveto is a Company Operating System for scan-first inwarding, directed tasks, and dispatch closure that billing inherits—without spreadsheet recon.",
+      "Warehouses fail when bins, waves, and gate proof do not post to the same stock ledger finance uses.\nZoveto is a Company Operating System for scan-first inwarding, directed tasks, and dispatch closure that billing inherits, without spreadsheet recon.",
     faqs: [
       {
         q: "What warehouse KPIs should Zoveto improve first?",
-        a: "Mis-pick rate, dock-to-invoice time, and variance size after cycle counts—if those are flat, fix process and master data before blaming hardware.",
+        a: "Mis-pick rate, dock-to-invoice time, and variance size after cycle counts, if those are flat, fix process and master data before blaming hardware.",
       },
       {
         q: "How does Zoveto support wave picking and cutoffs?",
-        a: "Waves and cutoffs become operational objects your floor runs against posted demand—not tribal knowledge in a supervisor’s notebook alone.",
+        a: "Waves and cutoffs become operational objects your floor runs against posted demand, not tribal knowledge in a supervisor’s notebook alone.",
       },
       {
         q: "Can contract staff get limited access?",
-        a: "Role-based access is part of disciplined ops—define who can move bins, post GRN, or close dispatch so audits stay explainable.",
+        a: "Role-based access is part of disciplined ops, define who can move bins, post GRN, or close dispatch so audits stay explainable.",
       },
       {
         q: "What about 3PL or multi-site hubs?",
@@ -711,7 +711,7 @@ export const industries: IndustryWithIcon[] = [
       },
       {
         q: "How does dispatch tie to GST invoices?",
-        a: "Closure quantities should drive invoice lines with traceable links for returns—reducing Friday-night reconciliation between gate reality and vouchers.",
+        a: "Closure quantities should drive invoice lines with traceable links for returns, reducing Friday-night reconciliation between gate reality and vouchers.",
       },
     ],
   },

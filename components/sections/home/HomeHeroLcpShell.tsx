@@ -16,7 +16,7 @@ type HomeHeroLcpShellProps = {
 };
 
 /**
- * SSR-first viewport hero — no GSAP/framer/client JS.
+ * SSR-first viewport hero - no GSAP/framer/client JS.
  * Same core copy as dashboard SectionIntro so LCP is text/wordmark instead of blocked JS painting.
  */
 export function HomeHeroLcpShell({ variant }: HomeHeroLcpShellProps) {

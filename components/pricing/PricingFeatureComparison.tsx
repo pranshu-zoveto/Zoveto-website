@@ -5,7 +5,7 @@ import { ChevronDown } from "lucide-react";
 import { Text } from "@/components/ui/Text";
 import { cn } from "@/lib/utils";
 
-type PlanValue = "✔" | "—" | string;
+type PlanValue = "✔" | "–" | string;
 
 type ComparisonRow = {
   feature: string;
@@ -68,14 +68,14 @@ const COMPARISON_GROUPS: ComparisonGroup[] = [
     title: "Reporting & analytics",
     rows: [
       { feature: "Dashboards", starter: "✔", growth: "✔", enterprise: "✔" },
-      { feature: "Custom reports", starter: "—", growth: "✔", enterprise: "✔" },
+      { feature: "Custom reports", starter: "–", growth: "✔", enterprise: "✔" },
     ],
   },
   {
     id: "integrations",
     title: "Integrations",
     rows: [
-      { feature: "API access", starter: "—", growth: "✔", enterprise: "✔" },
+      { feature: "API access", starter: "–", growth: "✔", enterprise: "✔" },
       { feature: "Third-party integrations", starter: "Basic", growth: "Advanced", enterprise: "Custom" },
     ],
   },

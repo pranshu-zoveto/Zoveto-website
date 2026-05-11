@@ -107,10 +107,58 @@ function SectionIntro({ introRef }: { introRef: React.RefObject<HTMLDivElement> 
           letterSpacing: "-0.01em",
         }}
       >
-        Your business doesn&apos;t need more tools.
-        <br aria-hidden />
-        It needs one system that runs everything.
+        Your business runs on WhatsApp and spreadsheets. Zoveto replaces both with one operating system built for how
+        Indian businesses actually work.
       </p>
+      <div
+        style={{
+          display: "flex",
+          gap: 12,
+          flexWrap: "wrap",
+          justifyContent: "center",
+          marginBottom: 24,
+          pointerEvents: "auto",
+        }}
+      >
+        <a
+          href="/contact"
+          style={{
+            minHeight: 52,
+            display: "inline-flex",
+            alignItems: "center",
+            justifyContent: "center",
+            borderRadius: 12,
+            padding: "0 22px",
+            background: "#0047FF",
+            color: "#fff",
+            fontSize: 15,
+            fontWeight: 700,
+            textDecoration: "none",
+            boxShadow: "0 10px 30px rgba(0,71,255,0.24)",
+          }}
+        >
+          Book a 20-min demo
+        </a>
+        <a
+          href="/implementation"
+          style={{
+            minHeight: 52,
+            display: "inline-flex",
+            alignItems: "center",
+            justifyContent: "center",
+            borderRadius: 12,
+            padding: "0 22px",
+            background: "rgba(255,255,255,0.92)",
+            border: "1px solid rgba(29,29,31,0.14)",
+            color: "#1d1d1f",
+            fontSize: 15,
+            fontWeight: 700,
+            textDecoration: "none",
+          }}
+        >
+          See setup path
+        </a>
+      </div>
       <button
         type="button"
         className="hero-scroll-nudge"
@@ -145,7 +193,7 @@ function SectionIntro({ introRef }: { introRef: React.RefObject<HTMLDivElement> 
   );
 }
 
-/** Desktop pinned scroll-zoom hero — GSAP + ScrollTrigger in a standalone chunk (`next/dynamic` + `ssr:false` from homepage). */
+/** Desktop pinned scroll-zoom hero - GSAP + ScrollTrigger in a standalone chunk (`next/dynamic` + `ssr:false` from homepage). */
 export function DashboardScrollDesktop() {
   const sectionRef = useRef<HTMLElement | null>(null);
   const stickyRef = useRef<HTMLDivElement | null>(null);
@@ -155,13 +203,16 @@ export function DashboardScrollDesktop() {
   const panelRefs = useRef<Record<string, HTMLDivElement | null>>({});
   const [activeIdx, setActiveIdx] = useState(-1);
   const initRef = useRef(false);
+  const mountedRef = useRef(false);
 
   useLayoutEffect(() => {
+    mountedRef.current = true;
     if (initRef.current) return;
     if (!sectionRef.current || !stickyRef.current || !dashRef.current || !introRef.current || !readabilityRef.current) return;
 
     let cancelled = false;
     let ctx: gsap.Context | null = null;
+    let mm: gsap.MatchMedia | null = null;
     const root = sectionRef.current;
     let rafOuter = 0;
     let rafInner = 0;
@@ -170,12 +221,32 @@ export function DashboardScrollDesktop() {
     const runSetup = () => {
       if (cancelled || initRef.current) return;
 
-      ScrollTrigger.normalizeScroll(true);
-
       const vw = window.innerWidth;
       const vh = window.innerHeight;
+      const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-      ctx = gsap.context(() => {
+      if (prefersReducedMotion) {
+        gsap.set(dashRef.current, {
+          willChange: "auto",
+          transformOrigin: "center center",
+          opacity: 1,
+          scale: 1,
+          x: 0,
+          y: 0,
+        });
+        gsap.set(readabilityRef.current, { opacity: 0 });
+        MODULES.forEach((mod) => {
+          const panel = panelRefs.current[mod.id];
+          if (!panel) return;
+          gsap.set(panel, { opacity: 0, x: 0 });
+        });
+        initRef.current = true;
+        return;
+      }
+
+      mm = gsap.matchMedia(root);
+      mm.add("(min-width: 1024px)", () => {
+        ctx = gsap.context(() => {
         const tileRects: Record<string, DOMRect> = {};
         MODULES.forEach((mod) => {
           const el = root.querySelector(`[data-module="${mod.id}"]`);
@@ -192,7 +263,6 @@ export function DashboardScrollDesktop() {
             scale: 1,
             x: 0,
             y: 0,
-            filter: "none",
           });
           gsap.set(readabilityRef.current, { opacity: 0 });
         };
@@ -218,9 +288,8 @@ export function DashboardScrollDesktop() {
           transformOrigin: "center center",
           opacity: 0.72,
           scale: 1,
-          filter: "blur(7px)",
         });
-        gsap.set(readabilityRef.current, { opacity: 1 });
+        gsap.set(readabilityRef.current, { opacity: 0.95 });
 
         if (!zoomStepsOk) {
           showStaticDashboard();
@@ -245,13 +314,14 @@ export function DashboardScrollDesktop() {
             anticipatePin: 1,
             invalidateOnRefresh: true,
             onUpdate: (self) => {
+              if (!mountedRef.current) return;
               const idx = Math.floor((self.progress - 0.14) / 0.14);
               setActiveIdx(Math.max(-1, Math.min(4, idx)));
             },
           },
         });
 
-        tl.to(dashRef.current, { opacity: 1, filter: "blur(0px)", duration: 0.45, ease: "power2.out" }, 0.08);
+        tl.to(dashRef.current, { opacity: 1, duration: 0.45, ease: "power2.out" }, 0.08);
         tl.to(readabilityRef.current, { opacity: 0, duration: 0.45, ease: "power2.out" }, 0.12);
         tl.to(introRef.current, { opacity: 0, y: -20, duration: 0.35 }, 0.2);
 
@@ -297,8 +367,14 @@ export function DashboardScrollDesktop() {
           requestAnimationFrame(syncScrubToScroll);
         });
 
-        initRef.current = true;
-      }, root);
+          initRef.current = true;
+        }, root);
+
+        return () => {
+          ctx?.revert();
+          ctx = null;
+        };
+      });
     };
 
     const boot = () => {
@@ -323,10 +399,12 @@ export function DashboardScrollDesktop() {
       window.clearTimeout(bootTimer);
       cancelAnimationFrame(rafOuter);
       cancelAnimationFrame(rafInner);
+      mm?.revert();
+      mm = null;
       ctx?.revert();
       ctx = null;
-      ScrollTrigger.normalizeScroll(false);
       initRef.current = false;
+      mountedRef.current = false;
     };
   }, []);
 

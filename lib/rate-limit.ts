@@ -2,7 +2,7 @@
  * In-memory sliding-window rate limiter for Edge middleware / serverless routes.
  *
  * Limits are per runtime instance only. On Vercel (multiple regions/instances),
- * each isolate keeps its own counters—abuse gets "N × instance" effective quota.
+ * each isolate keeps its own counters-abuse gets "N × instance" effective quota.
  * For strict shared limits, use Upstash Redis or Vercel KV and gate with env.
  */
 

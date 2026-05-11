@@ -8,6 +8,7 @@ import {
   SPARE_PARTS_PHASE1_SECTIONS,
 } from "@/lib/phase1-spare-parts-industry";
 import { getWhatsAppFloatHref } from "@/lib/whatsapp-float";
+import { FaqAccordion } from "@/components/ui/FaqAccordion";
 
 const btnOutline =
   "inline-flex min-h-[48px] items-center justify-center rounded-lg border border-border bg-card px-6 text-sm font-semibold text-foreground shadow-sm transition-colors hover:bg-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background";
@@ -52,17 +53,8 @@ export function SparePartsPhase1Sections() {
         <Text variant="heading-1" as="h2" id="spare-parts-faq" className="mb-6 text-xl text-foreground md:text-2xl">
           Frequently asked questions
         </Text>
-        <div className="max-w-3xl space-y-8">
-          {SPARE_PARTS_PHASE1_FAQS.map((f) => (
-            <div key={f.question}>
-              <Text variant="heading-1" as="h3" className="mb-2 text-base font-semibold text-foreground md:text-lg">
-                {f.question}
-              </Text>
-              <Text variant="body-base" className="text-pretty text-muted">
-                {f.answer}
-              </Text>
-            </div>
-          ))}
+        <div className="max-w-3xl">
+          <FaqAccordion items={SPARE_PARTS_PHASE1_FAQS} idPrefix="industry-spare-parts-phase1" />
         </div>
       </section>
 

@@ -6,7 +6,7 @@ type ZovetoIconSvgProps = {
 };
 
 /**
- * Vector Zoveto mark — scales crisply at any size (no raster).
+ * Vector Zoveto mark - scales crisply at any size (no raster).
  * Default: dark tile + light glyph (navbar, hero, footer on light).
  */
 export function ZovetoIconSvg({ className, title = "Zoveto" }: ZovetoIconSvgProps) {

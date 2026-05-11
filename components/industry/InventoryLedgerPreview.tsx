@@ -4,12 +4,12 @@ import React from "react";
 
 const ROWS = [
   { sku: "Part / SKU", bin: "Zone · Bin", qty: "On hand", status: "Status" },
-  { sku: "—", bin: "A · 12-04", qty: "Posted", status: "Available" },
-  { sku: "—", bin: "B · 03-11", qty: "Reserved", status: "Allocated" },
-  { sku: "—", bin: "C · 08-02", qty: "Posted", status: "QC hold" },
+  { sku: "…", bin: "A · 12-04", qty: "Posted", status: "Available" },
+  { sku: "…", bin: "B · 03-11", qty: "Reserved", status: "Allocated" },
+  { sku: "…", bin: "C · 08-02", qty: "Posted", status: "QC hold" },
 ];
 
-/** Table chrome only — no fabricated quantities or savings claims. */
+/** Table chrome only: no fabricated quantities or savings claims. */
 export function InventoryLedgerPreview() {
   return (
     <div className="rounded-2xl border border-border bg-card p-5 shadow-[var(--shadow-elevated)] md:p-6">

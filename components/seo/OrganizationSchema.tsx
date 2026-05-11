@@ -4,7 +4,7 @@ import { BRAND_LOGO_ICON } from "@/lib/branding";
 import { LINKEDIN_COMPANY_URL_ENTITY } from "@/lib/social";
 import { siteUrl } from "@/lib/site";
 
-/** Organization JSON-LD — use on the homepage (or wherever brand entity should be declared). */
+/** Organization JSON-LD - use on the homepage (or wherever brand entity should be declared). */
 export function OrganizationSchema() {
   const base = siteUrl();
   const schema = {

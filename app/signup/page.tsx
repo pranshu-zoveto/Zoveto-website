@@ -5,13 +5,13 @@ import { canonicalUrl } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Get started with Zoveto | Zoveto",
   description:
-    "Manual onboarding for every business: share your operations pain, we review within 24–48 hours and prepare your workspace before access.",
+    "Manual onboarding for every business: share your operations pain; we review within 24 to 48 hours and prepare your workspace before access.",
   alternates: { canonical: canonicalUrl("/signup") },
   robots: { index: true, follow: false },
   openGraph: {
     title: "Get started with Zoveto | Zoveto",
     description:
-      "Structured onboarding with your system configured before access. Typical response within 24–48 hours.",
+      "Structured onboarding with your system configured before access. Typical response within 24 to 48 hours.",
     url: canonicalUrl("/signup"),
     images: ["/og-image.png"],
   },

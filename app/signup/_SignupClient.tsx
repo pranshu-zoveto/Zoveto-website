@@ -5,12 +5,12 @@ import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { Check, Loader2, ShieldCheck, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { trackEvent } from "@/lib/tracking";
+import { trackEvent, trackMarketingEvent } from "@/lib/tracking";
 import { FormToast } from "@/components/ui/FormToast";
 import { formatCosApiErrorMessage } from "@/lib/http-json";
 
 const BULLETS = [
-  "Every request is reviewed within 24 - 48 hours",
+  "Every request is reviewed within 24 to 48 hours",
   "Your system is set up before access is given",
   "You get a guided onboarding session",
 ] as const;
@@ -94,6 +94,12 @@ export default function SignupClient() {
         title: "Access request sent",
         message:
           "Your details were sent to info@zoveto.com for founder review. We will reply by email after qualification.",
+      });
+      trackMarketingEvent("access_request_submit", {
+        form: "early_access_waitlist",
+        team_size: teamSize,
+        operating_priority: useCase,
+        role,
       });
       trackEvent("generate_lead", {
         method: "early_access_waitlist",
@@ -221,7 +227,7 @@ export default function SignupClient() {
                       <div className="mb-8">
                         <h2 className="mb-1 text-lg font-semibold text-foreground">Tell us about your operations</h2>
                         <p className="text-sm text-muted-2">
-                          Qualification form — we review each submission and prepare your workspace before access.
+                          This qualification form is how we review each submission and prepare your workspace before access.
                         </p>
                       </div>
 
@@ -392,7 +398,7 @@ export default function SignupClient() {
                         </button>
 
                         <p className="pt-1 text-center text-xs leading-relaxed text-muted-2">
-                          Typical response time: within 24 - 48 hours
+                          Typical response time: within 24 to 48 hours
                           <span className="my-2 block h-px w-full max-w-[16rem] mx-auto bg-border/80" aria-hidden />
                           By requesting access you agree to our{" "}
                           <Link href="/terms" className="text-blue underline-offset-2 hover:underline">

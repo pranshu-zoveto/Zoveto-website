@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 
 type ProofCardProps = {
   proof: OperationalProof;
-  /** Listing grid vs module strip — same structure, slightly tighter when compact */
+  /** Listing grid vs module strip - same structure, slightly tighter when compact */
   variant?: "listing" | "compact";
 };
 

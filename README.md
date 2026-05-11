@@ -80,7 +80,7 @@ Integrated via `@sentry/nextjs`:
 
 CSP allows **`https://*.ingest.sentry.io`** and **`https://*.sentry.io`**. **`worker-src 'self' blob:`** is included so you can enable Session Replay later without a CSP change.
 
-This repo does **not** wrap `next.config` with **`withSentryConfig`** (avoids loading the full Sentry webpack plugin stack during config evaluation; keeps Windows/`node_modules` flaky installs from breaking `next build`). **Source maps** in production: use the **Sentry Vercel integration** (recommended) or upload releases with **`sentry-cli`** / CI using `SENTRY_AUTH_TOKEN`, `SENTRY_ORG`, `SENTRY_PROJECT`.
+This repo does **not** wrap `next.config` with **`withSentryConfig`** (avoids loading the full Sentry webpack plugin stack during config evaluation; keeps Windows/`node_modules` flaky installs from breaking `next build`). **`next.config.mjs`** aliases **`@prisma/instrumentation`** to a tiny stub (`scripts/shims/prisma-instrumentation-stub.cjs`): this site does not use Prisma, but `@sentry/node` still pulls Prisma tracing, which spams webpack with “Critical dependency” and slows compiles — remove the alias only if you add Prisma here. **Source maps** in production: use the **Sentry Vercel integration** (recommended) or upload releases with **`sentry-cli`** / CI using `SENTRY_AUTH_TOKEN`, `SENTRY_ORG`, `SENTRY_PROJECT`.
 
 **Vercel (production):**
 
@@ -103,6 +103,7 @@ This repo does **not** wrap `next.config` with **`withSentryConfig`** (avoids lo
 ## Documentation
 
 - [Marketing copy style](docs/copy-style-guide.md) — voice and wording guardrails for UI copy.
+- [Changelog](CHANGELOG.md) — daily updates, release notes, and upgrade history for team sync.
 
 ## Launch validation (must be green before tagging `v1.0.0`)
 

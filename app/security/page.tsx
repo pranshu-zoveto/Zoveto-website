@@ -53,6 +53,10 @@ export default function SecurityPage() {
           <li>
             <strong>Audit logs:</strong> operational and security events are logged for investigation and reliability.
           </li>
+          <li>
+            <strong>Role discipline:</strong> user permissions are designed around operational responsibilities so teams can
+            separate admin, finance, warehouse, sales, and support actions.
+          </li>
         </ul>
       </section>
 
@@ -76,11 +80,11 @@ export default function SecurityPage() {
       <section>
         <h2>4. Subprocessors</h2>
         <ul>
-          <li>Amazon Web Services (AWS) - cloud infrastructure hosting.</li>
-          <li>Google (Gmail SMTP) - transactional and operational email delivery.</li>
-          <li>Google Analytics - website analytics when consent is enabled.</li>
-          <li>Microsoft Clarity - session replay and behavioral diagnostics when analytics consent is enabled.</li>
-          <li>Razorpay - payment processing and billing transactions.</li>
+          <li>Amazon Web Services (AWS): cloud infrastructure hosting.</li>
+          <li>Google (Gmail SMTP): transactional and operational email delivery.</li>
+          <li>Google Analytics: website analytics when consent is enabled.</li>
+          <li>Microsoft Clarity: session replay and behavioral diagnostics when analytics consent is enabled.</li>
+          <li>Razorpay: payment processing and billing transactions.</li>
         </ul>
         <p>
           Full details are maintained on the <Link href="/subprocessors">Subprocessors</Link> page.
@@ -105,7 +109,24 @@ export default function SecurityPage() {
       </section>
 
       <section>
-        <h2>7. Uptime and SLA by plan</h2>
+        <h2>7. Backup and continuity posture</h2>
+        <p>
+          Zoveto designs production systems with managed cloud infrastructure, environment separation, operational monitoring,
+          and recovery planning appropriate to the customer&apos;s plan and contracted scope. Specific backup cadence, retention,
+          and recovery commitments are confirmed in onboarding or enterprise order terms where applicable.
+        </p>
+      </section>
+
+      <section>
+        <h2>8. Support expectations</h2>
+        <p>
+          Support is handled through the channels agreed during onboarding. Evaluation access is best effort, paid plans receive
+          standard business support, and Enterprise customers may define priority response terms in their order form.
+        </p>
+      </section>
+
+      <section>
+        <h2>9. Uptime and SLA by plan</h2>
         <ul>
           <li>
             <strong>Free / evaluation:</strong> best-effort availability, no formal SLA.
@@ -120,7 +141,7 @@ export default function SecurityPage() {
       </section>
 
       <section>
-        <h2>8. Legal documents</h2>
+        <h2>10. Legal documents</h2>
         <ul>
           <li>
             <Link href="/terms">Terms of Service</Link>
@@ -141,7 +162,7 @@ export default function SecurityPage() {
       </section>
 
       <section>
-        <h2>9. Responsible disclosure</h2>
+        <h2>11. Responsible disclosure</h2>
         <p>
           If you identify a potential vulnerability, report it to{" "}
           <a href="mailto:security@zoveto.com">security@zoveto.com</a> with reproducible details. We review good-faith reports

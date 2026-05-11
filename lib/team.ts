@@ -1,11 +1,11 @@
 /**
- * About page — founders / leadership team.
+ * About page - founders / leadership team.
  *
  * Headshots are served from Cloudinary (`res.cloudinary.com`); tune crops via `imageObjectClass` per portrait.
  *
  * **LinkedIn (smart redirect):** set `linkedinUrl` to the full profile URL, e.g.
  * `https://www.linkedin.com/in/your-handle`. The site CTA links to `/go/linkedin/{id}` which validates
- * and redirects (HTTPS + linkedin.com `/in/` or `/pub/` only). Swap the URL in this file only—no other
+ * and redirects (HTTPS + linkedin.com `/in/` or `/pub/` only). Swap the URL in this file only-no other
  * pages need updating.
  */
 
@@ -41,7 +41,7 @@ export type TeamMember = {
   imageObjectClass?: string;
   /** One line under the card (not in modal) */
   cardTagline: string;
-  /** Modal body — 2–3 short paragraphs */
+  /** Modal body - 2–3 short paragraphs */
   bio: readonly [string, string, string] | readonly [string, string];
   /**
    * Full `https://www.linkedin.com/in/...` (or `/pub/...`) profile URL.

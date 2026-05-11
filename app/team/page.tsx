@@ -7,12 +7,12 @@ import TeamPageClient from "@/app/team/TeamPageClient";
 export const metadata: Metadata = {
   title: "Leadership team | Zoveto",
   description:
-    "Meet the operators building Zoveto: a company OS for inventory, sales, finance, and people workflows—shipped close to the floor.",
+    "Meet the operators building Zoveto: a company OS for inventory, sales, finance, and people workflows, shipped close to the floor.",
   alternates: { canonical: canonicalUrl("/team") },
   openGraph: {
     title: "Leadership team | Zoveto",
     description:
-      "Founders and product leadership behind Zoveto—the operating system for businesses that have outgrown spreadsheets and chat.",
+      "Founders and product leadership behind Zoveto, the operating system for businesses that have outgrown spreadsheets and chat.",
     url: canonicalUrl("/team"),
     images: ["/og-image.png"],
   },

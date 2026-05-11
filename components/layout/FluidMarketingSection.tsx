@@ -51,7 +51,7 @@ export function FluidMarketingSection({
   );
 }
 
-/** In-flow gradient after GSAP hero — do not use negative margins (ScrollTrigger safe). */
+/** In-flow gradient after GSAP hero - do not use negative margins (ScrollTrigger safe). */
 export function MarketingHeroFeather() {
   return <div className="marketing-feather-hero-tail" aria-hidden />;
 }

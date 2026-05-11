@@ -8,6 +8,8 @@ import { PricingBillingToggle } from "@/components/pricing/PricingBillingToggle"
 import { PricingFeatureComparison } from "@/components/pricing/PricingFeatureComparison";
 import { PricingPlanGrid } from "@/components/pricing/PricingPlanGrid";
 import BackgroundComponents from "@/components/ui/background-components";
+import { MarketingPageView } from "@/components/tracking/MarketingPageView";
+import { ZeroClientTrustSection } from "@/components/sections/ZeroClientTrustSection";
 import { DEFAULT_BILLING_CYCLE, type BillingCycle } from "@/lib/pricing-display";
 import { getPublicIndustries } from "@/lib/industries";
 import { cn } from "@/lib/utils";
@@ -20,6 +22,9 @@ const COMPARE_LINKS = [
   { href: "/compare/zoho-vs-zoveto", label: "Zoho vs Zoveto" },
   { href: "/compare/tally-vs-zoveto", label: "Tally vs Zoveto" },
   { href: "/compare/odoo-vs-zoveto", label: "Odoo vs Zoveto" },
+  { href: "/compare/vyapar-vs-zoveto", label: "Vyapar vs Zoveto" },
+  { href: "/compare/freshsales-vs-zoveto", label: "Freshsales vs Zoveto" },
+  { href: "/compare/gohighlevel-vs-zoveto", label: "GoHighLevel vs Zoveto" },
 ] as const;
 
 export function PricingClient() {
@@ -43,6 +48,7 @@ export function PricingClient() {
 
   return (
     <>
+      <MarketingPageView eventName="pricing_view" />
       <section
         aria-labelledby="pricing-plans-heading"
         className="space-y-8 md:space-y-10"
@@ -65,7 +71,7 @@ export function PricingClient() {
         aria-label="Billing and compliance information"
       >
         <p className="font-medium text-foreground">Billing &amp; compliance</p>
-        <p className="mt-1">Early access is reviewed before onboarding. No instant workspace is created.</p>
+        <p className="mt-1">Founder-led setup starts with a fit check so rollout scope stays honest.</p>
         <p className="mt-1">All prices shown exclude applicable taxes.</p>
         <p className="mt-1">GST (18%) is applied for India billing (SAC code 998314).</p>
         <p className="mt-1">USD pricing is available for international billing.</p>
@@ -73,7 +79,7 @@ export function PricingClient() {
         <p className="mt-1">Annual plans include a pro-rated refund if cancelled within 30 days.</p>
         <p className="mt-1">Data export is available for 30 days after cancellation.</p>
         <p className="mt-2 text-muted-2">
-          By requesting access, you agree to our{" "}
+          By booking a demo or creating an account, you agree to our{" "}
           <Link href="/terms" className="font-medium text-teal underline underline-offset-2 hover:text-foreground">
             Terms of Service
           </Link>{" "}
@@ -84,6 +90,8 @@ export function PricingClient() {
           .
         </p>
       </aside>
+
+      <ZeroClientTrustSection context="pricing" className="mx-auto mt-10 max-w-5xl md:mt-12" />
 
       <PricingFeatureComparison />
 
@@ -107,7 +115,7 @@ export function PricingClient() {
             </div>
           </div>
           <p className="mt-4 max-w-prose text-pretty text-sm leading-relaxed text-muted sm:text-[15px] sm:leading-relaxed">
-            Pricing is shaped after we understand your workflow. Pick the vertical closest to how you operate — we map
+            Pricing is shaped after we understand your workflow. Pick the vertical closest to how you operate; we map
             modules and rollout from there.
           </p>
           <ul className="mt-5 grid grid-cols-1 gap-1.5" role="list">
@@ -159,7 +167,7 @@ export function PricingClient() {
             </div>
           </div>
           <p className="mt-4 max-w-prose text-pretty text-sm leading-relaxed text-muted sm:text-[15px] sm:leading-relaxed">
-            Evaluating Zoho, Tally, or Odoo? Read workflow-level comparisons, then book a demo or request access when
+            Evaluating Zoho, Tally, Odoo, or lightweight business apps? Read workflow-level comparisons, then book a demo when
             you are ready.
           </p>
           <ul className="mt-5 grid grid-cols-1 gap-1.5" role="list">

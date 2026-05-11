@@ -13,7 +13,7 @@ import { PricingFAQSection } from "./PricingFAQSection";
 export const revalidate = 86400;
 
 export const metadata: Metadata = {
-  title: "Zoveto Pricing — ERP Software from ₹5,999/mo effective (Starter) | Plans",
+  title: "Zoveto Pricing, ERP Software from ₹5,999/mo effective (Starter) | Plans",
   description:
     "Transparent pricing for Zoveto's Company Operating System. Starter ₹7,999/mo monthly or ₹5,999/mo effective on yearly billing (10 users). Growth from ₹14,999/mo effective (15 users + HRMS + AI). No hidden fees. Cancel anytime.",
   alternates: { canonical: canonicalUrl("/pricing") },

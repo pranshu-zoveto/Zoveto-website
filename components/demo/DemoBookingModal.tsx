@@ -4,6 +4,7 @@ import React, { createContext, useCallback, useContext, useState } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import { X } from "lucide-react";
 import { bookDemo } from "@/lib/api";
+import { trackMarketingEvent } from "@/lib/tracking";
 import { Button } from "@/components/ui/Button";
 import { FormToast } from "@/components/ui/FormToast";
 
@@ -88,6 +89,11 @@ export function DemoModalProvider({ children }: { children: React.ReactNode }) {
         industry: form.industry.trim() || undefined,
       });
       setStatus("success");
+      trackMarketingEvent("demo_request_submit", {
+        form: "demo_booking_modal",
+        company_type: form.industry,
+        employee_band: form.teamSize,
+      });
     } catch (e) {
       setStatus("error");
       setError(e instanceof Error ? e.message : "Request failed.");

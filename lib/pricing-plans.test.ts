@@ -12,10 +12,10 @@ describe("MARKETING_PRICING_PLANS", () => {
     assert.deepEqual(ids, ["free", "starter", "growth", "enterprise"]);
   });
 
-  it("positions Free as testing-only (subtitle)", () => {
+  it("positions Free as exploration-first (subtitle)", () => {
     const free = MARKETING_PRICING_PLANS.find((p) => p.id === "free");
     assert.ok(free);
-    assert.equal(free!.subtitle, "Best for testing the system");
+    assert.equal(free!.subtitle, "Explore the system before committing. No credit card, no time limit.");
   });
 
   it("positions Starter with daily-ops subtitle under plan name", () => {
@@ -79,7 +79,7 @@ describe("MARKETING_PRICING_PLANS", () => {
 
   it("Free tier stack says testing scope, not full-access marketing", () => {
     const src = readFileSync(join(process.cwd(), "components/pricing/PlanPriceBlock.tsx"), "utf8");
-    assert.ok(src.includes("Not for running a business"));
+    assert.ok(src.includes("No credit card, no time limit"));
     assert.ok(!src.includes("Full access. No commitment."));
   });
 });

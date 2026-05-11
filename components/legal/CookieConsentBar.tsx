@@ -218,7 +218,7 @@ export function CookieConsentBar() {
             <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 py-4 sm:px-5 sm:py-5">
               <Dialog.Description asChild>
                 <p className="text-base leading-relaxed text-muted">
-                  Necessary cookies stay on. Turn optional categories on or off — you can change this anytime via{" "}
+                  Necessary cookies stay on. Turn optional categories on or off, you can change this anytime via{" "}
                   <strong className="font-semibold text-foreground">Manage cookies</strong> in the footer.
                 </p>
               </Dialog.Description>

@@ -44,7 +44,7 @@ export function LogoStrip() {
 
           <div className="mt-4 w-full max-w-[720px] text-pretty text-balance">
             <p className={subtextLineClass}>
-              Designed for daily operations—inventory, orders, money, and people in one coherent stack.
+              Designed for daily operations, inventory, orders, money, and people in one coherent stack.
             </p>
             <p className={`mt-1 ${subtextLineClass}`}>No toy dashboards. No pretend data.</p>
           </div>

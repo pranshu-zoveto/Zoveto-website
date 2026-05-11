@@ -26,7 +26,7 @@ export default function CaseStudiesIndexPage() {
       <ul className="space-y-4 text-muted">
         <li>
           <Link href="/case-studies/rock-tear-parts" className="font-medium text-blue underline-offset-4 hover:underline">
-            Rock Tear Parts — spare parts trading on one operating record
+            Rock Tear Parts, spare parts trading on one operating record
           </Link>
         </li>
       </ul>

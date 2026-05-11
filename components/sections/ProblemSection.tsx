@@ -227,9 +227,13 @@ export function ProblemSection() {
                       strokeWidth="1.5"
                       strokeLinecap="round"
                       fill="none"
-                      style={{ opacity: isActive ? 1 : 0.2, filter: isActive ? "drop-shadow(0 0 4px rgba(239,68,68,.35))" : "none" }}
+                      style={{
+                        opacity: isActive ? 1 : 0.2,
+                        filter: isActive ? "drop-shadow(0 0 4px rgba(239,68,68,.35))" : "none",
+                        strokeDashoffset: 0,
+                      }}
                       strokeDasharray={isActive ? "8 8" : "none"}
-                      animate={isActive ? { strokeDashoffset: [0, -32] } : { strokeDashoffset: 0 }}
+                      animate={isActive ? { strokeDashoffset: [0, -32] } : undefined}
                       transition={isActive ? { duration: 1.2, repeat: Number.POSITIVE_INFINITY, ease: "linear" } : { duration: 0.2 }}
                     />
                   );

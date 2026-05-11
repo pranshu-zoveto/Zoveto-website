@@ -53,7 +53,7 @@ export function PlanPriceBlock({
   className,
 }: PlanPriceBlockProps) {
   const yearly = billing === "yearly";
-  /** No overflow-wrap:anywhere — it can split "/mo" and misalign cards vs Starter. */
+  /** No overflow-wrap:anywhere - it can split "/mo" and misalign cards vs Starter. */
   const priceSize =
     "text-3xl font-bold tracking-tight text-foreground sm:text-4xl xl:text-[3rem] xl:leading-[1.05]";
   const moSuffix = "text-lg font-semibold sm:text-xl xl:text-[2rem]";
@@ -86,8 +86,8 @@ export function PlanPriceBlock({
         main={
           <>
             <div className={priceSize}>{formatMoney(0)}</div>
-            <p className="mt-2 text-xs font-semibold uppercase tracking-widest text-muted-2">Reviewed access</p>
-            <p className="mt-2 max-w-[28ch] text-sm leading-relaxed text-muted">Not for running a business</p>
+            <p className="mt-2 text-xs font-semibold uppercase tracking-widest text-muted-2">Explore first</p>
+            <p className="mt-2 max-w-[28ch] text-sm leading-relaxed text-muted">No credit card, no time limit</p>
             <CurrencyRowPlaceholder />
           </>
         }

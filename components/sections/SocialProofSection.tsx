@@ -33,7 +33,7 @@ const TESTIMONIALS = [
   },
   {
     quote:
-      "I've tried three ERPs before. All needed six months and a consultant. Zoveto was live in ten days—I set it up myself.",
+      "I've tried three ERPs before. All needed six months and a consultant. Zoveto was live in ten days, I set it up myself.",
     name: "Sam T.",
     role: "Founder · Trading",
     industry: "Trading",

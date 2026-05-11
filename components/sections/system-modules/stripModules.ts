@@ -1,5 +1,5 @@
 /**
- * Premium SaaS module strip — typography tokens per tile; shared tile surface is `.gradient-surface` in CSS.
+ * Premium SaaS module strip - typography tokens per tile; shared tile surface is `.gradient-surface` in CSS.
  */
 export type StripModuleIcon = "Layers" | "Warehouse" | "TrendingUp" | "Calculator" | "Users" | "Sparkles";
 
@@ -27,10 +27,10 @@ export type SystemStripModule = {
   fragmentId?: "zoveto-erp" | "zoveto-crm" | "zoveto-ai";
 };
 
-/** Icon stroke — unified across panels */
+/** Icon stroke - unified across panels */
 export const STRIP_CHROME = "rgba(29,29,31,0.55)" as const;
 
-/** Index numerals only — slightly stronger than icon chrome for legibility on all panel tones */
+/** Index numerals only - slightly stronger than icon chrome for legibility on all panel tones */
 export const STRIP_INDEX = "rgba(29,29,31,0.82)" as const;
 
 export const STRIP_MODULES: readonly SystemStripModule[] = [

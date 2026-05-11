@@ -6,7 +6,7 @@ function normalizeFaq(f: FaqSchemaInput): FaqItem {
   return "question" in f ? { q: f.question, a: f.answer } : f;
 }
 
-/** FAQPage JSON-LD — keep answers factual; match visible FAQ copy. Optional `url` helps validators associate markup with the page. */
+/** FAQPage JSON-LD - keep answers factual; match visible FAQ copy. Optional `url` helps validators associate markup with the page. */
 export function FAQPageSchema({
   faqs,
   url,

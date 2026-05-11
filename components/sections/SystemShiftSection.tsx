@@ -18,7 +18,7 @@ export function SystemShiftSection() {
       aria-labelledby="system-shift-heading"
       className="relative isolate overflow-hidden border-t border-border/40 bg-[linear-gradient(180deg,#f8fafc_0%,#f4f8fc_38%,#eef4fb_100%)] py-[clamp(4.5rem,10vw,8rem)] text-center"
     >
-      {/* Decorative layer only — kept behind content, low contrast, no blur */}
+      {/* Decorative layer only, kept behind content, low contrast, no blur */}
       <div className="pointer-events-none absolute inset-0 z-0">
         <motion.div
           className="absolute inset-0 bg-[radial-gradient(68%_52%_at_50%_28%,rgba(59,130,246,0.08),transparent_62%)]"

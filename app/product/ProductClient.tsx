@@ -83,7 +83,7 @@ export function ProductClient() {
               Operational landings for how you actually run
             </Text>
             <Text variant="body-sm" className="max-w-prose leading-relaxed text-muted">
-              Deep-dive pages for manufacturing, distribution, spare parts trading, and warehousing—same product
+              Deep-dive pages for manufacturing, distribution, spare parts trading, and warehousing, same product
               record, written for each operating context.
             </Text>
           </div>

@@ -8,7 +8,7 @@ type Props = {
   priority?: boolean;
 };
 
-/** Square mark — uses public SVG only. */
+/** Square mark - uses public SVG only. */
 export function BrandIcon({ className, priority }: Props) {
   return (
     <span
@@ -30,7 +30,7 @@ export function BrandIcon({ className, priority }: Props) {
   );
 }
 
-/** Wordmark — public SVG only. */
+/** Wordmark - public SVG only. */
 export function BrandWordmark({ className }: Props) {
   return (
     <Image

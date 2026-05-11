@@ -27,8 +27,8 @@ export function buildLeadSmtpPayload(body: Record<string, unknown>): LeadSmtpPay
 
   const isFooterUpdates = painPoint.includes("footer_product_updates");
   const subject = isFooterUpdates
-    ? `[Website] Product updates — ${email}`
-    : `[Website] Lead — ${org}`;
+    ? `[Website] Product updates, ${email}`
+    : `[Website] Lead, ${org}`;
 
   const text = [
     "New website lead (COS WebsiteLeadDto)",

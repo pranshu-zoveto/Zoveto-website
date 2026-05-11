@@ -12,7 +12,7 @@ const mailSuccessResponse = () =>
   NextResponse.json(
     {
       id: `email:${Date.now()}`,
-      message: "Thanks — we received your details and notified info@zoveto.com.",
+      message: "Thanks, we received your details and notified info@zoveto.com.",
     },
     { status: 200 },
   );

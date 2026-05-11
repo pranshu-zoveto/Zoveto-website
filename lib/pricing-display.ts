@@ -21,7 +21,7 @@ export const PAID_PLAN_PRICING = {
   },
 } as const;
 
-/** ₹0 marketing tier — annual/monthly display the same. */
+/** ₹0 marketing tier - annual/monthly display the same. */
 export const PRICING_FREE: PaidPlanPricing = {
   listMonthly: 0,
   effectiveMonthlyAnnual: 0,

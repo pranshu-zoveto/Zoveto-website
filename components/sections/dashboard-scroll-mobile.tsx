@@ -87,7 +87,7 @@ function MobileCard({ module }: { module: DashboardModule }) {
   );
 }
 
-/** Mobile homepage product deep dive — intentionally no GSAP (keeps LCP/TBT weight off the critical path). */
+/** Mobile homepage product deep dive - intentionally no GSAP (keeps LCP/TBT weight off the critical path). */
 export function DashboardMobileModules() {
   return (
     <section id="product-deep-dive" className="bg-[#f5f5f7] px-5 py-20 lg:hidden">

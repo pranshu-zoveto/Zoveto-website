@@ -8,17 +8,55 @@ import Link from "next/link";
 import { ArrowLeft, ArrowRight, Clock, Calendar, Tag } from "lucide-react";
 import { BreadcrumbSchema } from "@/components/seo/BreadcrumbSchema";
 import { ArticleSchema } from "@/components/seo/ArticleSchema";
+import { FAQPageSchema, type FaqSchemaInput } from "@/components/seo/FAQPageSchema";
 import { getBlogPost, getAllBlogSlugs, formatBlogDate, BLOG_POSTS } from "@/lib/blog-posts";
 import { canonicalUrl } from "@/lib/site";
 import { Button } from "@/components/ui/Button";
 import { BlogCard } from "@/components/blog/BlogCard";
 import { resolveSlugParams } from "@/lib/resolve-slug-params";
 import WhatIsCompanyOperatingSystem from "@/app/blog/_posts/what-is-company-operating-system";
+import TallyVsZovetoCloudErpIndia from "@/app/blog/_posts/tally-vs-zoveto-cloud-erp-india";
 
 /** Maps slug → the corresponding content component. Add every new post here. */
 const POST_CONTENT_MAP: Record<string, ComponentType> = {
   "what-is-company-operating-system": WhatIsCompanyOperatingSystem,
+  "tally-vs-zoveto-cloud-erp-india": TallyVsZovetoCloudErpIndia,
   // ↑ When adding new posts: duplicate this line, change both the slug key and the import path.
+};
+
+/**
+ * Per-slug FAQ data, mirrored from the visible FAQ in the post component.
+ * Used to emit FAQPage JSON-LD only on posts that have a visible FAQ block.
+ * Google requires the schema answers to match the on-page copy.
+ */
+const POST_FAQS: Record<string, readonly FaqSchemaInput[]> = {
+  "tally-vs-zoveto-cloud-erp-india": [
+    {
+      question: "Can I migrate my Tally data to Zoveto?",
+      answer:
+        "Yes. Zoveto supports data migration from Tally, including customer ledgers, vendor ledgers, stock masters, and opening balances. The migration process typically takes 2 to 5 business days depending on data volume.",
+    },
+    {
+      question: "Will my CA be able to use Zoveto for GST filing?",
+      answer:
+        "Zoveto generates all GST reports in standard formats (GSTR-1, GSTR-3B, GSTR-9, e-invoice, e-way bill). Your CA can file using these exports without needing to learn new software.",
+    },
+    {
+      question: "Is Zoveto more expensive than Tally?",
+      answer:
+        "For single-user accounting, Tally is cheaper. For businesses with 10+ users needing CRM, WMS, purchase workflow, and HR, Zoveto's all-in-one pricing is typically more cost-effective than assembling a comparable stack.",
+    },
+    {
+      question: "Does Zoveto work offline?",
+      answer:
+        "Zoveto is cloud-based and requires internet access. For businesses in areas with unreliable connectivity, we recommend Tally or a hybrid approach where Zoveto is used at head office and Tally at remote locations.",
+    },
+    {
+      question: "How long does it take to switch from Tally to Zoveto?",
+      answer:
+        "Most SMBs complete the transition in 4 to 8 weeks, including data migration, user training, and parallel-run validation.",
+    },
+  ],
 };
 
 /** Tell Next.js which slugs to pre-render at build time. */
@@ -88,6 +126,9 @@ export default async function BlogPostPage({
         datePublished={post.date}
         image={post.coverImage}
       />
+      {POST_FAQS[slug] && (
+        <FAQPageSchema url={canonicalUrl(`/blog/${slug}`)} faqs={POST_FAQS[slug]} />
+      )}
 
       <div className="container mx-auto max-w-[min(100%,72rem)] px-4 sm:px-6">
         {/* ── Back link ── */}

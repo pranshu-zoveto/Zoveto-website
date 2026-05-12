@@ -150,9 +150,9 @@ export default async function BlogPostPage({
               <figure className="mb-10 overflow-hidden rounded-2xl border border-border bg-surface shadow-[0_4px_24px_rgba(15,23,42,0.06)]">
                 <Image
                   src={post.coverImage}
-                  alt={`Cover image for ${post.title}`}
-                  width={1220}
-                  height={861}
+                  alt={post.coverImageAlt ?? `Cover image for ${post.title}`}
+                  width={post.coverWidth ?? 1200}
+                  height={post.coverHeight ?? 630}
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 820px"
                   priority
                   className="block h-auto w-full"

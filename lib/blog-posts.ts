@@ -9,7 +9,11 @@ export interface BlogPost {
   readingTime: string; // e.g. "8 min read"
   category: string; // e.g. "ERP Guide", "Industry", "Comparison"
   tags: string[]; // for future filtering
-  coverImage?: string; // optional: path under /public, e.g. "/blog/cos-guide.png"
+  coverImage?: string; // optional: path under /public or full https URL (e.g. Cloudinary)
+  /** Intrinsic pixel size of coverImage (for next/image layout / LCP). */
+  coverWidth?: number;
+  coverHeight?: number;
+  coverImageAlt?: string;
 }
 
 /** All published blog posts. Add new entries at the TOP of this array (newest first). */
@@ -24,8 +28,12 @@ export const BLOG_POSTS: BlogPost[] = [
     readingTime: "7 min read",
     category: "Comparisons",
     tags: ["Tally alternative", "Cloud ERP India", "Tally vs Zoveto", "ERP comparison"],
-    // coverImage: add a Cloudinary URL once the asset is uploaded, e.g.
-    // "https://res.cloudinary.com/dnldtmbg5/image/upload/blog002_xxxxxx.jpg"
+    coverImage:
+      "https://res.cloudinary.com/dnldtmbg5/image/upload/f_auto,q_auto,w_1920,c_limit/v1778595674/1304efdd-9fa4-4a8c-96f1-45cfc2383e7f_rol6qp.jpg",
+    coverWidth: 1279,
+    coverHeight: 739,
+    coverImageAlt:
+      "Business team reviewing Zoveto Cloud ERP on an interactive table: Sales, Finance, Inventory, Logistics, and Payroll modules with India operations map in the background",
   },
   {
     slug: "what-is-company-operating-system",
@@ -39,6 +47,10 @@ export const BLOG_POSTS: BlogPost[] = [
     tags: ["company operating system", "ERP", "India", "SMB"],
     coverImage:
       "https://res.cloudinary.com/dnldtmbg5/image/upload/blog001_b4sbzu.jpg",
+    coverWidth: 1220,
+    coverHeight: 861,
+    coverImageAlt:
+      "Zoveto dashboard and warehouse operations: inventory, CRM pipeline, and analytics",
   },
 ];
 

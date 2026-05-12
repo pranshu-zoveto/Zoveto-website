@@ -3,6 +3,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { BlogPost, formatBlogDate } from "@/lib/blog-posts";
@@ -24,18 +25,28 @@ export function BlogCard({ post, featured = false }: BlogCardProps) {
       {/* Optional cover image placeholder – renders a gradient swatch if no image */}
       <div
         className={cn(
-          "flex-shrink-0 overflow-hidden rounded-t-2xl bg-gradient-to-br from-[#e8f1fd] to-[#f0f7ff]",
+          "relative shrink-0 overflow-hidden rounded-t-2xl bg-gradient-to-br from-[#e8f1fd] to-[#f0f7ff]",
           featured
-            ? "h-52 md:h-auto md:w-[44%] md:rounded-l-2xl md:rounded-tr-none"
-            : "h-44",
+            ? "h-52 w-full md:h-auto md:w-[44%] md:self-stretch md:rounded-l-2xl md:rounded-tr-none"
+            : "h-44 w-full",
         )}
-        aria-hidden
+        {...(!post.coverImage ? { "aria-hidden": true as const } : {})}
       >
         {post.coverImage ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img src={post.coverImage} alt="" className="h-full w-full object-cover" />
+          <Image
+            src={post.coverImage}
+            alt={post.coverImageAlt ?? `Cover image for ${post.title}`}
+            fill
+            sizes={
+              featured
+                ? "(max-width: 767px) 100vw, min(44vw, 520px)"
+                : "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 360px"
+            }
+            className="object-cover object-center"
+            priority={featured}
+          />
         ) : (
-          <div className="flex h-full w-full items-center justify-center">
+          <div className="flex h-full w-full items-center justify-center" aria-hidden>
             <span className="text-4xl opacity-20">📘</span>
           </div>
         )}

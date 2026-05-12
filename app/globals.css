@@ -17,7 +17,10 @@
 
     --radius-sm: 5px;
     --radius-md: 18px;
+    --radius-lg: 16px; /* additive — new code */
+    --radius-xl: 20px; /* additive — new code */
     --radius-full: 56px;
+    --radius-pill: 9999px; /* additive — true pill shape for new code */
 
     --background: #f5f5f7;
     --foreground: #1d1d1f;
@@ -26,9 +29,14 @@
     --canvas: #ffffff;
 
     --blue: #0071e3;
-    --blue-hover: #0077ed;
-    --blue-light: #fbfbfd;
-    --blue-dim: rgba(0, 113, 227, 0.08);
+    --blue-hover: #0077ed; /* lighter, hover */
+    --blue-active: #006edb; /* darker, pressed */
+    --blue-light: #fbfbfd; /* near-white surface (preserved for legacy semantics) */
+    --blue-dim: rgba(0, 113, 227, 0.08); /* subtle tinted background */
+    --blue-dim-hover: rgba(0, 113, 227, 0.13);
+    --blue-border: rgba(0, 113, 227, 0.25);
+    --blue-shadow: rgba(0, 113, 227, 0.26);
+    --blue-shadow-hover: rgba(0, 113, 227, 0.36);
     --blue-glow: rgba(0, 113, 227, 0.2);
 
     /* Secondary accent for diagrams / legacy "teal" utilities (blue-sky harmony) */
@@ -41,13 +49,24 @@
 
     --border: #d2d2d7;
     --border-2: #d2d2d7;
+    --border-strong: #b8b8be;
 
     --muted: #6e6e73;
     --muted-2: #86868b;
 
+    --surface-hover: #ebebed;
+
     --red: #ff3b30;
     --amber: #86868b;
     --green: #34c759;
+
+    /* Semantic feedback (additive to legacy red/amber/green) */
+    --success: #34c759;
+    --success-dim: rgba(52, 199, 89, 0.1);
+    --warning: #f5a623;
+    --warning-dim: rgba(245, 166, 35, 0.1);
+    --danger: #ff3b30;
+    --danger-dim: rgba(255, 59, 48, 0.1);
 
     --shadow-card: 0 2px 4px rgba(0, 0, 0, 0.08), 0 0 12px rgba(0, 0, 0, 0.04);
     --shadow-elevated: 0 4px 16px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.06);
@@ -63,7 +82,37 @@
     --marketing-feather-height: clamp(36px, 5vw, 52px);
     --marketing-overlap: clamp(20px, 4vw, 56px);
 
-    --font-sans: var(--font-inter);
+    --font-sans:
+      var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+
+    /* ─── UNIFIED TYPE SCALE ───────────────────────────────────────────────
+       Use these for raw CSS (e.g. .blog-prose). For JSX, prefer the Text
+       component or the matching Tailwind classes (text-body-base, etc).
+    ─────────────────────────────────────────────────────────────────────── */
+    --text-body-xs: 0.75rem;
+    --text-body-sm: 0.8125rem;
+    --text-body-base: 0.9375rem;
+    --text-body-md: 1rem;
+    --text-body-lg: 1.0625rem;
+    --text-body-xl: 1.125rem;
+
+    --text-heading-xs: 1rem;
+    --text-heading-sm: 1.125rem;
+    --text-heading-md: 1.25rem;
+    --text-heading-lg: 1.5rem;
+    --text-heading-xl: 1.75rem;
+    --text-heading-2xl: 2rem;
+
+    --text-display-sm: 2.25rem;
+    --text-display-md: 2.75rem;
+    --text-display-lg: 3.5rem;
+    --text-display-xl: 4.5rem;
+
+    --tracking-display: -0.04em;
+    --tracking-heading: -0.02em;
+    --tracking-ui: 0.01em;
+
     --font-display-size: 44px;
     --font-display-weight: 400;
     --font-display-line-height: 44px;
@@ -191,23 +240,19 @@
 }
 
 @layer components {
-  /* Full-bleed marketing bands (cycle 0–3) */
-  .marketing-band-0 {
-    background-color: var(--marketing-canvas);
-  }
-  .marketing-band-1 {
-    background-color: var(--marketing-band-muted);
-  }
-  .marketing-band-2 {
-    background-color: var(--marketing-canvas);
-  }
+  /*
+   * Full-bleed marketing bands.
+   * All four bands intentionally share a single canvas color so adjacent
+   * sections merge seamlessly with no visible seam between them. To bring
+   * back alternating contrast later, re-introduce per-band background-color
+   * here (the cycle index 0–3 is still emitted by FluidMarketingSection).
+   */
+  .marketing-band-0,
+  .marketing-band-1,
+  .marketing-band-2,
   .marketing-band-3 {
-    background-image: linear-gradient(
-      180deg,
-      var(--marketing-band-tint-a) 0%,
-      color-mix(in srgb, var(--marketing-band-tint-b) 92%, var(--blue) 8%) 48%,
-      var(--marketing-band-tint-a) 100%
-    );
+    background-color: var(--marketing-canvas);
+    background-image: none;
   }
 
   /* In-flow seam after pinned hero: page bg → canvas */
@@ -532,10 +577,10 @@
 }
 
 .blog-prose h2 {
-  font-size: 26px;
-  font-weight: 700;
-  line-height: 1.25;
-  letter-spacing: -0.03em;
+  font-size: var(--text-heading-2xl);
+  font-weight: 600;
+  line-height: 1.18;
+  letter-spacing: var(--tracking-heading);
   color: var(--foreground);
   margin-top: 2.75rem;
   margin-bottom: 1rem;
@@ -608,10 +653,9 @@
   border-left: 3px solid var(--blue);
   border-radius: 0 var(--radius-md) var(--radius-md) 0;
   padding: 1.25rem 1.5rem;
-  font-size: 17px;
+  font-size: var(--text-body-lg);
   line-height: 1.7;
   color: var(--foreground);
-  font-style: italic;
   margin: 1.5rem 0;
 }
 
@@ -866,4 +910,25 @@
   color: var(--muted);
   line-height: 1.7;
   margin: 0;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Typography utilities (opt-in)
+   • .font-display  → enable optical sizing + cv11 for tighter Inter at hero sizes
+   • .font-tabular  → tabular figures for prices, stats, dashboard numerics
+───────────────────────────────────────────────────────────────────────────── */
+.font-display {
+  font-feature-settings:
+    "kern" 1,
+    "liga" 1,
+    "calt" 1,
+    "cv11" 1;
+  font-optical-sizing: auto;
+}
+
+.font-tabular {
+  font-feature-settings:
+    "tnum" 1,
+    "kern" 1;
+  font-variant-numeric: tabular-nums;
 }

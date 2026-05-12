@@ -128,13 +128,15 @@ function SectionIntro({ introRef }: { introRef: React.RefObject<HTMLDivElement> 
             alignItems: "center",
             justifyContent: "center",
             borderRadius: 12,
-            padding: "0 22px",
-            background: "#0047FF",
+            padding: "0 24px",
+            background: "#0071e3",
+            border: "1px solid rgba(0, 113, 227, 0.25)",
             color: "#fff",
             fontSize: 15,
-            fontWeight: 700,
+            fontWeight: 600,
+            letterSpacing: "-0.01em",
             textDecoration: "none",
-            boxShadow: "0 10px 30px rgba(0,71,255,0.24)",
+            boxShadow: "0 8px 24px rgba(0, 113, 227, 0.26)",
           }}
         >
           Book a 20-min demo
@@ -147,13 +149,15 @@ function SectionIntro({ introRef }: { introRef: React.RefObject<HTMLDivElement> 
             alignItems: "center",
             justifyContent: "center",
             borderRadius: 12,
-            padding: "0 22px",
-            background: "rgba(255,255,255,0.92)",
-            border: "1px solid rgba(29,29,31,0.14)",
+            padding: "0 24px",
+            background: "#ffffff",
+            border: "1px solid #d2d2d7",
             color: "#1d1d1f",
             fontSize: 15,
-            fontWeight: 700,
+            fontWeight: 600,
+            letterSpacing: "-0.01em",
             textDecoration: "none",
+            boxShadow: "0 1px 2px rgba(15, 23, 42, 0.04)",
           }}
         >
           See setup path
@@ -337,8 +341,8 @@ export function DashboardScrollDesktop() {
           tl.to(
             tile,
             {
-              boxShadow: "0 0 0 3px rgba(0,71,255,0.25), 0 8px 32px rgba(0,71,255,0.15)",
-              borderColor: "#0047FF",
+              boxShadow: "0 0 0 3px rgba(0,113,227,0.25), 0 8px 32px rgba(0,113,227,0.15)",
+              borderColor: "#0071e3",
               duration: 0.25,
             },
             t + 0.3

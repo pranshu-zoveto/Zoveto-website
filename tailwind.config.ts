@@ -12,8 +12,63 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
-        display: ["var(--font-inter)", "system-ui", "sans-serif"],
+        sans: [
+          "var(--font-inter)",
+          "-apple-system",
+          "BlinkMacSystemFont",
+          '"Segoe UI"',
+          "Roboto",
+          "sans-serif",
+        ],
+        display: [
+          "var(--font-inter)",
+          "-apple-system",
+          "BlinkMacSystemFont",
+          '"Segoe UI"',
+          "Roboto",
+          "sans-serif",
+        ],
+        mono: [
+          "ui-monospace",
+          "SFMono-Regular",
+          '"SF Mono"',
+          "Menlo",
+          "Consolas",
+          "monospace",
+        ],
+      },
+      fontSize: {
+        // Body scale (15px base matches Apple's text-body baseline)
+        "body-xs": ["0.75rem", { lineHeight: "1.5", letterSpacing: "0", fontWeight: "400" }],
+        "body-sm": ["0.8125rem", { lineHeight: "1.55", letterSpacing: "0", fontWeight: "400" }],
+        "body-base": ["0.9375rem", { lineHeight: "1.6", letterSpacing: "0", fontWeight: "400" }],
+        "body-md": ["1rem", { lineHeight: "1.6", letterSpacing: "0", fontWeight: "400" }],
+        "body-lg": ["1.0625rem", { lineHeight: "1.65", letterSpacing: "0", fontWeight: "400" }],
+        "body-xl": ["1.125rem", { lineHeight: "1.65", letterSpacing: "0", fontWeight: "400" }],
+        // Heading scale
+        "heading-xs": ["1rem", { lineHeight: "1.4", letterSpacing: "-0.01em", fontWeight: "600" }],
+        "heading-sm": ["1.125rem", { lineHeight: "1.35", letterSpacing: "-0.01em", fontWeight: "600" }],
+        "heading-md": ["1.25rem", { lineHeight: "1.3", letterSpacing: "-0.015em", fontWeight: "600" }],
+        "heading-lg": ["1.5rem", { lineHeight: "1.25", letterSpacing: "-0.02em", fontWeight: "600" }],
+        "heading-xl": ["1.75rem", { lineHeight: "1.2", letterSpacing: "-0.025em", fontWeight: "600" }],
+        "heading-2xl": ["2rem", { lineHeight: "1.15", letterSpacing: "-0.03em", fontWeight: "600" }],
+        // Display scale (hero, section headlines)
+        "display-sm": ["2.25rem", { lineHeight: "1.1", letterSpacing: "-0.035em", fontWeight: "600" }],
+        "display-md": ["2.75rem", { lineHeight: "1.08", letterSpacing: "-0.04em", fontWeight: "600" }],
+        "display-lg": ["3.5rem", { lineHeight: "1.05", letterSpacing: "-0.04em", fontWeight: "600" }],
+        "display-xl": ["4.5rem", { lineHeight: "1.02", letterSpacing: "-0.045em", fontWeight: "600" }],
+        // UI scale (labels, badges, captions, nav)
+        "ui-xs": ["0.6875rem", { lineHeight: "1", letterSpacing: "0.04em", fontWeight: "500" }],
+        "ui-sm": ["0.75rem", { lineHeight: "1.2", letterSpacing: "0.02em", fontWeight: "500" }],
+        "ui-base": ["0.8125rem", { lineHeight: "1.2", letterSpacing: "0.01em", fontWeight: "500" }],
+        "ui-md": ["0.875rem", { lineHeight: "1.25", letterSpacing: "0", fontWeight: "500" }],
+      },
+      letterSpacing: {
+        // Display + heading tightenings (Apple optical scale)
+        display: "-0.04em",
+        heading: "-0.02em",
+        // UI/label slight expansion for small uppercase labels
+        ui: "0.01em",
       },
       colors: {
         background: "var(--background)",

@@ -99,7 +99,7 @@ export function PointerHighlight({
             style={{ width: w, height: h, display: "block" }}
           />
           <span
-            className="pointer-events-none absolute block text-blue-500"
+            className="pointer-events-none absolute block text-blue"
             style={{
               transform: `translate(${w + off}px, ${h + off}px) rotate(-90deg)`,
             }}
@@ -142,7 +142,7 @@ export function PointerHighlight({
               y: { duration: 0.85, ease: [0.22, 1, 0.36, 1] },
             }}
           >
-            <Pointer className={cn(token.pointer, "text-blue-500", pointerClassName)} />
+            <Pointer className={cn(token.pointer, "text-blue", pointerClassName)} />
           </motion.span>
         </motion.span>
       ) : null}

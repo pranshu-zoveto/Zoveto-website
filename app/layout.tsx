@@ -11,7 +11,11 @@ import { WhatsAppFloatButton } from "@/components/layout/WhatsAppFloatButton";
 import { DeferredCursor } from "@/components/layout/DeferredCursor";
 import { VercelWebMetrics } from "@/components/layout/VercelWebMetrics";
 
-/** Fewer masters = shorter font download chain (was 300–900, six files). */
+/**
+ * Inter, the single typeface across the site.
+ * Fallback chain avoids `system-ui` so Safari on macOS does not bleed in SF Pro
+ * during the font-swap window.
+ */
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
@@ -19,6 +23,7 @@ const inter = Inter({
   preload: true,
   weight: ["400", "500", "600", "700"],
   adjustFontFallback: true,
+  fallback: ["-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "sans-serif"],
 });
 
 export const viewport: Viewport = {

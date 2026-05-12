@@ -94,7 +94,7 @@ export function DashboardMobileModules() {
       <div className="mb-12 text-center">
         <div className="mb-3 text-[11px] font-bold uppercase tracking-[0.2em] text-blue">How It Works</div>
         <h2 className="text-balance text-[clamp(1.75rem,6vw,2.5rem)] font-bold tracking-[-0.03em] text-[#1d1d1f]">
-          One operating record. <span style={{ color: "#0047FF" }}>Every team working from it.</span>
+          One operating record. <span style={{ color: "#0071e3" }}>Every team working from it.</span>
         </h2>
       </div>
 

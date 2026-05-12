@@ -80,7 +80,7 @@ export function PricingPlanCard({ plan, billing, currency, onToggleCurrency, cla
       <ul className="mt-1 flex min-h-0 flex-col gap-3 xl:flex-1">
         {plan.features.map((feat) => (
           <li key={feat} className="flex items-start gap-3">
-            <span className="mt-[7px] h-[6px] w-[6px] rounded-full bg-blue-600 shrink-0" aria-hidden />
+            <span className="mt-[7px] h-[6px] w-[6px] rounded-full bg-blue shrink-0" aria-hidden />
             <p className="min-w-0 max-w-[28ch] break-words text-[14px] leading-[22px] text-gray-600">{feat}</p>
           </li>
         ))}

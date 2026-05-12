@@ -252,7 +252,7 @@ export function ProblemSection() {
               />
             </motion.div>
 
-            <div className="relative z-10 grid gap-4">
+            <div className="relative z-10 grid gap-3">
               {PAINS.map((pain, i) => {
                 const isActive = activeCards.includes(i);
                 return (
@@ -262,7 +262,7 @@ export function ProblemSection() {
                     whileInView={{ opacity: 1, y: 0, scale: 1 }}
                     viewport={{ once: true, amount: 0.22 }}
                     transition={{ duration: 0.45, delay: i * 0.08, ease: "easeOut" }}
-                    className={`group rounded-xl border bg-white p-6 ${
+                    className={`group rounded-xl border bg-white p-5 ${
                       isActive ? "opacity-100" : "opacity-40"
                     } ${
                       isActive
@@ -270,12 +270,12 @@ export function ProblemSection() {
                         : "border-border shadow-[0_10px_26px_rgba(15,23,42,0.05)]"
                     } transition-all duration-300 ease-out hover:-translate-y-1 hover:opacity-100 hover:shadow-[0_18px_32px_rgba(15,23,42,0.1)]`}
                   >
-                    <div className="mb-4 inline-flex rounded-lg border border-foreground/10 bg-white p-2.5 transition-transform duration-300 group-hover:scale-105">
-                      <pain.icon className="h-5 w-5 text-foreground/65" strokeWidth={1.75} />
+                    <div className="mb-3 inline-flex rounded-lg border border-foreground/10 bg-white p-2 transition-transform duration-300 group-hover:scale-105">
+                      <pain.icon className="h-4 w-4 text-foreground/65" strokeWidth={1.75} />
                     </div>
-                    <h3 className="text-[1.7rem] font-semibold tracking-tight text-foreground">{pain.title}</h3>
-                    <p className="mt-3 text-base leading-relaxed text-[#666]">{pain.whatHappens}</p>
-                    <div className={`mt-4 rounded-lg border px-3 py-2 text-base font-medium leading-relaxed ${
+                    <h3 className="text-[1.125rem] font-semibold leading-snug tracking-[-0.01em] text-foreground">{pain.title}</h3>
+                    <p className="mt-2 text-[0.9375rem] leading-[1.55] text-[#666]">{pain.whatHappens}</p>
+                    <div className={`mt-3 rounded-lg border px-3 py-1.5 text-[0.875rem] font-medium leading-[1.5] ${
                       isActive ? "border-red/25 bg-red/[0.06] text-red" : "border-border bg-[#f8fafc] text-foreground"
                     }`}>
                       <span className="mr-1 text-red/90">→</span>

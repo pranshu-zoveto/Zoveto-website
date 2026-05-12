@@ -11,7 +11,6 @@ import { HomeHeroLcpShell } from "@/components/sections/home/HomeHeroLcpShell";
 import { DashboardDesktopLoadingFallback } from "@/components/sections/home/DashboardDesktopLoadingFallback";
 const LogoStrip = dynamic(() => import("@/components/sections/LogoStrip"));
 const ProblemSection = dynamic(() => import("@/components/sections/ProblemSection"));
-const ProductSystemLayers = dynamic(() => import("@/components/sections/ProductSystemLayers"));
 const SystemShiftSection = dynamic(() => import("@/components/sections/SystemShiftSection"));
 const ComparisonSection = dynamic(() => import("@/components/sections/ComparisonSection"));
 const HeardThisBeforeSection = dynamic(() => import("@/components/sections/HeardThisBeforeSection"));
@@ -37,15 +36,11 @@ const DashboardMobileModules = dynamic(
 );
 
 const FeaturesSection = dynamic(() => import("@/components/sections/FeaturesSection"), {
-  loading: () => (
-    <div className="min-h-[280px] animate-pulse border-y border-border bg-background" aria-hidden />
-  ),
+  loading: () => <div className="min-h-[280px] animate-pulse bg-background" aria-hidden />,
 });
 
 const PricingSection = dynamic(() => import("@/components/sections/PricingSection"), {
-  loading: () => (
-    <div className="min-h-[360px] animate-pulse border-y border-border bg-surface" aria-hidden />
-  ),
+  loading: () => <div className="min-h-[360px] animate-pulse bg-background" aria-hidden />,
 });
 
 export const metadata: Metadata = {
@@ -98,39 +93,36 @@ export default function Home() {
       </div>
       <MarketingHeroFeather />
       <FluidMarketingSection band={bandIndexForSection(1)} stackBase>
-        <ProductSystemLayers />
-      </FluidMarketingSection>
-      <FluidMarketingSection band={bandIndexForSection(2)} stackBase>
         <LogoStrip />
       </FluidMarketingSection>
-      <FluidMarketingSection band={bandIndexForSection(3)} overlapTop stackBase>
+      <FluidMarketingSection band={bandIndexForSection(2)} overlapTop stackBase>
         <ProblemSection />
       </FluidMarketingSection>
-      <FluidMarketingSection band={bandIndexForSection(4)} stackBase>
+      <FluidMarketingSection band={bandIndexForSection(3)} stackBase>
         <SystemShiftSection />
       </FluidMarketingSection>
-      <FluidMarketingSection band={bandIndexForSection(5)} stackBase>
+      <FluidMarketingSection band={bandIndexForSection(4)} stackBase>
         <FeaturesSection />
       </FluidMarketingSection>
-      <FluidMarketingSection band={bandIndexForSection(6)} overlapTop stackBase>
+      <FluidMarketingSection band={bandIndexForSection(5)} overlapTop stackBase>
         <ComparisonSection />
       </FluidMarketingSection>
-      <FluidMarketingSection band={bandIndexForSection(7)} overlapTop stackBase>
+      <FluidMarketingSection band={bandIndexForSection(6)} overlapTop stackBase>
         <HeardThisBeforeSection />
       </FluidMarketingSection>
-      <FluidMarketingSection band={bandIndexForSection(8)} overlapTop stackBase>
+      <FluidMarketingSection band={bandIndexForSection(7)} overlapTop stackBase>
         <HowItWorksLandingSection />
       </FluidMarketingSection>
-      <FluidMarketingSection band={bandIndexForSection(9)} overlapTop stackBase>
+      <FluidMarketingSection band={bandIndexForSection(8)} overlapTop stackBase>
         <ZeroClientTrustSection context="home" />
       </FluidMarketingSection>
-      <FluidMarketingSection band={bandIndexForSection(10)} overlapTop stackBase>
+      <FluidMarketingSection band={bandIndexForSection(9)} overlapTop stackBase>
         <PricingSection />
       </FluidMarketingSection>
-      <FluidMarketingSection band={bandIndexForSection(11)} overlapTop stackBase>
+      <FluidMarketingSection band={bandIndexForSection(10)} overlapTop stackBase>
         <LandingFAQSection />
       </FluidMarketingSection>
-      <FluidMarketingSection band={bandIndexForSection(12)} overlapTop stackBase>
+      <FluidMarketingSection band={bandIndexForSection(11)} overlapTop stackBase>
         <FinalCTASection />
       </FluidMarketingSection>
     </main>

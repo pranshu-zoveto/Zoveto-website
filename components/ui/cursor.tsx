@@ -5,6 +5,11 @@ import { useEffect, useRef } from "react";
 const INTERACTIVE_SELECTOR =
   "a, button, [role='button'], input[type='button'], input[type='submit'], input[type='reset'], summary, label[for], [data-cursor='hover']";
 
+/** `event.target` / `relatedTarget` may be a Text node; only Element has `closest`. */
+function closestInteractive(node: EventTarget | null): Element | null {
+  return node instanceof Element ? node.closest(INTERACTIVE_SELECTOR) : null;
+}
+
 export default function Cursor() {
   const dotRef = useRef<HTMLDivElement>(null);
   const ringRef = useRef<HTMLDivElement>(null);
@@ -48,13 +53,13 @@ export default function Cursor() {
     };
 
     const onMouseOver = (e: MouseEvent) => {
-      const target = (e.target as Element | null)?.closest(INTERACTIVE_SELECTOR);
+      const target = closestInteractive(e.target);
       setHoverState(Boolean(target));
     };
 
     const onMouseOut = (e: MouseEvent) => {
-      const current = (e.target as Element | null)?.closest(INTERACTIVE_SELECTOR);
-      const related = (e.relatedTarget as Element | null)?.closest(INTERACTIVE_SELECTOR);
+      const current = closestInteractive(e.target);
+      const related = closestInteractive(e.relatedTarget);
       if (current && current === related) {
         return;
       }

@@ -109,8 +109,8 @@ export function Navbar() {
                         <link.icon size={18} className="text-blue" />
                       </div>
                       <div className="min-w-0 space-y-0.5">
-                        <div className="text-sm font-semibold leading-tight text-foreground">{link.name}</div>
-                        <div className="text-xs leading-snug text-muted-2">{link.desc}</div>
+                        <div className="text-[0.875rem] font-semibold leading-tight tracking-[-0.005em] text-foreground">{link.name}</div>
+                        <div className="text-[0.75rem] leading-snug tracking-[0] text-muted-2">{link.desc}</div>
                       </div>
                     </Link>
                   ))}
@@ -152,11 +152,7 @@ export function Navbar() {
 
           <div className="hidden lg:flex h-9 items-center gap-3 self-center">
             <Link href="/contact" className="inline-flex">
-              <Button
-                variant="primary"
-                size="sm"
-                className="gap-2 rounded-xl border border-blue/80 px-5 text-sm leading-none shadow-[0_8px_24px_rgba(0,113,227,0.26)] transition-shadow hover:shadow-[0_10px_30px_rgba(0,113,227,0.32)]"
-              >
+              <Button variant="primary" size="sm" className="rounded-xl">
                 Book a 20-min demo <ArrowRight size={14} className="shrink-0" />
               </Button>
             </Link>
@@ -170,7 +166,7 @@ export function Navbar() {
               <Button
                 variant="primary"
                 size="sm"
-                className="min-h-[44px] max-w-[10.5rem] truncate rounded-lg px-2.5 text-[11px] font-semibold tracking-tight sm:max-w-none sm:px-3.5 sm:text-xs"
+                className="min-h-[44px] max-w-[10.5rem] truncate px-2.5 text-[11px] sm:max-w-none sm:px-3.5 sm:text-xs"
               >
                 20-min demo
               </Button>
@@ -208,14 +204,14 @@ export function Navbar() {
 
           <div className="flex-1 space-y-8 overflow-y-auto">
             <div className="space-y-3">
-              <div className="text-xs font-semibold uppercase tracking-wide text-muted-2">System layers</div>
+              <div className="text-[0.6875rem] font-semibold uppercase tracking-[0.08em] text-muted-2">System layers</div>
               <div className="flex flex-wrap gap-x-6 gap-y-2">
                 {BRAND_PRODUCTS.map((p) => (
                   <Link
                     key={p.id}
                     href={`/system#${p.anchor}`}
                     onClick={() => setIsOpen(false)}
-                    className="text-lg font-semibold text-foreground/80"
+                    className="text-[1.0625rem] font-semibold tracking-[-0.015em] text-foreground/80"
                   >
                     {p.productLine}
                   </Link>
@@ -224,14 +220,14 @@ export function Navbar() {
             </div>
 
             <div className="space-y-3">
-              <div className="text-xs font-semibold uppercase tracking-wide text-muted-2">Modules</div>
+              <div className="text-[0.6875rem] font-semibold uppercase tracking-[0.08em] text-muted-2">Modules</div>
               <div className="grid grid-cols-2 gap-2">
                 {MODULE_NAV_LINKS.map((link) => (
                   <Link
                     key={link.slug}
                     href={link.href}
                     onClick={() => setIsOpen(false)}
-                    className="py-1 text-base font-medium text-muted"
+                    className="py-1 text-[1rem] font-medium tracking-[-0.01em] text-muted"
                   >
                     {link.name}
                   </Link>
@@ -239,41 +235,38 @@ export function Navbar() {
               </div>
             </div>
 
-            <Link href="/pricing" onClick={() => setIsOpen(false)} className="block text-2xl font-semibold text-foreground">
+            <Link href="/pricing" onClick={() => setIsOpen(false)} className="block text-[1.5rem] font-semibold leading-tight tracking-[-0.02em] text-foreground">
               Pricing
             </Link>
             <Link
               href="/compare"
               onClick={() => setIsOpen(false)}
-              className="block text-2xl font-semibold text-foreground"
+              className="block text-[1.5rem] font-semibold leading-tight tracking-[-0.02em] text-foreground"
             >
               Compare
             </Link>
             <Link
               href="/operational-proof"
               onClick={() => setIsOpen(false)}
-              className="block text-2xl font-semibold text-foreground"
+              className="block text-[1.5rem] font-semibold leading-tight tracking-[-0.02em] text-foreground"
             >
               System Flow
             </Link>
             <Link
               href="/blog"
               onClick={() => setIsOpen(false)}
-              className="block text-2xl font-semibold text-foreground"
+              className="block text-[1.5rem] font-semibold leading-tight tracking-[-0.02em] text-foreground"
             >
               Blog
             </Link>
-            <Link href="/about" onClick={() => setIsOpen(false)} className="block text-2xl font-semibold text-foreground">
+            <Link href="/about" onClick={() => setIsOpen(false)} className="block text-[1.5rem] font-semibold leading-tight tracking-[-0.02em] text-foreground">
               About
             </Link>
           </div>
 
           <div className="flex flex-col gap-3 border-t border-border pt-8">
             <Link href="/contact" onClick={() => setIsOpen(false)}>
-              <Button
-                variant="primary"
-                className="h-12 w-full rounded-xl border border-blue/80 shadow-[0_8px_24px_rgba(0,113,227,0.26)] transition-shadow hover:shadow-[0_10px_30px_rgba(0,113,227,0.32)]"
-              >
+              <Button variant="primary" className="h-12 w-full rounded-xl">
                 Book a 20-min demo
               </Button>
             </Link>

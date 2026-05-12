@@ -36,7 +36,7 @@ export function HomeHeroLcpShell({ variant }: HomeHeroLcpShellProps) {
         {PILLS.map((item) => (
           <span
             key={item}
-            className="rounded-full border border-[rgba(29,29,31,0.12)] bg-white/95 px-[18px] py-2.5 text-[11px] font-bold uppercase tracking-[0.12em] text-[#1d1d1f]"
+            className="inline-flex items-center rounded-full border border-border bg-card px-4 py-2 text-[0.6875rem] font-medium uppercase tracking-[0.1em] text-muted whitespace-nowrap"
           >
             {item}
           </span>

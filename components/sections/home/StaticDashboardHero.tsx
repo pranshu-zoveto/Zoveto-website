@@ -23,7 +23,7 @@ export function StaticDashboardHero() {
         {PILLS.map((item) => (
           <span
             key={item}
-            className="rounded-full border border-[rgba(29,29,31,0.12)] bg-white/95 px-[18px] py-2.5 text-[11px] font-bold uppercase tracking-[0.12em] text-[#1d1d1f]"
+            className="inline-flex items-center rounded-full border border-border bg-card px-4 py-2 text-[0.6875rem] font-medium uppercase tracking-[0.1em] text-muted whitespace-nowrap"
           >
             {item}
           </span>
@@ -58,7 +58,7 @@ export function StaticDashboardHero() {
             <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#86868b]">Today</p>
             <p className="text-sm font-semibold text-[#1d1d1f]">Operating pulse</p>
           </div>
-          <span className="rounded-full bg-[#eaf2ff] px-2.5 py-1 text-[10px] font-bold text-[#0047ff]">Live</span>
+          <span className="rounded-full bg-blue-dim px-2.5 py-1 text-[10px] font-semibold text-blue">Live</span>
         </div>
         <div className="grid grid-cols-2 gap-2">
           {[

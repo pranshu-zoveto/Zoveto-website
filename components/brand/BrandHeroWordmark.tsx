@@ -12,7 +12,7 @@ export function BrandHeroWordmark({ as: Tag = "h2", className }: BrandHeroWordma
     <Tag
       aria-label="Zoveto"
       className={cn(
-        "flex flex-wrap items-baseline justify-center gap-x-[0.14em] gap-y-0 text-center font-extrabold tracking-[-0.045em]",
+        "flex flex-wrap items-baseline justify-center gap-x-[0.14em] gap-y-0 text-center font-semibold tracking-[-0.05em]",
         "text-[clamp(2.75rem,9.2vw,6rem)] leading-[0.98]",
         className
       )}

@@ -161,7 +161,7 @@ function TransformationBlock({
           <ul className="space-y-2 leading-relaxed text-muted">
             {before.map((item) => (
               <li key={item} className="flex items-start gap-2.5">
-                <span className="mt-[7px] h-[6px] w-[6px] shrink-0 rounded-full bg-blue-600" aria-hidden />
+                <span className="mt-[7px] h-[6px] w-[6px] shrink-0 rounded-full bg-blue" aria-hidden />
                 <p className="max-w-[30ch] text-[14px] leading-[22px] text-gray-600">{item}</p>
               </li>
             ))}
@@ -173,7 +173,7 @@ function TransformationBlock({
           <ul className="space-y-2 leading-relaxed text-muted">
             {after.map((item) => (
               <li key={item} className="flex items-start gap-2.5">
-                <span className="mt-[7px] h-[6px] w-[6px] shrink-0 rounded-full bg-blue-600" aria-hidden />
+                <span className="mt-[7px] h-[6px] w-[6px] shrink-0 rounded-full bg-blue" aria-hidden />
                 <p className="max-w-[30ch] text-[14px] leading-[22px] text-gray-600">{item}</p>
               </li>
             ))}

@@ -1,18 +1,48 @@
 /** @type {import('next').NextConfig} */
 import path from "node:path";
+import os from "node:os";
 import { fileURLToPath } from "node:url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
+/**
+ * In dev, `next dev` blocks `/_next/*` requests coming from any origin that
+ * isn't `localhost`. When you load the dev server from a phone on the same
+ * Wi-Fi (e.g. http://192.168.1.4:3002), JS chunks and the webpack-hmr socket
+ * are rejected and the page renders without working buttons.
+ *
+ * We auto-discover every local IPv4 address on the host so any LAN device
+ * (phone, tablet, second laptop) can hit the dev server without manual
+ * config changes when the DHCP lease shifts. Production is unaffected —
+ * `allowedDevOrigins` is only read by `next dev`.
+ */
+function getLocalLanOrigins() {
+  const origins = new Set();
+  const interfaces = os.networkInterfaces();
+  for (const name of Object.keys(interfaces)) {
+    for (const iface of interfaces[name] ?? []) {
+      if (iface.family === "IPv4" && !iface.internal) {
+        origins.add(iface.address);
+      }
+    }
+  }
+  return Array.from(origins);
+}
+
 function buildContentSecurityPolicy(isDev) {
+  // In dev, allow http/ws to any host:port so LAN devices (phone, tablet)
+  // can reach the webpack-hmr socket + dev chunks. Production stays strict.
+  const devConnect = isDev
+    ? " http://*:* ws://*:* wss://*:* http://localhost:* ws://localhost:* wss://localhost:*"
+    : "";
   return [
     "default-src 'self'",
-    `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ""} https://www.googletagmanager.com https://www.google-analytics.com https://www.clarity.ms https://*.posthog.com`,
+    `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ""} https://www.googletagmanager.com https://www.google-analytics.com https://www.clarity.ms https://*.posthog.com https://va.vercel-scripts.com`,
     "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
     "font-src 'self' https://fonts.gstatic.com",
     "img-src 'self' data: blob: https:",
     "worker-src 'self' blob:",
-    `connect-src 'self' https://api.zoveto.com https://*.zoveto.com https://www.google-analytics.com https://www.googletagmanager.com https://analytics.google.com https://*.clarity.ms https://www.clarity.ms https://*.posthog.com https://*.i.posthog.com https://*.ingest.sentry.io https://*.sentry.io${isDev ? " http://localhost:* ws://localhost:* wss://localhost:*" : ""}`,
+    `connect-src 'self' https://api.zoveto.com https://*.zoveto.com https://www.google-analytics.com https://www.googletagmanager.com https://analytics.google.com https://*.clarity.ms https://www.clarity.ms https://*.posthog.com https://*.i.posthog.com https://*.ingest.sentry.io https://*.sentry.io https://vitals.vercel-insights.com https://va.vercel-scripts.com${devConnect}`,
     "frame-ancestors 'none'",
   ].join("; ");
 }
@@ -21,6 +51,10 @@ const nextConfig = {
   // Windows hosts can lock `.next/trace` (EPERM). Use an isolated dev dist dir.
   distDir: process.env.NODE_ENV === "development" ? ".next-dev" : ".next",
   output: "standalone",
+  trailingSlash: false,
+
+  // Allow LAN devices (phones, tablets) to load /_next/* in dev.
+  allowedDevOrigins: getLocalLanOrigins(),
 
   experimental: {
     optimizePackageImports: ["lucide-react", "@radix-ui/react-dialog", "framer-motion", "posthog-js"],
@@ -152,6 +186,13 @@ const nextConfig = {
       });
     }
 
+    if (isDev) {
+      securityHeaders.push(
+        { key: "Cache-Control", value: "no-store, must-revalidate" },
+        { key: "Pragma", value: "no-cache" },
+      );
+    }
+
     return [
       {
         source: "/(.*)",
@@ -162,7 +203,14 @@ const nextConfig = {
 
   // Redirects
   async redirects() {
+    const cosApp = process.env.NEXT_PUBLIC_COS_APP_URL ?? "https://app.zoveto.com";
     return [
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.zoveto.com" }],
+        destination: "https://zoveto.com/:path*",
+        permanent: true,
+      },
       {
         source: "/case-studies",
         destination: "/operational-proof",
@@ -185,13 +233,13 @@ const nextConfig = {
       },
       {
         source: "/app",
-        destination: process.env.NEXT_PUBLIC_COS_APP_URL ?? "https://app.zoveto.com",
-        permanent: false,
+        destination: cosApp,
+        permanent: true,
       },
       {
         source: "/login",
-        destination: `${process.env.NEXT_PUBLIC_COS_APP_URL ?? "https://app.zoveto.com"}/login`,
-        permanent: false,
+        destination: `${cosApp.replace(/\/$/, "")}/login`,
+        permanent: true,
       },
     ];
   },

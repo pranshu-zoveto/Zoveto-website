@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ZOVETO_ORGANIZATION_DESCRIPTION, ZOVETO_SITE_DEFAULT_TITLE } from "@/lib/brand-entity";
@@ -6,10 +7,9 @@ import { BRAND_CANONICAL_ORIGIN, BRAND_LOGO_ICON } from "@/lib/branding";
 import { siteUrl } from "@/lib/site";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { SiteChromeClients } from "@/components/layout/SiteChromeClients";
+import { ClientOnlySiteChrome } from "@/components/layout/ClientOnlySiteChrome";
 import { WhatsAppFloatButton } from "@/components/layout/WhatsAppFloatButton";
 import { DeferredCursor } from "@/components/layout/DeferredCursor";
-import { VercelWebMetrics } from "@/components/layout/VercelWebMetrics";
 
 /**
  * Inter, the single typeface across the site.
@@ -97,10 +97,10 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: BRAND_CANONICAL_ORIGIN,
+    canonical: `${BRAND_CANONICAL_ORIGIN}/`,
     languages: {
-      en: BRAND_CANONICAL_ORIGIN,
-      "en-IN": BRAND_CANONICAL_ORIGIN,
+      en: `${BRAND_CANONICAL_ORIGIN}/`,
+      "en-IN": `${BRAND_CANONICAL_ORIGIN}/`,
     },
   },
   verification: {
@@ -115,8 +115,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en-IN" className="scroll-smooth">
-      <body className={`${inter.variable} font-sans antialiased bg-background text-foreground`}>
+    <html lang="en-IN" className="scroll-smooth" suppressHydrationWarning>
+      <body
+        className={`${inter.variable} font-sans antialiased bg-background text-foreground`}
+        suppressHydrationWarning
+      >
+        {/*
+          Mobile Chrome injects __gcrremoteframetoken (and similar) on <html> before React hydrates.
+          Strip extension-only attrs so server HTML matches the client tree.
+        */}
+        <Script id="strip-browser-html-attrs" strategy="beforeInteractive">
+          {`try{var h=document.documentElement;Array.from(h.attributes).forEach(function(a){if(/^__/.test(a.name))h.removeAttribute(a.name);});}catch(e){}`}
+        </Script>
         <a href="#main-content" className="skip-link">
           Skip to content
         </a>
@@ -130,9 +140,8 @@ export default function RootLayout({
           </main>
           <Footer />
         </div>
-        <SiteChromeClients />
+        <ClientOnlySiteChrome />
         <WhatsAppFloatButton />
-        <VercelWebMetrics />
         <DeferredCursor />
       </body>
     </html>

@@ -48,7 +48,10 @@ describe("sitemap buildSitemapEntries", () => {
     assert.ok(entries.some((e) => e.url === "https://zoveto.com/compare/vyapar-vs-zoveto"));
     assert.ok(entries.some((e) => e.url === "https://zoveto.com/compare/freshsales-vs-zoveto"));
     assert.ok(entries.some((e) => e.url === "https://zoveto.com/compare/gohighlevel-vs-zoveto"));
-    assert.ok(entries.some((e) => e.url === "https://zoveto.com/case-studies"));
+    assert.ok(
+      !entries.some((e) => e.url === "https://zoveto.com/case-studies"),
+      "case-studies index redirects to operational-proof — must not be in sitemap",
+    );
     assert.ok(entries.some((e) => e.url === "https://zoveto.com/case-studies/rock-tear-parts"));
 
     for (const slug of PUBLIC_INDUSTRY_SLUGS) {

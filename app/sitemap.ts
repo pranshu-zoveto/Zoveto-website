@@ -5,6 +5,7 @@ import { getAllProofSlugs } from "@/lib/operational-proof";
 import { SEO_LANDING_PATHS } from "@/lib/seo-landings";
 import { COMPARE_PAGES } from "@/lib/compare-pages";
 import { PUBLIC_INDUSTRY_SLUGS } from "@/lib/industries";
+import { isSitemapExcludedPath } from "@/lib/seo-crawl-policy";
 import { siteUrl } from "@/lib/site";
 
 function lastModIso(value: string | Date): string {
@@ -37,7 +38,6 @@ export function buildSitemapEntries(): MetadataRoute.Sitemap {
     { url: `${BASE}/blog`, lastModified: now, changeFrequency: "weekly", priority: 0.75 },
     { url: `${BASE}/faq`, lastModified: now, changeFrequency: "weekly", priority: 0.82 },
     { url: `${BASE}/compare`, lastModified: now, changeFrequency: "weekly", priority: 0.75 },
-    { url: `${BASE}/case-studies`, lastModified: now, changeFrequency: "monthly", priority: 0.72 },
     { url: `${BASE}/case-studies/rock-tear-parts`, lastModified: now, changeFrequency: "monthly", priority: 0.74 },
     { url: `${BASE}/system`, lastModified: now, changeFrequency: "monthly", priority: 0.72 },
     { url: `${BASE}/reorder-point-calculator`, lastModified: now, changeFrequency: "monthly", priority: 0.76 },
@@ -85,7 +85,7 @@ export function buildSitemapEntries(): MetadataRoute.Sitemap {
     priority: 0.77,
   }));
 
-  return [
+  const all = [
     ...staticPages,
     ...seoLandings,
     ...blogPosts,
@@ -94,6 +94,15 @@ export function buildSitemapEntries(): MetadataRoute.Sitemap {
     ...comparePages,
     ...industryPages,
   ];
+
+  return all.filter((entry) => {
+    try {
+      const pathname = new URL(entry.url).pathname;
+      return !isSitemapExcludedPath(pathname);
+    } catch {
+      return false;
+    }
+  });
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {

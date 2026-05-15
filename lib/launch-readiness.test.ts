@@ -49,14 +49,22 @@ describe("launch readiness static checks", () => {
 
   it("mounts consent and consent-gated tracking in the root layout", () => {
     const layout = read("app/layout.tsx");
-    assert.ok(layout.includes("SiteChromeClients"), "root layout must render SiteChromeClients");
+    assert.ok(
+      layout.includes("SiteChromeClients") || layout.includes("ClientOnlySiteChrome"),
+      "root layout must render SiteChromeClients (directly or via ClientOnlySiteChrome)",
+    );
+    assert.ok(
+      layout.includes("VercelWebMetrics") || layout.includes("ClientOnlySiteChrome"),
+      "root layout must render Vercel Web Metrics (directly or via ClientOnlySiteChrome)",
+    );
     assert.ok(layout.includes("WhatsAppFloatButton"), "root layout must render WhatsApp float CTA");
     const waFloat = read("components/layout/WhatsAppFloatButton.tsx");
     assert.ok(waFloat.includes("z-[95]"), "WhatsApp FAB must sit below cookie layer (z-[120])");
     assert.ok(waFloat.includes("api.whatsapp.com") || waFloat.includes("getWhatsAppFloatHref"), "WhatsApp FAB must use configured wa link");
+    const clientChrome = read("components/layout/ClientOnlySiteChrome.tsx");
     assert.ok(
-      layout.includes("VercelWebMetrics") && layout.includes("@/components/layout/VercelWebMetrics"),
-      "root layout must render Vercel Web Metrics (Analytics + Speed Insights)",
+      clientChrome.includes("SiteChromeClients") && clientChrome.includes("VercelWebMetrics"),
+      "ClientOnlySiteChrome must dynamically load consent chrome and Vercel metrics",
     );
     const metrics = read("components/layout/VercelWebMetrics.tsx");
     assert.ok(metrics.includes("@vercel/analytics/next"), "VercelWebMetrics must load @vercel/analytics/next");
@@ -148,7 +156,7 @@ describe("launch readiness static checks", () => {
     }
 
     const pricing = read("lib/pricing-plans.ts");
-    assert.ok(pricing.includes("Explore the system before committing. No credit card, no time limit."));
+    assert.ok(pricing.includes("Book a demo"), "paid pricing CTAs should be demo-led");
     assert.ok(!pricing.includes("Request access"), "paid pricing CTAs should be demo-led");
   });
 

@@ -53,7 +53,32 @@ function ruleFor(pathname: string, method: string): RouteRule | null {
   return rule;
 }
 
+function canonicalHostRedirect(request: NextRequest): NextResponse | null {
+  const hostHeader = request.headers.get("host");
+  if (!hostHeader) return null;
+
+  const host = hostHeader.split(":")[0]?.toLowerCase();
+  if (host === "www.zoveto.com") {
+    const url = request.nextUrl.clone();
+    url.protocol = "https:";
+    url.host = "zoveto.com";
+    return NextResponse.redirect(url, 308);
+  }
+
+  const { pathname } = request.nextUrl;
+  if (pathname.length > 1 && pathname.endsWith("/")) {
+    const url = request.nextUrl.clone();
+    url.pathname = pathname.replace(/\/+$/, "") || "/";
+    return NextResponse.redirect(url, 308);
+  }
+
+  return null;
+}
+
 export function proxy(request: NextRequest) {
+  const canonical = canonicalHostRedirect(request);
+  if (canonical) return canonical;
+
   if (isApiRateLimitDisabled()) {
     return NextResponse.next();
   }

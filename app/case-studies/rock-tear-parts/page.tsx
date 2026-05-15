@@ -54,7 +54,7 @@ export default function RockTearCaseStudyPage() {
       <BreadcrumbSchema
         items={[
           { name: "Home", path: "/" },
-          { name: "Case studies", path: "/case-studies" },
+          { name: "Operational proof", path: "/operational-proof" },
           { name: "Rock Tear Parts", path },
         ]}
       />

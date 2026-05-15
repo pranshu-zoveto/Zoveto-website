@@ -16,7 +16,7 @@ export function SystemShiftSection() {
   return (
     <section
       aria-labelledby="system-shift-heading"
-      className="relative isolate overflow-hidden border-t border-border/40 bg-[linear-gradient(180deg,#f8fafc_0%,#f4f8fc_38%,#eef4fb_100%)] py-[clamp(4.5rem,10vw,8rem)] text-center"
+      className="relative isolate overflow-hidden bg-[linear-gradient(180deg,#f8fafc_0%,#f4f8fc_38%,#ffffff_100%)] py-[clamp(4.5rem,10vw,8rem)] text-center"
     >
       {/* Decorative layer only, kept behind content, low contrast, no blur */}
       <div className="pointer-events-none absolute inset-0 z-0">

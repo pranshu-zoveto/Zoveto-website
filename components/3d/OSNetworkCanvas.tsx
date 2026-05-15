@@ -14,7 +14,15 @@ const NODES = [
   { name: "Payments AI", c: "#34C759", x: 70, y: -30, z: 10 },
 ];
 
-export function OSNetworkCanvas() {
+type OSNetworkCanvasProps = {
+  /**
+   * Hard cap on `renderer.setPixelRatio`. Pass `1` on mobile to halve fragment
+   * work; defaults to `2` (the previous behaviour on desktop).
+   */
+  maxDpr?: number;
+};
+
+export function OSNetworkCanvas({ maxDpr = 2 }: OSNetworkCanvasProps = {}) {
   const hostRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -24,7 +32,7 @@ export function OSNetworkCanvas() {
     const camera = new THREE.PerspectiveCamera(56, 1, 0.1, 1000);
     camera.position.set(0, 0, 240);
     const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, maxDpr));
     host.appendChild(renderer.domElement);
 
     scene.add(new THREE.AmbientLight(0xffffff, 0.5));
@@ -126,7 +134,7 @@ export function OSNetworkCanvas() {
       renderer.dispose();
       host.removeChild(renderer.domElement);
     };
-  }, []);
+  }, [maxDpr]);
 
   return <div ref={hostRef} className="w-full h-[50vh] md:h-[70vh] rounded-[18px] border border-border bg-card" aria-hidden />;
 }

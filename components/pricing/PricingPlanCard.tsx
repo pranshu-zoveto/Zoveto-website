@@ -87,13 +87,7 @@ export function PricingPlanCard({ plan, billing, currency, onToggleCurrency, cla
       </ul>
 
       <div className="mt-8 min-h-0 shrink-0 border-t border-border/80 pt-5 xl:mt-auto">
-        {plan.id === "free" ? (
-          <p className="text-[10px] font-semibold uppercase leading-relaxed tracking-widest text-muted-2">
-            Limited scope · no AI or advanced automation · upgrade anytime
-          </p>
-        ) : (
-          <p className="text-[10px] font-semibold uppercase tracking-widest text-muted-2">GST as applicable</p>
-        )}
+        <p className="text-[10px] font-semibold uppercase tracking-widest text-muted-2">GST as applicable</p>
       </div>
     </div>
   );

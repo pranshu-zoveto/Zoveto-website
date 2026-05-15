@@ -61,7 +61,7 @@ export function ModuleBento() {
   return (
     <motion.section
       id="modules"
-      className="bg-background py-20 md:py-28 lg:py-36 relative scroll-mt-24 border-t border-border"
+      className="bg-background py-20 md:py-28 lg:py-36 relative scroll-mt-24"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
@@ -84,7 +84,7 @@ export function ModuleBento() {
           <div
             key={mod.id}
             className={cn(
-              "group p-8 rounded-2xl border border-border bg-card shadow-sm flex flex-col relative overflow-hidden",
+              "group p-8 rounded-xl border border-border bg-card shadow-sm flex flex-col relative overflow-hidden",
               mod.size === "large"
                 ? "md:col-span-6 lg:col-span-8 md:flex-row md:gap-10"
                 : mod.size === "medium"

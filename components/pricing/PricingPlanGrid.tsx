@@ -19,7 +19,7 @@ export function PricingPlanGrid({ billing, currency, onToggleCurrency, animated,
   return (
     <div
       className={cn(
-        "grid w-full min-w-0 grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-7 md:gap-7 xl:grid-cols-4 xl:items-stretch xl:gap-5 2xl:gap-6",
+        "grid w-full min-w-0 grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-7 md:gap-7 xl:grid-cols-3 xl:items-stretch xl:gap-6 2xl:gap-7",
         className
       )}
     >

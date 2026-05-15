@@ -12,25 +12,27 @@ const ROWS = [
 
 export function ComparisonTable() {
   return (
-    <section className="border border-border rounded-[18px] overflow-auto bg-card">
-      <table className="w-full min-w-[680px] text-left">
-        <thead>
-          <tr className="border-b border-border">
-            <th className="px-5 py-4 text-xs uppercase tracking-wide text-muted-2">Capability</th>
-            <th className="px-5 py-4 text-xs uppercase tracking-wide text-muted-2">Excel/WhatsApp/Tally</th>
-            <th className="px-5 py-4 text-xs uppercase tracking-wide text-blue">ZOVETO</th>
-          </tr>
-        </thead>
-        <tbody>
-          {ROWS.map((row) => (
-            <tr key={row[0]} className="border-b border-border last:border-0">
-              <td className="px-5 py-4 text-sm font-medium text-foreground">{row[0]}</td>
-              <td className="px-5 py-4 text-sm text-muted">{row[1]}</td>
-              <td className="px-5 py-4 text-sm font-semibold bg-blue-dim/80 text-foreground">{row[2]}</td>
+    <section className="-mx-4 overflow-x-auto px-4 scrollbar-hide sm:mx-0 sm:px-0">
+      <div className="min-w-[680px] rounded-[18px] border border-border bg-card">
+        <table className="w-full text-left">
+          <thead>
+            <tr className="border-b border-border">
+              <th className="px-5 py-4 text-xs uppercase tracking-wide text-muted-2">Capability</th>
+              <th className="px-5 py-4 text-xs uppercase tracking-wide text-muted-2">Excel/WhatsApp/Tally</th>
+              <th className="px-5 py-4 text-xs uppercase tracking-wide text-blue">ZOVETO</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {ROWS.map((row) => (
+              <tr key={row[0]} className="border-b border-border last:border-0">
+                <td className="px-5 py-4 text-sm font-medium text-foreground">{row[0]}</td>
+                <td className="px-5 py-4 text-sm text-muted">{row[1]}</td>
+                <td className="px-5 py-4 text-sm font-semibold bg-blue-dim/80 text-foreground">{row[2]}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </section>
   );
 }

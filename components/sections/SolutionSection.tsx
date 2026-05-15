@@ -71,7 +71,7 @@ export function SolutionSection() {
           {MODULES.map((mod, i) => (
             <div
               key={i}
-              className="group p-8 rounded-2xl bg-card border border-border shadow-sm overflow-hidden relative"
+              className="group p-8 rounded-xl bg-card border border-border shadow-sm overflow-hidden relative"
             >
               <div className="mb-6 p-3 w-fit rounded-xl bg-surface border border-border group-hover:bg-teal group-hover:border-teal group-hover:text-white transition-all duration-300 text-foreground">
                 <mod.icon className="w-6 h-6 opacity-90" strokeWidth={1.5} />

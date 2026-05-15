@@ -115,7 +115,7 @@ export function FAQSections({
                   >
                     <span
                       className={cn(
-                        "block text-[1.15rem] font-semibold leading-snug tracking-[-0.01em] text-foreground transition-all duration-300",
+                        "block text-[15px] font-semibold leading-snug tracking-[-0.01em] text-foreground transition-all duration-300 sm:text-base md:text-[1.15rem]",
                         isOpen ? "translate-x-0 opacity-100" : "-translate-x-0.5 opacity-95"
                       )}
                     >
@@ -139,7 +139,7 @@ export function FAQSections({
                     <div className="overflow-hidden">
                       <p
                         id={`faq-answer-${activeCategory.id}-${index}`}
-                        className="max-w-[68ch] pt-3 text-base leading-relaxed text-muted"
+                        className="max-w-[68ch] pt-3 text-sm leading-relaxed text-muted sm:text-[15px] md:text-base"
                       >
                         {faq.answer}
                       </p>

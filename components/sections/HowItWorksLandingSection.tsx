@@ -34,8 +34,8 @@ export function HowItWorksLandingSection() {
     >
       <div className="container relative z-10 mx-auto max-w-content px-4 sm:px-6">
         <div className="mb-14 max-w-3xl md:mb-16">
-          <SectionLabel className="mb-6 border-blue/20 bg-blue-dim text-blue">How it works</SectionLabel>
-          <h2 className="mb-5 text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl md:text-5xl">
+          <SectionLabel className="mb-6 hidden border-blue/20 bg-blue-dim text-blue sm:inline-block">How it works</SectionLabel>
+          <h2 className="mb-5 text-2xl font-bold leading-tight tracking-tight text-foreground sm:text-3xl md:text-4xl lg:text-5xl">
             From signup to <span className="text-blue">full operations</span> in three moves
           </h2>
           <p className="max-w-2xl text-lg leading-relaxed text-muted">
@@ -48,17 +48,19 @@ export function HowItWorksLandingSection() {
             {STEPS.map((step, i) => (
               <article
                 key={step.title}
-                className="float-card reveal-item relative flex flex-col p-8"
+                className={`float-card reveal-item relative flex flex-col p-5 sm:p-6 md:p-8${i === STEPS.length - 1 ? " hidden sm:flex" : ""}`}
               >
                 <div className="mb-6 flex items-center gap-4">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-border bg-blue-light text-blue">
-                    <step.icon className="h-6 w-6" strokeWidth={1.5} />
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-border bg-blue-light text-blue sm:h-12 sm:w-12">
+                    <step.icon className="h-5 w-5 sm:h-6 sm:w-6" strokeWidth={1.5} />
                   </div>
                   <span className="text-xs font-bold uppercase tracking-widest text-muted-2">Step {i + 1}</span>
                 </div>
-                <h3 className="mb-3 text-lg font-semibold tracking-tight text-foreground">{step.title}</h3>
-                <p className="mb-6 flex-1 text-sm leading-relaxed text-muted">{step.body}</p>
-                <p className="border-t border-border pt-4 text-xs font-semibold text-blue">{step.outcome}</p>
+                <h3 className="mb-3 min-h-[3.5rem] text-lg font-semibold tracking-tight text-foreground md:min-h-[4rem]">{step.title}</h3>
+                <div className="flex flex-1 flex-col justify-between gap-6">
+                  <p className="text-sm leading-relaxed text-muted">{step.body}</p>
+                  <p className="border-t border-border pt-4 text-xs font-semibold text-blue">{step.outcome}</p>
+                </div>
               </article>
             ))}
           </div>

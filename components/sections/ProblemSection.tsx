@@ -118,18 +118,18 @@ export function ProblemSection() {
     <motion.section
       ref={sectionRef}
       id="problem"
-      className="relative scroll-mt-24 overflow-hidden bg-gradient-to-b from-white to-[#f7f9fc] py-20 md:py-24 lg:py-28"
+      className="relative scroll-mt-24 overflow-hidden bg-gradient-to-b from-white to-[#f7f9fc] py-20 md:py-24 lg:py-10"
       onMouseEnter={() => setIsSectionHovering(true)}
       onMouseLeave={() => setIsSectionHovering(false)}
     >
       <div className="container relative z-10 mx-auto max-w-content px-4 sm:px-6">
         <div className="grid gap-10 lg:grid-cols-12 lg:items-start lg:gap-[56px]">
           <div className="lg:col-span-5">
-            <SectionLabel className="mb-8 border-red/20 bg-red/10 text-red">The reality</SectionLabel>
-            <h2 className="max-w-xl text-[clamp(2.6rem,5.5vw,4.2rem)] font-semibold leading-[1.05] tracking-tight text-foreground">
+            <SectionLabel className="mb-5 border-red/20 bg-red/10 text-red lg:mb-4">The reality</SectionLabel>
+            <h2 className="max-w-xl text-[clamp(2.2rem,4vw,3.2rem)] font-semibold leading-[1.05] tracking-tight text-foreground">
               Your business is <span className="text-red">bleeding.</span>
             </h2>
-            <div className="mt-8 max-w-[480px] space-y-6">
+            <div className="mt-6 max-w-[480px] space-y-4 lg:mt-5 lg:space-y-3">
               <p className="text-base leading-[1.6] text-[#666] md:text-lg">
                 Not dramatically. Slowly. Every day.
                 <br />
@@ -141,7 +141,7 @@ export function ProblemSection() {
                 until your day is spent fixing avoidable issues.
               </p>
             </div>
-            <div className="mt-10 max-w-[520px] rounded-2xl border border-[#e5e7eb] bg-white px-4 py-4 md:px-5">
+            <div className="mt-6 max-w-[520px] rounded-2xl border border-[#e5e7eb] bg-white px-4 py-3 md:px-5 lg:mt-4">
               <div className="hidden flex-wrap items-center gap-y-2 text-xs font-medium tracking-wide text-[#6b7280] sm:text-[0.8rem] lg:flex">
                 {FLOW_STEPS.map((step) => {
                   const isActive = activeStep === step;
@@ -170,7 +170,7 @@ export function ProblemSection() {
                 })}
               </div>
 
-              <div className="flex gap-2 overflow-x-auto pb-1 lg:hidden">
+              <div className="hidden gap-2 overflow-x-auto pb-1 sm:flex lg:hidden">
                 {FLOW_STEPS.map((step) => {
                   const isActive = activeStep === step;
                   return (
@@ -189,7 +189,7 @@ export function ProblemSection() {
               </div>
             </div>
 
-            <p className="mt-7 max-w-[520px] text-left text-[clamp(1.0625rem,1.3vw,1.25rem)] leading-[1.5]">
+            <p className="mt-5 max-w-[520px] text-left text-[clamp(1rem,1.1vw,1.125rem)] leading-[1.5] lg:mt-4">
               <span className="font-medium text-foreground/65">
                 Your spreadsheet is your assistant.
                 <br />
@@ -252,7 +252,7 @@ export function ProblemSection() {
               />
             </motion.div>
 
-            <div className="relative z-10 grid gap-3">
+            <div className="relative z-10 grid gap-2">
               {PAINS.map((pain, i) => {
                 const isActive = activeCards.includes(i);
                 return (
@@ -262,7 +262,7 @@ export function ProblemSection() {
                     whileInView={{ opacity: 1, y: 0, scale: 1 }}
                     viewport={{ once: true, amount: 0.22 }}
                     transition={{ duration: 0.45, delay: i * 0.08, ease: "easeOut" }}
-                    className={`group rounded-xl border bg-white p-5 ${
+                    className={`group rounded-xl border bg-white p-4 ${
                       isActive ? "opacity-100" : "opacity-40"
                     } ${
                       isActive
@@ -270,12 +270,12 @@ export function ProblemSection() {
                         : "border-border shadow-[0_10px_26px_rgba(15,23,42,0.05)]"
                     } transition-all duration-300 ease-out hover:-translate-y-1 hover:opacity-100 hover:shadow-[0_18px_32px_rgba(15,23,42,0.1)]`}
                   >
-                    <div className="mb-3 inline-flex rounded-lg border border-foreground/10 bg-white p-2 transition-transform duration-300 group-hover:scale-105">
+                    <div className="mb-2 inline-flex rounded-lg border border-foreground/10 bg-white p-2 transition-transform duration-300 group-hover:scale-105">
                       <pain.icon className="h-4 w-4 text-foreground/65" strokeWidth={1.75} />
                     </div>
-                    <h3 className="text-[1.125rem] font-semibold leading-snug tracking-[-0.01em] text-foreground">{pain.title}</h3>
-                    <p className="mt-2 text-[0.9375rem] leading-[1.55] text-[#666]">{pain.whatHappens}</p>
-                    <div className={`mt-3 rounded-lg border px-3 py-1.5 text-[0.875rem] font-medium leading-[1.5] ${
+                    <h3 className="text-[1rem] font-semibold leading-snug tracking-[-0.01em] text-foreground">{pain.title}</h3>
+                    <p className="mt-1.5 text-sm leading-[1.5] text-[#666]">{pain.whatHappens}</p>
+                    <div className={`mt-2 rounded-lg border px-3 py-1.5 text-[0.8125rem] font-medium leading-[1.45] ${
                       isActive ? "border-red/25 bg-red/[0.06] text-red" : "border-border bg-[#f8fafc] text-foreground"
                     }`}>
                       <span className="mr-1 text-red/90">→</span>

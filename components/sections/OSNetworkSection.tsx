@@ -4,15 +4,18 @@ import React from "react";
 import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
 import { SceneErrorBoundary } from "@/components/3d/SceneErrorBoundary";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
 
 const OSNetworkCanvas = dynamic(() => import("@/components/3d/OSNetworkCanvas").then((m) => m.OSNetworkCanvas), {
   ssr: false,
 });
 
 export function OSNetworkSection() {
+  const isMobile = useMediaQuery("(max-width: 767px)");
+
   return (
     <motion.section
-      className="bg-background border-y border-border py-section-mobile md:py-section scroll-mt-24"
+      className="hidden md:block bg-background border-y border-border py-section-mobile md:py-section scroll-mt-24"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
@@ -36,9 +39,9 @@ export function OSNetworkSection() {
             ))}
           </div>
         </div>
-        <div className="rounded-2xl border border-border bg-surface p-4 md:p-6 min-h-[320px] md:min-h-[420px]">
+        <div className="overflow-hidden rounded-2xl border border-border bg-surface p-4 md:p-6 min-h-[320px] md:min-h-[420px]">
           <SceneErrorBoundary>
-            <OSNetworkCanvas />
+            <OSNetworkCanvas maxDpr={isMobile ? 1 : 2} />
           </SceneErrorBoundary>
           <p className="mt-4 text-xs text-muted-2 uppercase tracking-wide">System topology</p>
         </div>

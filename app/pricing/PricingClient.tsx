@@ -1,16 +1,16 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Link from "next/link";
-import { ChevronRight, Factory, Scale } from "lucide-react";
+import { ChevronRight, Factory, Scale, Warehouse, Users, Layers, UserCheck, Sparkles, Check, type LucideIcon } from "lucide-react";
+import { PricingModuleGrid } from "@/components/pricing/PricingModuleGrid";
 import { Text } from "@/components/ui/Text";
-import { PricingBillingToggle } from "@/components/pricing/PricingBillingToggle";
 import { PricingFeatureComparison } from "@/components/pricing/PricingFeatureComparison";
-import { PricingPlanGrid } from "@/components/pricing/PricingPlanGrid";
 import BackgroundComponents from "@/components/ui/background-components";
 import { MarketingPageView } from "@/components/tracking/MarketingPageView";
 import { ZeroClientTrustSection } from "@/components/sections/ZeroClientTrustSection";
-import { DEFAULT_BILLING_CYCLE, type BillingCycle } from "@/lib/pricing-display";
+import { formatInr } from "@/lib/pricing-display";
+import { MODULES, BUNDLES, type PricingBundle } from "@/lib/pricing-modules";
 import { getPublicIndustries } from "@/lib/industries";
 import { cn } from "@/lib/utils";
 
@@ -27,57 +27,220 @@ const COMPARE_LINKS = [
   { href: "/compare/gohighlevel-vs-zoveto", label: "GoHighLevel vs Zoveto" },
 ] as const;
 
+const MODULE_ICON_MAP: Record<string, LucideIcon> = {
+  wms: Warehouse,
+  crm: Users,
+  erp: Layers,
+  hrms: UserCheck,
+  intelligence: Sparkles,
+};
+
+
+// ─── Bundle card ─────────────────────────────────────────────────────────────
+
+function BundleCard({ bundle }: { bundle: PricingBundle }) {
+  return (
+    <div
+      className={cn(
+        "relative flex flex-col rounded-xl border bg-card px-6 pb-7 pt-6 shadow-[var(--shadow-card)] sm:px-7 sm:pb-8 sm:pt-7",
+        bundle.popular
+          ? "z-[1] border-blue/30 bg-blue-light/[0.10] ring-1 ring-blue/20"
+          : "border-border"
+      )}
+    >
+      {/* Popular badge */}
+      <div className="mb-3 flex h-7 items-center">
+        {bundle.popular ? (
+          <span className="inline-flex rounded-full bg-blue px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white">
+            Most Popular
+          </span>
+        ) : null}
+      </div>
+
+      {/* Name + tagline */}
+      <h3 className="text-lg font-bold tracking-tight text-foreground">{bundle.name}</h3>
+      <p className="mt-1 text-sm leading-snug text-muted">{bundle.tagline}</p>
+
+      {/* Module label */}
+      <div className="mt-3 inline-flex w-fit rounded-full border border-border/80 bg-surface-2/60 px-3 py-1 text-[11px] font-semibold tracking-wide text-muted">
+        {bundle.moduleLabel}
+      </div>
+
+      {/* Price */}
+      <div className="mt-5 mb-1">
+        <span className="text-4xl font-bold tracking-tight text-foreground">
+          {formatInr(bundle.monthlyPrice)}
+        </span>
+        <span className="ml-1 text-xl font-semibold text-muted">/mo</span>
+        <p className="mt-0.5 text-[11px] font-semibold uppercase tracking-widest text-muted-2">
+          Excl. GST · flat rate
+        </p>
+      </div>
+
+      {/* Savings badge */}
+      <div className="mb-5 mt-2">
+        <span className="inline-flex rounded-full border border-teal/20 bg-teal-dim px-2.5 py-1 text-xs font-medium text-teal">
+          Save {formatInr(bundle.savingsVsSeparate)}/mo vs separate modules
+        </span>
+      </div>
+
+      {/* CTA */}
+      <Link
+        href={bundle.ctaHref}
+        className={cn(
+          "mb-6 flex h-11 w-full items-center justify-center rounded-xl text-sm font-semibold transition-colors",
+          bundle.popular
+            ? "bg-blue text-white hover:bg-blue/90"
+            : "border border-border bg-card text-foreground hover:border-blue/30 hover:bg-blue-light"
+        )}
+      >
+        {bundle.ctaLabel}
+      </Link>
+
+      {/* Module list */}
+      <div className="border-t border-border pt-5">
+        <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-2">
+          Included modules
+        </p>
+        <ul className="flex flex-col gap-2">
+          {bundle.moduleIds.map((mid) => {
+            const mod = MODULES.find((m) => m.id === mid);
+            if (!mod) return null;
+            const Icon = MODULE_ICON_MAP[mid] ?? Layers;
+            return (
+              <li key={mid} className="flex items-center gap-2">
+                <Check className="h-3.5 w-3.5 shrink-0 text-blue" strokeWidth={2.5} />
+                <span className="text-[13px] font-medium text-foreground">
+                  {mod.name}
+                </span>
+                <span className="text-[12px] text-muted">— {mod.tagline}</span>
+                <Icon className="ml-auto h-3.5 w-3.5 shrink-0 text-muted-2" strokeWidth={1.5} />
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    </div>
+  );
+}
+
+// ─── Enterprise card ──────────────────────────────────────────────────────────
+
+function EnterpriseCard() {
+  return (
+    <div className="flex flex-col rounded-xl border border-border bg-card px-6 pb-7 pt-6 shadow-[var(--shadow-card)] sm:px-7 sm:pb-8 sm:pt-7">
+      <div className="mb-3 flex h-7 items-center">
+        <span className="inline-flex rounded-full border border-border px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-muted-2">
+          Enterprise
+        </span>
+      </div>
+
+      <h3 className="text-lg font-bold tracking-tight text-foreground">Custom scope</h3>
+      <p className="mt-1 text-sm leading-snug text-muted">
+        Large teams, custom SLAs, on-premise options, and procurement-friendly contracts.
+      </p>
+
+      <div className="mt-3 inline-flex w-fit rounded-full border border-border/80 bg-surface-2/60 px-3 py-1 text-[11px] font-semibold tracking-wide text-muted">
+        30+ users · bespoke
+      </div>
+
+      <div className="mt-5 mb-1">
+        <div className="text-4xl font-bold tracking-tight text-foreground">Custom</div>
+        <p className="mt-0.5 text-[11px] font-semibold uppercase tracking-widest text-muted-2">
+          Scoped after discovery
+        </p>
+      </div>
+
+      <div className="mb-5 mt-2 min-h-[1.75rem]" aria-hidden />
+
+      <Link
+        href="/contact"
+        className="mb-6 flex h-11 w-full items-center justify-center rounded-xl border border-border bg-card text-sm font-semibold text-foreground transition-colors hover:border-blue/30 hover:bg-blue-light"
+      >
+        Contact us
+      </Link>
+
+      <div className="border-t border-border pt-5">
+        <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-2">
+          What's included
+        </p>
+        <ul className="flex flex-col gap-2">
+          {[
+            "All Business OS modules",
+            "Custom SLAs & uptime commitments",
+            "Dedicated success partner",
+            "On-site training options",
+            "Custom integrations",
+          ].map((feat) => (
+            <li key={feat} className="flex items-center gap-2">
+              <Check className="h-3.5 w-3.5 shrink-0 text-muted-2" strokeWidth={2.5} />
+              <span className="text-[13px] font-medium text-foreground">{feat}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+}
+
+// ─── Main export ──────────────────────────────────────────────────────────────
+
 export function PricingClient() {
-  const [billing, setBilling] = useState<BillingCycle>(DEFAULT_BILLING_CYCLE);
-  const [currency, setCurrency] = useState<"inr" | "usd">("inr");
-
-  useEffect(() => {
-    const savedCurrency = window.localStorage.getItem("pricingCurrency");
-    if (savedCurrency === "inr" || savedCurrency === "usd") {
-      setCurrency(savedCurrency);
-    }
-  }, []);
-
-  useEffect(() => {
-    window.localStorage.setItem("pricingCurrency", currency);
-  }, [currency]);
-
-  const toggleCurrency = () => {
-    setCurrency((prev) => (prev === "inr" ? "usd" : "inr"));
-  };
-
   return (
     <>
       <MarketingPageView eventName="pricing_view" />
-      <section
-        aria-labelledby="pricing-plans-heading"
-        className="space-y-8 md:space-y-10"
-      >
-        <div className="mx-auto flex max-w-lg flex-col items-center gap-3 text-center">
-          <h2 id="pricing-plans-heading" className="sr-only">
-            Subscription plans and billing options
+
+      {/* ── 1. Individual modules ─────────────────────────────────────────── */}
+      <section aria-labelledby="modules-heading" className="space-y-6 md:space-y-8">
+        <div className="text-center">
+          <h2 id="modules-heading" className="text-xl font-bold tracking-tight text-foreground sm:text-2xl">
+            Pick exactly what you need
           </h2>
-          <PricingBillingToggle billing={billing} onChange={setBilling} />
-          <p className="text-pretty text-sm leading-relaxed text-muted">
-            Yearly is the default and shows your effective monthly rate. Monthly removes savings and billed-annually labels.
+          <p className="mt-2 text-sm leading-relaxed text-muted">
+            Each module is independently purchasable. No bundle required.
           </p>
         </div>
 
-        <PricingPlanGrid billing={billing} currency={currency} onToggleCurrency={toggleCurrency} animated />
+        <PricingModuleGrid />
       </section>
 
+      {/* ── 2. Bundles + Enterprise ───────────────────────────────────────── */}
+      <section aria-labelledby="bundles-heading" className="space-y-6 md:space-y-8">
+        <div className="text-center">
+          <h2 id="bundles-heading" className="text-xl font-bold tracking-tight text-foreground sm:text-2xl">
+            Or save with a bundle
+          </h2>
+          <p className="mt-2 text-sm leading-relaxed text-muted">
+            Pre-packaged combinations at a better effective rate than buying separately.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 gap-5 md:grid-cols-3 md:gap-6">
+          {BUNDLES.map((bundle) => (
+            <BundleCard key={bundle.id} bundle={bundle} />
+          ))}
+          <EnterpriseCard />
+        </div>
+
+        {/* Extra-users note */}
+        <p className="text-center text-xs font-medium leading-relaxed text-muted-2">
+          Additional users, locations, and integrations available on all plans.{" "}
+          <Link href="/contact" className="underline underline-offset-2 hover:text-foreground">
+            Talk to us
+          </Link>{" "}
+          for a custom quote.
+        </p>
+      </section>
+
+      {/* ── 3. Billing note ───────────────────────────────────────────────── */}
       <aside
-        className="mx-auto mt-10 max-w-3xl rounded-xl border border-border bg-card/80 px-4 py-3 text-center text-xs leading-relaxed text-muted shadow-sm sm:px-5 sm:text-sm md:mt-12"
+        className="mx-auto mt-2 max-w-3xl rounded-xl border border-border bg-card/80 px-4 py-3 text-center text-xs leading-relaxed text-muted shadow-sm sm:px-5 sm:text-sm"
         aria-label="Billing and compliance information"
       >
         <p className="font-medium text-foreground">Billing &amp; compliance</p>
-        <p className="mt-1">Founder-led setup starts with a fit check so rollout scope stays honest.</p>
-        <p className="mt-1">All prices shown exclude applicable taxes.</p>
-        <p className="mt-1">GST (18%) is applied for India billing (SAC code 998314).</p>
-        <p className="mt-1">USD pricing is available for international billing.</p>
-        <p className="mt-1">GST invoices are issued for all Indian entity payments.</p>
-        <p className="mt-1">Annual plans include a pro-rated refund if cancelled within 30 days.</p>
-        <p className="mt-1">Data export is available for 30 days after cancellation.</p>
+        <p className="mt-1">All prices exclude GST. GST (18%) applied for India billing (SAC 998314).</p>
+        <p className="mt-1 hidden sm:block">Annual plans include a pro-rated refund if cancelled within 30 days.</p>
+        <p className="mt-1 hidden sm:block">Data export is available for 30 days after cancellation.</p>
         <p className="mt-2 text-muted-2">
           By booking a demo or creating an account, you agree to our{" "}
           <Link href="/terms" className="font-medium text-teal underline underline-offset-2 hover:text-foreground">
@@ -91,10 +254,15 @@ export function PricingClient() {
         </p>
       </aside>
 
+      {/* ── 4. Trust signals ──────────────────────────────────────────────── */}
       <ZeroClientTrustSection context="pricing" className="mx-auto mt-10 max-w-5xl md:mt-12" />
 
-      <PricingFeatureComparison />
+      {/* ── 5. Feature comparison table (desktop only) ────────────────────── */}
+      <div className="hidden md:block">
+        <PricingFeatureComparison />
+      </div>
 
+      {/* ── 6. Industry fit + Compare ─────────────────────────────────────── */}
       <div className="mx-auto mb-12 grid max-w-5xl gap-4 sm:gap-5 md:mb-14 md:grid-cols-2 md:gap-6">
         <section
           aria-labelledby="pricing-industry-fit-heading"
@@ -115,8 +283,8 @@ export function PricingClient() {
             </div>
           </div>
           <p className="mt-4 max-w-prose text-pretty text-sm leading-relaxed text-muted sm:text-[15px] sm:leading-relaxed">
-            Pricing is shaped after we understand your workflow. Pick the vertical closest to how you operate; we map
-            modules and rollout from there.
+            The right module mix depends on how your business operates. Pick the vertical closest to yours — we map
+            modules and rollout scope from there.
           </p>
           <ul className="mt-5 grid grid-cols-1 gap-1.5" role="list">
             {getPublicIndustries().map((ind) => {
@@ -193,6 +361,7 @@ export function PricingClient() {
         </section>
       </div>
 
+      {/* ── 7. ROI snapshot ───────────────────────────────────────────────── */}
       <section className="relative mx-auto mb-20 max-w-4xl overflow-hidden rounded-2xl border border-[#EAEAEA] bg-gradient-to-b from-card to-[#FAFBFF] p-6 text-left shadow-[0_10px_35px_rgba(15,23,42,0.06)] md:p-8">
         <BackgroundComponents variant="cool" intensity="subtle" />
         <div className="relative z-10 mx-auto max-w-3xl">

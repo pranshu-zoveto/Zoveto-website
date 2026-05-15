@@ -3,44 +3,38 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { describe, it } from "node:test";
 import { MARKETING_PRICING_PLANS } from "./pricing-plans";
-import { DEFAULT_BILLING_CYCLE, PAID_PLAN_PRICING } from "./pricing-display";
+import { DEFAULT_BILLING_CYCLE } from "./pricing-display";
 
 describe("MARKETING_PRICING_PLANS", () => {
-  it("has four plans in display order", () => {
-    assert.equal(MARKETING_PRICING_PLANS.length, 4);
+  it("has three plans in display order", () => {
+    assert.equal(MARKETING_PRICING_PLANS.length, 3);
     const ids = MARKETING_PRICING_PLANS.map((p) => p.id);
-    assert.deepEqual(ids, ["free", "starter", "growth", "enterprise"]);
+    assert.deepEqual(ids, ["operations-suite", "business-os", "enterprise"]);
   });
 
-  it("positions Free as exploration-first (subtitle)", () => {
-    const free = MARKETING_PRICING_PLANS.find((p) => p.id === "free");
-    assert.ok(free);
-    assert.equal(free!.subtitle, "Explore the system before committing. No credit card, no time limit.");
+  it("Operations Suite has core stack subtitle", () => {
+    const plan = MARKETING_PRICING_PLANS.find((p) => p.id === "operations-suite");
+    assert.ok(plan);
+    assert.ok(plan!.subtitle?.includes("WMS"));
   });
 
-  it("positions Starter with daily-ops subtitle under plan name", () => {
-    const starter = MARKETING_PRICING_PLANS.find((p) => p.id === "starter");
-    assert.ok(starter);
-    assert.equal(starter!.subtitle, "Run your daily operations in one system");
+  it("Business OS has all-modules subtitle", () => {
+    const plan = MARKETING_PRICING_PLANS.find((p) => p.id === "business-os");
+    assert.ok(plan);
+    assert.ok(plan!.subtitle?.includes("five modules") || plan!.subtitle?.includes("5 modules") || plan!.subtitle?.includes("All five"));
   });
 
-  it("positions Growth with workflow subtitle under plan name", () => {
-    const growth = MARKETING_PRICING_PLANS.find((p) => p.id === "growth");
-    assert.ok(growth);
-    assert.equal(growth!.subtitle, "Automate workflows and scale your team");
-  });
-
-  it("marks Growth as popular", () => {
-    const growth = MARKETING_PRICING_PLANS.find((p) => p.id === "growth");
-    assert.ok(growth);
-    assert.equal(growth!.popular, true);
-    const others = MARKETING_PRICING_PLANS.filter((p) => p.id !== "growth");
+  it("marks Business OS as popular", () => {
+    const businessOs = MARKETING_PRICING_PLANS.find((p) => p.id === "business-os");
+    assert.ok(businessOs);
+    assert.equal(businessOs!.popular, true);
+    const others = MARKETING_PRICING_PLANS.filter((p) => p.id !== "business-os");
     assert.ok(others.every((p) => p.popular === false));
   });
 
-  it("Free, Starter, and Growth have public INR pricing; Enterprise is contact-led", () => {
+  it("Operations Suite and Business OS have public INR pricing; Enterprise is contact-led", () => {
     for (const p of MARKETING_PRICING_PLANS) {
-      if (p.id === "free" || p.id === "starter" || p.id === "growth") {
+      if (p.id === "operations-suite" || p.id === "business-os") {
         assert.ok(p.pricing, `${p.id} should have pricing`);
       } else {
         assert.equal(p.pricing, null, `${p.id} should be contact-led`);
@@ -56,30 +50,22 @@ describe("MARKETING_PRICING_PLANS", () => {
     }
   });
 
-  it("uses one canonical starter/growth pricing table", () => {
-    const starter = MARKETING_PRICING_PLANS.find((p) => p.id === "starter");
-    const growth = MARKETING_PRICING_PLANS.find((p) => p.id === "growth");
-    assert.ok(starter?.pricing);
-    assert.ok(growth?.pricing);
-    assert.equal(starter!.pricing!.listMonthly, PAID_PLAN_PRICING.starter.monthly);
-    assert.equal(starter!.pricing!.effectiveMonthlyAnnual, PAID_PLAN_PRICING.starter.yearlyEffective);
-    assert.equal(growth!.pricing!.listMonthly, PAID_PLAN_PRICING.growth.monthly);
-    assert.equal(growth!.pricing!.effectiveMonthlyAnnual, PAID_PLAN_PRICING.growth.yearlyEffective);
+  it("bundle prices are set correctly", () => {
+    const opsSuite = MARKETING_PRICING_PLANS.find((p) => p.id === "operations-suite");
+    const businessOs = MARKETING_PRICING_PLANS.find((p) => p.id === "business-os");
+    assert.ok(opsSuite?.pricing);
+    assert.ok(businessOs?.pricing);
+    assert.equal(opsSuite!.pricing!.listMonthly, 14999);
+    assert.equal(businessOs!.pricing!.listMonthly, 24999);
   });
 
   it("defaults billing to yearly", () => {
     assert.equal(DEFAULT_BILLING_CYCLE, "yearly");
   });
 
-  it("keeps headline price + /mo from breaking mid-suffix (Growth yearly alignment)", () => {
+  it("keeps headline price + /mo from breaking mid-suffix (alignment)", () => {
     const src = readFileSync(join(process.cwd(), "components/pricing/PlanPriceBlock.tsx"), "utf8");
     assert.ok(!src.includes("[overflow-wrap:anywhere]"), "overflow-wrap:anywhere can split /mo");
     assert.ok(src.includes("whitespace-nowrap"), "price + /mo should stay on one line");
-  });
-
-  it("Free tier stack says testing scope, not full-access marketing", () => {
-    const src = readFileSync(join(process.cwd(), "components/pricing/PlanPriceBlock.tsx"), "utf8");
-    assert.ok(src.includes("No credit card, no time limit"));
-    assert.ok(!src.includes("Full access. No commitment."));
   });
 });

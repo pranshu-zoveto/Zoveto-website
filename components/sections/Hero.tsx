@@ -11,12 +11,17 @@ import { BRAND_PRODUCTS } from "@/lib/brand-products";
 import { SystemModuleCard } from "@/components/brand/SystemModuleCard";
 import { SceneErrorBoundary } from "@/components/3d/SceneErrorBoundary";
 import { BrandHeroWordmark } from "@/components/brand/BrandHeroWordmark";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
 
 const HeroBrain = dynamic(() => import("@/components/3d/HeroBrain").then((m) => m.HeroBrain), {
   ssr: false,
 });
 
 export function Hero() {
+  // Skip the WebGL hero on small viewports — the decorative blue gradients
+  // already in the JSX below act as the static mobile background.
+  const showCanvas = useMediaQuery("(min-width: 768px)");
+
   return (
     <section
       className={cn(
@@ -24,17 +29,19 @@ export function Hero() {
         "bg-background text-foreground"
       )}
     >
-      <SceneErrorBoundary>
-        <HeroBrain />
-      </SceneErrorBoundary>
+      {showCanvas ? (
+        <SceneErrorBoundary>
+          <HeroBrain />
+        </SceneErrorBoundary>
+      ) : null}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
-        <div className="absolute left-1/2 top-[22%] h-[min(42vw,22rem)] w-[min(92vw,48rem)] -translate-x-1/2 rounded-full bg-blue/10 opacity-60 blur-[100px]" />
-        <div className="absolute bottom-[10%] right-[-10%] h-[min(55vw,28rem)] w-[min(55vw,28rem)] rounded-full bg-blue/10 opacity-50 blur-[90px]" />
+        <div className="hidden sm:block absolute left-1/2 top-[22%] h-[min(42vw,22rem)] w-[min(92vw,48rem)] -translate-x-1/2 rounded-full bg-blue/10 opacity-60 blur-[100px]" />
+        <div className="hidden sm:block absolute bottom-[10%] right-[-10%] h-[min(55vw,28rem)] w-[min(55vw,28rem)] rounded-full bg-blue/10 opacity-50 blur-[90px]" />
       </div>
 
-      <div className="container relative z-10 mx-auto max-w-content px-4 pb-20 pt-28 sm:px-6 sm:pb-24 sm:pt-32 md:pb-28 md:pt-36">
-        <div className="trust-badges mb-8 flex flex-wrap justify-center gap-2 sm:mb-9">
+      <div className="container relative z-10 mx-auto max-w-content px-4 pb-12 pt-20 sm:px-6 sm:pb-24 sm:pt-32 md:pb-28 md:pt-36">
+        <div className="trust-badges mb-8 hidden flex-wrap justify-center gap-2 sm:mb-9 sm:flex">
           {[
             "Execution clarity",
             "Unified business system",
@@ -43,7 +50,7 @@ export function Hero() {
           ].map((item) => (
             <span
               key={item}
-              className="rounded-[56px] border border-foreground/12 bg-card/95 px-[18px] py-2.5 text-[11px] font-bold uppercase tracking-[0.12em] text-foreground"
+              className="whitespace-nowrap rounded-[56px] border border-foreground/12 bg-card/95 px-3 py-2 text-[10px] font-bold uppercase tracking-[0.1em] text-foreground sm:px-[18px] sm:py-2.5 sm:text-[11px] sm:tracking-[0.12em]"
             >
               {item}
             </span>
@@ -54,7 +61,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 6 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.35 }}
-            className="mb-7 text-[11px] font-semibold uppercase tracking-[0.28em] text-muted-2 sm:mb-8 sm:text-xs"
+            className="mb-7 hidden text-[11px] font-semibold uppercase tracking-[0.28em] text-muted-2 sm:mb-8 sm:block sm:text-xs"
           >
             Master brand
           </motion.p>
@@ -72,7 +79,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.1 }}
-            className="mx-auto max-w-[min(90vw,40rem)] text-center text-[18px] font-medium leading-[1.6] tracking-[-0.01em] text-gray-600"
+            className="mx-auto max-w-[min(90vw,40rem)] text-center text-[15px] font-medium leading-[1.6] tracking-[-0.01em] text-gray-600 xs:text-[16px] sm:text-[17px] md:text-[18px]"
           >
             Your business doesn&apos;t need more tools.
             <br aria-hidden />
@@ -84,7 +91,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.22 }}
-          className="mx-auto mt-14 w-full max-w-3xl sm:mt-16 md:mt-[4.5rem]"
+          className="mx-auto mt-14 hidden w-full max-w-3xl sm:mt-16 sm:block md:mt-[4.5rem]"
         >
           <p className="mb-4 text-center text-[10px] font-semibold uppercase tracking-[0.28em] text-muted-2 sm:mb-5 sm:text-[11px]">
             Operating layers
@@ -128,7 +135,7 @@ export function Hero() {
         >
           Waitlist review · Founder approval · Guided onboarding
         </motion.p>
-        <div className="mt-8 flex justify-center">
+        <div className="mt-8 hidden justify-center sm:flex">
           <button
             type="button"
             className="hero-scroll-nudge flex flex-col items-center gap-2 border-0 bg-transparent px-3 py-2 text-[10px] font-semibold uppercase tracking-[0.22em] text-muted-2"

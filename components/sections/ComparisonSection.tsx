@@ -17,7 +17,7 @@ const COMPARISON = [
 
 export function ComparisonSection() {
   return (
-    <section className="relative overflow-hidden bg-transparent py-20 md:py-28 lg:py-32">
+    <section className="hidden md:block relative overflow-hidden bg-transparent py-20 md:py-28 lg:py-32">
       <div className="container relative z-10 mx-auto grid max-w-content items-start gap-16 px-4 sm:px-6 lg:grid-cols-12 lg:gap-20">
         <div className="space-y-6 lg:col-span-5">
           <Text variant="label-uppercase" className="text-muted-2">

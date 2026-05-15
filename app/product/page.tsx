@@ -125,7 +125,7 @@ export default function ProductOSPage() {
         </FluidMarketingSection>
 
         <FluidMarketingSection band={bandIndexForSection(2)} stackBase>
-        <section className="flex flex-col items-center border-t border-border bg-transparent py-20 text-center md:py-28">
+        <section className="flex flex-col items-center bg-transparent py-20 text-center md:py-28">
           <Text variant="display-2" as="h2" className="mb-8 max-w-3xl text-foreground font-bold">
             Move from tools to <span className="text-blue">architectural unity</span>
           </Text>

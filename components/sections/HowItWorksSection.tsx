@@ -47,7 +47,7 @@ export function HowItWorksSection() {
   return (
     <motion.section
       id="hiw"
-      className="relative py-section bg-background overflow-hidden border-t border-border"
+      className="relative py-section bg-background overflow-hidden"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}

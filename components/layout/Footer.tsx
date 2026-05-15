@@ -55,7 +55,9 @@ export function Footer() {
       <div className="container mx-auto max-w-content px-4 pt-14 sm:px-6 sm:pt-16 md:pt-18">
         <div className="grid gap-12 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1.85fr)] lg:gap-16">
           <div className="max-w-xl">
-            <FooterNewsletter inputId="site-footer-newsletter-email" variant="editorial" />
+            <div className="hidden sm:block">
+              <FooterNewsletter inputId="site-footer-newsletter-email" variant="editorial" />
+            </div>
             <p className="mt-7 text-[15px] leading-relaxed text-muted">
               Software for teams that need clean records before the day ends.
             </p>
@@ -64,7 +66,7 @@ export function Footer() {
             </p>
           </div>
 
-          <div className="grid min-w-0 grid-cols-2 gap-x-10 gap-y-10 md:grid-cols-4 md:gap-x-12 lg:gap-x-14">
+          <div className="grid min-w-0 grid-cols-1 gap-y-6 xs:grid-cols-2 xs:gap-x-6 xs:gap-y-8 sm:gap-x-10 sm:gap-y-10 md:grid-cols-4 md:gap-x-12 lg:gap-x-14">
             {LINK_COLS.map((col) => (
               <div key={col.title}>
                 <div className={colLabel}>{col.title}</div>
@@ -92,7 +94,7 @@ export function Footer() {
               "pointer-events-none select-none flex items-baseline justify-center gap-[0.12em]",
               "text-center font-extrabold uppercase leading-[0.8] tracking-[-0.05em]",
             )}
-            style={{ fontSize: "clamp(2.9rem, 13.5vw, 10.25rem)" }}
+            style={{ fontSize: "clamp(2.2rem, 13.5vw, 10.25rem)" }}
             aria-hidden
           >
             <span className="text-[#000000]">ZOVETO</span>

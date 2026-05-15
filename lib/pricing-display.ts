@@ -43,6 +43,22 @@ export const PRICING_BUSINESS: PaidPlanPricing = {
   savingsPerYear: PAID_PLAN_PRICING.growth.monthly * 12 - PAID_PLAN_PRICING.growth.yearlyEffective * 12,
 };
 
+/** Operations Suite bundle: WMS + ERP + CRM at ₹14,999/mo flat. */
+export const PRICING_OPERATIONS_SUITE: PaidPlanPricing = {
+  listMonthly: 14999,
+  effectiveMonthlyAnnual: 14999,
+  annualTotal: 14999 * 12,
+  savingsPerYear: 0,
+};
+
+/** Business OS bundle: all 5 modules at ₹24,999/mo flat. */
+export const PRICING_BUSINESS_OS: PaidPlanPricing = {
+  listMonthly: 24999,
+  effectiveMonthlyAnnual: 24999,
+  annualTotal: 24999 * 12,
+  savingsPerYear: 0,
+};
+
 export const USD_RATE_INR = 85;
 
 export function formatInr(amount: number): string {

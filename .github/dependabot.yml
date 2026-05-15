@@ -1,6 +1,28 @@
 version: 2
 updates:
-  - package-ecosystem: "npm"
+  - package-ecosystem: npm
     directory: "/"
     schedule:
-      interval: "weekly"
+      interval: weekly
+    open-pull-requests-limit: 5
+    groups:
+      patch-minor:
+        patterns:
+          - "*"
+        update-types:
+          - patch
+          - minor
+    ignore:
+      # Major bumps break Next/Tailwind/ESLint matrix — upgrade intentionally on main.
+      - dependency-name: "next"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "tailwindcss"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "eslint-config-next"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "sharp"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "react"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "react-dom"
+        update-types: ["version-update:semver-major"]

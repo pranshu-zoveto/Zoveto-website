@@ -8,13 +8,13 @@ import { Button } from "@/components/ui/Button";
 import { BrandIcon } from "@/components/brand/BrandLogos";
 import { NavbarWordmark } from "@/components/brand/NavbarWordmark";
 import { getModuleNavLinks } from "@/lib/module-nav";
-import { BRAND_PRODUCTS } from "@/lib/brand-products";
 
 const MODULE_NAV_LINKS = getModuleNavLinks();
 
 export function Navbar() {
   const [scrollY, setScrollY] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
+  const [modulesOpen, setModulesOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [brandWordmarkFreeze, setBrandWordmarkFreeze] = useState(false);
 
@@ -54,7 +54,7 @@ export function Navbar() {
     <div id="site-navbar" className={cn("navbar-wrapper fixed top-0 left-0 right-0 z-[100]")}>
       <nav
         className={cn(
-          "navbar-container transition-[background-color,backdrop-filter,-webkit-backdrop-filter,box-shadow,border-color] duration-300 [transition-timing-function:cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none",
+          "navbar-container overflow-x-clip transition-[background-color,backdrop-filter,-webkit-backdrop-filter,box-shadow,border-color] duration-300 [transition-timing-function:cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none",
           !isGlass && "bg-transparent backdrop-blur-0 [-webkit-backdrop-filter:none] border-0 shadow-none",
           isGlass &&
             "bg-[rgba(255,255,255,0.75)] backdrop-blur-[8px] md:backdrop-blur-[12px] [@supports(-webkit-backdrop-filter:blur(0))]:[-webkit-backdrop-filter:blur(12px)] border-b border-[rgba(0,0,0,0.06)] shadow-[0_4px_20px_rgba(0,0,0,0.05)]",
@@ -70,7 +70,7 @@ export function Navbar() {
             href="/"
             id="site-nav-brand-lockup"
             aria-label="Zoveto home"
-            className="inline-flex max-w-[13rem] items-center gap-2.5 overflow-hidden text-foreground whitespace-nowrap sm:mr-4 sm:max-w-none"
+            className="inline-flex max-w-[12rem] items-center gap-2 overflow-visible text-foreground whitespace-nowrap xs:max-w-[13rem] sm:mr-4 sm:max-w-none"
             onMouseEnter={() => setBrandWordmarkFreeze(true)}
             onMouseLeave={() => setBrandWordmarkFreeze(false)}
           >
@@ -98,7 +98,7 @@ export function Navbar() {
                 />
               </button>
               {activeDropdown === "modules" && (
-                <div className="absolute top-full left-1/2 z-10 mt-1 w-[36rem] -translate-x-1/2 animate-in fade-in zoom-in-95 slide-in-from-top-1 rounded-xl border border-border bg-card p-4 shadow-lg duration-150 grid grid-cols-2 gap-2 motion-reduce:animate-none">
+                <div className="absolute top-full left-1/2 z-10 mt-1 w-[36rem] max-w-[min(36rem,calc(100vw-2rem))] -translate-x-1/2 animate-in fade-in zoom-in-95 slide-in-from-top-1 rounded-xl border border-border bg-card p-4 shadow-lg duration-150 grid grid-cols-2 gap-2 motion-reduce:animate-none">
                   {MODULE_NAV_LINKS.map((link) => (
                     <Link
                       key={link.slug}
@@ -158,10 +158,7 @@ export function Navbar() {
             </Link>
           </div>
 
-          <div
-            className="flex shrink-0 items-center gap-1 sm:gap-2 lg:hidden"
-            style={{ position: "fixed", left: "min(330px, calc(100vw - 60px))", top: 8, zIndex: 115 }}
-          >
+          <div className="ml-auto flex shrink-0 items-center gap-1 sm:gap-2 lg:hidden">
             <Link href="/contact" className="hidden min-w-0 sm:block">
               <Button
                 variant="primary"
@@ -177,7 +174,7 @@ export function Navbar() {
               className="-mr-1 inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-lg border border-border bg-card p-2 text-foreground shadow-sm tap-active hover:bg-surface sm:-mr-2"
               aria-label={isOpen ? "Close menu" : "Open menu"}
               aria-expanded={isOpen}
-              onClick={() => setIsOpen(!isOpen)}
+              onClick={() => { setIsOpen(!isOpen); if (isOpen) setModulesOpen(false); }}
             >
               {isOpen ? <X size={22} aria-hidden /> : <Menu size={22} aria-hidden />}
             </button>
@@ -186,8 +183,9 @@ export function Navbar() {
       </nav>
 
       {isOpen && (
-        <div className="fixed inset-0 z-[110] flex touch-pan-y flex-col overscroll-y-contain bg-[rgba(255,255,255,0.97)] p-5 backdrop-blur-md motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-top-4 motion-safe:duration-200 motion-reduce:animate-none safe-top safe-bottom lg:hidden">
-          <div className="mb-10 flex items-center justify-between overflow-visible">
+        <div className="fixed inset-0 z-[110] flex touch-pan-y flex-col overscroll-y-contain bg-[rgba(255,255,255,0.97)] p-5 pl-[max(1.25rem,env(safe-area-inset-left))] pr-[max(1.25rem,env(safe-area-inset-right))] backdrop-blur-md motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-top-4 motion-safe:duration-200 motion-reduce:animate-none safe-top safe-bottom lg:hidden">
+          {/* ── Mobile menu header ── */}
+          <div className="mb-8 flex items-center justify-between">
             <span className="inline-flex items-center gap-2.5 text-foreground">
               <BrandIcon className="h-7 w-7 shrink-0 rounded-md" priority />
               <NavbarWordmark />
@@ -196,83 +194,82 @@ export function Navbar() {
               type="button"
               className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-lg hover:bg-surface"
               aria-label="Close menu"
-              onClick={() => setIsOpen(false)}
+              onClick={() => { setIsOpen(false); setModulesOpen(false); }}
             >
               <X size={22} aria-hidden />
             </button>
           </div>
 
-          <div className="flex-1 space-y-8 overflow-y-auto">
-            <div className="space-y-3">
-              <div className="text-[0.6875rem] font-semibold uppercase tracking-[0.08em] text-muted-2">System layers</div>
-              <div className="flex flex-wrap gap-x-6 gap-y-2">
-                {BRAND_PRODUCTS.map((p) => (
+          {/* ── Nav links ── */}
+          <nav className="flex-1 overflow-y-auto">
+            <ul className="space-y-1">
+
+              {/* Modules — accordion */}
+              <li>
+                <button
+                  type="button"
+                  onClick={() => setModulesOpen(!modulesOpen)}
+                  className="flex w-full items-center justify-between rounded-xl px-3 py-3.5 text-[1.1rem] font-semibold tracking-[-0.01em] text-foreground transition-colors hover:bg-surface"
+                  aria-expanded={modulesOpen}
+                >
+                  Modules
+                  <ChevronDown
+                    size={18}
+                    className={cn(
+                      "text-muted transition-transform duration-200",
+                      modulesOpen && "rotate-180"
+                    )}
+                  />
+                </button>
+
+                {/* Accordion body */}
+                {modulesOpen && (
+                  <ul className="mb-2 ml-3 mt-1 border-l-2 border-border pl-4 space-y-0.5">
+                    {MODULE_NAV_LINKS.map((link) => (
+                      <li key={link.slug}>
+                        <Link
+                          href={link.href}
+                          onClick={() => { setIsOpen(false); setModulesOpen(false); }}
+                          className="flex items-center gap-3 rounded-lg px-2 py-2.5 text-[0.95rem] font-medium text-muted transition-colors hover:bg-surface hover:text-foreground"
+                        >
+                          <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md border border-border bg-blue-light">
+                            <link.icon size={14} className="text-blue" />
+                          </div>
+                          {link.name}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </li>
+
+              {/* Main nav links */}
+              {[
+                { label: "Home",         href: "/" },
+                { label: "Pricing",      href: "/pricing" },
+                { label: "Compare",      href: "/compare" },
+                { label: "System Flow",  href: "/operational-proof" },
+                { label: "Blog",         href: "/blog" },
+                { label: "About",        href: "/about" },
+              ].map(({ label, href }) => (
+                <li key={href}>
                   <Link
-                    key={p.id}
-                    href={`/system#${p.anchor}`}
-                    onClick={() => setIsOpen(false)}
-                    className="text-[1.0625rem] font-semibold tracking-[-0.015em] text-foreground/80"
+                    href={href}
+                    onClick={() => { setIsOpen(false); setModulesOpen(false); }}
+                    className="block rounded-xl px-3 py-3.5 text-[1.1rem] font-semibold tracking-[-0.01em] text-foreground transition-colors hover:bg-surface"
                   >
-                    {p.productLine}
+                    {label}
                   </Link>
-                ))}
-              </div>
-            </div>
+                </li>
+              ))}
+            </ul>
+          </nav>
 
-            <div className="space-y-3">
-              <div className="text-[0.6875rem] font-semibold uppercase tracking-[0.08em] text-muted-2">Modules</div>
-              <div className="grid grid-cols-2 gap-2">
-                {MODULE_NAV_LINKS.map((link) => (
-                  <Link
-                    key={link.slug}
-                    href={link.href}
-                    onClick={() => setIsOpen(false)}
-                    className="py-1 text-[1rem] font-medium tracking-[-0.01em] text-muted"
-                  >
-                    {link.name}
-                  </Link>
-                ))}
-              </div>
-            </div>
-
-            <Link href="/pricing" onClick={() => setIsOpen(false)} className="block text-[1.5rem] font-semibold leading-tight tracking-[-0.02em] text-foreground">
-              Pricing
-            </Link>
-            <Link
-              href="/compare"
-              onClick={() => setIsOpen(false)}
-              className="block text-[1.5rem] font-semibold leading-tight tracking-[-0.02em] text-foreground"
-            >
-              Compare
-            </Link>
-            <Link
-              href="/operational-proof"
-              onClick={() => setIsOpen(false)}
-              className="block text-[1.5rem] font-semibold leading-tight tracking-[-0.02em] text-foreground"
-            >
-              System Flow
-            </Link>
-            <Link
-              href="/blog"
-              onClick={() => setIsOpen(false)}
-              className="block text-[1.5rem] font-semibold leading-tight tracking-[-0.02em] text-foreground"
-            >
-              Blog
-            </Link>
-            <Link href="/about" onClick={() => setIsOpen(false)} className="block text-[1.5rem] font-semibold leading-tight tracking-[-0.02em] text-foreground">
-              About
-            </Link>
-          </div>
-
-          <div className="flex flex-col gap-3 border-t border-border pt-8">
-            <Link href="/contact" onClick={() => setIsOpen(false)}>
-              <Button variant="primary" className="h-12 w-full rounded-xl">
+          {/* ── CTA buttons ── */}
+          <div className="flex flex-col gap-3 border-t border-border pt-6 mt-4">
+            <Link href="/contact" onClick={() => { setIsOpen(false); setModulesOpen(false); }}>
+              <Button variant="primary" className="h-12 w-full rounded-xl text-[0.95rem] font-semibold">
                 Book a 20-min demo
-              </Button>
-            </Link>
-            <Link href="/implementation" onClick={() => setIsOpen(false)}>
-              <Button type="button" variant="outline" className="h-12 w-full">
-                See implementation path
               </Button>
             </Link>
           </div>

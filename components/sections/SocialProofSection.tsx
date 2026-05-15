@@ -55,7 +55,7 @@ export function SocialProofSection() {
   return (
     <motion.section
       id="proof"
-      className="relative overflow-hidden border-t border-border bg-background py-section"
+      className="relative overflow-hidden bg-background py-section"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
@@ -81,7 +81,7 @@ export function SocialProofSection() {
 
         <div className="mb-32 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {TESTIMONIALS.map((t, i) => (
-            <div key={i} className="flex flex-col rounded-2xl border border-border bg-surface p-10">
+            <div key={i} className="flex flex-col rounded-xl border border-border bg-surface p-10">
               <div className="mb-8">
                 <Quote className="h-8 w-8 scale-x-[-1] text-blue/30" />
               </div>
@@ -135,7 +135,7 @@ interface MetricItem {
 
 function MetricCard({ metric }: { metric: MetricItem }) {
   return (
-    <div className="flex aspect-square flex-col items-center justify-center rounded-2xl border border-border bg-surface p-8 text-center">
+    <div className="flex aspect-square flex-col items-center justify-center rounded-xl border border-border bg-surface p-8 text-center">
       <div className="mb-2 font-display text-5xl tracking-wider text-foreground md:text-6xl">{metric.val}</div>
       <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted-2">{metric.label}</div>
     </div>

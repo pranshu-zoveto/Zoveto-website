@@ -13,7 +13,7 @@ export function IndustriesSection() {
   return (
     <motion.section
       id="industries"
-      className="relative border-t border-border bg-surface py-20 md:py-28 lg:py-36 overflow-hidden"
+      className="relative bg-surface py-20 md:py-28 lg:py-36 overflow-hidden"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
@@ -41,7 +41,7 @@ export function IndustriesSection() {
               <Link
                 key={ind.slug}
                 href={href}
-                className="group flex flex-col rounded-2xl border border-border bg-card p-8 shadow-sm transition-colors hover:border-teal/35 md:p-10"
+                className="group flex flex-col rounded-xl border border-border bg-card p-8 shadow-sm transition-colors hover:border-teal/35 md:p-10"
               >
                 <div className="mb-8 flex items-start justify-between gap-4 border-b border-border pb-6">
                   <div className="flex min-w-0 items-center gap-5">
@@ -57,7 +57,7 @@ export function IndustriesSection() {
                       </Text>
                     </div>
                   </div>
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-border bg-surface text-muted transition-colors group-hover:border-teal/30 group-hover:text-teal">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-border bg-surface text-muted transition-colors group-hover:border-teal/30 group-hover:text-teal">
                     <ArrowRight size={18} />
                   </div>
                 </div>

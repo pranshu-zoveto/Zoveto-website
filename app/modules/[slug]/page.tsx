@@ -131,7 +131,7 @@ export default async function ModuleDetailPage({
 
         <ModuleClient slug={slug} />
 
-        <section className="py-20 md:py-28 flex flex-col items-center text-center border-t border-border">
+        <section className="py-20 md:py-28 flex flex-col items-center text-center">
           <div className="text-2xl sm:text-3xl font-bold mb-10 max-w-2xl text-foreground leading-snug">
             Integrate {data.name} into your <span className="text-blue">Company OS</span> today.
           </div>

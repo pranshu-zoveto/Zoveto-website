@@ -7,13 +7,12 @@ const DEFAULT_SUFFIXES = ["ERP", "WMS", "CRM", "HRMS", "AI"] as const;
 /** Width reference - longest token in default set */
 const WIDTH_REF = "HRMS";
 
-const INTERVAL_MS = 2000;
-const LG_MEDIA = "(min-width: 1024px)";
+const INTERVAL_MS = 1000;
 
 const staticWordClasses =
-  "inline-block align-middle leading-none font-semibold tracking-[0.08em] text-[1.45rem]";
+  "inline-block align-middle leading-none font-semibold tracking-[0.08em] text-[1.1rem] sm:text-[1.3rem] lg:text-[1.45rem]";
 const suffixClasses =
-  "inline-block align-middle leading-none font-medium tracking-[0.08em] text-[1.45rem] text-foreground";
+  "inline-block align-middle leading-none font-medium tracking-[0.08em] text-[1.1rem] sm:text-[1.3rem] lg:text-[1.45rem] text-foreground";
 
 export type NavbarWordmarkProps = {
   suffixes?: readonly string[];
@@ -29,7 +28,6 @@ export function NavbarWordmark({
 }: NavbarWordmarkProps) {
   const [mounted, setMounted] = useState(false);
   const [reducedMotion, setReducedMotion] = useState(false);
-  const [isDesktop, setIsDesktop] = useState(false);
   const [index, setIndex] = useState(0);
   const freezeRef = useRef(freeze);
   freezeRef.current = freeze;
@@ -46,26 +44,11 @@ export function NavbarWordmark({
     return () => mq.removeEventListener("change", sync);
   }, []);
 
-  useEffect(() => {
-    const mq = window.matchMedia(LG_MEDIA);
-    const sync = () => setIsDesktop(mq.matches);
-    sync();
-    mq.addEventListener("change", sync);
-    return () => mq.removeEventListener("change", sync);
-  }, []);
-
-  const shouldRotate = mounted && isDesktop && !reducedMotion;
+  // Animate on all screen sizes — like Schbang's wordmark rotation
+  const shouldRotate = mounted && !reducedMotion;
   const suffixLen = suffixes.length;
   const widthToken =
     suffixLen > 0 ? suffixes.reduce((a, b) => (a.length >= b.length ? a : b), "") : WIDTH_REF;
-
-  const prevRotateRef = useRef(false);
-  useEffect(() => {
-    if (shouldRotate && !prevRotateRef.current) {
-      setIndex(0);
-    }
-    prevRotateRef.current = shouldRotate;
-  }, [shouldRotate]);
 
   useEffect(() => {
     if (!shouldRotate || suffixLen < 1) return;
@@ -103,13 +86,13 @@ export function NavbarWordmark({
           {widthToken}
         </span>
 
-        <span className="col-start-1 row-start-1 overflow-visible">
+        <span className="col-start-1 row-start-1 overflow-hidden">
           {shouldRotate ? (
             <span
               key={current}
               className={cn(
                 suffixClasses,
-                "block motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-bottom-1 motion-safe:duration-300",
+                "block motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-bottom-2 motion-safe:duration-200 motion-safe:[animation-timing-function:cubic-bezier(0.22,1,0.36,1)]",
               )}
             >
               {current}

@@ -84,8 +84,32 @@ export default function Home() {
       {/* SSR-first LCP (<lg); desktop placeholder while GSAP chunk loads */}
       <HomeHeroLcpShell variant="mobile" />
       {/* Mobile/tablet (<1024): no GSAP / ScrollTrigger in initial bundles */}
-      <div className="lg:hidden">
+      <div className="hidden sm:block lg:hidden">
         <DashboardMobileModules />
+      </div>
+      {/* Mobile replacement — simple 2-col module grid (<640px) */}
+      <div className="block bg-[#f5f5f7] px-4 py-14 sm:hidden lg:hidden">
+        <p className="mb-3 text-center text-[11px] uppercase tracking-[0.2em] text-muted">MODULES</p>
+        <h2 className="mb-8 text-center text-[1.65rem] font-bold leading-tight text-foreground">
+          One system.
+          <br />
+          Every function.
+        </h2>
+        <div className="mx-auto grid max-w-lg grid-cols-2 gap-3">
+          {[
+            { name: "Operations", sub: "WMS · Inventory · Dispatch" },
+            { name: "Purchase", sub: "Procurement · Suppliers" },
+            { name: "Sales", sub: "Orders · CRM · Invoicing" },
+            { name: "Finance", sub: "Accounts · GST · P&L" },
+            { name: "HR & Payroll", sub: "People · Attendance · Pay" },
+            { name: "Intelligence", sub: "Reports · Alerts · BI" },
+          ].map((m) => (
+            <div key={m.name} className="rounded-xl border border-border bg-white p-4">
+              <p className="text-[14px] font-semibold text-foreground">{m.name}</p>
+              <p className="mt-0.5 text-[11px] leading-snug text-muted">{m.sub}</p>
+            </div>
+          ))}
+        </div>
       </div>
       {/* Desktop (≥1024): lazy GSAP + sticky zoom timeline */}
       <div className="hidden lg:block">
@@ -98,12 +122,15 @@ export default function Home() {
       <FluidMarketingSection band={bandIndexForSection(2)} overlapTop stackBase>
         <ProblemSection />
       </FluidMarketingSection>
-      <FluidMarketingSection band={bandIndexForSection(3)} stackBase>
-        <SystemShiftSection />
-      </FluidMarketingSection>
-      <FluidMarketingSection band={bandIndexForSection(4)} stackBase>
-        <FeaturesSection />
-      </FluidMarketingSection>
+      {/* SystemShift & Features: desktop-only — too much scroll on mobile */}
+      <div className="hidden sm:block">
+        <FluidMarketingSection band={bandIndexForSection(3)} stackBase>
+          <SystemShiftSection />
+        </FluidMarketingSection>
+        <FluidMarketingSection band={bandIndexForSection(4)} stackBase>
+          <FeaturesSection />
+        </FluidMarketingSection>
+      </div>
       <FluidMarketingSection band={bandIndexForSection(5)} overlapTop stackBase>
         <ComparisonSection />
       </FluidMarketingSection>

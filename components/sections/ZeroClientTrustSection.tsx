@@ -60,7 +60,7 @@ export function ZeroClientTrustSection({ context = "home", className }: ZeroClie
   return (
     <section aria-labelledby={`${context}-zero-client-trust-heading`} className={cn("bg-transparent py-section-mobile md:py-section", className)}>
       <div className="container mx-auto max-w-content px-4 sm:px-6">
-        <div className="overflow-hidden rounded-2xl border border-border/80 bg-[linear-gradient(180deg,#ffffff_0%,#f7fafe_100%)] p-5 shadow-[var(--shadow-float)] sm:p-6 md:p-8 lg:p-10">
+        <div className="overflow-hidden rounded-xl border border-border/80 bg-[linear-gradient(180deg,#ffffff_0%,#f7fafe_100%)] p-5 shadow-[var(--shadow-float)] sm:p-6 md:p-8 lg:p-10">
           <RevealOnScroll className="grid grid-cols-1 gap-9 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.08fr)] lg:items-start lg:gap-10 xl:gap-12">
             <div className="reveal-item min-w-0">
               <SectionLabel className="mb-4 border-border/70 bg-surface-2 text-muted-2">{copy.eyebrow}</SectionLabel>

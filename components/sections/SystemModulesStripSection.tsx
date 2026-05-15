@@ -59,7 +59,7 @@ function StripPanel({
       viewport={{ once: true, margin: "-12% 0px -12% 0px", amount: 0.15 }}
       transition={{ duration: 0.4, delay: index * 0.05, ease: [0.22, 1, 0.36, 1] }}
       className={cn(
-        "gradient-surface relative isolate flex h-full w-full min-h-[270px] flex-col sm:min-h-[290px] lg:min-h-[320px]",
+        "gradient-surface relative isolate flex h-full w-full min-h-0 flex-col sm:min-h-[290px] lg:min-h-[320px]",
         "transition-[transform,filter] duration-300 ease-out",
         "group-hover:brightness-[1.04] group-hover:[transform:translateY(-2px)]",
         "group-focus-within:brightness-[1.04] group-focus-within:[transform:translateY(-2px)]",
@@ -75,7 +75,7 @@ function StripPanel({
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_78%_20%,var(--tile-glow),transparent_48%)] opacity-90" />
       <div className="relative z-10 flex h-full min-h-0 flex-col px-5 pb-7 pt-6 sm:px-6 sm:pb-8 sm:pt-7 md:px-8 md:pb-10 md:pt-8">
         <header className="flex shrink-0 items-start justify-between gap-4">
-          <div className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-border/70 bg-white/80 backdrop-blur-[2px] sm:h-10 sm:w-10">
+          <div className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-border/70 bg-white/80 backdrop-blur-[2px] sm:h-10 sm:w-10">
             <Icon
               className="h-[18px] w-[18px] shrink-0 sm:h-5 sm:w-5"
               strokeWidth={1.5}

@@ -13,28 +13,28 @@ import { PricingFAQSection } from "./PricingFAQSection";
 export const revalidate = 86400;
 
 export const metadata: Metadata = {
-  title: "Zoveto Pricing, ERP Software from ₹5,999/mo effective (Starter) | Plans",
+  title: "Zoveto Pricing — Modular ERP from ₹5,999/mo | WMS, CRM, ERP, HRMS, Intelligence",
   description:
-    "Transparent pricing for Zoveto's Company Operating System. Starter ₹7,999/mo monthly or ₹5,999/mo effective on yearly billing (10 users). Growth from ₹14,999/mo effective (15 users + HRMS + AI). No hidden fees. Cancel anytime.",
+    "Transparent modular pricing for Zoveto's operating system. Buy individual modules from ₹5,999/mo or save with bundles — Operations Suite ₹14,999/mo (WMS+ERP+CRM) or Business OS ₹24,999/mo (all 5 modules). No hidden fees.",
   alternates: { canonical: canonicalUrl("/pricing") },
   openGraph: {
-    title: "Zoveto pricing | Free to Enterprise",
+    title: "Zoveto pricing | Modular — pick what you need",
     description:
-      "Explore transparent plans from free to enterprise and choose a setup that matches your operational growth stage.",
+      "Five independently purchasable modules. Two bundles for better value. One enterprise option. No lock-in until you're sure.",
     url: canonicalUrl("/pricing"),
     images: ["/og-image.png"],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Zoveto pricing | Free to Enterprise",
-    description: "Transparent pricing designed for scaling operations teams.",
+    title: "Zoveto pricing | Modular — pick what you need",
+    description: "Buy only the modules you need. Bundle for better rates. Scale without lock-in.",
     images: ["/og-image.png"],
   },
 };
 
 export default function PricingPage() {
   return (
-    <main className="relative overflow-hidden bg-background pb-16 pt-28 md:pb-24 md:pt-36">
+    <main className="relative overflow-hidden bg-background pb-16 pt-20 md:pb-24 md:pt-36">
       <BreadcrumbSchema
         items={[
           { name: "Home", path: "/" },
@@ -44,13 +44,13 @@ export default function PricingPage() {
       <PricingOfferSchema />
       <FAQPageSchema faqs={PRICING_PAGE_FAQ} url={canonicalUrl("/pricing")} />
       <div className="container relative z-10 mx-auto max-w-[min(100%,88rem)] px-4 sm:px-6">
-        <div className="mx-auto mb-14 max-w-3xl text-center md:mb-20">
+        <div className="mx-auto mb-10 max-w-3xl text-center md:mb-20">
           <p className="mb-5 font-mono text-[11px] font-medium uppercase tracking-[0.2em] text-muted-2">Pricing</p>
           <Text variant="display-1" as="h1" className="mb-6 text-balance">
-            Pricing that follows <span className="text-blue">operating volume.</span>
+            Buy what you need. <span className="text-blue">Scale when you're ready.</span>
           </Text>
           <Text variant="body-lg" className="mx-auto max-w-2xl text-pretty text-muted">
-            Start fast. Scale when volume grows. One subscription covers inventory, CRM, ops, finance, and AI agents.
+            Five independently purchasable modules. Bundle them for a better rate or go full stack with Business OS.
           </Text>
         </div>
 

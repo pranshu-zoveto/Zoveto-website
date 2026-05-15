@@ -148,9 +148,11 @@ export function PlanPriceBlock({
           ) : (
             <div className="mt-2 min-h-[2rem]" aria-hidden />
           )}
-          <p className="mt-2 text-sm text-muted line-through">
-            <span className="whitespace-nowrap">{formatMoney(pricing.listMonthly)}/mo</span>
-          </p>
+          {pricing.listMonthly > pricing.effectiveMonthlyAnnual ? (
+            <p className="mt-2 text-sm text-muted line-through">
+              <span className="whitespace-nowrap">{formatMoney(pricing.listMonthly)}/mo</span>
+            </p>
+          ) : null}
           <div className="mt-2 min-h-[1.25rem]">
             <button
               type="button"

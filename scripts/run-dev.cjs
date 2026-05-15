@@ -12,6 +12,7 @@
  */
 const fs = require("fs");
 const net = require("net");
+const os = require("os");
 const path = require("path");
 const { createRequire } = require("module");
 const { spawn } = require("child_process");
@@ -80,17 +81,44 @@ async function pickFreePort(start) {
   throw new Error(`[zoveto-website] No free port between ${base} and ${base + span - 1}.`);
 }
 
+function getLanIpv4Addresses() {
+  const addrs = [];
+  const interfaces = os.networkInterfaces();
+  for (const name of Object.keys(interfaces)) {
+    for (const iface of interfaces[name] ?? []) {
+      if (iface.family === "IPv4" && !iface.internal) {
+        addrs.push(iface.address);
+      }
+    }
+  }
+  return addrs;
+}
+
 function spawnNext(port) {
   const paths = resolveNextPaths();
   const nextBin = paths.nextBin;
   const readlinkPatch = path.join(root, "scripts", "patch-readlink.cjs");
   const portStr = String(port);
   const env = { ...process.env, PORT: portStr };
-  return spawn(process.execPath, ["--require", readlinkPatch, nextBin, "dev", "--webpack", "-p", portStr], {
-    cwd: root,
-    stdio: "inherit",
-    env,
-  });
+  const lanIps = getLanIpv4Addresses();
+  console.log(`\n[zoveto-website] Local:   http://localhost:${portStr}`);
+  if (lanIps.length) {
+    for (const ip of lanIps) {
+      console.log(`[zoveto-website] Phone:   http://${ip}:${portStr}  (same Wi-Fi as this Mac)`);
+    }
+  } else {
+    console.log("[zoveto-website] No LAN IP found — connect this Mac to Wi-Fi for phone testing.\n");
+  }
+  console.log("");
+  return spawn(
+    process.execPath,
+    ["--require", readlinkPatch, nextBin, "dev", "--webpack", "-H", "0.0.0.0", "-p", portStr],
+    {
+      cwd: root,
+      stdio: "inherit",
+      env,
+    },
+  );
 }
 
 async function main() {

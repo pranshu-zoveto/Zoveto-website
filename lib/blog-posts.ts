@@ -19,6 +19,29 @@ export interface BlogPost {
 /** All published blog posts. Add new entries at the TOP of this array (newest first). */
 export const BLOG_POSTS: BlogPost[] = [
   {
+    slug: "zoho-one-vs-zoveto-architecture",
+    title: "Zoho One vs Zoveto: The Architectural Difference That Actually Matters",
+    subtitle: "45 apps vs one unified platform: what Indian SMBs should know.",
+    excerpt:
+      "Zoho One bundles 45+ apps on one subscription. Zoveto is one unified platform. This comparison explains the architectural difference and why it matters for Indian distributors and manufacturers.",
+    date: "2026-05-15",
+    readingTime: "10 min read",
+    category: "Comparisons",
+    tags: [
+      "Zoho One alternative",
+      "Zoho vs Zoveto",
+      "Zoho One India",
+      "ERP comparison",
+      "Company Operating System",
+    ],
+    coverImage:
+      "https://res.cloudinary.com/dnldtmbg5/image/upload/f_auto,q_auto,w_1920,c_limit/v1778847699/blog-03_gfonvs.png",
+    coverWidth: 1536,
+    coverHeight: 1024,
+    coverImageAlt:
+      "Team reviewing Zoveto dashboard in a warehouse: sales, inventory, and warehouse status on one unified screen",
+  },
+  {
     slug: "tally-vs-zoveto-cloud-erp-india",
     title: "Tally vs Zoveto: Why Indian Businesses Are Moving to Cloud ERP in 2026",
     subtitle: "An honest comparison for Indian SMBs.",

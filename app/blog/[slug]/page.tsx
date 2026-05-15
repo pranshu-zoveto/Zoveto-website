@@ -16,11 +16,13 @@ import { BlogCard } from "@/components/blog/BlogCard";
 import { resolveSlugParams } from "@/lib/resolve-slug-params";
 import WhatIsCompanyOperatingSystem from "@/app/blog/_posts/what-is-company-operating-system";
 import TallyVsZovetoCloudErpIndia from "@/app/blog/_posts/tally-vs-zoveto-cloud-erp-india";
+import ZohoOneVsZovetoArchitecture from "@/app/blog/_posts/zoho-one-vs-zoveto-architecture";
 
 /** Maps slug → the corresponding content component. Add every new post here. */
 const POST_CONTENT_MAP: Record<string, ComponentType> = {
   "what-is-company-operating-system": WhatIsCompanyOperatingSystem,
   "tally-vs-zoveto-cloud-erp-india": TallyVsZovetoCloudErpIndia,
+  "zoho-one-vs-zoveto-architecture": ZohoOneVsZovetoArchitecture,
   // ↑ When adding new posts: duplicate this line, change both the slug key and the import path.
 };
 
@@ -30,6 +32,28 @@ const POST_CONTENT_MAP: Record<string, ComponentType> = {
  * Google requires the schema answers to match the on-page copy.
  */
 const POST_FAQS: Record<string, readonly FaqSchemaInput[]> = {
+  "zoho-one-vs-zoveto-architecture": [
+    {
+      question: "Can I migrate from Zoho One to Zoveto?",
+      answer:
+        "Yes. Zoveto supports migration from Zoho CRM, Zoho Books, and Zoho Inventory. Customer records, vendor records, inventory masters, and transaction history can be migrated with standard data export tools.",
+    },
+    {
+      question: "Does Zoveto have a CRM as strong as Zoho CRM?",
+      answer:
+        "Zoveto's CRM is purpose-built for Indian B2B distribution and dealer networks, with native integration to inventory, finance, and dispatch. Zoho CRM is more feature-rich for sales automation in isolation, but requires integrations to connect to inventory and finance.",
+    },
+    {
+      question: "Is Zoho better for GST compliance than Zoveto?",
+      answer:
+        "Both platforms fully support GST compliance (GSTR-1, GSTR-3B, e-invoicing, and e-way bills). The difference is that in Zoveto, GST calculations happen natively at the point of transaction rather than flowing through a sync from inventory to Books.",
+    },
+    {
+      question: "What industries does Zoveto specifically support?",
+      answer:
+        "Zoveto is purpose-built for Indian distributors, manufacturers (discrete and process), spare parts dealers, and B2B wholesalers. It includes India-specific features like multi-warehouse GST tracking, dealer credit management, and machine-compatibility-based spare parts cataloguing.",
+    },
+  ],
   "tally-vs-zoveto-cloud-erp-india": [
     {
       question: "Can I migrate my Tally data to Zoveto?",

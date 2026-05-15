@@ -35,4 +35,11 @@ describe("blog-posts", () => {
     assert.ok(p);
     assert.ok(p!.title.includes("Company Operating System"));
   });
+
+  it("includes the Zoho One architecture comparison", () => {
+    const p = getBlogPost("zoho-one-vs-zoveto-architecture");
+    assert.ok(p);
+    assert.ok(p!.title.includes("Zoho One"));
+    assert.equal(p!.category, "Comparisons");
+  });
 });

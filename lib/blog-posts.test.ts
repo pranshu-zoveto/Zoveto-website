@@ -42,4 +42,11 @@ describe("blog-posts", () => {
     assert.ok(p!.title.includes("Zoho One"));
     assert.equal(p!.category, "Comparisons");
   });
+
+  it("includes the GST ERP India 2026 guide", () => {
+    const p = getBlogPost("gst-erp-software-india-2026");
+    assert.ok(p);
+    assert.ok(p!.title.includes("GST ERP"));
+    assert.equal(p!.category, "ERP Guide");
+  });
 });

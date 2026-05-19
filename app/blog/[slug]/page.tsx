@@ -17,9 +17,11 @@ import { resolveSlugParams } from "@/lib/resolve-slug-params";
 import WhatIsCompanyOperatingSystem from "@/app/blog/_posts/what-is-company-operating-system";
 import TallyVsZovetoCloudErpIndia from "@/app/blog/_posts/tally-vs-zoveto-cloud-erp-india";
 import ZohoOneVsZovetoArchitecture from "@/app/blog/_posts/zoho-one-vs-zoveto-architecture";
+import GstErpSoftwareIndia2026 from "@/app/blog/_posts/gst-erp-software-india-2026";
 
 /** Maps slug → the corresponding content component. Add every new post here. */
 const POST_CONTENT_MAP: Record<string, ComponentType> = {
+  "gst-erp-software-india-2026": GstErpSoftwareIndia2026,
   "what-is-company-operating-system": WhatIsCompanyOperatingSystem,
   "tally-vs-zoveto-cloud-erp-india": TallyVsZovetoCloudErpIndia,
   "zoho-one-vs-zoveto-architecture": ZohoOneVsZovetoArchitecture,
@@ -32,6 +34,33 @@ const POST_CONTENT_MAP: Record<string, ComponentType> = {
  * Google requires the schema answers to match the on-page copy.
  */
 const POST_FAQS: Record<string, readonly FaqSchemaInput[]> = {
+  "gst-erp-software-india-2026": [
+    {
+      question: "Is e-invoicing mandatory for businesses with turnover below ₹5 crore?",
+      answer:
+        "As of 2024, e-invoicing is mandatory for businesses with annual turnover above ₹5 crore. Businesses below this threshold are not required to generate IRNs, though they may opt in voluntarily.",
+    },
+    {
+      question: "What happens if I issue an invoice without an IRN?",
+      answer:
+        "An invoice without an IRN is legally invalid for B2B supplies where e-invoicing is applicable. Your buyer cannot claim ITC on such invoices, which damages your relationship with customers and may expose you to penalties.",
+    },
+    {
+      question: "Can I use Excel to file GSTR-1?",
+      answer:
+        "Yes, you can use GSTN's offline utility to prepare and file GSTR-1. However, businesses with more than 50 to 100 invoices per month will find this process extremely time-consuming and error-prone. An ERP that auto-populates GSTR-1 from live transaction data eliminates this manual step entirely.",
+    },
+    {
+      question: "What is GSTR-2B and how is it different from GSTR-2A?",
+      answer:
+        "GSTR-2A is a dynamic statement that updates as vendors file their returns. GSTR-2B is a static auto-drafted credit statement generated on the 14th of each month based on filings up to the 13th. ITC eligibility is now determined primarily by GSTR-2B, not GSTR-2A.",
+    },
+    {
+      question: "Does Zoveto support the QRMP scheme?",
+      answer:
+        "Yes. Zoveto supports the QRMP (Quarterly Return Monthly Payment) scheme for eligible taxpayers, with monthly PMT-06 challan generation and quarterly GSTR-1 filing.",
+    },
+  ],
   "zoho-one-vs-zoveto-architecture": [
     {
       question: "Can I migrate from Zoho One to Zoveto?",
@@ -171,15 +200,14 @@ export default async function BlogPostPage({
           <div className="min-w-0">
             {/* Cover image (full bleed of the article column, full image visible, no crop) */}
             {post.coverImage && (
-              <figure className="mb-10 overflow-hidden rounded-2xl border border-border bg-surface shadow-[0_4px_24px_rgba(15,23,42,0.06)]">
+              <figure className="relative mb-10 aspect-[16/9] w-full overflow-hidden rounded-2xl border border-border bg-[#e8eef5] shadow-[0_4px_24px_rgba(15,23,42,0.06)]">
                 <Image
                   src={post.coverImage}
                   alt={post.coverImageAlt ?? `Cover image for ${post.title}`}
-                  width={post.coverWidth ?? 1200}
-                  height={post.coverHeight ?? 630}
+                  fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 820px"
                   priority
-                  className="block h-auto w-full"
+                  className="object-cover object-center"
                 />
               </figure>
             )}

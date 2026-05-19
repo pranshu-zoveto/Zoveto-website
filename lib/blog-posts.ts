@@ -19,6 +19,29 @@ export interface BlogPost {
 /** All published blog posts. Add new entries at the TOP of this array (newest first). */
 export const BLOG_POSTS: BlogPost[] = [
   {
+    slug: "gst-erp-software-india-2026",
+    title: "GST ERP Software in India 2026: The Complete Compliance Guide",
+    subtitle: "e-Invoicing, GSTR filing, HSN, and what to look for before you buy.",
+    excerpt:
+      "Everything Indian businesses need to know about GST-compliant ERP software in 2026: e-invoicing, IRN, GSTR filing, HSN codes, and what to look for before buying.",
+    date: "2026-05-19",
+    readingTime: "12 min read",
+    category: "ERP Guide",
+    tags: [
+      "GST ERP software India 2026",
+      "GST invoice software India",
+      "GST filing software India",
+      "e-invoicing",
+      "GSTR-1",
+    ],
+    coverImage:
+      "https://res.cloudinary.com/dnldtmbg5/image/upload/f_auto,q_auto,w_1920,c_limit/v1779171699/in_the_photo_the_logo_202605191149_sk8ytc.jpg",
+    coverWidth: 2752,
+    coverHeight: 1536,
+    coverImageAlt:
+      "GST ERP Software India 2026 guide on a laptop screen with Zoveto branding, e-invoicing, GSTR, and compliance icons",
+  },
+  {
     slug: "zoho-one-vs-zoveto-architecture",
     title: "Zoho One vs Zoveto: The Architectural Difference That Actually Matters",
     subtitle: "45 apps vs one unified platform: what Indian SMBs should know.",

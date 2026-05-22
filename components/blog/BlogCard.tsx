@@ -14,20 +14,22 @@ interface BlogCardProps {
 }
 
 export function BlogCard({ post, featured = false }: BlogCardProps) {
-  const coverAspect = getBlogCoverAspectClass(post.coverWidth, post.coverHeight);
+  const coverAspect = featured
+    ? getBlogCoverAspectClass(post.coverWidth, post.coverHeight)
+    : "aspect-[16/9]";
 
   return (
     <Link
       href={`/blog/${post.slug}`}
       className={cn(
         "group flex flex-col rounded-2xl border border-border bg-card transition-all duration-300 hover:border-blue/30 hover:shadow-[0_8px_24px_rgba(0,113,227,0.10)]",
-        featured ? "md:flex-row" : "",
+        featured ? "md:flex-row" : "h-full",
       )}
     >
       {/* Optional cover image placeholder – renders a gradient swatch if no image */}
       <div
         className={cn(
-          "relative shrink-0 overflow-hidden rounded-t-2xl bg-white",
+          "relative shrink-0 overflow-hidden rounded-t-2xl bg-[#e8eef5]",
           coverAspect,
           featured
             ? "w-full md:aspect-auto md:w-[44%] md:max-w-[480px] md:self-stretch md:rounded-l-2xl md:rounded-tr-none"

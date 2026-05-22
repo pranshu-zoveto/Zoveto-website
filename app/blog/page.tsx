@@ -71,7 +71,7 @@ export default function BlogIndexPage() {
             <div className="mb-6 flex items-center justify-between">
               <h2 className="text-base font-semibold text-foreground">More articles</h2>
             </div>
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid auto-rows-fr gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {rest.map((post) => (
                 <BlogCard key={post.slug} post={post} />
               ))}

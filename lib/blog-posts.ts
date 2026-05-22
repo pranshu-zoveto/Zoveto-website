@@ -24,7 +24,7 @@ export const BLOG_POSTS: BlogPost[] = [
     subtitle: "Stockouts, missed leads, reconciliation, and GST errors add up fast.",
     excerpt:
       "Stockouts, missed leads, manual reconciliation, and GST errors silently drain Indian SMBs. Here's where the money goes, and how to stop the leak.",
-    date: "2026-05-20",
+    date: "2026-05-23",
     readingTime: "11 min read",
     category: "ERP Guide",
     tags: [

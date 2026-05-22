@@ -12,6 +12,17 @@ const LINK_COLS: { title: string; links: { label: string; href: string }[] }[] =
       { label: "Compare", href: "/compare" },
       { label: "FAQ", href: "/faq" },
       { label: "Modules", href: "/product" },
+      { label: "Blog", href: "/blog" },
+      { label: "Implementation", href: "/implementation" },
+    ],
+  },
+  {
+    title: "Solutions",
+    links: [
+      { label: "Company OS", href: "/company-operating-system-india" },
+      { label: "Tally alternative", href: "/tally-alternative-india" },
+      { label: "GST billing", href: "/gst-billing-software-india" },
+      { label: "Distributors ERP", href: "/erp-software-distributors-india" },
     ],
   },
   {
@@ -66,7 +77,7 @@ export function Footer() {
             </p>
           </div>
 
-          <div className="grid min-w-0 grid-cols-1 gap-y-6 xs:grid-cols-2 xs:gap-x-6 xs:gap-y-8 sm:gap-x-10 sm:gap-y-10 md:grid-cols-4 md:gap-x-12 lg:gap-x-14">
+          <div className="grid min-w-0 grid-cols-1 gap-y-6 xs:grid-cols-2 xs:gap-x-6 xs:gap-y-8 sm:gap-x-10 sm:gap-y-10 md:grid-cols-3 lg:grid-cols-5 lg:gap-x-10 xl:gap-x-14">
             {LINK_COLS.map((col) => (
               <div key={col.title}>
                 <div className={colLabel}>{col.title}</div>

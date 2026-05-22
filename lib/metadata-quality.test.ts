@@ -73,6 +73,13 @@ describe("metadata quality for key routes", () => {
     }
   });
 
+  it("keeps signup out of the index", () => {
+    const robots = signupMetadata.robots;
+    assert.ok(robots && typeof robots === "object");
+    assert.equal(robots.index, false);
+    assert.equal(robots.follow, false);
+  });
+
   it("root layout alternates and homepage canonical stay aligned (hreflang + no slash mismatch)", () => {
     const layoutSource = fs.readFileSync(path.join(process.cwd(), "app/layout.tsx"), "utf8");
     assert.ok(layoutSource.includes("alternates:"), "root layout must define metadata.alternates");

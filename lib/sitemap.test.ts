@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { afterEach, describe, it } from "node:test";
-import { buildSitemapEntries } from "@/app/sitemap";
+import { buildSitemapEntries } from "@/lib/seo-sitemap";
 import { PUBLIC_INDUSTRY_SLUGS } from "@/lib/industries";
 import { getAllProofSlugs } from "@/lib/operational-proof";
 

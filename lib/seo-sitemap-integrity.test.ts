@@ -2,7 +2,8 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { describe, it } from "node:test";
-import { buildSitemapEntries } from "@/app/sitemap";
+import { buildSitemapEntries } from "@/lib/seo-sitemap";
+import { NOINDEX_PATHS } from "@/lib/seo-crawl-policy";
 import { SITEMAP_EXCLUDED_PATHS } from "@/lib/seo-crawl-policy";
 import { BLOG_POSTS } from "@/lib/blog-posts";
 import { modules } from "@/lib/modules";
@@ -17,6 +18,14 @@ describe("sitemap integrity", () => {
     const urls = buildSitemapEntries().map((e) => new URL(e.url).pathname);
     for (const excluded of SITEMAP_EXCLUDED_PATHS) {
       assert.ok(!urls.includes(excluded), `sitemap must not include ${excluded}`);
+    }
+  });
+
+  it("never includes noindex paths", () => {
+    delete process.env.NEXT_PUBLIC_SITE_URL;
+    const urls = buildSitemapEntries().map((e) => new URL(e.url).pathname);
+    for (const path of NOINDEX_PATHS) {
+      assert.ok(!urls.includes(path), `sitemap must not include noindex ${path}`);
     }
   });
 

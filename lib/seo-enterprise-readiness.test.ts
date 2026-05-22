@@ -3,7 +3,7 @@ import { describe, it } from "node:test";
 import { PAID_PLAN_PRICING } from "@/lib/pricing-display";
 import { BLOG_POSTS } from "@/lib/blog-posts";
 import { COMPARE_PAGES } from "@/lib/compare-pages";
-import { buildSitemapEntries } from "@/app/sitemap";
+import { buildSitemapEntries } from "@/lib/seo-sitemap";
 import { OrganizationSchema } from "@/components/seo/OrganizationSchema";
 import { ProductSoftwareApplicationSchema } from "@/components/seo/ProductSoftwareApplicationSchema";
 

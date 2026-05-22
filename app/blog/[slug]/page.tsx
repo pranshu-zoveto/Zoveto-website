@@ -9,8 +9,15 @@ import { ArrowLeft, ArrowRight, Clock, Calendar, Tag } from "lucide-react";
 import { BreadcrumbSchema } from "@/components/seo/BreadcrumbSchema";
 import { ArticleSchema } from "@/components/seo/ArticleSchema";
 import { FAQPageSchema, type FaqSchemaInput } from "@/components/seo/FAQPageSchema";
-import { getBlogPost, getAllBlogSlugs, formatBlogDate, BLOG_POSTS } from "@/lib/blog-posts";
+import {
+  getBlogPost,
+  getAllBlogSlugs,
+  formatBlogDate,
+  getBlogCoverAspectClass,
+  BLOG_POSTS,
+} from "@/lib/blog-posts";
 import { canonicalUrl } from "@/lib/site";
+import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/Button";
 import { BlogCard } from "@/components/blog/BlogCard";
 import { resolveSlugParams } from "@/lib/resolve-slug-params";
@@ -18,9 +25,11 @@ import WhatIsCompanyOperatingSystem from "@/app/blog/_posts/what-is-company-oper
 import TallyVsZovetoCloudErpIndia from "@/app/blog/_posts/tally-vs-zoveto-cloud-erp-india";
 import ZohoOneVsZovetoArchitecture from "@/app/blog/_posts/zoho-one-vs-zoveto-architecture";
 import GstErpSoftwareIndia2026 from "@/app/blog/_posts/gst-erp-software-india-2026";
+import CostOfDisconnectedSoftwareIndiaSmb from "@/app/blog/_posts/cost-of-disconnected-software-india-smb";
 
 /** Maps slug → the corresponding content component. Add every new post here. */
 const POST_CONTENT_MAP: Record<string, ComponentType> = {
+  "cost-of-disconnected-software-india-smb": CostOfDisconnectedSoftwareIndiaSmb,
   "gst-erp-software-india-2026": GstErpSoftwareIndia2026,
   "what-is-company-operating-system": WhatIsCompanyOperatingSystem,
   "tally-vs-zoveto-cloud-erp-india": TallyVsZovetoCloudErpIndia,
@@ -34,6 +43,28 @@ const POST_CONTENT_MAP: Record<string, ComponentType> = {
  * Google requires the schema answers to match the on-page copy.
  */
 const POST_FAQS: Record<string, readonly FaqSchemaInput[]> = {
+  "cost-of-disconnected-software-india-smb": [
+    {
+      question: "How do I calculate the real cost of disconnected software for my business?",
+      answer:
+        "Start with two numbers: (1) how many person-hours per week does your team spend re-entering data between systems? Multiply by your loaded cost per hour. (2) How often do stockouts or credit violations result in lost sales or bad debt per year? The sum of these two numbers is typically your minimum annual cost of disconnected tools.",
+    },
+    {
+      question: "Is it possible to connect Tally to a CRM without switching ERPs?",
+      answer:
+        "Yes. There are integration tools (Tally API connectors, middleware like Zapier or Make) that can sync Tally with a CRM or WMS. However, integration-based syncs have reliability issues, sync delays, and maintenance overhead. For a business processing 200+ transactions per month, native integration in one system is more reliable and cheaper to maintain.",
+    },
+    {
+      question: "How long does it take to see ROI after implementing a unified ERP?",
+      answer:
+        "Most businesses see operational improvement within 60 to 90 days of go-live, primarily in reconciliation time reduction and credit control improvement. Stockout reduction and sales improvement typically take 3 to 6 months as demand patterns emerge from clean data.",
+    },
+    {
+      question: "What if my team resists switching systems?",
+      answer:
+        "Resistance to change is the single biggest reason ERP implementations fail. The key is a phased approach: migrate one department at a time, keep the old system running in parallel for 4 to 6 weeks, and involve team leads in configuration decisions. This is not a software problem. It's a change management problem that needs a plan.",
+    },
+  ],
   "gst-erp-software-india-2026": [
     {
       question: "Is e-invoicing mandatory for businesses with turnover below ₹5 crore?",
@@ -200,7 +231,12 @@ export default async function BlogPostPage({
           <div className="min-w-0">
             {/* Cover image (full bleed of the article column, full image visible, no crop) */}
             {post.coverImage && (
-              <figure className="relative mb-10 aspect-[16/9] w-full overflow-hidden rounded-2xl border border-border bg-[#e8eef5] shadow-[0_4px_24px_rgba(15,23,42,0.06)]">
+              <figure
+                className={cn(
+                  "relative mb-10 w-full overflow-hidden rounded-2xl border border-border bg-white shadow-[0_4px_24px_rgba(15,23,42,0.06)]",
+                  getBlogCoverAspectClass(post.coverWidth, post.coverHeight),
+                )}
+              >
                 <Image
                   src={post.coverImage}
                   alt={post.coverImageAlt ?? `Cover image for ${post.title}`}

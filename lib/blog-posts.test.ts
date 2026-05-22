@@ -49,4 +49,11 @@ describe("blog-posts", () => {
     assert.ok(p!.title.includes("GST ERP"));
     assert.equal(p!.category, "ERP Guide");
   });
+
+  it("includes the disconnected software cost guide", () => {
+    const p = getBlogPost("cost-of-disconnected-software-india-smb");
+    assert.ok(p);
+    assert.ok(p!.title.includes("Disconnected Software"));
+    assert.equal(p!.category, "ERP Guide");
+  });
 });

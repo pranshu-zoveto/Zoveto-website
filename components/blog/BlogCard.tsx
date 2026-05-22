@@ -6,7 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { BlogPost, formatBlogDate } from "@/lib/blog-posts";
+import { BlogPost, formatBlogDate, getBlogCoverAspectClass } from "@/lib/blog-posts";
 
 interface BlogCardProps {
   post: BlogPost;
@@ -14,6 +14,8 @@ interface BlogCardProps {
 }
 
 export function BlogCard({ post, featured = false }: BlogCardProps) {
+  const coverAspect = getBlogCoverAspectClass(post.coverWidth, post.coverHeight);
+
   return (
     <Link
       href={`/blog/${post.slug}`}
@@ -25,9 +27,10 @@ export function BlogCard({ post, featured = false }: BlogCardProps) {
       {/* Optional cover image placeholder – renders a gradient swatch if no image */}
       <div
         className={cn(
-          "relative aspect-[16/9] shrink-0 overflow-hidden rounded-t-2xl bg-[#e8eef5]",
+          "relative shrink-0 overflow-hidden rounded-t-2xl bg-white",
+          coverAspect,
           featured
-            ? "w-full md:w-[44%] md:max-w-[480px] md:rounded-l-2xl md:rounded-tr-none"
+            ? "w-full md:aspect-auto md:w-[44%] md:max-w-[480px] md:self-stretch md:rounded-l-2xl md:rounded-tr-none"
             : "w-full",
         )}
         {...(!post.coverImage ? { "aria-hidden": true as const } : {})}

@@ -19,6 +19,29 @@ export interface BlogPost {
 /** All published blog posts. Add new entries at the TOP of this array (newest first). */
 export const BLOG_POSTS: BlogPost[] = [
   {
+    slug: "cost-of-disconnected-software-india-smb",
+    title: "Why Indian SMBs Lose ₹6.5 Lakh Every Year to Disconnected Software",
+    subtitle: "Stockouts, missed leads, reconciliation, and GST errors add up fast.",
+    excerpt:
+      "Stockouts, missed leads, manual reconciliation, and GST errors silently drain Indian SMBs. Here's where the money goes, and how to stop the leak.",
+    date: "2026-05-20",
+    readingTime: "11 min read",
+    category: "ERP Guide",
+    tags: [
+      "ERP software for distributors India",
+      "company operating system software",
+      "best ERP small business India",
+      "disconnected software",
+      "Indian SMB",
+    ],
+    coverImage:
+      "https://res.cloudinary.com/dnldtmbg5/image/upload/f_auto,q_auto,w_1920,c_limit/v1779474124/ChatGPT_Image_May_22_2026_11_48_03_PM_rit5ui.png",
+    coverWidth: 1536,
+    coverHeight: 1024,
+    coverImageAlt:
+      "Infographic: Indian SMBs lose ₹6.5 lakh per year to disconnected tools including Tally, Excel, WhatsApp, and Zoho",
+  },
+  {
     slug: "gst-erp-software-india-2026",
     title: "GST ERP Software in India 2026: The Complete Compliance Guide",
     subtitle: "e-Invoicing, GSTR filing, HSN, and what to look for before you buy.",
@@ -108,6 +131,15 @@ export function getBlogPost(slug: string): BlogPost | undefined {
 /** Returns all slugs, used by generateStaticParams. */
 export function getAllBlogSlugs(): string[] {
   return BLOG_POSTS.map((p) => p.slug);
+}
+
+/** Tailwind aspect class from cover intrinsic size (avoids letterboxing or heavy crop). */
+export function getBlogCoverAspectClass(width?: number, height?: number): string {
+  if (!width || !height) return "aspect-[16/9]";
+  const ratio = width / height;
+  if (ratio >= 1.7) return "aspect-[16/9]";
+  if (ratio >= 1.4) return "aspect-[3/2]";
+  return "aspect-[4/3]";
 }
 
 /** Format date for display: "10 May 2026" */

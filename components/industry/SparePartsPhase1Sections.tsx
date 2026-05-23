@@ -75,8 +75,8 @@ export function SparePartsPhase1Sections() {
           </li>
           <li>
             <Link
-              href="/case-studies/rock-tear-parts"
-              className="font-medium text-blue underline-offset-4 hover:underline"
+              href="/operational-proof/rock-tear-parts"
+              className="inline-flex min-h-[44px] items-center text-sm font-semibold text-blue underline-offset-4 hover:underline"
             >
               Rock Tear Parts case study: before and after execution discipline
             </Link>

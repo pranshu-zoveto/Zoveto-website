@@ -20,9 +20,12 @@ const LINK_COLS: { title: string; links: { label: string; href: string }[] }[] =
     title: "Solutions",
     links: [
       { label: "Company OS", href: "/company-operating-system-india" },
-      { label: "Tally alternative", href: "/tally-alternative-india" },
-      { label: "GST billing", href: "/gst-billing-software-india" },
-      { label: "Distributors ERP", href: "/erp-software-distributors-india" },
+      { label: "Tally Alternative", href: "/tally-alternative-india" },
+      { label: "Inventory Module", href: "/modules/inventory" },
+      { label: "CRM & Sales", href: "/modules/crm" },
+      { label: "Warehouse (WMS)", href: "/modules/wms" },
+      { label: "Auto Parts Traders", href: "/industries/spare-parts-trading" },
+      { label: "All Solutions & Index", href: "/directory" },
     ],
   },
   {

@@ -1,5 +1,5 @@
 /**
- * Case study: Rock Tear Parts - /case-studies/rock-tear-parts
+ * Case study: Rock Tear Parts - /operational-proof/rock-tear-parts
  * FAQ visible copy must match FAQPage JSON-LD on that route.
  */
 

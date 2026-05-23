@@ -24,7 +24,7 @@ const btnPrimary =
 const btnOutline =
   "inline-flex min-h-[48px] items-center justify-center rounded-lg border border-border bg-card px-6 text-sm font-semibold text-foreground shadow-sm transition-colors hover:bg-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background";
 
-const path = "/case-studies/rock-tear-parts";
+const path = "/operational-proof/rock-tear-parts";
 
 export const metadata: Metadata = {
   title: ROCK_TEAR_META.metaTitle,

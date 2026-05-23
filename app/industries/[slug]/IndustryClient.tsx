@@ -2,15 +2,12 @@
 
 import React from "react";
 import Link from "next/link";
-import { SectionLabel } from "@/components/ui/SectionLabel";
 import { Button } from "@/components/ui/Button";
 import { Text } from "@/components/ui/Text";
-import { Cpu, ListOrdered, ShieldAlert, Sparkles } from "lucide-react";
+import { Cpu, ListOrdered, ShieldAlert, Sparkles, Check } from "lucide-react";
 import { DirectAnswerLead } from "@/components/aeo/DirectAnswerLead";
 import { getIndustryBySlug } from "@/lib/industries";
-import { FluidMarketingSection } from "@/components/layout/FluidMarketingSection";
 import { RevealOnScroll } from "@/components/layout/RevealOnScroll";
-import { bandIndexForSection } from "@/lib/marketing-bands";
 import { DashboardLight } from "@/components/sections/dashboard/DashboardLight";
 import { OperationalFlowPreview } from "@/components/operational-proof/OperationalFlowPreview";
 import { InventoryLedgerPreview } from "@/components/industry/InventoryLedgerPreview";
@@ -24,110 +21,108 @@ export function IndustryClient({ slug }: { slug: string }) {
   const h1 = `Run your entire ${data.h1IndustryPhrase} operations on one system`;
 
   return (
-    <div className="relative z-10 space-y-0 pb-24 md:pb-32">
-      <FluidMarketingSection band={bandIndexForSection(0)} stackBase>
-        <div className="max-w-3xl space-y-6 pb-10 md:pb-14">
-          <Text variant="label-uppercase" className="text-blue">
-            Industry
-          </Text>
-          <h1 className="text-3xl font-bold leading-tight tracking-tight text-foreground md:text-5xl md:leading-[1.08]">
-            {h1}
-          </h1>
-          <DirectAnswerLead text={data.directAnswer} />
-          <p className="prose-justify max-w-prose text-base leading-relaxed text-muted md:text-lg">{data.heroSub}</p>
-          <div className="flex flex-col gap-3 pt-2 sm:flex-row sm:items-center">
-            <Link href="/signup">
-              <Button variant="primary" size="lg" className="min-h-[48px] w-full sm:w-auto">
-                Request Setup
-              </Button>
-            </Link>
-            <Link href="/product">
-              <Button variant="outline" size="lg" className="min-h-[48px] w-full sm:w-auto">
-                See It In Action
-              </Button>
-            </Link>
-          </div>
+    <article className="mx-auto max-w-4xl pb-28 lg:max-w-4xl lg:pb-10">
+      <header className="mb-10 md:mb-14">
+        <Text variant="label-uppercase" className="mb-4 text-muted-2">
+          Industry
+        </Text>
+        <Text variant="display-2" as="h1" className="mb-5 text-balance text-foreground">
+          {h1}
+        </Text>
+        <DirectAnswerLead text={data.directAnswer} />
+        <Text variant="body-lg" className="prose-justify mb-8 max-w-3xl text-pretty text-muted">
+          {data.heroSub}
+        </Text>
+        <div className="flex flex-wrap gap-3">
+          <Link href="/signup">
+            <Button variant="primary" size="lg" className="min-h-[48px] w-full sm:w-auto px-5">
+              Request Setup
+            </Button>
+          </Link>
+          <Link href="/product">
+            <Button variant="outline" size="lg" className="min-h-[48px] w-full sm:w-auto px-5">
+              See It In Action
+            </Button>
+          </Link>
         </div>
+      </header>
 
-        {slug === "spare-parts-trading" ? <SparePartsPhase1Sections /> : null}
+      {slug === "spare-parts-trading" ? <SparePartsPhase1Sections /> : null}
 
-        <RevealOnScroll>
-          <div className="mb-4 max-w-xl">
-            <h2 className="text-xl font-semibold tracking-tight text-foreground md:text-2xl">
-              Where operations break today
-            </h2>
-            <p className="prose-justify mt-2 text-sm leading-relaxed text-muted">
-              Specific failure modes for {data.name.toLowerCase()} teams, not generic “efficiency” language.
-            </p>
-          </div>
+      <RevealOnScroll>
+        <section className="mb-12 md:mb-16 mt-12 md:mt-16" aria-labelledby="pain-points-heading">
+          <Text variant="heading-1" as="h2" id="pain-points-heading" className="mb-6 text-xl text-foreground md:text-2xl">
+            Where operations break today
+          </Text>
+          <Text variant="body-base" className="mb-8 max-w-prose text-pretty text-muted">
+            Specific failure modes for {data.name.toLowerCase()} teams, not generic “efficiency” language.
+          </Text>
           <div className="grid gap-6 md:gap-8 lg:grid-cols-2">
             {data.painPoints.map((p) => (
-              <article
+              <div
                 key={p.title}
-                className="float-card reveal-item space-y-4 p-8 transition-colors group/pain hover:border-teal/35 md:p-10"
+                className="rounded-2xl border border-border bg-card p-6 md:p-8 transition-colors group/pain hover:border-teal/35 shadow-sm"
               >
-                <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-border bg-surface transition-colors group-hover/pain:border-teal/25 group-hover/pain:bg-teal-dim">
+                <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-xl border border-border bg-surface transition-colors group-hover/pain:border-teal/25 group-hover/pain:bg-teal-dim">
                   <ShieldAlert
                     size={20}
                     className="text-teal opacity-80 transition-opacity group-hover/pain:opacity-100"
                   />
                 </div>
                 <div className="space-y-2">
-                  <h3 className="text-sm font-semibold text-foreground">{p.title}</h3>
+                  <h3 className="text-base font-semibold text-foreground">{p.title}</h3>
                   <p className="prose-justify text-sm leading-relaxed text-muted">{p.description}</p>
                 </div>
-              </article>
+              </div>
             ))}
           </div>
-        </RevealOnScroll>
-      </FluidMarketingSection>
+        </section>
+      </RevealOnScroll>
 
-      <FluidMarketingSection band={bandIndexForSection(1)} overlapTop stackBase>
-        <div className="space-y-6 pb-6 md:pb-10">
-          <h2 className="max-w-2xl text-2xl font-semibold tracking-tight text-foreground md:text-3xl">
-            How Zoveto maps to your workflows
-          </h2>
-          <p className="prose-justify max-w-prose text-sm leading-relaxed text-muted md:text-base">
-            {data.name} operations on the Zoveto Company Operating System stay coherent when Command Center, Operations,
-            Inventory, CRM, and Finance read the same posted events, not parallel spreadsheets or siloed “ERP vs CRM vs
-            WMS” stacks.
-          </p>
-        </div>
+      <section className="mb-12 md:mb-16" aria-labelledby="workflow-mapping-heading">
+        <Text variant="heading-1" as="h2" id="workflow-mapping-heading" className="mb-6 text-xl text-foreground md:text-2xl">
+          How Zoveto maps to your workflows
+        </Text>
+        <Text variant="body-base" className="mb-8 max-w-prose text-pretty text-muted">
+          {data.name} operations on the Zoveto Company Operating System stay coherent when Command Center, Operations,
+          Inventory, CRM, and Finance read the same posted events, not parallel spreadsheets or siloed “ERP vs CRM vs
+          WMS” stacks.
+        </Text>
         <div className="grid gap-6 md:grid-cols-2">
           {data.modulePlaybooks.map((p) => (
-            <article key={p.id} className="float-card flex flex-col gap-4 p-8 md:p-9">
-              <h3 className="text-lg font-semibold text-foreground">{p.title}</h3>
+            <div key={p.id} className="rounded-2xl border border-border bg-card p-6 md:p-8 flex flex-col gap-4 shadow-sm">
+              <h3 className="text-base font-semibold text-foreground">{p.title}</h3>
               <p className="prose-justify flex-1 text-sm leading-relaxed text-muted">{p.body}</p>
               <Link
                 href={p.href}
-                className="text-sm font-semibold text-teal underline-offset-4 hover:text-foreground hover:underline"
+                className="text-sm font-semibold text-teal underline-offset-4 hover:text-foreground hover:underline mt-2"
               >
                 Explore {p.title.toLowerCase()}
               </Link>
-            </article>
+            </div>
           ))}
         </div>
-      </FluidMarketingSection>
+      </section>
 
-      <FluidMarketingSection band={bandIndexForSection(2)} overlapTop stackBase>
-        <div className="mb-8 flex items-start gap-3">
-          <div className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-border bg-surface">
-            <ListOrdered size={18} className="text-blue" />
+      <section className="mb-12 md:mb-16" aria-labelledby="real-workflow-heading">
+        <div className="mb-8 flex flex-col sm:flex-row sm:items-start gap-4">
+          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-border bg-surface shadow-sm">
+            <ListOrdered size={20} className="text-blue" />
           </div>
           <div>
-            <h2 className="text-2xl font-semibold tracking-tight text-foreground md:text-3xl">
+            <Text variant="heading-1" as="h2" id="real-workflow-heading" className="mb-2 text-xl text-foreground md:text-2xl">
               Real system workflow
-            </h2>
-            <p className="prose-justify mt-2 max-w-prose text-sm leading-relaxed text-muted md:text-base">
+            </Text>
+            <Text variant="body-base" className="max-w-prose text-pretty text-muted">
               One chain from commercial demand to posted dispatch and finance, executed inside Zoveto without retyping
               the same facts into a second “system of record.”
-            </p>
+            </Text>
           </div>
         </div>
-        <ol className="space-y-5">
+        <ol className="space-y-4">
           {data.systemFlowSteps.map((step, idx) => (
-            <li key={step.title} className="float-card flex gap-5 p-6 md:p-8">
-              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-blue-light text-sm font-bold text-blue">
+            <li key={step.title} className="rounded-2xl border border-border bg-card p-6 md:p-8 flex flex-col sm:flex-row gap-5 shadow-sm">
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-blue-light text-sm font-bold text-blue border border-blue/10">
                 {idx + 1}
               </span>
               <div>
@@ -137,22 +132,22 @@ export function IndustryClient({ slug }: { slug: string }) {
             </li>
           ))}
         </ol>
-      </FluidMarketingSection>
+      </section>
 
-      <FluidMarketingSection band={bandIndexForSection(0)} overlapTop stackBase>
-        <div className="mb-8 max-w-2xl space-y-2">
-          <SectionLabel className="mb-0 border-none bg-transparent p-0 text-muted-2">Inside the product</SectionLabel>
-          <h2 className="text-2xl font-semibold tracking-tight text-foreground md:text-3xl">
+      <section className="mb-12 md:mb-16" aria-labelledby="inside-product-heading">
+        <div className="mb-8 max-w-2xl space-y-4">
+          <Text variant="label-uppercase" className="text-muted-2">Inside the product</Text>
+          <Text variant="heading-1" as="h2" id="inside-product-heading" className="text-xl text-foreground md:text-2xl">
             Command surface, execution flow, and stock structure
-          </h2>
-          <p className="prose-justify text-sm leading-relaxed text-muted">
+          </Text>
+          <Text variant="body-base" className="text-pretty text-muted">
             Representative UI from the same product surface your teams would run day to day, not decorative mockups.
-          </p>
+          </Text>
         </div>
-        <div className="grid gap-8 lg:grid-cols-3">
+        <div className="grid gap-6 lg:grid-cols-3 md:gap-8">
           <div className="space-y-3">
             <p className="text-xs font-semibold uppercase tracking-wide text-muted-2">Dashboard</p>
-            <div className="overflow-hidden rounded-2xl border border-border bg-[#f5f5f7] shadow-[var(--shadow-elevated)]">
+            <div className="overflow-hidden rounded-2xl border border-border bg-[#f5f5f7] shadow-[var(--shadow-card)]">
               <div className="max-h-[min(420px,55vh)] overflow-auto">
                 <div className="min-h-[360px] min-w-[520px] scale-[0.72] origin-top-left md:min-h-[400px] md:min-w-[720px] md:scale-[0.78]">
                   <DashboardLight />
@@ -169,13 +164,15 @@ export function IndustryClient({ slug }: { slug: string }) {
             <InventoryLedgerPreview />
           </div>
         </div>
-      </FluidMarketingSection>
+      </section>
 
-      <FluidMarketingSection band={bandIndexForSection(1)} overlapTop stackBase>
-        <div className="float-card overflow-hidden pt-6 md:pt-8">
+      <section className="mb-12 md:mb-16" aria-labelledby="legacy-vs-zoveto-heading">
+        <div className="overflow-hidden rounded-2xl border border-border shadow-sm">
           <div className="flex items-center gap-3 border-b border-border bg-teal-dim/30 p-6 md:p-8">
-            <Cpu size={18} className="text-teal" />
-            <SectionLabel className="mb-0 border-none bg-transparent p-0">Legacy vs Zoveto by stage</SectionLabel>
+            <Cpu size={20} className="text-teal" />
+            <Text variant="heading-1" as="h2" id="legacy-vs-zoveto-heading" className="text-lg text-foreground md:text-xl">
+              Legacy vs Zoveto by stage
+            </Text>
           </div>
           <div className="divide-y divide-border">
             {data.workflow.map((stage, i) => (
@@ -196,72 +193,77 @@ export function IndustryClient({ slug }: { slug: string }) {
             ))}
           </div>
         </div>
-      </FluidMarketingSection>
+      </section>
 
-      <FluidMarketingSection band={bandIndexForSection(2)} overlapTop stackBase>
-        <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
-          <div className="space-y-5">
-            <h2 className="text-2xl font-semibold tracking-tight text-foreground md:text-3xl">Outcomes you can stand behind</h2>
-            <p className="prose-justify text-sm leading-relaxed text-muted">
+      <section className="mb-12 md:mb-16" aria-labelledby="outcomes-heading">
+        <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
+          <div className="space-y-6">
+            <Text variant="heading-1" as="h2" id="outcomes-heading" className="text-xl text-foreground md:text-2xl">
+              Outcomes you can stand behind
+            </Text>
+            <Text variant="body-base" className="text-pretty text-muted">
               We do not quote fabricated percentages or rupee savings. Below is the qualitative impact shape teams
               target when execution is posted in one system.
-            </p>
-            <ul className="space-y-3">
+            </Text>
+            <ul className="space-y-4">
               {data.outcomes.map((o) => (
                 <li key={o} className="flex gap-3 text-sm leading-relaxed text-muted">
-                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-teal" />
+                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-teal" aria-hidden />
                   {o}
                 </li>
               ))}
             </ul>
           </div>
-          <div className="float-card space-y-5 p-8 md:p-10">
+          <div className="rounded-2xl border border-teal/25 bg-teal-dim/25 p-6 md:p-8 space-y-5 shadow-sm">
             <div className="flex items-center gap-2 text-teal">
               <Sparkles size={18} />
               <span className="text-xs font-semibold uppercase tracking-wide">Proof of system</span>
             </div>
-            <h2 className="text-xl font-semibold text-foreground md:text-2xl">Not a concept. A working system.</h2>
-            <ul className="space-y-4">
+            <Text variant="heading-1" as="h3" className="text-lg text-foreground md:text-xl">
+              Not a concept. A working system.
+            </Text>
+            <ul className="space-y-3 list-disc pl-5 text-sm leading-relaxed text-muted marker:text-teal">
               {data.proofPoints.map((line) => (
-                <li key={line} className="text-sm leading-relaxed text-muted">
-                  {line}
-                </li>
+                <li key={line}>{line}</li>
               ))}
             </ul>
-            <p className="text-sm font-medium text-foreground">
+            <p className="mt-4 text-sm font-semibold text-foreground pt-4 border-t border-teal/20">
               Modular ERP + WMS + CRM, deployed as one operating architecture, not a slide deck.
             </p>
           </div>
         </div>
-      </FluidMarketingSection>
+      </section>
 
       {slug !== "spare-parts-trading" ? (
-        <FluidMarketingSection band={bandIndexForSection(0)} overlapTop stackBase>
-          <div className="mx-auto max-w-3xl space-y-6">
-            <h2 className="text-xl font-semibold tracking-tight text-foreground md:text-2xl">Industry FAQs</h2>
-            <FaqAccordion items={data.faqs} idPrefix={`industry-${slug}`} />
-          </div>
-        </FluidMarketingSection>
+        <section className="mb-12 md:mb-16" aria-labelledby="industry-faq-heading">
+          <Text variant="heading-1" as="h2" id="industry-faq-heading" className="mb-6 text-xl text-foreground md:text-2xl">
+            Industry FAQs
+          </Text>
+          <FaqAccordion items={data.faqs} idPrefix={`industry-${slug}`} />
+        </section>
       ) : null}
 
-      <FluidMarketingSection band={bandIndexForSection(0)} overlapTop stackBase>
-        <div className="mx-auto max-w-3xl rounded-2xl border border-border bg-card px-8 py-12 text-center md:px-12 md:py-16">
-          <h2 className="text-2xl font-bold tracking-tight text-foreground md:text-3xl">
-            Get your operations set up on Zoveto
-          </h2>
-          <p className="prose-justify mx-auto mt-4 max-w-lg text-sm leading-relaxed text-muted md:text-base">
-            We onboard every business manually, configuration, data cutover, and training are part of the rollout, not
-            an afterthought.
-          </p>
-          <div className="mt-8 flex justify-center">
-            <Link href="/signup">
-              <Button variant="primary" size="lg" className="min-h-[48px] px-10">
-                Request Setup
-              </Button>
-            </Link>
-          </div>
+      <section className="rounded-2xl border border-blue/25 bg-blue/[0.06] p-6 md:p-10" aria-labelledby="cta-heading">
+        <Text variant="heading-1" as="h2" id="cta-heading" className="mb-4 text-xl text-foreground md:text-2xl">
+          Get your operations set up on Zoveto
+        </Text>
+        <Text variant="body-base" className="prose-justify mb-6 max-w-2xl text-pretty text-muted">
+          We onboard every business manually, configuration, data cutover, and training are part of the rollout, not
+          an afterthought.
+        </Text>
+        <div className="flex flex-wrap gap-3">
+          <Link href="/signup">
+            <Button variant="primary" size="lg" className="min-h-[48px] px-8">
+              Request Setup
+            </Button>
+          </Link>
+          <Link href="/product">
+            <Button variant="outline" size="lg" className="min-h-[48px] px-8">
+              See It In Action
+            </Button>
+          </Link>
         </div>
-      </FluidMarketingSection>
-    </div>
+      </section>
+    </article>
   );
 }

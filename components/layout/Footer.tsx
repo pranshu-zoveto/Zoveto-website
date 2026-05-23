@@ -25,7 +25,7 @@ const LINK_COLS: { title: string; links: { label: string; href: string }[] }[] =
       { label: "CRM & Sales", href: "/modules/crm" },
       { label: "Warehouse (WMS)", href: "/modules/wms" },
       { label: "Auto Parts Traders", href: "/industries/spare-parts-trading" },
-      { label: "All Solutions & Index", href: "/directory" },
+      { label: "All Solutions", href: "/directory" },
     ],
   },
   {
@@ -58,7 +58,7 @@ const LINK_COLS: { title: string; links: { label: string; href: string }[] }[] =
 const colLabel =
   "mb-4 text-xs font-semibold uppercase tracking-[0.14em] text-muted";
 const linkClass =
-  "text-[15px] font-medium leading-6 tracking-[-0.01em] text-foreground transition-colors hover:text-foreground/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue/30 focus-visible:ring-offset-2 focus-visible:ring-offset-background";
+  "whitespace-nowrap text-[15px] font-medium leading-6 tracking-[-0.01em] text-foreground transition-colors hover:text-foreground/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue/30 focus-visible:ring-offset-2 focus-visible:ring-offset-background";
 
 /** Site-wide editorial footer (newsletter, link grid, mega wordmark). */
 export function Footer() {
@@ -67,7 +67,7 @@ export function Footer() {
   return (
     <footer className="border-t border-border bg-muted/25 text-foreground">
       <div className="container mx-auto max-w-content px-4 pt-14 sm:px-6 sm:pt-16 md:pt-18">
-        <div className="grid gap-12 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1.85fr)] lg:gap-16">
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,2.2fr)] lg:gap-16">
           <div className="max-w-xl">
             <div className="hidden sm:block">
               <FooterNewsletter inputId="site-footer-newsletter-email" variant="editorial" />
@@ -80,7 +80,7 @@ export function Footer() {
             </p>
           </div>
 
-          <div className="grid min-w-0 grid-cols-1 gap-y-6 xs:grid-cols-2 xs:gap-x-6 xs:gap-y-8 sm:gap-x-10 sm:gap-y-10 md:grid-cols-3 lg:grid-cols-5 lg:gap-x-10 xl:gap-x-14">
+          <div className="grid min-w-0 grid-cols-2 gap-x-6 gap-y-10 sm:gap-x-10 md:grid-cols-3 lg:grid-cols-5 lg:gap-x-8 xl:gap-x-12">
             {LINK_COLS.map((col) => (
               <div key={col.title}>
                 <div className={colLabel}>{col.title}</div>

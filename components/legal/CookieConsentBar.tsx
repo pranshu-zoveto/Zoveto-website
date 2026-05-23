@@ -120,7 +120,7 @@ export function CookieConsentBar() {
             )}
           >
             <div className="rounded-2xl border border-border/90 bg-card/98 shadow-[0_12px_48px_-16px_rgba(29,29,31,0.22)] backdrop-blur-xl supports-[backdrop-filter]:bg-card/94">
-              <div className="p-4 sm:p-5">
+              <div className="p-3.5 sm:p-5">
                 <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between lg:gap-8">
                   <div className="flex min-w-0 gap-3 lg:flex-1 lg:max-w-[62ch]">
                     <div
@@ -129,13 +129,13 @@ export function CookieConsentBar() {
                     >
                       <Cookie className="h-5 w-5" strokeWidth={2} />
                     </div>
-                    <div className="min-w-0 space-y-2">
-                      <p id="cookie-consent-label" className="text-xs font-semibold uppercase tracking-[0.12em] text-muted-2">
+                    <div className="min-w-0 space-y-1.5 sm:space-y-2">
+                      <p id="cookie-consent-label" className="text-xs font-semibold uppercase tracking-[0.12em] text-foreground/70">
                         Cookies
                       </p>
                       <p
                         id="cookie-consent-desc"
-                        className="text-base leading-relaxed text-foreground sm:text-[15px] sm:leading-[1.55]"
+                        className="text-sm leading-relaxed text-foreground/80 sm:text-[15px] sm:leading-[1.55]"
                       >
                         We use cookies to run the site securely and, with your permission, to measure traffic and
                         campaigns. Read our{" "}
@@ -155,24 +155,29 @@ export function CookieConsentBar() {
                     </div>
                   </div>
 
-                  {/*
-                    Narrow: single column, full-width 48px targets.
-                    sm–lg: two secondary actions on one row; primary spans full width underneath.
-                    lg+: three actions in one row beside copy (wide desktop only).
-                  */}
-                  <div className="grid w-full shrink-0 grid-cols-1 gap-2.5 sm:grid-cols-2 sm:gap-3 lg:inline-grid lg:w-auto lg:max-w-md lg:grid-cols-3 lg:gap-3">
-                    <button type="button" onClick={rejectAll} className={cn(secondaryBtn, "lg:min-h-[44px]")}>
-                      Essential only
-                    </button>
-                    <button type="button" onClick={openCustomize} className={cn(secondaryBtn, "lg:min-h-[44px]")}>
-                      Customize
-                    </button>
+                  <div className="flex w-full shrink-0 flex-col gap-3 lg:w-auto lg:flex-row lg:items-center">
+                    <div className="flex w-full gap-2.5 sm:gap-3">
+                      <button
+                        type="button"
+                        onClick={acceptAll}
+                        className={cn(primaryBtn, "min-h-[44px] flex-1 px-2 text-sm")}
+                      >
+                        Accept all
+                      </button>
+                      <button
+                        type="button"
+                        onClick={rejectAll}
+                        className={cn(secondaryBtn, "min-h-[44px] flex-1 px-2 text-sm")}
+                      >
+                        Essential only
+                      </button>
+                    </div>
                     <button
                       type="button"
-                      onClick={acceptAll}
-                      className={cn(primaryBtn, "sm:col-span-2 lg:col-span-1 lg:min-h-[44px]")}
+                      onClick={openCustomize}
+                      className="mt-0.5 text-center text-xs font-semibold text-foreground/70 underline underline-offset-2 hover:text-foreground lg:ml-2 lg:mt-0 lg:text-left"
                     >
-                      Accept all
+                      Customize preferences
                     </button>
                   </div>
                 </div>
@@ -206,7 +211,7 @@ export function CookieConsentBar() {
               <Dialog.Close
                 type="button"
                 className={cn(
-                  "inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-lg text-muted-2 transition-colors hover:bg-surface hover:text-foreground",
+                  "inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-lg text-foreground/70 transition-colors hover:bg-surface hover:text-foreground",
                   btnFocus,
                 )}
                 aria-label="Close"
@@ -217,7 +222,7 @@ export function CookieConsentBar() {
 
             <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 py-4 sm:px-5 sm:py-5">
               <Dialog.Description asChild>
-                <p className="text-base leading-relaxed text-muted">
+                <p className="text-base leading-relaxed text-foreground/80">
                   Necessary cookies stay on. Turn optional categories on or off, you can change this anytime via{" "}
                   <strong className="font-semibold text-foreground">Manage cookies</strong> in the footer.
                 </p>
@@ -227,18 +232,18 @@ export function CookieConsentBar() {
                 <div className="flex items-start justify-between gap-4 p-4">
                   <div className="min-w-0">
                     <p className="font-semibold text-foreground">Necessary</p>
-                    <p className="mt-1 text-sm leading-relaxed text-muted">
+                    <p className="mt-1 text-sm leading-relaxed text-foreground/80">
                       Security, consent storage, and core site operation.
                     </p>
                   </div>
-                  <span className="shrink-0 rounded-md bg-card px-2 py-1.5 text-[11px] font-semibold uppercase tracking-wide text-muted-2">
+                  <span className="shrink-0 rounded-md bg-card px-2 py-1.5 text-[11px] font-semibold uppercase tracking-wide text-foreground/70">
                     Always on
                   </span>
                 </div>
                 <label className="flex cursor-pointer items-start justify-between gap-4 p-4">
                   <div className="min-w-0">
                     <p className="font-semibold text-foreground">Analytics</p>
-                    <p className="mt-1 text-sm leading-relaxed text-muted">
+                    <p className="mt-1 text-sm leading-relaxed text-foreground/80">
                       Aggregate traffic and performance (e.g. Google Analytics) when configured.
                     </p>
                   </div>
@@ -255,7 +260,7 @@ export function CookieConsentBar() {
                 <label className="flex cursor-pointer items-start justify-between gap-4 p-4">
                   <div className="min-w-0">
                     <p className="font-semibold text-foreground">Marketing</p>
-                    <p className="mt-1 text-sm leading-relaxed text-muted">
+                    <p className="mt-1 text-sm leading-relaxed text-foreground/80">
                       Campaign attribution and stored marketing parameters (e.g. UTM).
                     </p>
                   </div>

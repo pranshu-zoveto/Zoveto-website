@@ -384,7 +384,7 @@ export default async function BlogPostPage({
             <div className="sticky top-28 space-y-8">
               <div className="rounded-2xl border border-border bg-card p-5">
                 <p className="mb-1 text-[11px] font-semibold uppercase tracking-wider text-muted-2">Published by</p>
-                <p className="font-semibold text-foreground">{post.author || "Zoveto"}</p>
+                <p className="font-semibold text-foreground">{(post as any).author || "Zoveto"}</p>
                 <p className="mt-0.5 text-sm text-muted">Company Operating System for Indian SMBs</p>
                 <div className="mt-4 h-px bg-border" />
                 <div className="mt-4 space-y-2 text-sm text-muted">

@@ -50,7 +50,7 @@ export async function POST(req: Request) {
         utmMedium: typeof utmMedium === "string" ? utmMedium : null,
         utmCampaign: typeof utmCampaign === "string" ? utmCampaign : null,
         device: deviceType,
-        metadata: Object.keys(cleanMetadata).length > 0 ? cleanMetadata : null,
+        metadata: Object.keys(cleanMetadata).length > 0 ? cleanMetadata : undefined,
       },
     });
 

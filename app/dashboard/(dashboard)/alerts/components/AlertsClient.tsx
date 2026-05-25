@@ -165,7 +165,7 @@ export default function AlertsClient({ data }: { data: AlertsDashboardData }) {
             </div>
           ))}
           
-          <form action={saveNotificationTarget} className="rounded-lg border border-zinc-800 bg-zinc-950 p-4">
+          <form action={async (fd) => { await saveNotificationTarget(fd); }} className="rounded-lg border border-zinc-800 bg-zinc-950 p-4">
              <h4 className="mb-4 text-sm font-medium text-zinc-300">Add New Destination</h4>
              <div className="flex gap-3">
                <select name="type" className="rounded bg-zinc-900 border border-zinc-800 text-sm text-zinc-300 px-3 py-2 outline-none">

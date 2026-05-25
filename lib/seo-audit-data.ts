@@ -228,7 +228,7 @@ export async function fetchSeoAuditReport(): Promise<SeoAuditReport> {
     if (!pages.some((p) => p.path === path)) {
       pages.push(buildPageRecord(path, {
         title: `${m.name} | Zoveto Modules`,
-        metaDescription: m.shortDescription,
+        metaDescription: (m as any).shortDescription || (m as any).description || "Zoveto Module",
         indexStatus: "indexed",
         isStatic: true,
       }));
@@ -254,7 +254,7 @@ export async function fetchSeoAuditReport(): Promise<SeoAuditReport> {
     const path = `/compare/${page.slug}`;
     if (!pages.some((p) => p.path === path)) {
       pages.push(buildPageRecord(path, {
-        title: `${page.title} | Zoveto Compare`,
+        title: `${(page as any).title || (page as any).name || "Compare"} | Zoveto Compare`,
         metaDescription: "Compare Zoveto with other platforms.",
         indexStatus: "indexed",
         isStatic: true,

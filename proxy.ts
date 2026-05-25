@@ -79,6 +79,33 @@ export function proxy(request: NextRequest) {
   const canonical = canonicalHostRedirect(request);
   if (canonical) return canonical;
 
+  // Basic Auth for Dashboard
+  if (request.nextUrl.pathname.startsWith('/dashboard')) {
+    const basicAuth = request.headers.get('authorization');
+    let isAuthenticated = false;
+
+    if (basicAuth) {
+      const authValue = basicAuth.split(' ')[1];
+      const [user, pwd] = atob(authValue).split(':');
+
+      const expectedUser = process.env.ADMIN_EMAIL;
+      const expectedPwd = process.env.ADMIN_PASSWORD;
+
+      if (user === expectedUser && pwd === expectedPwd) {
+        isAuthenticated = true;
+      }
+    }
+
+    if (!isAuthenticated) {
+      return new NextResponse('Unauthorized', {
+        status: 401,
+        headers: {
+          'WWW-Authenticate': 'Basic realm="Secure Dashboard"',
+        },
+      });
+    }
+  }
+
   if (isApiRateLimitDisabled()) {
     return NextResponse.next();
   }

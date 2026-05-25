@@ -28,7 +28,7 @@
     "@gsap/react": "^2.1.2",
     "@hookform/resolvers": "^5.2.2",
     "@next/third-parties": "^16.2.6",
-    "@opentelemetry/core": "^1.30.0",
+    "@opentelemetry/core": "^2.7.1",
     "@opentelemetry/resources": "^1.30.0",
     "@opentelemetry/sdk-trace-base": "^1.30.0",
     "@opentelemetry/semantic-conventions": "^1.30.0",

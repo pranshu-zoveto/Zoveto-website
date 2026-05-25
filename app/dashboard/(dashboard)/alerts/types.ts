@@ -1,4 +1,4 @@
-import { AlertRule, AlertHistory, NotificationTarget } from "@prisma/client";
+import { AlertRule, AlertHistory, NotificationTarget } from "@/generated/client";
 
 export type { AlertRule, AlertHistory, NotificationTarget };
 

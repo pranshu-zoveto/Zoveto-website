@@ -1,4 +1,4 @@
-import { AuditLog, SystemSetting } from "@prisma/client";
+import { AuditLog, SystemSetting } from "@/generated/client";
 
 export type { AuditLog, SystemSetting };
 

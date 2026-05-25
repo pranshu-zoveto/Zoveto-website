@@ -13,7 +13,13 @@ export type MarketingEventName =
   | "whatsapp_click"
   | "newsletter_signup"
   | "calculator_used"
-  | "calculator_export_request";
+  | "calculator_export_request"
+  | "email_click"
+  | "phone_click"
+  | "cta_button_click"
+  | "calendly_booking"
+  | "signup_completed"
+  | "404_error";
 
 declare global {
   interface Window {
@@ -21,10 +27,41 @@ declare global {
   }
 }
 
+// Generate or retrieve an anonymous session ID for conversion tracking
+function getSessionId(): string {
+  if (typeof window === "undefined") return "";
+  const key = "zoveto_session_id";
+  let sid = localStorage.getItem(key);
+  if (!sid) {
+    sid = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+    localStorage.setItem(key, sid);
+  }
+  return sid;
+}
+
 export function trackEvent(eventName: string, params: TrackingParams = {}): void {
   if (typeof window === "undefined") return;
-  if (typeof window.gtag !== "function") return;
-  window.gtag("event", eventName, params);
+  
+  // 1. External (GA4)
+  if (typeof window.gtag === "function") {
+    window.gtag("event", eventName, params);
+  }
+
+  // 2. Internal (Prisma TrackingEvent)
+  const sessionId = getSessionId();
+  
+  // Fire and forget
+  fetch("/api/track", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      eventName,
+      sessionId,
+      ...params,
+    }),
+  }).catch(() => {
+    // Ignore internal tracking errors to prevent breaking UI
+  });
 }
 
 function currentPageParams(): TrackingParams {

@@ -5,17 +5,7 @@ import "./globals.css";
 import { ZOVETO_ORGANIZATION_DESCRIPTION, ZOVETO_SITE_DEFAULT_TITLE } from "@/lib/brand-entity";
 import { BRAND_CANONICAL_ORIGIN, BRAND_LOGO_ICON } from "@/lib/branding";
 import { siteUrl } from "@/lib/site";
-import { Navbar } from "@/components/layout/Navbar";
-import { Footer } from "@/components/layout/Footer";
-import { ClientOnlySiteChrome } from "@/components/layout/ClientOnlySiteChrome";
-import { WhatsAppFloatButton } from "@/components/layout/WhatsAppFloatButton";
-import { DeferredCursor } from "@/components/layout/DeferredCursor";
 
-/**
- * Inter, the single typeface across the site.
- * Fallback chain avoids `system-ui` so Safari on macOS does not bleed in SF Pro
- * during the font-swap window.
- */
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
@@ -109,6 +99,8 @@ export const metadata: Metadata = {
   category: "technology",
 };
 
+import { GoogleAnalytics } from "@next/third-parties/google";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -116,34 +108,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en-IN" className="scroll-smooth" suppressHydrationWarning>
+      <head>
+      </head>
       <body
-        className={`${inter.variable} font-sans antialiased bg-background text-foreground`}
+        className={`${inter.variable} font-sans antialiased`}
         suppressHydrationWarning
       >
-        {/*
-          Mobile Chrome injects __gcrremoteframetoken (and similar) on <html> before React hydrates.
-          Strip extension-only attrs so server HTML matches the client tree.
-        */}
-        <Script id="strip-browser-html-attrs" strategy="beforeInteractive">
-          {`try{var h=document.documentElement;Array.from(h.attributes).forEach(function(a){if(/^__/.test(a.name))h.removeAttribute(a.name);});}catch(e){}`}
-        </Script>
-        <a href="#main-content" className="skip-link">
-          Skip to content
-        </a>
-        <Navbar />
-        <div className="flex min-h-screen flex-col">
-          <main
-            id="main-content"
-            className="scroll-mt-[4.5rem] flex-1 pb-[max(7rem,calc(5.5rem+env(safe-area-inset-bottom,0px)))] sm:pb-32 md:pb-0"
-          >
-            {children}
-          </main>
-          <Footer />
-        </div>
-        <ClientOnlySiteChrome />
-        <WhatsAppFloatButton />
-        <DeferredCursor />
+        {children}
       </body>
+      <GoogleAnalytics gaId="G-TJP3DXS9MG" />
     </html>
   );
 }

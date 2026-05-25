@@ -1,0 +1,161 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/client"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Lead {
+  id      String  @id @default(cuid())
+  name    String
+  email   String
+  company String?
+  phone   String?
+  intent  String? @db.Text
+  notes   String? @db.Text
+
+  // CRM stage
+  status String @default("NEW") // NEW | CONTACTED | QUALIFIED | WON | LOST
+
+  // Lead scoring (0–100, computed or manually set)
+  score Int @default(0)
+
+  // Attribution / source fields (populated from UTM / form metadata)
+  sourceUrl   String? // page the form was submitted on
+  utmSource   String? // utm_source
+  utmMedium   String? // utm_medium
+  utmCampaign String? // utm_campaign
+  utmTerm     String? // utm_term
+  utmContent  String? // utm_content
+  referrer    String? // HTTP Referer header
+
+  // Timestamps
+  respondedAt DateTime? // when status first left NEW (response-time metric)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  // Relations
+  statusHistory LeadStatusEvent[]
+  deals         Deal[]
+}
+
+model LeadStatusEvent {
+  id         String   @id @default(cuid())
+  leadId     String
+  lead       Lead     @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  fromStatus String
+  toStatus   String
+  note       String?  @db.Text
+  createdAt  DateTime @default(now())
+}
+
+model BlogPost {
+  id         String   @id @default(cuid())
+  title      String
+  slug       String   @unique
+  excerpt    String?  @db.Text
+  coverImage String?
+  content    String   @db.Text
+  author     String
+  published  Boolean  @default(false)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model TrackingEvent {
+  id          String   @id @default(cuid())
+  eventName   String
+  pageUrl     String?
+  pagePath    String?
+  utmSource   String?
+  utmMedium   String?
+  utmCampaign String?
+  device      String?
+  sessionId   String?
+  metadata    Json?
+  createdAt   DateTime @default(now())
+
+  @@index([eventName, createdAt])
+  @@index([pagePath])
+}
+
+model Deal {
+  id              String    @id @default(cuid())
+  name            String
+  value           Float     @default(0)
+  status          String    @default("OPEN") // OPEN | WON | LOST
+  expectedCloseAt DateTime?
+
+  leadId String?
+  lead   Lead?   @relation(fields: [leadId], references: [id], onDelete: SetNull)
+
+  notes     String?  @db.Text
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model AlertRule {
+  id              String    @id @default(cuid())
+  type            String    @unique // e.g., traffic_drop, error_spike
+  threshold       Json? // e.g., { "percentDrop": 30 }
+  enabled         Boolean   @default(true)
+  cooldownMinutes Int       @default(60)
+  lastTriggeredAt DateTime?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  history AlertHistory[]
+}
+
+model AlertHistory {
+  id        String    @id @default(cuid())
+  ruleId    String
+  rule      AlertRule @relation(fields: [ruleId], references: [id], onDelete: Cascade)
+  severity  String // HIGH | MEDIUM | LOW
+  message   String
+  source    String // health | seo | traffic
+  status    String    @default("UNREAD") // UNREAD | READ | MUTED
+  createdAt DateTime  @default(now())
+}
+
+model NotificationTarget {
+  id          String   @id @default(cuid())
+  type        String // email | slack | telegram | whatsapp
+  destination String // URL or email
+  enabled     Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model SystemSetting {
+  key       String   @id
+  value     String   @db.Text
+  isSecret  Boolean  @default(false)
+  updatedBy String
+  updatedAt DateTime @updatedAt
+}
+
+model AuditLog {
+  id        String   @id @default(cuid())
+  action    String // e.g., UPDATE_SETTING, DELETE_LEAD
+  entity    String // e.g., SystemSetting, Lead
+  entityId  String?
+  oldValue  Json?
+  newValue  Json?
+  userId    String // User email or ID who made the change
+  createdAt DateTime @default(now())
+}
+
+model Integration {
+  id           String    @id @default(cuid())
+  provider     String    @unique
+  accountId    String?
+  accessToken  String    @db.Text
+  refreshToken String?   @db.Text
+  expiryDate   DateTime?
+  status       String    @default("active") // active | disconnected | error
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+}

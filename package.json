@@ -51,7 +51,7 @@
     "marked": "^18.0.4",
     "next": "16.2.4",
     "next-auth": "^4.24.14",
-    "nodemailer": "^8.0.7",
+    "nodemailer": "^7.0.13",
     "pg": "^8.21.0",
     "posthog-js": "^1.372.6",
     "react": "^18.3.1",

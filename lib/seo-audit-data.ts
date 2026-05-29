@@ -541,7 +541,7 @@ function staticTitleFor(path: string): string {
     "/acceptable-use": "Acceptable Use Policy | Zoveto",
     "/security": "Security | Zoveto",
     "/subprocessors": "Subprocessors | Zoveto",
-    "/operational-proof/rock-tear-parts": "Rock Tear Parts Case Study | Zoveto",
+
   };
   return map[path] ?? `${path} | Zoveto`;
 }

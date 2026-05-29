@@ -52,7 +52,7 @@ describe("sitemap buildSitemapEntries", () => {
       !entries.some((e) => e.url === "https://zoveto.com/case-studies"),
       "Should exclude redirected case-studies root",
     );
-    assert.ok(entries.some((e) => e.url === "https://zoveto.com/operational-proof/rock-tear-parts"));
+
 
     for (const slug of PUBLIC_INDUSTRY_SLUGS) {
       assert.ok(entries.some((e) => e.url === `https://zoveto.com/industries/${slug}`), slug);

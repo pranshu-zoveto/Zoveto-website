@@ -73,14 +73,7 @@ export function SparePartsPhase1Sections() {
               Zoho vs Zoveto for multi-app stack vs one operating record
             </Link>
           </li>
-          <li>
-            <Link
-              href="/operational-proof/rock-tear-parts"
-              className="inline-flex min-h-[44px] items-center text-sm font-semibold text-blue underline-offset-4 hover:underline"
-            >
-              Rock Tear Parts case study: before and after execution discipline
-            </Link>
-          </li>
+
           <li>
             <Link href="/blog/what-is-company-operating-system" className="font-medium text-blue underline-offset-4 hover:underline">
               What is a Company Operating System? Guide for Indian SMBs

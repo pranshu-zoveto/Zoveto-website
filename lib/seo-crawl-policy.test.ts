@@ -15,7 +15,7 @@ describe("seo-crawl-policy", () => {
       assert.equal(isSitemapExcludedPath(path), true, path);
     }
     assert.equal(isSitemapExcludedPath("/operational-proof"), false);
-    assert.equal(isSitemapExcludedPath("/operational-proof/rock-tear-parts"), false);
+
   });
 
   it("excludes noindex paths from sitemap", () => {

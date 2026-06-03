@@ -14,26 +14,22 @@ interface BlogCardProps {
 }
 
 export function BlogCard({ post, featured = false }: BlogCardProps) {
-  const coverAspect = featured
-    ? getBlogCoverAspectClass(post.coverWidth, post.coverHeight)
-    : "aspect-[16/9]";
+  const coverAspect = getBlogCoverAspectClass(post.coverWidth, post.coverHeight) || "aspect-[16/9]";
 
   return (
     <Link
       href={`/blog/${post.slug}`}
       className={cn(
         "group flex flex-col rounded-2xl border border-border bg-card transition-all duration-300 hover:border-blue/30 hover:shadow-[0_8px_24px_rgba(0,113,227,0.10)]",
-        featured ? "md:flex-row" : "h-full",
+        "h-full overflow-hidden"
       )}
     >
       {/* Optional cover image placeholder – renders a gradient swatch if no image */}
       <div
         className={cn(
-          "relative shrink-0 overflow-hidden rounded-t-2xl bg-[#e8eef5]",
+          "relative shrink-0 bg-[#e8eef5]",
           coverAspect,
-          featured
-            ? "w-full md:aspect-auto md:w-[44%] md:max-w-[480px] md:self-stretch md:rounded-l-2xl md:rounded-tr-none"
-            : "w-full",
+          "w-full"
         )}
         {...(!post.coverImage ? { "aria-hidden": true as const } : {})}
       >
@@ -44,10 +40,10 @@ export function BlogCard({ post, featured = false }: BlogCardProps) {
             fill
             sizes={
               featured
-                ? "(max-width: 767px) 100vw, min(44vw, 480px)"
+                ? "(max-width: 1024px) 100vw, 1024px"
                 : "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 360px"
             }
-            className="object-contain object-center"
+            className="object-cover object-center"
             priority={featured}
           />
         ) : (

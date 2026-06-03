@@ -47,7 +47,7 @@ export function BlogCard({ post, featured = false }: BlogCardProps) {
                 ? "(max-width: 767px) 100vw, min(44vw, 480px)"
                 : "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 360px"
             }
-            className="object-cover object-center"
+            className="object-contain object-center"
             priority={featured}
           />
         ) : (

@@ -217,11 +217,6 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: "/case-studies/rock-tear-parts",
-        destination: "/operational-proof/rock-tear-parts",
-        permanent: true,
-      },
-      {
         source: "/blog/how-to-replace-excel-with-erp",
         destination: "/migrate-from-excel",
         permanent: true,

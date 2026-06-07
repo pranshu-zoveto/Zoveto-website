@@ -73,7 +73,6 @@ describe("sitemap integrity", () => {
   it("redirects known removed Search Console URLs to live canonical destinations", () => {
     const src = readFileSync(join(process.cwd(), "next.config.mjs"), "utf8");
     const staleUrls = [
-      "/case-studies/rock-tear-parts",
       "/blog/how-to-replace-excel-with-erp",
       "/blog/erp-software-for-distributors-guide",
       "/blog/erp-cost-in-india",

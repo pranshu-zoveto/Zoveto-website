@@ -150,7 +150,7 @@ describe("launch readiness static checks", () => {
 
     for (const rel of checkedFiles) {
       const src = read(rel);
-      assert.ok(!src.includes("Rock Tear"), `${rel} must not mention excluded case-study material`);
+      assert.ok(!src.includes("customer case study"), `${rel} must not invent customer proof`);
       assert.ok(!src.includes("Trusted by 100"), `${rel} must not invent customer proof`);
       assert.ok(!src.includes("★★★★★"), `${rel} must not invent ratings`);
     }

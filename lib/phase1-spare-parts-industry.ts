@@ -47,10 +47,10 @@ export const SPARE_PARTS_PHASE1_SECTIONS: readonly Phase1IndustrySection[] = [
     ],
   },
   {
-    h2: "Case study: Rock Tear Parts on one operating record",
+    h2: "What to validate before you buy",
     paragraphs: [
-      "See the Rock Tear Parts case study for a grounded before-and-after narrative: dealer quote cycles, scan-first picking, and receivables tasks tied to aging. Figures there are illustrative SMB proxies, your branch count and catalogue hygiene still dominate outcomes.",
-      "Use that page alongside this industry guide: the industry page explains the vertical failure modes; the case study shows how one representative trader pattern tightened quote-to-dispatch discipline when execution moved onto a single operating record instead of parallel sheets.",
+      "Before committing to any spare-parts operating system, validate the daily workflow with your own catalogue: enquiry capture, fitment checks, branch stock, reservations, pick tasks, billing, returns, and receivables ownership.",
+      "Use this industry guide as a fit map, not as a claim of current customer proof. Your branch count, catalogue hygiene, staff discipline, and change-management depth will decide whether the system actually tightens quote-to-dispatch execution.",
     ],
   },
 ];

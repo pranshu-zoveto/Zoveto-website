@@ -69,4 +69,24 @@ describe("sitemap integrity", () => {
     assert.ok(src.includes("www.zoveto.com"), "must redirect www host to apex");
     assert.ok(src.includes("permanent: true"), "www redirect must be permanent");
   });
+
+  it("redirects known removed Search Console URLs to live canonical destinations", () => {
+    const src = readFileSync(join(process.cwd(), "next.config.mjs"), "utf8");
+    const staleUrls = [
+      "/case-studies/rock-tear-parts",
+      "/blog/how-to-replace-excel-with-erp",
+      "/blog/erp-software-for-distributors-guide",
+      "/blog/erp-cost-in-india",
+      "/blog/how-to-automate-invoice-generation",
+      "/blog/manufacturing-erp-software-checklist",
+      "/blog/excel-inventory-problems",
+      "/blog/erp-crm-wms-one-platform",
+      "/blog/ai-agents-for-inventory-management",
+      "/blog/best-erp-software-comparison-india",
+    ];
+
+    for (const url of staleUrls) {
+      assert.ok(src.includes(`source: "${url}"`), `missing redirect for ${url}`);
+    }
+  });
 });

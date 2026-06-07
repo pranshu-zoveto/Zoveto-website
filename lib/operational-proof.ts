@@ -119,6 +119,51 @@ export const operationalProofs: OperationalProof[] = [
       { metric: "Single dashboard truth", context: "One view for owner and HODs instead of three file versions" },
     ],
   },
+  {
+    slug: "rock-tear-parts",
+    industryTag: "Spare Parts",
+    title: "From Parts Counter Chaos to Compatibility-Led Spare Parts Flow",
+    before: ["Part lookup by memory", "Wrong fitment", "Slow quote follow-up", "Dead stock"],
+    after: ["Model-wise compatibility", "Structured counter flow", "Live stock promises", "Aging visibility"],
+    systemActions: [
+      "Item and model mapping",
+      "Counter quote validation",
+      "Branch stock visibility",
+      "Slow-moving stock alerts",
+    ],
+    outcomeMetrics: ["Faster counter lookup", "Fewer wrong-part issues", "Cleaner branch stock"],
+    ctaLabel: "View system flow",
+    problemSummary:
+      "Spare-parts teams lose time when item codes, model fitment, branch stock, and customer history sit in separate notebooks, chats, and spreadsheets.",
+    metaTitle: "Spare parts counter flow operating pattern | Zoveto",
+    metaDescription:
+      "Pattern: model-wise spare-parts lookup, counter quotes, branch stock, and aging visibility in one operating flow for Indian dealers and traders.",
+    currentRealitySteps: [
+      { label: "Enquiry", detail: "Customer describes the machine or part in a call or chat" },
+      { label: "Lookup", detail: "Counter staff rely on memory, old invoices, or supplier PDFs" },
+      { label: "Stock check", detail: "Branch availability is verified through calls or screenshots" },
+      { label: "Quote", detail: "Pricing and substitutes are typed again into a message or sheet" },
+      { label: "Dispatch", detail: "Wrong-part returns and dead stock surface after the sale" },
+    ],
+    redesignSteps: [
+      { label: "Compatibility master", detail: "Parts map to machine, model, brand, and substitute rules" },
+      { label: "Guided counter search", detail: "Staff search by part, model, customer, or prior sale" },
+      { label: "Live branch stock", detail: "Availability, reserved stock, and transfer options show together" },
+      { label: "Quote to order", detail: "The same record moves from quote to pick to invoice" },
+      { label: "Aging review", detail: "Slow-moving and substitute stock becomes visible before margin is trapped" },
+    ],
+    insideZoveto: [
+      { module: "ERP", note: "Item, substitute, model, and branch-level stock discipline" },
+      { module: "CRM", note: "Customer history, quotes, and repeat-purchase context" },
+      { module: "WMS", note: "Pick, transfer, dispatch, and return handling" },
+      { module: "ERP", note: "Aging, fast movers, dead stock, and branch performance" },
+    ],
+    impactMetrics: [
+      { metric: "Faster counter lookup", context: "Model-wise search replaces memory-led part identification" },
+      { metric: "Fewer wrong-part issues", context: "Compatibility and substitute rules are visible before quoting" },
+      { metric: "Cleaner branch stock", context: "Transfers, reservations, and aging are reviewed from one stock picture" },
+    ],
+  },
 ];
 
 export function getProofBySlug(slug: string): OperationalProof | undefined {

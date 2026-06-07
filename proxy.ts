@@ -72,6 +72,16 @@ function canonicalHostRedirect(request: NextRequest): NextResponse | null {
     return NextResponse.redirect(url, 308);
   }
 
+  if (
+    (request.method === "GET" || request.method === "HEAD") &&
+    pathname === "/contact" &&
+    (request.nextUrl.searchParams.has("intent") || request.nextUrl.searchParams.has("slug"))
+  ) {
+    const url = request.nextUrl.clone();
+    url.search = "";
+    return NextResponse.redirect(url, 308);
+  }
+
   return null;
 }
 

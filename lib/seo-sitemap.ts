@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import prisma from "@/lib/db";
 import { BLOG_POSTS } from "@/lib/blog-posts";
 import { modules } from "@/lib/modules";
 import { getAllProofSlugs } from "@/lib/operational-proof";
@@ -14,6 +15,11 @@ type StaticSitemapPage = {
   path: string;
   changeFrequency: ChangeFrequency;
   priority: number;
+};
+
+export type CmsBlogSitemapPost = {
+  slug: string;
+  lastModified: string | Date;
 };
 
 /** Marketing/legal pages with stable routes (source of truth for static sitemap URLs). */
@@ -73,7 +79,7 @@ function dedupeSitemapEntries(entries: MetadataRoute.Sitemap): MetadataRoute.Sit
 }
 
 /** Builds the full indexable sitemap from live content registries. */
-export function buildSitemapEntries(): MetadataRoute.Sitemap {
+export function buildSitemapEntries(opts: { cmsBlogPosts?: readonly CmsBlogSitemapPost[] } = {}): MetadataRoute.Sitemap {
   const now = new Date().toISOString();
 
   const staticPages = INDEXABLE_STATIC_PAGES.map((page) =>
@@ -93,6 +99,14 @@ export function buildSitemapEntries(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.72,
       lastModified: lastModIso(post.date),
+    }),
+  );
+
+  const cmsBlogPosts = (opts.cmsBlogPosts ?? []).map((post) =>
+    entry(`/blog/${post.slug}`, {
+      changeFrequency: "weekly",
+      priority: 0.72,
+      lastModified: lastModIso(post.lastModified),
     }),
   );
 
@@ -128,6 +142,7 @@ export function buildSitemapEntries(): MetadataRoute.Sitemap {
     ...staticPages,
     ...seoLandings,
     ...blogPosts,
+    ...cmsBlogPosts,
     ...modulePages,
     ...operationalProofPages,
     ...comparePages,
@@ -146,4 +161,21 @@ export function buildSitemapEntries(): MetadataRoute.Sitemap {
   });
 
   return dedupeSitemapEntries(filtered);
+}
+
+export async function getPublishedCmsBlogSitemapPosts(): Promise<CmsBlogSitemapPost[]> {
+  try {
+    const posts = await prisma.blogPost.findMany({
+      where: { published: true },
+      select: { slug: true, updatedAt: true, createdAt: true },
+      orderBy: { updatedAt: "desc" },
+    });
+
+    return posts.map((post) => ({
+      slug: post.slug,
+      lastModified: post.updatedAt ?? post.createdAt,
+    }));
+  } catch {
+    return [];
+  }
 }

@@ -217,6 +217,56 @@ const nextConfig = {
         permanent: true,
       },
       {
+        source: "/case-studies/rock-tear-parts",
+        destination: "/operational-proof/rock-tear-parts",
+        permanent: true,
+      },
+      {
+        source: "/blog/how-to-replace-excel-with-erp",
+        destination: "/migrate-from-excel",
+        permanent: true,
+      },
+      {
+        source: "/blog/erp-software-for-distributors-guide",
+        destination: "/erp-software-distributors-india",
+        permanent: true,
+      },
+      {
+        source: "/blog/erp-cost-in-india",
+        destination: "/pricing",
+        permanent: true,
+      },
+      {
+        source: "/blog/how-to-automate-invoice-generation",
+        destination: "/gst-billing-software-india",
+        permanent: true,
+      },
+      {
+        source: "/blog/manufacturing-erp-software-checklist",
+        destination: "/industries/manufacturing",
+        permanent: true,
+      },
+      {
+        source: "/blog/excel-inventory-problems",
+        destination: "/inventory-management-software-india",
+        permanent: true,
+      },
+      {
+        source: "/blog/erp-crm-wms-one-platform",
+        destination: "/company-operating-system-india",
+        permanent: true,
+      },
+      {
+        source: "/blog/ai-agents-for-inventory-management",
+        destination: "/ai-business-automation-india",
+        permanent: true,
+      },
+      {
+        source: "/blog/best-erp-software-comparison-india",
+        destination: "/compare",
+        permanent: true,
+      },
+      {
         source: "/modules/hr",
         destination: "/modules/hrms",
         permanent: true,

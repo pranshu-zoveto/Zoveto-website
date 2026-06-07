@@ -32,4 +32,18 @@ describe("seo-sitemap", () => {
       assert.ok(urls.has(`https://zoveto.com/blog/${post.slug}`), post.slug);
     }
   });
+
+  it("includes published CMS blog slugs when provided by production data", () => {
+    delete process.env.NEXT_PUBLIC_SITE_URL;
+    const urls = new Set(
+      buildSitemapEntries({
+        cmsBlogPosts: [{ slug: "how-to-replace-excel-with-erp", lastModified: "2026-05-29" }],
+      }).map((e) => e.url),
+    );
+
+    assert.ok(
+      urls.has("https://zoveto.com/blog/how-to-replace-excel-with-erp"),
+      "missing CMS blog URL from sitemap",
+    );
+  });
 });

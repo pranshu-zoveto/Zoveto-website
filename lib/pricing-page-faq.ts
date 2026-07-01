@@ -24,6 +24,11 @@ export const PRICING_PAGE_FAQ: PricingPageFaqItem[] = [
   {
     question: "Are prices inclusive of GST?",
     answer:
-      "Listed prices are exclusive of GST. Indian GST (18%) is applied on invoices in line with local regulations (SAC code 998314). Annual plans include a pro-rated refund if cancelled within 30 days. Data export is available for 30 days after cancellation.",
+      "Listed prices are exclusive of GST. GST (18%) is applied on invoices in line with local regulations (SAC code 998314). Annual plans include a pro-rated refund if cancelled within 30 days. Data export is available for 30 days after cancellation.",
+  },
+  {
+    question: "Is implementation charged separately?",
+    answer:
+      "Yes. Implementation is scoped transparently after discovery. We confirm onboarding, migration, training, integrations, and rollout effort before you commit, so setup cost is never hidden.",
   },
 ];

@@ -113,8 +113,8 @@ function FeatureComparisonTable({ page }: { page: ComparePage }) {
 function Phase1InternalLinks({ slug }: { slug: string }) {
   const otherCompare =
     slug === "tally-vs-zoveto"
-      ? { href: "/compare/zoho-vs-zoveto", label: "Zoho vs Zoveto comparison for Indian SMB app stacks" }
-      : { href: "/compare/tally-vs-zoveto", label: "Tally vs Zoveto comparison for warehouse-led Indian SMBs" };
+      ? { href: "/compare/zoho-vs-zoveto", label: "Zoho vs Zoveto comparison for SMB app stacks" }
+      : { href: "/compare/tally-vs-zoveto", label: "Tally vs Zoveto comparison for warehouse-led SMBs" };
   return (
     <section className="mb-12 md:mb-16" aria-labelledby="phase1-internal-links">
       <Text variant="heading-1" as="h2" id="phase1-internal-links" className="mb-4 text-xl text-foreground md:text-2xl">
@@ -131,17 +131,17 @@ function Phase1InternalLinks({ slug }: { slug: string }) {
             href="/industries/spare-parts-trading"
             className="font-medium text-blue underline-offset-4 hover:underline"
           >
-            Spare parts trading ERP software for Indian distributors
+            Spare parts trading ERP software for distributors
           </Link>
         </li>
         <li>
           <Link href="/blog/what-is-company-operating-system" className="font-medium text-blue underline-offset-4 hover:underline">
-            What is a Company Operating System? Guide for Indian SMBs
+            What is a Company Operating System? Guide for SMBs
           </Link>
         </li>
         <li>
           <Link href="/" className="font-medium text-blue underline-offset-4 hover:underline">
-            Zoveto Company Operating System for Indian SMB operations
+            Zoveto Company Operating System for SMB operations
           </Link>
         </li>
       </ul>

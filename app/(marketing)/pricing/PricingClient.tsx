@@ -222,6 +222,11 @@ export function PricingClient() {
           <EnterpriseCard />
         </div>
 
+        <p className="mx-auto max-w-3xl text-center text-sm leading-relaxed text-muted">
+          <span className="font-medium text-foreground">Implementation fee:</span> quoted after discovery. Scope
+          depends on users, modules, data migration, integrations, and onboarding support.
+        </p>
+
         {/* Extra-users note */}
         <p className="text-center text-xs font-medium leading-relaxed text-muted-2">
           Additional users, locations, and integrations available on all plans.{" "}
@@ -238,7 +243,7 @@ export function PricingClient() {
         aria-label="Billing and compliance information"
       >
         <p className="font-medium text-foreground">Billing &amp; compliance</p>
-        <p className="mt-1">All prices exclude GST. GST (18%) applied for India billing (SAC 998314).</p>
+        <p className="mt-1">All prices exclude GST. GST (18%) applied on invoices (SAC 998314).</p>
         <p className="mt-1 hidden sm:block">Annual plans include a pro-rated refund if cancelled within 30 days.</p>
         <p className="mt-1 hidden sm:block">Data export is available for 30 days after cancellation.</p>
         <p className="mt-2 text-muted-2">

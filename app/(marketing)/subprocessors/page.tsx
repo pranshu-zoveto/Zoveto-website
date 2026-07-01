@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { canonicalUrl } from "@/lib/site";
 import { LegalPageShell } from "@/components/legal/LegalPageShell";
+import { SUBPROCESSORS } from "@/lib/subprocessors";
 
 export const metadata: Metadata = {
   title: "Subprocessors",
@@ -9,41 +10,6 @@ export const metadata: Metadata = {
   alternates: { canonical: canonicalUrl("/subprocessors") },
   robots: { index: true, follow: true },
 };
-
-type Subprocessor = {
-  provider: string;
-  purpose: string;
-  region: string;
-};
-
-const SUBPROCESSORS: Subprocessor[] = [
-  {
-    provider: "Amazon Web Services (AWS)",
-    purpose: "Cloud hosting, compute, storage, networking, and infrastructure operations",
-    region: "Global infrastructure (region varies by deployment and service)",
-  },
-  {
-    provider: "Google Analytics",
-    purpose: "Website analytics and aggregate traffic insights (when analytics consent is enabled)",
-    region: "Global",
-  },
-  {
-    provider: "Microsoft Clarity",
-    purpose:
-      "Website session replay, heatmaps, and behavioral diagnostics on the marketing site (when analytics consent is enabled)",
-    region: "Global",
-  },
-  {
-    provider: "Razorpay",
-    purpose: "Payment processing, billing workflows, and transaction records",
-    region: "India / Global depending on payment flow",
-  },
-  {
-    provider: "Google (Gmail SMTP)",
-    purpose: "Transactional email delivery and account/service communication",
-    region: "Global",
-  },
-];
 
 export default function SubprocessorsPage() {
   return (

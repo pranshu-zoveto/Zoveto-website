@@ -52,14 +52,14 @@ const FAQS = [
 ] as const;
 
 export const metadata: Metadata = {
-  title: "Zoveto implementation path | Founder-led setup for Indian SMB operations",
+  title: "Zoveto implementation path | Founder-led setup for SMB operations",
   description:
     "See how Zoveto handles fit checks, workspace setup, data import guidance, team onboarding, and go-live support without fake client proof.",
   alternates: { canonical: canonicalUrl(PATH) },
   openGraph: {
     title: "Zoveto implementation path",
     description:
-      "A practical founder-led onboarding path for Indian teams evaluating Zoveto before production rollout.",
+      "A practical founder-led onboarding path for teams evaluating Zoveto before production rollout.",
     url: canonicalUrl(PATH),
   },
 };

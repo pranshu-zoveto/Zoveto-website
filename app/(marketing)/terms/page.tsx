@@ -13,12 +13,16 @@ export const metadata: Metadata = {
 
 export default function TermsPage() {
   return (
-    <LegalPageShell title="Terms of Service" lastUpdated="April 2026">
+    <LegalPageShell
+      title="Terms of Service"
+      lastUpdated="April 2026"
+      pdfHref="/legal/zoveto-terms-of-service-april-2026.pdf"
+    >
       <section>
         <h2>1. Agreement and scope</h2>
         <p>
           These Terms of Service (“Terms”) govern access to and use of websites, applications, and services operated by{" "}
-          <strong>Zoveto Technologies Private Limited</strong> (“Zoveto”, “we”). By using the Service, you agree to these
+          <strong>Zoveto Technologies</strong> (“Zoveto”, “we”). By using the Service, you agree to these
           Terms. If you do not agree, do not use the Service.
         </p>
         <p className="rounded-lg border border-border bg-card p-4 font-medium text-foreground">
@@ -140,11 +144,12 @@ export default function TermsPage() {
           non-infringement. We do not warrant that the Service will be uninterrupted or error-free.
         </p>
         <p>
-          To the maximum extent permitted by law, <strong>Zoveto&apos;s total liability</strong> for any claim arising
-          out of or related to the Service shall not exceed the greater of (a) the fees you paid to Zoveto for the
-          Service in the three (3) months preceding the claim, or (b) INR 10,000. We are not liable for indirect,
-          incidental, special, consequential, or punitive damages, or lost profits, data, or goodwill, even if advised of
-          the possibility.
+          To the maximum extent permitted by law, <strong>Zoveto&apos;s total aggregate liability</strong> for all claims
+          arising out of or related to the Service, these Terms, or any order form shall not exceed the fees paid or
+          payable by you to Zoveto for the Service in the twelve (12) months preceding the event giving rise to the claim.
+          This cap is intended to equal a maximum of one (1) annual fee for the relevant Service unless a separate written
+          agreement states otherwise. We are not liable for indirect, incidental, special, consequential, or punitive
+          damages, or lost profits, data, or goodwill, even if advised of the possibility.
         </p>
         <p>Some jurisdictions do not allow certain limitations; in those cases our liability is limited to the fullest extent permitted.</p>
       </section>
@@ -187,12 +192,23 @@ export default function TermsPage() {
       <section>
         <h2>13. Governing law and dispute resolution</h2>
         <p>
-          These Terms are governed by the laws of <strong>India</strong>. Courts at <strong>New Delhi, India</strong>{" "}
-          shall have exclusive jurisdiction, subject to any non-waivable rights you may have under applicable law.
+          These Terms are governed by the laws of <strong>India</strong>, without regard to conflict-of-law principles.
         </p>
         <p>
-          Before filing a formal claim, the parties agree to attempt good-faith resolution by written notice to{" "}
-          <a href="mailto:support@zoveto.com">support@zoveto.com</a> and allow at least 30 days for commercial resolution.
+          Before starting formal proceedings, the parties will first attempt good-faith resolution by written notice to{" "}
+          <a href="mailto:support@zoveto.com">support@zoveto.com</a> and allow at least thirty (30) days for commercial
+          resolution.
+        </p>
+        <p>
+          If the dispute is not resolved through good-faith discussions, the dispute shall be referred to and finally
+          resolved by arbitration seated in New Delhi, India, in accordance with the Arbitration and Conciliation Act,
+          1996. The tribunal shall consist of a sole arbitrator appointed mutually by the parties. The arbitration language
+          shall be English.
+        </p>
+        <p>
+          Subject to the arbitration clause above, courts at <strong>New Delhi, India</strong> shall have exclusive
+          jurisdiction for interim relief, enforcement of arbitral awards, and matters that cannot legally be resolved by
+          arbitration.
         </p>
       </section>
 

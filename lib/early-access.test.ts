@@ -67,7 +67,7 @@ test("builds a founder-review lead payload for COS storage and email follow-up",
 
 test("signup route and screen remain waitlist-only", () => {
   const route = readFileSync(join(process.cwd(), "app/api/signup/route.ts"), "utf8");
-  const screen = readFileSync(join(process.cwd(), "app/signup/_SignupClient.tsx"), "utf8");
+  const screen = readFileSync(join(process.cwd(), "app/(marketing)/signup/_SignupClient.tsx"), "utf8");
 
   assert.match(route, /\/leads/);
   assert.doesNotMatch(route, /onboarding\/provision|adminPassword|temporaryPassword/);

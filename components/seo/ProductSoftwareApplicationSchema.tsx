@@ -15,6 +15,25 @@ export function ProductSoftwareApplicationSchema() {
     description: ZOVETO_ORGANIZATION_DESCRIPTION,
     url: `${base}/product`,
     image: `${base}/og-image.png`,
+    areaServed: {
+      "@type": "Country",
+      name: "India",
+    },
+    audience: {
+      "@type": "BusinessAudience",
+      audienceType: "Indian SMBs, manufacturers, traders, distributors, exporters",
+    },
+    featureList: [
+      "WMS",
+      "inventory",
+      "procurement",
+      "finance/GST",
+      "CRM",
+      "HR",
+      "MRO",
+      "export workflows",
+      "analytics",
+    ],
     offers: [
       {
         "@type": "Offer",

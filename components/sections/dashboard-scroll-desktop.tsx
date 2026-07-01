@@ -7,6 +7,12 @@ import { DashboardLight } from "@/components/sections/dashboard/DashboardLight";
 import { ContentPanel } from "@/components/sections/dashboard/ContentPanel";
 import { MODULES } from "@/components/sections/dashboard/moduleData";
 import { BrandHeroWordmark } from "@/components/brand/BrandHeroWordmark";
+import {
+  HOME_HERO_PRIMARY_CTA_HREF,
+  HOME_HERO_PRIMARY_CTA_LABEL,
+  HOME_HERO_SUBHEADING,
+  HOME_HERO_VALUE_PROP,
+} from "@/lib/home-hero-copy";
 import { dashboardScrollDistancePx, getTileZoomParams, MIN_TILE_PX } from "@/lib/dashboard-scroll-math";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -89,9 +95,10 @@ function SectionIntro({ introRef }: { introRef: React.RefObject<HTMLDivElement> 
       >
         Master brand
       </div>
-      <div style={{ marginBottom: 8, maxWidth: "min(92vw, 720px)", marginLeft: "auto", marginRight: "auto" }}>
+      <div style={{ marginBottom: 12, maxWidth: "min(92vw, 720px)", marginLeft: "auto", marginRight: "auto" }}>
         <BrandHeroWordmark as="h2" />
       </div>
+      <h1 className="sr-only">{HOME_HERO_VALUE_PROP}</h1>
       <p
         style={{
           fontSize: 18,
@@ -107,8 +114,7 @@ function SectionIntro({ introRef }: { introRef: React.RefObject<HTMLDivElement> 
           letterSpacing: "-0.01em",
         }}
       >
-        Your business runs on WhatsApp and spreadsheets. Zoveto replaces both with one operating system built for how
-        Indian businesses actually work.
+        {HOME_HERO_SUBHEADING}
       </p>
       <div
         style={{
@@ -121,7 +127,7 @@ function SectionIntro({ introRef }: { introRef: React.RefObject<HTMLDivElement> 
         }}
       >
         <a
-          href="/contact"
+          href={HOME_HERO_PRIMARY_CTA_HREF}
           style={{
             minHeight: 52,
             display: "inline-flex",
@@ -139,28 +145,7 @@ function SectionIntro({ introRef }: { introRef: React.RefObject<HTMLDivElement> 
             boxShadow: "0 8px 24px rgba(0, 113, 227, 0.26)",
           }}
         >
-          Book a 20-min demo
-        </a>
-        <a
-          href="/implementation"
-          style={{
-            minHeight: 52,
-            display: "inline-flex",
-            alignItems: "center",
-            justifyContent: "center",
-            borderRadius: 12,
-            padding: "0 24px",
-            background: "#ffffff",
-            border: "1px solid #d2d2d7",
-            color: "#1d1d1f",
-            fontSize: 15,
-            fontWeight: 600,
-            letterSpacing: "-0.01em",
-            textDecoration: "none",
-            boxShadow: "0 1px 2px rgba(15, 23, 42, 0.04)",
-          }}
-        >
-          See setup path
+          {HOME_HERO_PRIMARY_CTA_LABEL}
         </a>
       </div>
       <button

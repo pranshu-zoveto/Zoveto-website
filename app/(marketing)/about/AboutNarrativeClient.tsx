@@ -194,6 +194,56 @@ export default function AboutNarrativeClient() {
         </motion.section>
 
         <motion.section
+          aria-labelledby="founding-moment-title"
+          className="py-12 md:py-16"
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.2 }}
+        >
+          <motion.div variants={revealItem} className="max-w-3xl">
+            <h2 id="founding-moment-title" className="text-2xl font-semibold tracking-tight text-foreground md:text-3xl">
+              The founding moment
+            </h2>
+            <div className="mt-5 space-y-4 text-base leading-7 text-muted md:text-lg">
+              <p>
+                Zoveto started from a scene every Indian business owner knows too well: orders arriving on WhatsApp,
+                stock changing in Excel, invoices living somewhere else, and the owner still calling the team to ask
+                what is actually true.
+              </p>
+              <p>
+                The product came from that frustration. We saw growing businesses lose time not because they lacked
+                effort, but because daily work was split across too many disconnected tools.
+              </p>
+              <p>
+                So we built Zoveto for Indian SMBs, manufacturers, traders, exporters, and service teams that need one
+                clear operating system for sales, inventory, procurement, finance, HR, and customer work.
+              </p>
+            </div>
+          </motion.div>
+        </motion.section>
+
+        <motion.section
+          aria-labelledby="india-first-title"
+          className="py-12 md:py-16"
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.2 }}
+        >
+          <motion.div variants={revealItem} className="max-w-3xl">
+            <h2 id="india-first-title" className="text-2xl font-semibold tracking-tight text-foreground md:text-3xl">
+              Built for how Indian businesses actually work
+            </h2>
+            <p className="mt-5 text-base leading-7 text-muted md:text-lg">
+              Zoveto is designed around Indian operating realities: GST workflows, fast-moving teams, owner-led
+              decisions, WhatsApp-first coordination, multi-location stock, approvals, and practical software that teams
+              can adopt without months of change management.
+            </p>
+          </motion.div>
+        </motion.section>
+
+        <motion.section
           aria-labelledby="lived-title"
           className="py-16 md:py-20"
           variants={staggerContainer}

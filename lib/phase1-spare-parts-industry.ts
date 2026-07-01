@@ -4,9 +4,9 @@
  */
 
 export const SPARE_PARTS_PHASE1_META = {
-  metaTitle: "Spare parts trading ERP India: inventory & GST | Zoveto",
+  metaTitle: "Spare parts trading ERP: inventory & GST | Zoveto",
   metaDescription:
-    "Spare parts trading ERP for India: branch SKU chaos, GST, dealer quotes vs one execution-first OS. Inventory, picks, dispatch, receivables. Book a demo.",
+    "Spare parts trading ERP for Indian distributors: branch SKU chaos, GST, dealer quotes on one execution OS. Inventory, picks, dispatch, receivables. Demo.",
 } as const;
 
 export type Phase1IndustrySection = {
@@ -16,9 +16,9 @@ export type Phase1IndustrySection = {
 
 export const SPARE_PARTS_PHASE1_SECTIONS: readonly Phase1IndustrySection[] = [
   {
-    h2: "Direct answer: best system for spare parts traders in India",
+    h2: "Direct answer: best system for spare parts traders",
     paragraphs: [
-      "The best operational spine for Indian spare parts trading is one that posts quotes, reservations, picks, dispatch, GST billing, and receivables tasks on the same record, without forcing your warehouse to become the unofficial catalog. Zoveto is built as a Company Operating System for that exact failure mode: thousands of near-identical SKUs, supersessions, branch drift, and dealer WhatsApp that should become structured demand instead of tribal memory.",
+      "The best operational spine for spare parts trading is one that posts quotes, reservations, picks, dispatch, GST billing, and receivables tasks on the same record, without forcing your warehouse to become the unofficial catalog. Zoveto is built as a Company Operating System for that exact failure mode: thousands of near-identical SKUs, supersessions, branch drift, and dealer WhatsApp that should become structured demand instead of tribal memory.",
       "If your competitive edge is availability and turnaround, the system has to win on the phone call your dealer makes at 4 PM, not only on the month-end stock valuation report. That is why “ERP software India” searches from parts traders should be answered with execution coherence first: can your team quote, reserve, pick, and ship without retyping the same facts into three places?",
     ],
   },
@@ -43,7 +43,7 @@ export const SPARE_PARTS_PHASE1_SECTIONS: readonly Phase1IndustrySection[] = [
   {
     h2: "Comparison context: when to read Tally vs Zoveto or Zoho vs Zoveto",
     paragraphs: [
-      "If your ledger is clean but execution is not, read the Tally vs Zoveto comparison for warehouse-led Indian SMBs, honest about where finance-first tools stop and execution systems start. If your pain is multi-app seams between CRM, inventory, and Books, read Zoho vs Zoveto for how a narrower operating spine reduces handoffs at scale. Neither page is competitor bashing; both are fit maps.",
+      "If your ledger is clean but execution is not, read the Tally vs Zoveto comparison for warehouse-led SMBs, honest about where finance-first tools stop and execution systems start. If your pain is multi-app seams between CRM, inventory, and Books, read Zoho vs Zoveto for how a narrower operating spine reduces handoffs at scale. Neither page is competitor bashing; both are fit maps.",
     ],
   },
   {
@@ -57,7 +57,7 @@ export const SPARE_PARTS_PHASE1_SECTIONS: readonly Phase1IndustrySection[] = [
 
 /** Intro copy for the feature checklist on the industry landing (rendered above SPARE_PARTS_PHASE1_FEATURES). */
 export const SPARE_PARTS_PHASE1_FEATURES_INTRO =
-  "Below is a short, opinionated checklist aligned to how Indian parts traders actually lose money, wrong picks, double-sold lines, late invoices, and invisible receivables risk. It is not a dump of every module Zoveto ships; it is the slice that matters first when you are evaluating spare parts trading ERP software for real dispatch volume operationally today across branches.";
+  "Below is a short, opinionated checklist aligned to how parts traders actually lose money, wrong picks, double-sold lines, late invoices, and invisible receivables risk. It is not a dump of every module Zoveto ships; it is the slice that matters first when you are evaluating spare parts trading ERP software for real dispatch volume operationally today across branches.";
 
 export const SPARE_PARTS_PHASE1_FEATURES = [
   "Branch-aware SKU master with supersession and pack-size discipline",
@@ -72,7 +72,7 @@ export const SPARE_PARTS_PHASE1_FEATURES = [
 
 export const SPARE_PARTS_PHASE1_FAQS = [
   {
-    question: "What is the best ERP for spare parts dealers in India?",
+    question: "What is the best ERP for spare parts dealers?",
     answer:
       "The best fit depends on catalogue depth, branch count, and whether your bottleneck is quoting speed, pick accuracy, or GST recon, not brochure feature count. Zoveto targets execution-first consolidation for parts-heavy SMBs; evaluate honestly against how you actually ship today.",
   },
@@ -104,7 +104,7 @@ export const SPARE_PARTS_PHASE1_FAQS = [
   {
     question: "Does Zoveto replace our existing accounting package on day one?",
     answer:
-      "Cutover strategy is scoped with your team and advisors. Zoveto’s value is consolidation of execution; finance migration timing depends on your comfort, data hygiene, and reporting needs, not a forced big-bang promise in a marketing paragraph.",
+      "Cutover strategy is scoped with your team and advisors. Zoveto’s value is consolidation of execution; finance migration timing depends on your comfort, data hygiene, and reporting needs, not a forced big-bang promise in a marketing paragraph. Teams review scope together before go-live.",
   },
 ] as const;
 

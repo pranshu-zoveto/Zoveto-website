@@ -7,6 +7,7 @@ import { Text } from "@/components/ui/Text";
 import { CalendarDays, CheckCircle2 } from "lucide-react";
 import { trackEvent, trackMarketingEvent } from "@/lib/tracking";
 import { FormToast } from "@/components/ui/FormToast";
+import { PhoneInputWithCountry } from "@/components/forms/PhoneInputWithCountry";
 
 function FieldLabel({ children }: { children: React.ReactNode }) {
   return <label className="text-xs font-medium text-muted-2 block mb-2">{children}</label>;
@@ -180,14 +181,11 @@ export function DemoBookingForm() {
 
       <div>
         <FieldLabel>Phone (optional)</FieldLabel>
-        <input
-          type="tel"
+        <PhoneInputWithCountry
+          id="demoPhone"
           name="demoPhone"
-          autoComplete="tel"
           value={phone}
-          onChange={(e) => setPhone(e.target.value)}
-          placeholder="+1 …"
-          className={inputClass}
+          onChange={setPhone}
         />
       </div>
 

@@ -18,7 +18,7 @@ export const FAQ_HUB_CATEGORIES: readonly FaqHubCategory[] = [
       {
         question: "What does “Company Operating System” mean at Zoveto?",
         answer:
-          "It is the execution layer where orders, stock, warehouse moves, billing, and collections post as one chain for Indian SMBs, so teams stop reconciling WhatsApp, Excel, and siloed apps at month-end.",
+          "It is the execution layer where orders, stock, warehouse moves, billing, and collections post as one chain for SMBs, so teams stop reconciling WhatsApp, Excel, and siloed apps at month-end.",
       },
       {
         question: "How is a Company Operating System different from buying “an ERP plus apps”?",
@@ -28,7 +28,7 @@ export const FAQ_HUB_CATEGORIES: readonly FaqHubCategory[] = [
       {
         question: "Who is Zoveto built for?",
         answer:
-          "Operations-heavy Indian SMBs in trading, distribution, spare parts, manufacturing, and warehousing that outgrew spreadsheet bridges between sales and dispatch.",
+          "Operations-heavy SMBs in trading, distribution, spare parts, manufacturing, and warehousing that outgrew spreadsheet bridges between sales and dispatch.",
       },
       {
         question: "Does Zoveto replace my accountant or CA?",
@@ -62,9 +62,9 @@ export const FAQ_HUB_CATEGORIES: readonly FaqHubCategory[] = [
     title: "GST and accounting",
     items: [
       {
-        question: "Is Zoveto built for Indian GST workflows?",
+        question: "Is Zoveto built for GST workflows?",
         answer:
-          "Yes, invoice and credit-note patterns are designed around posted operational events typical for Indian SMBs. Your configuration, masters, and CA review still define filing correctness.",
+          "Yes, invoice and credit-note patterns are designed around posted operational events typical for SMBs. Your configuration, masters, and CA review still define filing correctness.",
       },
       {
         question: "How does Zoveto reduce GST reconciliation pain?",
@@ -151,7 +151,7 @@ export const FAQ_HUB_CATEGORIES: readonly FaqHubCategory[] = [
       {
         question: "Does Zoveto include pipeline automation like large CRM suites?",
         answer:
-          "Zoveto focuses CRM depth on operational continuity for Indian SMB distribution patterns, not every marketing automation bell found in enterprise CRM catalogs.",
+          "Zoveto focuses CRM depth on operational continuity for SMB distribution patterns, not every marketing automation bell found in enterprise CRM catalogs.",
       },
       {
         question: "How should we evaluate credit control?",
@@ -190,7 +190,7 @@ export const FAQ_HUB_CATEGORIES: readonly FaqHubCategory[] = [
           "No. Approvals and tax checks stay in human-controlled steps; automation should queue work, not silently post risky changes.",
       },
       {
-        question: "What is a safe first automation for an Indian SMB?",
+        question: "What is a safe first automation for an SMB?",
         answer:
           "Low-risk reminders on overdue tasks with clear owners, prove adoption before automating postings that touch tax or cash.",
       },

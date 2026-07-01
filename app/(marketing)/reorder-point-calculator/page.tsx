@@ -20,7 +20,7 @@ const faqs = [
     a: "The calculator uses average daily sales multiplied by supplier lead time in days, then adds safety stock.",
   },
   {
-    q: "How should Indian SMBs choose safety stock?",
+    q: "How should SMBs choose safety stock?",
     a: "Safety stock should reflect supplier delays, demand spikes, and the cost of stockouts. Start conservative, then tune it using real movement data.",
   },
   {
@@ -34,19 +34,19 @@ const faqs = [
 ];
 
 export const metadata: Metadata = {
-  title: "Reorder Point Calculator India | Zoveto",
+  title: "Reorder Point Calculator | Zoveto",
   description:
-    "Free reorder point calculator for Indian SMB inventory teams. Calculate when to reorder using daily sales, lead time, and safety stock.",
+    "Free reorder point calculator for SMB inventory teams. Calculate when to reorder using daily sales, lead time, and safety stock.",
   alternates: { canonical: canonicalUrl(PATH) },
   openGraph: {
-    title: "Reorder Point Calculator India | Zoveto",
+    title: "Reorder Point Calculator | Zoveto",
     description: "Calculate reorder points and connect inventory planning to Zoveto workflows.",
     url: canonicalUrl(PATH),
     images: ["/og-image.png"],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Reorder Point Calculator India | Zoveto",
+    title: "Reorder Point Calculator | Zoveto",
     description: "Free reorder point calculator for inventory teams.",
     images: ["/og-image.png"],
   },

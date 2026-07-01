@@ -1,6 +1,6 @@
 // lib/modules.ts
 import { Module } from "@/types";
-import { Package, Users, Warehouse, Calculator, Fingerprint, PieChart, LucideIcon } from "lucide-react";
+import { Package, Users, Warehouse, Calculator, Fingerprint, PieChart, ShoppingCart, Globe, Wrench, LucideIcon } from "lucide-react";
 
 export interface ModuleWithIcon extends Module {
   icon: LucideIcon;
@@ -74,7 +74,7 @@ export const modules: ModuleWithIcon[] = [
     name: "Warehouse Management System",
     icon: Warehouse,
     tagline: "Scan-first picking and packing you can audit.",
-    metaTitle: "Warehouse Management System India | WMS, Bin Tracking, Dispatch | Zoveto",
+    metaTitle: "Warehouse Management System | WMS, Bin Tracking, Dispatch | Zoveto",
     metaDescription:
       "Zoveto WMS connects bin tracking, wave picking, scan validation, packing, returns, dispatch, gate logs, inventory, billing, and analytics in one warehouse execution system.",
     problem:
@@ -136,7 +136,7 @@ export const modules: ModuleWithIcon[] = [
     name: "People & Payroll",
     icon: Fingerprint,
     tagline: "Attendance, statutory deductions, and payslips in one run.",
-    metaTitle: "HRMS and Payroll Software India | Attendance, PF, ESI, Payslips | Zoveto",
+    metaTitle: "HRMS and Payroll Software | Attendance, PF, ESI, Payslips | Zoveto",
     metaDescription:
       "Zoveto HRMS connects attendance, shifts, leave, PF, ESI, TDS, payroll runs, payslips, employee self-service, and finance postings for shop and office teams.",
     problem:
@@ -192,5 +192,98 @@ export const modules: ModuleWithIcon[] = [
       { label: "Decision basis", value: "Posted data" },
     ],
     targetRoles: ["MD", "CEO", "CFO", "Founders"],
+  },
+  {
+    slug: "procurement",
+    name: "Procurement",
+    icon: ShoppingCart,
+    tagline: "Purchase requests, vendors, approvals, and incoming material in one flow.",
+    metaTitle: "Procurement Software for Indian SMBs | Purchase Orders, Vendors, Approvals | Zoveto",
+    metaDescription:
+      "Zoveto Procurement connects purchase requests, vendor follow-ups, approvals, GRN, bills, and inventory so buying decisions stay tied to live business needs.",
+    problem:
+      "Purchase requests move through chats, vendor quotes get lost, and incoming material reaches stores before finance and inventory have the same truth.",
+    howItWorks: [
+      { step: "Request", description: "Teams raise purchase requests from reorder points or operating need." },
+      { step: "Approve", description: "Owners approve vendors, prices, and quantities with role-based controls." },
+      { step: "Order", description: "Purchase orders carry terms, expected dates, and linked items." },
+      { step: "Receive", description: "GRN, bills, and stock updates stay connected." },
+    ],
+    keyFeatures: [
+      { title: "Purchase requests", description: "Raise needs from stock signals or manual requests." },
+      { title: "Vendor comparison", description: "Compare quotes and terms before approval." },
+      { title: "Approval workflows", description: "Route spend by amount, category, or role." },
+      { title: "PO to GRN tracking", description: "Follow incoming material against the PO line." },
+      { title: "Purchase bill handoff", description: "Finance receives bills tied to received stock." },
+    ],
+    integrations: ["inventory", "finance", "wms"],
+    metrics: [
+      { label: "Purchase leakage caught", value: "Earlier" },
+      { label: "Approval visibility", value: "100%" },
+      { label: "Vendor follow-up", value: "On record" },
+    ],
+    targetRoles: ["Procurement Head", "Operations Manager", "CFO"],
+  },
+  {
+    slug: "export",
+    name: "Export Operations",
+    icon: Globe,
+    tagline: "Export orders, documents, dispatch stages, and customer communication tracked together.",
+    metaTitle: "Export Management Software | Export Orders, Documents, Dispatch Tracking | Zoveto",
+    metaDescription:
+      "Zoveto Export Operations helps Indian exporters track export orders, documentation, dispatch stages, customer updates, and finance handoffs from one operating record.",
+    problem:
+      "Export orders need documents, status updates, dispatch coordination, and finance follow-up, but teams often track them across email, Excel, and chats.",
+    howItWorks: [
+      { step: "Capture", description: "Export orders are logged with customer, item, destination, and promise dates." },
+      { step: "Prepare", description: "Documentation tasks are assigned and tracked." },
+      { step: "Dispatch", description: "Packing, dispatch, and shipment stages stay visible." },
+      { step: "Close", description: "Finance, receivables, and customer updates stay tied to the order." },
+    ],
+    keyFeatures: [
+      { title: "Export order tracker", description: "One row per export order with live status." },
+      { title: "Documentation checklist", description: "Assign and close document tasks per shipment." },
+      { title: "Dispatch milestone tracking", description: "Packing and dispatch stages stay visible." },
+      { title: "Customer communication", description: "Log updates without losing order context." },
+      { title: "Finance handoff", description: "Receivables follow posted dispatch evidence." },
+    ],
+    integrations: ["crm", "inventory", "finance"],
+    metrics: [
+      { label: "Document readiness", value: "Tracked" },
+      { label: "Dispatch visibility", value: "Live" },
+      { label: "Follow-up coverage", value: "Complete" },
+    ],
+    targetRoles: ["Export Manager", "Operations Head", "Finance Controller"],
+  },
+  {
+    slug: "mro",
+    name: "MRO",
+    icon: Wrench,
+    tagline: "Maintenance requests, spares, service schedules, and downtime visible in one place.",
+    metaTitle: "MRO Software | Maintenance, Spares, Service Scheduling | Zoveto",
+    metaDescription:
+      "Zoveto MRO helps teams track maintenance requests, spare parts, service schedules, downtime, and operational follow-ups without losing work in chats.",
+    problem:
+      "Maintenance work gets reported informally, spare parts are hard to trace, and downtime becomes visible only after operations are already affected.",
+    howItWorks: [
+      { step: "Report", description: "Teams log maintenance requests with asset, location, and urgency." },
+      { step: "Assign", description: "Owners and due dates are attached to each job." },
+      { step: "Consume", description: "Spare parts usage is linked to inventory." },
+      { step: "Review", description: "Downtime and repeat issues become visible." },
+    ],
+    keyFeatures: [
+      { title: "Maintenance request log", description: "Capture jobs with asset and urgency." },
+      { title: "Asset and location tracking", description: "Know where work is needed." },
+      { title: "Spare parts consumption", description: "Link usage back to inventory." },
+      { title: "Preventive schedules", description: "Plan service before breakdowns." },
+      { title: "Downtime visibility", description: "See repeat issues and lost hours." },
+    ],
+    integrations: ["inventory", "analytics"],
+    metrics: [
+      { label: "Maintenance visibility", value: "Central" },
+      { label: "Spare traceability", value: "Linked" },
+      { label: "Downtime follow-up", value: "Tracked" },
+    ],
+    targetRoles: ["Plant Manager", "Maintenance Head", "Operations Director"],
   },
 ];

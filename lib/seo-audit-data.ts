@@ -189,7 +189,7 @@ export async function fetchSeoAuditReport(): Promise<SeoAuditReport> {
     if (!pages.some((p) => p.path === path)) {
       pages.push(buildPageRecord(path, {
         title: `${path.replace(/^\//, "").replace(/-/g, " ")} | Zoveto`,
-        metaDescription: "India-focused SEO landing page with detailed product content.",
+        metaDescription: "SEO landing page with detailed product content.",
         indexStatus: "indexed",
         isSeoLanding: true,
       }));
@@ -520,7 +520,7 @@ export async function fetchSeoAuditReport(): Promise<SeoAuditReport> {
 
 function staticTitleFor(path: string): string {
   const map: Record<string, string> = {
-    "/": "Zoveto | Company Operating System for Indian SMBs",
+    "/": "Zoveto | Company Operating System for SMBs",
     "/product": "Product | Zoveto",
     "/pricing": "Pricing | Zoveto",
     "/about": "About | Zoveto",
@@ -536,8 +536,10 @@ function staticTitleFor(path: string): string {
     "/reorder-point-calculator": "Reorder Point Calculator | Zoveto",
     "/privacy": "Privacy Policy | Zoveto",
     "/terms": "Terms of Service | Zoveto",
+    "/msa": "Master Service Agreement | Zoveto",
     "/cookie-policy": "Cookie Policy | Zoveto",
     "/dpa": "Data Processing Agreement | Zoveto",
+    "/sla": "Service Level Agreement | Zoveto",
     "/acceptable-use": "Acceptable Use Policy | Zoveto",
     "/security": "Security | Zoveto",
     "/subprocessors": "Subprocessors | Zoveto",
@@ -548,11 +550,11 @@ function staticTitleFor(path: string): string {
 
 function staticDescFor(path: string): string {
   const map: Record<string, string> = {
-    "/": "Zoveto is a Company Operating System for Indian SMBs: inventory, CRM, WMS, finance, and HR on one platform.",
-    "/pricing": "Transparent pricing for Zoveto — the Company Operating System for Indian SMBs.",
+    "/": "Zoveto is a Company Operating System for SMBs: inventory, CRM, WMS, finance, and HR on one platform.",
+    "/pricing": "Transparent pricing for Zoveto — the Company Operating System for SMBs.",
     "/contact": "Book a demo or contact Zoveto. 30 minutes, your industry, no generic slides.",
-    "/blog": "ERP insights, GST guides, and business operation strategy for Indian SMBs.",
-    "/faq": "Frequently asked questions about Zoveto, ERP, inventory, GST, and CRM for Indian businesses.",
+    "/blog": "ERP insights, GST guides, and business operation strategy for SMBs.",
+    "/faq": "Frequently asked questions about Zoveto, ERP, inventory, GST, and CRM for businesses.",
   };
   return map[path] ?? "";
 }

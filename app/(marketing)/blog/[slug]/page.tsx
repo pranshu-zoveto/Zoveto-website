@@ -97,7 +97,7 @@ const POST_FAQS: Record<string, readonly FaqSchemaInput[]> = {
     {
       question: "Does Zoveto have a CRM as strong as Zoho CRM?",
       answer:
-        "Zoveto's CRM is purpose-built for Indian B2B distribution and dealer networks, with native integration to inventory, finance, and dispatch. Zoho CRM is more feature-rich for sales automation in isolation, but requires integrations to connect to inventory and finance.",
+        "Zoveto's CRM is purpose-built for B2B distribution and dealer networks, with native integration to inventory, finance, and dispatch. Zoho CRM is more feature-rich for sales automation in isolation, but requires integrations to connect to inventory and finance.",
     },
     {
       question: "Is Zoho better for GST compliance than Zoveto?",
@@ -107,7 +107,7 @@ const POST_FAQS: Record<string, readonly FaqSchemaInput[]> = {
     {
       question: "What industries does Zoveto specifically support?",
       answer:
-        "Zoveto is purpose-built for Indian distributors, manufacturers (discrete and process), spare parts dealers, and B2B wholesalers. It includes India-specific features like multi-warehouse GST tracking, dealer credit management, and machine-compatibility-based spare parts cataloguing.",
+        "Zoveto is purpose-built for distributors, manufacturers (discrete and process), spare parts dealers, and B2B wholesalers. It includes Regional features like multi-warehouse GST tracking, dealer credit management, and machine-compatibility-based spare parts cataloguing.",
     },
   ],
   "tally-vs-zoveto-cloud-erp-india": [
@@ -385,7 +385,7 @@ export default async function BlogPostPage({
               <div className="rounded-2xl border border-border bg-card p-5">
                 <p className="mb-1 text-[11px] font-semibold uppercase tracking-wider text-muted-2">Published by</p>
                 <p className="font-semibold text-foreground">{(post as any).author || "Zoveto"}</p>
-                <p className="mt-0.5 text-sm text-muted">Company Operating System for Indian SMBs</p>
+                <p className="mt-0.5 text-sm text-muted">Company Operating System for SMBs</p>
                 <div className="mt-4 h-px bg-border" />
                 <div className="mt-4 space-y-2 text-sm text-muted">
                   <p className="flex items-center gap-2">

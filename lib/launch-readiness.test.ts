@@ -47,17 +47,15 @@ describe("launch readiness static checks", () => {
     assert.ok(proxySource.includes("export function proxy("), "proxy.ts must export proxy()");
   });
 
-  it("mounts consent and consent-gated tracking in the root layout", () => {
-    const layout = read("app/layout.tsx");
+  it("mounts consent and consent-gated tracking in the marketing layout", () => {
+    const layout = read("app/(marketing)/layout.tsx");
+    const rootLayout = read("app/layout.tsx");
+    assert.doesNotMatch(rootLayout, /GoogleAnalytics/, "root layout must not load duplicate GA4");
     assert.ok(
       layout.includes("SiteChromeClients") || layout.includes("ClientOnlySiteChrome"),
-      "root layout must render SiteChromeClients (directly or via ClientOnlySiteChrome)",
+      "marketing layout must render SiteChromeClients (directly or via ClientOnlySiteChrome)",
     );
-    assert.ok(
-      layout.includes("VercelWebMetrics") || layout.includes("ClientOnlySiteChrome"),
-      "root layout must render Vercel Web Metrics (directly or via ClientOnlySiteChrome)",
-    );
-    assert.ok(layout.includes("WhatsAppFloatButton"), "root layout must render WhatsApp float CTA");
+    assert.ok(layout.includes("WhatsAppFloatButton"), "marketing layout must render WhatsApp float CTA");
     const waFloat = read("components/layout/WhatsAppFloatButton.tsx");
     assert.ok(waFloat.includes("z-[95]"), "WhatsApp FAB must sit below cookie layer (z-[120])");
     assert.ok(waFloat.includes("api.whatsapp.com") || waFloat.includes("getWhatsAppFloatHref"), "WhatsApp FAB must use configured wa link");
@@ -115,15 +113,15 @@ describe("launch readiness static checks", () => {
     }
 
     assert.ok(read("components/forms/DemoBookingForm.tsx").includes("demo_request_submit"));
-    assert.ok(read("app/contact/ContactClient.tsx").includes("NEXT_PUBLIC_CALENDLY_DEMO_URL"));
-    assert.ok(read("app/contact/ContactClient.tsx").includes("demo_schedule_click"));
-    assert.ok(read("app/signup/_SignupClient.tsx").includes("access_request_submit"));
+    assert.ok(read("app/(marketing)/contact/ContactClient.tsx").includes("NEXT_PUBLIC_CALENDLY_DEMO_URL"));
+    assert.ok(read("app/(marketing)/contact/ContactClient.tsx").includes("demo_schedule_click"));
+    assert.ok(read("app/(marketing)/signup/_SignupClient.tsx").includes("access_request_submit"));
     assert.ok(read("components/forms/LeadForm.tsx").includes("contact_form_submit"));
-    assert.ok(read("app/pricing/PricingClient.tsx").includes("pricing_view"));
-    assert.ok(read("app/compare/[slug]/page.tsx").includes("compare_page_view"));
+    assert.ok(read("app/(marketing)/pricing/PricingClient.tsx").includes("pricing_view"));
+    assert.ok(read("app/(marketing)/compare/[slug]/page.tsx").includes("compare_page_view"));
     assert.ok(read("components/layout/WhatsAppFloatButton.tsx").includes("whatsapp_click"));
     assert.ok(read("components/layout/FooterNewsletter.tsx").includes("newsletter_signup"));
-    assert.ok(read("app/reorder-point-calculator/ReorderPointCalculatorClient.tsx").includes("calculator_used"));
+    assert.ok(read("app/(marketing)/reorder-point-calculator/ReorderPointCalculatorClient.tsx").includes("calculator_used"));
   });
 
   it("exposes compare navigation and zero-client implementation trust path", () => {
@@ -131,20 +129,20 @@ describe("launch readiness static checks", () => {
     assert.ok(navbar.includes("/compare") && navbar.includes("Compare"), "navbar must link to compare hub");
     assert.ok(navbar.includes("Book a 20-min demo"), "primary nav CTA should be demo-led");
 
-    const implementation = read("app/implementation/page.tsx");
+    const implementation = read("app/(marketing)/implementation/page.tsx");
     assert.ok(implementation.includes("Founder-led implementation"), "implementation page needs clear positioning");
     assert.ok(implementation.includes("No fake review schema"), "implementation page must avoid fake-review claims");
 
-    const contact = read("app/contact/ContactClient.tsx");
+    const contact = read("app/(marketing)/contact/ContactClient.tsx");
     assert.ok(contact.includes("<DemoBookingForm />"), "contact should fall back to internal demo form");
   });
 
   it("keeps zero-client public copy honest", () => {
     const checkedFiles = [
-      "app/implementation/page.tsx",
+      "app/(marketing)/implementation/page.tsx",
       "components/sections/ZeroClientTrustSection.tsx",
-      "app/contact/ContactClient.tsx",
-      "app/pricing/PricingClient.tsx",
+      "app/(marketing)/contact/ContactClient.tsx",
+      "app/(marketing)/pricing/PricingClient.tsx",
       "components/trust/ClientProofSlots.tsx",
     ];
 
@@ -162,7 +160,7 @@ describe("launch readiness static checks", () => {
 
   it("keeps required trust links in footer", () => {
     const footer = read("components/layout/Footer.tsx");
-    const required = ['"/security"', '"/privacy"', '"/terms"'];
+    const required = ['"/security"', '"/privacy"', '"/terms"', '"/msa"', '"/sla"'];
     for (const href of required) {
       assert.ok(footer.includes(href), `missing legal footer link ${href}`);
     }

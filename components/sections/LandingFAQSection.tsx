@@ -63,7 +63,7 @@ const FAQ_CATEGORIES: FAQCategory[] = [
       {
         question: "Is Zoveto tax- and compliance-ready for regulated markets?",
         answer:
-          "Finance teams struggle when tax reporting depends on manual consolidation from multiple tools. Errors usually appear late, close to filing deadlines. Zoveto keeps invoicing and ledger data compliance-ready, including GST when you operate in India, with reconciliation support built into daily operations.",
+          "Finance teams struggle when tax reporting depends on manual consolidation from multiple tools. Errors usually appear late, close to filing deadlines. Zoveto keeps invoicing and ledger data compliance-ready, including GST when you operate locally, with reconciliation support built into daily operations.",
       },
     ],
   },

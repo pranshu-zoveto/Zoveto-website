@@ -8,7 +8,7 @@ export default function GstErpSoftwareIndia2026() {
     <article className="blog-prose">
       <p className="blog-lead">
         <strong>
-          GST-compliant ERP software for India must handle e-invoicing with IRN generation, GSTR-1
+          GST-compliant ERP software must handle e-invoicing with IRN generation, GSTR-1
           and GSTR-3B auto-population, e-way bill integration, HSN-wise reporting, and ITC
           reconciliation, all from within the same system that manages your business operations.
         </strong>{" "}
@@ -18,7 +18,7 @@ export default function GstErpSoftwareIndia2026() {
 
       <hr className="blog-rule" />
 
-      <h2>India&apos;s GST Compliance Requirements in 2026: What Your Software Must Handle</h2>
+      <h2>GST Compliance Requirements in 2026: What Your Software Must Handle</h2>
       <p>
         Since GST&apos;s introduction in July 2017, the compliance landscape has evolved
         significantly. As of 2026, here is the complete set of compliance requirements that your
@@ -26,7 +26,7 @@ export default function GstErpSoftwareIndia2026() {
       </p>
 
       <h3>1. e-Invoicing (Mandatory Thresholds)</h3>
-      <p>E-invoicing became mandatory for Indian businesses in phases based on annual turnover:</p>
+      <p>E-invoicing became mandatory for businesses in phases based on annual turnover:</p>
       <div className="blog-table-wrapper">
         <table className="blog-table">
           <thead>
@@ -120,7 +120,7 @@ export default function GstErpSoftwareIndia2026() {
         <li>Flag discrepancies before you file, not after</li>
       </ul>
       <p>
-        Without automated 2A/2B reconciliation, Indian businesses are claiming ITC they
+        Without automated 2A/2B reconciliation, businesses are claiming ITC they
         can&apos;t actually take, and receiving scrutiny notices 12 to 18 months later.
       </p>
 
@@ -158,7 +158,7 @@ export default function GstErpSoftwareIndia2026() {
 
       <h2>The 7 Things Most ERPs Get Wrong on GST</h2>
       <p>
-        After evaluating dozens of ERP implementations across Indian SMBs, these are the most common
+        After evaluating dozens of ERP implementations across SMBs, these are the most common
         compliance failures:
       </p>
 

@@ -4,14 +4,14 @@ import path from "node:path";
 import { describe, it } from "node:test";
 import type { Metadata } from "next";
 import { BRAND_CANONICAL_ORIGIN } from "@/lib/branding";
-import { metadata as homeMetadata } from "@/app/page";
-import { metadata as pricingMetadata } from "@/app/pricing/page";
-import { metadata as contactMetadata } from "@/app/contact/page";
-import { metadata as aboutMetadata } from "@/app/about/page";
-import { metadata as securityMetadata } from "@/app/security/page";
-import { metadata as signupMetadata } from "@/app/signup/page";
-import { metadata as operationalProofMetadata } from "@/app/operational-proof/page";
-import { metadata as teamMetadata } from "@/app/team/page";
+import { metadata as homeMetadata } from "@/app/(marketing)/page";
+import { metadata as pricingMetadata } from "@/app/(marketing)/pricing/page";
+import { metadata as contactMetadata } from "@/app/(marketing)/contact/page";
+import { metadata as aboutMetadata } from "@/app/(marketing)/about/page";
+import { metadata as securityMetadata } from "@/app/(marketing)/security/page";
+import { metadata as signupMetadata } from "@/app/(marketing)/signup/page";
+import { metadata as operationalProofMetadata } from "@/app/(marketing)/operational-proof/page";
+import { metadata as teamMetadata } from "@/app/(marketing)/team/page";
 
 function toTitleString(meta: Metadata): string {
   if (typeof meta.title === "string") return meta.title;

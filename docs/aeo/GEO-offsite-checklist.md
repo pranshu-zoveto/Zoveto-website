@@ -1,26 +1,48 @@
 # GEO off-site checklist (non-code)
 
-Use the same canonical description as [`lib/brand-entity.ts`](../../lib/brand-entity.ts) (`ZOVETO_ORGANIZATION_DESCRIPTION`) everywhere below.
+Use the same canonical description as [`lib/brand-entity.ts`](../../lib/brand-entity.ts) (`ZOVETO_ORGANIZATION_DESCRIPTION`) and [`/company-facts`](https://zoveto.com/company-facts) everywhere below.
 
-## Directory / profile surfaces
+## Priority order
 
-- [ ] G2 — product listing, logo, screenshots, pricing, features
-- [ ] Capterra — same kit + categories aligned to “Company Operating System” / Indian SMB ops
-- [ ] LinkedIn company page — About, specialties, website link
-- [ ] Product Hunt — if/when you launch publicly
-- [ ] Crunchbase — company, funding, description parity
+### 1. LinkedIn company profile (highest)
 
-## Authority content (minimum three placements over time)
+- [ ] Fill **About**, **specialties**, **website** (`https://zoveto.com`), and **logo** with the same brand description as the site
+- [ ] Link to `/company-facts`, `/faq`, `/product`, and `/pricing` in posts when relevant
+- [ ] Founder LinkedIn posts that cite real workflows (WhatsApp + Excel → one OS) — no fake customer logos
 
-- [ ] Founder / operator story (e.g. YourStory-style) linking to `/company-operating-system-india` and `/faq`
-- [ ] Ecosystem or industry publication (e.g. SaaSBoomi / iSPIRT-style) with honest fit framing
-- [ ] LinkedIn or Medium long-form on replacing WhatsApp + Excel operating stacks
+### 2. Google Business Profile (if applicable)
 
-## Reviews
+- [ ] Create or claim only if you have a legitimate public-facing office or service area policy
+- [ ] Use `info@zoveto.com` and canonical website URL
 
-- [ ] **Five** real Capterra reviews with India context, specific workflows, and outcomes (no incentives for dishonest claims)
-- [ ] Later: G2 when volume warrants
+### 3. Entity graph (optional)
 
-## Search Console
+- [ ] **Crunchbase** — only if the company wants a public entity graph; match legal name and description
+- [ ] Do **not** add Crunchbase/G2/Capterra to JSON-LD `sameAs` until profiles are live and verified
 
-- [ ] After deploy: request indexing for `/faq`, `/company-operating-system-india`, and materially changed high-traffic URLs
+### 4. Review marketplaces (only when real)
+
+- [ ] **G2 / Capterra** — list only when a real profile exists with honest positioning; no fabricated reviews
+- [ ] **SoftwareSuggest** and India-relevant SaaS directories when relevant to SMB ops software
+
+### 5. Authority content (3–5 honest placements over time)
+
+- [ ] Founder or operator story linking to `/company-facts` and `/company-operating-system-india`
+- [ ] Ecosystem or industry publication with honest fit framing (no paid fake endorsements)
+- [ ] 3–5 external articles or listings using the **same** canonical description — not keyword-stuffed variants
+
+### 6. Reviews policy
+
+- [ ] Collect **real** reviews only, with specific workflows and outcomes
+- [ ] **No** incentives for dishonest claims
+- [ ] **No** fake customer names, logos, or star ratings on the marketing site
+
+## Search Console (after deploy)
+
+- [ ] Follow [`docs/search-console-cleanup.md`](../search-console-cleanup.md)
+- [ ] Request indexing for `/faq`, `/company-facts`, `/company-operating-system-india`, and materially changed high-traffic URLs
+
+## AI crawlers
+
+- [ ] Confirm `https://zoveto.com/llms.txt` returns 200 plain text
+- [ ] Keep `/company-facts` indexable and linked from footer

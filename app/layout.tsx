@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from "next";
-import Script from "next/script";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ZOVETO_ORGANIZATION_DESCRIPTION, ZOVETO_SITE_DEFAULT_TITLE } from "@/lib/brand-entity";
@@ -49,8 +48,8 @@ export const metadata: Metadata = {
     "operations software",
   ],
   authors: [{ name: "Zoveto Technologies" }],
-  creator: "Zoveto Technologies Private Limited",
-  publisher: "Zoveto Technologies Private Limited",
+  creator: "Zoveto Technologies",
+  publisher: "Zoveto Technologies",
   openGraph: {
     type: "website",
     locale: "en_IN",
@@ -63,7 +62,7 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Zoveto, Company Operating System for Indian SMBs.",
+        alt: "Zoveto, Company Operating System for SMBs.",
       },
     ],
   },
@@ -99,8 +98,6 @@ export const metadata: Metadata = {
   category: "technology",
 };
 
-import { GoogleAnalytics } from "@next/third-parties/google";
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -116,7 +113,6 @@ export default function RootLayout({
       >
         {children}
       </body>
-      <GoogleAnalytics gaId="G-TJP3DXS9MG" />
     </html>
   );
 }

@@ -203,7 +203,7 @@ export const industries: IndustryWithIcon[] = [
       "Better visibility across teams when planning, plant, warehouse, and accounts share one spine",
     ],
     proofPoints: [
-      "Not a concept. A working system architecture built for Indian operating reality, GST, multi-site, and high-touch dispatch.",
+      "Not a concept. A working system architecture built for operating reality, GST, multi-site, and high-touch dispatch.",
       "Real workflows across ERP, WMS, and CRM, not a dashboard that decorates spreadsheets still living underneath.",
       "Modular by design so you can tighten one execution layer without re-buying the whole stack.",
     ],
@@ -214,7 +214,7 @@ export const industries: IndustryWithIcon[] = [
       "GST-ready finance chain",
     ],
     directAnswer:
-      "Manufacturing teams lose margin when shop-floor moves, WIP, and finance vouchers describe three different truths.\nZoveto is a Company Operating System that posts production, stock, and billing on one chain for Indian plants scaling past spreadsheet bridges.",
+      "Manufacturing teams lose margin when shop-floor moves, WIP, and finance vouchers describe three different truths.\nZoveto is a Company Operating System that posts production, stock, and billing on one chain for plants scaling past spreadsheet bridges.",
     faqs: [
       {
         q: "What should manufacturing SMBs validate first in Zoveto?",
@@ -370,7 +370,7 @@ export const industries: IndustryWithIcon[] = [
     ],
     proofPoints: [
       "Built as a modular operating system, add discipline to WMS without abandoning your commercial workflow.",
-      "Deployed architecture meant for real Indian distribution: beats, depots, GST, and high SKU counts.",
+      "Deployed architecture meant for real distribution: beats, depots, GST, and high SKU counts.",
       "Workflow-first: the product is judged by posted movements, not by how pretty an empty dashboard looks.",
     ],
     homepageFeatures: [
@@ -380,7 +380,7 @@ export const industries: IndustryWithIcon[] = [
       "GST-tied invoicing",
     ],
     directAnswer:
-      "Distribution breaks when beats, depots, and HO disagree on stock while credit ships anyway.\nZoveto is a Company Operating System that keeps route sales, transfers, dispatch, and GST billing on one posted record for Indian high-volume distributors.",
+      "Distribution breaks when beats, depots, and HO disagree on stock while credit ships anyway.\nZoveto is a Company Operating System that keeps route sales, transfers, dispatch, and GST billing on one posted record for high-volume distributors.",
     faqs: [
       {
         q: "How does Zoveto reduce depot stock mismatch for distributors?",
@@ -400,7 +400,7 @@ export const industries: IndustryWithIcon[] = [
       },
       {
         q: "Where should a distributor read next?",
-        a: "Compare warehouse and inventory India pages, the FAQ hub, then book a demo with your SKU and branch counts so scope stays honest.",
+        a: "Compare warehouse and inventory pages, the FAQ hub, then book a demo with your SKU and branch counts so scope stays honest.",
       },
     ],
   },
@@ -682,7 +682,7 @@ export const industries: IndustryWithIcon[] = [
     proofPoints: [
       "Not a concept, a deployed modular architecture for warehouse execution tied to ERP inventory and finance.",
       "Workflow-first WMS thinking: tasks, scans, and exceptions, not a pretty map with no enforcement.",
-      "Designed for Indian operating load: GST, returns, multi-site, and noisy dock realities.",
+      "Designed for operating load: GST, returns, multi-site, and noisy dock realities.",
     ],
     homepageFeatures: [
       "Zone and bin discipline",

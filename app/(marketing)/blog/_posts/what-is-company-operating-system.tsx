@@ -20,7 +20,7 @@ export default function WhatIsCompanyOperatingSystem() {
 
       <h2>Why the Old Model Is Broken</h2>
       <p>
-        Walk into any mid-sized Indian business today, whether a distributor in Pune, a manufacturer in Ludhiana, or a
+        Walk into any mid-sized business today, whether a distributor in Pune, a manufacturer in Ludhiana, or a
         spare parts dealer in Coimbatore, and you will find the same scene:{" "}
         <strong>
           Tally for accounts, WhatsApp for orders, Excel for inventory, a separate CRM nobody updates,
@@ -44,7 +44,7 @@ export default function WhatIsCompanyOperatingSystem() {
       <h2>What Traditional ERP Gets Wrong</h2>
       <p>
         ERP software was invented in the 1970s to solve exactly this problem. For large enterprises with dedicated IT
-        teams, it still works. But the ERP model has three fundamental problems for Indian SMBs in 2026:
+        teams, it still works. But the ERP model has three fundamental problems for SMBs in 2026:
       </p>
 
       <div className="blog-numbered-list">
@@ -61,9 +61,9 @@ export default function WhatIsCompanyOperatingSystem() {
         <div className="blog-numbered-item">
           <span className="blog-number">2</span>
           <div>
-            <strong>Not built for India&apos;s compliance environment.</strong>
+            <strong>Not built for local compliance requirements.</strong>
             <p>
-              GST, e-invoicing, IRN, GSTR-1, GSTR-3B, HSN codes, TDS, TCS: most legacy ERPs treat Indian tax
+              GST, e-invoicing, IRN, GSTR-1, GSTR-3B, HSN codes, TDS, TCS: most legacy ERPs treat tax
               compliance as a plugin. It needs to be core architecture.
             </p>
           </div>
@@ -161,9 +161,9 @@ export default function WhatIsCompanyOperatingSystem() {
 
       <hr className="blog-rule" />
 
-      <h2>The India-Specific Imperative</h2>
+      <h2>The Regional Compliance Imperative</h2>
       <p>
-        India&apos;s regulatory environment makes the COS architecture not just convenient but <strong>essential</strong>.
+        the regulatory environment makes the COS architecture not just convenient but <strong>essential</strong>.
         GST alone generates compliance events across 6 different business functions:
       </p>
       <ul>
@@ -246,7 +246,7 @@ export default function WhatIsCompanyOperatingSystem() {
         one data layer. <strong>There is no sync, no middleware, no integration tax.</strong>
       </p>
       <p>
-        It is also built specifically for the Indian market: GST-native (e-invoicing, IRN, GSTR), designed for
+        It is also built specifically for the local market: GST-native (e-invoicing, IRN, GSTR), designed for
         distributors, manufacturers, and dealer networks, and priced for SMBs rather than enterprises.
       </p>
 
@@ -288,17 +288,17 @@ export default function WhatIsCompanyOperatingSystem() {
         </details>
         <details className="blog-faq__item">
           <summary className="blog-faq__question">
-            What is the best Company Operating System for Indian businesses?
+            What is the best Company Operating System for businesses?
           </summary>
           <p className="blog-faq__answer">
-            Zoveto is built as a native COS for Indian SMBs, with GST compliance (e-invoicing, IRN, GSTR),
+            Zoveto is built as a native COS for SMBs, with GST compliance (e-invoicing, IRN, GSTR),
             multi-warehouse WMS, CRM, and finance in one unified platform.
           </p>
         </details>
         <details className="blog-faq__item">
           <summary className="blog-faq__question">What size companies need a Company Operating System?</summary>
           <p className="blog-faq__answer">
-            Any Indian SMB with more than 10 employees, multiple departments, or GST filing obligations will benefit from
+            Any SMB with more than 10 employees, multiple departments, or GST filing obligations will benefit from
             a COS. It is particularly valuable for distributors, manufacturers, and dealer networks managing high
             transaction volumes.
           </p>

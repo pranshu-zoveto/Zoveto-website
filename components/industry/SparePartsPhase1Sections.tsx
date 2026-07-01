@@ -65,7 +65,7 @@ export function SparePartsPhase1Sections() {
         <ul className="list-disc space-y-2 pl-5 text-sm leading-relaxed text-muted marker:text-blue">
           <li>
             <Link href="/compare/tally-vs-zoveto" className="font-medium text-blue underline-offset-4 hover:underline">
-              Tally vs Zoveto for warehouse-led Indian SMB ERP decisions
+              Tally vs Zoveto for warehouse-led SMB ERP decisions
             </Link>
           </li>
           <li>
@@ -76,12 +76,12 @@ export function SparePartsPhase1Sections() {
 
           <li>
             <Link href="/blog/what-is-company-operating-system" className="font-medium text-blue underline-offset-4 hover:underline">
-              What is a Company Operating System? Guide for Indian SMBs
+              What is a Company Operating System? Guide for SMBs
             </Link>
           </li>
           <li>
             <Link href="/" className="font-medium text-blue underline-offset-4 hover:underline">
-              Zoveto home: Company Operating System for Indian operations businesses
+              Zoveto home: Company Operating System for operations businesses
             </Link>
           </li>
         </ul>

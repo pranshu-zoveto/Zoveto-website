@@ -10,9 +10,9 @@ export const metadata: Metadata = {
   keywords: [
     "system overview",
     "what is zoveto",
-    "ERP software India",
+    "ERP software",
     "GST ERP",
-    "CRM software India",
+    "CRM software",
     "pipeline management",
     "AI business automation",
     "AI ERP",

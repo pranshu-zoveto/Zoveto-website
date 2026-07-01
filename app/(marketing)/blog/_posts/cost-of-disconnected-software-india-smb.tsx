@@ -8,7 +8,7 @@ export default function CostOfDisconnectedSoftwareIndiaSmb() {
     <article className="blog-prose">
       <p className="blog-lead">
         <strong>
-          Indian SMBs using disconnected tools (Tally for accounts, WhatsApp for orders, Excel for
+          SMBs using disconnected tools (Tally for accounts, WhatsApp for orders, Excel for
           inventory, a separate CRM) lose an estimated ₹6.5 lakh annually to stockouts, missed
           follow-ups, and manual reconciliation overhead.
         </strong>{" "}
@@ -19,7 +19,7 @@ export default function CostOfDisconnectedSoftwareIndiaSmb() {
 
       <h2>The Problem Nobody Measures</h2>
       <p>
-        Every Indian SMB owner knows the feeling. The month-end scramble to get the books to match.
+        Every SMB owner knows the feeling. The month-end scramble to get the books to match.
         The dealer who bought from a competitor because your salesperson didn&apos;t follow up in
         time. The stockout that nobody saw coming because the warehouse tracker and the ERP
         weren&apos;t talking to each other.
@@ -34,7 +34,7 @@ export default function CostOfDisconnectedSoftwareIndiaSmb() {
         businesses running on disconnected software stacks spend{" "}
         <strong>22 to 28% of employee working hours on data reconciliation, re-entry, and manual
         coordination</strong>{" "}
-        (work that a unified system would eliminate entirely). For a 25-person Indian SMB with an
+        (work that a unified system would eliminate entirely). For a 25-person SMB with an
         average loaded salary of ₹35,000/month, that&apos;s <strong>₹23.1 lakh per year</strong> in
         pure overhead.
       </p>
@@ -61,7 +61,7 @@ export default function CostOfDisconnectedSoftwareIndiaSmb() {
       <p>
         Overstock is the other side. Buying too much of a slow-moving SKU because your demand data
         wasn&apos;t clean ties up working capital at a cost of 12 to 18% (typical working capital loan
-        rates in India). ₹15 lakh in excess inventory costs ₹1.8 to 2.7 lakh per year just in
+        local statutory rates). ₹15 lakh in excess inventory costs ₹1.8 to 2.7 lakh per year just in
         financing.
       </p>
       <p>
@@ -80,7 +80,7 @@ export default function CostOfDisconnectedSoftwareIndiaSmb() {
       </p>
       <p>
         According to Salesforce&apos;s State of Sales report, <strong>50% of sales go to the first
-        vendor who responds</strong>. The average time to first follow-up for Indian SMBs without a
+        vendor who responds</strong>. The average time to first follow-up for SMBs without a
         CRM is 3 to 5 days (based on our conversations with 200+ SMB owners). The average time with
         an integrated CRM that sends reminders: 4 hours.
       </p>

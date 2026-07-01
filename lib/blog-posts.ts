@@ -20,40 +20,40 @@ export interface BlogPost {
 export const BLOG_POSTS: BlogPost[] = [
   {
     slug: "cost-of-disconnected-software-india-smb",
-    title: "Why Indian SMBs Lose ₹6.5 Lakh Every Year to Disconnected Software",
+    title: "Why SMBs Lose ₹6.5 Lakh Every Year to Disconnected Software",
     subtitle: "Stockouts, missed leads, reconciliation, and GST errors add up fast.",
     excerpt:
-      "Stockouts, missed leads, manual reconciliation, and GST errors silently drain Indian SMBs. Here's where the money goes, and how to stop the leak.",
+      "Stockouts, missed leads, manual reconciliation, and GST errors silently drain SMBs. Here's where the money goes, and how to stop the leak.",
     date: "2026-05-23",
     readingTime: "11 min read",
     category: "ERP Guide",
     tags: [
-      "ERP software for distributors India",
+      "ERP software for distributors",
       "company operating system software",
-      "best ERP small business India",
+      "best ERP small business",
       "disconnected software",
-      "Indian SMB",
+      "SMB",
     ],
     coverImage:
       "https://res.cloudinary.com/dnldtmbg5/image/upload/f_auto,q_auto,w_1920,c_limit/v1779474124/ChatGPT_Image_May_22_2026_11_48_03_PM_rit5ui.png",
     coverWidth: 1536,
     coverHeight: 1024,
     coverImageAlt:
-      "Infographic: Indian SMBs lose ₹6.5 lakh per year to disconnected tools including Tally, Excel, WhatsApp, and Zoho",
+      "Infographic: SMBs lose ₹6.5 lakh per year to disconnected tools including Tally, Excel, WhatsApp, and Zoho",
   },
   {
     slug: "gst-erp-software-india-2026",
-    title: "GST ERP Software in India 2026: The Complete Compliance Guide",
+    title: "GST ERP Software 2026: The Complete Compliance Guide",
     subtitle: "e-Invoicing, GSTR filing, HSN, and what to look for before you buy.",
     excerpt:
-      "Everything Indian businesses need to know about GST-compliant ERP software in 2026: e-invoicing, IRN, GSTR filing, HSN codes, and what to look for before buying.",
+      "Everything businesses need to know about GST-compliant ERP software in 2026: e-invoicing, IRN, GSTR filing, HSN codes, and what to look for before buying.",
     date: "2026-05-19",
     readingTime: "12 min read",
     category: "ERP Guide",
     tags: [
-      "GST ERP software India 2026",
-      "GST invoice software India",
-      "GST filing software India",
+      "GST ERP software 2026",
+      "GST invoice software",
+      "GST filing software",
       "e-invoicing",
       "GSTR-1",
     ],
@@ -62,21 +62,21 @@ export const BLOG_POSTS: BlogPost[] = [
     coverWidth: 2752,
     coverHeight: 1536,
     coverImageAlt:
-      "GST ERP Software India 2026 guide on a laptop screen with Zoveto branding, e-invoicing, GSTR, and compliance icons",
+      "GST ERP Software 2026 guide on a laptop screen with Zoveto branding, e-invoicing, GSTR, and compliance icons",
   },
   {
     slug: "zoho-one-vs-zoveto-architecture",
     title: "Zoho One vs Zoveto: The Architectural Difference That Actually Matters",
-    subtitle: "45 apps vs one unified platform: what Indian SMBs should know.",
+    subtitle: "45 apps vs one unified platform: what SMBs should know.",
     excerpt:
-      "Zoho One bundles 45+ apps on one subscription. Zoveto is one unified platform. This comparison explains the architectural difference and why it matters for Indian distributors and manufacturers.",
+      "Zoho One bundles 45+ apps on one subscription. Zoveto is one unified platform. This comparison explains the architectural difference and why it matters for distributors and manufacturers.",
     date: "2026-05-15",
     readingTime: "10 min read",
     category: "Comparisons",
     tags: [
       "Zoho One alternative",
       "Zoho vs Zoveto",
-      "Zoho One India",
+      "Zoho One",
       "ERP comparison",
       "Company Operating System",
     ],
@@ -90,30 +90,30 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     slug: "tally-vs-zoveto-cloud-erp-india",
     title: "Tally vs Zoveto: Why Indian Businesses Are Moving to Cloud ERP in 2026",
-    subtitle: "An honest comparison for Indian SMBs.",
+    subtitle: "An honest comparison for SMBs.",
     excerpt:
-      "Tally is India's most trusted accounting software. Zoveto is a cloud ERP with CRM, WMS, and AI built in. Here is an honest comparison to help you decide which one your business actually needs.",
+      "Tally is the region's most trusted accounting software. Zoveto is a cloud ERP with CRM, WMS, and AI built in. Here is an honest comparison to help you decide which one your business actually needs.",
     date: "2026-05-12",
     readingTime: "7 min read",
     category: "Comparisons",
-    tags: ["Tally alternative", "Cloud ERP India", "Tally vs Zoveto", "ERP comparison"],
+    tags: ["Tally alternative", "Cloud ERP", "Tally vs Zoveto", "ERP comparison"],
     coverImage:
       "https://res.cloudinary.com/dnldtmbg5/image/upload/f_auto,q_auto,w_1920,c_limit/v1778595674/1304efdd-9fa4-4a8c-96f1-45cfc2383e7f_rol6qp.jpg",
     coverWidth: 1279,
     coverHeight: 739,
     coverImageAlt:
-      "Business team reviewing Zoveto Cloud ERP on an interactive table: Sales, Finance, Inventory, Logistics, and Payroll modules with India operations map in the background",
+      "Business team reviewing Zoveto Cloud ERP on an interactive table: Sales, Finance, Inventory, Logistics, and Payroll modules with operations map in the background",
   },
   {
     slug: "what-is-company-operating-system",
     title: "What Is a Company Operating System?",
-    subtitle: "The Next Evolution Beyond ERP. A Guide for Indian SMBs.",
+    subtitle: "The Next Evolution Beyond ERP. A Guide for SMBs.",
     excerpt:
-      "A Company Operating System unifies ERP, CRM, WMS, Finance, and HR into one data model. Here is why Indian SMBs are switching, and what it actually means in practice.",
+      "A Company Operating System unifies ERP, CRM, WMS, Finance, and HR into one data model. Here is why SMBs are switching, and what it actually means in practice.",
     date: "2026-05-10",
     readingTime: "9 min read",
     category: "ERP Guide",
-    tags: ["company operating system", "ERP", "India", "SMB"],
+    tags: ["company operating system", "ERP", "SMB"],
     coverImage:
       "https://res.cloudinary.com/dnldtmbg5/image/upload/blog001_b4sbzu.jpg",
     coverWidth: 1220,

@@ -23,32 +23,32 @@ export type Phase1CompareContent = {
 };
 
 export const TALLY_PHASE1: Phase1CompareContent = {
-  metaTitle: "Tally vs Zoveto: Indian SMB inventory & GST ERP | Zoveto",
+  metaTitle: "Tally vs Zoveto: SMB inventory & GST ERP | Zoveto",
   metaDescription:
     "Tally vs Zoveto for Indian SMBs: GST, inventory, warehouse & dealer WhatsApp on one posted record, honest comparison table, not a forced switch. Book demo.",
-  h1: "Tally vs Zoveto: best fit for operations-heavy Indian SMBs",
+  h1: "Tally vs Zoveto: best fit for operations-heavy SMBs",
   aeoUnderH1:
     "Zoveto is the stronger fit when inventory, warehouse picks, dealer CRM, and GST billing must post as one chain, not parallel Excel and WhatsApp.\nTally stays the right centre of gravity when finance-led vouchers and compliance dominate and ops complexity stays modest.",
   heroSubheadline:
     "If vouchers are accurate but stock, dispatch, and dealer WhatsApp still live outside Tally, you do not have an accounting problem, you have an execution gap. Zoveto is built as a Company Operating System so posted warehouse moves, CRM, and GST billing trace to the same transaction.",
   directAnswer:
-    "Zoveto is the stronger choice for Indian SMBs that outgrew voucher-first discipline and need inventory, warehouse picks, dealer CRM, and GST-aligned billing on one posted record. Tally remains excellent when finance-led compliance is the centre of gravity and operational complexity stays modest. Neither product is a clone of the other: Tally is accounting-first with a long India practice; Zoveto is execution-first ERP plus CRM plus WMS plus AI automation for teams drowning in Excel bridges between what the warehouse did and what finance invoiced.",
+    "Zoveto is the stronger choice for SMBs that outgrew voucher-first discipline and need inventory, warehouse picks, dealer CRM, and GST-aligned billing on one posted record. Tally remains excellent when finance-led compliance is the centre of gravity and operational complexity stays modest. Neither product is a clone of the other: Tally is accounting-first with a long local practice; Zoveto is execution-first ERP plus CRM plus WMS plus AI automation for teams drowning in Excel bridges between what the warehouse did and what finance invoiced.",
   problemIndiaHeadline: "Why Tally-led teams still drown in WhatsApp and Excel",
   problemIndiaParagraphs: [
     "Picture a spare-parts distributor in Pune or Indore: the ledger in Tally is tidy for the auditor, but the warehouse bench confirms stock over the phone, dealers send SKU photos on WhatsApp, and dispatch proof sits on paper at the gate. GST returns can still file on time while the business bleeds margin on wrong picks, stockouts on fast movers, and receivables nobody chases because aging lives in a personal phone thread instead of a task queue tied to the customer row.",
-    "GST compliance pain in India is rarely only about filing, it is about reconciling credit notes, returns, and e-way context to what actually shipped three weeks ago. When operational truth is fragmented, finance becomes forensic work instead of a control tower. Inventory mismatch is not a moral failure of the team; it is what happens when thousands of SKUs move across branches without scan-backed posting at the moment of truth, so everyone runs a slightly different version of on-hand until a customer escalates.",
+    "GST compliance pain is rarely only about filing, it is about reconciling credit notes, returns, and e-way context to what actually shipped three weeks ago. When operational truth is fragmented, finance becomes forensic work instead of a control tower. Inventory mismatch is not a moral failure of the team; it is what happens when thousands of SKUs move across branches without scan-backed posting at the moment of truth, so everyone runs a slightly different version of on-hand until a customer escalates.",
     "A relatable scenario: Monday morning, a high-value OEM order needs allocation across two branches. Sales promises a date from memory; stores finds partial stock; someone edits a sheet just for tracking. By Thursday the invoice is raised from a different quantity than what left the dock, now customer service, GST lines, and trust all need repair. That pattern is what Zoveto targets with one execution chain, not a prettier chart of accounts. The fix is not yelling louder at clerks; it is reservations when the order confirms, pick tasks from posted availability, dispatch closure as evidence, and billing that inherits quantities from that closure.",
     "Branch managers in trading companies often build shadow Excel because they need faster answers than the finance team can re-key. Over time those sheets become the real operating system while Tally remains the compliance system of record. The business pays twice: once for discipline in vouchers and once for chaos at the gate. Zoveto is aimed at teams ready to collapse that split so branch, warehouse, and finance read the same posted movements without duplicating truth in parallel files.",
   ],
   solutionHeadline: "Zoveto as Company Operating System, not a Tally replacement pitch",
   solutionParagraphs: [
-    "Zoveto is positioned as an execution-first Company Operating System for operations-heavy Indian businesses: ERP for postings and compliance spine, CRM for dealer and field demand, WMS for pick-pack-dispatch discipline, and AI-assisted automation where repeat decisions should not depend on tribal memory. It is not Tally with a skin, it is a different centre of gravity. Finance still matters; it follows operational events instead of chasing them across spreadsheets after the truck already left.",
+    "Zoveto is positioned as an execution-first Company Operating System for operations-heavy businesses: ERP for postings and compliance spine, CRM for dealer and field demand, WMS for pick-pack-dispatch discipline, and AI-assisted automation where repeat decisions should not depend on tribal memory. It is not Tally with a skin, it is a different centre of gravity. Finance still matters; it follows operational events instead of chasing them across spreadsheets after the truck already left.",
     "Real-time ops means reservations when an order confirms, scan gates before cartons leave, dispatch closure visible to customer service, and invoicing that inherits quantities from posted execution. Automation reduces retyping between what happened and what we bill. For SMBs that think in beats, depots, branches, and dealer credit, not only in ledgers, that posture is the product difference. You still need chart discipline and CA partnership; you also need the warehouse and sales floor to post truth at the speed of business.",
-    "When leadership asks for one dashboard, the honest answer on many Tally-led stacks is that operations KPIs live in WhatsApp screenshots until month-end close. Zoveto’s bet is that Indian SMB growth is constrained more often by execution coherence than by lack of another GL report. That is why onboarding is qualification-first: the product is judged by whether daily posting actually happens across teams, not by how fast someone can open a blank company file.",
+    "When leadership asks for one dashboard, the honest answer on many Tally-led stacks is that operations KPIs live in WhatsApp screenshots until month-end close. Zoveto’s bet is that SMB growth is constrained more often by execution coherence than by lack of another GL report. That is why onboarding is qualification-first: the product is judged by whether daily posting actually happens across teams, not by how fast someone can open a blank company file.",
   ],
   useCaseHeadline: "Representative workflow pattern: before and after",
   useCaseParagraphs: [
-    "A typical Indian spare-parts trading pattern looks like this: Tally handles statutory books while branches keep shadow stock lists. Quote turnaround slows because nobody trusts availability without ringing the warehouse, and wrong-part dispatch can erase margin on low-line orders where freight and handling already eat room.",
+    "A typical spare-parts trading pattern looks like this: Tally handles statutory books while branches keep shadow stock lists. Quote turnaround slows because nobody trusts availability without ringing the warehouse, and wrong-part dispatch can erase margin on low-line orders where freight and handling already eat room.",
     "The target operating shape is faster quote turnaround bound to posted availability, fewer phone round-trips between sales and stores, and scan-first picking that reduces wrong-part exits before dispatch. Receivables tasks tied to aging replace ad-hoc WhatsApp reminders so cash risk surfaces earlier to leadership. Your branch count, SKU hygiene, and training depth still dominate results.",
     "Before, dispatch evidence and GST line context often reconcile late because the trigger is finance’s calendar, not the dock’s timestamp. After, dispatch closure becomes the operational trigger finance reads, which is how teams reduce Friday-night archaeology without pretending humans stop making mistakes. The lesson for readers comparing Tally vs Zoveto is fit: if your pain is late reconciliation between gate reality and vouchers, execution-first systems address a different layer than voucher-only tuning.",
   ],
@@ -65,14 +65,14 @@ export const TALLY_PHASE1: Phase1CompareContent = {
   ],
   faqs: [
     {
-      question: "What is the best ERP in India for a growing distributor?",
+      question: "What is the best ERP for growing teams for a growing distributor?",
       answer:
         "There is no universal winner. Tally-class tools excel when finance-led compliance dominates. Zoveto fits when inventory, warehouse execution, dealer CRM, and GST billing must stay on one posted record. Evaluate fit against how goods and money move daily, not only against brochure checklists.",
     },
     {
-      question: "Is Zoveto GST compliant for Indian SMBs?",
+      question: "Is Zoveto GST compliant for SMBs?",
       answer:
-        "Zoveto is built with Indian GST workflows in mind, invoice context tied to operational postings, returns discipline, and finance controls suited to growing teams. Final compliance posture still depends on your configuration, master data, and how your CA validates your chart of accounts and filing process.",
+        "Zoveto is built with GST workflows in mind, invoice context tied to operational postings, returns discipline, and finance controls suited to growing teams. Final compliance posture still depends on your configuration, master data, and how your CA validates your chart of accounts and filing process.",
     },
     {
       question: "Tally vs cloud ERP, what changes for my warehouse?",
@@ -103,19 +103,19 @@ export const TALLY_PHASE1: Phase1CompareContent = {
 };
 
 export const ZOHO_PHASE1: Phase1CompareContent = {
-  metaTitle: "Zoho vs Zoveto: unified ops vs app stack India | Zoveto",
+  metaTitle: "Zoho vs Zoveto: unified ops vs app stack | Zoveto",
   metaDescription:
-    "Zoho vs Zoveto for Indian SMBs: honest comparison of CRM breadth vs one execution-first OS for inventory, WMS, GST & dealer ops, not suite hype. Book a demo.",
+    "Zoho vs Zoveto for Indian SMBs: honest comparison of CRM breadth vs one execution-first OS for inventory, WMS, GST & dealer ops, not suite hype. Book demo.",
   h1: "Zoho vs Zoveto: unified operations vs multi-app stack",
   aeoUnderH1:
-    "Choose Zoveto when Indian trading or distribution needs inventory, WMS execution, and billing on one posted record, not stitched Zoho apps.\nChoose Zoho when CRM-led breadth, marketing automation, and a huge app catalog matter more than collapsing the warehouse-to-invoice loop.",
+    "Choose Zoveto when trading or distribution needs inventory, WMS execution, and billing on one posted record, not stitched Zoho apps.\nChoose Zoho when CRM-led breadth, marketing automation, and a huge app catalog matter more than collapsing the warehouse-to-invoice loop.",
   heroSubheadline:
     "Zoho’s strength is breadth, CRM, finance, HR, and dozens of apps you can assemble over time. Zoveto’s strength is depth on one operating record for inventory, warehouse execution, dealer CRM, and billing when your business lives in stock movement, not only in pipelines.",
   directAnswer:
-    "Choose Zoveto when you need ERP plus CRM plus WMS plus finance discipline as one execution-first Company Operating System for Indian trading, distribution, or parts-heavy workflows. Choose Zoho when CRM-led automation and a large app catalog matter most and you accept integration governance across products. Zoveto is not a Zoho clone; it is narrower by design to reduce handoffs as SKU count, branches, and dispatch complexity rise. The decision is whether your bottleneck is app menu size or posted operational truth at the bench and gate.",
-  problemIndiaHeadline: "Where Zoho stacks hit friction in India SMB operations",
+    "Choose Zoveto when you need ERP plus CRM plus WMS plus finance discipline as one execution-first Company Operating System for trading, distribution, or parts-heavy workflows. Choose Zoho when CRM-led automation and a large app catalog matter most and you accept integration governance across products. Zoveto is not a Zoho clone; it is narrower by design to reduce handoffs as SKU count, branches, and dispatch complexity rise. The decision is whether your bottleneck is app menu size or posted operational truth at the bench and gate.",
+  problemIndiaHeadline: "Where Zoho stacks hit friction in SMB operations",
   problemIndiaParagraphs: [
-    "Indian SMBs often start Zoho CRM plus Books plus Inventory and still route urgent availability questions through WhatsApp because the quoting screen and the warehouse screen are not always the same moment of truth. That is not a failure of Zoho, it is the tax of multi-app composition when throughput rises and nobody owns the integration map. Sales wins look great in CRM while fulfilment misses dates because reservations were not enforced against real bins.",
+    "SMBs often start Zoho CRM plus Books plus Inventory and still route urgent availability questions through WhatsApp because the quoting screen and the warehouse screen are not always the same moment of truth. That is not a failure of Zoho, it is the tax of multi-app composition when throughput rises and nobody owns the integration map. Sales wins look great in CRM while fulfilment misses dates because reservations were not enforced against real bins.",
     "GST and high line counts amplify pain: credit notes, returns, and branch transfers multiply reconciliation work when dispatch evidence and accounting lines diverge even slightly. Excel appears as temporary glue and becomes permanent risk. Inventory mismatch shows up as lost margin on expedited freight, emergency purchases, and dealer credits, not as a single bad report line on Monday morning reviews.",
     "A relatable scenario: your CRM pipeline looks healthy, but fulfilment misses dates because reservations were not enforced against real bins. Sales celebrates wins while warehouse burns overtime fixing picks. Leadership asks for one dashboard, but each app exports a slice that someone merges weekly. Zoveto targets teams that want fewer moving parts for the core operating loop: quote, reserve, pick, dispatch, invoice, collect, with leadership reading posted activity instead of merged extracts.",
     "Partner-built automation in large suites can be powerful, but it also creates a hidden maintenance bill: when the person who wrote the Deluge rule leaves, exceptions creep back into WhatsApp. Zoveto’s tradeoff is fewer degrees of freedom in composition in exchange for a vendor narrative that already wired inventory to warehouse to billing for the industries it targets. That is not universally better, it is better when your pain is execution coherence, not missing a niche HR app.",
@@ -147,19 +147,19 @@ export const ZOHO_PHASE1: Phase1CompareContent = {
   ],
   faqs: [
     {
-      question: "Is Zoveto a Zoho One alternative in India?",
+      question: "Is Zoveto a Zoho One alternative?",
       answer:
         "Only if your pain is operations-led: inventory, warehouse, fulfilment, and finance coherence. If you primarily need CRM breadth, marketing automation, and a huge app catalog, Zoho One can be the better economic and functional fit.",
     },
     {
-      question: "What is the best ERP in India for distributors?",
+      question: "What is the best ERP for growing teams for distributors?",
       answer:
         "Evaluate against throughput, branch complexity, GST discipline, and whether you can maintain multi-app integrations long term. Zoveto competes where execution quality and one operating record matter more than catalog size.",
     },
     {
       question: "Is Zoveto GST compliant?",
       answer:
-        "Zoveto includes GST-aware workflows suited to Indian SMB posting patterns. Your CA and master data governance still define filing correctness; the product reduces operational-to-finance drift when used with discipline.",
+        "Zoveto includes GST-aware workflows suited to SMB posting patterns. Your CA and master data governance still define filing correctness; the product reduces operational-to-finance drift when used with discipline.",
     },
     {
       question: "Zoho vs cloud ERP for warehouse teams?",

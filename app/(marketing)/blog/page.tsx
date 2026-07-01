@@ -11,22 +11,22 @@ import { Button } from "@/components/ui/Button";
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
-  title: "Zoveto Blog: ERP, CRM & Ops Insights for Indian SMBs",
+  title: "Zoveto Blog: ERP, CRM & Ops Insights for SMBs",
   description:
-    "Practical guides on ERP software, GST compliance, warehouse management, and AI operations for Indian distributors and manufacturers.",
+    "Practical guides on ERP software, GST compliance, warehouse management, and AI operations for distributors and manufacturers.",
   alternates: { canonical: canonicalUrl("/blog") },
   openGraph: {
-    title: "Zoveto Blog: ERP & Ops Insights for Indian SMBs",
+    title: "Zoveto Blog: ERP & Ops Insights for SMBs",
     description:
-      "Practical, authoritative guides on ERP, GST compliance, WMS, and AI for Indian SMBs. No filler, no fluff.",
+      "Practical, authoritative guides on ERP, GST compliance, WMS, and AI for SMBs. No filler, no fluff.",
     url: canonicalUrl("/blog"),
     images: ["/og-image.png"],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Zoveto Blog: ERP & Ops Insights for Indian SMBs",
+    title: "Zoveto Blog: ERP & Ops Insights for SMBs",
     description:
-      "Practical, authoritative guides on ERP, GST compliance, WMS, and AI for Indian SMBs.",
+      "Practical, authoritative guides on ERP, GST compliance, WMS, and AI for SMBs.",
     images: ["/og-image.png"],
   },
 };
@@ -53,7 +53,7 @@ export default async function BlogIndexPage({ searchParams }: { searchParams: { 
             Zoveto Blog
           </p>
           <Text variant="display-1" as="h1" className="mb-5 text-balance">
-            Ops insights for <span className="text-blue">Indian SMBs.</span>
+            Ops insights for <span className="text-blue">SMBs.</span>
           </Text>
           <Text variant="body-lg" className="text-pretty text-muted">
             Practical, authoritative guides on ERP, GST compliance, warehouse management, and AI operations. No filler.

@@ -201,7 +201,8 @@ const nextConfig = {
     ];
   },
 
-  // Redirects
+  // Redirects — includes Search Console cleanup (legacy blog/marketing URLs → live equivalents).
+  // TODO: Export exact 404 URLs from GSC and add 301s here. See docs/search-console-cleanup.md
   async redirects() {
     const cosApp = process.env.NEXT_PUBLIC_COS_APP_URL ?? "https://app.zoveto.com";
     return [

@@ -15,7 +15,7 @@ Use this as the offsite authority checklist for Zoveto profiles. This is an inte
 ## Profile Fields
 
 - Product name: Zoveto
-- Company name: Zoveto Technologies Private Limited
+- Company name: Zoveto Technologies
 - Website: https://zoveto.com
 - Category: ERP software, inventory management, warehouse management, CRM, business management software
 - Short description: Company Operating System for Indian SMBs connecting inventory, CRM, warehouse, finance, HR, and automation.

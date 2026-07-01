@@ -29,8 +29,13 @@ describe("enterprise seo/aeo readiness", () => {
     const payload = JSON.parse(script.props.dangerouslySetInnerHTML.__html) as Record<string, unknown>;
     assert.equal(payload["@type"], "Organization");
     assert.ok(Array.isArray(payload["sameAs"]), "sameAs should be an array");
-    assert.ok((payload["sameAs"] as string[]).some((item) => item.includes("g2.com")), "Expected G2 in sameAs");
+    assert.ok(
+      (payload["sameAs"] as string[]).some((item) => item.includes("linkedin.com")),
+      "Expected verified LinkedIn in sameAs",
+    );
     assert.ok(payload["contactPoint"], "Expected contactPoint");
+    assert.ok(payload["areaServed"], "Expected areaServed India");
+    assert.ok(payload["knowsAbout"], "Expected knowsAbout topics");
   });
 
   it("includes Starter and Growth offers in SoftwareApplication schema", () => {

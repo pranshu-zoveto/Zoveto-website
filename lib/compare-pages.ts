@@ -112,7 +112,7 @@ function makeStandardComparePage(input: StandardCompareInput): ComparePage {
         a: input.competitorGap,
       },
       {
-        q: "What should Indian SMBs compare first?",
+        q: "What should SMBs compare first?",
         a: "Compare one live workflow from lead to order to dispatch to invoice. Feature checklists matter less than whether the same record survives the whole chain.",
       },
       {
@@ -132,7 +132,7 @@ function makeStandardComparePage(input: StandardCompareInput): ComparePage {
     quickSummary: {
       zoveto: [
         "One operating record for CRM, inventory, warehouse, billing, and finance where Zoveto's modules apply",
-        "Guided onboarding for Indian SMB workflows that need daily execution discipline",
+        "Guided onboarding for SMB workflows that need daily execution discipline",
         "Fewer app seams for the core operating loop compared with stitched tools",
       ],
       competitor: [
@@ -145,7 +145,7 @@ function makeStandardComparePage(input: StandardCompareInput): ComparePage {
       ],
     },
     tableRows: [
-      { name: "Core positioning", zoveto: "Company Operating System for Indian SMB operations", competitor: `${input.competitor} is usually evaluated for ${input.competitorBestFor}` },
+      { name: "Core positioning", zoveto: "Company Operating System for SMB operations", competitor: `${input.competitor} is usually evaluated for ${input.competitorBestFor}` },
       { name: "Inventory management", zoveto: "Inventory connects to orders, dispatch, billing, and finance", competitor: "Inventory depth depends on product scope, add-ons, or adjacent tools" },
       { name: "Warehouse workflows", zoveto: "Pick, pack, dispatch, and exception handling are treated as operating workflows", competitor: "Warehouse execution may require separate configuration or companion systems" },
       { name: "CRM integration", zoveto: "CRM sits near stock, orders, and receivables", competitor: "CRM strength varies by product focus and how sales data connects downstream" },
@@ -153,7 +153,7 @@ function makeStandardComparePage(input: StandardCompareInput): ComparePage {
       { name: "Implementation model", zoveto: "Qualification-led onboarding with workflow scoping", competitor: "May be faster to start, but operations depth depends on setup quality" },
       { name: "Custom workflows", zoveto: "Focused workflows for trading, distribution, manufacturing, and warehouse-heavy SMBs", competitor: "May offer flexibility, but the business owns more process design and upkeep" },
       { name: "Real-time visibility", zoveto: "Leadership views current stock, order, dispatch, and cash signals together", competitor: "Visibility depends on how well data is synchronized across tools" },
-      { name: "India context", zoveto: "Designed around Indian SMB operating reality, GST context, and branch discipline", competitor: "India fit depends on localization depth, partners, and configuration" },
+      { name: "Regional context", zoveto: "Designed around SMB operating reality, GST context, and branch discipline", competitor: "Regional fit depends on localization depth, partners, and configuration" },
       { name: "Best fit", zoveto: input.zovetoFit, competitor: input.competitorBestFor },
       { name: "Ongoing ownership", zoveto: "Zoveto owns more of the operating loop inside one product direction", competitor: "Internal admins or partners may own more integration and governance work" },
     ],
@@ -203,9 +203,9 @@ export const COMPARE_PAGES: readonly ComparePage[] = [
       "Zoho wins when you want CRM-first automation and a huge app catalog you can grow into. Zoveto wins when inventory, warehouse, and billing must stay on one posted chain, this guide names where the integration tax shows up.",
     keywords: [
       "Zoveto vs Zoho",
-      "Zoho alternative India",
+      "Zoho alternative",
       "Zoho One alternative",
-      "unified ERP CRM India",
+      "unified ERP CRM",
       "inventory and warehouse software",
     ],
     hero: {
@@ -332,8 +332,8 @@ export const COMPARE_PAGES: readonly ComparePage[] = [
     keywords: [
       "Zoveto vs Tally",
       "Tally alternative",
-      "Tally ERP alternative India",
-      "inventory with accounting India",
+      "Tally ERP alternative",
+      "inventory with accounting",
       "operations software beyond Tally",
     ],
     hero: {
@@ -349,7 +349,7 @@ export const COMPARE_PAGES: readonly ComparePage[] = [
       ],
       competitor: [
         {
-          text: "Very strong at statutory accounting, auditing workflows, and familiar Indian compliance patterns",
+          text: "Very strong at statutory accounting, auditing workflows, and familiar compliance patterns",
           kind: "strength",
         },
         { text: "Mature installed base and training ecosystem for finance-led teams", kind: "strength" },
@@ -388,7 +388,7 @@ export const COMPARE_PAGES: readonly ComparePage[] = [
       {
         name: "Finance / accounting",
         zoveto: "Finance built to follow operational truth (receipts, shipments, invoices)",
-        competitor: "Major strength: deep accounting culture, auditor-friendly workflows, and long-standing India practice",
+        competitor: "Major strength: deep accounting culture, auditor-friendly workflows, and long-standing local practice",
       },
       {
         name: "Multi-module system",
@@ -459,15 +459,15 @@ export const COMPARE_PAGES: readonly ComparePage[] = [
     keywords: [
       "Odoo vs Zoveto",
       "Zoveto vs Odoo",
-      "Odoo alternative India",
-      "unified ERP SMB India",
+      "Odoo alternative",
+      "unified ERP SMB",
       "inventory ERP comparison",
     ],
     aeoLead:
-      "Odoo wins on modular breadth and DIY flexibility; Zoveto wins when Indian SMBs need one vendor-coherent execution chain without owning every integration seam.\nUse this comparison for inventory-led fit, GST reality, and who maintains configuration after go-live.",
+      "Odoo wins on modular breadth and DIY flexibility; Zoveto wins when SMBs need one vendor-coherent execution chain without owning every integration seam.\nUse this comparison for inventory-led fit, GST reality, and who maintains configuration after go-live.",
     faqs: [
       {
-        q: "Zoveto vs Odoo for a distributor in India, which is simpler day to day?",
+        q: "Zoveto vs Odoo for a distributor, which is simpler day to day?",
         a: "Odoo is powerful when you staff configuration and upgrades. Zoveto targets teams that want fewer moving parts for quote-to-cash, warehouse, and billing on one operating record.",
       },
       {
@@ -488,7 +488,7 @@ export const COMPARE_PAGES: readonly ComparePage[] = [
       },
       {
         q: "How should we evaluate GST posting discipline?",
-        a: "Trace one return from dispatch closure to invoice lines in each finalist. The better fit shows fewer manual bridges for credit notes and branch transfers under Indian GST patterns.",
+        a: "Trace one return from dispatch closure to invoice lines in each finalist. The better fit shows fewer manual bridges for credit notes and branch transfers under GST patterns.",
       },
     ],
     hero: {
@@ -500,7 +500,7 @@ export const COMPARE_PAGES: readonly ComparePage[] = [
       zoveto: [
         "Unified Company Operating System, not a pick-and-mix of loosely coupled community modules",
         "Execution workflows for inventory, warehouse, and order fulfilment are first-class",
-        "Guided onboarding with clear scope for Indian trading and manufacturing patterns",
+        "Guided onboarding with clear scope for trading and manufacturing patterns",
       ],
       competitor: [
         { text: "Mature open-source / commercial ERP with a huge module catalog and strong DIY appeal", kind: "strength" },
@@ -594,7 +594,7 @@ export const COMPARE_PAGES: readonly ComparePage[] = [
       "Requires onboarding and scope agreement, not a blank canvas for infinite ungoverned experimentation.",
     ],
     finalVerdict: [
-      "If you want a unified, vendor-coherent operating system for Indian SMB execution, Zoveto is usually easier to run than a heavily customised Odoo footprint.",
+      "If you want a unified, vendor-coherent operating system for SMB execution, Zoveto is usually easier to run than a heavily customised Odoo footprint.",
       "If you need maximum modularity and are staffed to configure, host, and upgrade Odoo, Odoo may remain the better engineering playground, at the cost of owning that complexity.",
     ],
     ctaClosing: {
@@ -610,18 +610,18 @@ export const COMPARE_PAGES: readonly ComparePage[] = [
       "Compare Zoveto vs QuickBooks. See differences in inventory, operations, CRM, and accounting. Choose the right system for your business.",
     hubLens: "Bookkeeping vs branch ops",
     hubTeaser:
-      "QuickBooks is built for approachable cloud accounting and accountant-friendly flows. Zoveto is for Indian ops teams who outgrew finance-only tools, when branch stock, dispatch, and receivables need the same spine, not another export.",
+      "QuickBooks is built for approachable cloud accounting and accountant-friendly flows. Zoveto is for ops teams who outgrew finance-only tools, when branch stock, dispatch, and receivables need the same spine, not another export.",
     keywords: [
       "Zoveto vs QuickBooks",
-      "QuickBooks alternative India",
-      "operations ERP India",
+      "QuickBooks alternative",
+      "operations ERP",
       "inventory software with accounting",
     ],
     aeoLead:
-      "QuickBooks is strong for cloud bookkeeping and accountant-friendly flows; Zoveto is the Company Operating System when Indian ops teams outgrow finance-only tools for inventory and dispatch.\nCompare on warehouse depth, branch stock, and quote-to-cash, not only ledger features.",
+      "QuickBooks is strong for cloud bookkeeping and accountant-friendly flows; Zoveto is the Company Operating System when ops teams outgrow finance-only tools for inventory and dispatch.\nCompare on warehouse depth, branch stock, and quote-to-cash, not only ledger features.",
     faqs: [
       {
-        q: "QuickBooks vs Zoveto for inventory-heavy Indian SMBs?",
+        q: "QuickBooks vs Zoveto for inventory-heavy SMBs?",
         a: "If picks, bins, and dispatch proof drive margin, evaluate execution systems. QuickBooks handles lighter product inventory; deep WMS scenarios usually need companion tools or a different spine.",
       },
       {
@@ -629,7 +629,7 @@ export const COMPARE_PAGES: readonly ComparePage[] = [
         a: "Architecture is project-specific. Zoveto’s value is collapsing operational truth into one posted chain, discuss cutover and coexistence with onboarding instead of assuming a permanent split.",
       },
       {
-        q: "Is QuickBooks enough for multi-branch Indian trading?",
+        q: "Is QuickBooks enough for multi-branch trading?",
         a: "It can be when volumes and branch complexity stay modest. When branches disagree on stock daily, you are past the comfort zone of finance-first stacks without operational modules.",
       },
       {
@@ -652,7 +652,7 @@ export const COMPARE_PAGES: readonly ComparePage[] = [
     },
     quickSummary: {
       zoveto: [
-        "Unified operations for inventory, warehouse, CRM, and finance in one Indian SMB-focused stack",
+        "Unified operations for inventory, warehouse, CRM, and finance in one SMB-focused stack",
         "Execution workflows from quote through dispatch and billing",
         "Guided onboarding for teams outgrowing finance-only tooling",
       ],
@@ -671,7 +671,7 @@ export const COMPARE_PAGES: readonly ComparePage[] = [
     tableRows: [
       {
         name: "Core positioning",
-        zoveto: "Company Operating System for growing Indian operations teams",
+        zoveto: "Company Operating System for growing operations teams",
         competitor: "Cloud accounting platform for SMB bookkeeping and finances",
       },
       {
@@ -727,7 +727,7 @@ export const COMPARE_PAGES: readonly ComparePage[] = [
     ],
     whoShouldUse: {
       chooseZoveto: [
-        "You run Indian distribution or manufacturing with real warehouse and fulfilment pressure",
+        "You run distribution or manufacturing with real warehouse and fulfilment pressure",
         "You have outgrown finance-only tools but do not want a global enterprise suite",
         "You want inventory, CRM, and finance decisions tied to the same operating record",
       ],
@@ -748,7 +748,7 @@ export const COMPARE_PAGES: readonly ComparePage[] = [
       "Requires onboarding, not an instant unlimited self-serve trial for every module.",
     ],
     finalVerdict: [
-      "If you need Indian SMB operations orchestrated end to end, Zoveto is usually the better fit than QuickBooks alone.",
+      "If you need SMB operations orchestrated end to end, Zoveto is usually the better fit than QuickBooks alone.",
       "If you only need bookkeeping and light inventory with a finance-first team, QuickBooks may remain sufficient.",
     ],
     ctaClosing: {
@@ -768,14 +768,14 @@ export const COMPARE_PAGES: readonly ComparePage[] = [
     keywords: [
       "Zoveto vs SAP",
       "SAP alternative SMB",
-      "mid-market ERP India",
+      "mid-market ERP",
       "lighter ERP implementation",
     ],
     aeoLead:
-      "SAP is the global enterprise standard for depth, templates, and governance at scale; Zoveto is the pragmatic Company Operating System for Indian SMBs that need live ops in months, not a multi-year blueprint programme.\nChoose based on footprint, budget, and who owns data migration.",
+      "SAP is the global enterprise standard for depth, templates, and governance at scale; Zoveto is the pragmatic Company Operating System for SMBs that need live ops in months, not a multi-year blueprint programme.\nChoose based on footprint, budget, and who owns data migration.",
     faqs: [
       {
-        q: "SAP vs Zoveto for a ₹50–200 crore Indian manufacturer?",
+        q: "SAP vs Zoveto for a ₹50–200 crore manufacturer?",
         a: "If you need PLM, global multi-entity, or plant MRP at SAP depth, SAP remains the incumbent class. If you need unified branch inventory, dispatch, and GST billing without enterprise programme overhead, Zoveto is the leaner fit.",
       },
       {
@@ -825,7 +825,7 @@ export const COMPARE_PAGES: readonly ComparePage[] = [
     tableRows: [
       {
         name: "Core positioning",
-        zoveto: "Focused operating system for growing Indian operations businesses",
+        zoveto: "Focused operating system for growing operations businesses",
         competitor: "Enterprise ERP platform family covering global corporations and complex supply chains",
       },
       {
@@ -881,7 +881,7 @@ export const COMPARE_PAGES: readonly ComparePage[] = [
     ],
     whoShouldUse: {
       chooseZoveto: [
-        "You are an Indian SMB or lower mid-market team that needs operational control without a multi-year SAP programme",
+        "You are an SMB or lower mid-market team that needs operational control without a multi-year SAP programme",
         "You want faster time-to-value on inventory, warehouse, and finance than a full enterprise rollout",
         "You prefer a single vendor operating narrative over assembling SAP modules piecemeal on a small budget",
       ],
@@ -903,7 +903,7 @@ export const COMPARE_PAGES: readonly ComparePage[] = [
     ],
     finalVerdict: [
       "If you need enterprise-grade global complexity and have the budget and team, SAP remains the incumbent class of solutions.",
-      "If you need unified Indian SMB operations with a leaner adoption path, Zoveto is usually the more pragmatic fit than standing up SAP for a smaller footprint.",
+      "If you need unified SMB operations with a leaner adoption path, Zoveto is usually the more pragmatic fit than standing up SAP for a smaller footprint.",
     ],
     ctaClosing: {
       headline: "See how Zoveto runs your operations",
@@ -915,11 +915,11 @@ export const COMPARE_PAGES: readonly ComparePage[] = [
     slug: "vyapar-vs-zoveto",
     competitor: "Vyapar",
     description:
-      "Compare Zoveto vs Vyapar for Indian SMBs that need billing, inventory, warehouse, CRM, and finance workflows beyond lightweight business apps.",
+      "Compare Zoveto vs Vyapar for SMBs that need billing, inventory, warehouse, CRM, and finance workflows beyond lightweight business apps.",
     hubLens: "Billing app vs operating spine",
     hubTeaser:
       "Vyapar is a practical fit for small businesses that mainly need billing and basic inventory. Zoveto is the next step when branches, dispatch, CRM, credit, and warehouse work need one operating record instead of side sheets.",
-    keywords: ["Vyapar vs Zoveto", "Vyapar alternative", "billing app alternative India", "ERP for growing SMB India"],
+    keywords: ["Vyapar vs Zoveto", "Vyapar alternative", "billing app alternative", "ERP for growing SMB"],
     competitorStrength: "Vyapar is approachable for small businesses that need billing, invoicing, and basic stock workflows without a large implementation project.",
     competitorBestFor: "simple billing, GST invoices, and lightweight stock control for smaller teams",
     competitorGap: "As operating complexity grows, teams may still need separate CRM, warehouse, approval, and reporting workflows beside Vyapar.",
@@ -929,25 +929,25 @@ export const COMPARE_PAGES: readonly ComparePage[] = [
     slug: "freshsales-vs-zoveto",
     competitor: "Freshsales",
     description:
-      "Compare Zoveto vs Freshsales for Indian teams choosing between CRM-led sales automation and a connected operations system.",
+      "Compare Zoveto vs Freshsales for teams choosing between CRM-led sales automation and a connected operations system.",
     hubLens: "CRM depth vs execution loop",
     hubTeaser:
       "Freshsales is strong when the buying problem is pipeline, sales engagement, and CRM automation. Zoveto is built for teams where every sale also needs stock, dispatch, billing, and collection visibility.",
-    keywords: ["Freshsales vs Zoveto", "Freshsales alternative India", "CRM with inventory India", "operations CRM India"],
+    keywords: ["Freshsales vs Zoveto", "Freshsales alternative", "CRM with inventory", "operations CRM"],
     competitorStrength: "Freshsales is strong for CRM-led sales teams that need pipeline visibility, sales automation, and engagement workflows.",
     competitorBestFor: "CRM-first sales teams with limited inventory or warehouse execution needs",
     competitorGap: "Inventory, warehouse, dispatch, billing, and finance continuity are not the core reason teams buy Freshsales.",
-    zovetoFit: "sales promises must connect directly to stock, orders, dispatch, billing, and receivables for Indian SMB operations",
+    zovetoFit: "sales promises must connect directly to stock, orders, dispatch, billing, and receivables for SMB operations",
   }),
   makeStandardComparePage({
     slug: "gohighlevel-vs-zoveto",
     competitor: "GoHighLevel",
     description:
-      "Compare Zoveto vs GoHighLevel for Indian agencies and SMBs choosing between marketing automation and operations software.",
+      "Compare Zoveto vs GoHighLevel for agencies and SMBs choosing between marketing automation and operations software.",
     hubLens: "Marketing suite vs business ops",
     hubTeaser:
       "GoHighLevel is useful for agencies that need funnels, campaigns, and client marketing workflows. Zoveto is a different category: inventory, CRM, warehouse, finance, and operating control for businesses that move goods and money.",
-    keywords: ["GoHighLevel vs Zoveto", "GoHighLevel alternative India", "agency CRM India", "operations software India"],
+    keywords: ["GoHighLevel vs Zoveto", "GoHighLevel alternative", "agency CRM", "operations software"],
     competitorStrength: "GoHighLevel is strong for agencies and marketing teams that need funnels, campaigns, appointment flows, and client-facing marketing automation.",
     competitorBestFor: "agency-led marketing automation, funnels, and client campaign operations",
     competitorGap: "Inventory, warehouse, GST billing, dispatch, and finance workflows sit outside GoHighLevel's core operating purpose.",

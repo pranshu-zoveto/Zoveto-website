@@ -1,7 +1,8 @@
 import React from "react";
 import { ZOVETO_ORGANIZATION_DESCRIPTION } from "@/lib/brand-entity";
 import { BRAND_LOGO_ICON } from "@/lib/branding";
-import { LINKEDIN_COMPANY_URL_ENTITY } from "@/lib/social";
+import { LEAD_STAFF_INBOX } from "@/lib/lead-intake-mail";
+import { VERIFIED_SAME_AS } from "@/lib/social";
 import { siteUrl } from "@/lib/site";
 
 /** Organization JSON-LD - use on the homepage (or wherever brand entity should be declared). */
@@ -12,7 +13,7 @@ export function OrganizationSchema() {
     "@type": "Organization",
     "@id": `${base}/#organization`,
     name: "Zoveto",
-    legalName: "Zoveto Technologies Private Limited",
+    legalName: "Zoveto Technologies",
     url: base,
     logo: {
       "@type": "ImageObject",
@@ -20,17 +21,30 @@ export function OrganizationSchema() {
       width: 512,
       height: 512,
     },
-    sameAs: [
-      LINKEDIN_COMPANY_URL_ENTITY,
-      "https://twitter.com/zoveto",
-      "https://www.g2.com/products/zoveto",
-    ],
+    sameAs: [...VERIFIED_SAME_AS],
     description: ZOVETO_ORGANIZATION_DESCRIPTION,
+    areaServed: {
+      "@type": "Country",
+      name: "India",
+    },
+    knowsAbout: [
+      "Company Operating System",
+      "ERP software",
+      "warehouse management system",
+      "inventory management software",
+      "procurement software",
+      "CRM software",
+      "GST billing software",
+      "HRMS",
+      "MRO",
+      "export workflows",
+    ],
     contactPoint: {
       "@type": "ContactPoint",
       contactType: "customer support",
-      email: "hello@zoveto.com",
+      email: LEAD_STAFF_INBOX,
       availableLanguage: ["English", "Hindi"],
+      areaServed: "IN",
     },
   };
 

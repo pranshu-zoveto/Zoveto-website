@@ -4,7 +4,7 @@ import path from "node:path";
 import { describe, it } from "node:test";
 
 function readPageSource(): string {
-  return fs.readFileSync(path.join(process.cwd(), "app/page.tsx"), "utf8");
+  return fs.readFileSync(path.join(process.cwd(), "app/(marketing)/page.tsx"), "utf8");
 }
 
 describe("home landing critical path (LCP)", () => {

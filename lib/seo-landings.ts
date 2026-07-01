@@ -1,5 +1,5 @@
 /**
- * India-focused SEO landing pages - copy and meta only (rendered by App Router pages).
+ * SEO landing pages - copy and meta only (rendered by App Router pages).
  * Keep titles distinct from /modules/* pages to limit cannibalization.
  */
 
@@ -31,15 +31,15 @@ export type SeoLanding = {
 const landings: SeoLanding[] = [
   {
     path: "/warehouse-management-system-india",
-    breadcrumbName: "Warehouse management India",
-    metaTitle: "Warehouse management system India | Zoveto WMS",
+    breadcrumbName: "Warehouse management",
+    metaTitle: "Warehouse management system | Zoveto WMS",
     metaDescription:
-      "Evaluate warehouse management software for Indian SMEs: bin tracking, GST-ready flows, multi-site stock, and scan-first ops. Book a demo with Zoveto.",
-    h1: "Warehouse management system in India",
+      "Evaluate warehouse management software for SMEs: bin tracking, GST-ready flows, multi-site stock, and scan-first ops. Book a demo with Zoveto.",
+    h1: "Warehouse management system",
     directAnswer:
-      "For Indian SMEs, warehouse success means bin-level stock truth, dispatch speed, and GST-aligned documents tied to the same ledger, not spreadsheets.\nZoveto is a Company Operating System that runs warehouse execution together with inventory and finance.",
+      "For SMEs, warehouse success means bin-level stock truth, dispatch speed, and GST-aligned documents tied to the same ledger, not spreadsheets.\nZoveto is a Company Operating System that runs warehouse execution together with inventory and finance.",
     intro:
-      "If you run a warehouse management system in India, you need bin-level accuracy, fast dispatch, and numbers that finance and operations agree on, without spreadsheets as the source of truth.",
+      "For Indian SMB warehouse teams, a warehouse management system needs bin-level accuracy, fast dispatch, and numbers that finance and operations agree on, without spreadsheets as the source of truth.",
     sections: [
       {
         h2: "Who this page is for",
@@ -60,7 +60,7 @@ const landings: SeoLanding[] = [
         ],
       },
       {
-        h2: "India-specific operating context",
+        h2: "Regional operating context",
         paragraphs: [
           "GST-compliant invoices and credit notes should flow from the same stock truth your warehouse uses. Multi-site businesses need a single ledger with clear ownership per location, especially when HO, branches, and 3PL hubs all move stock.",
         ],
@@ -86,7 +86,7 @@ const landings: SeoLanding[] = [
         a: "Yes. Many customers prove value at a hub first, then extend putaway and picking standards to branches once the playbook is stable.",
       },
       {
-        q: "What should a WMS in India prove in the first 90 days?",
+        q: "What should a WMS prove in the first 90 days?",
         a: "Fewer mis-picks, faster gate-to-invoice time, and one on-hand number that purchasing and finance both accept. If those three do not move, the implementation focus is wrong.",
       },
       {
@@ -98,15 +98,15 @@ const landings: SeoLanding[] = [
   },
   {
     path: "/erp-software-small-business-india",
-    breadcrumbName: "ERP for SMB India",
-    metaTitle: "ERP software for small business India | Zoveto",
+    breadcrumbName: "ERP for SMB",
+    metaTitle: "ERP software for small business | Zoveto",
     metaDescription:
-      "ERP software for small businesses in India: inventory, CRM, finance, and ops on one stack, without duct-taping spreadsheets. Plans, trial, and demo inside.",
-    h1: "ERP software for small businesses in India",
+      "ERP software for small businesses: inventory, CRM, finance, and ops on one stack, without duct-taping spreadsheets. Plans, trial, and demo inside.",
+    h1: "ERP software for small businesses",
     directAnswer:
-      "Small businesses in India need one execution stack for orders, stock, GST billing, and collections, not another silo next to WhatsApp and Excel.\nZoveto is a Company Operating System built for that daily operating reality.",
+      "Small businesses need one execution stack for orders, stock, GST billing, and collections, not another silo next to WhatsApp and Excel.\nZoveto is a Company Operating System built for that daily operating reality.",
     intro:
-      "ERP software for small businesses in India should reduce chaos across inventory, sales, and money, not add another silo. The goal is one place to run the business day-to-day, with GST-aware workflows your team can actually adopt.",
+      "ERP software for Indian SMBs should reduce chaos across inventory, sales, and money, not add another silo. The goal is one place to run the business day-to-day, with GST-aware workflows your team can actually adopt.",
     sections: [
       {
         h2: "What SMB teams need most",
@@ -145,7 +145,7 @@ const landings: SeoLanding[] = [
         a: "Paid tiers include a trial window; see current plans on the pricing page or ask on a demo call for eligibility.",
       },
       {
-        q: "What is the fastest way to judge fit for an Indian SMB?",
+        q: "What is the fastest way to judge fit for an SMB?",
         a: "Bring your highest-frequency workflow, usually quote-to-cash or purchase-to-pay, and we walk the exact screens and postings on a demo. Fit is about execution continuity, not brochure checklists.",
       },
       {
@@ -157,15 +157,15 @@ const landings: SeoLanding[] = [
   },
   {
     path: "/inventory-management-software-india",
-    breadcrumbName: "Inventory software India",
-    metaTitle: "Inventory management software India | Zoveto",
+    breadcrumbName: "Inventory software",
+    metaTitle: "Inventory management software | Zoveto",
     metaDescription:
-      "Inventory management software for Indian businesses: multi-location stock, GRN, expiry, and finance-aligned ledgers. Compare plans and book a Zoveto demo.",
-    h1: "Inventory management software in India",
+      "Inventory management software for businesses: multi-location stock, GRN, expiry, and finance-aligned ledgers. Compare plans and book a Zoveto demo.",
+    h1: "Inventory management software",
     directAnswer:
-      "Indian firms lose margin when branches disagree on stock, finance posts adjustments late, and dispatch runs ahead of the ledger.\nZoveto is a Company Operating System that keeps inventory, orders, and finance on one posted record.",
+      "firms lose margin when branches disagree on stock, finance posts adjustments late, and dispatch runs ahead of the ledger.\nZoveto is a Company Operating System that keeps inventory, orders, and finance on one posted record.",
     intro:
-      "Inventory management software in India should give you one truthful view of stock across branches, in-transit, and returns, before margin leaks into expedite shipping and write-offs.",
+      "For Indian SMB teams, inventory management software should give one truthful view of stock across branches, in-transit, and returns, before margin leaks into expedite shipping and write-offs.",
     sections: [
       {
         h2: "Signals you have outgrown spreadsheets",
@@ -197,7 +197,7 @@ const landings: SeoLanding[] = [
       },
       {
         q: "Does Zoveto support multiple GST registrations?",
-        a: "Multi-entity setups are common in Indian groups. Bring your structure to the demo and we map how ledgers, branches, and tax profiles should align.",
+        a: "Multi-entity setups are common in groups. Bring your structure to the demo and we map how ledgers, branches, and tax profiles should align.",
       },
       {
         q: "Where can I see pricing?",
@@ -216,15 +216,15 @@ const landings: SeoLanding[] = [
   },
   {
     path: "/company-operating-system-india",
-    breadcrumbName: "Company Operating System India",
-    metaTitle: "Company Operating System India | Zoveto SMB stack",
+    breadcrumbName: "Company Operating System",
+    metaTitle: "Company Operating System | Zoveto SMB stack",
     metaDescription:
-      "Company Operating System for Indian SMBs: inventory, GST billing, CRM & warehouse on one execution stack. No stitched ERP silos. Zoveto fit guide. Book a demo.",
-    h1: "Company Operating System for Indian SMBs",
+      "Company Operating System for SMBs: inventory, GST billing, CRM & warehouse on one execution stack. No stitched ERP silos. Zoveto fit guide. Book a demo.",
+    h1: "Company Operating System for SMBs",
     directAnswer:
-      "A Company Operating System runs your core workflows, quote, stock, pick, dispatch, invoice, collect, on one posted record instead of WhatsApp + Excel bridges.\nZoveto is that OS for operations-heavy Indian SMBs; traditional ERP checklists alone rarely fix execution seams.",
+      "A Company Operating System runs your core workflows, quote, stock, pick, dispatch, invoice, collect, on one posted record instead of WhatsApp + Excel bridges.\nZoveto is that OS for operations-heavy SMBs; traditional ERP checklists alone rarely fix execution seams.",
     intro:
-      "If you are evaluating a Company Operating System in India, you are really asking whether sales, warehouse, and finance can trust the same numbers before month-end. Zoveto narrows scope to the operating spine SMBs actually run daily, then links modules so handoffs do not become integration projects.",
+      "If you are evaluating a Company Operating System for Indian SMBs, you are really asking whether sales, warehouse, and finance can trust the same numbers before month-end. Zoveto narrows scope to the operating spine teams actually run daily, then links modules so handoffs do not become integration projects.",
     sections: [
       {
         h2: "Why “ERP” buying checklists miss the point",
@@ -235,7 +235,7 @@ const landings: SeoLanding[] = [
       {
         h2: "How Zoveto differs from stitched stacks",
         paragraphs: [
-          "Zoveto combines inventory, warehouse execution, CRM, finance, and optional AI assistance where teams define rules, aimed at Indian trading, distribution, parts, and manufacturing patterns. Read the FAQ hub for cross-topic answers, then compare plans when you want numbers on the table.",
+          "Zoveto combines inventory, warehouse execution, CRM, finance, and optional AI assistance where teams define rules, aimed at trading, distribution, parts, and manufacturing patterns. Read the FAQ hub for cross-topic answers, then compare plans when you want numbers on the table.",
         ],
         bullets: [
           "Posted movements instead of reconciled extracts every Friday.",
@@ -246,7 +246,7 @@ const landings: SeoLanding[] = [
       {
         h2: "Next steps",
         paragraphs: [
-          "Start with the product overview, skim the India FAQ hub, and book a demo so we can map your quote-to-cash or inventory chain honestly, without forcing a category label that does not match your pain.",
+          "Start with the product overview, skim the FAQ hub, and book a demo so we can map your quote-to-cash or inventory chain honestly, without forcing a category label that does not match your pain.",
         ],
       },
     ],
@@ -256,7 +256,7 @@ const landings: SeoLanding[] = [
         a: "ERP is often part of the stack, but the OS framing centres on execution continuity. Buyers should score how orders, stock, dispatch, and billing post, not how long the module menu is.",
       },
       {
-        q: "When should an Indian SMB choose an OS-first product?",
+        q: "When should an SMB choose an OS-first product?",
         a: "When throughput, branch complexity, or GST reconciliation drag is driven by handoffs, not by missing a single GL report. If seams cost margin weekly, OS-first fit matters.",
       },
       {
@@ -276,20 +276,20 @@ const landings: SeoLanding[] = [
   },
   {
     path: "/crm-software-india",
-    breadcrumbName: "CRM software India",
-    metaTitle: "CRM software India | Zoveto sales CRM",
+    breadcrumbName: "CRM software",
+    metaTitle: "CRM software | Zoveto sales CRM",
     metaDescription:
-      "CRM software for Indian B2B teams: lead capture, follow-ups, quotes, orders, inventory checks, and collections on one operating record.",
-    h1: "CRM software for Indian B2B sales teams",
+      "CRM software for Indian B2B teams: lead capture, follow-ups, quotes, orders, inventory checks, and collections on one operating record. Book a demo.",
+    h1: "CRM software for B2B sales teams",
     directAnswer:
-      "Indian B2B teams need CRM that connects follow-ups to stock, quotes, orders, and dues.\nZoveto keeps CRM inside the same operating system as inventory and finance so promises stay executable.",
+      "B2B teams need CRM that connects follow-ups to stock, quotes, orders, and dues.\nZoveto keeps CRM inside the same operating system as inventory and finance so promises stay executable.",
     intro:
-      "CRM software in India should not become another contact database beside WhatsApp, Excel, and billing. For operations-heavy teams, the useful CRM is the one that keeps sales commitments aligned with stock, dispatch, and collections.",
+      "CRM software for Indian B2B teams should not become another contact database beside WhatsApp, Excel, and billing. The useful CRM keeps sales commitments aligned with stock, dispatch, and collections.",
     sections: [
       {
         h2: "What to evaluate",
         paragraphs: [
-          "Start with the daily path from enquiry to quotation to order. If sales needs to call the warehouse for every promise, the CRM is not connected deeply enough for a scaling Indian business.",
+          "Start with the daily path from enquiry to quotation to order. If sales needs to call the warehouse for every promise, the CRM is not connected deeply enough for a scaling business.",
         ],
         bullets: [
           "Lead capture from web, referral, WhatsApp, email, and field teams.",
@@ -326,7 +326,7 @@ const landings: SeoLanding[] = [
       },
       {
         q: "Who should consider Zoveto CRM?",
-        a: "Indian SMBs where sales, dispatch, inventory, and finance frequently disagree are better candidates than teams that only need simple pipeline tracking.",
+        a: "SMBs where sales, dispatch, inventory, and finance frequently disagree are better candidates than teams that only need simple pipeline tracking.",
       },
       {
         q: "Where should we start in a demo?",
@@ -337,15 +337,15 @@ const landings: SeoLanding[] = [
   },
   {
     path: "/hr-payroll-software-india",
-    breadcrumbName: "HR payroll India",
-    metaTitle: "HR payroll software India | Zoveto HRMS",
+    breadcrumbName: "HR payroll",
+    metaTitle: "HR payroll software | Zoveto HRMS",
     metaDescription:
-      "HR payroll software for Indian SMBs: attendance, leave, payroll, PF, ESI, PT, TDS context, approvals, and salary slips in one system.",
-    h1: "HR payroll software for Indian SMBs",
+      "HR payroll software for Indian SMBs: attendance, leave, payroll, PF, ESI, PT, TDS context, approvals, and salary slips in one connected system. Demo.",
+    h1: "HR payroll software for SMBs",
     directAnswer:
-      "Indian SMB payroll needs attendance, leave, approvals, salary calculation, and compliance context to stay connected.\nZoveto HRMS links people operations with the wider operating system so payroll is not rebuilt from sheets.",
+      "SMB payroll needs attendance, leave, approvals, salary calculation, and compliance context to stay connected.\nZoveto HRMS links people operations with the wider operating system so payroll is not rebuilt from sheets.",
     intro:
-      "HR payroll software in India should reduce monthly calculation pressure and give owners visibility without asking HR to rebuild attendance, leave, and salary data manually.",
+      "HR payroll software for Indian SMBs should reduce monthly calculation pressure and give owners visibility without asking HR to rebuild attendance, leave, and salary data manually.",
     sections: [
       {
         h2: "Payroll pain to solve first",
@@ -398,15 +398,15 @@ const landings: SeoLanding[] = [
   },
   {
     path: "/ai-business-automation-india",
-    breadcrumbName: "AI automation India",
-    metaTitle: "AI business automation India | Zoveto",
+    breadcrumbName: "AI automation",
+    metaTitle: "AI business automation | Zoveto",
     metaDescription:
-      "AI business automation for Indian SMB operations: alerts, exception queues, follow-up nudges, low-stock signals, and controlled workflows.",
-    h1: "AI business automation for Indian SMB operations",
+      "AI business automation for Indian SMB operations: alerts, exception queues, follow-up nudges, low-stock signals, and controlled workflows inside Zoveto. Book demo.",
+    h1: "AI business automation for SMB operations",
     directAnswer:
       "AI automation is useful only when it works on clean operating records and clear rules.\nZoveto applies automation to exception queues, reminders, stock signals, and operational nudges inside one business system.",
     intro:
-      "AI business automation in India should not mean black-box posting on money or tax workflows. It should start with low-risk, high-frequency operating loops that teams already understand.",
+      "AI business automation for Indian SMB teams should not mean black-box posting on money or tax workflows. It should start with low-risk, high-frequency operating loops teams already understand.",
     sections: [
       {
         h2: "Where automation should start",
@@ -459,15 +459,15 @@ const landings: SeoLanding[] = [
   },
   {
     path: "/gst-billing-software-india",
-    breadcrumbName: "GST billing India",
-    metaTitle: "GST billing software India | Zoveto",
+    breadcrumbName: "GST billing",
+    metaTitle: "GST billing software | Zoveto",
     metaDescription:
-      "GST billing software for Indian operations teams: invoices, credit notes, dispatch context, branch transfers, and ledger visibility.",
-    h1: "GST billing software for Indian operations teams",
+      "GST billing software for Indian operations teams: invoices, credit notes, dispatch context, branch transfers, and ledger visibility in one system. Book a demo.",
+    h1: "GST billing software for operations teams",
     directAnswer:
       "GST billing works best when invoice lines inherit from real dispatch and return records.\nZoveto connects orders, stock, billing, and finance so GST work is not recreated from paperwork.",
     intro:
-      "GST billing software in India should do more than produce invoice PDFs. For trading, distribution, manufacturing, and warehousing teams, billing must stay connected to what actually moved.",
+      "GST billing software for Indian trading, distribution, and manufacturing teams should stay connected to what actually moved, not only produce invoice PDFs.",
     sections: [
       {
         h2: "What to validate",
@@ -520,15 +520,15 @@ const landings: SeoLanding[] = [
   },
   {
     path: "/tally-alternative-india",
-    breadcrumbName: "Tally alternative India",
-    metaTitle: "Tally alternative India | Zoveto",
+    breadcrumbName: "Tally alternative",
+    metaTitle: "Tally alternative | Zoveto",
     metaDescription:
-      "Evaluate Zoveto as a Tally alternative for Indian SMBs that need inventory, warehouse, CRM, GST billing, and operations in one system.",
-    h1: "Tally alternative for Indian SMB operations",
+      "Evaluate Zoveto as a Tally alternative for Indian SMBs that need inventory, warehouse, CRM, GST billing, and operations in one system. Book a demo.",
+    h1: "Tally alternative for SMB operations",
     directAnswer:
       "Tally remains strong for accounting-led teams, but many growing SMBs need execution beyond vouchers.\nZoveto is a Tally alternative when sales, warehouse, inventory, and billing need one operating record.",
     intro:
-      "A Tally alternative in India should be evaluated honestly. If your pain is only accounting, Tally may be enough. If your pain is warehouse, sales, dispatch, and billing drift, the operating system layer matters.",
+      "A Tally alternative for Indian SMBs should be evaluated honestly. If pain is only accounting, Tally may be enough. If warehouse, sales, dispatch, and billing drift, the operating system layer matters.",
     sections: [
       {
         h2: "When to consider a move",
@@ -581,15 +581,15 @@ const landings: SeoLanding[] = [
   },
   {
     path: "/erp-software-distributors-india",
-    breadcrumbName: "Distributor ERP India",
-    metaTitle: "ERP software distributors India | Zoveto",
+    breadcrumbName: "Distributor ERP",
+    metaTitle: "ERP software distributors | Zoveto",
     metaDescription:
-      "ERP software for Indian distributors: depot stock, beat sales, credit limits, dispatch, GST billing, collections, and branch visibility.",
-    h1: "ERP software for distributors in India",
+      "ERP software for Indian distributors: depot stock, beat sales, credit limits, dispatch, GST billing, collections, and branch visibility in one OS. Demo.",
+    h1: "ERP software for distributors",
     directAnswer:
-      "Distributors need ERP that connects depot stock, orders, credit, dispatch, billing, and collections.\nZoveto gives Indian distribution teams one operating record instead of branch sheets and delayed reports.",
+      "Distributors need ERP that connects depot stock, orders, credit, dispatch, billing, and collections.\nZoveto gives distribution teams one operating record instead of branch sheets and delayed reports.",
     intro:
-      "ERP software for distributors in India should reduce order tracking gaps, stock mismatch, delayed fulfillment, and credit confusion across depots, branches, and field teams.",
+      "ERP software for Indian distributors should reduce order tracking gaps, stock mismatch, delayed fulfillment, and credit confusion across depots, branches, and field teams.",
     sections: [
       {
         h2: "Distribution workflows to evaluate",
@@ -645,12 +645,12 @@ const landings: SeoLanding[] = [
     breadcrumbName: "Migrate from Tally",
     metaTitle: "Migrate from Tally to Zoveto | Guide",
     metaDescription:
-      "Migration guide for Indian SMBs moving from Tally-led operations to Zoveto: masters, opening balances, inventory, billing, and rollout risk.",
+      "Migration guide for Indian SMBs moving from Tally-led operations to Zoveto: masters, opening balances, inventory, billing, and rollout risk. Book a demo.",
     h1: "Migrate from Tally to an operating system",
     directAnswer:
       "Migrating from Tally should start with scope, not enthusiasm.\nZoveto migration planning focuses on masters, balances, inventory truth, billing continuity, and phased rollout risk.",
     intro:
-      "Migrating from Tally in India is safest when finance and operations agree what moves, what stays archived, and which workflow goes live first.",
+      "Migrating from Tally for Indian SMB teams is safest when finance and operations agree what moves, what stays archived, and which workflow goes live first.",
     sections: [
       {
         h2: "Migration checklist",
@@ -706,12 +706,12 @@ const landings: SeoLanding[] = [
     breadcrumbName: "Migrate from Zoho",
     metaTitle: "Migrate from Zoho to Zoveto | Guide",
     metaDescription:
-      "Migration guide for teams moving from a Zoho app stack to Zoveto: CRM, inventory, finance, integrations, ownership, and rollout phases.",
+      "Migration guide for Indian teams moving from a Zoho app stack to Zoveto: CRM, inventory, finance, integrations, ownership, and rollout phases. Book demo.",
     h1: "Migrate from a Zoho app stack to Zoveto",
     directAnswer:
       "Moving from Zoho is mostly an integration and ownership decision.\nZoveto helps when teams want CRM, inventory, warehouse, and finance on one operating record instead of many app seams.",
     intro:
-      "Migrating from Zoho in India should start by mapping which apps hold customer, item, order, invoice, and task truth today.",
+      "Migrating from Zoho for Indian SMB teams should start by mapping which apps hold customer, item, order, invoice, and task truth today.",
     sections: [
       {
         h2: "Before migration",
@@ -767,12 +767,12 @@ const landings: SeoLanding[] = [
     breadcrumbName: "Migrate from Excel",
     metaTitle: "Migrate from Excel to ERP | Zoveto",
     metaDescription:
-      "Move from Excel operations to Zoveto with cleaner masters, stock control, CRM, dispatch, billing, permissions, and staged rollout.",
+      "Move from Excel operations to Zoveto for Indian SMBs: cleaner masters, stock control, CRM, dispatch, billing, permissions, and staged rollout. Book demo.",
     h1: "Migrate from Excel operations to Zoveto",
     directAnswer:
       "Excel migration is not just importing sheets; it is deciding who owns each record after go-live.\nZoveto helps teams move stock, CRM, dispatch, and billing into one controlled operating system.",
     intro:
-      "Migrating from Excel in India should focus on record ownership, workflow discipline, and clean master data before importing anything into a new system.",
+      "Migrating from Excel for Indian SMB teams should focus on record ownership, workflow discipline, and clean master data before importing anything into a new system.",
     sections: [
       {
         h2: "What to clean first",

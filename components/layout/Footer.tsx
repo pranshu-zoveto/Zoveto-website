@@ -11,6 +11,7 @@ const LINK_COLS: { title: string; links: { label: string; href: string }[] }[] =
       { label: "Pricing", href: "/pricing" },
       { label: "Compare", href: "/compare" },
       { label: "FAQ", href: "/faq" },
+      { label: "Company facts", href: "/company-facts" },
       { label: "Modules", href: "/product" },
       { label: "Blog", href: "/blog" },
       { label: "Implementation", href: "/implementation" },
@@ -43,6 +44,8 @@ const LINK_COLS: { title: string; links: { label: string; href: string }[] }[] =
       { label: "Security", href: "/security" },
       { label: "Privacy", href: "/privacy" },
       { label: "Terms", href: "/terms" },
+      { label: "MSA", href: "/msa" },
+      { label: "SLA", href: "/sla" },
     ],
   },
   {
@@ -76,7 +79,7 @@ export function Footer() {
               Software for teams that need clean records before the day ends.
             </p>
             <p className="mt-7 font-mono text-[10px] font-semibold uppercase leading-relaxed tracking-[0.14em] text-muted">
-              © {year} Zoveto Technologies Pvt. Ltd. All rights reserved.
+              © {year} Zoveto Technologies. All rights reserved.
             </p>
           </div>
 

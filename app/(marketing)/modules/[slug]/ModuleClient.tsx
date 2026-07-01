@@ -21,6 +21,7 @@ import { modules } from "@/lib/modules";
 import { ModuleOperationalProofs } from "@/components/operational-proof/ModuleOperationalProofs";
 import { FluidMarketingSection } from "@/components/layout/FluidMarketingSection";
 import { RevealOnScroll } from "@/components/layout/RevealOnScroll";
+import { ModuleScreenshotMockup, MODULE_SCREENSHOT_SLUGS } from "@/components/modules/ModuleScreenshotMockup";
 import { bandIndexForSection } from "@/lib/marketing-bands";
 
 type SurfaceTone = "green" | "amber" | "red" | "blue";
@@ -399,7 +400,17 @@ export function ModuleClient({ slug }: { slug: string }) {
         </section>
       </FluidMarketingSection>
 
-      <FluidMarketingSection band={bandIndexForSection(1)} overlapTop stackBase>
+      {MODULE_SCREENSHOT_SLUGS.includes(data.slug) ? (
+        <FluidMarketingSection band={bandIndexForSection(1)} overlapTop stackBase>
+          <RevealOnScroll>
+            <div className="mx-auto max-w-2xl">
+              <ModuleScreenshotMockup moduleSlug={data.slug} moduleName={data.name} />
+            </div>
+          </RevealOnScroll>
+        </FluidMarketingSection>
+      ) : null}
+
+      <FluidMarketingSection band={bandIndexForSection(2)} overlapTop stackBase>
         <RevealOnScroll>
           <div className="grid gap-6 pt-6 md:pt-8 lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)] lg:gap-8">
             <div className="rounded-[1.5rem] border border-border bg-foreground p-7 text-white shadow-[0_20px_70px_rgba(15,23,42,0.18)] md:p-10">

@@ -11,7 +11,7 @@ export default function TallyVsZovetoCloudErpIndia() {
     <article className="blog-prose">
       <p className="blog-lead">
         <strong>
-          Tally is India&apos;s most trusted accounting and GST software, used by over 2 million
+          Tally is the region&apos;s most trusted accounting and GST software, used by over 2 million
           businesses. Zoveto is a cloud-based Company Operating System with ERP, CRM, WMS, and AI in
           one unified platform.
         </strong>{" "}
@@ -29,14 +29,14 @@ export default function TallyVsZovetoCloudErpIndia() {
       <h2>What Tally Does Well (And Why It Still Has 2 Million Users)</h2>
       <p>
         Let&apos;s be direct: Tally earned its dominance. Here is why it is still the default choice
-        for millions of Indian businesses.
+        for millions of businesses.
       </p>
 
       <h3>1. GST Compliance Depth</h3>
       <p>
         Tally Prime&apos;s GST implementation is among the most complete in the market. GSTR-1,
         GSTR-3B, GSTR-9, e-invoicing, e-way bills, HSN-wise reporting: it handles the full
-        compliance stack. Every CA in India knows Tally&apos;s ledger structure, and that
+        compliance stack. Every CA knows Tally&apos;s ledger structure, and that
         familiarity reduces errors.
       </p>
 

@@ -9,7 +9,7 @@ import { BreadcrumbSchema } from "@/components/seo/BreadcrumbSchema";
 
 export const metadata: Metadata = {
   title: "Zoveto Solutions Directory | All Modules and Industries",
-  description: "Browse all Zoveto modules, supported industries, and competitor comparisons. Find the right operating system components for your Indian SMB.",
+  description: "Browse all Zoveto modules, supported industries, and competitor comparisons. Find the right operating system components for your SMB.",
 };
 
 export default function DirectoryPage() {

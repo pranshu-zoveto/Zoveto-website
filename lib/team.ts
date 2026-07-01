@@ -53,7 +53,7 @@ export type TeamMember = {
 export const TEAM_SECTION_LABEL = "LEADERSHIP" as const;
 
 export const TEAM_SECTION_INTRO =
-  "We ship the operating system for businesses that run on real operations. Product, ops, and field execution sit in the same room.";
+  "We ship the operating system for operators that run on real operations. Product, ops, and field execution sit in the same room.";
 
 /** Default object-position for team headshots (upper-third, works for most chest-up portraits). */
 export const DEFAULT_TEAM_IMAGE_OBJECT_CLASS = "object-[50%_22%]" as const;

@@ -24,6 +24,33 @@ export const metadata: Metadata = {
   },
 };
 
+const SECURITY_SUMMARY = [
+  {
+    label: "Data residency",
+    value: "Primary production customer application data for India deployments is hosted in India-only AWS regions. Some metadata, support, analytics, email, payment, or communication workflows may be processed by approved subprocessors as described in our policies.",
+  },
+  {
+    label: "Transport security",
+    value: "TLS is used for client, API, and service endpoint traffic.",
+  },
+  {
+    label: "Backups",
+    value: "Managed backup and recovery controls are part of production operations and enterprise order terms.",
+  },
+  {
+    label: "SOC 2 roadmap",
+    value: "SOC 2 readiness is on the roadmap; Zoveto does not claim certification before completion.",
+  },
+  {
+    label: "Penetration testing",
+    value: "External penetration testing is in progress; summaries may be shared under NDA when available.",
+  },
+  {
+    label: "Security contact",
+    value: "security@zoveto.com",
+  },
+] as const;
+
 export default function SecurityPage() {
   return (
     <LegalPageShell title="Security at Zoveto" lastUpdated="April 2026">
@@ -33,13 +60,33 @@ export default function SecurityPage() {
           Zoveto is built for operational reliability, data security, and system integrity. This trust center summarizes how
           we protect systems, process data, and document legal safeguards in practical terms.
         </p>
+        <div className="mt-6 overflow-x-auto rounded-lg border border-border">
+          <table className="w-full min-w-[680px] border-collapse text-left">
+            <tbody>
+              {SECURITY_SUMMARY.map((item) => (
+                <tr key={item.label} className="align-top">
+                  <th className="w-56 border-b border-border bg-muted/20 px-4 py-3 text-sm font-semibold text-foreground">
+                    {item.label}
+                  </th>
+                  <td className="border-b border-border px-4 py-3 text-sm text-muted">{item.value}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </section>
 
       <section>
-        <h2>2. Security</h2>
+        <h2>2. Security controls</h2>
         <ul>
           <li>
             <strong>Infrastructure:</strong> production services run on Amazon Web Services (AWS).
+          </li>
+          <li>
+            <strong>Data residency:</strong> primary production customer application data for India deployments is hosted in
+            India-only AWS regions unless a customer separately contracts for another deployment model. Some metadata and
+            supporting workflows, including analytics, email, payments, and support operations, may be processed by the
+            subprocessors listed on our <Link href="/subprocessors">Subprocessors</Link> page.
           </li>
           <li>
             <strong>In transit:</strong> TLS is used for data exchanged between clients, APIs, and service endpoints.
@@ -95,8 +142,14 @@ export default function SecurityPage() {
         <h2>5. Compliance posture</h2>
         <p>
           Zoveto is built following industry best practices for SaaS security and data protection, including controls aligned
-          to India&apos;s DPDP Act 2023 and IT Act obligations, and GDPR-ready processing standards for international customers.
-          We do not claim SOC 2 or equivalent certifications unless officially completed and publicly announced.
+          to the DPDP Act 2023 and IT Act obligations, and GDPR-ready processing standards for international customers.
+          SOC 2 readiness is on our compliance roadmap. We do not claim SOC 2 or equivalent certifications unless the audit
+          is officially completed and publicly announced.
+        </p>
+        <p>
+          Independent penetration testing is in progress as part of the security programme. Findings are triaged by severity,
+          remediated according to risk, and executive summaries may be shared with qualified prospects or customers under NDA
+          when available.
         </p>
       </section>
 
@@ -112,36 +165,26 @@ export default function SecurityPage() {
         <h2>7. Backup and continuity posture</h2>
         <p>
           Zoveto designs production systems with managed cloud infrastructure, environment separation, operational monitoring,
-          and recovery planning appropriate to the customer&apos;s plan and contracted scope. Specific backup cadence, retention,
-          and recovery commitments are confirmed in onboarding or enterprise order terms where applicable.
+          backup controls, and recovery planning appropriate to the customer&apos;s plan and contracted scope. Backup cadence,
+          retention, restoration responsibilities, and recovery commitments are confirmed during onboarding or enterprise order
+          terms where applicable.
         </p>
       </section>
 
       <section>
-        <h2>8. Support expectations</h2>
+        <h2>8. Service Level Agreement</h2>
         <p>
-          Support is handled through the channels agreed during onboarding. Evaluation access is best effort, paid plans receive
-          standard business support, and Enterprise customers may define priority response terms in their order form.
+          Paid production subscriptions may be covered by Zoveto&apos;s Service Level Agreement, including uptime
+          commitment, support priorities, response targets, service credit process, monitoring, maintenance terms, and
+          exclusions.
+        </p>
+        <p>
+          See the full <Link href="/sla">Service Level Agreement (SLA)</Link>.
         </p>
       </section>
 
       <section>
-        <h2>9. Uptime and SLA by plan</h2>
-        <ul>
-          <li>
-            <strong>Free / evaluation:</strong> best-effort availability, no formal SLA.
-          </li>
-          <li>
-            <strong>Starter / Growth:</strong> standard production operations with priority incident response.
-          </li>
-          <li>
-            <strong>Enterprise:</strong> contract-defined SLA and response commitments via order form.
-          </li>
-        </ul>
-      </section>
-
-      <section>
-        <h2>10. Legal documents</h2>
+        <h2>9. Legal documents</h2>
         <ul>
           <li>
             <Link href="/terms">Terms of Service</Link>
@@ -153,6 +196,12 @@ export default function SecurityPage() {
             <Link href="/dpa">Data Processing Agreement (DPA)</Link>
           </li>
           <li>
+            <Link href="/msa">Master Service Agreement (MSA)</Link>
+          </li>
+          <li>
+            <Link href="/sla">Service Level Agreement (SLA)</Link>
+          </li>
+          <li>
             <Link href="/acceptable-use">Acceptable Use Policy</Link>
           </li>
           <li>
@@ -162,7 +211,7 @@ export default function SecurityPage() {
       </section>
 
       <section>
-        <h2>11. Responsible disclosure</h2>
+        <h2>10. Responsible disclosure</h2>
         <p>
           If you identify a potential vulnerability, report it to{" "}
           <a href="mailto:security@zoveto.com">security@zoveto.com</a> with reproducible details. We review good-faith reports

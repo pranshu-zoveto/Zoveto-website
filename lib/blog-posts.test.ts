@@ -43,7 +43,7 @@ describe("blog-posts", () => {
     assert.equal(p!.category, "Comparisons");
   });
 
-  it("includes the GST ERP India 2026 guide", () => {
+  it("includes the GST ERP 2026 guide", () => {
     const p = getBlogPost("gst-erp-software-india-2026");
     assert.ok(p);
     assert.ok(p!.title.includes("GST ERP"));

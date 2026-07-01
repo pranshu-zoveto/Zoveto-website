@@ -21,6 +21,6 @@ describe("global-neutral marketing copy (final_COMPLETE 2.1 baseline)", () => {
 
   it("keeps leadership intro globally framed", () => {
     assert.match(TEAM_SECTION_INTRO, /operating system/i);
-    assert.doesNotMatch(TEAM_SECTION_INTRO, /Indian businesses/i);
+    assert.doesNotMatch(TEAM_SECTION_INTRO, /businesses/i);
   });
 });

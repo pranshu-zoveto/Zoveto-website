@@ -1,7 +1,31 @@
 import { getStoredUtm } from "@/lib/utm";
 
+export { GA4_KEY_EVENTS, GA4_KEY_EVENT_NAMES } from "@/lib/ga4-key-events";
+export type { Ga4KeyEventDefinition } from "@/lib/ga4-key-events";
+
 type TrackingValue = string | number | boolean | null | undefined;
 type TrackingParams = Record<string, TrackingValue>;
+
+/** Keys that must never be sent to analytics (PII / form fields). */
+const BLOCKED_PARAM_KEYS = new Set([
+  "email",
+  "phone",
+  "name",
+  "company",
+  "message",
+  "first_name",
+  "last_name",
+  "full_name",
+  "company_name",
+  "notes",
+  "body",
+]);
+
+function stripBlockedParams(params: TrackingParams): TrackingParams {
+  return Object.fromEntries(
+    Object.entries(params).filter(([key]) => !BLOCKED_PARAM_KEYS.has(key.toLowerCase())),
+  );
+}
 
 export type MarketingEventName =
   | "demo_request_submit"
@@ -41,10 +65,12 @@ function getSessionId(): string {
 
 export function trackEvent(eventName: string, params: TrackingParams = {}): void {
   if (typeof window === "undefined") return;
+
+  const safeParams = stripBlockedParams(params);
   
   // 1. External (GA4)
   if (typeof window.gtag === "function") {
-    window.gtag("event", eventName, params);
+    window.gtag("event", eventName, safeParams);
   }
 
   // 2. Internal (Prisma TrackingEvent)
@@ -57,7 +83,7 @@ export function trackEvent(eventName: string, params: TrackingParams = {}): void
     body: JSON.stringify({
       eventName,
       sessionId,
-      ...params,
+      ...safeParams,
     }),
   }).catch(() => {
     // Ignore internal tracking errors to prevent breaking UI
@@ -81,5 +107,5 @@ function cleanParams(params: TrackingParams): TrackingParams {
 }
 
 export function trackMarketingEvent(eventName: MarketingEventName, params: TrackingParams = {}): void {
-  trackEvent(eventName, cleanParams({ ...currentPageParams(), ...params }));
+  trackEvent(eventName, cleanParams(stripBlockedParams({ ...currentPageParams(), ...params })));
 }

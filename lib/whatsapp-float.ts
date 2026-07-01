@@ -4,6 +4,14 @@
  */
 export const WHATSAPP_FLOAT_PHONE = "919217380146";
 
+/** E.164-style tel: href for the public sales line (no spaces). */
+export const CONTACT_PHONE_TEL = `+${WHATSAPP_FLOAT_PHONE}`;
+
+/** Human-readable display for marketing surfaces. */
+export function getContactPhoneDisplay(): string {
+  return "+91 92173 80146";
+}
+
 const DEFAULT_MESSAGE =
   "Hi Zoveto team, I want to learn about your Company Operating System for my business.";
 

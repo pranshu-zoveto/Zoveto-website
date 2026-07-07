@@ -399,7 +399,7 @@ export function DashboardScrollDesktop() {
 
   return (
     <section ref={sectionRef} id="product-deep-dive" style={{ height: "650vh" }} className="hidden lg:block">
-      <div ref={stickyRef} className="sticky top-0 h-screen w-full overflow-hidden" style={{ background: "#f5f5f7" }}>
+      <div ref={stickyRef} className="sticky top-0 h-[100dvh] min-h-screen w-full overflow-hidden" style={{ background: "#f5f5f7" }}>
         <div
           ref={dashRef}
           style={{

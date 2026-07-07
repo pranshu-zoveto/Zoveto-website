@@ -167,6 +167,7 @@
   }
 
   html {
+    background-color: var(--background);
     scroll-padding-top: 5rem;
     scroll-behavior: smooth;
     color-scheme: light;

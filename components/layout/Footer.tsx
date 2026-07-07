@@ -105,7 +105,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="relative mt-12 overflow-hidden border-t border-border pb-1 pt-8 md:mt-14 md:pt-10 md:pb-2">
+        <div className="footer-mega-wordmark relative mt-12 overflow-hidden border-t border-border pb-1 pt-8 md:mt-14 md:pt-10 md:pb-2">
           <p
             className={cn(
               "pointer-events-none select-none flex items-baseline justify-center gap-[0.12em]",

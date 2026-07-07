@@ -110,7 +110,7 @@ export function CookieConsentBar() {
           role="dialog"
           aria-labelledby="cookie-consent-label"
           aria-describedby="cookie-consent-desc"
-          className="pointer-events-none fixed inset-x-0 bottom-0 z-[120] flex justify-center px-3 pb-[calc(5.75rem+env(safe-area-inset-bottom,0px))] pt-2 sm:px-4 sm:pb-[calc(6.5rem+env(safe-area-inset-bottom,0px))] md:pb-[calc(7rem+env(safe-area-inset-bottom,0px))]"
+          className="pointer-events-none fixed inset-x-0 bottom-[calc(5.75rem+env(safe-area-inset-bottom,0px))] z-[120] flex justify-center px-3 pt-2 sm:bottom-[calc(6.5rem+env(safe-area-inset-bottom,0px))] sm:px-4 md:bottom-[calc(7rem+env(safe-area-inset-bottom,0px))]"
         >
           {/* Floating card: reads as a deliberate module on phone, not a full-width slab */}
           <div

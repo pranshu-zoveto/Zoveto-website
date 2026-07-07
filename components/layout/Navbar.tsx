@@ -131,6 +131,12 @@ export function Navbar() {
               Compare
             </Link>
             <Link
+              href="/owner-dependency-score"
+              className="inline-flex h-9 items-center whitespace-nowrap text-sm font-medium leading-none text-muted transition-colors hover:text-foreground"
+            >
+              ODI Score
+            </Link>
+            <Link
               href="/operational-proof"
               className="inline-flex h-9 items-center whitespace-nowrap text-sm font-medium leading-none text-muted transition-colors hover:text-foreground"
             >
@@ -248,6 +254,7 @@ export function Navbar() {
                 { label: "Home",         href: "/" },
                 { label: "Pricing",      href: "/pricing" },
                 { label: "Compare",      href: "/compare" },
+                { label: "ODI Score",    href: "/owner-dependency-score" },
                 { label: "System Flow",  href: "/operational-proof" },
                 { label: "Blog",         href: "/blog" },
                 { label: "About",        href: "/about" },

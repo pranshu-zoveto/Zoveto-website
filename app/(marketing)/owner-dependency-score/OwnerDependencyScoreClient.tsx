@@ -1,0 +1,568 @@
+"use client";
+
+import { useMemo, useRef, useState } from "react";
+import Link from "next/link";
+import {
+  ArrowRight,
+  BarChart3,
+  CheckCircle2,
+  ClipboardCheck,
+  Gauge,
+  RefreshCcw,
+} from "lucide-react";
+import { trackMarketingEvent } from "@/lib/tracking";
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/Button";
+
+type DimensionKey =
+  | "pricing"
+  | "approvals"
+  | "knowledge"
+  | "decisions"
+  | "relationships"
+  | "succession";
+
+type Option = {
+  label: string;
+  description: string;
+  value: number;
+};
+
+type Question = {
+  id: string;
+  dimension: DimensionKey;
+  label: string;
+  options: Option[];
+};
+
+type Band = {
+  min: number;
+  max: number;
+  label: string;
+  tone: string;
+  summary: string;
+  cta: string;
+};
+
+const DIMENSIONS: Record<
+  DimensionKey,
+  {
+    label: string;
+    weight: number;
+    help: string;
+    zoveto: string;
+  }
+> = {
+  pricing: {
+    label: "Pricing authority",
+    weight: 20,
+    help: "Can sales quote, discount, and approve standard deals without owner intervention?",
+    zoveto: "Pricing rules, sales playbooks, quote guardrails, and approval thresholds.",
+  },
+  approvals: {
+    label: "Approval bottlenecks",
+    weight: 20,
+    help: "How many daily operating decisions still wait for the owner's sign-off?",
+    zoveto: "Approval matrices, automated routing, escalation rules, and ownership dashboards.",
+  },
+  knowledge: {
+    label: "Institutional knowledge",
+    weight: 20,
+    help: "Is critical operating knowledge documented and visible to the team?",
+    zoveto: "SOP libraries, shared records, process checklists, and role-based operating views.",
+  },
+  decisions: {
+    label: "Decision latency",
+    weight: 15,
+    help: "How long do decisions pause when the owner is unavailable?",
+    zoveto: "Live dashboards, exception alerts, target tracking, and decision triggers.",
+  },
+  relationships: {
+    label: "Customer and vendor concentration",
+    weight: 15,
+    help: "Do key customers and suppliers depend on personal access to the owner?",
+    zoveto: "CRM history, vendor records, handoff notes, account ownership, and communication logs.",
+  },
+  succession: {
+    label: "Succession readiness",
+    weight: 10,
+    help: "Can a manager or successor run the operating rhythm without verbal explanation?",
+    zoveto: "Second-line leadership workflows, onboarding paths, SOPs, and management scorecards.",
+  },
+};
+
+const INDEPENDENCE_OPTIONS: Option[] = [
+  { label: "Fully independent", description: "The team handles this reliably with a clear system.", value: 100 },
+  { label: "Mostly independent", description: "The team handles most cases, with only unusual issues coming to you.", value: 75 },
+  { label: "Partly dependent", description: "The team can start, but often confirms before moving forward.", value: 50 },
+  { label: "Highly dependent", description: "The team waits for you on most important cases.", value: 25 },
+  { label: "Owner controlled", description: "This cannot move unless you personally decide or explain it.", value: 0 },
+];
+
+const QUESTIONS: Question[] = [
+  {
+    id: "pricing_quote",
+    dimension: "pricing",
+    label: "Can your sales team quote standard prices without calling you?",
+    options: INDEPENDENCE_OPTIONS,
+  },
+  {
+    id: "pricing_discount",
+    dimension: "pricing",
+    label: "Can your team handle discounts, credit terms, and exceptions inside clear rules?",
+    options: INDEPENDENCE_OPTIONS,
+  },
+  {
+    id: "approval_count",
+    dimension: "approvals",
+    label: "How often do operational approvals need your direct sign-off?",
+    options: [
+      { label: "Rarely", description: "Only true exceptions come to me.", value: 100 },
+      { label: "A few times a week", description: "Most daily work moves without me.", value: 75 },
+      { label: "Almost daily", description: "A few decisions still wait for me each day.", value: 50 },
+      { label: "Many times daily", description: "The team frequently pauses for my approval.", value: 25 },
+      { label: "Every critical step", description: "Work cannot move without me.", value: 0 },
+    ],
+  },
+  {
+    id: "approval_escalations",
+    dimension: "approvals",
+    label: "Can someone else handle escalations without you?",
+    options: INDEPENDENCE_OPTIONS,
+  },
+  {
+    id: "knowledge_week",
+    dimension: "knowledge",
+    label: "If you are unavailable for 7 days, can the team run operations normally?",
+    options: [
+      { label: "Yes, unchanged", description: "The operating rhythm is documented and followed.", value: 100 },
+      { label: "Mostly yes", description: "Only rare edge cases wait for me.", value: 75 },
+      { label: "Partially", description: "Core work continues, but some teams slow down.", value: 50 },
+      { label: "Not really", description: "Several important workflows pause or become confused.", value: 25 },
+      { label: "No", description: "The business needs me daily to stay coordinated.", value: 0 },
+    ],
+  },
+  {
+    id: "knowledge_processes",
+    dimension: "knowledge",
+    label: "Are your main processes documented in a way people actually use?",
+    options: [
+      { label: "Documented and used", description: "Processes are current, accessible, and followed.", value: 100 },
+      { label: "Mostly documented", description: "Important workflows exist, but a few gaps remain.", value: 75 },
+      { label: "Partly documented", description: "Some notes exist, but people still ask for context.", value: 50 },
+      { label: "Mostly verbal", description: "The team relies on memory, messages, or your explanation.", value: 25 },
+      { label: "Not documented", description: "Most process knowledge is still in your head.", value: 0 },
+    ],
+  },
+  {
+    id: "decision_delay",
+    dimension: "decisions",
+    label: "When you are unavailable, how long do important decisions get delayed?",
+    options: [
+      { label: "No delay", description: "The team has data and authority to decide.", value: 100 },
+      { label: "Same day", description: "Minor delay, but decisions still close quickly.", value: 75 },
+      { label: "1 to 2 days", description: "Some decisions wait for your review.", value: 50 },
+      { label: "3 to 5 days", description: "Work often stalls while people wait.", value: 25 },
+      { label: "More than a week", description: "Major decisions do not move without you.", value: 0 },
+    ],
+  },
+  {
+    id: "decision_targets",
+    dimension: "decisions",
+    label: "Does your team know what to do when targets are missed?",
+    options: INDEPENDENCE_OPTIONS,
+  },
+  {
+    id: "relationship_owner",
+    dimension: "relationships",
+    label: "What share of key customers or vendors run mainly through you personally?",
+    options: [
+      { label: "Under 10%", description: "Relationships are owned by the team and visible in the system.", value: 100 },
+      { label: "10% to 25%", description: "Some major accounts still prefer you.", value: 75 },
+      { label: "26% to 50%", description: "Many important relationships still route through you.", value: 50 },
+      { label: "51% to 75%", description: "Most critical relationships depend on you.", value: 25 },
+      { label: "Over 75%", description: "The business relationship network is owner-led.", value: 0 },
+    ],
+  },
+  {
+    id: "relationship_history",
+    dimension: "relationships",
+    label: "Can your team see customer/vendor history without asking you?",
+    options: INDEPENDENCE_OPTIONS,
+  },
+  {
+    id: "succession_onboarding",
+    dimension: "succession",
+    label: "Can a manager onboard a new employee without your involvement?",
+    options: INDEPENDENCE_OPTIONS,
+  },
+  {
+    id: "succession_month",
+    dimension: "succession",
+    label: "Can the business run for one month without daily owner intervention?",
+    options: [
+      { label: "Yes", description: "Managers, systems, and reviews can run without daily owner input.", value: 100 },
+      { label: "Mostly", description: "The team can run, with a weekly owner check-in.", value: 75 },
+      { label: "Partially", description: "The team can manage routine work, but key decisions wait.", value: 50 },
+      { label: "Unlikely", description: "Operations would slow down quickly.", value: 25 },
+      { label: "No", description: "Daily owner involvement is required.", value: 0 },
+    ],
+  },
+];
+
+const BANDS: Band[] = [
+  {
+    min: 0,
+    max: 40,
+    label: "Critical dependency",
+    tone: "text-red",
+    summary:
+      "The business is still operating through the owner. Growth will keep creating bottlenecks until decision rights, SOPs, and live operating visibility are installed.",
+    cta: "Start with approval routing, core SOPs, and owner-free dashboards.",
+  },
+  {
+    min: 41,
+    max: 60,
+    label: "High dependency",
+    tone: "text-orange-700",
+    summary:
+      "The team can execute some work, but important decisions, customer context, pricing, and escalations still pull the owner into the middle.",
+    cta: "Build a 90-day owner-independence roadmap around the weakest dimensions.",
+  },
+  {
+    min: 61,
+    max: 75,
+    label: "Moderate dependency",
+    tone: "text-amber-700",
+    summary:
+      "The business has usable structure, but a few key workflows still depend on memory, manual follow-ups, or owner judgment.",
+    cta: "Convert recurring owner decisions into rules, dashboards, and team ownership.",
+  },
+  {
+    min: 76,
+    max: 90,
+    label: "Low dependency",
+    tone: "text-blue",
+    summary:
+      "Most operations can run without daily owner involvement. The opportunity now is to tighten measurement and remove the remaining exception traps.",
+    cta: "Use Zoveto to unify reporting, alerts, and accountability across teams.",
+  },
+  {
+    min: 91,
+    max: 100,
+    label: "Independent operating system",
+    tone: "text-green",
+    summary:
+      "The business has strong operating independence. The owner can focus on strategy while the system keeps daily work visible and accountable.",
+    cta: "Keep compounding with leadership dashboards, automation, and quarterly rescoring.",
+  },
+];
+
+const bandBg = [
+  "bg-red/10 text-red",
+  "bg-orange-50 text-orange-700",
+  "bg-amber-50 text-amber-700",
+  "bg-blue-light text-blue",
+  "bg-green/10 text-green",
+];
+
+const emptyAnswers = Object.fromEntries(QUESTIONS.map((q) => [q.id, undefined])) as Record<string, number | undefined>;
+
+function getBand(score: number): Band {
+  return BANDS.find((band) => score >= band.min && score <= band.max) ?? BANDS[0];
+}
+
+function scoreTone(score: number): string {
+  if (score <= 40) return "text-red";
+  if (score <= 60) return "text-orange-700";
+  if (score <= 75) return "text-amber-700";
+  if (score <= 90) return "text-blue";
+  return "text-green";
+}
+
+export function OwnerDependencyScoreClient() {
+  const [answers, setAnswers] = useState<Record<string, number | undefined>>(emptyAnswers);
+  const [showResult, setShowResult] = useState(false);
+  const [scoreError, setScoreError] = useState<string | null>(null);
+  const [hasTrackedUse, setHasTrackedUse] = useState(false);
+  const resultRef = useRef<HTMLDivElement | null>(null);
+
+  const result = useMemo(() => {
+    const answered = Object.values(answers).filter((value): value is number => typeof value === "number").length;
+    const dimensionScores = (Object.keys(DIMENSIONS) as DimensionKey[]).map((key) => {
+      const questions = QUESTIONS.filter((q) => q.dimension === key);
+      const values = questions
+        .map((q) => answers[q.id])
+        .filter((value): value is number => typeof value === "number");
+      const score = values.length ? Math.round(values.reduce((sum, value) => sum + value, 0) / values.length) : 0;
+      return {
+        key,
+        label: DIMENSIONS[key].label,
+        weight: DIMENSIONS[key].weight,
+        score,
+        weighted: (score * DIMENSIONS[key].weight) / 100,
+        complete: values.length === questions.length,
+      };
+    });
+    const score = Math.round(dimensionScores.reduce((sum, item) => sum + item.weighted, 0));
+    const weakest = [...dimensionScores].sort((a, b) => a.score - b.score).slice(0, 3);
+    return {
+      answered,
+      progress: Math.round((answered / QUESTIONS.length) * 100),
+      complete: answered === QUESTIONS.length,
+      score,
+      band: getBand(score),
+      dimensions: dimensionScores,
+      weakest,
+    };
+  }, [answers]);
+
+  function selectAnswer(question: Question, option: Option) {
+    setAnswers((current) => ({ ...current, [question.id]: option.value }));
+    setShowResult(false);
+    setScoreError(null);
+    if (!hasTrackedUse) {
+      trackMarketingEvent("calculator_used", {
+        calculator: "owner_dependency_score",
+        first_question: question.id,
+      });
+      setHasTrackedUse(true);
+    }
+  }
+
+  function reset() {
+    setAnswers({ ...emptyAnswers });
+    setShowResult(false);
+    setScoreError(null);
+    setHasTrackedUse(false);
+  }
+
+  function revealScore() {
+    if (!result.complete) {
+      setScoreError(`Answer all ${QUESTIONS.length} questions to get your final score.`);
+      return;
+    }
+    setScoreError(null);
+    setShowResult(true);
+    trackMarketingEvent("calculator_export_request", {
+      calculator: "owner_dependency_score",
+      score: result.score,
+      band: result.band.label,
+      weakest_area: result.weakest[0]?.key,
+    });
+    window.setTimeout(() => {
+      resultRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 50);
+  }
+
+  return (
+    <div className="mx-auto max-w-6xl space-y-8">
+      <section className="overflow-hidden rounded-[1.25rem] border border-border bg-card shadow-[0_18px_60px_rgba(15,23,42,0.06)]" aria-labelledby="odi-questions-heading">
+        <div className="border-b border-border bg-[#fbfbf8] px-5 py-6 sm:px-8 sm:py-7">
+          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+            <div className="max-w-3xl">
+              <p className="text-[0.75rem] font-semibold uppercase leading-none tracking-[0.16em] text-blue">12-question assessment</p>
+              <h2 id="odi-questions-heading" className="mt-3 text-[1.65rem] font-semibold leading-tight tracking-[-0.025em] text-foreground md:text-[2rem]">
+                Answer with the closest reality.
+              </h2>
+              <p className="mt-3 max-w-2xl text-[0.95rem] leading-7 tracking-[0] text-muted">
+                Choose what best matches how your business works today. At the end, you will get one score and a Zoveto improvement plan.
+              </p>
+            </div>
+            <Button type="button" variant="outline" size="md" className="gap-2 self-start rounded-lg" onClick={reset}>
+              <RefreshCcw className="h-4 w-4" aria-hidden />
+              Reset
+            </Button>
+          </div>
+
+          <div className="mt-6">
+            <div className="mb-2 flex items-center justify-between text-[0.78rem] font-medium text-muted">
+              <span>{result.answered} of {QUESTIONS.length} answered</span>
+              <span>{result.progress}% complete</span>
+            </div>
+            <div className="h-2 overflow-hidden rounded-full bg-surface">
+              <div
+                className="h-full rounded-full bg-blue transition-[width] duration-300"
+                style={{ width: `${result.progress}%` }}
+                aria-hidden
+              />
+            </div>
+          </div>
+        </div>
+
+        <div className="divide-y divide-border">
+          {QUESTIONS.map((question, index) => {
+            const selected = answers[question.id];
+            const titleId = `odi-question-${question.id}`;
+            return (
+              <div
+                key={question.id}
+                role="group"
+                aria-labelledby={titleId}
+                className="min-w-0 px-5 py-7 sm:px-8 sm:py-8"
+              >
+                <div className="mb-5 block w-full">
+                  <span className="mb-2 block text-[0.75rem] font-semibold uppercase leading-none tracking-[0.15em] text-muted-2">
+                    {String(index + 1).padStart(2, "0")} / {DIMENSIONS[question.dimension].label}
+                  </span>
+                  <h3 id={titleId} className="block max-w-5xl text-[1.15rem] font-semibold leading-snug tracking-[-0.015em] text-foreground md:text-[1.35rem]">
+                    {question.label}
+                  </h3>
+                </div>
+                <div className="grid items-stretch gap-3 sm:grid-cols-2 lg:grid-cols-5">
+                  {question.options.map((option) => {
+                    const active = selected === option.value;
+                    return (
+                      <button
+                        key={`${question.id}-${option.value}`}
+                        type="button"
+                        onClick={() => selectAnswer(question, option)}
+                        className={cn(
+                          "group flex min-h-[9.25rem] flex-col rounded-xl border p-4 text-left transition-[background-color,border-color,transform,box-shadow] duration-200",
+                          "motion-safe:hover:-translate-y-0.5 motion-safe:active:translate-y-0",
+                          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue/35 focus-visible:ring-offset-2 focus-visible:ring-offset-card",
+                          active
+                            ? "border-blue bg-[#f3f8ff] shadow-[inset_0_0_0_1px_rgba(0,113,227,0.12)]"
+                            : "border-border bg-white hover:border-[#b8b8be] hover:bg-[#fbfbfd]",
+                        )}
+                        aria-pressed={active}
+                      >
+                        <span className="flex items-start justify-between gap-2">
+                          <span className="text-[0.98rem] font-semibold leading-6 tracking-[-0.01em] text-foreground">{option.label}</span>
+                          {active ? <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-blue" aria-hidden /> : null}
+                        </span>
+                        <span className="mt-3 block text-[0.88rem] leading-6 tracking-[0] text-muted">{option.description}</span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        <div className="border-t border-border bg-[#fbfbf8] px-5 py-5 sm:px-8">
+          {scoreError ? (
+            <div className="mb-4 rounded-xl border border-red/25 bg-red/10 px-4 py-3 text-sm font-medium text-red" role="alert">
+              {scoreError}
+            </div>
+          ) : null}
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <p className="text-[0.95rem] leading-6 text-muted">
+              {result.complete
+                ? "All questions are complete. Click below to calculate the final Owner Dependency Score."
+                : `${QUESTIONS.length - result.answered} questions left before your final score is ready.`}
+            </p>
+            <Button type="button" variant="primary" size="lg" className="w-full gap-2 rounded-lg sm:w-auto" onClick={revealScore}>
+              Get final score
+              <ArrowRight className="h-4 w-4" aria-hidden />
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {showResult ? (
+        <section
+          ref={resultRef}
+          className="scroll-mt-24 overflow-hidden rounded-[1.25rem] border border-border bg-card shadow-[0_18px_60px_rgba(15,23,42,0.06)]"
+          aria-labelledby="odi-result-heading"
+        >
+          <div className="grid gap-0 lg:grid-cols-[0.8fr_1fr]">
+            <div className="bg-[#20252d] p-6 text-white sm:p-8">
+              <div className="flex items-center justify-between gap-4">
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.14em] text-white/65">Your final score</p>
+                  <h2 id="odi-result-heading" className="mt-4 text-7xl font-semibold tracking-[-0.06em] text-white">
+                    {result.score}
+                  </h2>
+                  <p className="mt-3 text-xl font-semibold text-white/85">
+                    {result.band.label}
+                  </p>
+                </div>
+                <div className="flex h-16 w-16 items-center justify-center rounded-2xl border border-white/10 bg-white/10">
+                  <Gauge className="h-8 w-8 text-white" aria-hidden />
+                </div>
+              </div>
+              <p className="mt-6 text-[0.98rem] leading-7 tracking-[0] text-white/75">{result.band.summary}</p>
+            </div>
+
+            <div className="p-5 sm:p-8">
+              <p className="text-xs font-semibold uppercase tracking-[0.12em] text-blue">Score bands</p>
+              <div className="mt-4 grid grid-cols-5 overflow-hidden rounded-xl border border-border">
+                {BANDS.map((band, index) => (
+                  <div key={band.label} className={cn("min-h-[4.5rem] border-r border-border p-2.5 last:border-r-0", bandBg[index])}>
+                    <p className="text-[0.72rem] font-bold leading-none">{band.min}-{band.max}</p>
+                    <p className="mt-2 text-[0.68rem] font-medium leading-4">{band.label}</p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-8 rounded-2xl border border-blue/20 bg-blue/[0.06] p-5">
+                <div className="flex items-center gap-2">
+                  <ClipboardCheck className="h-5 w-5 text-blue" aria-hidden />
+                  <p className="text-base font-semibold text-foreground">How Zoveto can make this better</p>
+                </div>
+                <p className="mt-3 text-[0.92rem] leading-6 text-muted">{result.band.cta}</p>
+                <div className="mt-5 grid gap-3">
+                  {result.weakest.map((item) => (
+                    <div key={item.key} className="rounded-xl border border-border bg-card p-4">
+                      <div className="flex items-center justify-between gap-3">
+                        <p className="text-sm font-semibold text-foreground">{item.label}</p>
+                        <p className={cn("text-sm font-semibold", scoreTone(item.score))}>{item.score}/100</p>
+                      </div>
+                      <p className="mt-2 text-[0.88rem] leading-6 text-muted">{DIMENSIONS[item.key].zoveto}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="border-t border-border p-5 sm:p-8">
+            <div className="space-y-4">
+              <div className="flex items-center gap-2">
+                <BarChart3 className="h-4 w-4 text-blue" aria-hidden />
+                <p className="text-sm font-semibold text-foreground">Dimension breakdown</p>
+              </div>
+              <div className="space-y-3">
+                {result.dimensions.map((dimension) => (
+                  <div key={dimension.key}>
+                    <div className="mb-1 flex items-center justify-between gap-3 text-xs">
+                      <span className="font-medium text-foreground">{dimension.label}</span>
+                      <span className={cn("font-semibold", scoreTone(dimension.score))}>{dimension.score}</span>
+                    </div>
+                    <div className="h-2 overflow-hidden rounded-full bg-surface">
+                      <div
+                        className="h-full rounded-full bg-blue transition-[width] duration-300"
+                        style={{ width: `${dimension.score}%` }}
+                        aria-hidden
+                      />
+                    </div>
+                    <p className="mt-1 text-[0.72rem] leading-4 text-muted">{DIMENSIONS[dimension.key].help}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="mt-6">
+              <Link
+                href="/contact#demo"
+                className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-lg bg-blue px-6 py-3 text-sm font-semibold text-white transition hover:bg-blue-hover"
+                onClick={() =>
+                  trackMarketingEvent("cta_button_click", {
+                    cta: "book_system_audit_from_owner_dependency_score",
+                    score: result.score,
+                  })
+                }
+              >
+                Improve this score with Zoveto
+                <ArrowRight className="h-4 w-4" aria-hidden />
+              </Link>
+            </div>
+          </div>
+        </section>
+      ) : null}
+    </div>
+  );
+}
+
+export default OwnerDependencyScoreClient;

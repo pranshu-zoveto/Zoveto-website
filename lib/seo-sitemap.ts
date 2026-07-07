@@ -40,6 +40,7 @@ export const INDEXABLE_STATIC_PAGES: readonly StaticSitemapPage[] = [
   { path: "/compare", changeFrequency: "weekly", priority: 0.75 },
   { path: "/system", changeFrequency: "monthly", priority: 0.72 },
   { path: "/reorder-point-calculator", changeFrequency: "monthly", priority: 0.76 },
+  { path: "/owner-dependency-score", changeFrequency: "monthly", priority: 0.82 },
 
   { path: "/privacy", changeFrequency: "yearly", priority: 0.35 },
   { path: "/terms", changeFrequency: "yearly", priority: 0.35 },

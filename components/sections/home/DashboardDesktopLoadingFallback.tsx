@@ -15,7 +15,7 @@ export function DashboardDesktopLoadingFallback() {
     <div className="relative z-[1] hidden lg:block" style={{ height: "650vh", background: "#f5f5f7" }}>
       <section
         aria-label="Introduction"
-        className="sticky top-0 flex h-screen flex-col items-center justify-center px-5 py-10 text-center"
+        className="sticky top-0 flex h-[100dvh] min-h-screen flex-col items-center justify-center px-5 py-10 text-center"
         style={{ background: "#f5f5f7" }}
       >
       <div className="mb-5 flex max-w-[min(92vw,40rem)] flex-wrap justify-center gap-2">

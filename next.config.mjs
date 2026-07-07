@@ -291,6 +291,9 @@ const nextConfig = {
   },
 
   poweredByHeader: false,
+
+  // Hide the dev-only bottom indicator strip in local Chrome (not shown in production builds).
+  devIndicators: false,
 };
 
 export default nextConfig;

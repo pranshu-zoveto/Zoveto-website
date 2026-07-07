@@ -56,156 +56,156 @@ const DIMENSIONS: Record<
   pricing: {
     label: "Pricing authority",
     weight: 20,
-    help: "Can sales quote, discount, and approve standard deals without owner intervention?",
-    zoveto: "Pricing rules, sales playbooks, quote guardrails, and approval thresholds.",
+    help: "Can sales quote prices, give discounts, and approve normal deals without the owner?",
+    zoveto: "Set pricing rules, sales playbooks, quote limits, and approval levels.",
   },
   approvals: {
     label: "Approval bottlenecks",
     weight: 20,
-    help: "How many daily operating decisions still wait for the owner's sign-off?",
-    zoveto: "Approval matrices, automated routing, escalation rules, and ownership dashboards.",
+    help: "How many daily decisions still wait for the owner to approve?",
+    zoveto: "Use approval rules, auto-routing, escalation paths, and ownership dashboards.",
   },
   knowledge: {
     label: "Institutional knowledge",
     weight: 20,
-    help: "Is critical operating knowledge documented and visible to the team?",
-    zoveto: "SOP libraries, shared records, process checklists, and role-based operating views.",
+    help: "Is important process knowledge written down and easy for the team to find?",
+    zoveto: "Keep SOPs, shared records, checklists, and role-based views in one place.",
   },
   decisions: {
     label: "Decision latency",
     weight: 15,
-    help: "How long do decisions pause when the owner is unavailable?",
-    zoveto: "Live dashboards, exception alerts, target tracking, and decision triggers.",
+    help: "When the owner is unavailable, how long do key decisions get delayed?",
+    zoveto: "Use live dashboards, alerts, target tracking, and clear decision triggers.",
   },
   relationships: {
     label: "Customer and vendor concentration",
     weight: 15,
-    help: "Do key customers and suppliers depend on personal access to the owner?",
-    zoveto: "CRM history, vendor records, handoff notes, account ownership, and communication logs.",
+    help: "Do key customers and suppliers still depend mainly on direct access to the owner?",
+    zoveto: "Track CRM history, vendor records, handoff notes, ownership, and communication logs.",
   },
   succession: {
     label: "Succession readiness",
     weight: 10,
-    help: "Can a manager or successor run the operating rhythm without verbal explanation?",
-    zoveto: "Second-line leadership workflows, onboarding paths, SOPs, and management scorecards.",
+    help: "Can a manager run daily operations without needing the owner to explain everything?",
+    zoveto: "Build second-line leadership workflows, onboarding paths, SOPs, and scorecards.",
   },
 };
 
 const INDEPENDENCE_OPTIONS: Option[] = [
-  { label: "Fully independent", description: "The team handles this reliably with a clear system.", value: 100 },
-  { label: "Mostly independent", description: "The team handles most cases, with only unusual issues coming to you.", value: 75 },
-  { label: "Partly dependent", description: "The team can start, but often confirms before moving forward.", value: 50 },
-  { label: "Highly dependent", description: "The team waits for you on most important cases.", value: 25 },
-  { label: "Owner controlled", description: "This cannot move unless you personally decide or explain it.", value: 0 },
+  { label: "Fully independent", description: "The team handles this well with a clear system.", value: 100 },
+  { label: "Mostly independent", description: "The team handles most cases. Only unusual issues come to you.", value: 75 },
+  { label: "Partly dependent", description: "The team can start, but often checks with you before moving.", value: 50 },
+  { label: "Highly dependent", description: "The team waits for you in most important cases.", value: 25 },
+  { label: "Owner controlled", description: "This cannot move unless you decide or explain it.", value: 0 },
 ];
 
 const QUESTIONS: Question[] = [
   {
     id: "pricing_quote",
     dimension: "pricing",
-    label: "Can your sales team quote standard prices without calling you?",
+    label: "Can your sales team quote standard prices without checking with you?",
     options: INDEPENDENCE_OPTIONS,
   },
   {
     id: "pricing_discount",
     dimension: "pricing",
-    label: "Can your team handle discounts, credit terms, and exceptions inside clear rules?",
+    label: "Can your team handle discounts, credit terms, and exceptions using clear rules?",
     options: INDEPENDENCE_OPTIONS,
   },
   {
     id: "approval_count",
     dimension: "approvals",
-    label: "How often do operational approvals need your direct sign-off?",
+    label: "How often does the team need your approval before work can move forward?",
     options: [
-      { label: "Rarely", description: "Only true exceptions come to me.", value: 100 },
+      { label: "Rarely", description: "Only real exceptions come to me.", value: 100 },
       { label: "A few times a week", description: "Most daily work moves without me.", value: 75 },
-      { label: "Almost daily", description: "A few decisions still wait for me each day.", value: 50 },
-      { label: "Many times daily", description: "The team frequently pauses for my approval.", value: 25 },
-      { label: "Every critical step", description: "Work cannot move without me.", value: 0 },
+      { label: "Almost every day", description: "A few decisions still wait for me each day.", value: 50 },
+      { label: "Many times a day", description: "The team often pauses for my approval.", value: 25 },
+      { label: "At most critical steps", description: "Work cannot move without me.", value: 0 },
     ],
   },
   {
     id: "approval_escalations",
     dimension: "approvals",
-    label: "Can someone else handle escalations without you?",
+    label: "Can someone else handle escalations without coming to you?",
     options: INDEPENDENCE_OPTIONS,
   },
   {
     id: "knowledge_week",
     dimension: "knowledge",
-    label: "If you are unavailable for 7 days, can the team run operations normally?",
+    label: "If you were away for a week, could the team run day-to-day operations without you?",
     options: [
-      { label: "Yes, unchanged", description: "The operating rhythm is documented and followed.", value: 100 },
-      { label: "Mostly yes", description: "Only rare edge cases wait for me.", value: 75 },
-      { label: "Partially", description: "Core work continues, but some teams slow down.", value: 50 },
-      { label: "Not really", description: "Several important workflows pause or become confused.", value: 25 },
-      { label: "No", description: "The business needs me daily to stay coordinated.", value: 0 },
+      { label: "Yes, fully", description: "Daily work is documented and the team can follow it.", value: 100 },
+      { label: "Mostly yes", description: "Only rare edge cases would wait for me.", value: 75 },
+      { label: "Partly", description: "Core work continues, but some teams would slow down.", value: 50 },
+      { label: "Not really", description: "Several important workflows would pause or get stuck.", value: 25 },
+      { label: "No", description: "The business would need me every day to stay on track.", value: 0 },
     ],
   },
   {
     id: "knowledge_processes",
     dimension: "knowledge",
-    label: "Are your main processes documented in a way people actually use?",
+    label: "Are your main processes written down in a way your team actually uses?",
     options: [
-      { label: "Documented and used", description: "Processes are current, accessible, and followed.", value: 100 },
-      { label: "Mostly documented", description: "Important workflows exist, but a few gaps remain.", value: 75 },
-      { label: "Partly documented", description: "Some notes exist, but people still ask for context.", value: 50 },
-      { label: "Mostly verbal", description: "The team relies on memory, messages, or your explanation.", value: 25 },
-      { label: "Not documented", description: "Most process knowledge is still in your head.", value: 0 },
+      { label: "Written and used", description: "Processes are up to date, easy to find, and followed.", value: 100 },
+      { label: "Mostly written", description: "Key workflows exist, but a few gaps remain.", value: 75 },
+      { label: "Partly written", description: "Some notes exist, but people still ask for context.", value: 50 },
+      { label: "Mostly verbal", description: "The team relies on memory, messages, or my explanation.", value: 25 },
+      { label: "Not written", description: "Most process knowledge is still in my head.", value: 0 },
     ],
   },
   {
     id: "decision_delay",
     dimension: "decisions",
-    label: "When you are unavailable, how long do important decisions get delayed?",
+    label: "When you are away, how long do important decisions wait?",
     options: [
-      { label: "No delay", description: "The team has data and authority to decide.", value: 100 },
-      { label: "Same day", description: "Minor delay, but decisions still close quickly.", value: 75 },
-      { label: "1 to 2 days", description: "Some decisions wait for your review.", value: 50 },
+      { label: "No delay", description: "The team has the data and authority to decide.", value: 100 },
+      { label: "Same day", description: "Small delay, but decisions still close quickly.", value: 75 },
+      { label: "1 to 2 days", description: "Some decisions wait for my review.", value: 50 },
       { label: "3 to 5 days", description: "Work often stalls while people wait.", value: 25 },
-      { label: "More than a week", description: "Major decisions do not move without you.", value: 0 },
+      { label: "More than a week", description: "Major decisions do not move without me.", value: 0 },
     ],
   },
   {
     id: "decision_targets",
     dimension: "decisions",
-    label: "Does your team know what to do when targets are missed?",
+    label: "When targets are missed, does your team know what to do next?",
     options: INDEPENDENCE_OPTIONS,
   },
   {
     id: "relationship_owner",
     dimension: "relationships",
-    label: "What share of key customers or vendors run mainly through you personally?",
+    label: "How much of your key customer or vendor work still goes through you personally?",
     options: [
-      { label: "Under 10%", description: "Relationships are owned by the team and visible in the system.", value: 100 },
-      { label: "10% to 25%", description: "Some major accounts still prefer you.", value: 75 },
-      { label: "26% to 50%", description: "Many important relationships still route through you.", value: 50 },
-      { label: "51% to 75%", description: "Most critical relationships depend on you.", value: 25 },
-      { label: "Over 75%", description: "The business relationship network is owner-led.", value: 0 },
+      { label: "Under 10%", description: "The team owns relationships and records are in the system.", value: 100 },
+      { label: "10% to 25%", description: "Some major accounts still prefer me.", value: 75 },
+      { label: "26% to 50%", description: "Many important relationships still go through me.", value: 50 },
+      { label: "51% to 75%", description: "Most critical relationships depend on me.", value: 25 },
+      { label: "Over 75%", description: "Most key relationships are owner-led.", value: 0 },
     ],
   },
   {
     id: "relationship_history",
     dimension: "relationships",
-    label: "Can your team see customer/vendor history without asking you?",
+    label: "Can your team see customer and vendor history without asking you?",
     options: INDEPENDENCE_OPTIONS,
   },
   {
     id: "succession_onboarding",
     dimension: "succession",
-    label: "Can a manager onboard a new employee without your involvement?",
+    label: "Can a manager onboard a new hire without needing you?",
     options: INDEPENDENCE_OPTIONS,
   },
   {
     id: "succession_month",
     dimension: "succession",
-    label: "Can the business run for one month without daily owner intervention?",
+    label: "Could the business run for a month without you getting involved every day?",
     options: [
-      { label: "Yes", description: "Managers, systems, and reviews can run without daily owner input.", value: 100 },
-      { label: "Mostly", description: "The team can run, with a weekly owner check-in.", value: 75 },
-      { label: "Partially", description: "The team can manage routine work, but key decisions wait.", value: 50 },
+      { label: "Yes", description: "Managers, systems, and reviews can run without daily input from me.", value: 100 },
+      { label: "Mostly", description: "The team can run with a weekly check-in from me.", value: 75 },
+      { label: "Partly", description: "Routine work continues, but key decisions wait for me.", value: 50 },
       { label: "Unlikely", description: "Operations would slow down quickly.", value: 25 },
-      { label: "No", description: "Daily owner involvement is required.", value: 0 },
+      { label: "No", description: "I need to be involved every day.", value: 0 },
     ],
   },
 ];
@@ -217,8 +217,8 @@ const BANDS: Band[] = [
     label: "Critical dependency",
     tone: "text-red",
     summary:
-      "The business is still operating through the owner. Growth will keep creating bottlenecks until decision rights, SOPs, and live operating visibility are installed.",
-    cta: "Start with approval routing, core SOPs, and owner-free dashboards.",
+      "The business still runs mainly through the owner. Growth will keep creating bottlenecks until decision rights, SOPs, and live visibility are set up.",
+    cta: "Start with approval routing, core SOPs, and dashboards that work without owner input.",
   },
   {
     min: 41,
@@ -226,8 +226,8 @@ const BANDS: Band[] = [
     label: "High dependency",
     tone: "text-orange-700",
     summary:
-      "The team can execute some work, but important decisions, customer context, pricing, and escalations still pull the owner into the middle.",
-    cta: "Build a 90-day owner-independence roadmap around the weakest dimensions.",
+      "The team can execute some work, but major decisions, customer context, pricing, and escalations still need the owner.",
+    cta: "Build a 90-day owner-independence plan around the weakest areas.",
   },
   {
     min: 61,
@@ -235,8 +235,8 @@ const BANDS: Band[] = [
     label: "Moderate dependency",
     tone: "text-amber-700",
     summary:
-      "The business has usable structure, but a few key workflows still depend on memory, manual follow-ups, or owner judgment.",
-    cta: "Convert recurring owner decisions into rules, dashboards, and team ownership.",
+      "The business has structure, but some key workflows still depend on memory, manual follow-ups, or owner judgment.",
+    cta: "Turn repeated owner decisions into rules, dashboards, and team ownership.",
   },
   {
     min: 76,
@@ -244,7 +244,7 @@ const BANDS: Band[] = [
     label: "Low dependency",
     tone: "text-blue",
     summary:
-      "Most operations can run without daily owner involvement. The opportunity now is to tighten measurement and remove the remaining exception traps.",
+      "Most operations can run without daily owner involvement. Next, tighten measurement and remove remaining exception bottlenecks.",
     cta: "Use Zoveto to unify reporting, alerts, and accountability across teams.",
   },
   {
@@ -253,8 +253,8 @@ const BANDS: Band[] = [
     label: "Independent operating system",
     tone: "text-green",
     summary:
-      "The business has strong operating independence. The owner can focus on strategy while the system keeps daily work visible and accountable.",
-    cta: "Keep compounding with leadership dashboards, automation, and quarterly rescoring.",
+      "The business has strong operating independence. The owner can focus on strategy while daily work stays visible and accountable.",
+    cta: "Keep improving with leadership dashboards, automation, and quarterly re-scoring.",
   },
 ];
 
@@ -363,10 +363,10 @@ export function OwnerDependencyScoreClient() {
             <div className="max-w-3xl">
               <p className="text-[0.75rem] font-semibold uppercase leading-none tracking-[0.16em] text-blue">12-question assessment</p>
               <h2 id="odi-questions-heading" className="mt-3 text-[1.65rem] font-semibold leading-tight tracking-[-0.025em] text-foreground md:text-[2rem]">
-                Answer with the closest reality.
+                Choose what is closest to your real situation.
               </h2>
               <p className="mt-3 max-w-2xl text-[0.95rem] leading-7 tracking-[0] text-muted">
-                Choose what best matches how your business works today. At the end, you will get one score and a Zoveto improvement plan.
+                Pick the option that best matches how your business runs today. At the end, you will get your score and a Zoveto action plan.
               </p>
             </div>
             <Button type="button" variant="outline" size="md" className="gap-2 self-start rounded-lg" onClick={reset}>
@@ -450,7 +450,7 @@ export function OwnerDependencyScoreClient() {
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <p className="text-[0.95rem] leading-6 text-muted">
               {result.complete
-                ? "All questions are complete. Click below to calculate the final Owner Dependency Score."
+                ? "All questions are answered. Click below to get your final Owner Dependency Score."
                 : `${QUESTIONS.length - result.answered} questions left before your final score is ready.`}
             </p>
             <Button type="button" variant="primary" size="lg" className="w-full gap-2 rounded-lg sm:w-auto" onClick={revealScore}>
@@ -500,7 +500,7 @@ export function OwnerDependencyScoreClient() {
               <div className="mt-8 rounded-2xl border border-blue/20 bg-blue/[0.06] p-5">
                 <div className="flex items-center gap-2">
                   <ClipboardCheck className="h-5 w-5 text-blue" aria-hidden />
-                  <p className="text-base font-semibold text-foreground">How Zoveto can make this better</p>
+                  <p className="text-base font-semibold text-foreground">How Zoveto can improve this</p>
                 </div>
                 <p className="mt-3 text-[0.92rem] leading-6 text-muted">{result.band.cta}</p>
                 <div className="mt-5 grid gap-3">

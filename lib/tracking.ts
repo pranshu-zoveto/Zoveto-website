@@ -63,31 +63,49 @@ function getSessionId(): string {
   return sid;
 }
 
+function shouldPersistInternalTracking(): boolean {
+  if (process.env.NODE_ENV === "production") return true;
+  return process.env.NEXT_PUBLIC_ENABLE_INTERNAL_TRACKING === "1";
+}
+
+async function persistInternalTracking(eventName: string, sessionId: string, safeParams: TrackingParams): Promise<void> {
+  const controller = new AbortController();
+  const timeout = window.setTimeout(() => controller.abort(), 2500);
+
+  try {
+    await fetch("/api/track", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        eventName,
+        sessionId,
+        ...safeParams,
+      }),
+      signal: controller.signal,
+      keepalive: true,
+    });
+  } catch {
+    // Ignore internal tracking errors so calculator and marketing pages never break.
+  } finally {
+    window.clearTimeout(timeout);
+  }
+}
+
 export function trackEvent(eventName: string, params: TrackingParams = {}): void {
   if (typeof window === "undefined") return;
 
   const safeParams = stripBlockedParams(params);
-  
+
   // 1. External (GA4)
   if (typeof window.gtag === "function") {
     window.gtag("event", eventName, safeParams);
   }
 
-  // 2. Internal (Prisma TrackingEvent)
+  // 2. Internal (Prisma TrackingEvent) — production only unless explicitly enabled in dev
+  if (!shouldPersistInternalTracking()) return;
+
   const sessionId = getSessionId();
-  
-  // Fire and forget
-  fetch("/api/track", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      eventName,
-      sessionId,
-      ...safeParams,
-    }),
-  }).catch(() => {
-    // Ignore internal tracking errors to prevent breaking UI
-  });
+  void persistInternalTracking(eventName, sessionId, safeParams);
 }
 
 function currentPageParams(): TrackingParams {

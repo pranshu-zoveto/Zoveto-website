@@ -2,7 +2,13 @@ import { NextResponse } from "next/server";
 import prisma from "@/lib/db";
 import { userAgent } from "next/server";
 
+const TRACKING_DB_ENABLED = Boolean(process.env.POSTGRES_PRISMA_URL?.trim());
+
 export async function POST(req: Request) {
+  if (!TRACKING_DB_ENABLED) {
+    return NextResponse.json({ ok: true, skipped: true }, { status: 200 });
+  }
+
   try {
     const raw = await req.text();
     let parsedBody: Record<string, any> = {};

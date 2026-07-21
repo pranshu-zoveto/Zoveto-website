@@ -82,6 +82,7 @@ export const BILLING_BUNDLES = [
     tagline: "WMS + ERP + CRM",
     monthlyPrice: 14999,
     modules: ["WMS", "ERP", "CRM"] as BillingModuleKey[],
+    popular: false,
   },
   {
     key: "business-os",
@@ -98,13 +99,13 @@ export const BILLING_BUNDLES = [
 export function resolveModulesWithDeps(selected: BillingModuleKey[]): BillingModuleKey[] {
   const set = new Set(selected);
   for (const mod of BILLING_MODULES) {
-    if (set.has(mod.key as BillingModuleKey) && "requires" in mod) {
-      for (const dep of mod.requires as BillingModuleKey[]) {
+    if (set.has(mod.key) && "requires" in mod) {
+      for (const dep of mod.requires) {
         set.add(dep);
       }
     }
   }
-  return BILLING_MODULES.map((m) => m.key as BillingModuleKey).filter((k) => set.has(k));
+  return BILLING_MODULES.map((m) => m.key).filter((k) => set.has(k));
 }
 
 /** Compute total monthly price for a set of module keys (after dependency resolution). */

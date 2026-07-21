@@ -1,13 +1,28 @@
 import SignupClient from "./_SignupClient";
 import { buildPageMetadata } from "@/lib/seo-metadata";
+import { BILLING_MODULES, type BillingModuleKey } from "@/lib/modular-billing-config";
 
 export const metadata = buildPageMetadata({
   pathname: "/signup",
-  title: "Get started with Zoveto | Zoveto",
+  title: "Request early access | Zoveto",
   description:
-    "Manual onboarding for every business: share your operations pain; we review within 24 to 48 hours and prepare your workspace before access.",
+    "Request early access to Zoveto. Start a 15-day trial on Operations Suite or Business OS. Secure checkout, no charge until day 15.",
   index: false,
   follow: false,
 });
 
-export default SignupClient;
+const VALID_MODULE_KEYS = new Set(BILLING_MODULES.map((m) => m.key));
+
+export default function SignupPage({
+  searchParams,
+}: {
+  searchParams?: { module?: string };
+}) {
+  const rawModule = searchParams?.module?.toUpperCase();
+  const preSelected =
+    rawModule && VALID_MODULE_KEYS.has(rawModule as BillingModuleKey)
+      ? (rawModule as BillingModuleKey)
+      : null;
+
+  return <SignupClient preSelectedModule={preSelected} />;
+}

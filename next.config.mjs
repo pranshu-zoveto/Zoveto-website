@@ -37,12 +37,13 @@ function buildContentSecurityPolicy(isDev) {
     : "";
   return [
     "default-src 'self'",
-    `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ""} https://www.googletagmanager.com https://www.google-analytics.com https://www.clarity.ms https://*.posthog.com https://va.vercel-scripts.com`,
+    `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ""} https://www.googletagmanager.com https://www.google-analytics.com https://www.clarity.ms https://*.posthog.com https://va.vercel-scripts.com https://checkout.razorpay.com`,
     "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
     "font-src 'self' https://fonts.gstatic.com",
     "img-src 'self' data: blob: https:",
     "worker-src 'self' blob:",
-    `connect-src 'self' https://api.zoveto.com https://*.zoveto.com https://www.google-analytics.com https://www.googletagmanager.com https://analytics.google.com https://*.clarity.ms https://www.clarity.ms https://*.posthog.com https://*.i.posthog.com https://*.ingest.sentry.io https://*.sentry.io https://vitals.vercel-insights.com https://va.vercel-scripts.com${devConnect}`,
+    `connect-src 'self' https://api.zoveto.com https://*.zoveto.com https://www.google-analytics.com https://www.googletagmanager.com https://analytics.google.com https://*.clarity.ms https://www.clarity.ms https://*.posthog.com https://*.i.posthog.com https://*.ingest.sentry.io https://*.sentry.io https://vitals.vercel-insights.com https://va.vercel-scripts.com https://api.razorpay.com https://lumberjack.razorpay.com${devConnect}`,
+    "frame-src 'self' https://api.razorpay.com https://checkout.razorpay.com",
     "frame-ancestors 'none'",
   ].join("; ");
 }

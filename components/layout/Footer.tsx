@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import FooterNewsletter from "@/components/layout/FooterNewsletter";
 import { LINKEDIN_COMPANY_URL } from "@/lib/social";
+import { EARLY_ACCESS_CTA_HREF, EARLY_ACCESS_CTA_LABEL } from "@/lib/marketing-cta";
 import { cn } from "@/lib/utils";
 
 const LINK_COLS: { title: string; links: { label: string; href: string }[] }[] = [
@@ -35,7 +36,7 @@ const LINK_COLS: { title: string; links: { label: string; href: string }[] }[] =
       { label: "About", href: "/about" },
       { label: "Team", href: "/team" },
       { label: "Careers", href: "/careers" },
-      { label: "Book demo", href: "/contact#demo" },
+      { label: EARLY_ACCESS_CTA_LABEL, href: EARLY_ACCESS_CTA_HREF },
     ],
   },
   {

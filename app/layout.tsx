@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ZOVETO_ORGANIZATION_DESCRIPTION, ZOVETO_SITE_DEFAULT_TITLE } from "@/lib/brand-entity";
@@ -112,6 +113,7 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         {children}
+        <Script src="https://checkout.razorpay.com/v1/checkout.js" strategy="afterInteractive" />
       </body>
     </html>
   );

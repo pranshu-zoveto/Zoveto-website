@@ -9,6 +9,7 @@ import type { ComparePage } from "@/lib/compare-pages";
 import { comparePageH1, getComparePageAeoLead, getComparePageFaqs } from "@/lib/compare-pages";
 import type { Phase1CompareContent } from "@/lib/phase1-compare-zoho-tally";
 import { getWhatsAppFloatHref } from "@/lib/whatsapp-float";
+import { EARLY_ACCESS_CTA_HREF, EARLY_ACCESS_CTA_LABEL } from "@/lib/marketing-cta";
 
 const btnPrimary =
   "inline-flex min-h-[44px] items-center justify-center rounded-lg bg-blue px-5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-blue-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background";
@@ -150,7 +151,7 @@ function Phase1InternalLinks({ slug }: { slug: string }) {
 }
 
 function CompareDetailPagePhase1({ page, p1 }: { page: ComparePage; p1: Phase1CompareContent }) {
-  const demoHref = "/contact#demo";
+  const demoHref = EARLY_ACCESS_CTA_HREF;
   const waHref = getWhatsAppFloatHref();
 
   return (
@@ -169,7 +170,7 @@ function CompareDetailPagePhase1({ page, p1 }: { page: ComparePage; p1: Phase1Co
           </Text>
           <div className="flex flex-wrap gap-3">
             <Link href={demoHref} className={btnPrimary}>
-              Book a 20-min demo
+              {EARLY_ACCESS_CTA_LABEL}
             </Link>
             <Link href={waHref} className={btnOutline} target="_blank" rel="noopener noreferrer">
               Chat on WhatsApp
@@ -243,7 +244,7 @@ function CompareDetailPagePhase1({ page, p1 }: { page: ComparePage; p1: Phase1Co
           aria-labelledby="phase1-cta-heading"
         >
           <Text variant="heading-1" as="h2" id="phase1-cta-heading" className="mb-4 text-xl text-foreground md:text-2xl">
-            Book a 20-minute demo
+            Request early access
           </Text>
           <Text variant="body-base" className="prose-justify mb-6 max-w-2xl text-pretty text-muted">
             Walk through quote-to-cash, inventory, and dispatch on one posted record with a Zoveto operator, not a
@@ -251,7 +252,7 @@ function CompareDetailPagePhase1({ page, p1 }: { page: ComparePage; p1: Phase1Co
           </Text>
           <div className="flex flex-wrap gap-3">
             <Link href={demoHref} className={btnPrimary}>
-              Book a 20-min demo
+              {EARLY_ACCESS_CTA_LABEL}
             </Link>
             <Link href={waHref} className={btnOutline} target="_blank" rel="noopener noreferrer">
               WhatsApp the team
@@ -272,10 +273,10 @@ function CompareDetailPagePhase1({ page, p1 }: { page: ComparePage; p1: Phase1Co
       >
         <div className="pointer-events-auto rounded-2xl border border-border bg-card/95 p-5 shadow-lg backdrop-blur-sm">
           <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-muted-2">High intent?</p>
-          <p className="mb-4 text-sm font-semibold text-foreground">Book a short demo</p>
+          <p className="mb-4 text-sm font-semibold text-foreground">Request early access</p>
           <div className="flex flex-col gap-2">
             <Link href={demoHref} className={cn(btnPrimary, "w-full justify-center text-center")}>
-              Book 20-min demo
+              {EARLY_ACCESS_CTA_LABEL}
             </Link>
             <Link
               href={waHref}
@@ -295,7 +296,7 @@ function CompareDetailPagePhase1({ page, p1 }: { page: ComparePage; p1: Phase1Co
       >
         <div className="mx-auto flex max-w-lg gap-2">
           <Link href={demoHref} className={cn(btnPrimary, "min-h-[48px] flex-1 justify-center text-center text-xs sm:text-sm")}>
-            Book demo
+            {EARLY_ACCESS_CTA_LABEL}
           </Link>
           <Link
             href={waHref}

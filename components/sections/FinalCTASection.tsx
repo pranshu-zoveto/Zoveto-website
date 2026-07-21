@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import { EARLY_ACCESS_CTA_HREF, EARLY_ACCESS_CTA_LABEL } from "@/lib/marketing-cta";
 
 export function FinalCTASection() {
   return (
@@ -22,16 +23,10 @@ export function FinalCTASection() {
 
         <div className="flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center sm:gap-4">
           <Link
-            href="/signup"
+            href={EARLY_ACCESS_CTA_HREF}
             className="inline-flex min-h-[52px] w-full items-center justify-center rounded-xl bg-blue px-8 py-4 text-[15px] font-semibold text-white transition hover:bg-blue/90 sm:w-auto sm:px-12"
           >
-            Request Early Access
-          </Link>
-          <Link
-            href="/contact"
-            className="inline-flex min-h-[52px] w-full items-center justify-center rounded-xl border border-border bg-white px-8 py-4 text-[15px] font-semibold text-foreground transition hover:bg-surface sm:w-auto sm:px-12"
-          >
-            Book a demo
+            {EARLY_ACCESS_CTA_LABEL}
           </Link>
         </div>
 

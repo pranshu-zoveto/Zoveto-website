@@ -90,8 +90,8 @@ export default function ReorderPointCalculatorPage() {
               Zoveto Inventory
             </Link>{" "}
             or{" "}
-            <Link href="/contact#demo" className="font-medium text-blue underline-offset-4 hover:underline">
-              book a demo
+            <Link href="/signup" className="font-medium text-blue underline-offset-4 hover:underline">
+              request early access
             </Link>
             .
           </p>

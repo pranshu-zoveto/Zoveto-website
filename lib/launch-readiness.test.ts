@@ -115,7 +115,7 @@ describe("launch readiness static checks", () => {
     assert.ok(read("components/forms/DemoBookingForm.tsx").includes("demo_request_submit"));
     assert.ok(read("app/(marketing)/contact/ContactClient.tsx").includes("NEXT_PUBLIC_CALENDLY_DEMO_URL"));
     assert.ok(read("app/(marketing)/contact/ContactClient.tsx").includes("demo_schedule_click"));
-    assert.ok(read("app/(marketing)/signup/_SignupClient.tsx").includes("access_request_submit"));
+    assert.ok(read("app/(marketing)/signup/_SignupClient.tsx").includes("trial_started"));
     assert.ok(read("components/forms/LeadForm.tsx").includes("contact_form_submit"));
     assert.ok(read("app/(marketing)/pricing/PricingClient.tsx").includes("pricing_view"));
     assert.ok(read("app/(marketing)/compare/[slug]/page.tsx").includes("compare_page_view"));
@@ -127,7 +127,7 @@ describe("launch readiness static checks", () => {
   it("exposes compare navigation and zero-client implementation trust path", () => {
     const navbar = read("components/layout/Navbar.tsx");
     assert.ok(navbar.includes("/compare") && navbar.includes("Compare"), "navbar must link to compare hub");
-    assert.ok(navbar.includes("Book a 20-min demo"), "primary nav CTA should be demo-led");
+    assert.ok(navbar.includes("EARLY_ACCESS_CTA_LABEL"), "primary nav CTA should be early-access led");
 
     const implementation = read("app/(marketing)/implementation/page.tsx");
     assert.ok(implementation.includes("Founder-led implementation"), "implementation page needs clear positioning");
@@ -154,8 +154,8 @@ describe("launch readiness static checks", () => {
     }
 
     const pricing = read("lib/pricing-plans.ts");
-    assert.ok(pricing.includes("Book a demo"), "paid pricing CTAs should be demo-led");
-    assert.ok(!pricing.includes("Request access"), "paid pricing CTAs should be demo-led");
+    assert.ok(pricing.includes("Request early access"), "paid pricing CTAs should be early-access led");
+    assert.ok(pricing.includes('ctaHref: "/signup"'), "paid tiers should route to signup");
   });
 
   it("keeps required trust links in footer", () => {

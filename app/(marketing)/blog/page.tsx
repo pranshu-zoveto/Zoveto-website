@@ -90,7 +90,7 @@ export default async function BlogIndexPage({ searchParams }: { searchParams: { 
             See Zoveto in action for your business.
           </Text>
           <Text variant="body-lg" className="mb-8 text-muted">
-            Book a 30-minute demo tailored to your industry: distributor, manufacturer, or spare parts dealer.
+            Request early access and start a 15-day trial tailored to distributors, manufacturers, or spare parts dealers.
           </Text>
           <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Link href="/signup">
@@ -100,11 +100,6 @@ export default async function BlogIndexPage({ searchParams }: { searchParams: { 
                 className="gap-2 rounded-xl border border-blue/80 px-6 shadow-[0_8px_24px_rgba(0,113,227,0.26)] transition-shadow hover:shadow-[0_10px_30px_rgba(0,113,227,0.32)]"
               >
                 Request early access <ArrowRight size={15} className="shrink-0" />
-              </Button>
-            </Link>
-            <Link href="/contact">
-              <Button variant="outline" size="lg" className="rounded-xl px-6">
-                Book a demo
               </Button>
             </Link>
           </div>

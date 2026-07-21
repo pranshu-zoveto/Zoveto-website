@@ -63,8 +63,8 @@ const plans: MarketingPricingPlan[] = [
     segmentTagline: "Manufacturers · distributors · traders",
     pricing: PRICING_OPERATIONS_SUITE,
     features: operationsSuiteFeatures,
-    ctaHref: "/contact",
-    ctaLabel: "Book a demo",
+    ctaHref: "/signup",
+    ctaLabel: "Start free trial",
     popular: false,
   },
   {
@@ -74,8 +74,8 @@ const plans: MarketingPricingPlan[] = [
     segmentTagline: "All 5 modules · unlimited users",
     pricing: PRICING_BUSINESS_OS,
     features: businessOsFeatures,
-    ctaHref: "/contact",
-    ctaLabel: "Book a demo",
+    ctaHref: "/signup",
+    ctaLabel: "Start free trial",
     popular: true,
   },
   {
@@ -85,8 +85,8 @@ const plans: MarketingPricingPlan[] = [
     segmentTagline: "Custom SLAs · large team · bespoke integration",
     pricing: null,
     features: enterpriseFeatures,
-    ctaHref: "/contact",
-    ctaLabel: "Book a demo",
+    ctaHref: "/signup",
+    ctaLabel: "Request early access",
     popular: false,
   },
 ];

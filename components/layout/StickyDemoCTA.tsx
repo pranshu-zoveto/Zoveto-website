@@ -6,6 +6,7 @@ import { ArrowRight, X } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
+import { EARLY_ACCESS_CTA_HREF, EARLY_ACCESS_CTA_LABEL } from "@/lib/marketing-cta";
 
 const STICKY_CTA_DISMISSED_KEY = "zoveto.stickyDemoCta.dismissed";
 
@@ -16,7 +17,6 @@ export function StickyDemoCTA() {
 
   const isExcludedPage =
     pathname === "/contact" || pathname === "/signup" || pathname?.startsWith("/signup");
-  const primaryLabel = pathname === "/pricing" ? "Talk to us" : "See setup path";
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -64,26 +64,26 @@ export function StickyDemoCTA() {
         </button>
         <div className="space-y-1 pr-8 text-left sm:pr-0">
           <p className="text-[13px] font-semibold leading-5 text-foreground sm:text-sm">
-            Book a personalised demo in 30 minutes
+            {EARLY_ACCESS_CTA_LABEL}
           </p>
           <p className="max-w-[44ch] text-[11px] leading-4 text-muted sm:text-xs sm:leading-[1.25rem]">
-            See your own workflow live for your industry setup.
+            15-day trial for qualified teams. Reviewed before your workspace opens.
           </p>
         </div>
 
         <div className="grid w-full shrink-0 grid-cols-2 gap-2 sm:flex sm:w-auto sm:items-center sm:gap-2.5">
-          <Link href="/contact" className="w-full sm:inline-flex sm:w-auto">
+          <Link href="/implementation" className="w-full sm:inline-flex sm:w-auto">
             <Button
               type="button"
               variant="outline"
               className="min-h-[44px] w-full gap-1.5 whitespace-nowrap border-border bg-transparent px-3 text-xs font-semibold text-foreground hover:bg-surface sm:w-auto sm:px-4 sm:text-sm"
             >
-              Book demo
+              See setup path
             </Button>
           </Link>
-          <Link href="/implementation" className="w-full sm:flex-none sm:w-auto">
+          <Link href={EARLY_ACCESS_CTA_HREF} className="w-full sm:flex-none sm:w-auto">
             <Button className="min-h-[44px] w-full gap-1.5 whitespace-nowrap px-3 text-xs font-semibold sm:w-auto sm:px-6 sm:text-sm">
-              {primaryLabel} <ArrowRight size={14} />
+              {EARLY_ACCESS_CTA_LABEL} <ArrowRight size={14} />
             </Button>
           </Link>
         </div>

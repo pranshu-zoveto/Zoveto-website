@@ -251,6 +251,49 @@ exports.Prisma.IntegrationScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.BillingCustomerScalarFieldEnum = {
+  id: 'id',
+  email: 'email',
+  name: 'name',
+  companyName: 'companyName',
+  phone: 'phone',
+  razorpayCustomerId: 'razorpayCustomerId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.BillingSubscriptionScalarFieldEnum = {
+  id: 'id',
+  customerId: 'customerId',
+  razorpaySubscriptionId: 'razorpaySubscriptionId',
+  razorpayPlanId: 'razorpayPlanId',
+  planKey: 'planKey',
+  billingCycle: 'billingCycle',
+  billingType: 'billingType',
+  selectedModules: 'selectedModules',
+  status: 'status',
+  trialStartAt: 'trialStartAt',
+  trialEndAt: 'trialEndAt',
+  currentPeriodStart: 'currentPeriodStart',
+  currentPeriodEnd: 'currentPeriodEnd',
+  authAmountPaise: 'authAmountPaise',
+  lastPaymentAt: 'lastPaymentAt',
+  zovetoClaimed: 'zovetoClaimed',
+  zovetoCompanyId: 'zovetoCompanyId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.BillingPaymentEventScalarFieldEnum = {
+  id: 'id',
+  subscriptionId: 'subscriptionId',
+  razorpayPaymentId: 'razorpayPaymentId',
+  amountPaise: 'amountPaise',
+  status: 'status',
+  paidAt: 'paidAt',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -289,7 +332,10 @@ exports.Prisma.ModelName = {
   NotificationTarget: 'NotificationTarget',
   SystemSetting: 'SystemSetting',
   AuditLog: 'AuditLog',
-  Integration: 'Integration'
+  Integration: 'Integration',
+  BillingCustomer: 'BillingCustomer',
+  BillingSubscription: 'BillingSubscription',
+  BillingPaymentEvent: 'BillingPaymentEvent'
 };
 
 /**

@@ -1,5 +1,6 @@
 import type { Phase1CompareContent } from "@/lib/phase1-compare-zoho-tally";
 import { TALLY_PHASE1, ZOHO_PHASE1 } from "@/lib/phase1-compare-zoho-tally";
+import { EARLY_ACCESS_CTA_HREF, EARLY_ACCESS_CTA_LABEL } from "@/lib/marketing-cta";
 
 export type CompareTableRow = {
   name: string;
@@ -71,10 +72,10 @@ export function comparePageH1(competitor: string): string {
 
 export const COMPARE_TABLE_ROW_COUNT = 11;
 
-const CTA_DEMO: CompareCta = { label: "See Zoveto in Action", href: "/contact#demo" };
-const CTA_SETUP: CompareCta = { label: "Request Setup", href: "/contact" };
-const CTA_CLOSE_SETUP: CompareCta = { label: "Request Setup", href: "/contact" };
-const CTA_CLOSE_DEMO: CompareCta = { label: "Book Demo", href: "/contact#demo" };
+const CTA_DEMO: CompareCta = { label: EARLY_ACCESS_CTA_LABEL, href: EARLY_ACCESS_CTA_HREF };
+const CTA_SETUP: CompareCta = { label: EARLY_ACCESS_CTA_LABEL, href: EARLY_ACCESS_CTA_HREF };
+const CTA_CLOSE_SETUP: CompareCta = { label: EARLY_ACCESS_CTA_LABEL, href: EARLY_ACCESS_CTA_HREF };
+const CTA_CLOSE_DEMO: CompareCta = { label: EARLY_ACCESS_CTA_LABEL, href: EARLY_ACCESS_CTA_HREF };
 
 const STANDARD_HERO_SUBTEXT =
   "Compare features, workflows, and operational capabilities, not just checklists.";

@@ -359,8 +359,8 @@ export default async function BlogPostPage({
               <p className="mb-1 font-mono text-[11px] font-medium uppercase tracking-[0.2em] text-muted-2">
                 Ready to see it live?
               </p>
-              <h2 className="mb-3 text-xl font-bold tracking-tight text-foreground">Book a demo tailored to your business.</h2>
-              <p className="mb-6 text-sm text-muted">30 minutes. Your industry. No generic slides.</p>
+              <h2 className="mb-3 text-xl font-bold tracking-tight text-foreground">Request early access for your business.</h2>
+              <p className="mb-6 text-sm text-muted">15-day trial. Your industry context. Reviewed before workspace opens.</p>
               <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
                 <Link href="/signup">
                   <Button
@@ -369,11 +369,6 @@ export default async function BlogPostPage({
                     className="gap-2 rounded-xl border border-blue/80 px-5 shadow-[0_8px_24px_rgba(0,113,227,0.26)]"
                   >
                     Request early access <ArrowRight size={14} className="shrink-0" />
-                  </Button>
-                </Link>
-                <Link href="/contact">
-                  <Button variant="outline" size="sm" className="rounded-xl px-5">
-                    Book a demo
                   </Button>
                 </Link>
               </div>

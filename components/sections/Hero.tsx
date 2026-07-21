@@ -4,9 +4,10 @@ import React from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import dynamic from "next/dynamic";
-import { ArrowRight, Calendar } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
+import { EARLY_ACCESS_CTA_HREF, EARLY_ACCESS_CTA_LABEL } from "@/lib/marketing-cta";
 import { BRAND_PRODUCTS } from "@/lib/brand-products";
 import { SystemModuleCard } from "@/components/brand/SystemModuleCard";
 import { SceneErrorBoundary } from "@/components/3d/SceneErrorBoundary";
@@ -103,26 +104,25 @@ export function Hero() {
           </div>
         </motion.div>
 
-        <motion.div
+          <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.45, delay: 0.3 }}
           className="mx-auto mt-12 flex max-w-lg flex-col items-stretch justify-center gap-3 sm:mt-14 sm:max-w-none sm:flex-row sm:items-center sm:gap-4"
         >
-          <Link href="/signup" className="sm:inline-flex">
+          <Link href={EARLY_ACCESS_CTA_HREF} className="sm:inline-flex">
             <Button variant="primary" size="lg" className="min-h-[48px] w-full gap-2 sm:w-auto">
-              Request early access <ArrowRight size={18} />
+              {EARLY_ACCESS_CTA_LABEL} <ArrowRight size={18} />
             </Button>
           </Link>
-          <Link href="/contact" className="sm:inline-flex">
+          <Link href="/pricing" className="sm:inline-flex">
             <Button
               type="button"
               variant="outline"
               size="lg"
               className="min-h-[48px] w-full gap-2 border-border bg-transparent text-foreground hover:border-border hover:bg-surface sm:w-auto"
             >
-              <Calendar size={16} className="text-blue" aria-hidden />
-              Book a demo
+              View pricing
             </Button>
           </Link>
         </motion.div>

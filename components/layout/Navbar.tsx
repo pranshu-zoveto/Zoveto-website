@@ -4,6 +4,11 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { ChevronDown, Menu, X, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import {
+  EARLY_ACCESS_CTA_HREF,
+  EARLY_ACCESS_CTA_LABEL,
+  EARLY_ACCESS_CTA_LABEL_SHORT,
+} from "@/lib/marketing-cta";
 import { Button } from "@/components/ui/Button";
 import { BrandIcon } from "@/components/brand/BrandLogos";
 import { NavbarWordmark } from "@/components/brand/NavbarWordmark";
@@ -157,21 +162,21 @@ export function Navbar() {
           </div>
 
           <div className="hidden lg:flex h-9 items-center gap-3 self-center">
-            <Link href="/contact" className="inline-flex">
+            <Link href={EARLY_ACCESS_CTA_HREF} className="inline-flex">
               <Button variant="primary" size="sm" className="rounded-xl">
-                Book a 20-min demo <ArrowRight size={14} className="shrink-0" />
+                {EARLY_ACCESS_CTA_LABEL} <ArrowRight size={14} className="shrink-0" />
               </Button>
             </Link>
           </div>
 
           <div className="ml-auto flex shrink-0 items-center gap-1 sm:gap-2 lg:hidden">
-            <Link href="/contact" className="hidden min-w-0 sm:block">
+            <Link href={EARLY_ACCESS_CTA_HREF} className="hidden min-w-0 sm:block">
               <Button
                 variant="primary"
                 size="sm"
                 className="min-h-[44px] max-w-[10.5rem] truncate px-2.5 text-[11px] sm:max-w-none sm:px-3.5 sm:text-xs"
               >
-                20-min demo
+                {EARLY_ACCESS_CTA_LABEL_SHORT}
               </Button>
             </Link>
 
@@ -274,9 +279,9 @@ export function Navbar() {
 
           {/* ── CTA buttons ── */}
           <div className="flex flex-col gap-3 border-t border-border pt-6 mt-4">
-            <Link href="/contact" onClick={() => { setIsOpen(false); setModulesOpen(false); }}>
+            <Link href={EARLY_ACCESS_CTA_HREF} onClick={() => { setIsOpen(false); setModulesOpen(false); }}>
               <Button variant="primary" className="h-12 w-full rounded-xl text-[0.95rem] font-semibold">
-                Book a 20-min demo
+                {EARLY_ACCESS_CTA_LABEL}
               </Button>
             </Link>
           </div>

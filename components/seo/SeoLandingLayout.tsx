@@ -3,6 +3,7 @@ import { DirectAnswerLead } from "@/components/aeo/DirectAnswerLead";
 import { BreadcrumbSchema } from "@/components/seo/BreadcrumbSchema";
 import { FAQPageSchema } from "@/components/seo/FAQPageSchema";
 import { Button } from "@/components/ui/Button";
+import { EARLY_ACCESS_CTA_HREF, EARLY_ACCESS_CTA_LABEL } from "@/lib/marketing-cta";
 import { Text } from "@/components/ui/Text";
 import { FaqAccordion } from "@/components/ui/FaqAccordion";
 import type { SeoLanding } from "@/lib/seo-landings";
@@ -56,9 +57,9 @@ export function SeoLandingLayout({ landing }: Props) {
           ))}
 
           <div className="mb-12 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
-            <Link href="/contact">
+            <Link href={EARLY_ACCESS_CTA_HREF}>
               <Button variant="primary" size="lg" className="w-full sm:w-auto">
-                Book a demo
+                {EARLY_ACCESS_CTA_LABEL}
               </Button>
             </Link>
             <Link href="/pricing">

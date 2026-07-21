@@ -65,12 +65,14 @@ test("builds a founder-review lead payload for COS storage and email follow-up",
   assert.doesNotMatch(JSON.stringify(payload), /notificationEmail|notifyEmail|\"source\"/);
 });
 
-test("signup route and screen remain waitlist-only", () => {
-  const route = readFileSync(join(process.cwd(), "app/api/signup/route.ts"), "utf8");
+test("signup screen maps early access to Razorpay trial checkout", () => {
   const screen = readFileSync(join(process.cwd(), "app/(marketing)/signup/_SignupClient.tsx"), "utf8");
+  const page = readFileSync(join(process.cwd(), "app/(marketing)/signup/page.tsx"), "utf8");
 
-  assert.match(route, /\/leads/);
-  assert.doesNotMatch(route, /onboarding\/provision|adminPassword|temporaryPassword/);
-  assert.doesNotMatch(screen, /accessToken|temporaryPassword|Create My System|Start Your 14-Day Free Trial/);
-  assert.match(screen, /No workspace has been\s+created yet/);
+  assert.match(screen, /Early access/);
+  assert.match(screen, /Request early access to Zoveto/);
+  assert.match(screen, /create-subscription|razorpay/i);
+  assert.match(screen, /trial_started/);
+  assert.doesNotMatch(screen, /accessToken|temporaryPassword|Create My System/);
+  assert.match(page, /Request early access/);
 });

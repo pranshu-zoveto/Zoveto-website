@@ -4,6 +4,10 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import {
+  EARLY_ACCESS_CTA_HREF,
+  EARLY_ACCESS_CTA_LABEL,
+} from "@/lib/marketing-cta";
 
 const navLinkClass = "text-sm font-medium text-muted transition-colors hover:text-foreground";
 
@@ -47,10 +51,10 @@ export default function SimpleNavbar() {
             Security
           </Link>
           <Link
-            href="/contact#demo"
+            href={EARLY_ACCESS_CTA_HREF}
             className="inline-flex items-center rounded-lg border border-border bg-card px-3 py-1.5 text-sm font-medium text-foreground transition-colors hover:bg-surface"
           >
-            Book demo
+            {EARLY_ACCESS_CTA_LABEL}
           </Link>
         </div>
 
@@ -81,11 +85,11 @@ export default function SimpleNavbar() {
             Security
           </Link>
           <Link
-            href="/contact#demo"
+            href={EARLY_ACCESS_CTA_HREF}
             className="mt-2 inline-flex w-full items-center justify-center rounded-lg border border-border bg-card px-3 py-3 text-sm font-medium text-foreground"
             onClick={() => setOpen(false)}
           >
-            Book demo
+            {EARLY_ACCESS_CTA_LABEL}
           </Link>
         </div>
       </div>

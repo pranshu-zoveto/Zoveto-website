@@ -68,6 +68,21 @@ export type AuditLog = $Result.DefaultSelection<Prisma.$AuditLogPayload>
  * 
  */
 export type Integration = $Result.DefaultSelection<Prisma.$IntegrationPayload>
+/**
+ * Model BillingCustomer
+ * 
+ */
+export type BillingCustomer = $Result.DefaultSelection<Prisma.$BillingCustomerPayload>
+/**
+ * Model BillingSubscription
+ * 
+ */
+export type BillingSubscription = $Result.DefaultSelection<Prisma.$BillingSubscriptionPayload>
+/**
+ * Model BillingPaymentEvent
+ * 
+ */
+export type BillingPaymentEvent = $Result.DefaultSelection<Prisma.$BillingPaymentEventPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -299,6 +314,36 @@ export class PrismaClient<
     * ```
     */
   get integration(): Prisma.IntegrationDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.billingCustomer`: Exposes CRUD operations for the **BillingCustomer** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more BillingCustomers
+    * const billingCustomers = await prisma.billingCustomer.findMany()
+    * ```
+    */
+  get billingCustomer(): Prisma.BillingCustomerDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.billingSubscription`: Exposes CRUD operations for the **BillingSubscription** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more BillingSubscriptions
+    * const billingSubscriptions = await prisma.billingSubscription.findMany()
+    * ```
+    */
+  get billingSubscription(): Prisma.BillingSubscriptionDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.billingPaymentEvent`: Exposes CRUD operations for the **BillingPaymentEvent** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more BillingPaymentEvents
+    * const billingPaymentEvents = await prisma.billingPaymentEvent.findMany()
+    * ```
+    */
+  get billingPaymentEvent(): Prisma.BillingPaymentEventDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -743,7 +788,10 @@ export namespace Prisma {
     NotificationTarget: 'NotificationTarget',
     SystemSetting: 'SystemSetting',
     AuditLog: 'AuditLog',
-    Integration: 'Integration'
+    Integration: 'Integration',
+    BillingCustomer: 'BillingCustomer',
+    BillingSubscription: 'BillingSubscription',
+    BillingPaymentEvent: 'BillingPaymentEvent'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -759,7 +807,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "lead" | "leadStatusEvent" | "blogPost" | "trackingEvent" | "deal" | "alertRule" | "alertHistory" | "notificationTarget" | "systemSetting" | "auditLog" | "integration"
+      modelProps: "lead" | "leadStatusEvent" | "blogPost" | "trackingEvent" | "deal" | "alertRule" | "alertHistory" | "notificationTarget" | "systemSetting" | "auditLog" | "integration" | "billingCustomer" | "billingSubscription" | "billingPaymentEvent"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1577,6 +1625,228 @@ export namespace Prisma {
           }
         }
       }
+      BillingCustomer: {
+        payload: Prisma.$BillingCustomerPayload<ExtArgs>
+        fields: Prisma.BillingCustomerFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.BillingCustomerFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BillingCustomerPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.BillingCustomerFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BillingCustomerPayload>
+          }
+          findFirst: {
+            args: Prisma.BillingCustomerFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BillingCustomerPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.BillingCustomerFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BillingCustomerPayload>
+          }
+          findMany: {
+            args: Prisma.BillingCustomerFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BillingCustomerPayload>[]
+          }
+          create: {
+            args: Prisma.BillingCustomerCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BillingCustomerPayload>
+          }
+          createMany: {
+            args: Prisma.BillingCustomerCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.BillingCustomerCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BillingCustomerPayload>[]
+          }
+          delete: {
+            args: Prisma.BillingCustomerDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BillingCustomerPayload>
+          }
+          update: {
+            args: Prisma.BillingCustomerUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BillingCustomerPayload>
+          }
+          deleteMany: {
+            args: Prisma.BillingCustomerDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.BillingCustomerUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.BillingCustomerUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BillingCustomerPayload>[]
+          }
+          upsert: {
+            args: Prisma.BillingCustomerUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BillingCustomerPayload>
+          }
+          aggregate: {
+            args: Prisma.BillingCustomerAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateBillingCustomer>
+          }
+          groupBy: {
+            args: Prisma.BillingCustomerGroupByArgs<ExtArgs>
+            result: $Utils.Optional<BillingCustomerGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.BillingCustomerCountArgs<ExtArgs>
+            result: $Utils.Optional<BillingCustomerCountAggregateOutputType> | number
+          }
+        }
+      }
+      BillingSubscription: {
+        payload: Prisma.$BillingSubscriptionPayload<ExtArgs>
+        fields: Prisma.BillingSubscriptionFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.BillingSubscriptionFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BillingSubscriptionPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.BillingSubscriptionFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BillingSubscriptionPayload>
+          }
+          findFirst: {
+            args: Prisma.BillingSubscriptionFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BillingSubscriptionPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.BillingSubscriptionFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BillingSubscriptionPayload>
+          }
+          findMany: {
+            args: Prisma.BillingSubscriptionFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BillingSubscriptionPayload>[]
+          }
+          create: {
+            args: Prisma.BillingSubscriptionCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BillingSubscriptionPayload>
+          }
+          createMany: {
+            args: Prisma.BillingSubscriptionCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.BillingSubscriptionCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BillingSubscriptionPayload>[]
+          }
+          delete: {
+            args: Prisma.BillingSubscriptionDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BillingSubscriptionPayload>
+          }
+          update: {
+            args: Prisma.BillingSubscriptionUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BillingSubscriptionPayload>
+          }
+          deleteMany: {
+            args: Prisma.BillingSubscriptionDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.BillingSubscriptionUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.BillingSubscriptionUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BillingSubscriptionPayload>[]
+          }
+          upsert: {
+            args: Prisma.BillingSubscriptionUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BillingSubscriptionPayload>
+          }
+          aggregate: {
+            args: Prisma.BillingSubscriptionAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateBillingSubscription>
+          }
+          groupBy: {
+            args: Prisma.BillingSubscriptionGroupByArgs<ExtArgs>
+            result: $Utils.Optional<BillingSubscriptionGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.BillingSubscriptionCountArgs<ExtArgs>
+            result: $Utils.Optional<BillingSubscriptionCountAggregateOutputType> | number
+          }
+        }
+      }
+      BillingPaymentEvent: {
+        payload: Prisma.$BillingPaymentEventPayload<ExtArgs>
+        fields: Prisma.BillingPaymentEventFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.BillingPaymentEventFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BillingPaymentEventPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.BillingPaymentEventFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BillingPaymentEventPayload>
+          }
+          findFirst: {
+            args: Prisma.BillingPaymentEventFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BillingPaymentEventPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.BillingPaymentEventFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BillingPaymentEventPayload>
+          }
+          findMany: {
+            args: Prisma.BillingPaymentEventFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BillingPaymentEventPayload>[]
+          }
+          create: {
+            args: Prisma.BillingPaymentEventCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BillingPaymentEventPayload>
+          }
+          createMany: {
+            args: Prisma.BillingPaymentEventCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.BillingPaymentEventCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BillingPaymentEventPayload>[]
+          }
+          delete: {
+            args: Prisma.BillingPaymentEventDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BillingPaymentEventPayload>
+          }
+          update: {
+            args: Prisma.BillingPaymentEventUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BillingPaymentEventPayload>
+          }
+          deleteMany: {
+            args: Prisma.BillingPaymentEventDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.BillingPaymentEventUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.BillingPaymentEventUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BillingPaymentEventPayload>[]
+          }
+          upsert: {
+            args: Prisma.BillingPaymentEventUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BillingPaymentEventPayload>
+          }
+          aggregate: {
+            args: Prisma.BillingPaymentEventAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateBillingPaymentEvent>
+          }
+          groupBy: {
+            args: Prisma.BillingPaymentEventGroupByArgs<ExtArgs>
+            result: $Utils.Optional<BillingPaymentEventGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.BillingPaymentEventCountArgs<ExtArgs>
+            result: $Utils.Optional<BillingPaymentEventCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1696,6 +1966,9 @@ export namespace Prisma {
     systemSetting?: SystemSettingOmit
     auditLog?: AuditLogOmit
     integration?: IntegrationOmit
+    billingCustomer?: BillingCustomerOmit
+    billingSubscription?: BillingSubscriptionOmit
+    billingPaymentEvent?: BillingPaymentEventOmit
   }
 
   /* Types for Logging */
@@ -1839,6 +2112,68 @@ export namespace Prisma {
    */
   export type AlertRuleCountOutputTypeCountHistoryArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: AlertHistoryWhereInput
+  }
+
+
+  /**
+   * Count Type BillingCustomerCountOutputType
+   */
+
+  export type BillingCustomerCountOutputType = {
+    subscriptions: number
+  }
+
+  export type BillingCustomerCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    subscriptions?: boolean | BillingCustomerCountOutputTypeCountSubscriptionsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * BillingCustomerCountOutputType without action
+   */
+  export type BillingCustomerCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BillingCustomerCountOutputType
+     */
+    select?: BillingCustomerCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * BillingCustomerCountOutputType without action
+   */
+  export type BillingCustomerCountOutputTypeCountSubscriptionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BillingSubscriptionWhereInput
+  }
+
+
+  /**
+   * Count Type BillingSubscriptionCountOutputType
+   */
+
+  export type BillingSubscriptionCountOutputType = {
+    payments: number
+  }
+
+  export type BillingSubscriptionCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    payments?: boolean | BillingSubscriptionCountOutputTypeCountPaymentsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * BillingSubscriptionCountOutputType without action
+   */
+  export type BillingSubscriptionCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BillingSubscriptionCountOutputType
+     */
+    select?: BillingSubscriptionCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * BillingSubscriptionCountOutputType without action
+   */
+  export type BillingSubscriptionCountOutputTypeCountPaymentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BillingPaymentEventWhereInput
   }
 
 
@@ -13878,6 +14213,3548 @@ export namespace Prisma {
 
 
   /**
+   * Model BillingCustomer
+   */
+
+  export type AggregateBillingCustomer = {
+    _count: BillingCustomerCountAggregateOutputType | null
+    _min: BillingCustomerMinAggregateOutputType | null
+    _max: BillingCustomerMaxAggregateOutputType | null
+  }
+
+  export type BillingCustomerMinAggregateOutputType = {
+    id: string | null
+    email: string | null
+    name: string | null
+    companyName: string | null
+    phone: string | null
+    razorpayCustomerId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type BillingCustomerMaxAggregateOutputType = {
+    id: string | null
+    email: string | null
+    name: string | null
+    companyName: string | null
+    phone: string | null
+    razorpayCustomerId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type BillingCustomerCountAggregateOutputType = {
+    id: number
+    email: number
+    name: number
+    companyName: number
+    phone: number
+    razorpayCustomerId: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type BillingCustomerMinAggregateInputType = {
+    id?: true
+    email?: true
+    name?: true
+    companyName?: true
+    phone?: true
+    razorpayCustomerId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type BillingCustomerMaxAggregateInputType = {
+    id?: true
+    email?: true
+    name?: true
+    companyName?: true
+    phone?: true
+    razorpayCustomerId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type BillingCustomerCountAggregateInputType = {
+    id?: true
+    email?: true
+    name?: true
+    companyName?: true
+    phone?: true
+    razorpayCustomerId?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type BillingCustomerAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which BillingCustomer to aggregate.
+     */
+    where?: BillingCustomerWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BillingCustomers to fetch.
+     */
+    orderBy?: BillingCustomerOrderByWithRelationInput | BillingCustomerOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: BillingCustomerWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BillingCustomers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BillingCustomers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned BillingCustomers
+    **/
+    _count?: true | BillingCustomerCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: BillingCustomerMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: BillingCustomerMaxAggregateInputType
+  }
+
+  export type GetBillingCustomerAggregateType<T extends BillingCustomerAggregateArgs> = {
+        [P in keyof T & keyof AggregateBillingCustomer]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateBillingCustomer[P]>
+      : GetScalarType<T[P], AggregateBillingCustomer[P]>
+  }
+
+
+
+
+  export type BillingCustomerGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BillingCustomerWhereInput
+    orderBy?: BillingCustomerOrderByWithAggregationInput | BillingCustomerOrderByWithAggregationInput[]
+    by: BillingCustomerScalarFieldEnum[] | BillingCustomerScalarFieldEnum
+    having?: BillingCustomerScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: BillingCustomerCountAggregateInputType | true
+    _min?: BillingCustomerMinAggregateInputType
+    _max?: BillingCustomerMaxAggregateInputType
+  }
+
+  export type BillingCustomerGroupByOutputType = {
+    id: string
+    email: string
+    name: string
+    companyName: string | null
+    phone: string | null
+    razorpayCustomerId: string | null
+    createdAt: Date
+    updatedAt: Date
+    _count: BillingCustomerCountAggregateOutputType | null
+    _min: BillingCustomerMinAggregateOutputType | null
+    _max: BillingCustomerMaxAggregateOutputType | null
+  }
+
+  type GetBillingCustomerGroupByPayload<T extends BillingCustomerGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<BillingCustomerGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof BillingCustomerGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], BillingCustomerGroupByOutputType[P]>
+            : GetScalarType<T[P], BillingCustomerGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type BillingCustomerSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    email?: boolean
+    name?: boolean
+    companyName?: boolean
+    phone?: boolean
+    razorpayCustomerId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    subscriptions?: boolean | BillingCustomer$subscriptionsArgs<ExtArgs>
+    _count?: boolean | BillingCustomerCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["billingCustomer"]>
+
+  export type BillingCustomerSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    email?: boolean
+    name?: boolean
+    companyName?: boolean
+    phone?: boolean
+    razorpayCustomerId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["billingCustomer"]>
+
+  export type BillingCustomerSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    email?: boolean
+    name?: boolean
+    companyName?: boolean
+    phone?: boolean
+    razorpayCustomerId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["billingCustomer"]>
+
+  export type BillingCustomerSelectScalar = {
+    id?: boolean
+    email?: boolean
+    name?: boolean
+    companyName?: boolean
+    phone?: boolean
+    razorpayCustomerId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type BillingCustomerOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "name" | "companyName" | "phone" | "razorpayCustomerId" | "createdAt" | "updatedAt", ExtArgs["result"]["billingCustomer"]>
+  export type BillingCustomerInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    subscriptions?: boolean | BillingCustomer$subscriptionsArgs<ExtArgs>
+    _count?: boolean | BillingCustomerCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type BillingCustomerIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type BillingCustomerIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $BillingCustomerPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "BillingCustomer"
+    objects: {
+      subscriptions: Prisma.$BillingSubscriptionPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      email: string
+      name: string
+      companyName: string | null
+      phone: string | null
+      razorpayCustomerId: string | null
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["billingCustomer"]>
+    composites: {}
+  }
+
+  type BillingCustomerGetPayload<S extends boolean | null | undefined | BillingCustomerDefaultArgs> = $Result.GetResult<Prisma.$BillingCustomerPayload, S>
+
+  type BillingCustomerCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<BillingCustomerFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: BillingCustomerCountAggregateInputType | true
+    }
+
+  export interface BillingCustomerDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['BillingCustomer'], meta: { name: 'BillingCustomer' } }
+    /**
+     * Find zero or one BillingCustomer that matches the filter.
+     * @param {BillingCustomerFindUniqueArgs} args - Arguments to find a BillingCustomer
+     * @example
+     * // Get one BillingCustomer
+     * const billingCustomer = await prisma.billingCustomer.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends BillingCustomerFindUniqueArgs>(args: SelectSubset<T, BillingCustomerFindUniqueArgs<ExtArgs>>): Prisma__BillingCustomerClient<$Result.GetResult<Prisma.$BillingCustomerPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one BillingCustomer that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {BillingCustomerFindUniqueOrThrowArgs} args - Arguments to find a BillingCustomer
+     * @example
+     * // Get one BillingCustomer
+     * const billingCustomer = await prisma.billingCustomer.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends BillingCustomerFindUniqueOrThrowArgs>(args: SelectSubset<T, BillingCustomerFindUniqueOrThrowArgs<ExtArgs>>): Prisma__BillingCustomerClient<$Result.GetResult<Prisma.$BillingCustomerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first BillingCustomer that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BillingCustomerFindFirstArgs} args - Arguments to find a BillingCustomer
+     * @example
+     * // Get one BillingCustomer
+     * const billingCustomer = await prisma.billingCustomer.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends BillingCustomerFindFirstArgs>(args?: SelectSubset<T, BillingCustomerFindFirstArgs<ExtArgs>>): Prisma__BillingCustomerClient<$Result.GetResult<Prisma.$BillingCustomerPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first BillingCustomer that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BillingCustomerFindFirstOrThrowArgs} args - Arguments to find a BillingCustomer
+     * @example
+     * // Get one BillingCustomer
+     * const billingCustomer = await prisma.billingCustomer.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends BillingCustomerFindFirstOrThrowArgs>(args?: SelectSubset<T, BillingCustomerFindFirstOrThrowArgs<ExtArgs>>): Prisma__BillingCustomerClient<$Result.GetResult<Prisma.$BillingCustomerPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more BillingCustomers that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BillingCustomerFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all BillingCustomers
+     * const billingCustomers = await prisma.billingCustomer.findMany()
+     * 
+     * // Get first 10 BillingCustomers
+     * const billingCustomers = await prisma.billingCustomer.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const billingCustomerWithIdOnly = await prisma.billingCustomer.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends BillingCustomerFindManyArgs>(args?: SelectSubset<T, BillingCustomerFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BillingCustomerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a BillingCustomer.
+     * @param {BillingCustomerCreateArgs} args - Arguments to create a BillingCustomer.
+     * @example
+     * // Create one BillingCustomer
+     * const BillingCustomer = await prisma.billingCustomer.create({
+     *   data: {
+     *     // ... data to create a BillingCustomer
+     *   }
+     * })
+     * 
+     */
+    create<T extends BillingCustomerCreateArgs>(args: SelectSubset<T, BillingCustomerCreateArgs<ExtArgs>>): Prisma__BillingCustomerClient<$Result.GetResult<Prisma.$BillingCustomerPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many BillingCustomers.
+     * @param {BillingCustomerCreateManyArgs} args - Arguments to create many BillingCustomers.
+     * @example
+     * // Create many BillingCustomers
+     * const billingCustomer = await prisma.billingCustomer.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends BillingCustomerCreateManyArgs>(args?: SelectSubset<T, BillingCustomerCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many BillingCustomers and returns the data saved in the database.
+     * @param {BillingCustomerCreateManyAndReturnArgs} args - Arguments to create many BillingCustomers.
+     * @example
+     * // Create many BillingCustomers
+     * const billingCustomer = await prisma.billingCustomer.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many BillingCustomers and only return the `id`
+     * const billingCustomerWithIdOnly = await prisma.billingCustomer.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends BillingCustomerCreateManyAndReturnArgs>(args?: SelectSubset<T, BillingCustomerCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BillingCustomerPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a BillingCustomer.
+     * @param {BillingCustomerDeleteArgs} args - Arguments to delete one BillingCustomer.
+     * @example
+     * // Delete one BillingCustomer
+     * const BillingCustomer = await prisma.billingCustomer.delete({
+     *   where: {
+     *     // ... filter to delete one BillingCustomer
+     *   }
+     * })
+     * 
+     */
+    delete<T extends BillingCustomerDeleteArgs>(args: SelectSubset<T, BillingCustomerDeleteArgs<ExtArgs>>): Prisma__BillingCustomerClient<$Result.GetResult<Prisma.$BillingCustomerPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one BillingCustomer.
+     * @param {BillingCustomerUpdateArgs} args - Arguments to update one BillingCustomer.
+     * @example
+     * // Update one BillingCustomer
+     * const billingCustomer = await prisma.billingCustomer.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends BillingCustomerUpdateArgs>(args: SelectSubset<T, BillingCustomerUpdateArgs<ExtArgs>>): Prisma__BillingCustomerClient<$Result.GetResult<Prisma.$BillingCustomerPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more BillingCustomers.
+     * @param {BillingCustomerDeleteManyArgs} args - Arguments to filter BillingCustomers to delete.
+     * @example
+     * // Delete a few BillingCustomers
+     * const { count } = await prisma.billingCustomer.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends BillingCustomerDeleteManyArgs>(args?: SelectSubset<T, BillingCustomerDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more BillingCustomers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BillingCustomerUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many BillingCustomers
+     * const billingCustomer = await prisma.billingCustomer.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends BillingCustomerUpdateManyArgs>(args: SelectSubset<T, BillingCustomerUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more BillingCustomers and returns the data updated in the database.
+     * @param {BillingCustomerUpdateManyAndReturnArgs} args - Arguments to update many BillingCustomers.
+     * @example
+     * // Update many BillingCustomers
+     * const billingCustomer = await prisma.billingCustomer.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more BillingCustomers and only return the `id`
+     * const billingCustomerWithIdOnly = await prisma.billingCustomer.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends BillingCustomerUpdateManyAndReturnArgs>(args: SelectSubset<T, BillingCustomerUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BillingCustomerPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one BillingCustomer.
+     * @param {BillingCustomerUpsertArgs} args - Arguments to update or create a BillingCustomer.
+     * @example
+     * // Update or create a BillingCustomer
+     * const billingCustomer = await prisma.billingCustomer.upsert({
+     *   create: {
+     *     // ... data to create a BillingCustomer
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the BillingCustomer we want to update
+     *   }
+     * })
+     */
+    upsert<T extends BillingCustomerUpsertArgs>(args: SelectSubset<T, BillingCustomerUpsertArgs<ExtArgs>>): Prisma__BillingCustomerClient<$Result.GetResult<Prisma.$BillingCustomerPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of BillingCustomers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BillingCustomerCountArgs} args - Arguments to filter BillingCustomers to count.
+     * @example
+     * // Count the number of BillingCustomers
+     * const count = await prisma.billingCustomer.count({
+     *   where: {
+     *     // ... the filter for the BillingCustomers we want to count
+     *   }
+     * })
+    **/
+    count<T extends BillingCustomerCountArgs>(
+      args?: Subset<T, BillingCustomerCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], BillingCustomerCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a BillingCustomer.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BillingCustomerAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends BillingCustomerAggregateArgs>(args: Subset<T, BillingCustomerAggregateArgs>): Prisma.PrismaPromise<GetBillingCustomerAggregateType<T>>
+
+    /**
+     * Group by BillingCustomer.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BillingCustomerGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends BillingCustomerGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: BillingCustomerGroupByArgs['orderBy'] }
+        : { orderBy?: BillingCustomerGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, BillingCustomerGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetBillingCustomerGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the BillingCustomer model
+   */
+  readonly fields: BillingCustomerFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for BillingCustomer.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__BillingCustomerClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    subscriptions<T extends BillingCustomer$subscriptionsArgs<ExtArgs> = {}>(args?: Subset<T, BillingCustomer$subscriptionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BillingSubscriptionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the BillingCustomer model
+   */
+  interface BillingCustomerFieldRefs {
+    readonly id: FieldRef<"BillingCustomer", 'String'>
+    readonly email: FieldRef<"BillingCustomer", 'String'>
+    readonly name: FieldRef<"BillingCustomer", 'String'>
+    readonly companyName: FieldRef<"BillingCustomer", 'String'>
+    readonly phone: FieldRef<"BillingCustomer", 'String'>
+    readonly razorpayCustomerId: FieldRef<"BillingCustomer", 'String'>
+    readonly createdAt: FieldRef<"BillingCustomer", 'DateTime'>
+    readonly updatedAt: FieldRef<"BillingCustomer", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * BillingCustomer findUnique
+   */
+  export type BillingCustomerFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BillingCustomer
+     */
+    select?: BillingCustomerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BillingCustomer
+     */
+    omit?: BillingCustomerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BillingCustomerInclude<ExtArgs> | null
+    /**
+     * Filter, which BillingCustomer to fetch.
+     */
+    where: BillingCustomerWhereUniqueInput
+  }
+
+  /**
+   * BillingCustomer findUniqueOrThrow
+   */
+  export type BillingCustomerFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BillingCustomer
+     */
+    select?: BillingCustomerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BillingCustomer
+     */
+    omit?: BillingCustomerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BillingCustomerInclude<ExtArgs> | null
+    /**
+     * Filter, which BillingCustomer to fetch.
+     */
+    where: BillingCustomerWhereUniqueInput
+  }
+
+  /**
+   * BillingCustomer findFirst
+   */
+  export type BillingCustomerFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BillingCustomer
+     */
+    select?: BillingCustomerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BillingCustomer
+     */
+    omit?: BillingCustomerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BillingCustomerInclude<ExtArgs> | null
+    /**
+     * Filter, which BillingCustomer to fetch.
+     */
+    where?: BillingCustomerWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BillingCustomers to fetch.
+     */
+    orderBy?: BillingCustomerOrderByWithRelationInput | BillingCustomerOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for BillingCustomers.
+     */
+    cursor?: BillingCustomerWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BillingCustomers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BillingCustomers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of BillingCustomers.
+     */
+    distinct?: BillingCustomerScalarFieldEnum | BillingCustomerScalarFieldEnum[]
+  }
+
+  /**
+   * BillingCustomer findFirstOrThrow
+   */
+  export type BillingCustomerFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BillingCustomer
+     */
+    select?: BillingCustomerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BillingCustomer
+     */
+    omit?: BillingCustomerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BillingCustomerInclude<ExtArgs> | null
+    /**
+     * Filter, which BillingCustomer to fetch.
+     */
+    where?: BillingCustomerWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BillingCustomers to fetch.
+     */
+    orderBy?: BillingCustomerOrderByWithRelationInput | BillingCustomerOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for BillingCustomers.
+     */
+    cursor?: BillingCustomerWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BillingCustomers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BillingCustomers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of BillingCustomers.
+     */
+    distinct?: BillingCustomerScalarFieldEnum | BillingCustomerScalarFieldEnum[]
+  }
+
+  /**
+   * BillingCustomer findMany
+   */
+  export type BillingCustomerFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BillingCustomer
+     */
+    select?: BillingCustomerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BillingCustomer
+     */
+    omit?: BillingCustomerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BillingCustomerInclude<ExtArgs> | null
+    /**
+     * Filter, which BillingCustomers to fetch.
+     */
+    where?: BillingCustomerWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BillingCustomers to fetch.
+     */
+    orderBy?: BillingCustomerOrderByWithRelationInput | BillingCustomerOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing BillingCustomers.
+     */
+    cursor?: BillingCustomerWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BillingCustomers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BillingCustomers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of BillingCustomers.
+     */
+    distinct?: BillingCustomerScalarFieldEnum | BillingCustomerScalarFieldEnum[]
+  }
+
+  /**
+   * BillingCustomer create
+   */
+  export type BillingCustomerCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BillingCustomer
+     */
+    select?: BillingCustomerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BillingCustomer
+     */
+    omit?: BillingCustomerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BillingCustomerInclude<ExtArgs> | null
+    /**
+     * The data needed to create a BillingCustomer.
+     */
+    data: XOR<BillingCustomerCreateInput, BillingCustomerUncheckedCreateInput>
+  }
+
+  /**
+   * BillingCustomer createMany
+   */
+  export type BillingCustomerCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many BillingCustomers.
+     */
+    data: BillingCustomerCreateManyInput | BillingCustomerCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * BillingCustomer createManyAndReturn
+   */
+  export type BillingCustomerCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BillingCustomer
+     */
+    select?: BillingCustomerSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the BillingCustomer
+     */
+    omit?: BillingCustomerOmit<ExtArgs> | null
+    /**
+     * The data used to create many BillingCustomers.
+     */
+    data: BillingCustomerCreateManyInput | BillingCustomerCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * BillingCustomer update
+   */
+  export type BillingCustomerUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BillingCustomer
+     */
+    select?: BillingCustomerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BillingCustomer
+     */
+    omit?: BillingCustomerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BillingCustomerInclude<ExtArgs> | null
+    /**
+     * The data needed to update a BillingCustomer.
+     */
+    data: XOR<BillingCustomerUpdateInput, BillingCustomerUncheckedUpdateInput>
+    /**
+     * Choose, which BillingCustomer to update.
+     */
+    where: BillingCustomerWhereUniqueInput
+  }
+
+  /**
+   * BillingCustomer updateMany
+   */
+  export type BillingCustomerUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update BillingCustomers.
+     */
+    data: XOR<BillingCustomerUpdateManyMutationInput, BillingCustomerUncheckedUpdateManyInput>
+    /**
+     * Filter which BillingCustomers to update
+     */
+    where?: BillingCustomerWhereInput
+    /**
+     * Limit how many BillingCustomers to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * BillingCustomer updateManyAndReturn
+   */
+  export type BillingCustomerUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BillingCustomer
+     */
+    select?: BillingCustomerSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the BillingCustomer
+     */
+    omit?: BillingCustomerOmit<ExtArgs> | null
+    /**
+     * The data used to update BillingCustomers.
+     */
+    data: XOR<BillingCustomerUpdateManyMutationInput, BillingCustomerUncheckedUpdateManyInput>
+    /**
+     * Filter which BillingCustomers to update
+     */
+    where?: BillingCustomerWhereInput
+    /**
+     * Limit how many BillingCustomers to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * BillingCustomer upsert
+   */
+  export type BillingCustomerUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BillingCustomer
+     */
+    select?: BillingCustomerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BillingCustomer
+     */
+    omit?: BillingCustomerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BillingCustomerInclude<ExtArgs> | null
+    /**
+     * The filter to search for the BillingCustomer to update in case it exists.
+     */
+    where: BillingCustomerWhereUniqueInput
+    /**
+     * In case the BillingCustomer found by the `where` argument doesn't exist, create a new BillingCustomer with this data.
+     */
+    create: XOR<BillingCustomerCreateInput, BillingCustomerUncheckedCreateInput>
+    /**
+     * In case the BillingCustomer was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<BillingCustomerUpdateInput, BillingCustomerUncheckedUpdateInput>
+  }
+
+  /**
+   * BillingCustomer delete
+   */
+  export type BillingCustomerDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BillingCustomer
+     */
+    select?: BillingCustomerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BillingCustomer
+     */
+    omit?: BillingCustomerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BillingCustomerInclude<ExtArgs> | null
+    /**
+     * Filter which BillingCustomer to delete.
+     */
+    where: BillingCustomerWhereUniqueInput
+  }
+
+  /**
+   * BillingCustomer deleteMany
+   */
+  export type BillingCustomerDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which BillingCustomers to delete
+     */
+    where?: BillingCustomerWhereInput
+    /**
+     * Limit how many BillingCustomers to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * BillingCustomer.subscriptions
+   */
+  export type BillingCustomer$subscriptionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BillingSubscription
+     */
+    select?: BillingSubscriptionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BillingSubscription
+     */
+    omit?: BillingSubscriptionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BillingSubscriptionInclude<ExtArgs> | null
+    where?: BillingSubscriptionWhereInput
+    orderBy?: BillingSubscriptionOrderByWithRelationInput | BillingSubscriptionOrderByWithRelationInput[]
+    cursor?: BillingSubscriptionWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: BillingSubscriptionScalarFieldEnum | BillingSubscriptionScalarFieldEnum[]
+  }
+
+  /**
+   * BillingCustomer without action
+   */
+  export type BillingCustomerDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BillingCustomer
+     */
+    select?: BillingCustomerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BillingCustomer
+     */
+    omit?: BillingCustomerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BillingCustomerInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model BillingSubscription
+   */
+
+  export type AggregateBillingSubscription = {
+    _count: BillingSubscriptionCountAggregateOutputType | null
+    _avg: BillingSubscriptionAvgAggregateOutputType | null
+    _sum: BillingSubscriptionSumAggregateOutputType | null
+    _min: BillingSubscriptionMinAggregateOutputType | null
+    _max: BillingSubscriptionMaxAggregateOutputType | null
+  }
+
+  export type BillingSubscriptionAvgAggregateOutputType = {
+    authAmountPaise: number | null
+  }
+
+  export type BillingSubscriptionSumAggregateOutputType = {
+    authAmountPaise: number | null
+  }
+
+  export type BillingSubscriptionMinAggregateOutputType = {
+    id: string | null
+    customerId: string | null
+    razorpaySubscriptionId: string | null
+    razorpayPlanId: string | null
+    planKey: string | null
+    billingCycle: string | null
+    billingType: string | null
+    status: string | null
+    trialStartAt: Date | null
+    trialEndAt: Date | null
+    currentPeriodStart: Date | null
+    currentPeriodEnd: Date | null
+    authAmountPaise: number | null
+    lastPaymentAt: Date | null
+    zovetoClaimed: boolean | null
+    zovetoCompanyId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type BillingSubscriptionMaxAggregateOutputType = {
+    id: string | null
+    customerId: string | null
+    razorpaySubscriptionId: string | null
+    razorpayPlanId: string | null
+    planKey: string | null
+    billingCycle: string | null
+    billingType: string | null
+    status: string | null
+    trialStartAt: Date | null
+    trialEndAt: Date | null
+    currentPeriodStart: Date | null
+    currentPeriodEnd: Date | null
+    authAmountPaise: number | null
+    lastPaymentAt: Date | null
+    zovetoClaimed: boolean | null
+    zovetoCompanyId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type BillingSubscriptionCountAggregateOutputType = {
+    id: number
+    customerId: number
+    razorpaySubscriptionId: number
+    razorpayPlanId: number
+    planKey: number
+    billingCycle: number
+    billingType: number
+    selectedModules: number
+    status: number
+    trialStartAt: number
+    trialEndAt: number
+    currentPeriodStart: number
+    currentPeriodEnd: number
+    authAmountPaise: number
+    lastPaymentAt: number
+    zovetoClaimed: number
+    zovetoCompanyId: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type BillingSubscriptionAvgAggregateInputType = {
+    authAmountPaise?: true
+  }
+
+  export type BillingSubscriptionSumAggregateInputType = {
+    authAmountPaise?: true
+  }
+
+  export type BillingSubscriptionMinAggregateInputType = {
+    id?: true
+    customerId?: true
+    razorpaySubscriptionId?: true
+    razorpayPlanId?: true
+    planKey?: true
+    billingCycle?: true
+    billingType?: true
+    status?: true
+    trialStartAt?: true
+    trialEndAt?: true
+    currentPeriodStart?: true
+    currentPeriodEnd?: true
+    authAmountPaise?: true
+    lastPaymentAt?: true
+    zovetoClaimed?: true
+    zovetoCompanyId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type BillingSubscriptionMaxAggregateInputType = {
+    id?: true
+    customerId?: true
+    razorpaySubscriptionId?: true
+    razorpayPlanId?: true
+    planKey?: true
+    billingCycle?: true
+    billingType?: true
+    status?: true
+    trialStartAt?: true
+    trialEndAt?: true
+    currentPeriodStart?: true
+    currentPeriodEnd?: true
+    authAmountPaise?: true
+    lastPaymentAt?: true
+    zovetoClaimed?: true
+    zovetoCompanyId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type BillingSubscriptionCountAggregateInputType = {
+    id?: true
+    customerId?: true
+    razorpaySubscriptionId?: true
+    razorpayPlanId?: true
+    planKey?: true
+    billingCycle?: true
+    billingType?: true
+    selectedModules?: true
+    status?: true
+    trialStartAt?: true
+    trialEndAt?: true
+    currentPeriodStart?: true
+    currentPeriodEnd?: true
+    authAmountPaise?: true
+    lastPaymentAt?: true
+    zovetoClaimed?: true
+    zovetoCompanyId?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type BillingSubscriptionAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which BillingSubscription to aggregate.
+     */
+    where?: BillingSubscriptionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BillingSubscriptions to fetch.
+     */
+    orderBy?: BillingSubscriptionOrderByWithRelationInput | BillingSubscriptionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: BillingSubscriptionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BillingSubscriptions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BillingSubscriptions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned BillingSubscriptions
+    **/
+    _count?: true | BillingSubscriptionCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: BillingSubscriptionAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: BillingSubscriptionSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: BillingSubscriptionMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: BillingSubscriptionMaxAggregateInputType
+  }
+
+  export type GetBillingSubscriptionAggregateType<T extends BillingSubscriptionAggregateArgs> = {
+        [P in keyof T & keyof AggregateBillingSubscription]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateBillingSubscription[P]>
+      : GetScalarType<T[P], AggregateBillingSubscription[P]>
+  }
+
+
+
+
+  export type BillingSubscriptionGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BillingSubscriptionWhereInput
+    orderBy?: BillingSubscriptionOrderByWithAggregationInput | BillingSubscriptionOrderByWithAggregationInput[]
+    by: BillingSubscriptionScalarFieldEnum[] | BillingSubscriptionScalarFieldEnum
+    having?: BillingSubscriptionScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: BillingSubscriptionCountAggregateInputType | true
+    _avg?: BillingSubscriptionAvgAggregateInputType
+    _sum?: BillingSubscriptionSumAggregateInputType
+    _min?: BillingSubscriptionMinAggregateInputType
+    _max?: BillingSubscriptionMaxAggregateInputType
+  }
+
+  export type BillingSubscriptionGroupByOutputType = {
+    id: string
+    customerId: string
+    razorpaySubscriptionId: string
+    razorpayPlanId: string
+    planKey: string
+    billingCycle: string
+    billingType: string
+    selectedModules: string[]
+    status: string
+    trialStartAt: Date | null
+    trialEndAt: Date | null
+    currentPeriodStart: Date | null
+    currentPeriodEnd: Date | null
+    authAmountPaise: number
+    lastPaymentAt: Date | null
+    zovetoClaimed: boolean
+    zovetoCompanyId: string | null
+    createdAt: Date
+    updatedAt: Date
+    _count: BillingSubscriptionCountAggregateOutputType | null
+    _avg: BillingSubscriptionAvgAggregateOutputType | null
+    _sum: BillingSubscriptionSumAggregateOutputType | null
+    _min: BillingSubscriptionMinAggregateOutputType | null
+    _max: BillingSubscriptionMaxAggregateOutputType | null
+  }
+
+  type GetBillingSubscriptionGroupByPayload<T extends BillingSubscriptionGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<BillingSubscriptionGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof BillingSubscriptionGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], BillingSubscriptionGroupByOutputType[P]>
+            : GetScalarType<T[P], BillingSubscriptionGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type BillingSubscriptionSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    customerId?: boolean
+    razorpaySubscriptionId?: boolean
+    razorpayPlanId?: boolean
+    planKey?: boolean
+    billingCycle?: boolean
+    billingType?: boolean
+    selectedModules?: boolean
+    status?: boolean
+    trialStartAt?: boolean
+    trialEndAt?: boolean
+    currentPeriodStart?: boolean
+    currentPeriodEnd?: boolean
+    authAmountPaise?: boolean
+    lastPaymentAt?: boolean
+    zovetoClaimed?: boolean
+    zovetoCompanyId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    customer?: boolean | BillingCustomerDefaultArgs<ExtArgs>
+    payments?: boolean | BillingSubscription$paymentsArgs<ExtArgs>
+    _count?: boolean | BillingSubscriptionCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["billingSubscription"]>
+
+  export type BillingSubscriptionSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    customerId?: boolean
+    razorpaySubscriptionId?: boolean
+    razorpayPlanId?: boolean
+    planKey?: boolean
+    billingCycle?: boolean
+    billingType?: boolean
+    selectedModules?: boolean
+    status?: boolean
+    trialStartAt?: boolean
+    trialEndAt?: boolean
+    currentPeriodStart?: boolean
+    currentPeriodEnd?: boolean
+    authAmountPaise?: boolean
+    lastPaymentAt?: boolean
+    zovetoClaimed?: boolean
+    zovetoCompanyId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    customer?: boolean | BillingCustomerDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["billingSubscription"]>
+
+  export type BillingSubscriptionSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    customerId?: boolean
+    razorpaySubscriptionId?: boolean
+    razorpayPlanId?: boolean
+    planKey?: boolean
+    billingCycle?: boolean
+    billingType?: boolean
+    selectedModules?: boolean
+    status?: boolean
+    trialStartAt?: boolean
+    trialEndAt?: boolean
+    currentPeriodStart?: boolean
+    currentPeriodEnd?: boolean
+    authAmountPaise?: boolean
+    lastPaymentAt?: boolean
+    zovetoClaimed?: boolean
+    zovetoCompanyId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    customer?: boolean | BillingCustomerDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["billingSubscription"]>
+
+  export type BillingSubscriptionSelectScalar = {
+    id?: boolean
+    customerId?: boolean
+    razorpaySubscriptionId?: boolean
+    razorpayPlanId?: boolean
+    planKey?: boolean
+    billingCycle?: boolean
+    billingType?: boolean
+    selectedModules?: boolean
+    status?: boolean
+    trialStartAt?: boolean
+    trialEndAt?: boolean
+    currentPeriodStart?: boolean
+    currentPeriodEnd?: boolean
+    authAmountPaise?: boolean
+    lastPaymentAt?: boolean
+    zovetoClaimed?: boolean
+    zovetoCompanyId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type BillingSubscriptionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "customerId" | "razorpaySubscriptionId" | "razorpayPlanId" | "planKey" | "billingCycle" | "billingType" | "selectedModules" | "status" | "trialStartAt" | "trialEndAt" | "currentPeriodStart" | "currentPeriodEnd" | "authAmountPaise" | "lastPaymentAt" | "zovetoClaimed" | "zovetoCompanyId" | "createdAt" | "updatedAt", ExtArgs["result"]["billingSubscription"]>
+  export type BillingSubscriptionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    customer?: boolean | BillingCustomerDefaultArgs<ExtArgs>
+    payments?: boolean | BillingSubscription$paymentsArgs<ExtArgs>
+    _count?: boolean | BillingSubscriptionCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type BillingSubscriptionIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    customer?: boolean | BillingCustomerDefaultArgs<ExtArgs>
+  }
+  export type BillingSubscriptionIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    customer?: boolean | BillingCustomerDefaultArgs<ExtArgs>
+  }
+
+  export type $BillingSubscriptionPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "BillingSubscription"
+    objects: {
+      customer: Prisma.$BillingCustomerPayload<ExtArgs>
+      payments: Prisma.$BillingPaymentEventPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      customerId: string
+      razorpaySubscriptionId: string
+      razorpayPlanId: string
+      planKey: string
+      billingCycle: string
+      billingType: string
+      selectedModules: string[]
+      status: string
+      trialStartAt: Date | null
+      trialEndAt: Date | null
+      currentPeriodStart: Date | null
+      currentPeriodEnd: Date | null
+      authAmountPaise: number
+      lastPaymentAt: Date | null
+      zovetoClaimed: boolean
+      zovetoCompanyId: string | null
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["billingSubscription"]>
+    composites: {}
+  }
+
+  type BillingSubscriptionGetPayload<S extends boolean | null | undefined | BillingSubscriptionDefaultArgs> = $Result.GetResult<Prisma.$BillingSubscriptionPayload, S>
+
+  type BillingSubscriptionCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<BillingSubscriptionFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: BillingSubscriptionCountAggregateInputType | true
+    }
+
+  export interface BillingSubscriptionDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['BillingSubscription'], meta: { name: 'BillingSubscription' } }
+    /**
+     * Find zero or one BillingSubscription that matches the filter.
+     * @param {BillingSubscriptionFindUniqueArgs} args - Arguments to find a BillingSubscription
+     * @example
+     * // Get one BillingSubscription
+     * const billingSubscription = await prisma.billingSubscription.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends BillingSubscriptionFindUniqueArgs>(args: SelectSubset<T, BillingSubscriptionFindUniqueArgs<ExtArgs>>): Prisma__BillingSubscriptionClient<$Result.GetResult<Prisma.$BillingSubscriptionPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one BillingSubscription that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {BillingSubscriptionFindUniqueOrThrowArgs} args - Arguments to find a BillingSubscription
+     * @example
+     * // Get one BillingSubscription
+     * const billingSubscription = await prisma.billingSubscription.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends BillingSubscriptionFindUniqueOrThrowArgs>(args: SelectSubset<T, BillingSubscriptionFindUniqueOrThrowArgs<ExtArgs>>): Prisma__BillingSubscriptionClient<$Result.GetResult<Prisma.$BillingSubscriptionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first BillingSubscription that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BillingSubscriptionFindFirstArgs} args - Arguments to find a BillingSubscription
+     * @example
+     * // Get one BillingSubscription
+     * const billingSubscription = await prisma.billingSubscription.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends BillingSubscriptionFindFirstArgs>(args?: SelectSubset<T, BillingSubscriptionFindFirstArgs<ExtArgs>>): Prisma__BillingSubscriptionClient<$Result.GetResult<Prisma.$BillingSubscriptionPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first BillingSubscription that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BillingSubscriptionFindFirstOrThrowArgs} args - Arguments to find a BillingSubscription
+     * @example
+     * // Get one BillingSubscription
+     * const billingSubscription = await prisma.billingSubscription.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends BillingSubscriptionFindFirstOrThrowArgs>(args?: SelectSubset<T, BillingSubscriptionFindFirstOrThrowArgs<ExtArgs>>): Prisma__BillingSubscriptionClient<$Result.GetResult<Prisma.$BillingSubscriptionPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more BillingSubscriptions that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BillingSubscriptionFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all BillingSubscriptions
+     * const billingSubscriptions = await prisma.billingSubscription.findMany()
+     * 
+     * // Get first 10 BillingSubscriptions
+     * const billingSubscriptions = await prisma.billingSubscription.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const billingSubscriptionWithIdOnly = await prisma.billingSubscription.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends BillingSubscriptionFindManyArgs>(args?: SelectSubset<T, BillingSubscriptionFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BillingSubscriptionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a BillingSubscription.
+     * @param {BillingSubscriptionCreateArgs} args - Arguments to create a BillingSubscription.
+     * @example
+     * // Create one BillingSubscription
+     * const BillingSubscription = await prisma.billingSubscription.create({
+     *   data: {
+     *     // ... data to create a BillingSubscription
+     *   }
+     * })
+     * 
+     */
+    create<T extends BillingSubscriptionCreateArgs>(args: SelectSubset<T, BillingSubscriptionCreateArgs<ExtArgs>>): Prisma__BillingSubscriptionClient<$Result.GetResult<Prisma.$BillingSubscriptionPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many BillingSubscriptions.
+     * @param {BillingSubscriptionCreateManyArgs} args - Arguments to create many BillingSubscriptions.
+     * @example
+     * // Create many BillingSubscriptions
+     * const billingSubscription = await prisma.billingSubscription.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends BillingSubscriptionCreateManyArgs>(args?: SelectSubset<T, BillingSubscriptionCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many BillingSubscriptions and returns the data saved in the database.
+     * @param {BillingSubscriptionCreateManyAndReturnArgs} args - Arguments to create many BillingSubscriptions.
+     * @example
+     * // Create many BillingSubscriptions
+     * const billingSubscription = await prisma.billingSubscription.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many BillingSubscriptions and only return the `id`
+     * const billingSubscriptionWithIdOnly = await prisma.billingSubscription.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends BillingSubscriptionCreateManyAndReturnArgs>(args?: SelectSubset<T, BillingSubscriptionCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BillingSubscriptionPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a BillingSubscription.
+     * @param {BillingSubscriptionDeleteArgs} args - Arguments to delete one BillingSubscription.
+     * @example
+     * // Delete one BillingSubscription
+     * const BillingSubscription = await prisma.billingSubscription.delete({
+     *   where: {
+     *     // ... filter to delete one BillingSubscription
+     *   }
+     * })
+     * 
+     */
+    delete<T extends BillingSubscriptionDeleteArgs>(args: SelectSubset<T, BillingSubscriptionDeleteArgs<ExtArgs>>): Prisma__BillingSubscriptionClient<$Result.GetResult<Prisma.$BillingSubscriptionPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one BillingSubscription.
+     * @param {BillingSubscriptionUpdateArgs} args - Arguments to update one BillingSubscription.
+     * @example
+     * // Update one BillingSubscription
+     * const billingSubscription = await prisma.billingSubscription.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends BillingSubscriptionUpdateArgs>(args: SelectSubset<T, BillingSubscriptionUpdateArgs<ExtArgs>>): Prisma__BillingSubscriptionClient<$Result.GetResult<Prisma.$BillingSubscriptionPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more BillingSubscriptions.
+     * @param {BillingSubscriptionDeleteManyArgs} args - Arguments to filter BillingSubscriptions to delete.
+     * @example
+     * // Delete a few BillingSubscriptions
+     * const { count } = await prisma.billingSubscription.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends BillingSubscriptionDeleteManyArgs>(args?: SelectSubset<T, BillingSubscriptionDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more BillingSubscriptions.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BillingSubscriptionUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many BillingSubscriptions
+     * const billingSubscription = await prisma.billingSubscription.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends BillingSubscriptionUpdateManyArgs>(args: SelectSubset<T, BillingSubscriptionUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more BillingSubscriptions and returns the data updated in the database.
+     * @param {BillingSubscriptionUpdateManyAndReturnArgs} args - Arguments to update many BillingSubscriptions.
+     * @example
+     * // Update many BillingSubscriptions
+     * const billingSubscription = await prisma.billingSubscription.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more BillingSubscriptions and only return the `id`
+     * const billingSubscriptionWithIdOnly = await prisma.billingSubscription.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends BillingSubscriptionUpdateManyAndReturnArgs>(args: SelectSubset<T, BillingSubscriptionUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BillingSubscriptionPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one BillingSubscription.
+     * @param {BillingSubscriptionUpsertArgs} args - Arguments to update or create a BillingSubscription.
+     * @example
+     * // Update or create a BillingSubscription
+     * const billingSubscription = await prisma.billingSubscription.upsert({
+     *   create: {
+     *     // ... data to create a BillingSubscription
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the BillingSubscription we want to update
+     *   }
+     * })
+     */
+    upsert<T extends BillingSubscriptionUpsertArgs>(args: SelectSubset<T, BillingSubscriptionUpsertArgs<ExtArgs>>): Prisma__BillingSubscriptionClient<$Result.GetResult<Prisma.$BillingSubscriptionPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of BillingSubscriptions.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BillingSubscriptionCountArgs} args - Arguments to filter BillingSubscriptions to count.
+     * @example
+     * // Count the number of BillingSubscriptions
+     * const count = await prisma.billingSubscription.count({
+     *   where: {
+     *     // ... the filter for the BillingSubscriptions we want to count
+     *   }
+     * })
+    **/
+    count<T extends BillingSubscriptionCountArgs>(
+      args?: Subset<T, BillingSubscriptionCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], BillingSubscriptionCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a BillingSubscription.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BillingSubscriptionAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends BillingSubscriptionAggregateArgs>(args: Subset<T, BillingSubscriptionAggregateArgs>): Prisma.PrismaPromise<GetBillingSubscriptionAggregateType<T>>
+
+    /**
+     * Group by BillingSubscription.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BillingSubscriptionGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends BillingSubscriptionGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: BillingSubscriptionGroupByArgs['orderBy'] }
+        : { orderBy?: BillingSubscriptionGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, BillingSubscriptionGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetBillingSubscriptionGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the BillingSubscription model
+   */
+  readonly fields: BillingSubscriptionFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for BillingSubscription.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__BillingSubscriptionClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    customer<T extends BillingCustomerDefaultArgs<ExtArgs> = {}>(args?: Subset<T, BillingCustomerDefaultArgs<ExtArgs>>): Prisma__BillingCustomerClient<$Result.GetResult<Prisma.$BillingCustomerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    payments<T extends BillingSubscription$paymentsArgs<ExtArgs> = {}>(args?: Subset<T, BillingSubscription$paymentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BillingPaymentEventPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the BillingSubscription model
+   */
+  interface BillingSubscriptionFieldRefs {
+    readonly id: FieldRef<"BillingSubscription", 'String'>
+    readonly customerId: FieldRef<"BillingSubscription", 'String'>
+    readonly razorpaySubscriptionId: FieldRef<"BillingSubscription", 'String'>
+    readonly razorpayPlanId: FieldRef<"BillingSubscription", 'String'>
+    readonly planKey: FieldRef<"BillingSubscription", 'String'>
+    readonly billingCycle: FieldRef<"BillingSubscription", 'String'>
+    readonly billingType: FieldRef<"BillingSubscription", 'String'>
+    readonly selectedModules: FieldRef<"BillingSubscription", 'String[]'>
+    readonly status: FieldRef<"BillingSubscription", 'String'>
+    readonly trialStartAt: FieldRef<"BillingSubscription", 'DateTime'>
+    readonly trialEndAt: FieldRef<"BillingSubscription", 'DateTime'>
+    readonly currentPeriodStart: FieldRef<"BillingSubscription", 'DateTime'>
+    readonly currentPeriodEnd: FieldRef<"BillingSubscription", 'DateTime'>
+    readonly authAmountPaise: FieldRef<"BillingSubscription", 'Int'>
+    readonly lastPaymentAt: FieldRef<"BillingSubscription", 'DateTime'>
+    readonly zovetoClaimed: FieldRef<"BillingSubscription", 'Boolean'>
+    readonly zovetoCompanyId: FieldRef<"BillingSubscription", 'String'>
+    readonly createdAt: FieldRef<"BillingSubscription", 'DateTime'>
+    readonly updatedAt: FieldRef<"BillingSubscription", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * BillingSubscription findUnique
+   */
+  export type BillingSubscriptionFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BillingSubscription
+     */
+    select?: BillingSubscriptionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BillingSubscription
+     */
+    omit?: BillingSubscriptionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BillingSubscriptionInclude<ExtArgs> | null
+    /**
+     * Filter, which BillingSubscription to fetch.
+     */
+    where: BillingSubscriptionWhereUniqueInput
+  }
+
+  /**
+   * BillingSubscription findUniqueOrThrow
+   */
+  export type BillingSubscriptionFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BillingSubscription
+     */
+    select?: BillingSubscriptionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BillingSubscription
+     */
+    omit?: BillingSubscriptionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BillingSubscriptionInclude<ExtArgs> | null
+    /**
+     * Filter, which BillingSubscription to fetch.
+     */
+    where: BillingSubscriptionWhereUniqueInput
+  }
+
+  /**
+   * BillingSubscription findFirst
+   */
+  export type BillingSubscriptionFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BillingSubscription
+     */
+    select?: BillingSubscriptionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BillingSubscription
+     */
+    omit?: BillingSubscriptionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BillingSubscriptionInclude<ExtArgs> | null
+    /**
+     * Filter, which BillingSubscription to fetch.
+     */
+    where?: BillingSubscriptionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BillingSubscriptions to fetch.
+     */
+    orderBy?: BillingSubscriptionOrderByWithRelationInput | BillingSubscriptionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for BillingSubscriptions.
+     */
+    cursor?: BillingSubscriptionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BillingSubscriptions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BillingSubscriptions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of BillingSubscriptions.
+     */
+    distinct?: BillingSubscriptionScalarFieldEnum | BillingSubscriptionScalarFieldEnum[]
+  }
+
+  /**
+   * BillingSubscription findFirstOrThrow
+   */
+  export type BillingSubscriptionFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BillingSubscription
+     */
+    select?: BillingSubscriptionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BillingSubscription
+     */
+    omit?: BillingSubscriptionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BillingSubscriptionInclude<ExtArgs> | null
+    /**
+     * Filter, which BillingSubscription to fetch.
+     */
+    where?: BillingSubscriptionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BillingSubscriptions to fetch.
+     */
+    orderBy?: BillingSubscriptionOrderByWithRelationInput | BillingSubscriptionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for BillingSubscriptions.
+     */
+    cursor?: BillingSubscriptionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BillingSubscriptions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BillingSubscriptions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of BillingSubscriptions.
+     */
+    distinct?: BillingSubscriptionScalarFieldEnum | BillingSubscriptionScalarFieldEnum[]
+  }
+
+  /**
+   * BillingSubscription findMany
+   */
+  export type BillingSubscriptionFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BillingSubscription
+     */
+    select?: BillingSubscriptionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BillingSubscription
+     */
+    omit?: BillingSubscriptionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BillingSubscriptionInclude<ExtArgs> | null
+    /**
+     * Filter, which BillingSubscriptions to fetch.
+     */
+    where?: BillingSubscriptionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BillingSubscriptions to fetch.
+     */
+    orderBy?: BillingSubscriptionOrderByWithRelationInput | BillingSubscriptionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing BillingSubscriptions.
+     */
+    cursor?: BillingSubscriptionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BillingSubscriptions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BillingSubscriptions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of BillingSubscriptions.
+     */
+    distinct?: BillingSubscriptionScalarFieldEnum | BillingSubscriptionScalarFieldEnum[]
+  }
+
+  /**
+   * BillingSubscription create
+   */
+  export type BillingSubscriptionCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BillingSubscription
+     */
+    select?: BillingSubscriptionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BillingSubscription
+     */
+    omit?: BillingSubscriptionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BillingSubscriptionInclude<ExtArgs> | null
+    /**
+     * The data needed to create a BillingSubscription.
+     */
+    data: XOR<BillingSubscriptionCreateInput, BillingSubscriptionUncheckedCreateInput>
+  }
+
+  /**
+   * BillingSubscription createMany
+   */
+  export type BillingSubscriptionCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many BillingSubscriptions.
+     */
+    data: BillingSubscriptionCreateManyInput | BillingSubscriptionCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * BillingSubscription createManyAndReturn
+   */
+  export type BillingSubscriptionCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BillingSubscription
+     */
+    select?: BillingSubscriptionSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the BillingSubscription
+     */
+    omit?: BillingSubscriptionOmit<ExtArgs> | null
+    /**
+     * The data used to create many BillingSubscriptions.
+     */
+    data: BillingSubscriptionCreateManyInput | BillingSubscriptionCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BillingSubscriptionIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * BillingSubscription update
+   */
+  export type BillingSubscriptionUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BillingSubscription
+     */
+    select?: BillingSubscriptionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BillingSubscription
+     */
+    omit?: BillingSubscriptionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BillingSubscriptionInclude<ExtArgs> | null
+    /**
+     * The data needed to update a BillingSubscription.
+     */
+    data: XOR<BillingSubscriptionUpdateInput, BillingSubscriptionUncheckedUpdateInput>
+    /**
+     * Choose, which BillingSubscription to update.
+     */
+    where: BillingSubscriptionWhereUniqueInput
+  }
+
+  /**
+   * BillingSubscription updateMany
+   */
+  export type BillingSubscriptionUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update BillingSubscriptions.
+     */
+    data: XOR<BillingSubscriptionUpdateManyMutationInput, BillingSubscriptionUncheckedUpdateManyInput>
+    /**
+     * Filter which BillingSubscriptions to update
+     */
+    where?: BillingSubscriptionWhereInput
+    /**
+     * Limit how many BillingSubscriptions to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * BillingSubscription updateManyAndReturn
+   */
+  export type BillingSubscriptionUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BillingSubscription
+     */
+    select?: BillingSubscriptionSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the BillingSubscription
+     */
+    omit?: BillingSubscriptionOmit<ExtArgs> | null
+    /**
+     * The data used to update BillingSubscriptions.
+     */
+    data: XOR<BillingSubscriptionUpdateManyMutationInput, BillingSubscriptionUncheckedUpdateManyInput>
+    /**
+     * Filter which BillingSubscriptions to update
+     */
+    where?: BillingSubscriptionWhereInput
+    /**
+     * Limit how many BillingSubscriptions to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BillingSubscriptionIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * BillingSubscription upsert
+   */
+  export type BillingSubscriptionUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BillingSubscription
+     */
+    select?: BillingSubscriptionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BillingSubscription
+     */
+    omit?: BillingSubscriptionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BillingSubscriptionInclude<ExtArgs> | null
+    /**
+     * The filter to search for the BillingSubscription to update in case it exists.
+     */
+    where: BillingSubscriptionWhereUniqueInput
+    /**
+     * In case the BillingSubscription found by the `where` argument doesn't exist, create a new BillingSubscription with this data.
+     */
+    create: XOR<BillingSubscriptionCreateInput, BillingSubscriptionUncheckedCreateInput>
+    /**
+     * In case the BillingSubscription was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<BillingSubscriptionUpdateInput, BillingSubscriptionUncheckedUpdateInput>
+  }
+
+  /**
+   * BillingSubscription delete
+   */
+  export type BillingSubscriptionDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BillingSubscription
+     */
+    select?: BillingSubscriptionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BillingSubscription
+     */
+    omit?: BillingSubscriptionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BillingSubscriptionInclude<ExtArgs> | null
+    /**
+     * Filter which BillingSubscription to delete.
+     */
+    where: BillingSubscriptionWhereUniqueInput
+  }
+
+  /**
+   * BillingSubscription deleteMany
+   */
+  export type BillingSubscriptionDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which BillingSubscriptions to delete
+     */
+    where?: BillingSubscriptionWhereInput
+    /**
+     * Limit how many BillingSubscriptions to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * BillingSubscription.payments
+   */
+  export type BillingSubscription$paymentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BillingPaymentEvent
+     */
+    select?: BillingPaymentEventSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BillingPaymentEvent
+     */
+    omit?: BillingPaymentEventOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BillingPaymentEventInclude<ExtArgs> | null
+    where?: BillingPaymentEventWhereInput
+    orderBy?: BillingPaymentEventOrderByWithRelationInput | BillingPaymentEventOrderByWithRelationInput[]
+    cursor?: BillingPaymentEventWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: BillingPaymentEventScalarFieldEnum | BillingPaymentEventScalarFieldEnum[]
+  }
+
+  /**
+   * BillingSubscription without action
+   */
+  export type BillingSubscriptionDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BillingSubscription
+     */
+    select?: BillingSubscriptionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BillingSubscription
+     */
+    omit?: BillingSubscriptionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BillingSubscriptionInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model BillingPaymentEvent
+   */
+
+  export type AggregateBillingPaymentEvent = {
+    _count: BillingPaymentEventCountAggregateOutputType | null
+    _avg: BillingPaymentEventAvgAggregateOutputType | null
+    _sum: BillingPaymentEventSumAggregateOutputType | null
+    _min: BillingPaymentEventMinAggregateOutputType | null
+    _max: BillingPaymentEventMaxAggregateOutputType | null
+  }
+
+  export type BillingPaymentEventAvgAggregateOutputType = {
+    amountPaise: number | null
+  }
+
+  export type BillingPaymentEventSumAggregateOutputType = {
+    amountPaise: number | null
+  }
+
+  export type BillingPaymentEventMinAggregateOutputType = {
+    id: string | null
+    subscriptionId: string | null
+    razorpayPaymentId: string | null
+    amountPaise: number | null
+    status: string | null
+    paidAt: Date | null
+    createdAt: Date | null
+  }
+
+  export type BillingPaymentEventMaxAggregateOutputType = {
+    id: string | null
+    subscriptionId: string | null
+    razorpayPaymentId: string | null
+    amountPaise: number | null
+    status: string | null
+    paidAt: Date | null
+    createdAt: Date | null
+  }
+
+  export type BillingPaymentEventCountAggregateOutputType = {
+    id: number
+    subscriptionId: number
+    razorpayPaymentId: number
+    amountPaise: number
+    status: number
+    paidAt: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type BillingPaymentEventAvgAggregateInputType = {
+    amountPaise?: true
+  }
+
+  export type BillingPaymentEventSumAggregateInputType = {
+    amountPaise?: true
+  }
+
+  export type BillingPaymentEventMinAggregateInputType = {
+    id?: true
+    subscriptionId?: true
+    razorpayPaymentId?: true
+    amountPaise?: true
+    status?: true
+    paidAt?: true
+    createdAt?: true
+  }
+
+  export type BillingPaymentEventMaxAggregateInputType = {
+    id?: true
+    subscriptionId?: true
+    razorpayPaymentId?: true
+    amountPaise?: true
+    status?: true
+    paidAt?: true
+    createdAt?: true
+  }
+
+  export type BillingPaymentEventCountAggregateInputType = {
+    id?: true
+    subscriptionId?: true
+    razorpayPaymentId?: true
+    amountPaise?: true
+    status?: true
+    paidAt?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type BillingPaymentEventAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which BillingPaymentEvent to aggregate.
+     */
+    where?: BillingPaymentEventWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BillingPaymentEvents to fetch.
+     */
+    orderBy?: BillingPaymentEventOrderByWithRelationInput | BillingPaymentEventOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: BillingPaymentEventWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BillingPaymentEvents from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BillingPaymentEvents.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned BillingPaymentEvents
+    **/
+    _count?: true | BillingPaymentEventCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: BillingPaymentEventAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: BillingPaymentEventSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: BillingPaymentEventMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: BillingPaymentEventMaxAggregateInputType
+  }
+
+  export type GetBillingPaymentEventAggregateType<T extends BillingPaymentEventAggregateArgs> = {
+        [P in keyof T & keyof AggregateBillingPaymentEvent]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateBillingPaymentEvent[P]>
+      : GetScalarType<T[P], AggregateBillingPaymentEvent[P]>
+  }
+
+
+
+
+  export type BillingPaymentEventGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BillingPaymentEventWhereInput
+    orderBy?: BillingPaymentEventOrderByWithAggregationInput | BillingPaymentEventOrderByWithAggregationInput[]
+    by: BillingPaymentEventScalarFieldEnum[] | BillingPaymentEventScalarFieldEnum
+    having?: BillingPaymentEventScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: BillingPaymentEventCountAggregateInputType | true
+    _avg?: BillingPaymentEventAvgAggregateInputType
+    _sum?: BillingPaymentEventSumAggregateInputType
+    _min?: BillingPaymentEventMinAggregateInputType
+    _max?: BillingPaymentEventMaxAggregateInputType
+  }
+
+  export type BillingPaymentEventGroupByOutputType = {
+    id: string
+    subscriptionId: string
+    razorpayPaymentId: string
+    amountPaise: number
+    status: string
+    paidAt: Date | null
+    createdAt: Date
+    _count: BillingPaymentEventCountAggregateOutputType | null
+    _avg: BillingPaymentEventAvgAggregateOutputType | null
+    _sum: BillingPaymentEventSumAggregateOutputType | null
+    _min: BillingPaymentEventMinAggregateOutputType | null
+    _max: BillingPaymentEventMaxAggregateOutputType | null
+  }
+
+  type GetBillingPaymentEventGroupByPayload<T extends BillingPaymentEventGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<BillingPaymentEventGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof BillingPaymentEventGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], BillingPaymentEventGroupByOutputType[P]>
+            : GetScalarType<T[P], BillingPaymentEventGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type BillingPaymentEventSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    subscriptionId?: boolean
+    razorpayPaymentId?: boolean
+    amountPaise?: boolean
+    status?: boolean
+    paidAt?: boolean
+    createdAt?: boolean
+    subscription?: boolean | BillingSubscriptionDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["billingPaymentEvent"]>
+
+  export type BillingPaymentEventSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    subscriptionId?: boolean
+    razorpayPaymentId?: boolean
+    amountPaise?: boolean
+    status?: boolean
+    paidAt?: boolean
+    createdAt?: boolean
+    subscription?: boolean | BillingSubscriptionDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["billingPaymentEvent"]>
+
+  export type BillingPaymentEventSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    subscriptionId?: boolean
+    razorpayPaymentId?: boolean
+    amountPaise?: boolean
+    status?: boolean
+    paidAt?: boolean
+    createdAt?: boolean
+    subscription?: boolean | BillingSubscriptionDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["billingPaymentEvent"]>
+
+  export type BillingPaymentEventSelectScalar = {
+    id?: boolean
+    subscriptionId?: boolean
+    razorpayPaymentId?: boolean
+    amountPaise?: boolean
+    status?: boolean
+    paidAt?: boolean
+    createdAt?: boolean
+  }
+
+  export type BillingPaymentEventOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "subscriptionId" | "razorpayPaymentId" | "amountPaise" | "status" | "paidAt" | "createdAt", ExtArgs["result"]["billingPaymentEvent"]>
+  export type BillingPaymentEventInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    subscription?: boolean | BillingSubscriptionDefaultArgs<ExtArgs>
+  }
+  export type BillingPaymentEventIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    subscription?: boolean | BillingSubscriptionDefaultArgs<ExtArgs>
+  }
+  export type BillingPaymentEventIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    subscription?: boolean | BillingSubscriptionDefaultArgs<ExtArgs>
+  }
+
+  export type $BillingPaymentEventPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "BillingPaymentEvent"
+    objects: {
+      subscription: Prisma.$BillingSubscriptionPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      subscriptionId: string
+      razorpayPaymentId: string
+      amountPaise: number
+      status: string
+      paidAt: Date | null
+      createdAt: Date
+    }, ExtArgs["result"]["billingPaymentEvent"]>
+    composites: {}
+  }
+
+  type BillingPaymentEventGetPayload<S extends boolean | null | undefined | BillingPaymentEventDefaultArgs> = $Result.GetResult<Prisma.$BillingPaymentEventPayload, S>
+
+  type BillingPaymentEventCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<BillingPaymentEventFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: BillingPaymentEventCountAggregateInputType | true
+    }
+
+  export interface BillingPaymentEventDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['BillingPaymentEvent'], meta: { name: 'BillingPaymentEvent' } }
+    /**
+     * Find zero or one BillingPaymentEvent that matches the filter.
+     * @param {BillingPaymentEventFindUniqueArgs} args - Arguments to find a BillingPaymentEvent
+     * @example
+     * // Get one BillingPaymentEvent
+     * const billingPaymentEvent = await prisma.billingPaymentEvent.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends BillingPaymentEventFindUniqueArgs>(args: SelectSubset<T, BillingPaymentEventFindUniqueArgs<ExtArgs>>): Prisma__BillingPaymentEventClient<$Result.GetResult<Prisma.$BillingPaymentEventPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one BillingPaymentEvent that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {BillingPaymentEventFindUniqueOrThrowArgs} args - Arguments to find a BillingPaymentEvent
+     * @example
+     * // Get one BillingPaymentEvent
+     * const billingPaymentEvent = await prisma.billingPaymentEvent.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends BillingPaymentEventFindUniqueOrThrowArgs>(args: SelectSubset<T, BillingPaymentEventFindUniqueOrThrowArgs<ExtArgs>>): Prisma__BillingPaymentEventClient<$Result.GetResult<Prisma.$BillingPaymentEventPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first BillingPaymentEvent that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BillingPaymentEventFindFirstArgs} args - Arguments to find a BillingPaymentEvent
+     * @example
+     * // Get one BillingPaymentEvent
+     * const billingPaymentEvent = await prisma.billingPaymentEvent.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends BillingPaymentEventFindFirstArgs>(args?: SelectSubset<T, BillingPaymentEventFindFirstArgs<ExtArgs>>): Prisma__BillingPaymentEventClient<$Result.GetResult<Prisma.$BillingPaymentEventPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first BillingPaymentEvent that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BillingPaymentEventFindFirstOrThrowArgs} args - Arguments to find a BillingPaymentEvent
+     * @example
+     * // Get one BillingPaymentEvent
+     * const billingPaymentEvent = await prisma.billingPaymentEvent.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends BillingPaymentEventFindFirstOrThrowArgs>(args?: SelectSubset<T, BillingPaymentEventFindFirstOrThrowArgs<ExtArgs>>): Prisma__BillingPaymentEventClient<$Result.GetResult<Prisma.$BillingPaymentEventPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more BillingPaymentEvents that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BillingPaymentEventFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all BillingPaymentEvents
+     * const billingPaymentEvents = await prisma.billingPaymentEvent.findMany()
+     * 
+     * // Get first 10 BillingPaymentEvents
+     * const billingPaymentEvents = await prisma.billingPaymentEvent.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const billingPaymentEventWithIdOnly = await prisma.billingPaymentEvent.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends BillingPaymentEventFindManyArgs>(args?: SelectSubset<T, BillingPaymentEventFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BillingPaymentEventPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a BillingPaymentEvent.
+     * @param {BillingPaymentEventCreateArgs} args - Arguments to create a BillingPaymentEvent.
+     * @example
+     * // Create one BillingPaymentEvent
+     * const BillingPaymentEvent = await prisma.billingPaymentEvent.create({
+     *   data: {
+     *     // ... data to create a BillingPaymentEvent
+     *   }
+     * })
+     * 
+     */
+    create<T extends BillingPaymentEventCreateArgs>(args: SelectSubset<T, BillingPaymentEventCreateArgs<ExtArgs>>): Prisma__BillingPaymentEventClient<$Result.GetResult<Prisma.$BillingPaymentEventPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many BillingPaymentEvents.
+     * @param {BillingPaymentEventCreateManyArgs} args - Arguments to create many BillingPaymentEvents.
+     * @example
+     * // Create many BillingPaymentEvents
+     * const billingPaymentEvent = await prisma.billingPaymentEvent.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends BillingPaymentEventCreateManyArgs>(args?: SelectSubset<T, BillingPaymentEventCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many BillingPaymentEvents and returns the data saved in the database.
+     * @param {BillingPaymentEventCreateManyAndReturnArgs} args - Arguments to create many BillingPaymentEvents.
+     * @example
+     * // Create many BillingPaymentEvents
+     * const billingPaymentEvent = await prisma.billingPaymentEvent.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many BillingPaymentEvents and only return the `id`
+     * const billingPaymentEventWithIdOnly = await prisma.billingPaymentEvent.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends BillingPaymentEventCreateManyAndReturnArgs>(args?: SelectSubset<T, BillingPaymentEventCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BillingPaymentEventPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a BillingPaymentEvent.
+     * @param {BillingPaymentEventDeleteArgs} args - Arguments to delete one BillingPaymentEvent.
+     * @example
+     * // Delete one BillingPaymentEvent
+     * const BillingPaymentEvent = await prisma.billingPaymentEvent.delete({
+     *   where: {
+     *     // ... filter to delete one BillingPaymentEvent
+     *   }
+     * })
+     * 
+     */
+    delete<T extends BillingPaymentEventDeleteArgs>(args: SelectSubset<T, BillingPaymentEventDeleteArgs<ExtArgs>>): Prisma__BillingPaymentEventClient<$Result.GetResult<Prisma.$BillingPaymentEventPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one BillingPaymentEvent.
+     * @param {BillingPaymentEventUpdateArgs} args - Arguments to update one BillingPaymentEvent.
+     * @example
+     * // Update one BillingPaymentEvent
+     * const billingPaymentEvent = await prisma.billingPaymentEvent.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends BillingPaymentEventUpdateArgs>(args: SelectSubset<T, BillingPaymentEventUpdateArgs<ExtArgs>>): Prisma__BillingPaymentEventClient<$Result.GetResult<Prisma.$BillingPaymentEventPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more BillingPaymentEvents.
+     * @param {BillingPaymentEventDeleteManyArgs} args - Arguments to filter BillingPaymentEvents to delete.
+     * @example
+     * // Delete a few BillingPaymentEvents
+     * const { count } = await prisma.billingPaymentEvent.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends BillingPaymentEventDeleteManyArgs>(args?: SelectSubset<T, BillingPaymentEventDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more BillingPaymentEvents.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BillingPaymentEventUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many BillingPaymentEvents
+     * const billingPaymentEvent = await prisma.billingPaymentEvent.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends BillingPaymentEventUpdateManyArgs>(args: SelectSubset<T, BillingPaymentEventUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more BillingPaymentEvents and returns the data updated in the database.
+     * @param {BillingPaymentEventUpdateManyAndReturnArgs} args - Arguments to update many BillingPaymentEvents.
+     * @example
+     * // Update many BillingPaymentEvents
+     * const billingPaymentEvent = await prisma.billingPaymentEvent.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more BillingPaymentEvents and only return the `id`
+     * const billingPaymentEventWithIdOnly = await prisma.billingPaymentEvent.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends BillingPaymentEventUpdateManyAndReturnArgs>(args: SelectSubset<T, BillingPaymentEventUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BillingPaymentEventPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one BillingPaymentEvent.
+     * @param {BillingPaymentEventUpsertArgs} args - Arguments to update or create a BillingPaymentEvent.
+     * @example
+     * // Update or create a BillingPaymentEvent
+     * const billingPaymentEvent = await prisma.billingPaymentEvent.upsert({
+     *   create: {
+     *     // ... data to create a BillingPaymentEvent
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the BillingPaymentEvent we want to update
+     *   }
+     * })
+     */
+    upsert<T extends BillingPaymentEventUpsertArgs>(args: SelectSubset<T, BillingPaymentEventUpsertArgs<ExtArgs>>): Prisma__BillingPaymentEventClient<$Result.GetResult<Prisma.$BillingPaymentEventPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of BillingPaymentEvents.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BillingPaymentEventCountArgs} args - Arguments to filter BillingPaymentEvents to count.
+     * @example
+     * // Count the number of BillingPaymentEvents
+     * const count = await prisma.billingPaymentEvent.count({
+     *   where: {
+     *     // ... the filter for the BillingPaymentEvents we want to count
+     *   }
+     * })
+    **/
+    count<T extends BillingPaymentEventCountArgs>(
+      args?: Subset<T, BillingPaymentEventCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], BillingPaymentEventCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a BillingPaymentEvent.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BillingPaymentEventAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends BillingPaymentEventAggregateArgs>(args: Subset<T, BillingPaymentEventAggregateArgs>): Prisma.PrismaPromise<GetBillingPaymentEventAggregateType<T>>
+
+    /**
+     * Group by BillingPaymentEvent.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BillingPaymentEventGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends BillingPaymentEventGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: BillingPaymentEventGroupByArgs['orderBy'] }
+        : { orderBy?: BillingPaymentEventGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, BillingPaymentEventGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetBillingPaymentEventGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the BillingPaymentEvent model
+   */
+  readonly fields: BillingPaymentEventFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for BillingPaymentEvent.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__BillingPaymentEventClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    subscription<T extends BillingSubscriptionDefaultArgs<ExtArgs> = {}>(args?: Subset<T, BillingSubscriptionDefaultArgs<ExtArgs>>): Prisma__BillingSubscriptionClient<$Result.GetResult<Prisma.$BillingSubscriptionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the BillingPaymentEvent model
+   */
+  interface BillingPaymentEventFieldRefs {
+    readonly id: FieldRef<"BillingPaymentEvent", 'String'>
+    readonly subscriptionId: FieldRef<"BillingPaymentEvent", 'String'>
+    readonly razorpayPaymentId: FieldRef<"BillingPaymentEvent", 'String'>
+    readonly amountPaise: FieldRef<"BillingPaymentEvent", 'Int'>
+    readonly status: FieldRef<"BillingPaymentEvent", 'String'>
+    readonly paidAt: FieldRef<"BillingPaymentEvent", 'DateTime'>
+    readonly createdAt: FieldRef<"BillingPaymentEvent", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * BillingPaymentEvent findUnique
+   */
+  export type BillingPaymentEventFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BillingPaymentEvent
+     */
+    select?: BillingPaymentEventSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BillingPaymentEvent
+     */
+    omit?: BillingPaymentEventOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BillingPaymentEventInclude<ExtArgs> | null
+    /**
+     * Filter, which BillingPaymentEvent to fetch.
+     */
+    where: BillingPaymentEventWhereUniqueInput
+  }
+
+  /**
+   * BillingPaymentEvent findUniqueOrThrow
+   */
+  export type BillingPaymentEventFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BillingPaymentEvent
+     */
+    select?: BillingPaymentEventSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BillingPaymentEvent
+     */
+    omit?: BillingPaymentEventOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BillingPaymentEventInclude<ExtArgs> | null
+    /**
+     * Filter, which BillingPaymentEvent to fetch.
+     */
+    where: BillingPaymentEventWhereUniqueInput
+  }
+
+  /**
+   * BillingPaymentEvent findFirst
+   */
+  export type BillingPaymentEventFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BillingPaymentEvent
+     */
+    select?: BillingPaymentEventSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BillingPaymentEvent
+     */
+    omit?: BillingPaymentEventOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BillingPaymentEventInclude<ExtArgs> | null
+    /**
+     * Filter, which BillingPaymentEvent to fetch.
+     */
+    where?: BillingPaymentEventWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BillingPaymentEvents to fetch.
+     */
+    orderBy?: BillingPaymentEventOrderByWithRelationInput | BillingPaymentEventOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for BillingPaymentEvents.
+     */
+    cursor?: BillingPaymentEventWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BillingPaymentEvents from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BillingPaymentEvents.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of BillingPaymentEvents.
+     */
+    distinct?: BillingPaymentEventScalarFieldEnum | BillingPaymentEventScalarFieldEnum[]
+  }
+
+  /**
+   * BillingPaymentEvent findFirstOrThrow
+   */
+  export type BillingPaymentEventFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BillingPaymentEvent
+     */
+    select?: BillingPaymentEventSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BillingPaymentEvent
+     */
+    omit?: BillingPaymentEventOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BillingPaymentEventInclude<ExtArgs> | null
+    /**
+     * Filter, which BillingPaymentEvent to fetch.
+     */
+    where?: BillingPaymentEventWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BillingPaymentEvents to fetch.
+     */
+    orderBy?: BillingPaymentEventOrderByWithRelationInput | BillingPaymentEventOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for BillingPaymentEvents.
+     */
+    cursor?: BillingPaymentEventWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BillingPaymentEvents from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BillingPaymentEvents.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of BillingPaymentEvents.
+     */
+    distinct?: BillingPaymentEventScalarFieldEnum | BillingPaymentEventScalarFieldEnum[]
+  }
+
+  /**
+   * BillingPaymentEvent findMany
+   */
+  export type BillingPaymentEventFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BillingPaymentEvent
+     */
+    select?: BillingPaymentEventSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BillingPaymentEvent
+     */
+    omit?: BillingPaymentEventOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BillingPaymentEventInclude<ExtArgs> | null
+    /**
+     * Filter, which BillingPaymentEvents to fetch.
+     */
+    where?: BillingPaymentEventWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of BillingPaymentEvents to fetch.
+     */
+    orderBy?: BillingPaymentEventOrderByWithRelationInput | BillingPaymentEventOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing BillingPaymentEvents.
+     */
+    cursor?: BillingPaymentEventWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` BillingPaymentEvents from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` BillingPaymentEvents.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of BillingPaymentEvents.
+     */
+    distinct?: BillingPaymentEventScalarFieldEnum | BillingPaymentEventScalarFieldEnum[]
+  }
+
+  /**
+   * BillingPaymentEvent create
+   */
+  export type BillingPaymentEventCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BillingPaymentEvent
+     */
+    select?: BillingPaymentEventSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BillingPaymentEvent
+     */
+    omit?: BillingPaymentEventOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BillingPaymentEventInclude<ExtArgs> | null
+    /**
+     * The data needed to create a BillingPaymentEvent.
+     */
+    data: XOR<BillingPaymentEventCreateInput, BillingPaymentEventUncheckedCreateInput>
+  }
+
+  /**
+   * BillingPaymentEvent createMany
+   */
+  export type BillingPaymentEventCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many BillingPaymentEvents.
+     */
+    data: BillingPaymentEventCreateManyInput | BillingPaymentEventCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * BillingPaymentEvent createManyAndReturn
+   */
+  export type BillingPaymentEventCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BillingPaymentEvent
+     */
+    select?: BillingPaymentEventSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the BillingPaymentEvent
+     */
+    omit?: BillingPaymentEventOmit<ExtArgs> | null
+    /**
+     * The data used to create many BillingPaymentEvents.
+     */
+    data: BillingPaymentEventCreateManyInput | BillingPaymentEventCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BillingPaymentEventIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * BillingPaymentEvent update
+   */
+  export type BillingPaymentEventUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BillingPaymentEvent
+     */
+    select?: BillingPaymentEventSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BillingPaymentEvent
+     */
+    omit?: BillingPaymentEventOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BillingPaymentEventInclude<ExtArgs> | null
+    /**
+     * The data needed to update a BillingPaymentEvent.
+     */
+    data: XOR<BillingPaymentEventUpdateInput, BillingPaymentEventUncheckedUpdateInput>
+    /**
+     * Choose, which BillingPaymentEvent to update.
+     */
+    where: BillingPaymentEventWhereUniqueInput
+  }
+
+  /**
+   * BillingPaymentEvent updateMany
+   */
+  export type BillingPaymentEventUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update BillingPaymentEvents.
+     */
+    data: XOR<BillingPaymentEventUpdateManyMutationInput, BillingPaymentEventUncheckedUpdateManyInput>
+    /**
+     * Filter which BillingPaymentEvents to update
+     */
+    where?: BillingPaymentEventWhereInput
+    /**
+     * Limit how many BillingPaymentEvents to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * BillingPaymentEvent updateManyAndReturn
+   */
+  export type BillingPaymentEventUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BillingPaymentEvent
+     */
+    select?: BillingPaymentEventSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the BillingPaymentEvent
+     */
+    omit?: BillingPaymentEventOmit<ExtArgs> | null
+    /**
+     * The data used to update BillingPaymentEvents.
+     */
+    data: XOR<BillingPaymentEventUpdateManyMutationInput, BillingPaymentEventUncheckedUpdateManyInput>
+    /**
+     * Filter which BillingPaymentEvents to update
+     */
+    where?: BillingPaymentEventWhereInput
+    /**
+     * Limit how many BillingPaymentEvents to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BillingPaymentEventIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * BillingPaymentEvent upsert
+   */
+  export type BillingPaymentEventUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BillingPaymentEvent
+     */
+    select?: BillingPaymentEventSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BillingPaymentEvent
+     */
+    omit?: BillingPaymentEventOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BillingPaymentEventInclude<ExtArgs> | null
+    /**
+     * The filter to search for the BillingPaymentEvent to update in case it exists.
+     */
+    where: BillingPaymentEventWhereUniqueInput
+    /**
+     * In case the BillingPaymentEvent found by the `where` argument doesn't exist, create a new BillingPaymentEvent with this data.
+     */
+    create: XOR<BillingPaymentEventCreateInput, BillingPaymentEventUncheckedCreateInput>
+    /**
+     * In case the BillingPaymentEvent was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<BillingPaymentEventUpdateInput, BillingPaymentEventUncheckedUpdateInput>
+  }
+
+  /**
+   * BillingPaymentEvent delete
+   */
+  export type BillingPaymentEventDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BillingPaymentEvent
+     */
+    select?: BillingPaymentEventSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BillingPaymentEvent
+     */
+    omit?: BillingPaymentEventOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BillingPaymentEventInclude<ExtArgs> | null
+    /**
+     * Filter which BillingPaymentEvent to delete.
+     */
+    where: BillingPaymentEventWhereUniqueInput
+  }
+
+  /**
+   * BillingPaymentEvent deleteMany
+   */
+  export type BillingPaymentEventDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which BillingPaymentEvents to delete
+     */
+    where?: BillingPaymentEventWhereInput
+    /**
+     * Limit how many BillingPaymentEvents to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * BillingPaymentEvent without action
+   */
+  export type BillingPaymentEventDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BillingPaymentEvent
+     */
+    select?: BillingPaymentEventSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the BillingPaymentEvent
+     */
+    omit?: BillingPaymentEventOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BillingPaymentEventInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -14053,6 +17930,58 @@ export namespace Prisma {
   };
 
   export type IntegrationScalarFieldEnum = (typeof IntegrationScalarFieldEnum)[keyof typeof IntegrationScalarFieldEnum]
+
+
+  export const BillingCustomerScalarFieldEnum: {
+    id: 'id',
+    email: 'email',
+    name: 'name',
+    companyName: 'companyName',
+    phone: 'phone',
+    razorpayCustomerId: 'razorpayCustomerId',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type BillingCustomerScalarFieldEnum = (typeof BillingCustomerScalarFieldEnum)[keyof typeof BillingCustomerScalarFieldEnum]
+
+
+  export const BillingSubscriptionScalarFieldEnum: {
+    id: 'id',
+    customerId: 'customerId',
+    razorpaySubscriptionId: 'razorpaySubscriptionId',
+    razorpayPlanId: 'razorpayPlanId',
+    planKey: 'planKey',
+    billingCycle: 'billingCycle',
+    billingType: 'billingType',
+    selectedModules: 'selectedModules',
+    status: 'status',
+    trialStartAt: 'trialStartAt',
+    trialEndAt: 'trialEndAt',
+    currentPeriodStart: 'currentPeriodStart',
+    currentPeriodEnd: 'currentPeriodEnd',
+    authAmountPaise: 'authAmountPaise',
+    lastPaymentAt: 'lastPaymentAt',
+    zovetoClaimed: 'zovetoClaimed',
+    zovetoCompanyId: 'zovetoCompanyId',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type BillingSubscriptionScalarFieldEnum = (typeof BillingSubscriptionScalarFieldEnum)[keyof typeof BillingSubscriptionScalarFieldEnum]
+
+
+  export const BillingPaymentEventScalarFieldEnum: {
+    id: 'id',
+    subscriptionId: 'subscriptionId',
+    razorpayPaymentId: 'razorpayPaymentId',
+    amountPaise: 'amountPaise',
+    status: 'status',
+    paidAt: 'paidAt',
+    createdAt: 'createdAt'
+  };
+
+  export type BillingPaymentEventScalarFieldEnum = (typeof BillingPaymentEventScalarFieldEnum)[keyof typeof BillingPaymentEventScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -14992,6 +18921,273 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"Integration"> | Date | string
   }
 
+  export type BillingCustomerWhereInput = {
+    AND?: BillingCustomerWhereInput | BillingCustomerWhereInput[]
+    OR?: BillingCustomerWhereInput[]
+    NOT?: BillingCustomerWhereInput | BillingCustomerWhereInput[]
+    id?: StringFilter<"BillingCustomer"> | string
+    email?: StringFilter<"BillingCustomer"> | string
+    name?: StringFilter<"BillingCustomer"> | string
+    companyName?: StringNullableFilter<"BillingCustomer"> | string | null
+    phone?: StringNullableFilter<"BillingCustomer"> | string | null
+    razorpayCustomerId?: StringNullableFilter<"BillingCustomer"> | string | null
+    createdAt?: DateTimeFilter<"BillingCustomer"> | Date | string
+    updatedAt?: DateTimeFilter<"BillingCustomer"> | Date | string
+    subscriptions?: BillingSubscriptionListRelationFilter
+  }
+
+  export type BillingCustomerOrderByWithRelationInput = {
+    id?: SortOrder
+    email?: SortOrder
+    name?: SortOrder
+    companyName?: SortOrderInput | SortOrder
+    phone?: SortOrderInput | SortOrder
+    razorpayCustomerId?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    subscriptions?: BillingSubscriptionOrderByRelationAggregateInput
+  }
+
+  export type BillingCustomerWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    email?: string
+    razorpayCustomerId?: string
+    AND?: BillingCustomerWhereInput | BillingCustomerWhereInput[]
+    OR?: BillingCustomerWhereInput[]
+    NOT?: BillingCustomerWhereInput | BillingCustomerWhereInput[]
+    name?: StringFilter<"BillingCustomer"> | string
+    companyName?: StringNullableFilter<"BillingCustomer"> | string | null
+    phone?: StringNullableFilter<"BillingCustomer"> | string | null
+    createdAt?: DateTimeFilter<"BillingCustomer"> | Date | string
+    updatedAt?: DateTimeFilter<"BillingCustomer"> | Date | string
+    subscriptions?: BillingSubscriptionListRelationFilter
+  }, "id" | "email" | "razorpayCustomerId">
+
+  export type BillingCustomerOrderByWithAggregationInput = {
+    id?: SortOrder
+    email?: SortOrder
+    name?: SortOrder
+    companyName?: SortOrderInput | SortOrder
+    phone?: SortOrderInput | SortOrder
+    razorpayCustomerId?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: BillingCustomerCountOrderByAggregateInput
+    _max?: BillingCustomerMaxOrderByAggregateInput
+    _min?: BillingCustomerMinOrderByAggregateInput
+  }
+
+  export type BillingCustomerScalarWhereWithAggregatesInput = {
+    AND?: BillingCustomerScalarWhereWithAggregatesInput | BillingCustomerScalarWhereWithAggregatesInput[]
+    OR?: BillingCustomerScalarWhereWithAggregatesInput[]
+    NOT?: BillingCustomerScalarWhereWithAggregatesInput | BillingCustomerScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"BillingCustomer"> | string
+    email?: StringWithAggregatesFilter<"BillingCustomer"> | string
+    name?: StringWithAggregatesFilter<"BillingCustomer"> | string
+    companyName?: StringNullableWithAggregatesFilter<"BillingCustomer"> | string | null
+    phone?: StringNullableWithAggregatesFilter<"BillingCustomer"> | string | null
+    razorpayCustomerId?: StringNullableWithAggregatesFilter<"BillingCustomer"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"BillingCustomer"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"BillingCustomer"> | Date | string
+  }
+
+  export type BillingSubscriptionWhereInput = {
+    AND?: BillingSubscriptionWhereInput | BillingSubscriptionWhereInput[]
+    OR?: BillingSubscriptionWhereInput[]
+    NOT?: BillingSubscriptionWhereInput | BillingSubscriptionWhereInput[]
+    id?: StringFilter<"BillingSubscription"> | string
+    customerId?: StringFilter<"BillingSubscription"> | string
+    razorpaySubscriptionId?: StringFilter<"BillingSubscription"> | string
+    razorpayPlanId?: StringFilter<"BillingSubscription"> | string
+    planKey?: StringFilter<"BillingSubscription"> | string
+    billingCycle?: StringFilter<"BillingSubscription"> | string
+    billingType?: StringFilter<"BillingSubscription"> | string
+    selectedModules?: StringNullableListFilter<"BillingSubscription">
+    status?: StringFilter<"BillingSubscription"> | string
+    trialStartAt?: DateTimeNullableFilter<"BillingSubscription"> | Date | string | null
+    trialEndAt?: DateTimeNullableFilter<"BillingSubscription"> | Date | string | null
+    currentPeriodStart?: DateTimeNullableFilter<"BillingSubscription"> | Date | string | null
+    currentPeriodEnd?: DateTimeNullableFilter<"BillingSubscription"> | Date | string | null
+    authAmountPaise?: IntFilter<"BillingSubscription"> | number
+    lastPaymentAt?: DateTimeNullableFilter<"BillingSubscription"> | Date | string | null
+    zovetoClaimed?: BoolFilter<"BillingSubscription"> | boolean
+    zovetoCompanyId?: StringNullableFilter<"BillingSubscription"> | string | null
+    createdAt?: DateTimeFilter<"BillingSubscription"> | Date | string
+    updatedAt?: DateTimeFilter<"BillingSubscription"> | Date | string
+    customer?: XOR<BillingCustomerScalarRelationFilter, BillingCustomerWhereInput>
+    payments?: BillingPaymentEventListRelationFilter
+  }
+
+  export type BillingSubscriptionOrderByWithRelationInput = {
+    id?: SortOrder
+    customerId?: SortOrder
+    razorpaySubscriptionId?: SortOrder
+    razorpayPlanId?: SortOrder
+    planKey?: SortOrder
+    billingCycle?: SortOrder
+    billingType?: SortOrder
+    selectedModules?: SortOrder
+    status?: SortOrder
+    trialStartAt?: SortOrderInput | SortOrder
+    trialEndAt?: SortOrderInput | SortOrder
+    currentPeriodStart?: SortOrderInput | SortOrder
+    currentPeriodEnd?: SortOrderInput | SortOrder
+    authAmountPaise?: SortOrder
+    lastPaymentAt?: SortOrderInput | SortOrder
+    zovetoClaimed?: SortOrder
+    zovetoCompanyId?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    customer?: BillingCustomerOrderByWithRelationInput
+    payments?: BillingPaymentEventOrderByRelationAggregateInput
+  }
+
+  export type BillingSubscriptionWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    razorpaySubscriptionId?: string
+    AND?: BillingSubscriptionWhereInput | BillingSubscriptionWhereInput[]
+    OR?: BillingSubscriptionWhereInput[]
+    NOT?: BillingSubscriptionWhereInput | BillingSubscriptionWhereInput[]
+    customerId?: StringFilter<"BillingSubscription"> | string
+    razorpayPlanId?: StringFilter<"BillingSubscription"> | string
+    planKey?: StringFilter<"BillingSubscription"> | string
+    billingCycle?: StringFilter<"BillingSubscription"> | string
+    billingType?: StringFilter<"BillingSubscription"> | string
+    selectedModules?: StringNullableListFilter<"BillingSubscription">
+    status?: StringFilter<"BillingSubscription"> | string
+    trialStartAt?: DateTimeNullableFilter<"BillingSubscription"> | Date | string | null
+    trialEndAt?: DateTimeNullableFilter<"BillingSubscription"> | Date | string | null
+    currentPeriodStart?: DateTimeNullableFilter<"BillingSubscription"> | Date | string | null
+    currentPeriodEnd?: DateTimeNullableFilter<"BillingSubscription"> | Date | string | null
+    authAmountPaise?: IntFilter<"BillingSubscription"> | number
+    lastPaymentAt?: DateTimeNullableFilter<"BillingSubscription"> | Date | string | null
+    zovetoClaimed?: BoolFilter<"BillingSubscription"> | boolean
+    zovetoCompanyId?: StringNullableFilter<"BillingSubscription"> | string | null
+    createdAt?: DateTimeFilter<"BillingSubscription"> | Date | string
+    updatedAt?: DateTimeFilter<"BillingSubscription"> | Date | string
+    customer?: XOR<BillingCustomerScalarRelationFilter, BillingCustomerWhereInput>
+    payments?: BillingPaymentEventListRelationFilter
+  }, "id" | "razorpaySubscriptionId">
+
+  export type BillingSubscriptionOrderByWithAggregationInput = {
+    id?: SortOrder
+    customerId?: SortOrder
+    razorpaySubscriptionId?: SortOrder
+    razorpayPlanId?: SortOrder
+    planKey?: SortOrder
+    billingCycle?: SortOrder
+    billingType?: SortOrder
+    selectedModules?: SortOrder
+    status?: SortOrder
+    trialStartAt?: SortOrderInput | SortOrder
+    trialEndAt?: SortOrderInput | SortOrder
+    currentPeriodStart?: SortOrderInput | SortOrder
+    currentPeriodEnd?: SortOrderInput | SortOrder
+    authAmountPaise?: SortOrder
+    lastPaymentAt?: SortOrderInput | SortOrder
+    zovetoClaimed?: SortOrder
+    zovetoCompanyId?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: BillingSubscriptionCountOrderByAggregateInput
+    _avg?: BillingSubscriptionAvgOrderByAggregateInput
+    _max?: BillingSubscriptionMaxOrderByAggregateInput
+    _min?: BillingSubscriptionMinOrderByAggregateInput
+    _sum?: BillingSubscriptionSumOrderByAggregateInput
+  }
+
+  export type BillingSubscriptionScalarWhereWithAggregatesInput = {
+    AND?: BillingSubscriptionScalarWhereWithAggregatesInput | BillingSubscriptionScalarWhereWithAggregatesInput[]
+    OR?: BillingSubscriptionScalarWhereWithAggregatesInput[]
+    NOT?: BillingSubscriptionScalarWhereWithAggregatesInput | BillingSubscriptionScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"BillingSubscription"> | string
+    customerId?: StringWithAggregatesFilter<"BillingSubscription"> | string
+    razorpaySubscriptionId?: StringWithAggregatesFilter<"BillingSubscription"> | string
+    razorpayPlanId?: StringWithAggregatesFilter<"BillingSubscription"> | string
+    planKey?: StringWithAggregatesFilter<"BillingSubscription"> | string
+    billingCycle?: StringWithAggregatesFilter<"BillingSubscription"> | string
+    billingType?: StringWithAggregatesFilter<"BillingSubscription"> | string
+    selectedModules?: StringNullableListFilter<"BillingSubscription">
+    status?: StringWithAggregatesFilter<"BillingSubscription"> | string
+    trialStartAt?: DateTimeNullableWithAggregatesFilter<"BillingSubscription"> | Date | string | null
+    trialEndAt?: DateTimeNullableWithAggregatesFilter<"BillingSubscription"> | Date | string | null
+    currentPeriodStart?: DateTimeNullableWithAggregatesFilter<"BillingSubscription"> | Date | string | null
+    currentPeriodEnd?: DateTimeNullableWithAggregatesFilter<"BillingSubscription"> | Date | string | null
+    authAmountPaise?: IntWithAggregatesFilter<"BillingSubscription"> | number
+    lastPaymentAt?: DateTimeNullableWithAggregatesFilter<"BillingSubscription"> | Date | string | null
+    zovetoClaimed?: BoolWithAggregatesFilter<"BillingSubscription"> | boolean
+    zovetoCompanyId?: StringNullableWithAggregatesFilter<"BillingSubscription"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"BillingSubscription"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"BillingSubscription"> | Date | string
+  }
+
+  export type BillingPaymentEventWhereInput = {
+    AND?: BillingPaymentEventWhereInput | BillingPaymentEventWhereInput[]
+    OR?: BillingPaymentEventWhereInput[]
+    NOT?: BillingPaymentEventWhereInput | BillingPaymentEventWhereInput[]
+    id?: StringFilter<"BillingPaymentEvent"> | string
+    subscriptionId?: StringFilter<"BillingPaymentEvent"> | string
+    razorpayPaymentId?: StringFilter<"BillingPaymentEvent"> | string
+    amountPaise?: IntFilter<"BillingPaymentEvent"> | number
+    status?: StringFilter<"BillingPaymentEvent"> | string
+    paidAt?: DateTimeNullableFilter<"BillingPaymentEvent"> | Date | string | null
+    createdAt?: DateTimeFilter<"BillingPaymentEvent"> | Date | string
+    subscription?: XOR<BillingSubscriptionScalarRelationFilter, BillingSubscriptionWhereInput>
+  }
+
+  export type BillingPaymentEventOrderByWithRelationInput = {
+    id?: SortOrder
+    subscriptionId?: SortOrder
+    razorpayPaymentId?: SortOrder
+    amountPaise?: SortOrder
+    status?: SortOrder
+    paidAt?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    subscription?: BillingSubscriptionOrderByWithRelationInput
+  }
+
+  export type BillingPaymentEventWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    razorpayPaymentId?: string
+    AND?: BillingPaymentEventWhereInput | BillingPaymentEventWhereInput[]
+    OR?: BillingPaymentEventWhereInput[]
+    NOT?: BillingPaymentEventWhereInput | BillingPaymentEventWhereInput[]
+    subscriptionId?: StringFilter<"BillingPaymentEvent"> | string
+    amountPaise?: IntFilter<"BillingPaymentEvent"> | number
+    status?: StringFilter<"BillingPaymentEvent"> | string
+    paidAt?: DateTimeNullableFilter<"BillingPaymentEvent"> | Date | string | null
+    createdAt?: DateTimeFilter<"BillingPaymentEvent"> | Date | string
+    subscription?: XOR<BillingSubscriptionScalarRelationFilter, BillingSubscriptionWhereInput>
+  }, "id" | "razorpayPaymentId">
+
+  export type BillingPaymentEventOrderByWithAggregationInput = {
+    id?: SortOrder
+    subscriptionId?: SortOrder
+    razorpayPaymentId?: SortOrder
+    amountPaise?: SortOrder
+    status?: SortOrder
+    paidAt?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    _count?: BillingPaymentEventCountOrderByAggregateInput
+    _avg?: BillingPaymentEventAvgOrderByAggregateInput
+    _max?: BillingPaymentEventMaxOrderByAggregateInput
+    _min?: BillingPaymentEventMinOrderByAggregateInput
+    _sum?: BillingPaymentEventSumOrderByAggregateInput
+  }
+
+  export type BillingPaymentEventScalarWhereWithAggregatesInput = {
+    AND?: BillingPaymentEventScalarWhereWithAggregatesInput | BillingPaymentEventScalarWhereWithAggregatesInput[]
+    OR?: BillingPaymentEventScalarWhereWithAggregatesInput[]
+    NOT?: BillingPaymentEventScalarWhereWithAggregatesInput | BillingPaymentEventScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"BillingPaymentEvent"> | string
+    subscriptionId?: StringWithAggregatesFilter<"BillingPaymentEvent"> | string
+    razorpayPaymentId?: StringWithAggregatesFilter<"BillingPaymentEvent"> | string
+    amountPaise?: IntWithAggregatesFilter<"BillingPaymentEvent"> | number
+    status?: StringWithAggregatesFilter<"BillingPaymentEvent"> | string
+    paidAt?: DateTimeNullableWithAggregatesFilter<"BillingPaymentEvent"> | Date | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"BillingPaymentEvent"> | Date | string
+  }
+
   export type LeadCreateInput = {
     id?: string
     name: string
@@ -15918,6 +20114,313 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type BillingCustomerCreateInput = {
+    id?: string
+    email: string
+    name: string
+    companyName?: string | null
+    phone?: string | null
+    razorpayCustomerId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    subscriptions?: BillingSubscriptionCreateNestedManyWithoutCustomerInput
+  }
+
+  export type BillingCustomerUncheckedCreateInput = {
+    id?: string
+    email: string
+    name: string
+    companyName?: string | null
+    phone?: string | null
+    razorpayCustomerId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    subscriptions?: BillingSubscriptionUncheckedCreateNestedManyWithoutCustomerInput
+  }
+
+  export type BillingCustomerUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    companyName?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    razorpayCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    subscriptions?: BillingSubscriptionUpdateManyWithoutCustomerNestedInput
+  }
+
+  export type BillingCustomerUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    companyName?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    razorpayCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    subscriptions?: BillingSubscriptionUncheckedUpdateManyWithoutCustomerNestedInput
+  }
+
+  export type BillingCustomerCreateManyInput = {
+    id?: string
+    email: string
+    name: string
+    companyName?: string | null
+    phone?: string | null
+    razorpayCustomerId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type BillingCustomerUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    companyName?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    razorpayCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BillingCustomerUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    companyName?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    razorpayCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BillingSubscriptionCreateInput = {
+    id?: string
+    razorpaySubscriptionId: string
+    razorpayPlanId: string
+    planKey: string
+    billingCycle?: string
+    billingType?: string
+    selectedModules?: BillingSubscriptionCreateselectedModulesInput | string[]
+    status?: string
+    trialStartAt?: Date | string | null
+    trialEndAt?: Date | string | null
+    currentPeriodStart?: Date | string | null
+    currentPeriodEnd?: Date | string | null
+    authAmountPaise?: number
+    lastPaymentAt?: Date | string | null
+    zovetoClaimed?: boolean
+    zovetoCompanyId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    customer: BillingCustomerCreateNestedOneWithoutSubscriptionsInput
+    payments?: BillingPaymentEventCreateNestedManyWithoutSubscriptionInput
+  }
+
+  export type BillingSubscriptionUncheckedCreateInput = {
+    id?: string
+    customerId: string
+    razorpaySubscriptionId: string
+    razorpayPlanId: string
+    planKey: string
+    billingCycle?: string
+    billingType?: string
+    selectedModules?: BillingSubscriptionCreateselectedModulesInput | string[]
+    status?: string
+    trialStartAt?: Date | string | null
+    trialEndAt?: Date | string | null
+    currentPeriodStart?: Date | string | null
+    currentPeriodEnd?: Date | string | null
+    authAmountPaise?: number
+    lastPaymentAt?: Date | string | null
+    zovetoClaimed?: boolean
+    zovetoCompanyId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    payments?: BillingPaymentEventUncheckedCreateNestedManyWithoutSubscriptionInput
+  }
+
+  export type BillingSubscriptionUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    razorpaySubscriptionId?: StringFieldUpdateOperationsInput | string
+    razorpayPlanId?: StringFieldUpdateOperationsInput | string
+    planKey?: StringFieldUpdateOperationsInput | string
+    billingCycle?: StringFieldUpdateOperationsInput | string
+    billingType?: StringFieldUpdateOperationsInput | string
+    selectedModules?: BillingSubscriptionUpdateselectedModulesInput | string[]
+    status?: StringFieldUpdateOperationsInput | string
+    trialStartAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    trialEndAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    currentPeriodStart?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    currentPeriodEnd?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    authAmountPaise?: IntFieldUpdateOperationsInput | number
+    lastPaymentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    zovetoClaimed?: BoolFieldUpdateOperationsInput | boolean
+    zovetoCompanyId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    customer?: BillingCustomerUpdateOneRequiredWithoutSubscriptionsNestedInput
+    payments?: BillingPaymentEventUpdateManyWithoutSubscriptionNestedInput
+  }
+
+  export type BillingSubscriptionUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    customerId?: StringFieldUpdateOperationsInput | string
+    razorpaySubscriptionId?: StringFieldUpdateOperationsInput | string
+    razorpayPlanId?: StringFieldUpdateOperationsInput | string
+    planKey?: StringFieldUpdateOperationsInput | string
+    billingCycle?: StringFieldUpdateOperationsInput | string
+    billingType?: StringFieldUpdateOperationsInput | string
+    selectedModules?: BillingSubscriptionUpdateselectedModulesInput | string[]
+    status?: StringFieldUpdateOperationsInput | string
+    trialStartAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    trialEndAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    currentPeriodStart?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    currentPeriodEnd?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    authAmountPaise?: IntFieldUpdateOperationsInput | number
+    lastPaymentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    zovetoClaimed?: BoolFieldUpdateOperationsInput | boolean
+    zovetoCompanyId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    payments?: BillingPaymentEventUncheckedUpdateManyWithoutSubscriptionNestedInput
+  }
+
+  export type BillingSubscriptionCreateManyInput = {
+    id?: string
+    customerId: string
+    razorpaySubscriptionId: string
+    razorpayPlanId: string
+    planKey: string
+    billingCycle?: string
+    billingType?: string
+    selectedModules?: BillingSubscriptionCreateselectedModulesInput | string[]
+    status?: string
+    trialStartAt?: Date | string | null
+    trialEndAt?: Date | string | null
+    currentPeriodStart?: Date | string | null
+    currentPeriodEnd?: Date | string | null
+    authAmountPaise?: number
+    lastPaymentAt?: Date | string | null
+    zovetoClaimed?: boolean
+    zovetoCompanyId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type BillingSubscriptionUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    razorpaySubscriptionId?: StringFieldUpdateOperationsInput | string
+    razorpayPlanId?: StringFieldUpdateOperationsInput | string
+    planKey?: StringFieldUpdateOperationsInput | string
+    billingCycle?: StringFieldUpdateOperationsInput | string
+    billingType?: StringFieldUpdateOperationsInput | string
+    selectedModules?: BillingSubscriptionUpdateselectedModulesInput | string[]
+    status?: StringFieldUpdateOperationsInput | string
+    trialStartAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    trialEndAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    currentPeriodStart?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    currentPeriodEnd?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    authAmountPaise?: IntFieldUpdateOperationsInput | number
+    lastPaymentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    zovetoClaimed?: BoolFieldUpdateOperationsInput | boolean
+    zovetoCompanyId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BillingSubscriptionUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    customerId?: StringFieldUpdateOperationsInput | string
+    razorpaySubscriptionId?: StringFieldUpdateOperationsInput | string
+    razorpayPlanId?: StringFieldUpdateOperationsInput | string
+    planKey?: StringFieldUpdateOperationsInput | string
+    billingCycle?: StringFieldUpdateOperationsInput | string
+    billingType?: StringFieldUpdateOperationsInput | string
+    selectedModules?: BillingSubscriptionUpdateselectedModulesInput | string[]
+    status?: StringFieldUpdateOperationsInput | string
+    trialStartAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    trialEndAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    currentPeriodStart?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    currentPeriodEnd?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    authAmountPaise?: IntFieldUpdateOperationsInput | number
+    lastPaymentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    zovetoClaimed?: BoolFieldUpdateOperationsInput | boolean
+    zovetoCompanyId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BillingPaymentEventCreateInput = {
+    id?: string
+    razorpayPaymentId: string
+    amountPaise: number
+    status: string
+    paidAt?: Date | string | null
+    createdAt?: Date | string
+    subscription: BillingSubscriptionCreateNestedOneWithoutPaymentsInput
+  }
+
+  export type BillingPaymentEventUncheckedCreateInput = {
+    id?: string
+    subscriptionId: string
+    razorpayPaymentId: string
+    amountPaise: number
+    status: string
+    paidAt?: Date | string | null
+    createdAt?: Date | string
+  }
+
+  export type BillingPaymentEventUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    razorpayPaymentId?: StringFieldUpdateOperationsInput | string
+    amountPaise?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    paidAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    subscription?: BillingSubscriptionUpdateOneRequiredWithoutPaymentsNestedInput
+  }
+
+  export type BillingPaymentEventUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    subscriptionId?: StringFieldUpdateOperationsInput | string
+    razorpayPaymentId?: StringFieldUpdateOperationsInput | string
+    amountPaise?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    paidAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BillingPaymentEventCreateManyInput = {
+    id?: string
+    subscriptionId: string
+    razorpayPaymentId: string
+    amountPaise: number
+    status: string
+    paidAt?: Date | string | null
+    createdAt?: Date | string
+  }
+
+  export type BillingPaymentEventUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    razorpayPaymentId?: StringFieldUpdateOperationsInput | string
+    amountPaise?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    paidAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BillingPaymentEventUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    subscriptionId?: StringFieldUpdateOperationsInput | string
+    razorpayPaymentId?: StringFieldUpdateOperationsInput | string
+    amountPaise?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    paidAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -16609,6 +21112,187 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
+  export type BillingSubscriptionListRelationFilter = {
+    every?: BillingSubscriptionWhereInput
+    some?: BillingSubscriptionWhereInput
+    none?: BillingSubscriptionWhereInput
+  }
+
+  export type BillingSubscriptionOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type BillingCustomerCountOrderByAggregateInput = {
+    id?: SortOrder
+    email?: SortOrder
+    name?: SortOrder
+    companyName?: SortOrder
+    phone?: SortOrder
+    razorpayCustomerId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type BillingCustomerMaxOrderByAggregateInput = {
+    id?: SortOrder
+    email?: SortOrder
+    name?: SortOrder
+    companyName?: SortOrder
+    phone?: SortOrder
+    razorpayCustomerId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type BillingCustomerMinOrderByAggregateInput = {
+    id?: SortOrder
+    email?: SortOrder
+    name?: SortOrder
+    companyName?: SortOrder
+    phone?: SortOrder
+    razorpayCustomerId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type StringNullableListFilter<$PrismaModel = never> = {
+    equals?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    has?: string | StringFieldRefInput<$PrismaModel> | null
+    hasEvery?: string[] | ListStringFieldRefInput<$PrismaModel>
+    hasSome?: string[] | ListStringFieldRefInput<$PrismaModel>
+    isEmpty?: boolean
+  }
+
+  export type BillingCustomerScalarRelationFilter = {
+    is?: BillingCustomerWhereInput
+    isNot?: BillingCustomerWhereInput
+  }
+
+  export type BillingPaymentEventListRelationFilter = {
+    every?: BillingPaymentEventWhereInput
+    some?: BillingPaymentEventWhereInput
+    none?: BillingPaymentEventWhereInput
+  }
+
+  export type BillingPaymentEventOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type BillingSubscriptionCountOrderByAggregateInput = {
+    id?: SortOrder
+    customerId?: SortOrder
+    razorpaySubscriptionId?: SortOrder
+    razorpayPlanId?: SortOrder
+    planKey?: SortOrder
+    billingCycle?: SortOrder
+    billingType?: SortOrder
+    selectedModules?: SortOrder
+    status?: SortOrder
+    trialStartAt?: SortOrder
+    trialEndAt?: SortOrder
+    currentPeriodStart?: SortOrder
+    currentPeriodEnd?: SortOrder
+    authAmountPaise?: SortOrder
+    lastPaymentAt?: SortOrder
+    zovetoClaimed?: SortOrder
+    zovetoCompanyId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type BillingSubscriptionAvgOrderByAggregateInput = {
+    authAmountPaise?: SortOrder
+  }
+
+  export type BillingSubscriptionMaxOrderByAggregateInput = {
+    id?: SortOrder
+    customerId?: SortOrder
+    razorpaySubscriptionId?: SortOrder
+    razorpayPlanId?: SortOrder
+    planKey?: SortOrder
+    billingCycle?: SortOrder
+    billingType?: SortOrder
+    status?: SortOrder
+    trialStartAt?: SortOrder
+    trialEndAt?: SortOrder
+    currentPeriodStart?: SortOrder
+    currentPeriodEnd?: SortOrder
+    authAmountPaise?: SortOrder
+    lastPaymentAt?: SortOrder
+    zovetoClaimed?: SortOrder
+    zovetoCompanyId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type BillingSubscriptionMinOrderByAggregateInput = {
+    id?: SortOrder
+    customerId?: SortOrder
+    razorpaySubscriptionId?: SortOrder
+    razorpayPlanId?: SortOrder
+    planKey?: SortOrder
+    billingCycle?: SortOrder
+    billingType?: SortOrder
+    status?: SortOrder
+    trialStartAt?: SortOrder
+    trialEndAt?: SortOrder
+    currentPeriodStart?: SortOrder
+    currentPeriodEnd?: SortOrder
+    authAmountPaise?: SortOrder
+    lastPaymentAt?: SortOrder
+    zovetoClaimed?: SortOrder
+    zovetoCompanyId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type BillingSubscriptionSumOrderByAggregateInput = {
+    authAmountPaise?: SortOrder
+  }
+
+  export type BillingSubscriptionScalarRelationFilter = {
+    is?: BillingSubscriptionWhereInput
+    isNot?: BillingSubscriptionWhereInput
+  }
+
+  export type BillingPaymentEventCountOrderByAggregateInput = {
+    id?: SortOrder
+    subscriptionId?: SortOrder
+    razorpayPaymentId?: SortOrder
+    amountPaise?: SortOrder
+    status?: SortOrder
+    paidAt?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type BillingPaymentEventAvgOrderByAggregateInput = {
+    amountPaise?: SortOrder
+  }
+
+  export type BillingPaymentEventMaxOrderByAggregateInput = {
+    id?: SortOrder
+    subscriptionId?: SortOrder
+    razorpayPaymentId?: SortOrder
+    amountPaise?: SortOrder
+    status?: SortOrder
+    paidAt?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type BillingPaymentEventMinOrderByAggregateInput = {
+    id?: SortOrder
+    subscriptionId?: SortOrder
+    razorpayPaymentId?: SortOrder
+    amountPaise?: SortOrder
+    status?: SortOrder
+    paidAt?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type BillingPaymentEventSumOrderByAggregateInput = {
+    amountPaise?: SortOrder
+  }
+
   export type LeadStatusEventCreateNestedManyWithoutLeadInput = {
     create?: XOR<LeadStatusEventCreateWithoutLeadInput, LeadStatusEventUncheckedCreateWithoutLeadInput> | LeadStatusEventCreateWithoutLeadInput[] | LeadStatusEventUncheckedCreateWithoutLeadInput[]
     connectOrCreate?: LeadStatusEventCreateOrConnectWithoutLeadInput | LeadStatusEventCreateOrConnectWithoutLeadInput[]
@@ -16813,6 +21497,127 @@ export namespace Prisma {
     upsert?: AlertRuleUpsertWithoutHistoryInput
     connect?: AlertRuleWhereUniqueInput
     update?: XOR<XOR<AlertRuleUpdateToOneWithWhereWithoutHistoryInput, AlertRuleUpdateWithoutHistoryInput>, AlertRuleUncheckedUpdateWithoutHistoryInput>
+  }
+
+  export type BillingSubscriptionCreateNestedManyWithoutCustomerInput = {
+    create?: XOR<BillingSubscriptionCreateWithoutCustomerInput, BillingSubscriptionUncheckedCreateWithoutCustomerInput> | BillingSubscriptionCreateWithoutCustomerInput[] | BillingSubscriptionUncheckedCreateWithoutCustomerInput[]
+    connectOrCreate?: BillingSubscriptionCreateOrConnectWithoutCustomerInput | BillingSubscriptionCreateOrConnectWithoutCustomerInput[]
+    createMany?: BillingSubscriptionCreateManyCustomerInputEnvelope
+    connect?: BillingSubscriptionWhereUniqueInput | BillingSubscriptionWhereUniqueInput[]
+  }
+
+  export type BillingSubscriptionUncheckedCreateNestedManyWithoutCustomerInput = {
+    create?: XOR<BillingSubscriptionCreateWithoutCustomerInput, BillingSubscriptionUncheckedCreateWithoutCustomerInput> | BillingSubscriptionCreateWithoutCustomerInput[] | BillingSubscriptionUncheckedCreateWithoutCustomerInput[]
+    connectOrCreate?: BillingSubscriptionCreateOrConnectWithoutCustomerInput | BillingSubscriptionCreateOrConnectWithoutCustomerInput[]
+    createMany?: BillingSubscriptionCreateManyCustomerInputEnvelope
+    connect?: BillingSubscriptionWhereUniqueInput | BillingSubscriptionWhereUniqueInput[]
+  }
+
+  export type BillingSubscriptionUpdateManyWithoutCustomerNestedInput = {
+    create?: XOR<BillingSubscriptionCreateWithoutCustomerInput, BillingSubscriptionUncheckedCreateWithoutCustomerInput> | BillingSubscriptionCreateWithoutCustomerInput[] | BillingSubscriptionUncheckedCreateWithoutCustomerInput[]
+    connectOrCreate?: BillingSubscriptionCreateOrConnectWithoutCustomerInput | BillingSubscriptionCreateOrConnectWithoutCustomerInput[]
+    upsert?: BillingSubscriptionUpsertWithWhereUniqueWithoutCustomerInput | BillingSubscriptionUpsertWithWhereUniqueWithoutCustomerInput[]
+    createMany?: BillingSubscriptionCreateManyCustomerInputEnvelope
+    set?: BillingSubscriptionWhereUniqueInput | BillingSubscriptionWhereUniqueInput[]
+    disconnect?: BillingSubscriptionWhereUniqueInput | BillingSubscriptionWhereUniqueInput[]
+    delete?: BillingSubscriptionWhereUniqueInput | BillingSubscriptionWhereUniqueInput[]
+    connect?: BillingSubscriptionWhereUniqueInput | BillingSubscriptionWhereUniqueInput[]
+    update?: BillingSubscriptionUpdateWithWhereUniqueWithoutCustomerInput | BillingSubscriptionUpdateWithWhereUniqueWithoutCustomerInput[]
+    updateMany?: BillingSubscriptionUpdateManyWithWhereWithoutCustomerInput | BillingSubscriptionUpdateManyWithWhereWithoutCustomerInput[]
+    deleteMany?: BillingSubscriptionScalarWhereInput | BillingSubscriptionScalarWhereInput[]
+  }
+
+  export type BillingSubscriptionUncheckedUpdateManyWithoutCustomerNestedInput = {
+    create?: XOR<BillingSubscriptionCreateWithoutCustomerInput, BillingSubscriptionUncheckedCreateWithoutCustomerInput> | BillingSubscriptionCreateWithoutCustomerInput[] | BillingSubscriptionUncheckedCreateWithoutCustomerInput[]
+    connectOrCreate?: BillingSubscriptionCreateOrConnectWithoutCustomerInput | BillingSubscriptionCreateOrConnectWithoutCustomerInput[]
+    upsert?: BillingSubscriptionUpsertWithWhereUniqueWithoutCustomerInput | BillingSubscriptionUpsertWithWhereUniqueWithoutCustomerInput[]
+    createMany?: BillingSubscriptionCreateManyCustomerInputEnvelope
+    set?: BillingSubscriptionWhereUniqueInput | BillingSubscriptionWhereUniqueInput[]
+    disconnect?: BillingSubscriptionWhereUniqueInput | BillingSubscriptionWhereUniqueInput[]
+    delete?: BillingSubscriptionWhereUniqueInput | BillingSubscriptionWhereUniqueInput[]
+    connect?: BillingSubscriptionWhereUniqueInput | BillingSubscriptionWhereUniqueInput[]
+    update?: BillingSubscriptionUpdateWithWhereUniqueWithoutCustomerInput | BillingSubscriptionUpdateWithWhereUniqueWithoutCustomerInput[]
+    updateMany?: BillingSubscriptionUpdateManyWithWhereWithoutCustomerInput | BillingSubscriptionUpdateManyWithWhereWithoutCustomerInput[]
+    deleteMany?: BillingSubscriptionScalarWhereInput | BillingSubscriptionScalarWhereInput[]
+  }
+
+  export type BillingSubscriptionCreateselectedModulesInput = {
+    set: string[]
+  }
+
+  export type BillingCustomerCreateNestedOneWithoutSubscriptionsInput = {
+    create?: XOR<BillingCustomerCreateWithoutSubscriptionsInput, BillingCustomerUncheckedCreateWithoutSubscriptionsInput>
+    connectOrCreate?: BillingCustomerCreateOrConnectWithoutSubscriptionsInput
+    connect?: BillingCustomerWhereUniqueInput
+  }
+
+  export type BillingPaymentEventCreateNestedManyWithoutSubscriptionInput = {
+    create?: XOR<BillingPaymentEventCreateWithoutSubscriptionInput, BillingPaymentEventUncheckedCreateWithoutSubscriptionInput> | BillingPaymentEventCreateWithoutSubscriptionInput[] | BillingPaymentEventUncheckedCreateWithoutSubscriptionInput[]
+    connectOrCreate?: BillingPaymentEventCreateOrConnectWithoutSubscriptionInput | BillingPaymentEventCreateOrConnectWithoutSubscriptionInput[]
+    createMany?: BillingPaymentEventCreateManySubscriptionInputEnvelope
+    connect?: BillingPaymentEventWhereUniqueInput | BillingPaymentEventWhereUniqueInput[]
+  }
+
+  export type BillingPaymentEventUncheckedCreateNestedManyWithoutSubscriptionInput = {
+    create?: XOR<BillingPaymentEventCreateWithoutSubscriptionInput, BillingPaymentEventUncheckedCreateWithoutSubscriptionInput> | BillingPaymentEventCreateWithoutSubscriptionInput[] | BillingPaymentEventUncheckedCreateWithoutSubscriptionInput[]
+    connectOrCreate?: BillingPaymentEventCreateOrConnectWithoutSubscriptionInput | BillingPaymentEventCreateOrConnectWithoutSubscriptionInput[]
+    createMany?: BillingPaymentEventCreateManySubscriptionInputEnvelope
+    connect?: BillingPaymentEventWhereUniqueInput | BillingPaymentEventWhereUniqueInput[]
+  }
+
+  export type BillingSubscriptionUpdateselectedModulesInput = {
+    set?: string[]
+    push?: string | string[]
+  }
+
+  export type BillingCustomerUpdateOneRequiredWithoutSubscriptionsNestedInput = {
+    create?: XOR<BillingCustomerCreateWithoutSubscriptionsInput, BillingCustomerUncheckedCreateWithoutSubscriptionsInput>
+    connectOrCreate?: BillingCustomerCreateOrConnectWithoutSubscriptionsInput
+    upsert?: BillingCustomerUpsertWithoutSubscriptionsInput
+    connect?: BillingCustomerWhereUniqueInput
+    update?: XOR<XOR<BillingCustomerUpdateToOneWithWhereWithoutSubscriptionsInput, BillingCustomerUpdateWithoutSubscriptionsInput>, BillingCustomerUncheckedUpdateWithoutSubscriptionsInput>
+  }
+
+  export type BillingPaymentEventUpdateManyWithoutSubscriptionNestedInput = {
+    create?: XOR<BillingPaymentEventCreateWithoutSubscriptionInput, BillingPaymentEventUncheckedCreateWithoutSubscriptionInput> | BillingPaymentEventCreateWithoutSubscriptionInput[] | BillingPaymentEventUncheckedCreateWithoutSubscriptionInput[]
+    connectOrCreate?: BillingPaymentEventCreateOrConnectWithoutSubscriptionInput | BillingPaymentEventCreateOrConnectWithoutSubscriptionInput[]
+    upsert?: BillingPaymentEventUpsertWithWhereUniqueWithoutSubscriptionInput | BillingPaymentEventUpsertWithWhereUniqueWithoutSubscriptionInput[]
+    createMany?: BillingPaymentEventCreateManySubscriptionInputEnvelope
+    set?: BillingPaymentEventWhereUniqueInput | BillingPaymentEventWhereUniqueInput[]
+    disconnect?: BillingPaymentEventWhereUniqueInput | BillingPaymentEventWhereUniqueInput[]
+    delete?: BillingPaymentEventWhereUniqueInput | BillingPaymentEventWhereUniqueInput[]
+    connect?: BillingPaymentEventWhereUniqueInput | BillingPaymentEventWhereUniqueInput[]
+    update?: BillingPaymentEventUpdateWithWhereUniqueWithoutSubscriptionInput | BillingPaymentEventUpdateWithWhereUniqueWithoutSubscriptionInput[]
+    updateMany?: BillingPaymentEventUpdateManyWithWhereWithoutSubscriptionInput | BillingPaymentEventUpdateManyWithWhereWithoutSubscriptionInput[]
+    deleteMany?: BillingPaymentEventScalarWhereInput | BillingPaymentEventScalarWhereInput[]
+  }
+
+  export type BillingPaymentEventUncheckedUpdateManyWithoutSubscriptionNestedInput = {
+    create?: XOR<BillingPaymentEventCreateWithoutSubscriptionInput, BillingPaymentEventUncheckedCreateWithoutSubscriptionInput> | BillingPaymentEventCreateWithoutSubscriptionInput[] | BillingPaymentEventUncheckedCreateWithoutSubscriptionInput[]
+    connectOrCreate?: BillingPaymentEventCreateOrConnectWithoutSubscriptionInput | BillingPaymentEventCreateOrConnectWithoutSubscriptionInput[]
+    upsert?: BillingPaymentEventUpsertWithWhereUniqueWithoutSubscriptionInput | BillingPaymentEventUpsertWithWhereUniqueWithoutSubscriptionInput[]
+    createMany?: BillingPaymentEventCreateManySubscriptionInputEnvelope
+    set?: BillingPaymentEventWhereUniqueInput | BillingPaymentEventWhereUniqueInput[]
+    disconnect?: BillingPaymentEventWhereUniqueInput | BillingPaymentEventWhereUniqueInput[]
+    delete?: BillingPaymentEventWhereUniqueInput | BillingPaymentEventWhereUniqueInput[]
+    connect?: BillingPaymentEventWhereUniqueInput | BillingPaymentEventWhereUniqueInput[]
+    update?: BillingPaymentEventUpdateWithWhereUniqueWithoutSubscriptionInput | BillingPaymentEventUpdateWithWhereUniqueWithoutSubscriptionInput[]
+    updateMany?: BillingPaymentEventUpdateManyWithWhereWithoutSubscriptionInput | BillingPaymentEventUpdateManyWithWhereWithoutSubscriptionInput[]
+    deleteMany?: BillingPaymentEventScalarWhereInput | BillingPaymentEventScalarWhereInput[]
+  }
+
+  export type BillingSubscriptionCreateNestedOneWithoutPaymentsInput = {
+    create?: XOR<BillingSubscriptionCreateWithoutPaymentsInput, BillingSubscriptionUncheckedCreateWithoutPaymentsInput>
+    connectOrCreate?: BillingSubscriptionCreateOrConnectWithoutPaymentsInput
+    connect?: BillingSubscriptionWhereUniqueInput
+  }
+
+  export type BillingSubscriptionUpdateOneRequiredWithoutPaymentsNestedInput = {
+    create?: XOR<BillingSubscriptionCreateWithoutPaymentsInput, BillingSubscriptionUncheckedCreateWithoutPaymentsInput>
+    connectOrCreate?: BillingSubscriptionCreateOrConnectWithoutPaymentsInput
+    upsert?: BillingSubscriptionUpsertWithoutPaymentsInput
+    connect?: BillingSubscriptionWhereUniqueInput
+    update?: XOR<XOR<BillingSubscriptionUpdateToOneWithWhereWithoutPaymentsInput, BillingSubscriptionUpdateWithoutPaymentsInput>, BillingSubscriptionUncheckedUpdateWithoutPaymentsInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -17478,6 +22283,322 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type BillingSubscriptionCreateWithoutCustomerInput = {
+    id?: string
+    razorpaySubscriptionId: string
+    razorpayPlanId: string
+    planKey: string
+    billingCycle?: string
+    billingType?: string
+    selectedModules?: BillingSubscriptionCreateselectedModulesInput | string[]
+    status?: string
+    trialStartAt?: Date | string | null
+    trialEndAt?: Date | string | null
+    currentPeriodStart?: Date | string | null
+    currentPeriodEnd?: Date | string | null
+    authAmountPaise?: number
+    lastPaymentAt?: Date | string | null
+    zovetoClaimed?: boolean
+    zovetoCompanyId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    payments?: BillingPaymentEventCreateNestedManyWithoutSubscriptionInput
+  }
+
+  export type BillingSubscriptionUncheckedCreateWithoutCustomerInput = {
+    id?: string
+    razorpaySubscriptionId: string
+    razorpayPlanId: string
+    planKey: string
+    billingCycle?: string
+    billingType?: string
+    selectedModules?: BillingSubscriptionCreateselectedModulesInput | string[]
+    status?: string
+    trialStartAt?: Date | string | null
+    trialEndAt?: Date | string | null
+    currentPeriodStart?: Date | string | null
+    currentPeriodEnd?: Date | string | null
+    authAmountPaise?: number
+    lastPaymentAt?: Date | string | null
+    zovetoClaimed?: boolean
+    zovetoCompanyId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    payments?: BillingPaymentEventUncheckedCreateNestedManyWithoutSubscriptionInput
+  }
+
+  export type BillingSubscriptionCreateOrConnectWithoutCustomerInput = {
+    where: BillingSubscriptionWhereUniqueInput
+    create: XOR<BillingSubscriptionCreateWithoutCustomerInput, BillingSubscriptionUncheckedCreateWithoutCustomerInput>
+  }
+
+  export type BillingSubscriptionCreateManyCustomerInputEnvelope = {
+    data: BillingSubscriptionCreateManyCustomerInput | BillingSubscriptionCreateManyCustomerInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type BillingSubscriptionUpsertWithWhereUniqueWithoutCustomerInput = {
+    where: BillingSubscriptionWhereUniqueInput
+    update: XOR<BillingSubscriptionUpdateWithoutCustomerInput, BillingSubscriptionUncheckedUpdateWithoutCustomerInput>
+    create: XOR<BillingSubscriptionCreateWithoutCustomerInput, BillingSubscriptionUncheckedCreateWithoutCustomerInput>
+  }
+
+  export type BillingSubscriptionUpdateWithWhereUniqueWithoutCustomerInput = {
+    where: BillingSubscriptionWhereUniqueInput
+    data: XOR<BillingSubscriptionUpdateWithoutCustomerInput, BillingSubscriptionUncheckedUpdateWithoutCustomerInput>
+  }
+
+  export type BillingSubscriptionUpdateManyWithWhereWithoutCustomerInput = {
+    where: BillingSubscriptionScalarWhereInput
+    data: XOR<BillingSubscriptionUpdateManyMutationInput, BillingSubscriptionUncheckedUpdateManyWithoutCustomerInput>
+  }
+
+  export type BillingSubscriptionScalarWhereInput = {
+    AND?: BillingSubscriptionScalarWhereInput | BillingSubscriptionScalarWhereInput[]
+    OR?: BillingSubscriptionScalarWhereInput[]
+    NOT?: BillingSubscriptionScalarWhereInput | BillingSubscriptionScalarWhereInput[]
+    id?: StringFilter<"BillingSubscription"> | string
+    customerId?: StringFilter<"BillingSubscription"> | string
+    razorpaySubscriptionId?: StringFilter<"BillingSubscription"> | string
+    razorpayPlanId?: StringFilter<"BillingSubscription"> | string
+    planKey?: StringFilter<"BillingSubscription"> | string
+    billingCycle?: StringFilter<"BillingSubscription"> | string
+    billingType?: StringFilter<"BillingSubscription"> | string
+    selectedModules?: StringNullableListFilter<"BillingSubscription">
+    status?: StringFilter<"BillingSubscription"> | string
+    trialStartAt?: DateTimeNullableFilter<"BillingSubscription"> | Date | string | null
+    trialEndAt?: DateTimeNullableFilter<"BillingSubscription"> | Date | string | null
+    currentPeriodStart?: DateTimeNullableFilter<"BillingSubscription"> | Date | string | null
+    currentPeriodEnd?: DateTimeNullableFilter<"BillingSubscription"> | Date | string | null
+    authAmountPaise?: IntFilter<"BillingSubscription"> | number
+    lastPaymentAt?: DateTimeNullableFilter<"BillingSubscription"> | Date | string | null
+    zovetoClaimed?: BoolFilter<"BillingSubscription"> | boolean
+    zovetoCompanyId?: StringNullableFilter<"BillingSubscription"> | string | null
+    createdAt?: DateTimeFilter<"BillingSubscription"> | Date | string
+    updatedAt?: DateTimeFilter<"BillingSubscription"> | Date | string
+  }
+
+  export type BillingCustomerCreateWithoutSubscriptionsInput = {
+    id?: string
+    email: string
+    name: string
+    companyName?: string | null
+    phone?: string | null
+    razorpayCustomerId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type BillingCustomerUncheckedCreateWithoutSubscriptionsInput = {
+    id?: string
+    email: string
+    name: string
+    companyName?: string | null
+    phone?: string | null
+    razorpayCustomerId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type BillingCustomerCreateOrConnectWithoutSubscriptionsInput = {
+    where: BillingCustomerWhereUniqueInput
+    create: XOR<BillingCustomerCreateWithoutSubscriptionsInput, BillingCustomerUncheckedCreateWithoutSubscriptionsInput>
+  }
+
+  export type BillingPaymentEventCreateWithoutSubscriptionInput = {
+    id?: string
+    razorpayPaymentId: string
+    amountPaise: number
+    status: string
+    paidAt?: Date | string | null
+    createdAt?: Date | string
+  }
+
+  export type BillingPaymentEventUncheckedCreateWithoutSubscriptionInput = {
+    id?: string
+    razorpayPaymentId: string
+    amountPaise: number
+    status: string
+    paidAt?: Date | string | null
+    createdAt?: Date | string
+  }
+
+  export type BillingPaymentEventCreateOrConnectWithoutSubscriptionInput = {
+    where: BillingPaymentEventWhereUniqueInput
+    create: XOR<BillingPaymentEventCreateWithoutSubscriptionInput, BillingPaymentEventUncheckedCreateWithoutSubscriptionInput>
+  }
+
+  export type BillingPaymentEventCreateManySubscriptionInputEnvelope = {
+    data: BillingPaymentEventCreateManySubscriptionInput | BillingPaymentEventCreateManySubscriptionInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type BillingCustomerUpsertWithoutSubscriptionsInput = {
+    update: XOR<BillingCustomerUpdateWithoutSubscriptionsInput, BillingCustomerUncheckedUpdateWithoutSubscriptionsInput>
+    create: XOR<BillingCustomerCreateWithoutSubscriptionsInput, BillingCustomerUncheckedCreateWithoutSubscriptionsInput>
+    where?: BillingCustomerWhereInput
+  }
+
+  export type BillingCustomerUpdateToOneWithWhereWithoutSubscriptionsInput = {
+    where?: BillingCustomerWhereInput
+    data: XOR<BillingCustomerUpdateWithoutSubscriptionsInput, BillingCustomerUncheckedUpdateWithoutSubscriptionsInput>
+  }
+
+  export type BillingCustomerUpdateWithoutSubscriptionsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    companyName?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    razorpayCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BillingCustomerUncheckedUpdateWithoutSubscriptionsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    companyName?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    razorpayCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BillingPaymentEventUpsertWithWhereUniqueWithoutSubscriptionInput = {
+    where: BillingPaymentEventWhereUniqueInput
+    update: XOR<BillingPaymentEventUpdateWithoutSubscriptionInput, BillingPaymentEventUncheckedUpdateWithoutSubscriptionInput>
+    create: XOR<BillingPaymentEventCreateWithoutSubscriptionInput, BillingPaymentEventUncheckedCreateWithoutSubscriptionInput>
+  }
+
+  export type BillingPaymentEventUpdateWithWhereUniqueWithoutSubscriptionInput = {
+    where: BillingPaymentEventWhereUniqueInput
+    data: XOR<BillingPaymentEventUpdateWithoutSubscriptionInput, BillingPaymentEventUncheckedUpdateWithoutSubscriptionInput>
+  }
+
+  export type BillingPaymentEventUpdateManyWithWhereWithoutSubscriptionInput = {
+    where: BillingPaymentEventScalarWhereInput
+    data: XOR<BillingPaymentEventUpdateManyMutationInput, BillingPaymentEventUncheckedUpdateManyWithoutSubscriptionInput>
+  }
+
+  export type BillingPaymentEventScalarWhereInput = {
+    AND?: BillingPaymentEventScalarWhereInput | BillingPaymentEventScalarWhereInput[]
+    OR?: BillingPaymentEventScalarWhereInput[]
+    NOT?: BillingPaymentEventScalarWhereInput | BillingPaymentEventScalarWhereInput[]
+    id?: StringFilter<"BillingPaymentEvent"> | string
+    subscriptionId?: StringFilter<"BillingPaymentEvent"> | string
+    razorpayPaymentId?: StringFilter<"BillingPaymentEvent"> | string
+    amountPaise?: IntFilter<"BillingPaymentEvent"> | number
+    status?: StringFilter<"BillingPaymentEvent"> | string
+    paidAt?: DateTimeNullableFilter<"BillingPaymentEvent"> | Date | string | null
+    createdAt?: DateTimeFilter<"BillingPaymentEvent"> | Date | string
+  }
+
+  export type BillingSubscriptionCreateWithoutPaymentsInput = {
+    id?: string
+    razorpaySubscriptionId: string
+    razorpayPlanId: string
+    planKey: string
+    billingCycle?: string
+    billingType?: string
+    selectedModules?: BillingSubscriptionCreateselectedModulesInput | string[]
+    status?: string
+    trialStartAt?: Date | string | null
+    trialEndAt?: Date | string | null
+    currentPeriodStart?: Date | string | null
+    currentPeriodEnd?: Date | string | null
+    authAmountPaise?: number
+    lastPaymentAt?: Date | string | null
+    zovetoClaimed?: boolean
+    zovetoCompanyId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    customer: BillingCustomerCreateNestedOneWithoutSubscriptionsInput
+  }
+
+  export type BillingSubscriptionUncheckedCreateWithoutPaymentsInput = {
+    id?: string
+    customerId: string
+    razorpaySubscriptionId: string
+    razorpayPlanId: string
+    planKey: string
+    billingCycle?: string
+    billingType?: string
+    selectedModules?: BillingSubscriptionCreateselectedModulesInput | string[]
+    status?: string
+    trialStartAt?: Date | string | null
+    trialEndAt?: Date | string | null
+    currentPeriodStart?: Date | string | null
+    currentPeriodEnd?: Date | string | null
+    authAmountPaise?: number
+    lastPaymentAt?: Date | string | null
+    zovetoClaimed?: boolean
+    zovetoCompanyId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type BillingSubscriptionCreateOrConnectWithoutPaymentsInput = {
+    where: BillingSubscriptionWhereUniqueInput
+    create: XOR<BillingSubscriptionCreateWithoutPaymentsInput, BillingSubscriptionUncheckedCreateWithoutPaymentsInput>
+  }
+
+  export type BillingSubscriptionUpsertWithoutPaymentsInput = {
+    update: XOR<BillingSubscriptionUpdateWithoutPaymentsInput, BillingSubscriptionUncheckedUpdateWithoutPaymentsInput>
+    create: XOR<BillingSubscriptionCreateWithoutPaymentsInput, BillingSubscriptionUncheckedCreateWithoutPaymentsInput>
+    where?: BillingSubscriptionWhereInput
+  }
+
+  export type BillingSubscriptionUpdateToOneWithWhereWithoutPaymentsInput = {
+    where?: BillingSubscriptionWhereInput
+    data: XOR<BillingSubscriptionUpdateWithoutPaymentsInput, BillingSubscriptionUncheckedUpdateWithoutPaymentsInput>
+  }
+
+  export type BillingSubscriptionUpdateWithoutPaymentsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    razorpaySubscriptionId?: StringFieldUpdateOperationsInput | string
+    razorpayPlanId?: StringFieldUpdateOperationsInput | string
+    planKey?: StringFieldUpdateOperationsInput | string
+    billingCycle?: StringFieldUpdateOperationsInput | string
+    billingType?: StringFieldUpdateOperationsInput | string
+    selectedModules?: BillingSubscriptionUpdateselectedModulesInput | string[]
+    status?: StringFieldUpdateOperationsInput | string
+    trialStartAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    trialEndAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    currentPeriodStart?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    currentPeriodEnd?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    authAmountPaise?: IntFieldUpdateOperationsInput | number
+    lastPaymentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    zovetoClaimed?: BoolFieldUpdateOperationsInput | boolean
+    zovetoCompanyId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    customer?: BillingCustomerUpdateOneRequiredWithoutSubscriptionsNestedInput
+  }
+
+  export type BillingSubscriptionUncheckedUpdateWithoutPaymentsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    customerId?: StringFieldUpdateOperationsInput | string
+    razorpaySubscriptionId?: StringFieldUpdateOperationsInput | string
+    razorpayPlanId?: StringFieldUpdateOperationsInput | string
+    planKey?: StringFieldUpdateOperationsInput | string
+    billingCycle?: StringFieldUpdateOperationsInput | string
+    billingType?: StringFieldUpdateOperationsInput | string
+    selectedModules?: BillingSubscriptionUpdateselectedModulesInput | string[]
+    status?: StringFieldUpdateOperationsInput | string
+    trialStartAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    trialEndAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    currentPeriodStart?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    currentPeriodEnd?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    authAmountPaise?: IntFieldUpdateOperationsInput | number
+    lastPaymentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    zovetoClaimed?: BoolFieldUpdateOperationsInput | boolean
+    zovetoCompanyId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type LeadStatusEventCreateManyLeadInput = {
     id?: string
     fromStatus: string
@@ -17587,6 +22708,128 @@ export namespace Prisma {
     message?: StringFieldUpdateOperationsInput | string
     source?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BillingSubscriptionCreateManyCustomerInput = {
+    id?: string
+    razorpaySubscriptionId: string
+    razorpayPlanId: string
+    planKey: string
+    billingCycle?: string
+    billingType?: string
+    selectedModules?: BillingSubscriptionCreateselectedModulesInput | string[]
+    status?: string
+    trialStartAt?: Date | string | null
+    trialEndAt?: Date | string | null
+    currentPeriodStart?: Date | string | null
+    currentPeriodEnd?: Date | string | null
+    authAmountPaise?: number
+    lastPaymentAt?: Date | string | null
+    zovetoClaimed?: boolean
+    zovetoCompanyId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type BillingSubscriptionUpdateWithoutCustomerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    razorpaySubscriptionId?: StringFieldUpdateOperationsInput | string
+    razorpayPlanId?: StringFieldUpdateOperationsInput | string
+    planKey?: StringFieldUpdateOperationsInput | string
+    billingCycle?: StringFieldUpdateOperationsInput | string
+    billingType?: StringFieldUpdateOperationsInput | string
+    selectedModules?: BillingSubscriptionUpdateselectedModulesInput | string[]
+    status?: StringFieldUpdateOperationsInput | string
+    trialStartAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    trialEndAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    currentPeriodStart?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    currentPeriodEnd?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    authAmountPaise?: IntFieldUpdateOperationsInput | number
+    lastPaymentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    zovetoClaimed?: BoolFieldUpdateOperationsInput | boolean
+    zovetoCompanyId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    payments?: BillingPaymentEventUpdateManyWithoutSubscriptionNestedInput
+  }
+
+  export type BillingSubscriptionUncheckedUpdateWithoutCustomerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    razorpaySubscriptionId?: StringFieldUpdateOperationsInput | string
+    razorpayPlanId?: StringFieldUpdateOperationsInput | string
+    planKey?: StringFieldUpdateOperationsInput | string
+    billingCycle?: StringFieldUpdateOperationsInput | string
+    billingType?: StringFieldUpdateOperationsInput | string
+    selectedModules?: BillingSubscriptionUpdateselectedModulesInput | string[]
+    status?: StringFieldUpdateOperationsInput | string
+    trialStartAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    trialEndAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    currentPeriodStart?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    currentPeriodEnd?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    authAmountPaise?: IntFieldUpdateOperationsInput | number
+    lastPaymentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    zovetoClaimed?: BoolFieldUpdateOperationsInput | boolean
+    zovetoCompanyId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    payments?: BillingPaymentEventUncheckedUpdateManyWithoutSubscriptionNestedInput
+  }
+
+  export type BillingSubscriptionUncheckedUpdateManyWithoutCustomerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    razorpaySubscriptionId?: StringFieldUpdateOperationsInput | string
+    razorpayPlanId?: StringFieldUpdateOperationsInput | string
+    planKey?: StringFieldUpdateOperationsInput | string
+    billingCycle?: StringFieldUpdateOperationsInput | string
+    billingType?: StringFieldUpdateOperationsInput | string
+    selectedModules?: BillingSubscriptionUpdateselectedModulesInput | string[]
+    status?: StringFieldUpdateOperationsInput | string
+    trialStartAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    trialEndAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    currentPeriodStart?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    currentPeriodEnd?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    authAmountPaise?: IntFieldUpdateOperationsInput | number
+    lastPaymentAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    zovetoClaimed?: BoolFieldUpdateOperationsInput | boolean
+    zovetoCompanyId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BillingPaymentEventCreateManySubscriptionInput = {
+    id?: string
+    razorpayPaymentId: string
+    amountPaise: number
+    status: string
+    paidAt?: Date | string | null
+    createdAt?: Date | string
+  }
+
+  export type BillingPaymentEventUpdateWithoutSubscriptionInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    razorpayPaymentId?: StringFieldUpdateOperationsInput | string
+    amountPaise?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    paidAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BillingPaymentEventUncheckedUpdateWithoutSubscriptionInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    razorpayPaymentId?: StringFieldUpdateOperationsInput | string
+    amountPaise?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    paidAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BillingPaymentEventUncheckedUpdateManyWithoutSubscriptionInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    razorpayPaymentId?: StringFieldUpdateOperationsInput | string
+    amountPaise?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    paidAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 

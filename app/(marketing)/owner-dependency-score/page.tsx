@@ -96,8 +96,8 @@ export default function OwnerDependencyScorePage() {
           <FaqAccordion items={faqs} idPrefix="owner-dependency-score" />
           <p className="text-sm text-muted">
             Want to connect this score to your live operating data?{" "}
-            <Link href="/contact#demo" className="font-medium text-blue underline-offset-4 hover:underline">
-              Book a Zoveto system audit
+            <Link href="/signup" className="font-medium text-blue underline-offset-4 hover:underline">
+              request early access
             </Link>
             .
           </p>

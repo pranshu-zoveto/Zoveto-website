@@ -1,132 +1,256 @@
 "use client";
 
-import { useState, type ChangeEvent, type FormEvent } from "react";
-import Link from "next/link";
+import { useEffect, useMemo, useState, type FormEvent } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Check, Loader2, ShieldCheck, Sparkles } from "lucide-react";
+import { ArrowLeft, Check, ChevronRight, Info, Loader2, Lock, ShieldCheck } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { trackEvent, trackMarketingEvent } from "@/lib/tracking";
 import { FormToast } from "@/components/ui/FormToast";
-import { formatCosApiErrorMessage } from "@/lib/http-json";
+import { trackEvent, trackMarketingEvent } from "@/lib/tracking";
+import {
+  BILLING_BUNDLES,
+  BILLING_MODULES,
+  computeModularTotal,
+  resolveModulesWithDeps,
+  type BillingModuleKey,
+} from "@/lib/modular-billing-config";
 
-const BULLETS = [
-  "Every request is reviewed within 24 to 48 hours",
-  "Your system is set up before access is given",
-  "You get a guided onboarding session",
-] as const;
+declare global {
+  interface Window {
+    Razorpay: new (options: Record<string, unknown>) => { open(): void };
+  }
+}
 
-const WHAT_NEXT_STEPS = [
-  "Submit your details",
-  "We review and prepare your system",
-  "You get onboarding + access to your workspace",
-] as const;
+type Phase = "picker" | "form" | "submitting" | "processing" | "success";
+type PickerMode = "modular" | "bundle";
+type ToastState = { open: false } | { open: true; tone: "success" | "error"; title: string; message: string };
 
 const TEAM_SIZE_OPTIONS = ["1-10", "11-50", "51-200", "200+"] as const;
-
 const PRIORITY_OPTIONS = [
   "Inventory and warehouse control",
   "Sales, CRM, and follow-up discipline",
   "Finance, billing, and collections",
-  "Multi-module operating system rollout",
+  "HR, payroll, and compliance",
+  "AI automation and intelligence",
 ] as const;
 
-type Phase = "form" | "submitting" | "success";
+const formatInr = (n: number) => `₹${n.toLocaleString("en-IN")}`;
 
-type ToastState =
-  | { open: false }
-  | { open: true; tone: "success" | "error"; title: string; message: string };
+function loadRazorpayCheckout(): Promise<void> {
+  if (typeof window !== "undefined" && window.Razorpay) return Promise.resolve();
 
-export default function SignupClient() {
-  const [fullName, setFullName] = useState("");
-  const [email, setEmail] = useState("");
-  const [companyName, setCompanyName] = useState("");
-  const [role, setRole] = useState("");
-  const [teamSize, setTeamSize] = useState("");
-  const [useCase, setUseCase] = useState("");
-  const [phone, setPhone] = useState("");
-  const [phase, setPhase] = useState<Phase>("form");
-  const [error, setError] = useState("");
+  return new Promise((resolve, reject) => {
+    const existing = document.querySelector<HTMLScriptElement>('script[src*="checkout.razorpay.com"]');
+    if (existing) {
+      existing.addEventListener("load", () => resolve(), { once: true });
+      existing.addEventListener("error", () => reject(new Error("Could not load Razorpay checkout.")), { once: true });
+      return;
+    }
+
+    const script = document.createElement("script");
+    script.src = "https://checkout.razorpay.com/v1/checkout.js";
+    script.async = true;
+    script.onload = () => resolve();
+    script.onerror = () => reject(new Error("Could not load Razorpay checkout."));
+    document.body.appendChild(script);
+  });
+}
+
+interface Props {
+  preSelectedModule?: BillingModuleKey | null;
+}
+
+export default function SignupClient({ preSelectedModule = null }: Props) {
+  const [phase, setPhase] = useState<Phase>("picker");
+  const [pickerMode, setPickerMode] = useState<PickerMode>("modular");
+  const [selectedModules, setSelectedModules] = useState<Set<BillingModuleKey>>(
+    preSelectedModule ? new Set([preSelectedModule]) : new Set(),
+  );
+  const [selectedBundle, setSelectedBundle] = useState<string | null>(null);
   const [toast, setToast] = useState<ToastState>({ open: false });
 
-  async function handleSubmit(e: FormEvent) {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [companyName, setCompanyName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [teamSize, setTeamSize] = useState("");
+  const [useCase, setUseCase] = useState("");
+
+  useEffect(() => {
+    void loadRazorpayCheckout().catch(() => {
+      // lazy loaded on submit as fallback
+    });
+  }, []);
+
+  const resolvedModules = useMemo(() => resolveModulesWithDeps(Array.from(selectedModules)), [selectedModules]);
+  const modularTotal = useMemo(() => computeModularTotal(Array.from(selectedModules)), [selectedModules]);
+  const selectedBundleObj = BILLING_BUNDLES.find((b) => b.key === selectedBundle) ?? null;
+  const displayTotal = pickerMode === "bundle" && selectedBundleObj ? selectedBundleObj.monthlyPrice : modularTotal;
+  const hasSelection = pickerMode === "bundle" ? Boolean(selectedBundleObj) : selectedModules.size > 0;
+
+  function showToastError(message: string): void {
+    setToast({ open: true, tone: "error", title: "Error", message });
+  }
+
+  function toggleModule(key: BillingModuleKey): void {
+    setSelectedModules((prev) => {
+      const next = new Set(prev);
+      if (next.has(key)) next.delete(key);
+      else next.add(key);
+      return next;
+    });
+  }
+
+  function getAutoDepMessage(): string | null {
+    const deps = resolvedModules.filter((k) => !selectedModules.has(k));
+    if (!deps.length) return null;
+    return `Auto-included: ${deps.join(", ")} (required dependency)`;
+  }
+
+  function handleContinue(): void {
+    if (!hasSelection) {
+      showToastError("Please select at least one module to continue.");
+      return;
+    }
+    setToast({ open: false });
+    setPhase("form");
+  }
+
+  async function handleFormSubmit(e: FormEvent): Promise<void> {
     e.preventDefault();
-    if (phase !== "form") return;
-    setError("");
+
+    if (!name.trim() || !email.trim() || !companyName.trim()) {
+      showToastError("Name, email, and company name are required.");
+      return;
+    }
+    if (!teamSize) {
+      showToastError("Please select your team size.");
+      return;
+    }
+
     setToast({ open: false });
     setPhase("submitting");
 
     try {
-      const res = await fetch("/api/signup", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          fullName,
-          email,
-          companyName,
-          role,
-          teamSize,
-          useCase,
-          phone,
-        }),
-      });
+      const subPayload: Record<string, unknown> = {
+        email: email.trim(),
+        name: name.trim(),
+        companyName: companyName.trim(),
+        phone: phone.trim() || undefined,
+      };
 
-      const data = (await res.json().catch(() => ({}))) as Record<string, unknown>;
-
-      if (!res.ok) {
-        setPhase("form");
-        const msg =
-          formatCosApiErrorMessage(data) ??
-          "Your early access request could not be submitted. Please try again.";
-        setError(msg);
-        setToast({
-          open: true,
-          tone: "error",
-          title: "Could not submit",
-          message: msg,
-        });
-        return;
+      if (pickerMode === "bundle" && selectedBundleObj) {
+        subPayload.bundleKey = selectedBundleObj.key;
+      } else {
+        subPayload.selectedModules = resolvedModules;
       }
 
-      setPhase("success");
-      setToast({
-        open: true,
-        tone: "success",
-        title: "Access request sent",
-        message:
-          "Your details were sent to info@zoveto.com for founder review. We will reply by email after qualification.",
+      const subRes = await fetch("/api/razorpay/create-subscription", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(subPayload),
       });
-      trackMarketingEvent("access_request_submit", {
-        form: "early_access_waitlist",
-        team_size: teamSize,
-        operating_priority: useCase,
-        role,
+
+      const subData = (await subRes.json()) as {
+        message?: string;
+        subscriptionId?: string;
+        totalAmountPaise?: number;
+        resolvedModules?: string[];
+        rzpKeyId?: string;
+      };
+
+      if (!subRes.ok || !subData.subscriptionId || !subData.rzpKeyId) {
+        throw new Error(subData.message ?? "Failed to create subscription.");
+      }
+
+      trackEvent("razorpay_subscription_created", {
+        subscriptionId: subData.subscriptionId,
+        billingMode: pickerMode,
+        modules: (subData.resolvedModules ?? []).join(","),
+        totalInr: (subData.totalAmountPaise ?? 0) / 100,
       });
-      trackEvent("generate_lead", {
-        method: "early_access_waitlist",
-      });
-    } catch {
+
+      await loadRazorpayCheckout();
+      setPhase("processing");
+
+      const moduleLabel =
+        pickerMode === "bundle" && selectedBundleObj ? selectedBundleObj.label : resolvedModules.join(" + ");
+
+      const options = {
+        key: subData.rzpKeyId,
+        subscription_id: subData.subscriptionId,
+        name: "Zoveto",
+        description: `${moduleLabel} - 15-day free trial`,
+        prefill: {
+          name: name.trim(),
+          email: email.trim(),
+          contact: phone.trim() || undefined,
+        },
+        notes: {
+          billing_mode: pickerMode,
+          modules: (subData.resolvedModules ?? []).join(","),
+        },
+        theme: { color: "#2563EB" },
+        modal: {
+          confirm_close: true,
+          ondismiss: () => setPhase("form"),
+        },
+        handler: async (response: {
+          razorpay_payment_id: string;
+          razorpay_subscription_id: string;
+          razorpay_signature: string;
+        }) => {
+          try {
+            const confirmRes = await fetch("/api/razorpay/confirm", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                razorpay_payment_id: response.razorpay_payment_id,
+                razorpay_subscription_id: response.razorpay_subscription_id,
+                razorpay_signature: response.razorpay_signature,
+                email: email.trim(),
+                name: name.trim(),
+                companyName: companyName.trim(),
+                phone: phone.trim() || undefined,
+                teamSize,
+                useCase,
+              }),
+            });
+
+            const confirmData = (await confirmRes.json().catch(() => ({}))) as { message?: string };
+            if (!confirmRes.ok) {
+              setPhase("form");
+              showToastError(confirmData.message ?? "Payment verification failed. Contact support.");
+              return;
+            }
+
+            trackMarketingEvent("trial_started", {
+              plan: pickerMode === "bundle" ? selectedBundleObj?.key : "modular",
+              subscription_id: response.razorpay_subscription_id,
+            });
+            trackEvent("razorpay_subscription_confirmed", {
+              subscriptionId: response.razorpay_subscription_id,
+              billingMode: pickerMode,
+            });
+            setPhase("success");
+          } catch {
+            setPhase("form");
+            showToastError("Verification failed. Contact support@zoveto.com.");
+          }
+        },
+      };
+
+      new window.Razorpay(options).open();
+    } catch (err) {
       setPhase("form");
-      const msg = "Your early access request could not be submitted. Please try again.";
-      setError(msg);
-      setToast({
-        open: true,
-        tone: "error",
-        title: "Could not submit",
-        message: msg,
-      });
+      showToastError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
     }
   }
 
-  const inputClass = cn(
-    "w-full min-h-[48px] rounded-xl border border-border bg-surface px-4 py-3.5 text-base text-foreground shadow-sm",
-    "placeholder:text-muted-2",
-    "transition-[border-color,box-shadow] duration-200",
-    "focus:outline-none focus:border-blue/40 focus:ring-2 focus:ring-blue/15",
-    "disabled:opacity-60 disabled:cursor-not-allowed",
-  );
+  const autoDepMessage = getAutoDepMessage();
+  const isBusy = phase === "submitting" || phase === "processing";
 
   return (
-    <main className="relative min-h-[100dvh] overflow-hidden bg-background">
+    <main className="relative min-h-[100dvh] bg-background pb-16 pt-24 md:pt-28">
       <FormToast
         open={toast.open}
         tone={toast.open ? toast.tone : "success"}
@@ -134,288 +258,313 @@ export default function SignupClient() {
         message={toast.open ? toast.message : ""}
         onClose={() => setToast({ open: false })}
       />
-      <div className="pointer-events-none absolute left-1/2 top-0 h-[20rem] w-[min(100vw,56rem)] -translate-x-1/2 rounded-full bg-blue-light/70 blur-3xl" />
-      <div className="pointer-events-none absolute bottom-0 right-0 h-[32rem] w-[32rem] rounded-full bg-teal-dim opacity-60 blur-3xl" />
 
-      <div className="container relative z-10 mx-auto max-w-content px-4 pb-12 pt-24 sm:px-6 md:pb-16 md:pt-28 lg:pb-20 lg:pt-32">
-        <div className="mx-auto grid max-w-6xl items-start gap-12 lg:grid-cols-2 lg:gap-16 xl:gap-20">
-          <div className="order-2 text-center lg:order-1 lg:text-left">
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-blue/20 bg-blue-light/80 px-3 py-1.5 text-xs font-semibold text-blue">
-              <Sparkles className="h-3.5 w-3.5" aria-hidden />
-              Controlled early access
-            </div>
-            <h1 className="mb-5 text-balance text-3xl font-bold leading-[1.15] tracking-tight text-foreground sm:text-4xl md:text-[2.75rem]">
-              Get started with Zoveto
+      <div className="container mx-auto max-w-6xl px-4 sm:px-6">
+        <div className="grid gap-10 lg:grid-cols-[1.05fr_1fr] lg:gap-14">
+          <section className="lg:pt-8">
+            <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.16em] text-muted-2">Early access</p>
+            <h1 className="max-w-lg text-balance text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
+              Request early access to Zoveto
             </h1>
-            <p className="mx-auto mb-8 max-w-xl text-pretty text-base leading-relaxed text-muted sm:text-lg lg:mx-0">
-              We onboard every business manually to ensure the system is configured to your operations from day
-              one. Tell us where your operations are breaking, and we&apos;ll prepare your system for a structured
-              onboarding.
+            <p className="mt-4 max-w-md text-sm leading-relaxed text-muted sm:text-base">
+              15 days free on the plan you choose. Add a payment method to activate your trial. Billing starts only
+              after day 15.
             </p>
-            <ul className="mx-auto max-w-xl space-y-3.5 text-left sm:space-y-4 lg:mx-0">
-              {BULLETS.map((line) => (
-                <li key={line} className="flex items-start gap-3">
-                  <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-teal/20 bg-teal-dim">
-                    <Check className="h-3.5 w-3.5 text-teal" strokeWidth={2.5} aria-hidden />
+
+            <ul className="mt-6 space-y-3">
+              {[
+                "15 days free on every plan",
+                "Secure checkout powered by Razorpay",
+                "Cancel anytime before your trial ends",
+              ].map((line) => (
+                <li key={line} className="flex items-center gap-2.5 text-sm text-foreground">
+                  <span className="flex h-5 w-5 items-center justify-center rounded-full bg-blue-dim">
+                    <Check className="h-3 w-3 text-blue" strokeWidth={2.5} />
                   </span>
-                  <span className="pt-0.5 text-sm font-medium leading-snug text-foreground sm:text-base">
-                    {line}
-                  </span>
+                  {line}
                 </li>
               ))}
             </ul>
+          </section>
 
-            <div className="mx-auto mt-8 max-w-xl rounded-2xl border border-border bg-surface-2/50 p-5 text-left shadow-sm ring-1 ring-black/[0.03] sm:p-6 lg:mx-0">
-              <p className="text-sm font-semibold text-foreground">What happens next:</p>
-              <ol className="mt-3 list-decimal space-y-2.5 pl-5 text-sm leading-relaxed text-muted marker:font-semibold marker:text-foreground">
-                {WHAT_NEXT_STEPS.map((step) => (
-                  <li key={step} className="pl-1">
-                    {step}
-                  </li>
-                ))}
-              </ol>
-            </div>
-          </div>
+          <section className="overflow-hidden rounded-2xl border border-border bg-card shadow-[var(--shadow-card)]">
+            <AnimatePresence mode="wait">
+              {phase === "picker" && (
+                <motion.div key="picker" initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -14 }}>
+                  <div className="border-b border-border/80 px-6 py-5">
+                    <h2 className="text-lg font-semibold tracking-tight text-foreground">Choose your modules</h2>
+                    <p className="mt-1 text-sm text-muted-2">Select what your business needs. Pay only for those.</p>
+                  </div>
 
-          <div className="order-1 flex justify-center lg:order-2 lg:justify-end">
-            <div
-              className={cn(
-                "w-full max-w-[460px] rounded-2xl border border-border/80 bg-card/75 shadow-lg shadow-blue/10 backdrop-blur-xl",
-                "ring-1 ring-border",
-              )}
-            >
-              <div className="p-6 sm:p-8 md:p-10">
-                <AnimatePresence mode="wait">
-                  {phase === "success" ? (
-                    <motion.div
-                      key="success"
-                      initial={{ opacity: 0, y: 8 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -8 }}
-                      transition={{ duration: 0.35 }}
-                      className="py-4 text-center"
-                    >
-                      <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl border border-teal/25 bg-teal-dim">
-                        <ShieldCheck className="h-8 w-8 text-teal" strokeWidth={2} aria-hidden />
-                      </div>
-                      <h2 className="mb-2 text-xl font-semibold text-foreground">
-                        You are in the review queue
-                      </h2>
-                      <p className="mb-8 text-sm leading-relaxed text-muted">
-                        Your request was sent to info@zoveto.com for founder review. If the use case
-                        fits the current onboarding batch, we will email the next steps. No workspace has been
-                        created yet.
-                      </p>
-                      <div className="rounded-xl border border-border bg-surface px-4 py-3 text-left">
-                        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-2">
-                          What happens next
-                        </p>
-                        <p className="mt-2 text-sm leading-relaxed text-foreground">
-                          We check company fit, operating pain, and rollout readiness before approving
-                          access manually.
-                        </p>
-                      </div>
-                    </motion.div>
-                  ) : (
-                    <motion.div
-                      key="form"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      <div className="mb-8">
-                        <h2 className="mb-1 text-lg font-semibold text-foreground">Tell us about your operations</h2>
-                        <p className="text-sm text-muted-2">
-                          This qualification form is how we review each submission and prepare your workspace before access.
-                        </p>
-                      </div>
+                  <div className="px-6 py-6">
+                    <div className="mb-5 grid grid-cols-2 rounded-xl bg-surface p-1">
+                      <button
+                        type="button"
+                        className={cn(
+                          "rounded-lg px-3 py-2 text-sm font-medium transition-colors",
+                          pickerMode === "modular" ? "bg-card text-foreground shadow-sm" : "text-muted-2",
+                        )}
+                        onClick={() => {
+                          setPickerMode("modular");
+                          setSelectedBundle(null);
+                        }}
+                      >
+                        Individual modules
+                      </button>
+                      <button
+                        type="button"
+                        className={cn(
+                          "rounded-lg px-3 py-2 text-sm font-medium transition-colors",
+                          pickerMode === "bundle" ? "bg-card text-foreground shadow-sm" : "text-muted-2",
+                        )}
+                        onClick={() => {
+                          setPickerMode("bundle");
+                          setSelectedModules(new Set());
+                        }}
+                      >
+                        Bundle plans
+                      </button>
+                    </div>
 
-                      <form onSubmit={handleSubmit} className="space-y-5" noValidate>
-                        <div>
-                          <label htmlFor="fullName" className="mb-2 block text-sm font-medium text-foreground">
-                            Full name <span className="text-red">*</span>
-                          </label>
-                          <input
-                            id="fullName"
-                            name="fullName"
-                            type="text"
-                            required
-                            autoComplete="name"
-                            disabled={phase === "submitting"}
-                            className={inputClass}
-                            value={fullName}
-                            onChange={(e: ChangeEvent<HTMLInputElement>) => setFullName(e.target.value)}
-                            placeholder="Rajesh Kumar"
-                          />
+                    {pickerMode === "modular" ? (
+                      <>
+                        <div className="space-y-3">
+                          {BILLING_MODULES.map((mod) => {
+                            const isSelected = selectedModules.has(mod.key as BillingModuleKey);
+                            const isAutoDep = !isSelected && resolvedModules.includes(mod.key as BillingModuleKey);
+                            return (
+                              <button
+                                key={mod.key}
+                                type="button"
+                                className={cn(
+                                  "w-full rounded-xl border p-4 text-left transition-colors",
+                                  isSelected || isAutoDep ? "border-blue/40 bg-blue-dim/40" : "border-border bg-card hover:border-blue/30",
+                                )}
+                                onClick={() => toggleModule(mod.key as BillingModuleKey)}
+                              >
+                                <div className="flex items-start gap-3">
+                                  <span className="text-xl">{mod.icon}</span>
+                                  <div className="min-w-0 flex-1">
+                                    <p className="text-sm font-semibold text-foreground">{mod.label}</p>
+                                    <p className="text-xs text-muted-2">{mod.description}</p>
+                                    <p className="mt-1.5 text-sm font-semibold text-foreground">
+                                      {formatInr(mod.monthlyPrice)}
+                                      <span className="text-xs font-medium text-muted-2">/mo</span>
+                                    </p>
+                                  </div>
+                                  <span
+                                    className={cn(
+                                      "inline-flex h-5 w-5 items-center justify-center rounded-full border",
+                                      isSelected || isAutoDep ? "border-blue bg-blue text-white" : "border-border text-transparent",
+                                    )}
+                                  >
+                                    <Check className="h-3 w-3" strokeWidth={2.5} />
+                                  </span>
+                                </div>
+                              </button>
+                            );
+                          })}
                         </div>
 
-                        <div>
-                          <label htmlFor="email" className="mb-2 block text-sm font-medium text-foreground">
-                            Work email <span className="text-red">*</span>
-                          </label>
-                          <input
-                            id="email"
-                            name="email"
-                            type="email"
-                            required
-                            autoComplete="email"
-                            inputMode="email"
-                            disabled={phase === "submitting"}
-                            className={inputClass}
-                            value={email}
-                            onChange={(e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
-                            placeholder="you@company.com"
-                          />
-                        </div>
-
-                        <div>
-                          <label htmlFor="companyName" className="mb-2 block text-sm font-medium text-foreground">
-                            Company name <span className="text-red">*</span>
-                          </label>
-                          <input
-                            id="companyName"
-                            name="companyName"
-                            type="text"
-                            required
-                            autoComplete="organization"
-                            disabled={phase === "submitting"}
-                            className={inputClass}
-                            value={companyName}
-                            onChange={(e: ChangeEvent<HTMLInputElement>) => setCompanyName(e.target.value)}
-                            placeholder="Acme Industries Pvt. Ltd."
-                          />
-                        </div>
-
-                        <div className="grid gap-5 sm:grid-cols-2">
-                          <div>
-                            <label htmlFor="role" className="mb-2 block text-sm font-medium text-foreground">
-                              Your role <span className="text-red">*</span>
-                            </label>
-                            <input
-                              id="role"
-                              name="role"
-                              type="text"
-                              required
-                              autoComplete="organization-title"
-                              disabled={phase === "submitting"}
-                              className={inputClass}
-                              value={role}
-                              onChange={(e: ChangeEvent<HTMLInputElement>) => setRole(e.target.value)}
-                              placeholder="Founder / Ops head"
-                            />
-                          </div>
-
-                          <div>
-                            <label htmlFor="teamSize" className="mb-2 block text-sm font-medium text-foreground">
-                              Team size <span className="text-red">*</span>
-                            </label>
-                            <select
-                              id="teamSize"
-                              name="teamSize"
-                              required
-                              disabled={phase === "submitting"}
-                              className={inputClass}
-                              value={teamSize}
-                              onChange={(e: ChangeEvent<HTMLSelectElement>) => setTeamSize(e.target.value)}
-                            >
-                              <option value="">Select size</option>
-                              {TEAM_SIZE_OPTIONS.map((option) => (
-                                <option key={option} value={option}>
-                                  {option}
-                                </option>
-                              ))}
-                            </select>
-                          </div>
-                        </div>
-
-                        <div>
-                          <label htmlFor="useCase" className="mb-2 block text-sm font-medium text-foreground">
-                            Operating priority <span className="text-red">*</span>
-                          </label>
-                          <select
-                            id="useCase"
-                            name="useCase"
-                            required
-                            disabled={phase === "submitting"}
-                            className={inputClass}
-                            value={useCase}
-                            onChange={(e: ChangeEvent<HTMLSelectElement>) => setUseCase(e.target.value)}
-                          >
-                            <option value="">Select the biggest pain</option>
-                            {PRIORITY_OPTIONS.map((option) => (
-                              <option key={option} value={option}>
-                                {option}
-                              </option>
-                            ))}
-                          </select>
-                        </div>
-
-                        <div>
-                          <label htmlFor="phone" className="mb-2 block text-sm font-medium text-foreground">
-                            Phone / WhatsApp <span className="text-muted-2">(optional)</span>
-                          </label>
-                          <input
-                            id="phone"
-                            name="phone"
-                            type="tel"
-                            autoComplete="tel"
-                            disabled={phase === "submitting"}
-                            className={inputClass}
-                            value={phone}
-                            onChange={(e: ChangeEvent<HTMLInputElement>) => setPhone(e.target.value)}
-                            placeholder="+91 98765 43210"
-                          />
-                        </div>
-
-                        {error ? (
-                          <div
-                            role="alert"
-                            className="rounded-xl border border-red/20 bg-red/5 px-4 py-3 text-sm text-red"
-                          >
-                            {error}
-                          </div>
+                        {autoDepMessage ? (
+                          <p className="mt-4 inline-flex items-center gap-2 rounded-lg border border-blue/20 bg-blue-dim/50 px-3 py-2 text-xs text-blue">
+                            <Info className="h-3.5 w-3.5" />
+                            {autoDepMessage}
+                          </p>
                         ) : null}
 
-                        <button
-                          type="submit"
-                          disabled={phase === "submitting"}
-                          className={cn(
-                            "relative flex min-h-[52px] w-full items-center justify-center gap-2 rounded-xl bg-blue px-4 py-3.5 text-sm font-semibold text-white",
-                            "shadow-md shadow-blue/25 transition-colors hover:bg-blue-hover",
-                            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
-                            "disabled:cursor-not-allowed disabled:opacity-70",
-                          )}
-                        >
-                          {phase === "submitting" ? (
+                        <div className="mt-5 rounded-xl border border-border bg-surface/60 p-4">
+                          {selectedModules.size ? (
                             <>
-                              <Loader2 className="h-5 w-5 shrink-0 animate-spin" aria-hidden />
-                              <span>Submitting for review...</span>
+                              <p className="text-xs text-muted-2">Your plan total</p>
+                              <p className="mt-1 text-lg font-semibold text-foreground">
+                                {formatInr(modularTotal)}
+                                <span className="text-sm font-medium text-muted-2">/month</span>
+                              </p>
+                              <p className="mt-1 text-xs text-muted-2">after 15-day free trial - ₹1 card verification now</p>
                             </>
                           ) : (
-                            "Request Early Access"
+                            <p className="text-sm text-muted-2">Select modules above to see your price.</p>
                           )}
-                        </button>
+                        </div>
+                      </>
+                    ) : (
+                      <div className="space-y-3">
+                        {BILLING_BUNDLES.map((bundle) => {
+                          const selected = selectedBundle === bundle.key;
+                          return (
+                            <button
+                              key={bundle.key}
+                              type="button"
+                              onClick={() => setSelectedBundle(bundle.key)}
+                              className={cn(
+                                "w-full rounded-xl border p-4 text-left transition-colors",
+                                selected ? "border-blue/40 bg-blue-dim/40" : "border-border bg-card hover:border-blue/30",
+                              )}
+                            >
+                              <div className="flex items-start justify-between gap-3">
+                                <div>
+                                  <p className="text-sm font-semibold text-foreground">{bundle.label}</p>
+                                  <p className="text-xs text-muted-2">{bundle.tagline}</p>
+                                  <p className="mt-1.5 text-sm font-semibold text-foreground">
+                                    {formatInr(bundle.monthlyPrice)}
+                                    <span className="text-xs font-medium text-muted-2">/mo</span>
+                                  </p>
+                                </div>
+                                {bundle.popular ? (
+                                  <span className="rounded-full bg-blue px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-white">
+                                    Popular
+                                  </span>
+                                ) : null}
+                              </div>
+                            </button>
+                          );
+                        })}
+                      </div>
+                    )}
 
-                        <p className="pt-1 text-center text-xs leading-relaxed text-muted-2">
-                          Typical response time: within 24 to 48 hours
-                          <span className="my-2 block h-px w-full max-w-[16rem] mx-auto bg-border/80" aria-hidden />
-                          By requesting access you agree to our{" "}
-                          <Link href="/terms" className="text-blue underline-offset-2 hover:underline">
-                            Terms
-                          </Link>
-                          {" · "}
-                          <Link href="/privacy" className="text-blue underline-offset-2 hover:underline">
-                            Privacy
-                          </Link>
-                        </p>
-                      </form>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-            </div>
-          </div>
+                    <button
+                      type="button"
+                      onClick={handleContinue}
+                      disabled={!hasSelection}
+                      className={cn(
+                        "mt-5 flex min-h-[48px] w-full items-center justify-center gap-2 rounded-lg bg-blue px-4 text-sm font-semibold text-white",
+                        "transition-colors hover:bg-blue-hover disabled:cursor-not-allowed disabled:opacity-50",
+                      )}
+                    >
+                      Continue <ChevronRight className="h-4 w-4" />
+                    </button>
+
+                    <p className="mt-4 inline-flex items-center gap-2 text-xs text-muted-2">
+                      <Lock className="h-3.5 w-3.5" /> Secure checkout - Cancel before 15 days for zero charge
+                    </p>
+                  </div>
+                </motion.div>
+              )}
+
+              {phase === "form" && (
+                <motion.div key="form" initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -14 }}>
+                  <div className="px-6 py-6">
+                    <button
+                      type="button"
+                      className="mb-4 inline-flex items-center gap-1.5 text-sm font-medium text-blue hover:underline"
+                      onClick={() => setPhase("picker")}
+                    >
+                      <ArrowLeft className="h-4 w-4" /> Back to modules
+                    </button>
+
+                    <div className="mb-5 rounded-xl border border-border bg-surface/60 p-4">
+                      <p className="text-xs text-muted-2">
+                        {pickerMode === "bundle" && selectedBundleObj ? selectedBundleObj.label : resolvedModules.join(" + ")}
+                      </p>
+                      <p className="mt-1 text-lg font-semibold text-foreground">
+                        {formatInr(displayTotal)}
+                        <span className="text-sm font-medium text-muted-2">/mo after trial</span>
+                      </p>
+                    </div>
+
+                    <form onSubmit={handleFormSubmit} className="space-y-4" noValidate>
+                      <input
+                        className="w-full rounded-lg border border-border bg-card px-3.5 py-3 text-sm text-foreground"
+                        placeholder="Full name *"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        required
+                      />
+                      <input
+                        className="w-full rounded-lg border border-border bg-card px-3.5 py-3 text-sm text-foreground"
+                        placeholder="Work email *"
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        required
+                      />
+                      <input
+                        className="w-full rounded-lg border border-border bg-card px-3.5 py-3 text-sm text-foreground"
+                        placeholder="Company name *"
+                        value={companyName}
+                        onChange={(e) => setCompanyName(e.target.value)}
+                        required
+                      />
+                      <input
+                        className="w-full rounded-lg border border-border bg-card px-3.5 py-3 text-sm text-foreground"
+                        placeholder="Phone (optional)"
+                        value={phone}
+                        onChange={(e) => setPhone(e.target.value)}
+                      />
+                      <select
+                        className="w-full rounded-lg border border-border bg-card px-3.5 py-3 text-sm text-foreground"
+                        value={teamSize}
+                        onChange={(e) => setTeamSize(e.target.value)}
+                        required
+                      >
+                        <option value="">Select team size *</option>
+                        {TEAM_SIZE_OPTIONS.map((o) => (
+                          <option key={o} value={o}>
+                            {o}
+                          </option>
+                        ))}
+                      </select>
+                      <select
+                        className="w-full rounded-lg border border-border bg-card px-3.5 py-3 text-sm text-foreground"
+                        value={useCase}
+                        onChange={(e) => setUseCase(e.target.value)}
+                      >
+                        <option value="">Primary use case (optional)</option>
+                        {PRIORITY_OPTIONS.map((o) => (
+                          <option key={o} value={o}>
+                            {o}
+                          </option>
+                        ))}
+                      </select>
+
+                      <button
+                        type="submit"
+                        disabled={isBusy}
+                        className="flex min-h-[48px] w-full items-center justify-center gap-2 rounded-lg bg-blue px-4 text-sm font-semibold text-white transition-colors hover:bg-blue-hover disabled:opacity-60"
+                      >
+                        Start free trial - ₹1 card check <ShieldCheck className="h-4 w-4" />
+                      </button>
+                    </form>
+                  </div>
+                </motion.div>
+              )}
+
+              {(phase === "submitting" || phase === "processing") && (
+                <motion.div key="processing" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+                  <div className="flex min-h-[360px] flex-col items-center justify-center gap-3 px-6 py-10 text-center">
+                    <Loader2 className="h-8 w-8 animate-spin text-blue" />
+                    <p className="text-sm text-muted">
+                      {phase === "submitting" ? "Setting up your billing..." : "Complete the payment in the popup..."}
+                    </p>
+                  </div>
+                </motion.div>
+              )}
+
+              {phase === "success" && (
+                <motion.div key="success" initial={{ opacity: 0, scale: 0.97 }} animate={{ opacity: 1, scale: 1 }}>
+                  <div className="px-6 py-10 text-center">
+                    <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-success-dim">
+                      <ShieldCheck className="h-7 w-7 text-green" />
+                    </div>
+                    <h2 className="text-xl font-semibold tracking-tight text-foreground">Your workspace is being set up</h2>
+                    <p className="mx-auto mt-2 max-w-md text-sm leading-relaxed text-muted">
+                      Check <strong>{email}</strong> for login credentials. Your 15-day free trial starts now.
+                    </p>
+                    <p className="mt-4 text-sm text-foreground">
+                      Modules activated:{" "}
+                      <strong>
+                        {pickerMode === "bundle" && selectedBundleObj ? selectedBundleObj.label : resolvedModules.join(", ")}
+                      </strong>
+                    </p>
+                    <p className="mt-2 text-xs text-muted-2">
+                      Your card will be charged {formatInr(displayTotal)}/month on day 16. Cancel anytime before then.
+                    </p>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </section>
         </div>
       </div>
     </main>

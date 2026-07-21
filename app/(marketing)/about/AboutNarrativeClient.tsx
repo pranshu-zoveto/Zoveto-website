@@ -424,7 +424,7 @@ export default function AboutNarrativeClient() {
               href="/contact"
               className="inline-flex min-h-[52px] items-center justify-center rounded-xl border border-white/20 bg-white/[0.06] px-8 text-sm font-semibold text-white transition-colors hover:bg-white/[0.10]"
             >
-              Book a Demo
+              Talk to the team
             </Link>
           </div>
         </footer>

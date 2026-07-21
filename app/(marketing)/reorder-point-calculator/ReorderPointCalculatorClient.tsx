@@ -133,7 +133,7 @@ export function ReorderPointCalculatorClient() {
             <RotateCcw className="h-4 w-4" aria-hidden />
             Reset
           </Button>
-          <Link href="/contact#demo" onClick={handleExportIntent}>
+          <Link href="/signup" onClick={handleExportIntent}>
             <Button type="button" variant="primary" size="lg" className="w-full gap-2 sm:w-auto">
               <Download className="h-4 w-4" aria-hidden />
               Review this SKU plan

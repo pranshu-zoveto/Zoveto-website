@@ -6,6 +6,7 @@ import { ArrowRight, CheckCircle2, CircleDot, GitBranch, Layers, RadioTower, Rou
 import type { OperationalProof } from "@/types";
 import { FluidMarketingSection } from "@/components/layout/FluidMarketingSection";
 import { bandIndexForSection } from "@/lib/marketing-bands";
+import { EARLY_ACCESS_CTA_HREF, EARLY_ACCESS_CTA_LABEL } from "@/lib/marketing-cta";
 
 const easeOut = [0.22, 1, 0.36, 1] as const;
 
@@ -286,10 +287,10 @@ export function SystemFlowPage({ proof }: { proof: OperationalProof }) {
                   See this in your business
                 </Link>
                 <Link
-                  href="/contact#demo"
+                  href={EARLY_ACCESS_CTA_HREF}
                   className="inline-flex min-h-[52px] flex-1 items-center justify-center gap-2 rounded-xl bg-blue px-6 text-sm font-semibold text-white shadow-[0_10px_30px_rgba(0,113,227,0.25)] transition-colors hover:bg-blue-hover"
                 >
-                  Book demo <ArrowRight size={16} />
+                  {EARLY_ACCESS_CTA_LABEL} <ArrowRight size={16} />
                 </Link>
               </div>
             </div>

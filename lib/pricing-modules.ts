@@ -113,8 +113,8 @@ export const BUNDLES: readonly PricingBundle[] = [
     moduleIds: ["wms", "erp", "crm"],
     savingsVsSeparate: 24997 - 14999, // ₹9,998
     popular: true,
-    ctaHref: "/contact",
-    ctaLabel: "Book a demo",
+    ctaHref: "/signup",
+    ctaLabel: "Request early access",
   },
   {
     id: "business-os",
@@ -125,8 +125,8 @@ export const BUNDLES: readonly PricingBundle[] = [
     moduleIds: ["wms", "erp", "crm", "hrms", "intelligence"],
     savingsVsSeparate: 36995 - 24999, // ₹11,996
     popular: false,
-    ctaHref: "/contact",
-    ctaLabel: "Book a demo",
+    ctaHref: "/signup",
+    ctaLabel: "Request early access",
   },
 ] as const;
 

@@ -1,0 +1,3 @@
+ALTER TABLE "BillingSubscription"
+ADD COLUMN IF NOT EXISTS "billingType" TEXT NOT NULL DEFAULT 'bundle',
+ADD COLUMN IF NOT EXISTS "selectedModules" TEXT[] NOT NULL DEFAULT ARRAY[]::TEXT[];

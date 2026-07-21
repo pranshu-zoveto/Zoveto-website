@@ -22,7 +22,10 @@
     "clean": "node scripts/clean-node-modules.cjs",
     "reinstall": "npm run clean && npm install",
     "generate-brand-pngs": "node scripts/generate-brand-pngs.cjs",
-    "screenshot:mobile": "node scripts/mobile-screenshots.mjs"
+    "screenshot:mobile": "node scripts/mobile-screenshots.mjs",
+    "razorpay:diagnose": "node scripts/diagnose-razorpay.mjs",
+    "razorpay:setup": "node scripts/setup-razorpay-test.mjs",
+    "razorpay:test": "node scripts/run-razorpay-test.mjs"
   },
   "dependencies": {
     "@google-analytics/data": "^6.0.0",
@@ -55,6 +58,7 @@
     "nodemailer": "^7.0.13",
     "pg": "^8.21.0",
     "posthog-js": "^1.372.6",
+    "razorpay": "^2.9.8",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-hook-form": "^7.73.1",
@@ -73,6 +77,7 @@
     "@types/three": "^0.184.0",
     "eslint": "^8",
     "eslint-config-next": "14.2.35",
+    "playwright": "^1.61.1",
     "postcss": "^8.5.12",
     "prisma": "^7.8.0",
     "sharp": "^0.33.5",

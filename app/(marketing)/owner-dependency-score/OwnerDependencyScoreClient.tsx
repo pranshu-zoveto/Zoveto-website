@@ -545,7 +545,7 @@ export function OwnerDependencyScoreClient() {
             </div>
             <div className="mt-6">
               <Link
-                href="/contact#demo"
+                href="/signup"
                 className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-lg bg-blue px-6 py-3 text-sm font-semibold text-white transition hover:bg-blue-hover"
                 onClick={() =>
                   trackMarketingEvent("cta_button_click", {

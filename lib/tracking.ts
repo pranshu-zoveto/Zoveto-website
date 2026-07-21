@@ -43,6 +43,7 @@ export type MarketingEventName =
   | "cta_button_click"
   | "calendly_booking"
   | "signup_completed"
+  | "trial_started"
   | "404_error";
 
 declare global {

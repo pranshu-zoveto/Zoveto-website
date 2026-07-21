@@ -8,6 +8,7 @@ import {
   SPARE_PARTS_PHASE1_SECTIONS,
 } from "@/lib/phase1-spare-parts-industry";
 import { getWhatsAppFloatHref } from "@/lib/whatsapp-float";
+import { EARLY_ACCESS_CTA_HREF, EARLY_ACCESS_CTA_LABEL } from "@/lib/marketing-cta";
 import { FaqAccordion } from "@/components/ui/FaqAccordion";
 
 const btnOutline =
@@ -89,16 +90,16 @@ export function SparePartsPhase1Sections() {
 
       <div className="rounded-2xl border border-blue/25 bg-blue/[0.06] p-6 md:p-10">
         <Text variant="heading-1" as="h2" className="mb-4 text-xl text-foreground md:text-2xl">
-          Book a 20-minute demo
+          Request early access
         </Text>
         <Text variant="body-base" className="mb-6 max-w-2xl text-pretty text-muted">
-          Walk spare parts workflows with a Zoveto operator: quote, reserve, pick, dispatch, invoice, and collections
-          on one posted record.
+          Start a 15-day trial on the plan that fits your spare parts operation. Qualified teams are reviewed before
+          workspace access opens.
         </Text>
         <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-          <Link href="/contact#demo">
+          <Link href={EARLY_ACCESS_CTA_HREF}>
             <Button variant="primary" size="lg" className="min-h-[48px] w-full sm:w-auto">
-              Book a 20-min demo
+              {EARLY_ACCESS_CTA_LABEL}
             </Button>
           </Link>
           <Link href={waHref} target="_blank" rel="noopener noreferrer" className={btnOutline}>

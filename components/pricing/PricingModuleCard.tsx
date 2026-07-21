@@ -62,7 +62,7 @@ export function PricingModuleCard({ mod, className }: PricingModuleCardProps) {
       </div>
 
       <Link
-        href="/contact"
+        href={`/signup?module=${mod.id.toUpperCase()}`}
         className={cn(
           "mb-5 flex h-10 w-full items-center justify-center rounded-lg border text-sm font-semibold transition-colors",
           isTeal
@@ -70,7 +70,7 @@ export function PricingModuleCard({ mod, className }: PricingModuleCardProps) {
             : "border-blue/30 bg-blue-light text-blue hover:bg-blue hover:text-white",
         )}
       >
-        Book a demo
+        Start 15-day free trial
       </Link>
 
       <ul className="flex flex-col gap-2">

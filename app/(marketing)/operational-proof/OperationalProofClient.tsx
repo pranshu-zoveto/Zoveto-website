@@ -7,6 +7,7 @@ import { OperationalFlowPreview } from "@/components/operational-proof/Operation
 import { TrustStrip } from "@/components/operational-proof/TrustStrip";
 import { ProofCard } from "@/components/operational-proof/ProofCard";
 import { Button } from "@/components/ui/Button";
+import { EARLY_ACCESS_CTA_HREF, EARLY_ACCESS_CTA_LABEL } from "@/lib/marketing-cta";
 import BackgroundComponents from "@/components/ui/background-components";
 import { FluidMarketingSection } from "@/components/layout/FluidMarketingSection";
 import { RevealOnScroll } from "@/components/layout/RevealOnScroll";
@@ -80,9 +81,9 @@ export function OperationalProofClient() {
                   Walk the same flows with your SKUs, stages, and roles, demo on your reality, not a slide deck.
                 </p>
                 <div className="mt-8 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
-                  <Link href="/contact#demo" className="sm:inline-flex">
+                  <Link href={EARLY_ACCESS_CTA_HREF} className="sm:inline-flex">
                     <Button variant="primary" size="lg" className="w-full sm:w-auto">
-                      Book demo
+                      {EARLY_ACCESS_CTA_LABEL}
                     </Button>
                   </Link>
                   <Link href="/contact" className="sm:inline-flex">

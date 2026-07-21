@@ -258,12 +258,12 @@ export function FaqHubClient() {
           <div className="mx-auto max-w-[52rem] rounded-2xl border border-border/90 bg-blue-light/45 p-8 md:p-10 lg:max-w-4xl">
             <h2 className="text-lg font-semibold tracking-tight text-foreground md:text-xl">Talk to the team</h2>
             <p className="mt-3 max-w-prose text-sm leading-relaxed text-muted md:text-base">
-              Book a demo mapped to your branches and SKUs, or compare plans once you know the operating fit.
+              Request early access when your branches and SKUs are ready for a fit review, or compare plans once you know the operating fit.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
-              <Link href="/contact">
+              <Link href="/signup">
                 <Button variant="primary" size="lg" className="w-full min-h-12 min-w-[11rem] sm:w-auto">
-                  Book a demo
+                  Request early access
                 </Button>
               </Link>
               <Link href="/pricing">

@@ -112,9 +112,9 @@ export function PricingFAQSection({ faqData }: PricingFAQSectionProps) {
             Still have questions?
           </Text>
           <div className="flex flex-col gap-3 sm:flex-row">
-            <Link href="/contact">
+            <Link href="/signup">
               <Button variant="primary" size="lg" className="w-full sm:w-auto">
-                Book a demo
+                Request early access
               </Button>
             </Link>
             <Link href="/contact">

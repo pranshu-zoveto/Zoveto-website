@@ -6,6 +6,7 @@ import { FAQPageSchema } from "@/components/seo/FAQPageSchema";
 import { Button } from "@/components/ui/Button";
 import { Text } from "@/components/ui/Text";
 import { canonicalUrl } from "@/lib/site";
+import { EARLY_ACCESS_CTA_HREF, EARLY_ACCESS_CTA_LABEL } from "@/lib/marketing-cta";
 
 const PATH = "/implementation";
 
@@ -88,9 +89,9 @@ export default function ImplementationPage() {
             configure the first workflows, and keep ownership clear before asking a team to change how work is posted.
           </Text>
           <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-            <Link href="/contact">
+            <Link href={EARLY_ACCESS_CTA_HREF}>
               <Button variant="primary" size="lg" className="min-h-[52px] w-full gap-2 sm:w-auto">
-                Book a 20-min demo <ArrowRight size={16} aria-hidden />
+                {EARLY_ACCESS_CTA_LABEL} <ArrowRight size={16} aria-hidden />
               </Button>
             </Link>
             <Link href="/pricing">
@@ -141,7 +142,7 @@ export default function ImplementationPage() {
                 { href: "/security", label: "Security posture" },
                 { href: "/compare", label: "Compare platforms" },
                 { href: "/faq", label: "FAQ hub" },
-                { href: "/contact", label: "Book a demo" },
+                { href: EARLY_ACCESS_CTA_HREF, label: EARLY_ACCESS_CTA_LABEL },
               ].map((link) => (
                 <Link
                   key={link.href}

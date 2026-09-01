@@ -912,7 +912,7 @@ export const COMPARE_PAGES: readonly ComparePage[] = [
       secondaryCta: CTA_CLOSE_DEMO,
     },
   },
-  makeStandardComparePage({
+  {
     slug: "vyapar-vs-zoveto",
     competitor: "Vyapar",
     description:
@@ -921,12 +921,94 @@ export const COMPARE_PAGES: readonly ComparePage[] = [
     hubTeaser:
       "Vyapar is a practical fit for small businesses that mainly need billing and basic inventory. Zoveto is the next step when branches, dispatch, CRM, credit, and warehouse work need one operating record instead of side sheets.",
     keywords: ["Vyapar vs Zoveto", "Vyapar alternative", "billing app alternative", "ERP for growing SMB"],
-    competitorStrength: "Vyapar is approachable for small businesses that need billing, invoicing, and basic stock workflows without a large implementation project.",
-    competitorBestFor: "simple billing, GST invoices, and lightweight stock control for smaller teams",
-    competitorGap: "As operating complexity grows, teams may still need separate CRM, warehouse, approval, and reporting workflows beside Vyapar.",
-    zovetoFit: "your team has outgrown billing-only workflows and needs CRM, inventory, warehouse, billing, and finance on one operating record",
-  }),
-  makeStandardComparePage({
+    aeoLead:
+      "Vyapar is usually the better fit for a single counter or small shop that lives on GST invoices and basic stock. Zoveto is stronger when the same invoice has to survive warehouse picks, branch transfers, credit limits, and collections without a side spreadsheet.\nUse this comparison to judge what happens after the bill is printed: stock, dispatch, CRM, and cash.",
+    faqs: [
+      {
+        q: "When should a team choose Zoveto over Vyapar?",
+        a: "Choose Zoveto when billing is no longer the hard part. If purchase orders, GRN, pick lists, dealer credit, and GST still live in chats or Excel after the invoice is cut, you have outgrown a billing-first app.",
+      },
+      {
+        q: "What is Vyapar's main strength?",
+        a: "Vyapar is quick to start for GST billing, e-invoicing basics, and lightweight item stock. Owners who mainly need to print invoices and see a simple item balance often get value without a rollout project.",
+      },
+      {
+        q: "Where does Vyapar get limiting for operations-heavy teams?",
+        a: "Warehouse waves, bin-level picks, multi-branch stock truth, CRM follow-ups tied to available quantity, and finance that posts from dispatch (not from a retyped invoice) are not Vyapar's center of gravity. Teams add sheets and WhatsApp to cover those gaps.",
+      },
+      {
+        q: "Can we keep Vyapar for billing and add Zoveto later?",
+        a: "You can, but dual billing systems recreate the same leak: which invoice is posted, which stock moved, who collected. The cleaner path is one posted record from order through GST invoice.",
+      },
+      {
+        q: "How should we evaluate migration risk from Vyapar?",
+        a: "Export item masters, opening stock, party ledgers, and a month of invoices first. Map which documents today are 'real' versus adjusted in Excel. Then move one high-volume SKU family or one branch, not the whole catalogue on day one.",
+      },
+    ],
+    hero: {
+      subtext:
+        "Vyapar is built around the invoice. Zoveto is built around the operating record that the invoice should already be sitting on.",
+      primaryCta: CTA_DEMO,
+      secondaryCta: { label: "View pricing", href: "/pricing" },
+    },
+    quickSummary: {
+      zoveto: [
+        "GST invoices post from the same stock, dispatch, and credit record the warehouse already used",
+        "CRM, inventory, WMS, and finance share one item and party master instead of a billing export",
+        "Guided onboarding for teams that already feel the limits of a billing-first app",
+      ],
+      competitor: [
+        { text: "Fast to start for GST billing, e-way basics, and simple item stock at a counter or small store", kind: "strength" },
+        { text: "Warehouse execution, dealer CRM, and multi-branch stock usually sit outside the core Vyapar loop", kind: "gap" },
+        { text: "Often best when the job is printing invoices and keeping a lightweight item list, not running dispatch", kind: "strength" },
+      ],
+    },
+    tableRows: [
+      { name: "Core positioning", zoveto: "Company operating system for inventory, warehouse, CRM, billing, and finance", competitor: "Billing-first business app for GST invoices and basic stock" },
+      { name: "Inventory management", zoveto: "Stock connects to PO, GRN, picks, transfers, and invoices on one ledger", competitor: "Item stock is useful at invoice time; deeper warehouse and batch control is limited" },
+      { name: "Warehouse workflows", zoveto: "Pick, pack, bin, and gate scans are operating workflows, not an afterthought", competitor: "Not a WMS; packing and dispatch usually live in paper, WhatsApp, or another tool" },
+      { name: "CRM integration", zoveto: "Party, credit, quote, and order sit next to live available stock", competitor: "Customer records support billing; pipeline and follow-up discipline is thin" },
+      { name: "Billing and finance", zoveto: "GST invoices follow posted dispatch and receipts, not a retyped bill", competitor: "Invoicing and GST are the product's strongest everyday loop" },
+      { name: "Implementation model", zoveto: "Qualification-led onboarding with masters, opening stock, and workflow scoping", competitor: "Self-serve setup is faster when the scope is invoices and a short item list" },
+      { name: "Custom workflows", zoveto: "Trading, distribution, and light manufacturing patterns Zoveto already runs", competitor: "Flexible for small-shop billing; operations design is mostly on the owner" },
+      { name: "Real-time visibility", zoveto: "Owners see stock, open orders, dispatch, and collections together", competitor: "Visibility is strongest on today's invoices and item balances" },
+      { name: "Regional context", zoveto: "GST, branches, and dealer credit as operating constraints, not add-ons", competitor: "Strong GST billing familiarity for Indian micro and small businesses" },
+      { name: "Best fit", zoveto: "Teams that have outgrown billing-only workflows and need one operating record", competitor: "Small teams that mainly need GST invoices and lightweight stock" },
+      { name: "Ongoing ownership", zoveto: "Zoveto owns more of the order-to-cash and stock loop inside one product", competitor: "Owners often stitch warehouse, CRM, and reports beside Vyapar as they grow" },
+    ],
+    whoShouldUse: {
+      chooseZoveto: [
+        "You invoice from Vyapar (or similar) but still reconcile stock and dispatch in Excel every night",
+        "Dealers, branches, or a warehouse now need credit limits, picks, and GST to share one item master",
+        "You want one vendor for the operating loop instead of a billing app plus three side systems",
+      ],
+      chooseCompetitor: [
+        "You run a single counter or small shop and the daily job is GST invoices plus a short item list",
+        "You do not yet need warehouse waves, bin stock, or CRM that checks live quantity",
+        "You want to start today without a scoped onboarding conversation",
+      ],
+    },
+    workflow: {
+      zoveto:
+        "On Zoveto, a typical day keeps the invoice on the same chain as the work: confirmed order reserves or issues stock, warehouse picks post back to that order, GST invoice follows what actually left the gate, and collections see the same party and document. The spreadsheet is not the second source of truth.",
+      competitor:
+        "With Vyapar, the invoice is usually the system of record. Stock is adjusted at bill time. As soon as goods move through a store, a van, or a second location, teams add WhatsApp photos, a dispatch sheet, and a Tally or Excel file so finance can catch up. That is fine until volume makes the night reconciliation the real job.",
+    },
+    limitations: [
+      "Not the faster choice if you only need GST billing and a simple item list with no warehouse or CRM load.",
+      "Zoveto onboarding is qualification-led. It is not an instant self-serve billing app.",
+    ],
+    finalVerdict: [
+      "If billing and lightweight stock are the whole job, Vyapar is usually enough and faster to start.",
+      "If the invoice is already the easy part and stock, dispatch, credit, and collections are the hard part, Zoveto is the more complete operating fit.",
+    ],
+    ctaClosing: {
+      headline: "See how Zoveto runs billing on the same record as stock",
+      primaryCta: CTA_CLOSE_SETUP,
+      secondaryCta: { label: "View pricing", href: "/pricing" },
+    },
+  },
+  {
     slug: "freshsales-vs-zoveto",
     competitor: "Freshsales",
     description:
@@ -935,12 +1017,94 @@ export const COMPARE_PAGES: readonly ComparePage[] = [
     hubTeaser:
       "Freshsales is strong when the buying problem is pipeline, sales engagement, and CRM automation. Zoveto is built for teams where every sale also needs stock, dispatch, billing, and collection visibility.",
     keywords: ["Freshsales vs Zoveto", "Freshsales alternative", "CRM with inventory", "operations CRM"],
-    competitorStrength: "Freshsales is strong for CRM-led sales teams that need pipeline visibility, sales automation, and engagement workflows.",
-    competitorBestFor: "CRM-first sales teams with limited inventory or warehouse execution needs",
-    competitorGap: "Inventory, warehouse, dispatch, billing, and finance continuity are not the core reason teams buy Freshsales.",
-    zovetoFit: "sales promises must connect directly to stock, orders, dispatch, billing, and receivables for SMB operations",
-  }),
-  makeStandardComparePage({
+    aeoLead:
+      "Freshsales is usually the better fit for a sales team that lives in pipeline, sequences, and CRM reports. Zoveto is stronger when a won deal still has to check stock, create a warehouse wave, raise a GST invoice, and collect against the same party.\nUse this comparison to judge whether CRM is the product or only the first step of the operating loop.",
+    faqs: [
+      {
+        q: "When should a team choose Zoveto over Freshsales?",
+        a: "Choose Zoveto when sales already promises dates and quantities that warehouse and finance cannot see. If quotes are won in CRM and then retyped into inventory, dispatch, and billing, the leak is operational, not a missing email sequence.",
+      },
+      {
+        q: "What is Freshsales's main strength?",
+        a: "Freshsales is a dedicated CRM: pipeline stages, sales engagement, phone and email context, and automation aimed at converting leads. Sales-led teams that do not run a warehouse get a focused tool instead of an operations suite.",
+      },
+      {
+        q: "Where does Freshsales get limiting for operations-heavy teams?",
+        a: "Available-to-promise stock, pick/pack, GST invoices from dispatch, and receivables against the same SKU and party are not why teams buy Freshsales. Those steps land in ERP, Excel, or WhatsApp after the deal is marked won.",
+      },
+      {
+        q: "Can we keep Freshsales and connect Zoveto for stock?",
+        a: "Two systems can be wired, but the quote still has two truths unless stock and credit live in the same record the salesperson sees. Zoveto's CRM is intentionally near inventory and billing so that check is not an integration project.",
+      },
+      {
+        q: "How should we evaluate a CRM-only stack versus Zoveto?",
+        a: "Walk one real deal from first call to money in the bank. Count the handoffs after 'won'. If those handoffs are the painful part, a deeper CRM will not fix them.",
+      },
+    ],
+    hero: {
+      subtext:
+        "Freshsales optimizes the pipeline. Zoveto keeps the won deal attached to stock, dispatch, GST, and collections.",
+      primaryCta: CTA_DEMO,
+      secondaryCta: { label: "View pricing", href: "/pricing" },
+    },
+    quickSummary: {
+      zoveto: [
+        "Quotes can see live stock, price lists, and credit before the customer is promised a date",
+        "Won deals become orders, warehouse work, and invoices without retyping the line items",
+        "Sales, stores, and finance share party and SKU masters instead of a CRM export",
+      ],
+      competitor: [
+        { text: "Strong CRM for pipeline, sales engagement, and converting leads with sequences and activity history", kind: "strength" },
+        { text: "Inventory, warehouse, GST billing, and collections are not the product's operating core", kind: "gap" },
+        { text: "Often best when the team is sales-led and fulfilment is simple or handled in another system", kind: "strength" },
+      ],
+    },
+    tableRows: [
+      { name: "Core positioning", zoveto: "Operating system where CRM is one surface on inventory, warehouse, and finance", competitor: "CRM-first sales engagement and pipeline automation" },
+      { name: "Inventory management", zoveto: "Quotes and orders read the same stock ledger as the warehouse", competitor: "Stock is typically another product or a field, not a live warehouse ledger" },
+      { name: "Warehouse workflows", zoveto: "Picks and dispatch post back to the sales order", competitor: "Fulfilment is outside Freshsales; ops teams run a separate process" },
+      { name: "CRM integration", zoveto: "CRM is built next to stock, orders, and receivables, not bolted on later", competitor: "CRM is the product: stages, activities, sequences, and sales reporting" },
+      { name: "Billing and finance", zoveto: "Invoices and collections follow posted operational events", competitor: "Billing usually sits in Freshworks or a separate accounts tool" },
+      { name: "Implementation model", zoveto: "Workflow scoping across sales and operations, not CRM fields alone", competitor: "Faster to launch a sales pipeline; operations wiring is extra work" },
+      { name: "Custom workflows", zoveto: "Quote-to-cash patterns for trading and distribution teams", competitor: "Sales automation and CRM workflows are the mature surface" },
+      { name: "Real-time visibility", zoveto: "Leadership sees pipeline together with stock and dispatch risk", competitor: "Leadership sees pipeline health; stock and cash sit in other dashboards" },
+      { name: "Regional context", zoveto: "GST, dealer credit, and branch stock as part of the sales promise", competitor: "Global CRM patterns; Indian GST and warehouse depth depend on other tools" },
+      { name: "Best fit", zoveto: "Sales promises must be executable against stock, warehouse, and finance", competitor: "CRM-first teams with light or outsourced fulfilment" },
+      { name: "Ongoing ownership", zoveto: "One product direction for the operating loop after the deal is won", competitor: "Sales owns CRM; operations and finance own whatever sits downstream" },
+    ],
+    whoShouldUse: {
+      chooseZoveto: [
+        "Your sales team already uses a CRM, but warehouse and accounts still re-enter every won deal",
+        "Quotes fail because available stock and credit are not visible in the same screen as the pipeline",
+        "You want CRM as part of operations, not as a reporting layer above disconnected fulfilment",
+      ],
+      chooseCompetitor: [
+        "You are building a sales machine (sequences, calling, pipeline hygiene) and fulfilment is simple or outsourced",
+        "You already standardized on Freshworks and only need CRM depth, not WMS or GST operations",
+        "Inventory is someone else's system and you do not want to change that boundary yet",
+      ],
+    },
+    workflow: {
+      zoveto:
+        "A Zoveto quote checks price and stock, converts to an order, drives a warehouse pick, and bills what shipped. The salesperson, store, and accounts clerk are looking at versions of the same document, not three exports of the same promise.",
+      competitor:
+        "A Freshsales deal can be run tightly through stages and tasks. When the deal is won, someone still has to create the order, check stock, plan dispatch, and raise the invoice elsewhere. That handoff is normal for CRM-only stacks. It becomes expensive when SKUs, credit, and GST are the daily constraint.",
+    },
+    limitations: [
+      "Not a replacement for a dedicated CRM if you only need sequences, dialer workflows, and sales engagement.",
+      "Zoveto's CRM is intentionally narrower than a full Freshworks-style engagement suite.",
+    ],
+    finalVerdict: [
+      "If the job is filling and running a pipeline, Freshsales is usually the more focused CRM.",
+      "If the job is making a won deal executable against stock, warehouse, GST, and collections, Zoveto is the better operating fit.",
+    ],
+    ctaClosing: {
+      headline: "See a quote that can see stock before you promise it",
+      primaryCta: CTA_CLOSE_SETUP,
+      secondaryCta: { label: "View pricing", href: "/pricing" },
+    },
+  },
+  {
     slug: "gohighlevel-vs-zoveto",
     competitor: "GoHighLevel",
     description:
@@ -949,11 +1113,93 @@ export const COMPARE_PAGES: readonly ComparePage[] = [
     hubTeaser:
       "GoHighLevel is useful for agencies that need funnels, campaigns, and client marketing workflows. Zoveto is a different category: inventory, CRM, warehouse, finance, and operating control for businesses that move goods and money.",
     keywords: ["GoHighLevel vs Zoveto", "GoHighLevel alternative", "agency CRM", "operations software"],
-    competitorStrength: "GoHighLevel is strong for agencies and marketing teams that need funnels, campaigns, appointment flows, and client-facing marketing automation.",
-    competitorBestFor: "agency-led marketing automation, funnels, and client campaign operations",
-    competitorGap: "Inventory, warehouse, GST billing, dispatch, and finance workflows sit outside GoHighLevel's core operating purpose.",
-    zovetoFit: "the business needs operational execution across inventory, CRM, warehouse, billing, finance, and controlled automation",
-  }),
+    aeoLead:
+      "GoHighLevel is usually the better fit for an agency running funnels, calendars, and client marketing under one white-label CRM. Zoveto is a different category: stock, warehouse, GST billing, and collections for businesses that move goods.\nUse this comparison to avoid buying a marketing OS when the pain is inventory and dispatch, or an operations OS when the pain is campaigns.",
+    faqs: [
+      {
+        q: "When should a team choose Zoveto over GoHighLevel?",
+        a: "Choose Zoveto when the broken work is SKUs, bins, GST invoices, and cash, not landing pages and appointment funnels. If the team is a distributor, manufacturer, or spare-parts trader, GoHighLevel will not become a warehouse or accounts system.",
+      },
+      {
+        q: "What is GoHighLevel's main strength?",
+        a: "GoHighLevel is built for agencies: funnels, campaigns, pipelines, calendars, and client sub-accounts. Marketing operators can run lead capture and follow-up without assembling a dozen consumer SaaS tools.",
+      },
+      {
+        q: "Where does GoHighLevel get limiting for product businesses?",
+        a: "There is no native WMS, GST tax engine, GRN, or pick/pack loop. Inventory and finance for physical goods are outside its purpose. Teams that sell products still need an operations system underneath the funnel.",
+      },
+      {
+        q: "Can an agency use both?",
+        a: "Yes, as different layers. GoHighLevel can own campaign and appointment flow. Zoveto can own what happens after an order is real: stock, dispatch, invoice, and collection. Do not expect either product to replace the other.",
+      },
+      {
+        q: "How should we decide which category we are actually buying?",
+        a: "Write down the last painful week. If it was ads, funnels, and no-shows, you are in GoHighLevel territory. If it was stockouts, wrong dispatches, and GST mismatches, you are in Zoveto territory.",
+      },
+    ],
+    hero: {
+      subtext:
+        "GoHighLevel runs marketing and appointments. Zoveto runs inventory, warehouse, GST, and collections for businesses that ship goods.",
+      primaryCta: CTA_DEMO,
+      secondaryCta: { label: "View pricing", href: "/pricing" },
+    },
+    quickSummary: {
+      zoveto: [
+        "Inventory, warehouse, CRM, billing, and finance on one posted operating record",
+        "Built for teams that buy, store, pick, and invoice physical goods in India",
+        "Automation is attached to operational events, not campaign sequences",
+      ],
+      competitor: [
+        { text: "Strong agency OS for funnels, campaigns, calendars, pipelines, and client sub-accounts", kind: "strength" },
+        { text: "No native warehouse, GST inventory ledger, or finance posting from dispatch", kind: "gap" },
+        { text: "Often best when the customer is an agency or a services business, not a goods operator", kind: "strength" },
+      ],
+    },
+    tableRows: [
+      { name: "Core positioning", zoveto: "Company operating system for goods, stock, warehouse, and GST operations", competitor: "Marketing and agency operating system for funnels, CRM, and campaigns" },
+      { name: "Inventory management", zoveto: "Stock ledger tied to PO, GRN, picks, and invoices", competitor: "Not an inventory product; product businesses keep stock elsewhere" },
+      { name: "Warehouse workflows", zoveto: "Scan-first picks, packing, and dispatch as core workflows", competitor: "No WMS; physical fulfilment is out of scope" },
+      { name: "CRM integration", zoveto: "CRM sits next to stock and receivables for operators who sell goods", competitor: "CRM, pipelines, and conversations are the product for agencies and local services" },
+      { name: "Billing and finance", zoveto: "GST invoices and collections follow posted operational events", competitor: "Payments and invoices support marketing and appointments, not GST inventory accounting" },
+      { name: "Implementation model", zoveto: "Founder-led operational onboarding for masters and workflows", competitor: "Agency snapshot and funnel setup; client accounts can go live quickly" },
+      { name: "Custom workflows", zoveto: "Trading, distribution, manufacturing, and warehouse patterns", competitor: "Funnels, automations, calendars, and white-label client delivery" },
+      { name: "Real-time visibility", zoveto: "Owners see stock, orders, dispatch, and cash together", competitor: "Operators see pipeline, campaign, and appointment performance" },
+      { name: "Regional context", zoveto: "Indian SMB GST, branches, and dealer ops as first-class constraints", competitor: "Global agency SaaS; India GST and warehouse depth are not the design center" },
+      { name: "Best fit", zoveto: "Businesses that move goods and need one operating record", competitor: "Agencies and marketing teams running funnels and client campaigns" },
+      { name: "Ongoing ownership", zoveto: "Operations and finance own the system of record for goods", competitor: "Marketing or agency operators own campaigns and client sub-accounts" },
+    ],
+    whoShouldUse: {
+      chooseZoveto: [
+        "You manufacture, distribute, or trade goods and the pain is stock, dispatch, GST, and collections",
+        "A funnel already produces orders, but warehouse and accounts cannot trust the record",
+        "You need an operations system, not another marketing CRM",
+      ],
+      chooseCompetitor: [
+        "You run an agency and need funnels, calendars, pipelines, and client sub-accounts in one place",
+        "You sell services or appointments more than SKUs, bins, and GST inventory",
+        "Your primary job is campaigns and lead conversion, not warehouse execution",
+      ],
+    },
+    workflow: {
+      zoveto:
+        "Zoveto starts when an order is real: stock is promised, a pick happens, a gate pass posts, a GST invoice follows, and collections see the same party. Marketing can sit upstream. It is not the ledger.",
+      competitor:
+        "GoHighLevel starts when a lead hits a funnel: tags, sequences, appointments, and a pipeline card. That loop is excellent for agencies. When the 'customer' is actually buying cartons from a warehouse, the work after the form submit still needs an operations system.",
+    },
+    limitations: [
+      "Not an agency marketing OS. Zoveto will not replace funnels, snapshots, or white-label client accounts.",
+      "If you only need campaigns and calendars, GoHighLevel is the more honest category match.",
+    ],
+    finalVerdict: [
+      "If you run an agency or a marketing-led services book, GoHighLevel is usually the right category.",
+      "If you run inventory, warehouse, and GST for physical goods, Zoveto is the operating system and GoHighLevel is at most a funnel on top.",
+    ],
+    ctaClosing: {
+      headline: "See the operations system, not another marketing CRM",
+      primaryCta: CTA_CLOSE_SETUP,
+      secondaryCta: { label: "View pricing", href: "/pricing" },
+    },
+  },
 ];
 
 export function getComparePageBySlug(slug: string): ComparePage | undefined {

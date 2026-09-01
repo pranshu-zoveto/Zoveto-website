@@ -36,7 +36,7 @@ export function OSNetworkCanvas({ maxDpr = 2 }: OSNetworkCanvasProps = {}) {
     host.appendChild(renderer.domElement);
 
     scene.add(new THREE.AmbientLight(0xffffff, 0.5));
-    const a = new THREE.PointLight(0x0071e3, 1);
+    const a = new THREE.PointLight(0x4338ca, 1);
     a.position.set(100, 80, 120);
     scene.add(a);
     const b = new THREE.PointLight(0x34c759, 0.8);
@@ -61,7 +61,7 @@ export function OSNetworkCanvas({ maxDpr = 2 }: OSNetworkCanvasProps = {}) {
       const geo = new THREE.BufferGeometry().setFromPoints([start, end]);
       const line = new THREE.Line(
         geo,
-        new THREE.LineBasicMaterial({ color: 0x0071e3, transparent: true, opacity: 0.25 })
+        new THREE.LineBasicMaterial({ color: 0x4338ca, transparent: true, opacity: 0.25 })
       );
       lines.add(line);
     }

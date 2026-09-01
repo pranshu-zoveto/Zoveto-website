@@ -135,14 +135,14 @@ function SectionIntro({ introRef }: { introRef: React.RefObject<HTMLDivElement> 
             justifyContent: "center",
             borderRadius: 12,
             padding: "0 24px",
-            background: "#0071e3",
-            border: "1px solid rgba(0, 113, 227, 0.25)",
+            background: "var(--blue)",
+            border: "1px solid var(--blue-border)",
             color: "#fff",
             fontSize: 15,
             fontWeight: 600,
             letterSpacing: "-0.01em",
             textDecoration: "none",
-            boxShadow: "0 8px 24px rgba(0, 113, 227, 0.26)",
+            boxShadow: "0 8px 24px var(--blue-shadow)",
           }}
         >
           {HOME_HERO_PRIMARY_CTA_LABEL}
@@ -326,8 +326,8 @@ export function DashboardScrollDesktop() {
           tl.to(
             tile,
             {
-              boxShadow: "0 0 0 3px rgba(0,113,227,0.25), 0 8px 32px rgba(0,113,227,0.15)",
-              borderColor: "#0071e3",
+              boxShadow: "0 0 0 3px var(--blue-border), 0 8px 32px var(--blue-dim-hover)",
+              borderColor: "var(--blue)",
               duration: 0.25,
             },
             t + 0.3

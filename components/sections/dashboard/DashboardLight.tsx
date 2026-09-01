@@ -90,8 +90,8 @@ function DashTile({ id, label, sub, Icon }: Tile) {
           alignItems: "center",
           justifyContent: "center",
           borderRadius: 12,
-          background: "rgba(0, 113, 227, 0.08)",
-          color: "#0071e3",
+          background: "var(--blue-dim)",
+          color: "var(--blue)",
         }}
       >
         <Icon size={22} />
@@ -126,7 +126,7 @@ export function DashboardLight() {
             style={{
               width: 28,
               height: 28,
-              background: "#0071e3",
+              background: "var(--blue)",
               color: "white",
               borderRadius: 7,
               display: "flex",
@@ -177,7 +177,7 @@ export function DashboardLight() {
             style={{
               width: 30,
               height: 30,
-              background: "#0071e3",
+              background: "var(--blue)",
               color: "white",
               borderRadius: "50%",
               display: "flex",

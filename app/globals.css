@@ -21,6 +21,8 @@
     --radius-xl: 20px; /* additive — new code */
     --radius-full: 56px;
     --radius-pill: 9999px; /* additive — true pill shape for new code */
+    /* Tailwind rounded-lg/md/sm remap to this. 12px matches rounded-xl and the hero CTA. */
+    --radius: 12px;
 
     --background: #f5f5f7;
     --foreground: #1d1d1f;

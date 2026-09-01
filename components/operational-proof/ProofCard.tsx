@@ -14,7 +14,7 @@ export function ProofCard({ proof, variant = "listing" }: ProofCardProps) {
     <article
       className={cn(
         "float-card flex h-full flex-col rounded-2xl border border-border/70 bg-gradient-to-b from-card to-white transition-[transform,box-shadow,border-color] duration-200 ease-out hover:-translate-y-0.5 hover:border-border hover:shadow-[var(--shadow-hover)]",
-        dense ? "p-5 sm:p-6" : "p-5.5 sm:p-6 md:p-6.5",
+        dense ? "p-5 sm:p-6" : "p-5 sm:p-6 md:p-7",
       )}
     >
       <span className="inline-flex w-fit rounded-full border border-border bg-surface px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-2">

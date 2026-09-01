@@ -75,12 +75,12 @@ export function HeroBrain() {
       }
     }
     edgeGeo.setAttribute("position", new THREE.Float32BufferAttribute(edgeVertices, 3));
-    const edgeMat = new THREE.LineBasicMaterial({ color: 0x0071e3, transparent: true, opacity: 0.15 });
+    const edgeMat = new THREE.LineBasicMaterial({ color: 0x4338ca, transparent: true, opacity: 0.15 });
     const edges = new THREE.LineSegments(edgeGeo, edgeMat);
     scene.add(edges);
 
     scene.add(new THREE.AmbientLight(0xffffff, 0.45));
-    const pointA = new THREE.PointLight(0x0071e3, 1.2);
+    const pointA = new THREE.PointLight(0x4338ca, 1.2);
     pointA.position.set(200, 200, 100);
     scene.add(pointA);
     const pointB = new THREE.PointLight(0x34c759, 0.8);

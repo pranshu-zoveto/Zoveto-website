@@ -120,7 +120,7 @@ export const ContentPanel = React.forwardRef<HTMLDivElement, ContentPanelProps>(
           gap: 6,
           fontSize: 13,
           fontWeight: 600,
-          color: "#0071e3",
+          color: "var(--blue)",
           textDecoration: "none",
         }}
       >

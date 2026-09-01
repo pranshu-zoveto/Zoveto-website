@@ -136,9 +136,9 @@ export default async function ModuleDetailPage({
             Integrate {data.name} into your <span className="text-blue">Company OS</span> today.
           </div>
           <div className="flex flex-col sm:flex-row gap-4">
-            <Link href="/contact">
+            <Link href="/signup">
               <Button variant="primary" size="lg" className="px-10 gap-2 min-h-[52px]">
-                Book implementation demo <ArrowRight size={18} />
+                Request early access <ArrowRight size={18} />
               </Button>
             </Link>
           </div>

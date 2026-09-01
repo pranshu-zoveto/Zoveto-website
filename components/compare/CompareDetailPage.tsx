@@ -9,7 +9,12 @@ import type { ComparePage } from "@/lib/compare-pages";
 import { comparePageH1, getComparePageAeoLead, getComparePageFaqs } from "@/lib/compare-pages";
 import type { Phase1CompareContent } from "@/lib/phase1-compare-zoho-tally";
 import { getWhatsAppFloatHref } from "@/lib/whatsapp-float";
-import { EARLY_ACCESS_CTA_HREF, EARLY_ACCESS_CTA_LABEL } from "@/lib/marketing-cta";
+import {
+  EARLY_ACCESS_CTA_HREF,
+  EARLY_ACCESS_CTA_LABEL,
+  VIEW_PRICING_CTA_HREF,
+  VIEW_PRICING_CTA_LABEL,
+} from "@/lib/marketing-cta";
 
 const btnPrimary =
   "inline-flex min-h-[44px] items-center justify-center rounded-lg bg-blue px-5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-blue-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background";
@@ -322,8 +327,6 @@ export function CompareDetailPage({ page }: Props) {
   }
 
   const h1 = comparePageH1(page.competitor);
-  const demoHref = page.hero.primaryCta.href;
-  const setupHref = page.hero.secondaryCta.href;
 
   return (
     <div className="relative">
@@ -341,11 +344,11 @@ export function CompareDetailPage({ page }: Props) {
             {page.hero.subtext}
           </Text>
           <div className="flex flex-wrap gap-3">
-            <Link href={page.hero.primaryCta.href} className={btnPrimary}>
-              {page.hero.primaryCta.label}
+            <Link href={EARLY_ACCESS_CTA_HREF} className={btnPrimary}>
+              {EARLY_ACCESS_CTA_LABEL}
             </Link>
-            <Link href={page.hero.secondaryCta.href} className={btnOutline}>
-              {page.hero.secondaryCta.label}
+            <Link href={VIEW_PRICING_CTA_HREF} className={btnOutline}>
+              {VIEW_PRICING_CTA_LABEL}
             </Link>
           </div>
         </header>
@@ -543,52 +546,27 @@ export function CompareDetailPage({ page }: Props) {
             {page.ctaClosing.headline}
           </Text>
           <div className="flex flex-wrap gap-3">
-            <Link href={page.ctaClosing.primaryCta.href} className={btnPrimary}>
-              {page.ctaClosing.primaryCta.label}
+            <Link href={EARLY_ACCESS_CTA_HREF} className={btnPrimary}>
+              {EARLY_ACCESS_CTA_LABEL}
             </Link>
-            <Link href={page.ctaClosing.secondaryCta.href} className={btnOutline}>
-              {page.ctaClosing.secondaryCta.label}
+            <Link href={VIEW_PRICING_CTA_HREF} className={btnOutline}>
+              {VIEW_PRICING_CTA_LABEL}
             </Link>
           </div>
-          <p className="mt-6 text-sm text-muted">
-            <Link href="/pricing" className="font-medium text-blue underline-offset-4 hover:underline">
-              View pricing
-            </Link>{" "}
-            when you are ready to compare plans.
-          </p>
         </section>
       </article>
 
-      {/* Desktop: floating CTA */}
-      <aside
-        className="pointer-events-none fixed right-6 top-[32%] z-20 hidden w-[min(17rem,calc(100vw-2rem))] lg:block"
-        aria-label="Quick actions"
-      >
-        <div className="pointer-events-auto rounded-2xl border border-border bg-card/95 p-5 shadow-lg backdrop-blur-sm">
-          <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-muted-2">High intent?</p>
-          <p className="mb-4 text-sm font-semibold text-foreground">See Zoveto in action</p>
-          <div className="flex flex-col gap-2">
-            <Link href={demoHref} className={cn(btnPrimary, "w-full justify-center text-center")}>
-              See Zoveto in Action
-            </Link>
-            <Link href={setupHref} className={cn(btnOutline, "w-full justify-center text-center")}>
-              Request Setup
-            </Link>
-          </div>
-        </div>
-      </aside>
-
-      {/* Mobile: sticky bottom CTA */}
+      {/* Mobile: sticky bottom CTA — one primary + one secondary */}
       <div
         className="fixed inset-x-0 bottom-0 z-30 border-t border-border bg-card/95 px-4 py-3 backdrop-blur-md lg:hidden"
         style={{ paddingBottom: "max(0.75rem, env(safe-area-inset-bottom))" }}
       >
         <div className="mx-auto flex max-w-lg gap-2">
-          <Link href={demoHref} className={cn(btnPrimary, "min-h-[48px] flex-1 justify-center text-center text-xs sm:text-sm")}>
-            See Zoveto in action
+          <Link href={EARLY_ACCESS_CTA_HREF} className={cn(btnPrimary, "min-h-[48px] flex-1 justify-center text-center text-xs sm:text-sm")}>
+            {EARLY_ACCESS_CTA_LABEL}
           </Link>
-          <Link href={setupHref} className={cn(btnOutline, "min-h-[48px] flex-1 justify-center text-center text-xs sm:text-sm")}>
-            Request setup
+          <Link href={VIEW_PRICING_CTA_HREF} className={cn(btnOutline, "min-h-[48px] flex-1 justify-center text-center text-xs sm:text-sm")}>
+            {VIEW_PRICING_CTA_LABEL}
           </Link>
         </div>
       </div>

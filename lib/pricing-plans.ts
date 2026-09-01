@@ -64,7 +64,7 @@ const plans: MarketingPricingPlan[] = [
     pricing: PRICING_OPERATIONS_SUITE,
     features: operationsSuiteFeatures,
     ctaHref: "/signup",
-    ctaLabel: "Start free trial",
+    ctaLabel: "Start 15-day free trial",
     popular: false,
   },
   {
@@ -75,7 +75,7 @@ const plans: MarketingPricingPlan[] = [
     pricing: PRICING_BUSINESS_OS,
     features: businessOsFeatures,
     ctaHref: "/signup",
-    ctaLabel: "Start free trial",
+    ctaLabel: "Start 15-day free trial",
     popular: true,
   },
   {

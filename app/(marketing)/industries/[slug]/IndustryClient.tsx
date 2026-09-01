@@ -33,18 +33,18 @@ export function IndustryClient({ slug }: { slug: string }) {
         <Text variant="body-lg" className="prose-justify mb-8 max-w-3xl text-pretty text-muted">
           {data.heroSub}
         </Text>
-        <div className="flex flex-wrap gap-3">
-          <Link href="/signup">
-            <Button variant="primary" size="lg" className="min-h-[48px] w-full sm:w-auto px-5">
-              Request Setup
-            </Button>
-          </Link>
-          <Link href="/product">
-            <Button variant="outline" size="lg" className="min-h-[48px] w-full sm:w-auto px-5">
-              See It In Action
-            </Button>
-          </Link>
-        </div>
+          <div className="flex flex-wrap gap-3">
+            <Link href="/signup">
+              <Button variant="primary" size="lg" className="min-h-[48px] w-full sm:w-auto px-5">
+                Request early access
+              </Button>
+            </Link>
+            <Link href="/pricing">
+              <Button variant="outline" size="lg" className="min-h-[48px] w-full sm:w-auto px-5">
+                View pricing
+              </Button>
+            </Link>
+          </div>
       </header>
 
       {slug === "spare-parts-trading" ? <SparePartsPhase1Sections /> : null}
@@ -254,12 +254,12 @@ export function IndustryClient({ slug }: { slug: string }) {
         <div className="flex flex-wrap gap-3">
           <Link href="/signup">
             <Button variant="primary" size="lg" className="min-h-[48px] px-8">
-              Request Setup
+              Request early access
             </Button>
           </Link>
-          <Link href="/product">
+          <Link href="/pricing">
             <Button variant="outline" size="lg" className="min-h-[48px] px-8">
-              See It In Action
+              View pricing
             </Button>
           </Link>
         </div>

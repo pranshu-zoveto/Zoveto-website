@@ -10,7 +10,7 @@ export function PricingSection() {
       id="pricing"
       className="relative scroll-mt-24 overflow-x-clip bg-transparent py-section-mobile md:py-section"
     >
-      <div className="container relative z-10 mx-auto max-w-[min(100%,80rem)] px-4 sm:px-6">
+      <div className="container relative z-10 mx-auto max-w-content px-4 sm:px-6">
         <div className="mx-auto mb-14 max-w-3xl text-center md:mb-20">
           <div className="mb-6 flex justify-center">
             <SectionLabel className="mb-0 border-blue/20 bg-blue-dim text-blue">Pricing</SectionLabel>

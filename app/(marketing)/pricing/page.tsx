@@ -43,7 +43,7 @@ export default function PricingPage() {
       />
       <PricingOfferSchema />
       <FAQPageSchema faqs={PRICING_PAGE_FAQ} url={canonicalUrl("/pricing")} />
-      <div className="container relative z-10 mx-auto max-w-[min(100%,88rem)] px-4 sm:px-6">
+      <div className="container relative z-10 mx-auto max-w-content px-4 sm:px-6">
         <div className="mx-auto mb-10 max-w-3xl text-center md:mb-20">
           <p className="mb-5 font-mono text-[11px] font-medium uppercase tracking-[0.2em] text-muted-2">Pricing</p>
           <Text variant="display-1" as="h1" className="mb-6 text-balance">
@@ -56,7 +56,7 @@ export default function PricingPage() {
 
         <PricingClient />
 
-        <div className="mx-auto mt-20 max-w-[min(100%,80rem)] md:mt-28">
+        <div className="mx-auto mt-20 max-w-content md:mt-28">
           <PricingFAQSection faqData={PRICING_PAGE_FAQ} />
         </div>
       </div>

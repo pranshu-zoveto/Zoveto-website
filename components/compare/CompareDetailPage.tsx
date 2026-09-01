@@ -343,7 +343,7 @@ export function CompareDetailPage({ page }: Props) {
           <Text variant="body-lg" className="prose-justify mb-8 max-w-3xl text-pretty text-muted">
             {page.hero.subtext}
           </Text>
-          <div className="flex flex-wrap gap-3">
+          <div className="hidden flex-wrap gap-3 lg:flex">
             <Link href={EARLY_ACCESS_CTA_HREF} className={btnPrimary}>
               {EARLY_ACCESS_CTA_LABEL}
             </Link>

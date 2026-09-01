@@ -60,19 +60,16 @@ export default function SecurityPage() {
           Zoveto is built for operational reliability, data security, and system integrity. This trust center summarizes how
           we protect systems, process data, and document legal safeguards in practical terms.
         </p>
-        <div className="mt-6 overflow-x-auto rounded-lg border border-border">
-          <table className="w-full min-w-[680px] border-collapse text-left">
-            <tbody>
-              {SECURITY_SUMMARY.map((item) => (
-                <tr key={item.label} className="align-top">
-                  <th className="w-56 border-b border-border bg-muted/20 px-4 py-3 text-sm font-semibold text-foreground">
-                    {item.label}
-                  </th>
-                  <td className="border-b border-border px-4 py-3 text-sm text-muted">{item.value}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        <div className="mt-6 overflow-hidden rounded-lg border border-border">
+          {SECURITY_SUMMARY.map((item) => (
+            <div
+              key={item.label}
+              className="border-b border-border px-4 py-3 last:border-b-0 sm:grid sm:grid-cols-[11rem_minmax(0,1fr)] sm:gap-4 sm:px-4"
+            >
+              <div className="text-sm font-semibold text-foreground">{item.label}</div>
+              <div className="mt-1 text-sm text-muted sm:mt-0">{item.value}</div>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -130,6 +127,7 @@ export default function SecurityPage() {
           <li>Amazon Web Services (AWS): cloud infrastructure hosting.</li>
           <li>Google (Gmail SMTP): transactional and operational email delivery.</li>
           <li>Google Analytics: website analytics when consent is enabled.</li>
+          <li>Google Tag Manager: tag loading when analytics consent is enabled.</li>
           <li>Microsoft Clarity: session replay and behavioral diagnostics when analytics consent is enabled.</li>
           <li>Razorpay: payment processing and billing transactions.</li>
         </ul>

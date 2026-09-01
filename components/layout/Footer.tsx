@@ -110,7 +110,7 @@ export function Footer() {
           <p
             className={cn(
               "pointer-events-none select-none flex items-baseline justify-center gap-[0.12em]",
-              "text-center font-extrabold uppercase leading-[0.8] tracking-[-0.05em]",
+              "text-center font-bold uppercase leading-[0.8] tracking-[-0.05em]",
             )}
             style={{ fontSize: "clamp(2.2rem, 13.5vw, 10.25rem)" }}
             aria-hidden

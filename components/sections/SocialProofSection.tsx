@@ -68,7 +68,7 @@ export function SocialProofSection() {
             Trusted by <br />
             <span className="text-blue">operations-led teams</span>
           </h2>
-          <p className="max-w-2xl text-xl font-light leading-relaxed text-muted-2">
+          <p className="max-w-2xl text-xl font-normal leading-relaxed text-muted-2">
             From plants to distribution hubs, Zoveto is the engine behind teams that outgrew inbox-and-sheet workflows.
           </p>
         </div>
@@ -86,7 +86,7 @@ export function SocialProofSection() {
                 <Quote className="h-8 w-8 scale-x-[-1] text-blue/30" />
               </div>
 
-              <p className="mb-10 h-32 text-lg font-light italic leading-relaxed text-foreground">
+              <p className="mb-10 h-32 text-lg font-normal italic leading-relaxed text-foreground">
                 {"\u201C"}
                 {t.quote}
                 {"\u201D"}

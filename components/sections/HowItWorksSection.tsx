@@ -63,7 +63,7 @@ export function HowItWorksSection() {
             <h2 className="text-6xl md:text-[5.5rem] font-display leading-[0.9] mb-10 uppercase">
               Inquiry to <br /><span className="text-blue">Invoice.</span>
             </h2>
-            <p className="text-xl text-muted-2 font-light leading-relaxed max-w-sm">
+            <p className="text-xl text-muted-2 font-normal leading-relaxed max-w-sm">
               One flow from first touch to payment. Each step posts to the next module. Everyone sees the same status.
             </p>
           </div>
@@ -93,7 +93,7 @@ export function HowItWorksSection() {
                   <div className="space-y-6">
                     <div>
                       <div className="text-[10px] font-bold text-muted-2 tracking-[0.2em] uppercase mb-2">Process</div>
-                      <p className="text-sm md:text-base text-muted font-light leading-relaxed">
+                      <p className="text-sm md:text-base text-muted font-normal leading-relaxed">
                         {step.what}
                       </p>
                     </div>

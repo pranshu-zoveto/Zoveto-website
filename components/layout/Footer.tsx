@@ -47,6 +47,10 @@ const LINK_COLS: { title: string; links: { label: string; href: string }[] }[] =
       { label: "Terms", href: "/terms" },
       { label: "MSA", href: "/msa" },
       { label: "SLA", href: "/sla" },
+      { label: "Acceptable use", href: "/acceptable-use" },
+      { label: "Cookie policy", href: "/cookie-policy" },
+      { label: "DPA", href: "/dpa" },
+      { label: "Subprocessors", href: "/subprocessors" },
     ],
   },
   {

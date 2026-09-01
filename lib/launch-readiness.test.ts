@@ -160,7 +160,17 @@ describe("launch readiness static checks", () => {
 
   it("keeps required trust links in footer", () => {
     const footer = read("components/layout/Footer.tsx");
-    const required = ['"/security"', '"/privacy"', '"/terms"', '"/msa"', '"/sla"'];
+    const required = [
+      '"/security"',
+      '"/privacy"',
+      '"/terms"',
+      '"/msa"',
+      '"/sla"',
+      '"/acceptable-use"',
+      '"/cookie-policy"',
+      '"/dpa"',
+      '"/subprocessors"',
+    ];
     for (const href of required) {
       assert.ok(footer.includes(href), `missing legal footer link ${href}`);
     }

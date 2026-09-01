@@ -4,6 +4,7 @@ import React from "react";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { Layers, LineChart, Sparkles } from "lucide-react";
 import { RevealOnScroll } from "@/components/layout/RevealOnScroll";
+import { cn } from "@/lib/utils";
 
 const STEPS = [
   {
@@ -35,7 +36,7 @@ export function HowItWorksLandingSection() {
       <div className="container relative z-10 mx-auto max-w-content px-4 sm:px-6">
         <div className="mb-14 max-w-3xl md:mb-16">
           <SectionLabel className="mb-6 hidden border-blue/20 bg-blue-dim text-blue sm:inline-block">How it works</SectionLabel>
-          <h2 className="mb-5 text-2xl font-bold leading-tight tracking-tight text-foreground sm:text-3xl md:text-4xl lg:text-5xl">
+          <h2 className="mb-6 text-2xl font-bold leading-tight tracking-tight text-foreground sm:text-3xl md:text-4xl lg:text-5xl">
             From signup to <span className="text-blue">full operations</span> in three moves
           </h2>
           <p className="max-w-2xl text-lg leading-relaxed text-muted">
@@ -44,26 +45,30 @@ export function HowItWorksLandingSection() {
         </div>
 
         <RevealOnScroll>
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-8">
-            {STEPS.map((step, i) => (
-              <article
-                key={step.title}
-                className={`float-card reveal-item relative flex flex-col p-5 sm:p-6 md:p-8${i === STEPS.length - 1 ? " hidden sm:flex" : ""}`}
-              >
-                <div className="mb-6 flex items-center gap-4">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-border bg-blue-light text-blue sm:h-12 sm:w-12">
-                    <step.icon className="h-5 w-5 sm:h-6 sm:w-6" strokeWidth={1.5} />
-                  </div>
-                  <span className="text-xs font-bold uppercase tracking-widest text-muted-2">Step {i + 1}</span>
-                </div>
-                <h3 className="mb-3 min-h-[3.5rem] text-lg font-semibold tracking-tight text-foreground md:min-h-[4rem]">{step.title}</h3>
-                <div className="flex flex-1 flex-col justify-between gap-6">
-                  <p className="text-sm leading-relaxed text-muted">{step.body}</p>
-                  <p className="border-t border-border pt-4 text-xs font-semibold text-blue">{step.outcome}</p>
-                </div>
-              </article>
-            ))}
-          </div>
+          <ol className="divide-y divide-border border-y border-border">
+            {STEPS.map((step, i) => {
+              const Icon = step.icon;
+              return (
+                <li
+                  key={step.title}
+                  className={cn(
+                    "reveal-item py-8 md:py-10",
+                    i === STEPS.length - 1 && "hidden sm:list-item",
+                  )}
+                >
+                  <h3 className="flex flex-wrap items-center gap-x-3 gap-y-2 text-lg font-semibold tracking-tight text-foreground md:text-xl">
+                    <span className="text-xs font-bold uppercase tracking-widest text-muted-2">
+                      Step {i + 1}
+                    </span>
+                    <Icon className="h-5 w-5 shrink-0 text-blue" strokeWidth={1.5} aria-hidden />
+                    <span>{step.title}</span>
+                  </h3>
+                  <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">{step.body}</p>
+                  <p className="mt-4 text-xs font-semibold text-blue">{step.outcome}</p>
+                </li>
+              );
+            })}
+          </ol>
         </RevealOnScroll>
       </div>
     </section>

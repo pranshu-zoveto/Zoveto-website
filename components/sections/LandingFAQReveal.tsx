@@ -8,8 +8,6 @@ type Props = {
   eyebrow?: string;
   title: string;
   description: string;
-  imageSrc: string;
-  imageAlt: string;
   defaultOpenIndex?: number;
 };
 
@@ -18,8 +16,6 @@ export function LandingFAQReveal({
   eyebrow,
   title,
   description,
-  imageSrc,
-  imageAlt,
   defaultOpenIndex,
 }: Props) {
   return (
@@ -30,8 +26,6 @@ export function LandingFAQReveal({
           eyebrow={eyebrow}
           title={title}
           description={description}
-          imageSrc={imageSrc}
-          imageAlt={imageAlt}
           defaultOpenIndex={defaultOpenIndex}
         />
       </div>

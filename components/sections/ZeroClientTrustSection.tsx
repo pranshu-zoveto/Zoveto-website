@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/Button";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { Text } from "@/components/ui/Text";
 import { cn } from "@/lib/utils";
+import { IconCard } from "@/components/ui/IconCard";
 
 type ZeroClientTrustSectionProps = {
   context?: "home" | "pricing" | "contact";
@@ -56,12 +57,19 @@ const metaLabelClass = "text-xs font-semibold uppercase tracking-[0.14em] text-m
 
 export function ZeroClientTrustSection({ context = "home", className }: ZeroClientTrustSectionProps) {
   const copy = COPY[context];
+  const isHome = context === "home";
 
   return (
     <section aria-labelledby={`${context}-zero-client-trust-heading`} className={cn("bg-transparent py-section-mobile md:py-section", className)}>
       <div className="container mx-auto max-w-content px-4 sm:px-6">
-        <div className="overflow-hidden rounded-xl border border-border/80 bg-[linear-gradient(180deg,#ffffff_0%,#f7fafe_100%)] p-5 shadow-[var(--shadow-float)] sm:p-6 md:p-8 lg:p-10">
-          <RevealOnScroll className="grid grid-cols-1 gap-9 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.08fr)] lg:items-start lg:gap-10 xl:gap-12">
+        <div
+          className={
+            isHome
+              ? undefined
+              : "overflow-hidden rounded-xl border border-border/80 bg-[linear-gradient(180deg,#ffffff_0%,#f7fafe_100%)] p-6 shadow-[var(--shadow-float)] sm:p-6 md:p-8 lg:p-10"
+          }
+        >
+          <RevealOnScroll className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.08fr)] lg:items-start lg:gap-10 xl:gap-12">
             <div className="reveal-item min-w-0">
               <SectionLabel className="mb-4 border-border/70 bg-surface-2 text-muted-2">{copy.eyebrow}</SectionLabel>
               <Text
@@ -98,22 +106,36 @@ export function ZeroClientTrustSection({ context = "home", className }: ZeroClie
                 <p className={metaLabelClass}>Trust checks</p>
                 <p className="text-xs font-medium leading-snug text-muted">4 signals before rollout</p>
               </div>
-              <RevealOnScroll className="grid auto-rows-fr grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
-                {TRUST_ITEMS.map((item, index) => (
-                  <article key={item.title} className="float-card reveal-item flex h-full min-h-0 flex-col rounded-xl p-4 sm:p-5">
-                    <div className="mb-2.5 flex items-start justify-between gap-3">
-                      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-border/80 bg-surface-2 text-blue transition-transform duration-200 ease-[cubic-bezier(0.22,1,0.36,1)] motion-safe:hover:-translate-y-px">
-                        <item.icon size={17} aria-hidden />
+              {isHome ? (
+                <ul className="reveal-item" role="list">
+                  {TRUST_ITEMS.map((item, index) => (
+                    <IconCard
+                      key={item.title}
+                      index={index + 1}
+                      divided={index > 0}
+                      label={item.title}
+                      description={item.desc}
+                    />
+                  ))}
+                </ul>
+              ) : (
+                <RevealOnScroll className="grid auto-rows-fr grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
+                  {TRUST_ITEMS.map((item, index) => (
+                    <article key={item.title} className="float-card reveal-item flex h-full min-h-0 flex-col rounded-xl p-4 sm:p-6">
+                      <div className="mb-3 flex items-start justify-between gap-3">
+                        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-border/80 bg-surface-2 text-blue transition-transform duration-200 ease-[cubic-bezier(0.22,1,0.36,1)] motion-safe:hover:-translate-y-px">
+                          <item.icon size={17} aria-hidden />
+                        </div>
+                        <span className="inline-flex h-6 min-w-6 shrink-0 items-center justify-center rounded-full border border-border bg-surface px-2 text-[11px] font-semibold tabular-nums text-muted-2">
+                          {String(index + 1).padStart(2, "0")}
+                        </span>
                       </div>
-                      <span className="inline-flex h-6 min-w-6 shrink-0 items-center justify-center rounded-full border border-border bg-surface px-2 text-[11px] font-semibold tabular-nums text-muted-2">
-                        {String(index + 1).padStart(2, "0")}
-                      </span>
-                    </div>
-                    <h3 className="text-sm font-semibold tracking-tight text-foreground">{item.title}</h3>
-                    <p className="mt-1.5 text-sm leading-relaxed text-muted">{item.desc}</p>
-                  </article>
-                ))}
-              </RevealOnScroll>
+                      <h3 className="text-sm font-semibold tracking-tight text-foreground">{item.title}</h3>
+                      <p className="mt-2 text-sm leading-relaxed text-muted">{item.desc}</p>
+                    </article>
+                  ))}
+                </RevealOnScroll>
+              )}
             </div>
           </RevealOnScroll>
         </div>

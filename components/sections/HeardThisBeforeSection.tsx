@@ -1,6 +1,7 @@
 "use client";
 
 import { RevealOnScroll } from "@/components/layout/RevealOnScroll";
+import { IconCard } from "@/components/ui/IconCard";
 
 const PAIN_PROOF_CARDS = [
   {
@@ -25,7 +26,7 @@ const PROOF_STRIP_METRICS = [
 
 export function HeardThisBeforeSection() {
   return (
-    <section className="bg-transparent py-12 md:py-16">
+    <section className="bg-transparent py-section-mobile md:py-section">
       <div className="container mx-auto max-w-content px-4 sm:px-6">
         <div className="mx-auto mb-10 max-w-3xl text-center md:mb-12">
           <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-blue">WE&apos;VE HEARD THIS BEFORE</p>
@@ -38,26 +39,31 @@ export function HeardThisBeforeSection() {
         </div>
 
         <RevealOnScroll>
-          <ul className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8" role="list">
-            {PAIN_PROOF_CARDS.map((item) => (
-              <li key={item.quote} className="float-card reveal-item p-5 md:p-6">
-                <p className="text-xl font-medium leading-snug text-foreground md:text-2xl">{item.quote}</p>
-                <div className="my-4 h-px w-full bg-border" />
-                <p className="text-lg font-semibold leading-snug text-blue">{item.proof}</p>
-              </li>
+          <ul className="reveal-item" role="list">
+            {PAIN_PROOF_CARDS.map((item, i) => (
+              <IconCard
+                key={item.quote}
+                divided={i > 0}
+                className="md:items-baseline"
+                label={item.quote}
+                labelClassName="text-xl font-medium leading-snug md:text-2xl"
+                aside={<p className="font-mono text-sm font-semibold text-blue">{item.proof}</p>}
+              />
             ))}
           </ul>
 
-          <div className="reveal-item mt-8 overflow-hidden rounded-[var(--float-radius)] border border-border/90 bg-card/70 shadow-[var(--shadow-float)]">
-            <div className="grid grid-cols-1 divide-y divide-border md:grid-cols-3 md:divide-x md:divide-y-0">
-              {PROOF_STRIP_METRICS.map((metric) => (
-                <div key={metric.value} className="px-5 py-4 md:px-6 md:py-5">
-                  <p className="text-sm leading-relaxed text-foreground md:text-base">
-                    <span className="font-bold text-blue">{metric.value}</span> {"\u2014"} {metric.label}
-                  </p>
-                </div>
-              ))}
-            </div>
+          <div className="reveal-item mt-10 grid grid-cols-1 md:grid-cols-3">
+            {PROOF_STRIP_METRICS.map((metric, i) => (
+              <div
+                key={metric.value}
+                className={`py-5 md:px-8 md:py-0 ${
+                  i > 0 ? "border-t border-border md:border-l md:border-t-0" : "md:pl-0"
+                } ${i === PROOF_STRIP_METRICS.length - 1 ? "md:pr-0" : ""}`}
+              >
+                <p className="font-mono text-lg font-semibold text-blue">{metric.value}</p>
+                <p className="mt-1 text-sm leading-relaxed text-muted">{metric.label}</p>
+              </div>
+            ))}
           </div>
         </RevealOnScroll>
       </div>

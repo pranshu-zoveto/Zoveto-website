@@ -115,6 +115,8 @@ const config: Config = {
       spacing: {
         section: "5.5rem",
         "section-mobile": "3.5rem",
+        "section-tight": "2.5rem",
+        "section-tight-mobile": "2rem",
         // Canonical 4px-grid scale. Named to avoid colliding with Tailwind rem keys (`p-4` stays 1rem).
         "space-4": "4px",
         "space-8": "8px",

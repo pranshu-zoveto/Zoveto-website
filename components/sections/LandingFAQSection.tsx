@@ -90,24 +90,20 @@ export function LandingFAQSection() {
     <section
       id="faq"
       aria-labelledby="faq-heading"
-      className="relative scroll-mt-24 bg-transparent py-16 md:py-24 lg:py-28"
+      className="relative scroll-mt-24 bg-transparent py-section-mobile md:py-section"
     >
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <div className="container mx-auto max-w-content px-4 sm:px-6">
-        <div className="mb-10 md:mb-14">
-          <h2 id="faq-heading" className="sr-only">
-            Answers for operators, founders, and IT
-          </h2>
-          <LandingFAQReveal
-            categories={FAQ_CATEGORIES}
-            eyebrow="FAQ"
-            title="Answers for operators, founders, and IT"
-            description="Straight answers on ERP, WMS, CRM, and automations for scaling operations teams."
-            imageSrc="https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=900&auto=format&fit=crop"
-            imageAlt="Operators and founders collaborating on planning"
-            defaultOpenIndex={0}
-          />
-        </div>
+        <h2 id="faq-heading" className="sr-only">
+          Answers for operators, founders, and IT
+        </h2>
+        <LandingFAQReveal
+          categories={FAQ_CATEGORIES}
+          eyebrow="FAQ"
+          title="Answers for operators, founders, and IT"
+          description="Straight answers on ERP, WMS, CRM, and automations for scaling operations teams."
+          defaultOpenIndex={0}
+        />
       </div>
     </section>
   );

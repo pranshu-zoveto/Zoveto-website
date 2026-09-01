@@ -15,7 +15,7 @@ export function PricingSection() {
           <div className="mb-6 flex justify-center">
             <SectionLabel className="mb-0 border-blue/20 bg-blue-dim text-blue">Pricing</SectionLabel>
           </div>
-          <h2 className="mb-5 text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl md:text-5xl">
+          <h2 className="mb-6 text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl md:text-5xl">
             Pay for what you use. Scale when you&apos;re ready.
           </h2>
           <p className="mx-auto max-w-2xl text-lg leading-relaxed text-muted">
@@ -25,7 +25,7 @@ export function PricingSection() {
 
         <RevealOnScroll>
           <div className="reveal-item">
-            <PricingModuleGrid />
+            <PricingModuleGrid variant="list" />
           </div>
         </RevealOnScroll>
 

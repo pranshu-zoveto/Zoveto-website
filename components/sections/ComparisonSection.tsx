@@ -4,7 +4,6 @@ import React from "react";
 import Link from "next/link";
 import { Text } from "@/components/ui/Text";
 import AnimatedTextCycle from "@/components/ui/animated-text-cycle";
-import { X, Check } from "lucide-react";
 import { RevealOnScroll } from "@/components/layout/RevealOnScroll";
 
 const COMPARISON = [
@@ -17,7 +16,7 @@ const COMPARISON = [
 
 export function ComparisonSection() {
   return (
-    <section className="hidden md:block relative overflow-hidden bg-transparent py-20 md:py-28 lg:py-32">
+    <section className="hidden md:block relative overflow-hidden bg-transparent py-section-mobile md:py-section">
       <div className="container relative z-10 mx-auto grid max-w-content items-start gap-16 px-4 sm:px-6 lg:grid-cols-12 lg:gap-20">
         <div className="space-y-6 lg:col-span-5">
           <Text variant="label-uppercase" className="text-muted-2">
@@ -43,61 +42,35 @@ export function ComparisonSection() {
         </div>
 
         <RevealOnScroll className="lg:col-span-7">
-          <div className="reveal-item space-y-0">
-            <div className="mb-2 grid grid-cols-1 gap-px sm:grid-cols-2">
-              <div className="p-4 pb-3 text-center sm:p-6">
-                <div className="mb-2 text-xs font-semibold uppercase tracking-wide text-muted-2">Legacy friction</div>
-                <div className="text-base font-semibold italic text-muted">The old way</div>
-              </div>
-              <div className="rounded-t-[var(--float-radius)] border border-b-0 border-border bg-blue-light/80 p-4 pb-3 text-center sm:p-6">
-                <div className="mb-2 text-xs font-semibold uppercase tracking-wide text-blue">The Zoveto standard</div>
-                <div className="text-base font-semibold text-foreground">The new way</div>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 gap-px overflow-hidden rounded-b-[var(--float-radius)] border border-border bg-border sm:grid-cols-2">
-              <div className="space-y-6 bg-card p-5 sm:space-y-8 sm:p-6 md:space-y-10 md:p-8">
-                {COMPARISON.map((item, i) => (
-                  <div key={i} className="flex items-start gap-3">
-                    <div className="mt-0.5 shrink-0 rounded-full border border-border bg-surface p-1">
-                      <X size={12} className="text-red/70" />
-                    </div>
-                    <div className="min-w-0 space-y-1">
-                      <div className="text-xs font-semibold uppercase tracking-wide text-muted-2">{item.feature}</div>
-                      <div className="text-sm font-medium leading-snug text-muted">{item.old}</div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-              <div className="relative bg-blue-light/40 p-5 sm:p-6 md:p-8">
-                <div className="relative z-10 space-y-6 sm:space-y-8 md:space-y-10">
-                  {COMPARISON.map((item, i) => (
-                    <div key={i} className="flex items-start gap-3">
-                      <div className="mt-0.5 shrink-0 rounded-full border border-blue/20 bg-card p-1">
-                        <Check size={12} className="text-blue" />
-                      </div>
-                      <div className="min-w-0 space-y-1">
-                        <div className="text-xs font-semibold uppercase tracking-wide text-blue">{item.feature}</div>
-                        <div className="text-sm font-semibold leading-snug text-foreground">{item.zoveto}</div>
-                      </div>
-                    </div>
-                  ))}
+          <div className="reveal-item">
+            {COMPARISON.map((item, i) => (
+              <div
+                key={item.feature}
+                className={`grid grid-cols-2 ${i > 0 ? "border-t border-border" : ""}`}
+              >
+                <div className="py-5 pr-6">
+                  <p className="text-xs font-semibold uppercase tracking-wide text-muted-2">{item.feature}</p>
+                  <p className="mt-1 text-sm font-medium leading-snug text-muted">{item.old}</p>
+                </div>
+                <div className="border-l border-border py-5 pl-6">
+                  <p className="text-xs font-semibold uppercase tracking-wide text-foreground">{item.feature}</p>
+                  <p className="mt-1 text-sm font-semibold leading-snug text-foreground">{item.zoveto}</p>
                 </div>
               </div>
-            </div>
+            ))}
 
-            <div className="mt-4 grid grid-cols-1 gap-px sm:grid-cols-2">
-              <div className="p-4 text-center text-xs font-medium uppercase tracking-wide text-muted-2 sm:p-6">
-                Missing 30% operational data
-              </div>
-              <div className="float-card reveal-item rounded-[var(--float-radius)] p-4 text-center text-xs font-semibold uppercase tracking-wide text-teal sm:p-6">
-                Zero revenue leakage architecture
-              </div>
+            <div className="mt-8 grid grid-cols-2 gap-x-6">
+              <p className="text-xs font-medium uppercase tracking-wide text-muted-2">
+                Missing <span className="font-mono font-semibold text-blue">30%</span> operational data
+              </p>
+              <p className="text-xs font-medium uppercase tracking-wide text-muted-2">
+                <span className="font-mono font-semibold text-blue">Zero</span> revenue leakage architecture
+              </p>
             </div>
-            <p className="mt-3 px-1 text-center text-xs text-muted-2">
+            <p className="mt-3 text-xs text-muted-2">
               Comparative percentages reflect anonymized implementation observations and vary by workflow maturity.
             </p>
-            <p className="mt-4 px-1 text-center text-xs text-muted">
+            <p className="mt-4 text-xs text-muted">
               Evaluating named vendors? See{" "}
               <Link href="/compare" className="font-medium text-blue underline-offset-4 hover:underline">
                 Zoveto vs Zoho, Tally, Odoo, and more

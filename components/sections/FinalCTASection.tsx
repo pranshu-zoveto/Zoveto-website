@@ -8,7 +8,7 @@ export function FinalCTASection() {
   return (
     <section
       id="cta"
-      className="relative scroll-mt-24 overflow-hidden bg-gradient-to-b from-white to-[#f7f9fc] py-16 text-center md:py-28 lg:py-36"
+      className="relative scroll-mt-24 overflow-hidden bg-gradient-to-b from-white to-[#f7f9fc] py-section-mobile text-center md:py-section"
     >
       <div className="container relative z-10 mx-auto max-w-content space-y-8 px-4 sm:px-6 md:space-y-12">
         <div>

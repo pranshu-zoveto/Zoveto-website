@@ -10,6 +10,11 @@ import { FluidMarketingSection, MarketingHeroFeather } from "@/components/layout
 import { HomeHeroLcpShell } from "@/components/sections/home/HomeHeroLcpShell";
 import { DashboardDesktopLoadingFallback } from "@/components/sections/home/DashboardDesktopLoadingFallback";
 const LogoStrip = dynamic(() => import("@/components/sections/LogoStrip"));
+const ProductDemoReel = dynamic(() => import("@/components/sections/home/ProductDemoReel"), {
+  loading: () => (
+    <div className="mx-auto aspect-video w-full max-w-content px-4 sm:px-6" aria-hidden />
+  ),
+});
 const ProblemSection = dynamic(() => import("@/components/sections/ProblemSection"));
 const SystemShiftSection = dynamic(() => import("@/components/sections/SystemShiftSection"));
 const ComparisonSection = dynamic(() => import("@/components/sections/ComparisonSection"));
@@ -116,6 +121,17 @@ export default function Home() {
         <DashboardScrollDesktop />
       </div>
       <MarketingHeroFeather />
+      <FluidMarketingSection band={bandIndexForSection(0)} stackBase>
+        <section aria-labelledby="product-demo-heading" className="py-section-mobile md:py-section">
+          <div className="mx-auto mb-8 w-full max-w-content px-4 sm:px-6">
+            <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-muted">The product</p>
+            <h2 id="product-demo-heading" className="text-2xl font-bold leading-tight tracking-tight text-foreground sm:text-3xl">
+              See it running.
+            </h2>
+          </div>
+          <ProductDemoReel />
+        </section>
+      </FluidMarketingSection>
       <FluidMarketingSection band={bandIndexForSection(1)} stackBase>
         <LogoStrip />
       </FluidMarketingSection>

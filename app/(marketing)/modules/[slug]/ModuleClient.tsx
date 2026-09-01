@@ -299,6 +299,129 @@ const moduleShowcases: Record<string, ModuleShowcase> = {
       ],
     },
   },
+  procurement: {
+    chip: "Buying command layer",
+    headline: "Purchase control, without lost quotes and late GRNs.",
+    flowHeadline: "From request to GRN on one buying record.",
+    flowCopy:
+      "Purchase requests, vendor quotes, approvals, POs, and incoming material stay on the same trail so stores and finance are not catching up after the truck arrives.",
+    architectureLabel: "Request-to-receive architecture",
+    connectionCopy: "Buying stops leaking when inventory, warehouse, and finance read the same PO and GRN instead of a chat thread.",
+    controlHeadline: "The procurement screen should show what is waiting on you, not a pile of emails.",
+    controlCopy:
+      "Zoveto ranks open requests, pending approvals, overdue POs, and unmatched receipts so spend is visible before the bill arrives.",
+    controlPoints: [
+      "Teams raise purchase requests from reorder points or operating need, not a side WhatsApp",
+      "Owners approve vendors, prices, and quantities with role-based controls before the PO goes out",
+      "GRN, bills, and stock updates stay connected to the PO line instead of three separate files",
+    ],
+    pulse: [
+      { label: "Open PRs", value: "24", icon: ClipboardCheck },
+      { label: "Awaiting approval", value: "7", icon: Radar },
+      { label: "GRN due today", value: "11", icon: ScanLine },
+    ],
+    surface: {
+      label: "Procurement command queue",
+      sublabel: "Request to receive",
+      status: "Live",
+      primaryTitle: "Buying pulse",
+      secondaryTitle: "Approval queue",
+      assuranceTitle: "PO-tied",
+      assuranceCopy: "Every receipt and bill keeps the PO line, vendor, quantity, and receiver.",
+      metrics: [
+        { label: "Approval visibility", value: "100%", progress: "100%" },
+        { label: "Purchase leakage", value: "Caught earlier", progress: "72%" },
+        { label: "Vendor follow-up", value: "On record", progress: "84%" },
+      ],
+      rows: [
+        { code: "PR-1882", item: "Printed cartons reorder", context: "BLR WH-02", status: "Quote compare", tone: "amber" },
+        { code: "PO-4409", item: "Vendor PO released", context: "Expected Thu", status: "In transit", tone: "blue" },
+        { code: "GRN-091", item: "Short receipt", context: "PO line 4", status: "Hold bill", tone: "red" },
+      ],
+    },
+  },
+  export: {
+    chip: "Export execution layer",
+    headline: "Shipment control, without email and Excel as the file.",
+    flowHeadline: "Capture, prepare, dispatch, close.",
+    flowCopy:
+      "Export orders, documentation tasks, packing stages, and finance handoffs stay on one row so customer updates are not a separate spreadsheet.",
+    architectureLabel: "Order-to-shipment architecture",
+    connectionCopy: "Export work stops fragmenting when CRM, inventory, and finance read the same dispatch evidence.",
+    controlHeadline: "The export screen should show document readiness and the next milestone.",
+    controlCopy:
+      "Zoveto turns packing lists, missing papers, and shipment stages into a tracked queue instead of a thread of forwarding emails.",
+    controlPoints: [
+      "Export orders are logged with customer, item, destination, and promise dates",
+      "Documentation tasks are assigned and closed per shipment instead of living in inboxes",
+      "Packing, dispatch, receivables, and customer updates stay tied to the same order",
+    ],
+    pulse: [
+      { label: "Docs pending", value: "9", icon: ClipboardCheck },
+      { label: "Ready to pack", value: "6", icon: Radar },
+      { label: "In transit", value: "14", icon: ScanLine },
+    ],
+    surface: {
+      label: "Export operations board",
+      sublabel: "Capture to close",
+      status: "Tracking",
+      primaryTitle: "Shipment pulse",
+      secondaryTitle: "Document queue",
+      assuranceTitle: "Order-tied",
+      assuranceCopy: "Every document task and dispatch stage keeps the export order, destination, and owner.",
+      metrics: [
+        { label: "Document readiness", value: "Tracked", progress: "78%" },
+        { label: "Dispatch visibility", value: "Live", progress: "88%" },
+        { label: "Follow-up coverage", value: "Complete", progress: "92%" },
+      ],
+      rows: [
+        { code: "EXP-3301", item: "Gulf consignment", context: "Jebel Ali", status: "Docs in review", tone: "amber" },
+        { code: "PKG-118", item: "Packing complete", context: "ICD 04", status: "Ready to dispatch", tone: "green" },
+        { code: "DOC-044", item: "COO pending", context: "Shipment 12", status: "Blocked", tone: "red" },
+      ],
+    },
+  },
+  mro: {
+    chip: "Maintenance execution layer",
+    headline: "Plant work, without downtime hiding in chats.",
+    flowHeadline: "Report, assign, consume, review.",
+    flowCopy:
+      "Maintenance requests, owners, spare consumption, and downtime stay on one job so repeat failures are visible before the line stops again.",
+    architectureLabel: "Request-to-review architecture",
+    connectionCopy: "MRO stops being informal when inventory and analytics can read the same job, spare, and downtime record.",
+    controlHeadline: "The MRO screen should show which asset is waiting and which spare left the bin.",
+    controlCopy:
+      "Zoveto turns reported faults, assigned jobs, spare issues, and lost hours into a maintenance queue instead of a WhatsApp group.",
+    controlPoints: [
+      "Teams log maintenance requests with asset, location, and urgency instead of a verbal report",
+      "Owners and due dates attach to each job before spares are pulled",
+      "Spare parts usage links back to inventory, and downtime and repeat issues become reviewable",
+    ],
+    pulse: [
+      { label: "Open jobs", value: "18", icon: ClipboardCheck },
+      { label: "Spares issued", value: "31", icon: Radar },
+      { label: "Downtime today", value: "2.4h", icon: ScanLine },
+    ],
+    surface: {
+      label: "MRO work board",
+      sublabel: "Report to review",
+      status: "Open",
+      primaryTitle: "Plant pulse",
+      secondaryTitle: "Job queue",
+      assuranceTitle: "Spare-linked",
+      assuranceCopy: "Every job keeps asset, assignee, spare issue, and downtime hours.",
+      metrics: [
+        { label: "Maintenance visibility", value: "Central", progress: "86%" },
+        { label: "Spare traceability", value: "Linked", progress: "80%" },
+        { label: "Downtime follow-up", value: "Tracked", progress: "74%" },
+      ],
+      rows: [
+        { code: "WO-2104", item: "Mixer bearing noise", context: "Line 2", status: "Assigned", tone: "amber" },
+        { code: "SPR-881", item: "Seal kit issued", context: "Bin M-14", status: "Consumed", tone: "green" },
+        { code: "DTN-019", item: "Repeat trip", context: "Compressor 3", status: "Review", tone: "red" },
+      ],
+    },
+  },
 };
 
 const defaultShowcase: ModuleShowcase = {

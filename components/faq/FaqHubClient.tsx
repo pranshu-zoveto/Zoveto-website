@@ -2,8 +2,9 @@
 
 import React, { useDeferredValue, useMemo, useState } from "react";
 import Link from "next/link";
-import { ChevronDown, ChevronRight, Search, X } from "lucide-react";
+import { ChevronRight, Search, X } from "lucide-react";
 import { Button } from "@/components/ui/Button";
+import { FaqAccordion } from "@/components/ui/FaqAccordion";
 import { FluidMarketingSection } from "@/components/layout/FluidMarketingSection";
 import { bandIndexForSection } from "@/lib/marketing-bands";
 import { cn } from "@/lib/utils";
@@ -92,7 +93,7 @@ export function FaqHubClient() {
       <FluidMarketingSection band={bandIndexForSection(0)} stackBase>
         <div className="container mx-auto max-w-content px-4 pb-14 pt-8 sm:px-6 md:pb-20 md:pt-10">
           <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[minmax(0,1fr)_min(17.5rem,34%)] lg:items-start lg:gap-14">
-            <div className="rounded-2xl border border-border/90 bg-card p-8 shadow-[var(--shadow-float)] md:p-10 lg:p-12">
+            <div className="rounded-2xl border border-border/90 bg-card p-8 shadow-float md:p-10 lg:p-12">
               <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-muted-2">Help center</p>
               <h1 className="mt-4">
                 <span className="block text-[clamp(1.65rem,3.2vw,2.25rem)] font-semibold leading-[1.12] tracking-tight text-foreground">
@@ -109,17 +110,17 @@ export function FaqHubClient() {
 
               <div className="mt-10 grid grid-cols-3 gap-6 border-t border-border pt-8">
                 <div>
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-2">Topics</p>
+                  <p className="text-[10px] font-semibold uppercase tracking-label text-muted-2">Topics</p>
                   <p className="mt-1.5 text-2xl font-semibold tabular-nums tracking-tight text-foreground">{topicCount}</p>
                 </div>
                 <div>
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-2">Answers</p>
+                  <p className="text-[10px] font-semibold uppercase tracking-label text-muted-2">Answers</p>
                   <p className="mt-1.5 text-2xl font-semibold tabular-nums tracking-tight text-foreground">
                     {query.trim() ? totalFiltered : totalAll}
                   </p>
                 </div>
                 <div>
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-2">Scope</p>
+                  <p className="text-[10px] font-semibold uppercase tracking-label text-muted-2">Scope</p>
                   <p className="mt-1.5 text-sm font-semibold leading-snug text-foreground">SMB ops</p>
                 </div>
               </div>
@@ -215,38 +216,14 @@ export function FaqHubClient() {
                     <p className="mt-2 text-sm text-muted">{cat.items.length} answers</p>
                   </header>
 
-                  <div className="overflow-hidden rounded-2xl border border-border/90 bg-card shadow-[var(--shadow-float)]">
-                    <div className="divide-y divide-border">
-                      {cat.items.map((item, idx) => (
-                        <details key={item.question} className="group">
-                          <summary
-                            className={cn(
-                              "flex cursor-pointer list-none items-start gap-4 px-4 py-4 md:gap-5 md:px-6 md:py-5",
-                              "[&::-webkit-details-marker]:hidden",
-                              "hover:bg-surface/55 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-blue/30",
-                            )}
-                          >
-                            <span className="w-9 shrink-0 pt-0.5 text-right text-[11px] font-bold tabular-nums text-muted-2 md:w-10 md:text-xs">
-                              {String(idx + 1).padStart(2, "0")}
-                            </span>
-                            <span className="min-w-0 flex-1 text-left text-[15px] font-semibold leading-snug text-foreground md:text-base">
-                              {item.question}
-                            </span>
-                            <ChevronDown
-                              className={cn(
-                                "mt-0.5 h-5 w-5 shrink-0 text-muted-2 transition-transform duration-200 ease-out motion-reduce:transition-none",
-                                "group-open:rotate-180 group-open:text-blue",
-                              )}
-                              strokeWidth={2}
-                              aria-hidden
-                            />
-                          </summary>
-                          <div className="border-t border-border/70 bg-surface/35 px-4 pb-6 pt-4 md:px-6 md:pb-7 md:pl-[4.5rem] md:pr-8">
-                            <p className="max-w-[62ch] text-sm leading-[1.65] text-muted md:text-[15px]">{item.answer}</p>
-                          </div>
-                        </details>
-                      ))}
-                    </div>
+                  <div className="overflow-hidden rounded-2xl border border-border/90 bg-card shadow-float">
+                    <FaqAccordion
+                      items={cat.items}
+                      idPrefix={`faq-hub-${cat.id}`}
+                      defaultOpenIndex={-1}
+                      numbered
+                      unstyled
+                    />
                   </div>
                 </section>
               </div>

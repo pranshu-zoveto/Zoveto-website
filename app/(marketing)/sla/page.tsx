@@ -156,7 +156,7 @@ export default function SlaPage() {
           <strong>99.5%</strong> of each calendar month.
         </p>
         <p className="mt-4 font-medium text-foreground">Monthly Uptime Percentage formula</p>
-        <p className="mt-2 rounded-lg border border-border bg-muted/20 px-4 py-3 font-mono text-sm text-foreground">
+        <p className="mt-2 rounded-lg border border-border bg-muted/20 px-4 py-3 font-mono-plex text-sm text-foreground">
           Monthly Uptime Percentage = ((Total minutes in the calendar month − Excluded Downtime − Unplanned Downtime) /
           (Total minutes in the calendar month − Excluded Downtime)) × 100
         </p>

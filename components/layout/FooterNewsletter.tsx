@@ -69,7 +69,7 @@ export function FooterNewsletter({ inputId = "footer-newsletter-email", variant 
       />
       <div
         className={cn(
-          "mb-4 font-mono text-[11px] font-medium uppercase tracking-[0.18em]",
+          "mb-4 font-mono-plex text-[11px] font-medium uppercase tracking-[0.18em]",
           isEditorial ? "text-neutral-800" : "text-muted-2"
         )}
       >

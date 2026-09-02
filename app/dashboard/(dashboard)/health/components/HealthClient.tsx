@@ -201,7 +201,7 @@ export function HealthClient({ initialReport }: { initialReport: HealthReport })
                   <tbody className="divide-y divide-zinc-800/60 text-zinc-300">
                     {initialReport.brokenRoutes.map(br => (
                       <tr key={br.path} className="hover:bg-zinc-800/40">
-                        <td className="px-4 py-3 truncate max-w-[150px] font-mono text-zinc-400" title={br.path}>
+                        <td className="px-4 py-3 truncate max-w-[150px] font-mono-plex text-zinc-400" title={br.path}>
                           {br.path}
                         </td>
                         <td className="px-4 py-3 text-right tabular-nums">{br.count}</td>

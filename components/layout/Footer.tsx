@@ -86,7 +86,7 @@ export function Footer() {
             <p className="mt-7 text-[15px] leading-relaxed text-muted">
               Software for teams that need clean records before the day ends.
             </p>
-            <p className="mt-7 font-mono text-[10px] font-semibold uppercase leading-relaxed tracking-label text-muted">
+            <p className="mt-7 font-mono-plex text-[10px] font-semibold uppercase leading-relaxed tracking-label text-muted">
               © {year} Zoveto Technologies. All rights reserved.
             </p>
           </div>

@@ -47,7 +47,7 @@ export function HeardThisBeforeSection() {
                 className="md:items-baseline"
                 label={item.quote}
                 labelClassName="text-xl font-medium leading-snug md:text-2xl"
-                aside={<p className="font-mono text-sm font-semibold text-blue">{item.proof}</p>}
+                aside={<p className="font-mono-plex text-sm font-semibold text-blue">{item.proof}</p>}
               />
             ))}
           </ul>
@@ -60,7 +60,7 @@ export function HeardThisBeforeSection() {
                   i > 0 ? "border-t border-border md:border-l md:border-t-0" : "md:pl-0"
                 } ${i === PROOF_STRIP_METRICS.length - 1 ? "md:pr-0" : ""}`}
               >
-                <p className="font-mono text-lg font-semibold text-blue">{metric.value}</p>
+                <p className="font-mono-plex text-lg font-semibold tabular-nums text-blue">{metric.value}</p>
                 <p className="mt-1 text-sm leading-relaxed text-muted">{metric.label}</p>
               </div>
             ))}

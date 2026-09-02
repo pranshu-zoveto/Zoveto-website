@@ -34,7 +34,7 @@ export function InventoryLedgerPreview() {
               key={i}
               className="grid grid-cols-[1.1fr_1fr_0.7fr_0.75fr] gap-2 px-3 py-2.5 text-xs text-muted"
             >
-              <span className="font-mono text-[11px] text-foreground/90">{row.sku}</span>
+              <span className="font-mono-plex text-[11px] text-foreground/90">{row.sku}</span>
               <span>{row.bin}</span>
               <span>{row.qty}</span>
               <span className="text-foreground/80">{row.status}</span>

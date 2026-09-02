@@ -356,7 +356,7 @@ export default async function BlogPostPage({
             )}
 
             <div className="mt-14 rounded-2xl border border-border bg-card px-7 py-8 text-center">
-              <p className="mb-1 font-mono text-[11px] font-medium uppercase tracking-[0.2em] text-muted-2">
+              <p className="mb-1 font-mono-plex text-[11px] font-medium uppercase tracking-[0.2em] text-muted-2">
                 Ready to see it live?
               </p>
               <h2 className="mb-3 text-xl font-bold tracking-tight text-foreground">Request early access for your business.</h2>

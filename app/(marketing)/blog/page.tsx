@@ -49,7 +49,7 @@ export default async function BlogIndexPage({ searchParams }: { searchParams: { 
       <div className="container mx-auto max-w-[min(100%,72rem)] px-4 sm:px-6">
         {/* ── Page header ── */}
         <div className="mb-14 max-w-2xl md:mb-12">
-          <p className="mb-4 font-mono text-[11px] font-medium uppercase tracking-[0.2em] text-muted-2">
+          <p className="mb-4 font-mono-plex text-[11px] font-medium uppercase tracking-[0.2em] text-muted-2">
             Zoveto Blog
           </p>
           <Text variant="display-1" as="h1" className="mb-5 text-balance">
@@ -83,7 +83,7 @@ export default async function BlogIndexPage({ searchParams }: { searchParams: { 
 
         {/* ── CTA strip ── */}
         <div className="mt-20 rounded-2xl border border-border bg-card px-8 py-10 text-center md:mt-28">
-          <p className="mb-2 font-mono text-[11px] font-medium uppercase tracking-[0.2em] text-muted-2">
+          <p className="mb-2 font-mono-plex text-[11px] font-medium uppercase tracking-[0.2em] text-muted-2">
             Ready to go further?
           </p>
           <Text variant="headline-md" as="h2" className="mb-4 text-balance">

@@ -91,7 +91,7 @@ export function IconCard({
     >
       <div className="flex min-w-0 flex-1 gap-4">
         {indexLabel ? (
-          <span className="mt-0.5 shrink-0 font-mono text-xs tabular-nums text-muted-2">
+          <span className="mt-0.5 shrink-0 font-mono-plex text-xs tabular-nums text-muted-2">
             {indexLabel}
           </span>
         ) : Icon ? (

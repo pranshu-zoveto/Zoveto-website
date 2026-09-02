@@ -178,7 +178,7 @@ export default function SettingsClient({ data }: { data: SettingsDashboardData }
                       <td className="px-6 py-4 whitespace-nowrap font-medium text-zinc-300">
                         {log.entity} {log.entityId && <span className="text-zinc-600 ml-1">#{log.entityId}</span>}
                       </td>
-                      <td className="px-6 py-4 text-xs font-mono">
+                      <td className="px-6 py-4 text-xs font-mono-plex">
                         {log.oldValue && log.newValue ? (
                            <div className="flex items-center gap-2">
                               <span className="text-red-400 line-through truncate max-w-[150px] inline-block">{JSON.stringify(log.oldValue)}</span>

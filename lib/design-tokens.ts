@@ -13,7 +13,7 @@ export const tokens = {
     teal: "#0077ED",
   },
   fonts: {
-    sans: "'Inter', system-ui, sans-serif",
+    sans: "'IBM Plex Sans', system-ui, sans-serif",
   },
   spacing: {
     section: "5.5rem 1.5rem",

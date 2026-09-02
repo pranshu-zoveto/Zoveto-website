@@ -430,7 +430,7 @@ export function CompareDetailPage({ page }: Props) {
               <Text variant="body-base" className="prose-justify text-pretty text-muted">
                 {page.workflow.zoveto}
               </Text>
-              <p className="mt-3 font-mono text-xs text-muted-2">
+              <p className="mt-3 font-mono-plex text-xs text-muted-2">
                 Order → Inventory → Warehouse → Dispatch → Invoice → tracking (single system)
               </p>
             </div>
@@ -439,7 +439,7 @@ export function CompareDetailPage({ page }: Props) {
               <Text variant="body-base" className="prose-justify text-pretty text-muted">
                 {page.workflow.competitor}
               </Text>
-              <p className="mt-3 font-mono text-xs text-muted-2">
+              <p className="mt-3 font-mono-plex text-xs text-muted-2">
                 Often multiple steps, apps, or modules, coordination is your responsibility
               </p>
             </div>

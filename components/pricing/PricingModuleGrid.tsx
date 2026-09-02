@@ -39,7 +39,7 @@ export function PricingModuleGrid({
             aside={
               <div className="flex items-end justify-between gap-4 md:block">
                 <div>
-                  <p className="font-mono text-base font-bold tabular-nums tracking-tight text-foreground">
+                  <p className="font-mono-plex text-base font-bold tabular-nums tracking-tight text-foreground">
                     {formatInr(mod.monthlyPrice)}
                   </p>
                   <p className="mt-0.5 text-xs font-normal text-muted">/mo excl. GST</p>

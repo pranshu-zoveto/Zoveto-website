@@ -76,7 +76,7 @@ export function FaqAccordion({
               )}
             >
               {numbered ? (
-                <span className="w-9 shrink-0 pt-0.5 text-right font-mono text-[11px] font-bold tabular-nums text-muted-2 md:w-10 md:text-xs">
+                <span className="w-9 shrink-0 pt-0.5 text-right font-mono-plex text-[11px] font-bold tabular-nums text-muted-2 md:w-10 md:text-xs">
                   {String(index + 1).padStart(2, "0")}
                 </span>
               ) : null}

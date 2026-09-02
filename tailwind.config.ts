@@ -21,7 +21,7 @@ const config: Config = {
     extend: {
       fontFamily: {
         sans: [
-          "var(--font-inter)",
+          "var(--font-sans)",
           "-apple-system",
           "BlinkMacSystemFont",
           '"Segoe UI"',
@@ -29,7 +29,7 @@ const config: Config = {
           "sans-serif",
         ],
         display: [
-          "var(--font-inter)",
+          "var(--font-sans)",
           "-apple-system",
           "BlinkMacSystemFont",
           '"Segoe UI"',
@@ -40,6 +40,14 @@ const config: Config = {
           "ui-monospace",
           "SFMono-Regular",
           '"SF Mono"',
+          "Menlo",
+          "Consolas",
+          "monospace",
+        ],
+        "mono-plex": [
+          "var(--font-mono-plex)",
+          "ui-monospace",
+          "SFMono-Regular",
           "Menlo",
           "Consolas",
           "monospace",

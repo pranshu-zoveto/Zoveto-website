@@ -10,7 +10,7 @@ export function ModuleOperationalProofs({ moduleSlug }: { moduleSlug: string }) 
 
   return (
     <section
-      className="rounded-[1.5rem] border border-border/90 bg-gradient-to-b from-card via-card to-surface-2/30 py-10 shadow-[0_12px_40px_rgba(15,23,42,0.06)] md:py-14"
+      className="rounded-[1.5rem] border border-border/90 bg-gradient-to-b from-card via-card to-surface-2/30 py-10 shadow-float md:py-14"
       aria-labelledby="module-operational-proof-heading"
     >
       <div

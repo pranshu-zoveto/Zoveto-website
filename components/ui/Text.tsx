@@ -83,41 +83,32 @@ const variantClasses: Record<TextVariant, string> = {
   "display-3":
     "text-[1.5rem] leading-[1.15] tracking-[-0.025em] font-semibold text-foreground sm:text-[1.875rem] md:text-[2.25rem] lg:text-[clamp(2rem,2.5vw,2.25rem)]",
 
-  // ── Headings ─────────────────────────────────────────────────────────
-  "heading-2xl":
-    "text-[1.75rem] leading-[1.18] tracking-[-0.025em] font-semibold text-foreground sm:text-[2rem]",
-  "heading-xl":
-    "text-[1.5rem] leading-[1.22] tracking-[-0.02em] font-semibold text-foreground sm:text-[1.75rem]",
-  "heading-lg":
-    "text-[1.25rem] leading-[1.28] tracking-[-0.015em] font-semibold text-foreground sm:text-[1.5rem]",
-  "heading-md":
-    "text-[1.125rem] leading-[1.32] tracking-[-0.01em] font-semibold text-foreground",
-  "heading-sm":
-    "text-[1rem] leading-[1.4] tracking-[-0.005em] font-semibold text-foreground",
-  "heading-xs":
-    "text-[0.875rem] leading-[1.4] tracking-[0] font-semibold text-foreground",
+  // ── Headings (Tailwind type-scale tokens) ────────────────────────────
+  "heading-2xl": "text-heading-xl text-foreground sm:text-heading-2xl",
+  "heading-xl": "text-heading-lg text-foreground sm:text-heading-xl",
+  "heading-lg": "text-heading-md text-foreground sm:text-heading-lg",
+  "heading-md": "text-heading-sm text-foreground",
+  "heading-sm": "text-heading-xs text-foreground",
+  "heading-xs": "text-[0.875rem] leading-[1.4] font-semibold text-foreground",
 
   // Aliases
-  "heading-1":
-    "text-[1.75rem] leading-[1.18] tracking-[-0.025em] font-semibold text-foreground sm:text-[2rem]",
-  "heading-2":
-    "text-[1.5rem] leading-[1.22] tracking-[-0.02em] font-semibold text-foreground sm:text-[1.75rem]",
-  "headline-md":
-    "text-[1.25rem] leading-[1.28] tracking-[-0.015em] font-semibold text-foreground sm:text-[1.5rem]",
+  "heading-1": "text-heading-xl text-foreground sm:text-heading-2xl",
+  "heading-2": "text-heading-lg text-foreground sm:text-heading-xl",
+  "headline-md": "text-heading-md text-foreground sm:text-heading-lg",
 
   // ── Body ─────────────────────────────────────────────────────────────
-  "body-xl": "text-[1.125rem] leading-[1.65] tracking-[0] font-normal",
-  "body-lg": "text-[1.0625rem] leading-[1.65] tracking-[0] font-normal text-muted",
-  "body-md": "text-[1rem] leading-[1.6] tracking-[0] font-normal",
-  "body-base": "text-[0.9375rem] leading-[1.6] tracking-[0] font-normal text-muted",
-  "body-sm": "text-[0.8125rem] leading-[1.55] tracking-[0] font-normal text-muted-2",
-  "body-xs": "text-[0.75rem] leading-[1.5] tracking-[0] font-normal",
+  "body-xl": "text-body-xl font-normal",
+  "body-lg": "text-body-lg font-normal text-muted",
+  "body-md": "text-body-md font-normal",
+  "body-base": "text-body-base font-normal text-muted",
+  "body-sm": "text-body-sm font-normal text-muted-2",
+  "body-xs": "text-body-xs font-normal",
 
   // ── UI / labels ──────────────────────────────────────────────────────
-  "ui-md": "text-[0.875rem] leading-[1.25] tracking-[0] font-medium",
-  "ui-base": "text-[0.8125rem] leading-[1.2] tracking-[0.01em] font-medium",
-  "ui-sm": "text-[0.75rem] leading-[1.2] tracking-[0.02em] font-medium",
-  "ui-xs": "text-[0.6875rem] leading-[1] tracking-[0.04em] font-medium uppercase",
+  "ui-md": "text-ui-md",
+  "ui-base": "text-ui-base",
+  "ui-sm": "text-ui-sm",
+  "ui-xs": "text-ui-xs uppercase",
 
   // Alias: original eyebrow label variant (blue tint)
   "label-uppercase":

@@ -94,7 +94,7 @@ export function ModuleScreenshotMockup({ moduleSlug, moduleName, className }: Mo
   return (
     <figure
       className={cn(
-        "overflow-hidden rounded-2xl border border-border bg-card shadow-[0_18px_60px_rgba(15,23,42,0.08)]",
+        "overflow-hidden rounded-2xl border border-border bg-card shadow-elevated",
         className,
       )}
       aria-label={`${moduleName} product mockup`}
@@ -118,7 +118,7 @@ export function ModuleScreenshotMockup({ moduleSlug, moduleName, className }: Mo
             className="flex items-center justify-between gap-3 rounded-xl border border-border bg-white px-3 py-2.5"
           >
             <div className="min-w-0">
-              <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-muted-2">{row.label}</p>
+              <p className="text-[10px] font-semibold uppercase tracking-cap text-muted-2">{row.label}</p>
               <p className="truncate text-sm font-semibold text-foreground">{row.value}</p>
             </div>
             {row.status ? (

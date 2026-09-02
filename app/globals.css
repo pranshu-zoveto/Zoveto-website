@@ -8,10 +8,6 @@
   :root {
     --radius-sm: 5px;
     --radius-md: 18px;
-    --radius-lg: 16px; /* additive — new code */
-    --radius-xl: 20px; /* additive — new code */
-    --radius-full: 56px;
-    --radius-pill: 9999px; /* additive — true pill shape for new code */
     /* Tailwind rounded-lg/md/sm remap to this. 12px matches rounded-xl and the hero CTA. */
     --radius: 12px;
 

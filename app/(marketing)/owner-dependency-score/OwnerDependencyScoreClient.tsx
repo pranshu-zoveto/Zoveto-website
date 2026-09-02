@@ -471,7 +471,7 @@ export function OwnerDependencyScoreClient() {
             <div className="bg-[#20252d] p-6 text-white sm:p-8">
               <div className="flex items-center justify-between gap-4">
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.14em] text-white/65">Your final score</p>
+                  <p className="text-xs font-semibold uppercase tracking-label text-white/65">Your final score</p>
                   <h2 id="odi-result-heading" className="mt-4 text-7xl font-semibold tracking-[-0.06em] text-white">
                     {result.score}
                   </h2>
@@ -487,7 +487,7 @@ export function OwnerDependencyScoreClient() {
             </div>
 
             <div className="p-5 sm:p-8">
-              <p className="text-xs font-semibold uppercase tracking-[0.12em] text-blue">Score bands</p>
+              <p className="text-xs font-semibold uppercase tracking-cap text-blue">Score bands</p>
               <div className="mt-4 grid grid-cols-5 overflow-hidden rounded-xl border border-border">
                 {BANDS.map((band, index) => (
                   <div key={band.label} className={cn("min-h-[4.5rem] border-r border-border p-2.5 last:border-r-0", bandBg[index])}>

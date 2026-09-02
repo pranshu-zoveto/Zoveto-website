@@ -41,7 +41,7 @@ export function ProductClient() {
         {ARCHITECTURE_LAYERS.map((layer) => (
           <article
             key={layer.id}
-            className="float-card reveal-item group flex h-full min-h-0 flex-col gap-6 p-8 transition-shadow hover:shadow-[var(--shadow-hover)] md:gap-7 md:p-10"
+            className="float-card reveal-item group flex h-full min-h-0 flex-col gap-6 p-8 transition-shadow hover:shadow-hover md:gap-7 md:p-10"
           >
             <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-border bg-surface transition-colors group-hover:border-blue/30">
               <layer.icon className="text-blue" size={22} />
@@ -100,7 +100,7 @@ export function ProductClient() {
                   <Link
                     key={ind.slug}
                     href={`/industries/${ind.slug}`}
-                    className="group flex h-full min-h-[5.5rem] flex-col gap-3 rounded-xl border border-border bg-card p-4 text-left shadow-sm transition-[border-color,box-shadow,background-color] duration-200 hover:border-teal/35 hover:shadow-[var(--shadow-hover)] sm:min-h-0 sm:flex-row sm:items-stretch sm:gap-4 sm:p-4"
+                    className="group flex h-full min-h-[5.5rem] flex-col gap-3 rounded-xl border border-border bg-card p-4 text-left shadow-sm transition-[border-color,box-shadow,background-color] duration-200 hover:border-teal/35 hover:shadow-hover sm:min-h-0 sm:flex-row sm:items-stretch sm:gap-4 sm:p-4"
                   >
                     <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-teal/20 bg-teal-dim sm:mt-0.5">
                       <Icon className="h-5 w-5 stroke-[1.5] text-teal" aria-hidden />

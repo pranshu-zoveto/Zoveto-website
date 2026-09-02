@@ -160,7 +160,7 @@ function StoryPanel({ section }: { section: StorySection }) {
               transition={{ ease: [0.22, 1, 0.36, 1], duration: 0.55 }}
               className="w-full"
             >
-              <div className="relative h-[300px] sm:h-[380px] lg:h-[540px] rounded-[28px] border border-border bg-card overflow-hidden shadow-[var(--shadow-card)]">
+              <div className="relative h-[300px] sm:h-[380px] lg:h-[540px] rounded-[28px] border border-border bg-card overflow-hidden shadow-card">
                 <SystemVisualCanvas variant={section.variant} progress={progress} reducedMotion={Boolean(reduceMotion)} />
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/10 to-transparent" />
               </div>

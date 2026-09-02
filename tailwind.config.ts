@@ -72,11 +72,11 @@ const config: Config = {
         "ui-md": ["0.875rem", { lineHeight: "1.25", letterSpacing: "0", fontWeight: "500" }],
       },
       letterSpacing: {
-        // Display + heading tightenings (Apple optical scale)
         display: "-0.04em",
         heading: "-0.02em",
-        // UI/label slight expansion for small uppercase labels
         ui: "0.01em",
+        label: "0.14em",
+        cap: "0.12em",
       },
       colors: {
         background: "var(--background)",
@@ -133,6 +133,12 @@ const config: Config = {
       },
       maxWidth: {
         content: "72rem",
+      },
+      boxShadow: {
+        card: "var(--shadow-card)",
+        elevated: "var(--shadow-elevated)",
+        hover: "var(--shadow-hover)",
+        float: "var(--shadow-float)",
       },
       borderRadius: {
         lg: "var(--radius)",

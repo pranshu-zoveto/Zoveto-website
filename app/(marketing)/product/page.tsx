@@ -55,7 +55,7 @@ export default function ProductOSPage() {
           />
 
           <div className="relative z-10 flex flex-col items-center">
-            <div className="w-full max-w-5xl overflow-hidden rounded-[var(--float-radius)] border border-border shadow-[var(--shadow-float)]">
+            <div className="w-full max-w-5xl overflow-hidden rounded-[var(--float-radius)] border border-border shadow-float">
               <div className="group grid grid-cols-12 items-start gap-x-8 gap-y-6 border-b border-border bg-card p-8 md:p-10 lg:items-center lg:gap-y-8">
                 <div className="col-span-12 lg:col-span-4 lg:max-w-md">
                   <div className="mb-2 text-xs font-semibold uppercase tracking-wide text-blue">L3: Interface</div>

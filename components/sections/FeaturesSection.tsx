@@ -196,7 +196,7 @@ function TransformationBlock({
       )}
     >
       <div className="flex flex-col">
-        <p className="mb-3 text-xs font-semibold uppercase tracking-[0.12em] text-muted-2">Before</p>
+        <p className="mb-3 text-xs font-semibold uppercase tracking-cap text-muted-2">Before</p>
         <ul className="space-y-2 leading-relaxed text-muted">
           {before.map((item) => (
             <li key={item} className="flex items-start gap-3">
@@ -208,7 +208,7 @@ function TransformationBlock({
       </div>
 
       <div className="flex flex-col">
-        <p className="mb-3 text-xs font-semibold uppercase tracking-[0.12em] text-muted-2">After</p>
+        <p className="mb-3 text-xs font-semibold uppercase tracking-cap text-muted-2">After</p>
         <ul className="space-y-2 leading-relaxed text-muted">
           {after.map((item) => (
             <li key={item} className="flex items-start gap-3">

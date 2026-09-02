@@ -30,7 +30,7 @@ export function WhatsAppFloatButton() {
         onClick={() => trackMarketingEvent("whatsapp_click", { source: "floating_button" })}
         className={
           "pointer-events-auto flex h-12 w-12 items-center justify-center rounded-full border border-border/90 " +
-          "bg-card shadow-[var(--shadow-float)] transition-transform motion-safe:duration-200 " +
+          "bg-card shadow-float transition-transform motion-safe:duration-200 " +
           "motion-safe:hover:scale-[1.03] motion-safe:active:scale-[0.98] motion-reduce:hover:scale-100 " +
           "sm:h-14 sm:w-14 " +
           focusRing

@@ -81,7 +81,7 @@ export function SystemModuleCard({ product, className }: Props) {
           </span>
           <span
             className={cn(
-              "text-xl sm:text-2xl font-bold tracking-[0.14em] text-foreground transition-all duration-200 translate-y-0.5 opacity-90",
+              "text-xl sm:text-2xl font-bold tracking-label text-foreground transition-all duration-200 translate-y-0.5 opacity-90",
               "group-hover:translate-y-0 group-hover:opacity-100 group-hover:tracking-[0.22em]",
               "group-focus-visible:translate-y-0 group-focus-visible:opacity-100"
             )}

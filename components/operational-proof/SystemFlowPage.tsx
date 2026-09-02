@@ -44,7 +44,7 @@ function FlowRail({
       className={
         mode === "current"
           ? "rounded-[1.5rem] border border-border bg-surface-2 p-6 md:p-8"
-          : "rounded-[1.5rem] border border-border bg-card p-6 shadow-[0_14px_50px_rgba(15,23,42,0.08)] md:p-8"
+          : "rounded-[1.5rem] border border-border bg-card p-6 shadow-elevated md:p-8"
       }
       aria-labelledby={`${mode}-flow-heading`}
     >
@@ -133,7 +133,7 @@ export function SystemFlowPage({ proof }: { proof: OperationalProof }) {
           </motion.div>
 
           <motion.div
-            className="relative overflow-hidden rounded-[1.75rem] border border-border bg-card shadow-[0_18px_60px_rgba(15,23,42,0.08)]"
+            className="relative overflow-hidden rounded-[1.75rem] border border-border bg-card shadow-elevated"
             variants={reveal}
           >
             <div className="flex items-center justify-between border-b border-border bg-surface-2 px-5 py-4">
@@ -153,7 +153,7 @@ export function SystemFlowPage({ proof }: { proof: OperationalProof }) {
 
             <div className="grid gap-px bg-border sm:grid-cols-2">
               <div className="bg-card p-5">
-                <div className="mb-4 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.12em] text-muted-2">
+                <div className="mb-4 flex items-center gap-2 text-xs font-semibold uppercase tracking-cap text-muted-2">
                   <CircleDot size={13} />
                   Before
                 </div>
@@ -166,7 +166,7 @@ export function SystemFlowPage({ proof }: { proof: OperationalProof }) {
                 </ul>
               </div>
               <div className="bg-card p-5">
-                <div className="mb-4 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.12em] text-muted-2">
+                <div className="mb-4 flex items-center gap-2 text-xs font-semibold uppercase tracking-cap text-muted-2">
                   <CheckCircle2 size={13} className="text-blue" />
                   After
                 </div>
@@ -215,7 +215,7 @@ export function SystemFlowPage({ proof }: { proof: OperationalProof }) {
         <section className="pt-6 md:pt-8" aria-labelledby="inside-heading">
           <div className="grid gap-6 lg:grid-cols-[0.78fr_1.22fr]">
             <div className="rounded-[1.5rem] border border-border bg-foreground p-7 text-white md:p-9">
-              <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-white/62">
+              <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-label text-white/62">
                 <Layers size={15} />
                 Inside Zoveto
               </div>
@@ -229,7 +229,7 @@ export function SystemFlowPage({ proof }: { proof: OperationalProof }) {
 
             <ul className="grid gap-3 md:grid-cols-2">
               {proof.insideZoveto.map((row) => (
-                <li key={`${row.module}-${row.note}`} className="rounded-[1.25rem] border border-border bg-card p-5 shadow-[0_12px_44px_rgba(15,23,42,0.06)]">
+                <li key={`${row.module}-${row.note}`} className="rounded-[1.25rem] border border-border bg-card p-5 shadow-float">
                   <span className="inline-flex rounded-full border border-blue/15 bg-blue-light px-3 py-1 text-xs font-bold uppercase tracking-wide text-blue">
                     {row.module}
                   </span>
@@ -243,7 +243,7 @@ export function SystemFlowPage({ proof }: { proof: OperationalProof }) {
 
       <FluidMarketingSection band={bandIndexForSection(3)} overlapTop stackBase>
         <section className="pt-6 md:pt-8" aria-labelledby="impact-heading">
-          <div className="rounded-[1.75rem] border border-border bg-card p-7 shadow-[0_18px_60px_rgba(15,23,42,0.08)] md:p-10">
+          <div className="rounded-[1.75rem] border border-border bg-card p-7 shadow-elevated md:p-10">
             <div className="mb-8 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
               <div>
                 <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-muted-2">Measured impact</p>
@@ -271,7 +271,7 @@ export function SystemFlowPage({ proof }: { proof: OperationalProof }) {
           <div className="rounded-[1.75rem] border border-border bg-blue-light p-7 md:p-10">
             <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center">
               <div>
-                <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-blue">
+                <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-label text-blue">
                   <GitBranch size={14} />
                   Apply this flow
                 </div>

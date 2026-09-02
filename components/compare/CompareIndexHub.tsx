@@ -60,7 +60,7 @@ function CompareCard({ page }: { page: ComparePage }) {
       >
         <div className="mb-4 flex items-start justify-between gap-3">
           <div className="min-w-0 space-y-1">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-2">{page.hubLens}</p>
+            <p className="text-[11px] font-semibold uppercase tracking-label text-muted-2">{page.hubLens}</p>
             <span
               className={cn(
                 "inline-flex w-fit items-center rounded-md border px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide",

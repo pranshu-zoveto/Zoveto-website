@@ -42,7 +42,7 @@ function BundleCard({ bundle }: { bundle: PricingBundle }) {
   return (
     <div
       className={cn(
-        "relative flex flex-col rounded-xl border bg-card px-6 pb-7 pt-6 shadow-[var(--shadow-card)] sm:px-7 sm:pb-8 sm:pt-7",
+        "relative flex flex-col rounded-xl border bg-card px-6 pb-7 pt-6 shadow-card sm:px-7 sm:pb-8 sm:pt-7",
         bundle.popular
           ? "z-[1] border-blue/30 bg-blue-light/[0.10] ring-1 ring-blue/20"
           : "border-border"
@@ -99,7 +99,7 @@ function BundleCard({ bundle }: { bundle: PricingBundle }) {
 
       {/* Module list */}
       <div className="border-t border-border pt-5">
-        <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-2">
+        <p className="mb-3 text-[11px] font-semibold uppercase tracking-label text-muted-2">
           Included modules
         </p>
         <ul className="flex flex-col gap-2">
@@ -128,7 +128,7 @@ function BundleCard({ bundle }: { bundle: PricingBundle }) {
 
 function EnterpriseCard() {
   return (
-    <div className="flex flex-col rounded-xl border border-border bg-card px-6 pb-7 pt-6 shadow-[var(--shadow-card)] sm:px-7 sm:pb-8 sm:pt-7">
+    <div className="flex flex-col rounded-xl border border-border bg-card px-6 pb-7 pt-6 shadow-card sm:px-7 sm:pb-8 sm:pt-7">
       <div className="mb-3 flex h-7 items-center">
         <span className="inline-flex rounded-full border border-border px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-muted-2">
           Enterprise
@@ -161,7 +161,7 @@ function EnterpriseCard() {
       </Link>
 
       <div className="border-t border-border pt-5">
-        <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-2">
+        <p className="mb-3 text-[11px] font-semibold uppercase tracking-label text-muted-2">
           What's included
         </p>
         <ul className="flex flex-col gap-2">
@@ -271,7 +271,7 @@ export function PricingClient() {
       <div className="mx-auto mb-12 grid max-w-5xl gap-4 sm:gap-5 md:mb-14 md:grid-cols-2 md:gap-6">
         <section
           aria-labelledby="pricing-industry-fit-heading"
-          className="float-card flex flex-col rounded-2xl border border-border/90 bg-card p-5 shadow-[var(--shadow-float)] sm:p-6"
+          className="float-card flex flex-col rounded-2xl border border-border/90 bg-card p-5 shadow-float sm:p-6"
         >
           <div className="flex items-start gap-3">
             <div
@@ -281,7 +281,7 @@ export function PricingClient() {
               <Factory className="h-5 w-5" strokeWidth={2} />
             </div>
             <div className="min-w-0 flex-1">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-2">Explore</p>
+              <p className="text-[11px] font-semibold uppercase tracking-label text-muted-2">Explore</p>
               <h2 id="pricing-industry-fit-heading" className="mt-0.5 text-lg font-semibold tracking-tight text-foreground">
                 Industry fit
               </h2>
@@ -323,7 +323,7 @@ export function PricingClient() {
 
         <section
           aria-labelledby="pricing-compare-heading"
-          className="float-card flex flex-col rounded-2xl border border-border/90 bg-card p-5 shadow-[var(--shadow-float)] sm:p-6"
+          className="float-card flex flex-col rounded-2xl border border-border/90 bg-card p-5 shadow-float sm:p-6"
         >
           <div className="flex items-start gap-3">
             <div
@@ -333,7 +333,7 @@ export function PricingClient() {
               <Scale className="h-5 w-5" strokeWidth={2} />
             </div>
             <div className="min-w-0 flex-1">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-2">Evaluate</p>
+              <p className="text-[11px] font-semibold uppercase tracking-label text-muted-2">Evaluate</p>
               <h2 id="pricing-compare-heading" className="mt-0.5 text-lg font-semibold tracking-tight text-foreground">
                 Compare platforms
               </h2>

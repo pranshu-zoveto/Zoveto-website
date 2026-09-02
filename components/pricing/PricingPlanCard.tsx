@@ -29,7 +29,7 @@ export function PricingPlanCard({ plan, billing, currency, onToggleCurrency, cla
         "transition-[border-color,box-shadow] duration-300",
         isGrowth
           ? "z-[1] border-blue/30 bg-blue-light/[0.12] shadow-md ring-1 ring-blue/25"
-          : "border-border shadow-[var(--shadow-card)]",
+          : "border-border shadow-card",
         className,
       )}
     >

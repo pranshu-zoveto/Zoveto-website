@@ -92,7 +92,7 @@ function StripPanel({
             {mod.index}
           </span>
         </header>
-        <div className="mt-4 inline-flex w-fit rounded-full border border-border/80 bg-white/85 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-muted sm:text-[11px]">
+        <div className="mt-4 inline-flex w-fit rounded-full border border-border/80 bg-white/85 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-label text-muted sm:text-[11px]">
           Module
         </div>
         <div className="min-h-0 flex-1" aria-hidden />

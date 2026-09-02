@@ -12,9 +12,9 @@ const ROWS = [
 /** Table chrome only: no fabricated quantities or savings claims. */
 export function InventoryLedgerPreview() {
   return (
-    <div className="rounded-2xl border border-border bg-card p-5 shadow-[var(--shadow-elevated)] md:p-6">
+    <div className="rounded-2xl border border-border bg-card p-5 shadow-elevated md:p-6">
       <div className="mb-3 flex items-center justify-between gap-3">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-muted-2">Stock ledger</p>
+        <p className="text-[11px] font-semibold uppercase tracking-cap text-muted-2">Stock ledger</p>
         <span className="text-[11px] font-medium text-muted">Live view</span>
       </div>
       <div className="overflow-hidden rounded-xl border border-border bg-surface">

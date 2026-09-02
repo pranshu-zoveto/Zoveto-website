@@ -51,7 +51,7 @@ export function Hero() {
           ].map((item) => (
             <span
               key={item}
-              className="whitespace-nowrap rounded-[56px] border border-foreground/12 bg-card/95 px-3 py-2 text-[10px] font-bold uppercase tracking-[0.1em] text-foreground sm:px-[18px] sm:py-2.5 sm:text-[11px] sm:tracking-[0.12em]"
+              className="whitespace-nowrap rounded-[56px] border border-foreground/12 bg-card/95 px-3 py-2 text-[10px] font-bold uppercase tracking-[0.1em] text-foreground sm:px-[18px] sm:py-2.5 sm:text-[11px] sm:tracking-cap"
             >
               {item}
             </span>

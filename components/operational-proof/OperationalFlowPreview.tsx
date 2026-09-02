@@ -29,11 +29,11 @@ export function OperationalFlowPreview() {
       style={reduceMotion ? undefined : { y: translateY }}
       whileHover={reduceMotion ? undefined : { y: -2 }}
       transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-      className="group relative rounded-2xl border border-border bg-card p-5 shadow-[var(--shadow-elevated)] md:p-6"
+      className="group relative rounded-2xl border border-border bg-card p-5 shadow-elevated md:p-6"
     >
       <div className="rounded-xl border border-border bg-surface-2/80 p-4 md:p-5">
         <div className="mb-3 flex items-center justify-between gap-3">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-muted-2">Flow preview</p>
+          <p className="text-[11px] font-semibold uppercase tracking-cap text-muted-2">Flow preview</p>
           <span className="flex items-center gap-1.5 text-[11px] font-semibold text-foreground">
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-blue/40 opacity-60" />

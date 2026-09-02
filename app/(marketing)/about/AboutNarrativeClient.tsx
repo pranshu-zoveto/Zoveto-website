@@ -148,7 +148,7 @@ export default function AboutNarrativeClient() {
 
             <div className="grid gap-px bg-border sm:grid-cols-[0.88fr_1.12fr]">
               <div className="bg-card p-5">
-                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-muted-2">Operating signals</p>
+                <p className="text-xs font-semibold uppercase tracking-label text-muted-2">Operating signals</p>
                 <div className="mt-5 space-y-3">
                   {OPERATING_SIGNALS.map((signal) => (
                     <div key={signal.label} className="rounded-2xl border border-border bg-surface-2 p-4">
@@ -171,7 +171,7 @@ export default function AboutNarrativeClient() {
                     style={{ transformOrigin: "left" }}
                   />
                 ) : null}
-                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-muted-2">Connected modules</p>
+                <p className="text-xs font-semibold uppercase tracking-label text-muted-2">Connected modules</p>
                 <div className="mt-5 grid grid-cols-2 gap-2">
                   {SYSTEM_NODES.map((node) => (
                     <div key={node} className="rounded-xl border border-border bg-surface-2 px-3 py-3 text-sm font-semibold text-foreground">
@@ -264,7 +264,7 @@ export default function AboutNarrativeClient() {
               <motion.article
                 key={block.title}
                 variants={revealItem}
-                className="group rounded-[1.5rem] border border-border bg-card p-6 shadow-[0_10px_34px_rgba(15,23,42,0.05)] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-blue/25 hover:shadow-[0_18px_48px_rgba(15,23,42,0.08)] motion-reduce:transform-none"
+                className="group rounded-[1.5rem] border border-border bg-card p-6 shadow-float transition-all duration-300 ease-out hover:-translate-y-1 hover:border-blue/25 hover:shadow-elevated motion-reduce:transform-none"
               >
                 <block.icon className="h-5 w-5 text-blue" strokeWidth={1.8} />
                 <h3 className="mt-5 text-xl font-semibold tracking-[-0.025em] text-foreground">{block.title}</h3>
@@ -338,7 +338,7 @@ export default function AboutNarrativeClient() {
                 <motion.article
                   key={item.title}
                   variants={revealItem}
-                  className="rounded-[1.4rem] border border-border bg-card p-6 shadow-[0_10px_34px_rgba(15,23,42,0.05)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_48px_rgba(15,23,42,0.08)] motion-reduce:transform-none"
+                  className="rounded-[1.4rem] border border-border bg-card p-6 shadow-float transition-all duration-300 hover:-translate-y-1 hover:shadow-elevated motion-reduce:transform-none"
                 >
                   <item.icon className="h-5 w-5 text-blue" strokeWidth={1.8} />
                   <h3 className="mt-5 text-2xl font-semibold tracking-[-0.03em] text-foreground">{item.title}</h3>
@@ -373,7 +373,7 @@ export default function AboutNarrativeClient() {
             <motion.div variants={revealItem}>
               <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-2">Leadership</p>
               <h2 id="team-title" className="mt-4 text-3xl font-semibold tracking-[-0.035em] text-foreground md:text-5xl">
-                Built by operators, not just developers.
+                Built by operators who also write the software.
               </h2>
               <p className="mt-5 max-w-[58ch] text-base leading-7 text-muted">{TEAM_SECTION_INTRO}</p>
             </motion.div>
@@ -382,7 +382,7 @@ export default function AboutNarrativeClient() {
               <motion.article
                 key={member.id}
                 variants={revealItem}
-                className="grid gap-5 rounded-[1.5rem] border border-border bg-card p-5 shadow-[0_10px_34px_rgba(15,23,42,0.05)] transition-all duration-300 hover:-translate-y-1 hover:border-blue/25 hover:shadow-[0_18px_48px_rgba(15,23,42,0.08)] motion-reduce:transform-none sm:grid-cols-[minmax(0,7.5rem)_minmax(0,1fr)] sm:gap-6"
+                className="grid gap-5 rounded-[1.5rem] border border-border bg-card p-5 shadow-float transition-all duration-300 hover:-translate-y-1 hover:border-blue/25 hover:shadow-elevated motion-reduce:transform-none sm:grid-cols-[minmax(0,7.5rem)_minmax(0,1fr)] sm:gap-6"
               >
                 <div className="relative mx-auto aspect-square w-full max-w-[7.5rem] overflow-hidden rounded-2xl bg-surface ring-1 ring-border sm:mx-0 sm:max-w-none sm:w-[7.5rem] sm:min-w-[7.5rem]">
                   <Image

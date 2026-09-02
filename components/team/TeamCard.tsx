@@ -31,8 +31,8 @@ export function TeamCard({ member, onOpen, nameHeadingLevel = 3 }: TeamCardProps
         }
       }}
       className={cn(
-        "group/card flex h-full min-h-[26rem] cursor-pointer flex-col overflow-hidden rounded-2xl border border-border bg-card text-left shadow-[var(--shadow-card)]",
-        "transition-[box-shadow,transform] transition-duration-[250ms] ease-out motion-safe:hover:-translate-y-0.5 motion-safe:hover:shadow-[var(--shadow-hover)]",
+        "group/card flex h-full min-h-[26rem] cursor-pointer flex-col overflow-hidden rounded-2xl border border-border bg-card text-left shadow-card",
+        "transition-[box-shadow,transform] transition-duration-[250ms] ease-out motion-safe:hover:-translate-y-0.5 motion-safe:hover:shadow-hover",
         "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue"
       )}
       aria-label={`View profile: ${member.name}, ${member.role}`}

@@ -26,7 +26,7 @@ export function PricingModuleCard({ mod, className }: PricingModuleCardProps) {
   return (
     <div
       className={cn(
-        "relative flex min-h-0 w-full min-w-0 flex-col rounded-xl border bg-card px-5 pb-6 pt-5 shadow-[var(--shadow-card)] sm:px-6 sm:pb-7 sm:pt-6",
+        "relative flex min-h-0 w-full min-w-0 flex-col rounded-xl border bg-card px-5 pb-6 pt-5 shadow-card sm:px-6 sm:pb-7 sm:pt-6",
         isTeal ? "border-teal/20" : "border-blue/20",
         className,
       )}

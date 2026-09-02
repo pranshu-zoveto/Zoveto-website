@@ -13,11 +13,11 @@ export function ProofCard({ proof, variant = "listing" }: ProofCardProps) {
   return (
     <article
       className={cn(
-        "float-card flex h-full flex-col rounded-2xl border border-border/70 bg-gradient-to-b from-card to-white transition-[transform,box-shadow,border-color] duration-200 ease-out hover:-translate-y-0.5 hover:border-border hover:shadow-[var(--shadow-hover)]",
+        "float-card flex h-full flex-col rounded-2xl border border-border/70 bg-card",
         dense ? "p-5 sm:p-6" : "p-5 sm:p-6 md:p-7",
       )}
     >
-      <span className="inline-flex w-fit rounded-full border border-border bg-surface px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-2">
+      <span className="inline-flex w-fit rounded-full border border-border bg-surface px-2.5 py-1 text-[10px] font-semibold uppercase tracking-label text-muted-2">
         {proof.industryTag}
       </span>
       <h3
@@ -31,7 +31,7 @@ export function ProofCard({ proof, variant = "listing" }: ProofCardProps) {
 
       <div className={cn("mt-5 grid gap-5", dense ? "grid-cols-1 sm:grid-cols-2 sm:gap-6" : "gap-4 sm:grid-cols-2")}>
         <div>
-          <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.12em] text-muted-2">Before</p>
+          <p className="mb-2 text-[10px] font-semibold uppercase tracking-cap text-muted-2">Before</p>
           <ul className="space-y-1.5 text-sm text-muted">
             {proof.before.map((item) => (
               <li key={item} className="flex items-start gap-2">
@@ -42,7 +42,7 @@ export function ProofCard({ proof, variant = "listing" }: ProofCardProps) {
           </ul>
         </div>
         <div>
-          <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.12em] text-muted-2">After</p>
+          <p className="mb-2 text-[10px] font-semibold uppercase tracking-cap text-muted-2">After</p>
           <ul className="space-y-1.5 text-sm text-muted">
             {proof.after.map((item) => (
               <li key={item} className="flex items-start gap-2">
@@ -57,7 +57,7 @@ export function ProofCard({ proof, variant = "listing" }: ProofCardProps) {
       {dense ? (
         <div className="mt-5 grid gap-5 border-t border-border/60 pt-5 sm:grid-cols-2 sm:gap-6">
           <div>
-            <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.12em] text-muted-2">System actions</p>
+            <p className="mb-2 text-[10px] font-semibold uppercase tracking-cap text-muted-2">System actions</p>
             <ul className="space-y-1.5 text-sm text-muted">
               {proof.systemActions.map((item) => (
                 <li key={item} className="flex items-start gap-2">
@@ -68,7 +68,7 @@ export function ProofCard({ proof, variant = "listing" }: ProofCardProps) {
             </ul>
           </div>
           <div>
-            <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.12em] text-muted-2">Outcome</p>
+            <p className="mb-2 text-[10px] font-semibold uppercase tracking-cap text-muted-2">Outcome</p>
             <ul className="space-y-1.5 text-sm font-semibold text-foreground">
               {proof.outcomeMetrics.map((item) => (
                 <li key={item} className="flex items-start gap-2">
@@ -83,7 +83,7 @@ export function ProofCard({ proof, variant = "listing" }: ProofCardProps) {
         <>
           <div className="mt-4 h-px bg-border/60" aria-hidden />
           <div className="mt-4">
-            <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.12em] text-muted-2">System actions</p>
+            <p className="mb-2 text-[10px] font-semibold uppercase tracking-cap text-muted-2">System actions</p>
             <ul className="space-y-1.5 text-sm text-muted">
               {proof.systemActions.map((item) => (
                 <li key={item} className="flex items-start gap-2">
@@ -95,7 +95,7 @@ export function ProofCard({ proof, variant = "listing" }: ProofCardProps) {
           </div>
           <div className="mt-4 h-px bg-border/60" aria-hidden />
           <div className="mt-4">
-            <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.12em] text-muted-2">Outcome</p>
+            <p className="mb-2 text-[10px] font-semibold uppercase tracking-cap text-muted-2">Outcome</p>
             <ul className="space-y-1.5 text-sm font-semibold text-foreground">
               {proof.outcomeMetrics.map((item) => (
                 <li key={item} className="flex items-start gap-2">

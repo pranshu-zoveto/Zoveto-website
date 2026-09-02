@@ -53,7 +53,7 @@ const COPY = {
   },
 } as const;
 
-const metaLabelClass = "text-xs font-semibold uppercase tracking-[0.14em] text-muted-2";
+const metaLabelClass = "text-xs font-semibold uppercase tracking-label text-muted-2";
 
 export function ZeroClientTrustSection({ context = "home", className }: ZeroClientTrustSectionProps) {
   const copy = COPY[context];
@@ -66,7 +66,7 @@ export function ZeroClientTrustSection({ context = "home", className }: ZeroClie
           className={
             isHome
               ? undefined
-              : "overflow-hidden rounded-xl border border-border/80 bg-[linear-gradient(180deg,#ffffff_0%,#f7fafe_100%)] p-6 shadow-[var(--shadow-float)] sm:p-6 md:p-8 lg:p-10"
+              : "overflow-hidden rounded-xl border border-border/80 bg-[linear-gradient(180deg,#ffffff_0%,#f7fafe_100%)] p-6 shadow-float sm:p-6 md:p-8 lg:p-10"
           }
         >
           <RevealOnScroll className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.08fr)] lg:items-start lg:gap-10 xl:gap-12">

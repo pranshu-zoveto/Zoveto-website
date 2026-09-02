@@ -11,12 +11,15 @@ describe("module nav", () => {
       "finance",
       "analytics",
       "hrms",
+      "procurement",
+      "export",
+      "mro",
     ]);
   });
 
   it("maps slugs to hrefs and HRMS label", () => {
     const links = getModuleNavLinks();
-    assert.equal(links.length, 6);
+    assert.equal(links.length, 9);
     assert.deepEqual(
       links.map((l) => l.slug),
       [...MODULE_NAV_SLUGS]
@@ -30,6 +33,9 @@ describe("module nav", () => {
         "/modules/finance",
         "/modules/analytics",
         "/modules/hrms",
+        "/modules/procurement",
+        "/modules/export",
+        "/modules/mro",
       ]
     );
     const hrms = links.find((l) => l.slug === "hrms");

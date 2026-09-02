@@ -5,7 +5,6 @@ import { motion, useReducedMotion } from "framer-motion";
 import {
   ArrowUpRight,
   BarChart3,
-  CheckCircle2,
   CircleDot,
   ClipboardCheck,
   Layers,
@@ -22,6 +21,7 @@ import { ModuleOperationalProofs } from "@/components/operational-proof/ModuleOp
 import { FluidMarketingSection } from "@/components/layout/FluidMarketingSection";
 import { RevealOnScroll } from "@/components/layout/RevealOnScroll";
 import { ModuleScreenshotMockup, MODULE_SCREENSHOT_SLUGS } from "@/components/modules/ModuleScreenshotMockup";
+import { IconCard } from "@/components/ui/IconCard";
 import { bandIndexForSection } from "@/lib/marketing-bands";
 
 type SurfaceTone = "green" | "amber" | "red" | "blue";
@@ -143,7 +143,7 @@ const moduleShowcases: Record<string, ModuleShowcase> = {
       "Every bin, picker, packer, and dispatch event stays tied to the same order and stock record.",
     architectureLabel: "Scan-to-dispatch architecture",
     connectionCopy: "Warehouse execution stops leaking time when orders, stock, gates, and reports read the same scan trail.",
-    controlHeadline: "The warehouse screen should show work in motion, not just stock sitting still.",
+    controlHeadline: "The warehouse screen should show work in motion, not idle stock.",
     controlCopy:
       "Zoveto turns bins, waves, pickers, packing, returns, and gate movement into one controlled execution board.",
     controlPoints: [
@@ -479,7 +479,7 @@ export function ModuleClient({ slug }: { slug: string }) {
   return (
     <div className="relative z-10 space-y-0">
       <FluidMarketingSection band={bandIndexForSection(0)} stackBase>
-        <section className="relative overflow-hidden rounded-[1.75rem] border border-border bg-card shadow-[0_18px_60px_rgba(15,23,42,0.08)]">
+        <section className="relative overflow-hidden rounded-[1.75rem] border border-border bg-card shadow-elevated">
           <div
             className="pointer-events-none absolute inset-0 opacity-[0.55]"
             style={{
@@ -507,7 +507,7 @@ export function ModuleClient({ slug }: { slug: string }) {
                 {data.metrics.map((m) => (
                   <div key={m.label} className="rounded-2xl border border-border bg-white/75 p-4 shadow-sm">
                     <div className="text-2xl font-semibold tracking-[-0.03em] text-foreground tabular-nums">{m.value}</div>
-                    <div className="mt-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-muted-2">{m.label}</div>
+                    <div className="mt-1 text-[11px] font-semibold uppercase tracking-cap text-muted-2">{m.label}</div>
                   </div>
                 ))}
               </div>
@@ -562,7 +562,7 @@ export function ModuleClient({ slug }: { slug: string }) {
             </div>
 
             <motion.div
-              className="rounded-[1.5rem] border border-border bg-card p-7 shadow-[0_12px_44px_rgba(15,23,42,0.07)] md:p-10"
+              className="rounded-[1.5rem] border border-border bg-card p-7 shadow-float md:p-10"
               variants={stagger}
               initial="hidden"
               whileInView="show"
@@ -615,31 +615,27 @@ export function ModuleClient({ slug }: { slug: string }) {
           viewport={{ once: true, amount: 0.16 }}
         >
           <motion.div
-            className="rounded-[1.5rem] border border-border bg-card p-7 shadow-[0_12px_44px_rgba(15,23,42,0.07)] md:p-10"
+            className="rounded-[1.5rem] border border-border bg-card p-7 shadow-float md:p-10"
             variants={reveal}
           >
             <SectionLabel className="mb-7 border-none bg-transparent p-0 text-muted-2">System capabilities</SectionLabel>
-            <div className="grid gap-4 md:grid-cols-2">
+            <div className="grid gap-0">
               {data.keyFeatures.map((f, i) => (
-                <div
+                <IconCard
                   key={f.title}
-                  className="group rounded-2xl border border-border bg-surface-2 p-5 transition-colors hover:border-blue/25 hover:bg-white"
-                >
-                  <div className="mb-4 flex items-center gap-3">
-                    <span className="flex h-8 w-8 items-center justify-center rounded-lg border border-blue/15 bg-blue-light text-xs font-semibold text-blue">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <CheckCircle2 size={16} className="text-blue" />
-                  </div>
-                  <div className="text-sm font-semibold text-foreground">{f.title}</div>
-                  <p className="mt-2 text-sm leading-6 text-muted">{f.description}</p>
-                </div>
+                  variant="list"
+                  as="article"
+                  index={i + 1}
+                  label={f.title}
+                  description={f.description}
+                  divided={i > 0}
+                />
               ))}
             </div>
           </motion.div>
 
           <motion.div className="space-y-6" variants={reveal}>
-            <div className="rounded-[1.5rem] border border-border bg-card p-7 shadow-[0_12px_44px_rgba(15,23,42,0.07)] md:p-9">
+            <div className="rounded-[1.5rem] border border-border bg-card p-7 shadow-float md:p-9">
               <div className="flex items-center gap-2">
                 <Layers size={16} className="text-blue" />
                 <SectionLabel className="mb-0 border-none bg-transparent p-0 text-muted-2">Connected records</SectionLabel>
@@ -683,7 +679,7 @@ export function ModuleClient({ slug }: { slug: string }) {
       {hasControlSection ? (
         <FluidMarketingSection band={bandIndexForSection(3)} overlapTop stackBase>
           <section className="pt-6 md:pt-8">
-            <div className="rounded-[1.75rem] border border-border bg-card p-7 shadow-[0_18px_60px_rgba(15,23,42,0.08)] md:p-10">
+            <div className="rounded-[1.75rem] border border-border bg-card p-7 shadow-elevated md:p-10">
               <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
                 <div>
                   <SectionLabel className="mb-6 border-none bg-transparent p-0 text-muted-2">Control points</SectionLabel>
@@ -725,7 +721,7 @@ function ModuleCommandSurface({ moduleName, showcase }: { moduleName: string; sh
   const { surface } = showcase;
 
   return (
-    <div className="relative overflow-hidden rounded-[1.35rem] border border-border bg-white shadow-[0_16px_50px_rgba(15,23,42,0.10)]">
+    <div className="relative overflow-hidden rounded-[1.35rem] border border-border bg-white shadow-elevated">
       <div className="flex items-center justify-between border-b border-border bg-surface-2 px-4 py-3">
         <div className="flex items-center gap-2">
           <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue text-white">
@@ -745,7 +741,7 @@ function ModuleCommandSurface({ moduleName, showcase }: { moduleName: string; sh
       <div className="grid gap-px bg-border md:grid-cols-[0.78fr_1.22fr]">
         <div className="bg-card p-4">
           <div className="mb-4 flex items-center justify-between">
-            <div className="text-xs font-semibold uppercase tracking-[0.12em] text-muted-2">{surface.primaryTitle}</div>
+            <div className="text-xs font-semibold uppercase tracking-cap text-muted-2">{surface.primaryTitle}</div>
             <BarChart3 size={16} className="text-blue" />
           </div>
           <div className="space-y-3">
@@ -773,7 +769,7 @@ function ModuleCommandSurface({ moduleName, showcase }: { moduleName: string; sh
           ) : null}
 
           <div className="mb-4 flex items-center justify-between">
-            <div className="text-xs font-semibold uppercase tracking-[0.12em] text-muted-2">{surface.secondaryTitle}</div>
+            <div className="text-xs font-semibold uppercase tracking-cap text-muted-2">{surface.secondaryTitle}</div>
             <Warehouse size={16} className="text-blue" />
           </div>
           <div className="space-y-2">

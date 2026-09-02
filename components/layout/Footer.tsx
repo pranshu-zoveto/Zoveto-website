@@ -26,6 +26,9 @@ const LINK_COLS: { title: string; links: { label: string; href: string }[] }[] =
       { label: "Inventory Module", href: "/modules/inventory" },
       { label: "CRM & Sales", href: "/modules/crm" },
       { label: "Warehouse (WMS)", href: "/modules/wms" },
+      { label: "Procurement", href: "/modules/procurement" },
+      { label: "Export Operations", href: "/modules/export" },
+      { label: "MRO", href: "/modules/mro" },
       { label: "Auto Parts Traders", href: "/industries/spare-parts-trading" },
       { label: "All Solutions", href: "/directory" },
     ],
@@ -64,7 +67,7 @@ const LINK_COLS: { title: string; links: { label: string; href: string }[] }[] =
 ];
 
 const colLabel =
-  "mb-4 text-xs font-semibold uppercase tracking-[0.14em] text-muted";
+  "mb-4 text-xs font-semibold uppercase tracking-label text-muted";
 const linkClass =
   "whitespace-nowrap text-[15px] font-medium leading-6 tracking-[-0.01em] text-foreground transition-colors hover:text-foreground/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue/30 focus-visible:ring-offset-2 focus-visible:ring-offset-background";
 
@@ -83,7 +86,7 @@ export function Footer() {
             <p className="mt-7 text-[15px] leading-relaxed text-muted">
               Software for teams that need clean records before the day ends.
             </p>
-            <p className="mt-7 font-mono text-[10px] font-semibold uppercase leading-relaxed tracking-[0.14em] text-muted">
+            <p className="mt-7 font-mono text-[10px] font-semibold uppercase leading-relaxed tracking-label text-muted">
               © {year} Zoveto Technologies. All rights reserved.
             </p>
           </div>

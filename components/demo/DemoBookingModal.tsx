@@ -233,7 +233,7 @@ export function DemoModalProvider({ children }: { children: React.ReactNode }) {
                   />
                 </div>
                 <Button type="submit" variant="primary" className="min-h-[52px] w-full" disabled={status === "loading"}>
-                  {status === "loading" ? "Sending…" : "Request demo"}
+                  {status === "loading" ? "Sending…" : "Request early access"}
                 </Button>
                 <p className="text-xs text-muted-2 text-center">
                   Uses <code className="text-blue">POST /api/demo</code> on your COS API.

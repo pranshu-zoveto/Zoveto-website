@@ -78,7 +78,7 @@ const CTA_CLOSE_SETUP: CompareCta = { label: EARLY_ACCESS_CTA_LABEL, href: EARLY
 const CTA_CLOSE_DEMO: CompareCta = { label: EARLY_ACCESS_CTA_LABEL, href: EARLY_ACCESS_CTA_HREF };
 
 const STANDARD_HERO_SUBTEXT =
-  "Compare features, workflows, and operational capabilities, not just checklists.";
+  "Compare features, workflows, and operational capabilities against a live operating record.";
 
 type StandardCompareInput = {
   slug: string;

@@ -83,7 +83,7 @@ export function IndustriesSection() {
         <p className="mt-10 max-w-2xl text-sm text-muted">
           Other business models (startups, D2C, pharma, and more) are onboarded with the same manual setup process, 
           <Link href="/signup" className="font-medium text-teal underline-offset-2 hover:underline">
-            request setup
+            request early access
           </Link>{" "}
           and we map your workflow first.
         </p>

@@ -48,6 +48,21 @@ const MODULE_PAGE_INTROS: Record<string, { chip: string; intro: string }> = {
     intro:
       "A business intelligence layer that reads live ERP, CRM, inventory, finance, and HR data so leaders can drill every KPI back to source transactions.",
   },
+  procurement: {
+    chip: "Buying command layer",
+    intro:
+      "Purchase requests, vendor quotes, approvals, POs, and GRN stay on one buying record so stores and finance are not catching up after the truck arrives.",
+  },
+  export: {
+    chip: "Export execution layer",
+    intro:
+      "Export orders, documentation, dispatch stages, and finance handoffs stay on one row so customer updates are not a separate spreadsheet.",
+  },
+  mro: {
+    chip: "Maintenance execution layer",
+    intro:
+      "Maintenance requests, spare consumption, and downtime stay on one job so repeat failures are visible before the line stops again.",
+  },
 };
 
 export function generateStaticParams() {

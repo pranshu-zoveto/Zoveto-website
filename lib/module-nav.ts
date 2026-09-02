@@ -1,7 +1,7 @@
 import type { LucideIcon } from "lucide-react";
 import { modules, type ModuleWithIcon } from "@/lib/modules";
 
-/** Canonical desktop + mobile Modules menu order (1–6). */
+/** Canonical desktop + mobile Modules menu: all 9 public modules. */
 export const MODULE_NAV_SLUGS = [
   "inventory",
   "wms",
@@ -9,6 +9,9 @@ export const MODULE_NAV_SLUGS = [
   "finance",
   "analytics",
   "hrms",
+  "procurement",
+  "export",
+  "mro",
 ] as const;
 
 export type ModuleNavSlug = (typeof MODULE_NAV_SLUGS)[number];

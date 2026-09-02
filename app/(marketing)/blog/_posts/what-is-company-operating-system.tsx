@@ -86,8 +86,8 @@ export default function WhatIsCompanyOperatingSystem() {
       <p>
         A Company Operating System is built from the ground up on a <strong>single, shared data model</strong>. There
         is one record for every customer, one record for every SKU, and one record for every transaction. Every module
-        (sales, purchase, inventory, finance, CRM, HR) reads from and writes to the same data. This is not just a
-        terminology shift. It is an architectural decision that changes what is possible.
+        (sales, purchase, inventory, finance, CRM, HR) reads from and writes to the same data. This is an
+        architectural decision, not a terminology shift. It changes what is possible.
       </p>
 
       <h3>What a COS Enables That Traditional ERP Cannot</h3>
@@ -163,7 +163,7 @@ export default function WhatIsCompanyOperatingSystem() {
 
       <h2>The Regional Compliance Imperative</h2>
       <p>
-        the regulatory environment makes the COS architecture not just convenient but <strong>essential</strong>.
+        the regulatory environment makes the COS architecture essential, not merely convenient.
         GST alone generates compliance events across 6 different business functions:
       </p>
       <ul>

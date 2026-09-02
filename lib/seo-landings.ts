@@ -770,7 +770,7 @@ const landings: SeoLanding[] = [
       "Move from Excel operations to Zoveto for Indian SMBs: cleaner masters, stock control, CRM, dispatch, billing, permissions, and staged rollout. Book demo.",
     h1: "Migrate from Excel operations to Zoveto",
     directAnswer:
-      "Excel migration is not just importing sheets; it is deciding who owns each record after go-live.\nZoveto helps teams move stock, CRM, dispatch, and billing into one controlled operating system.",
+      "Excel migration is deciding who owns each record after go-live, not only importing sheets.\nZoveto helps teams move stock, CRM, dispatch, and billing into one controlled operating system.",
     intro:
       "Migrating from Excel for Indian SMB teams should focus on record ownership, workflow discipline, and clean master data before importing anything into a new system.",
     sections: [

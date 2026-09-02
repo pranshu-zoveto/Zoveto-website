@@ -3,7 +3,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 /**
  * One button system. Five variants, one canonical scale.
  *
- *   primary       blue → main CTAs (Book demo, Sign up, Request access)
+ *   primary       blue → main CTAs (Request early access, Start 15-day free trial)
  *   secondary     dark filled → strong dark CTA on light surfaces
  *   outline       transparent + border → secondary action paired with primary
  *   ghost         transparent + muted → nav links rendered as buttons, icon buttons

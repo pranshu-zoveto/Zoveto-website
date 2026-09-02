@@ -236,7 +236,7 @@ export function DemoBookingForm() {
         className="w-full min-h-[52px] gap-2"
       >
         <CalendarDays size={18} aria-hidden />
-        {status === "submitting" ? "Scheduling…" : "Request demo"}
+        {status === "submitting" ? "Scheduling…" : "Request early access"}
       </Button>
     </form>
   );

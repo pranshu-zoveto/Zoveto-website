@@ -103,7 +103,7 @@ export function Navbar() {
                 />
               </button>
               {activeDropdown === "modules" && (
-                <div className="absolute top-full left-1/2 z-10 mt-1 w-[36rem] max-w-[min(36rem,calc(100vw-2rem))] -translate-x-1/2 animate-in fade-in zoom-in-95 slide-in-from-top-1 rounded-xl border border-border bg-card p-4 shadow-lg duration-150 grid grid-cols-2 gap-2 motion-reduce:animate-none">
+                <div className="absolute top-full left-1/2 z-10 mt-1 w-[42rem] max-w-[min(42rem,calc(100vw-2rem))] -translate-x-1/2 animate-in fade-in zoom-in-95 slide-in-from-top-1 rounded-xl border border-border bg-card p-4 shadow-lg duration-150 grid grid-cols-2 gap-2 motion-reduce:animate-none">
                   {MODULE_NAV_LINKS.map((link) => (
                     <Link
                       key={link.slug}

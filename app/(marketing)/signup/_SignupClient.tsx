@@ -287,7 +287,7 @@ export default function SignupClient({ preSelectedModule = null }: Props) {
             </ul>
           </section>
 
-          <section className="overflow-hidden rounded-2xl border border-border bg-card shadow-[var(--shadow-card)]">
+          <section className="overflow-hidden rounded-2xl border border-border bg-card shadow-card">
             <AnimatePresence mode="wait">
               {phase === "picker" && (
                 <motion.div key="picker" initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -14 }}>
@@ -523,7 +523,7 @@ export default function SignupClient({ preSelectedModule = null }: Props) {
                         disabled={isBusy}
                         className="flex min-h-[48px] w-full items-center justify-center gap-2 rounded-lg bg-blue px-4 text-sm font-semibold text-white transition-colors hover:bg-blue-hover disabled:opacity-60"
                       >
-                        Start free trial - ₹1 card check <ShieldCheck className="h-4 w-4" />
+                        Start 15-day free trial - ₹1 card check <ShieldCheck className="h-4 w-4" />
                       </button>
                     </form>
                   </div>

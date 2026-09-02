@@ -26,8 +26,7 @@ export function OSSchematic() {
             One architectural layer that unifies your entire <span className="text-blue">company logic.</span>
           </Text>
           <Text variant="body-lg" className="text-muted max-w-lg">
-            The Zoveto OS establishes a single source of truth for your business. CRM feeds Inventory. Warehouse feeds
-            Finance. Global data flows into one automated ledger.
+            The Zoveto OS keeps CRM, inventory, warehouse, and finance on one posted record. Each module reads the same events instead of a nightly export.
           </Text>
           <div className="pt-4">
             <Button variant="outline" className="gap-2 group">

@@ -4,7 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { Text } from "@/components/ui/Text";
-import { Cpu, ListOrdered, ShieldAlert, Sparkles, Check } from "lucide-react";
+import { Cpu, ListOrdered, Sparkles, Check } from "lucide-react";
 import { DirectAnswerLead } from "@/components/aeo/DirectAnswerLead";
 import { getIndustryBySlug } from "@/lib/industries";
 import { RevealOnScroll } from "@/components/layout/RevealOnScroll";
@@ -13,6 +13,7 @@ import { OperationalFlowPreview } from "@/components/operational-proof/Operation
 import { InventoryLedgerPreview } from "@/components/industry/InventoryLedgerPreview";
 import { SparePartsPhase1Sections } from "@/components/industry/SparePartsPhase1Sections";
 import { FaqAccordion } from "@/components/ui/FaqAccordion";
+import { IconCard } from "@/components/ui/IconCard";
 
 export function IndustryClient({ slug }: { slug: string }) {
   const data = getIndustryBySlug(slug);
@@ -57,23 +58,17 @@ export function IndustryClient({ slug }: { slug: string }) {
           <Text variant="body-base" className="mb-8 max-w-prose text-pretty text-muted">
             Specific failure modes for {data.name.toLowerCase()} teams, not generic “efficiency” language.
           </Text>
-          <div className="grid gap-6 md:gap-8 lg:grid-cols-2">
-            {data.painPoints.map((p) => (
-              <div
+          <div className="divide-y divide-border border-t border-border">
+            {data.painPoints.map((p, i) => (
+              <IconCard
                 key={p.title}
-                className="rounded-2xl border border-border bg-card p-6 md:p-8 transition-colors group/pain hover:border-teal/35 shadow-sm"
-              >
-                <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-xl border border-border bg-surface transition-colors group-hover/pain:border-teal/25 group-hover/pain:bg-teal-dim">
-                  <ShieldAlert
-                    size={20}
-                    className="text-teal opacity-80 transition-opacity group-hover/pain:opacity-100"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <h3 className="text-base font-semibold text-foreground">{p.title}</h3>
-                  <p className="prose-justify text-sm leading-relaxed text-muted">{p.description}</p>
-                </div>
-              </div>
+                variant="list"
+                index={i + 1}
+                label={p.title}
+                description={p.description}
+                divided={false}
+                as="article"
+              />
             ))}
           </div>
         </section>
@@ -119,17 +114,17 @@ export function IndustryClient({ slug }: { slug: string }) {
             </Text>
           </div>
         </div>
-        <ol className="space-y-4">
+        <ol className="divide-y divide-border border-t border-border">
           {data.systemFlowSteps.map((step, idx) => (
-            <li key={step.title} className="rounded-2xl border border-border bg-card p-6 md:p-8 flex flex-col sm:flex-row gap-5 shadow-sm">
-              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-blue-light text-sm font-bold text-blue border border-blue/10">
-                {idx + 1}
-              </span>
-              <div>
-                <h3 className="text-base font-semibold text-foreground">{step.title}</h3>
-                <p className="prose-justify mt-2 text-sm leading-relaxed text-muted">{step.detail}</p>
-              </div>
-            </li>
+            <IconCard
+              key={step.title}
+              variant="list"
+              as="li"
+              index={idx + 1}
+              label={step.title}
+              description={step.detail}
+              divided={idx > 0}
+            />
           ))}
         </ol>
       </section>
@@ -147,7 +142,7 @@ export function IndustryClient({ slug }: { slug: string }) {
         <div className="grid gap-6 lg:grid-cols-3 md:gap-8">
           <div className="space-y-3">
             <p className="text-xs font-semibold uppercase tracking-wide text-muted-2">Dashboard</p>
-            <div className="overflow-hidden rounded-2xl border border-border bg-[#f5f5f7] shadow-[var(--shadow-card)]">
+            <div className="overflow-hidden rounded-2xl border border-border bg-[#f5f5f7] shadow-card">
               <div className="max-h-[min(420px,55vh)] overflow-auto">
                 <div className="min-h-[360px] min-w-[520px] scale-[0.72] origin-top-left md:min-h-[400px] md:min-w-[720px] md:scale-[0.78]">
                   <DashboardLight />

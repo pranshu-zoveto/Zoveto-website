@@ -44,4 +44,21 @@ describe("home landing critical path (LCP)", () => {
     assert.ok(fs.existsSync(path.join(process.cwd(), "components/sections/dashboard-scroll-desktop.tsx")));
     assert.ok(!fs.existsSync(path.join(process.cwd(), "components/sections/DashboardScrollSection.tsx")));
   });
+
+  it("keeps product-demo GSAP off the inline reel and page entry", () => {
+    const page = readPageSource();
+    assert.match(page, /ProductDemoReelPinned/);
+    const reel = fs.readFileSync(
+      path.join(process.cwd(), "components/sections/home/ProductDemoReel.tsx"),
+      "utf8",
+    );
+    assert.ok(!reel.includes("gsap") && !reel.includes("ScrollTrigger"));
+    const wrapper = fs.readFileSync(
+      path.join(process.cwd(), "components/sections/home/ProductDemoReelPinned.tsx"),
+      "utf8",
+    );
+    assert.ok(!wrapper.includes('from "gsap"') && !wrapper.includes("from 'gsap'"));
+    assert.ok(!wrapper.includes("ScrollTrigger"));
+    assert.match(wrapper, /ProductDemoReelPinnedDesktop/);
+  });
 });

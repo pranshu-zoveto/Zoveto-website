@@ -10,7 +10,7 @@ import { FluidMarketingSection, MarketingHeroFeather } from "@/components/layout
 import { HomeHeroLcpShell } from "@/components/sections/home/HomeHeroLcpShell";
 import { DashboardDesktopLoadingFallback } from "@/components/sections/home/DashboardDesktopLoadingFallback";
 const LogoStrip = dynamic(() => import("@/components/sections/LogoStrip"));
-const ProductDemoReel = dynamic(() => import("@/components/sections/home/ProductDemoReel"), {
+const ProductDemoReel = dynamic(() => import("@/components/sections/home/ProductDemoReelPinned"), {
   loading: () => (
     <div className="mx-auto aspect-video w-full max-w-content px-4 sm:px-6" aria-hidden />
   ),

@@ -514,7 +514,7 @@ export function ModuleClient({ slug }: { slug: string }) {
             </motion.div>
 
             <motion.div
-              className="relative border-t border-border bg-[rgba(251,251,253,0.82)] p-4 sm:p-6 lg:border-l lg:border-t-0"
+              className="relative p-4 sm:p-6 lg:pl-8"
               variants={reveal}
             >
               <ModuleCommandSurface moduleName={data.name} showcase={showcase} />

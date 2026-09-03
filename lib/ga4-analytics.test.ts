@@ -7,7 +7,10 @@ describe("GA4 loading", () => {
   it("does not hardcode GoogleAnalytics in root layout", () => {
     const layout = fs.readFileSync(path.join(process.cwd(), "app/layout.tsx"), "utf8");
     assert.doesNotMatch(layout, /GoogleAnalytics/);
-    assert.doesNotMatch(layout, /G-TJP3DXS9MG/);
+    assert.doesNotMatch(layout, /G-XRM9Y716DJ/);
+    assert.doesNotMatch(layout, /googletagmanager\.com\/gtag\/js/);
+    assert.doesNotMatch(layout, /GTM-MT5G5NCL/);
+    assert.doesNotMatch(layout, /googletagmanager\.com\/gtm\.js/);
     assert.doesNotMatch(layout, /@next\/third-parties\/google/);
   });
 
@@ -16,6 +19,21 @@ describe("GA4 loading", () => {
       path.join(process.cwd(), "components/tracking/ConditionalAnalyticsLoader.tsx"),
       "utf8",
     );
-    assert.match(loader, /NEXT_PUBLIC_GA_MEASUREMENT_ID/);
+    assert.match(loader, /getGa4MeasurementId/);
+    assert.match(loader, /googletagmanager\.com\/gtag\/js/);
+    const idSource = fs.readFileSync(path.join(process.cwd(), "lib/ga4-measurement-id.ts"), "utf8");
+    assert.match(idSource, /G-XRM9Y716DJ/);
+  });
+
+  it("loads GTM through consent-gated ConditionalGtmLoader", () => {
+    const loader = fs.readFileSync(
+      path.join(process.cwd(), "components/tracking/ConditionalGtmLoader.tsx"),
+      "utf8",
+    );
+    assert.match(loader, /getGtmContainerId/);
+    assert.match(loader, /googletagmanager\.com\/gtm\.js/);
+    assert.doesNotMatch(loader, /G-XRM9Y716DJ/);
+    const idSource = fs.readFileSync(path.join(process.cwd(), "lib/gtm-container-id.ts"), "utf8");
+    assert.match(idSource, /GTM-MT5G5NCL/);
   });
 });

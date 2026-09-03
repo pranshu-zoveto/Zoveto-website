@@ -76,7 +76,7 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-border bg-muted/25 text-foreground">
+    <footer className="bg-muted/25 text-foreground">
       <div className="container mx-auto max-w-content px-4 pt-14 sm:px-6 sm:pt-16 md:pt-18">
         <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,2.2fr)] lg:gap-16">
           <div className="max-w-xl">
@@ -113,7 +113,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="footer-mega-wordmark relative mt-12 overflow-hidden border-t border-border pb-1 pt-8 md:mt-14 md:pt-10 md:pb-2">
+        <div className="footer-mega-wordmark relative mt-12 overflow-hidden pb-1 pt-8 md:mt-14 md:pt-10 md:pb-2">
           <p
             className={cn(
               "pointer-events-none select-none flex items-baseline justify-center gap-[0.12em]",

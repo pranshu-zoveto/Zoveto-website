@@ -1,0 +1,50 @@
+[
+  {
+    "path": "/implementation",
+    "w": 1440,
+    "status": 200,
+    "h1": "43.2px",
+    "h1count": 1,
+    "extraErrors": []
+  },
+  {
+    "path": "/about",
+    "w": 1440,
+    "status": 200,
+    "h1": "80.64px",
+    "h1count": 1,
+    "extraErrors": []
+  },
+  {
+    "path": "/team",
+    "w": 1440,
+    "status": 200,
+    "h1": "60px",
+    "h1count": 1,
+    "extraErrors": []
+  },
+  {
+    "path": "/product",
+    "w": 1440,
+    "status": 200,
+    "h1": "54.72px",
+    "h1count": 1,
+    "extraErrors": []
+  },
+  {
+    "path": "/implementation",
+    "w": 390,
+    "status": 200,
+    "h1": "28px",
+    "h1count": 1,
+    "extraErrors": []
+  },
+  {
+    "path": "/about",
+    "w": 390,
+    "status": 200,
+    "h1": "42.4px",
+    "h1count": 1,
+    "extraErrors": []
+  }
+]

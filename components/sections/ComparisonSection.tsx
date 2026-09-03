@@ -43,21 +43,23 @@ export function ComparisonSection() {
 
         <RevealOnScroll className="lg:col-span-7">
           <div className="reveal-item">
-            {COMPARISON.map((item, i) => (
+            <div className="flex flex-col gap-6">
+            {COMPARISON.map((item) => (
               <div
                 key={item.feature}
-                className={`grid grid-cols-2 ${i > 0 ? "border-t border-border" : ""}`}
+                className="grid grid-cols-2 gap-x-8"
               >
-                <div className="py-5 pr-6">
+                <div>
                   <p className="text-xs font-semibold uppercase tracking-wide text-muted-2">{item.feature}</p>
                   <p className="mt-1 text-sm font-medium leading-snug text-muted">{item.old}</p>
                 </div>
-                <div className="border-l border-border py-5 pl-6">
+                <div>
                   <p className="text-xs font-semibold uppercase tracking-wide text-foreground">{item.feature}</p>
                   <p className="mt-1 text-sm font-semibold leading-snug text-foreground">{item.zoveto}</p>
                 </div>
               </div>
             ))}
+            </div>
 
             <div className="mt-8 grid grid-cols-2 gap-x-6">
               <p className="text-xs font-medium uppercase tracking-wide text-muted-2">

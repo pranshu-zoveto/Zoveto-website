@@ -26,11 +26,13 @@ import TallyVsZovetoCloudErpIndia from "@/app/(marketing)/blog/_posts/tally-vs-z
 import ZohoOneVsZovetoArchitecture from "@/app/(marketing)/blog/_posts/zoho-one-vs-zoveto-architecture";
 import GstErpSoftwareIndia2026 from "@/app/(marketing)/blog/_posts/gst-erp-software-india-2026";
 import CostOfDisconnectedSoftwareIndiaSmb from "@/app/(marketing)/blog/_posts/cost-of-disconnected-software-india-smb";
+import CosmeticsFmcgManufacturingSoftware2026 from "@/app/(marketing)/blog/_posts/cosmetics-fmcg-manufacturing-software-2026";
 import prisma from "@/lib/db";
 import { marked } from "marked";
 
 /** Maps slug → the corresponding content component. Add every new post here. */
 const POST_CONTENT_MAP: Record<string, ComponentType> = {
+  "cosmetics-fmcg-manufacturing-software-2026": CosmeticsFmcgManufacturingSoftware2026,
   "cost-of-disconnected-software-india-smb": CostOfDisconnectedSoftwareIndiaSmb,
   "gst-erp-software-india-2026": GstErpSoftwareIndia2026,
   "what-is-company-operating-system": WhatIsCompanyOperatingSystem,
@@ -39,6 +41,38 @@ const POST_CONTENT_MAP: Record<string, ComponentType> = {
 };
 
 const POST_FAQS: Record<string, readonly FaqSchemaInput[]> = {
+  "cosmetics-fmcg-manufacturing-software-2026": [
+    {
+      question: "What does Zoveto's FMCG & Cosmetics module actually include today?",
+      answer:
+        "A formula builder with an INCI ingredient database, sample management, live BOM costing, a CoA vault, stability testing, a packaging catalog, and multi-brand order management, built and working, not on a roadmap.",
+    },
+    {
+      question: "How does Zoveto handle batch traceability for audits?",
+      answer:
+        "Every formula is versioned, and a batch's Certificate of Analysis stays attached to that specific production run, so tracing raw material to finished batch does not mean digging through a shared drive.",
+    },
+    {
+      question: "Can Zoveto keep multiple client brands separate for a contract manufacturer?",
+      answer:
+        "Client Brands, Direct Orders, and an In-House Products catalog keep each brand's formulas, orders, and production separated at the data layer, not a filter in the interface.",
+    },
+    {
+      question: "How is batch cost actually calculated?",
+      answer:
+        "BOM costing recalculates from actual ingredient unit cost every time a formula is priced, so a quote reflects this week's raw material and packaging cost, not a number from three months ago.",
+    },
+    {
+      question: "What happens after a sample is approved?",
+      answer:
+        "An approved sample converts directly into a sized BOM and a production run in one action, no re-keying the formula into a separate production system.",
+    },
+    {
+      question: "Who is this built for?",
+      answer:
+        "Contract and private-label cosmetics manufacturers running multiple client brands at once, and cosmetic brand owners who need cost, formula, and order visibility even when a third party manufactures for them.",
+    },
+  ],
   "cost-of-disconnected-software-india-smb": [
     {
       question: "How do I calculate the real cost of disconnected software for my business?",

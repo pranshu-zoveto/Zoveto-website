@@ -17,6 +17,11 @@ export const SUBPROCESSORS: readonly Subprocessor[] = [
     region: "Global",
   },
   {
+    provider: "Google Tag Manager",
+    purpose: "Tag loading and marketing/measurement tags on the marketing site (when analytics consent is enabled)",
+    region: "Global",
+  },
+  {
     provider: "Microsoft Clarity",
     purpose:
       "Website session replay, heatmaps, and behavioral diagnostics on the marketing site (when analytics consent is enabled)",

@@ -101,7 +101,7 @@ export function ZeroClientTrustSection({ context = "home", className }: ZeroClie
               </div>
             </div>
 
-            <div className="reveal-item min-w-0 border-t border-border/60 pt-6 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0 xl:pl-10">
+            <div className="reveal-item min-w-0 pt-2 lg:pl-8 lg:pt-0 xl:pl-10">
               <div className="mb-4 flex flex-wrap items-end justify-between gap-x-4 gap-y-2">
                 <p className={metaLabelClass}>Trust checks</p>
                 <p className="text-xs font-medium leading-snug text-muted">4 signals before rollout</p>

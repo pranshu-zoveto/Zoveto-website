@@ -132,7 +132,8 @@ Copy from `.env.example`. Public vars must match **HTTPS** origins (no trailing 
 | `NEXT_PUBLIC_COS_APP_URL` | Yes | Product SPA / app origin |
 | `COS_API_BASE_URL` | Yes | Server-side COS base including `/api` |
 | `WEB_CONTACT_SECRET` | If COS expects it | Same value as COS `WEB_CONTACT_SECRET` |
-| `NEXT_PUBLIC_GA_MEASUREMENT_ID` | Optional | Loads only after cookie consent |
+| `NEXT_PUBLIC_GA_MEASUREMENT_ID` | Optional | Defaults to `G-XRM9Y716DJ`; loads only after cookie consent |
+| `NEXT_PUBLIC_GTM_ID` | Optional | Defaults to `GTM-MT5G5NCL`; loads only after cookie consent |
 | `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` | Optional | Search Console |
 | `NEXT_PUBLIC_CLARITY_PROJECT_ID` | Optional | Loads only after analytics consent |
 | `SMTP_*` / `MAIL_FROM` | Optional | Inward notifications via `server-mail`; omit if unused |

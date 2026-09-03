@@ -1,0 +1,183 @@
+{
+  "fonts": [
+    {
+      "path": "/",
+      "width": 1440,
+      "bodyFamily": "Geist, \"Geist Fallback\", -apple-system, \"system-ui\", Roboto, sans-serif, -apple-system, \"system-ui\", \"Segoe UI\", Roboto, sans-serif",
+      "h1Family": "Geist, \"Geist Fallback\", -apple-system, \"system-ui\", Roboto, sans-serif, -apple-system, \"system-ui\", \"Segoe UI\", Roboto, sans-serif",
+      "h1Size": "44px",
+      "monoFamily": "\"Geist Mono\", \"Geist Mono Fallback\", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace, ui-monospace, SFMono-Regular, Menlo, Consolas, monospace",
+      "htmlClass": "scroll-smooth has-custom-cursor",
+      "bodyClass": "__variable_629dad __variable_3cd4b9 font-sans antialiased"
+    },
+    {
+      "path": "/",
+      "width": 390,
+      "bodyFamily": "Geist, \"Geist Fallback\", -apple-system, \"system-ui\", Roboto, sans-serif, -apple-system, \"system-ui\", \"Segoe UI\", Roboto, sans-serif",
+      "h1Family": "Geist, \"Geist Fallback\", -apple-system, \"system-ui\", Roboto, sans-serif, -apple-system, \"system-ui\", \"Segoe UI\", Roboto, sans-serif",
+      "h1Size": "26.4px",
+      "monoFamily": "\"Geist Mono\", \"Geist Mono Fallback\", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace, ui-monospace, SFMono-Regular, Menlo, Consolas, monospace",
+      "htmlClass": "scroll-smooth",
+      "bodyClass": "__variable_629dad __variable_3cd4b9 font-sans antialiased"
+    },
+    {
+      "path": "/pricing",
+      "width": 1440,
+      "bodyFamily": "Geist, \"Geist Fallback\", -apple-system, \"system-ui\", Roboto, sans-serif, -apple-system, \"system-ui\", \"Segoe UI\", Roboto, sans-serif",
+      "h1Family": "Geist, \"Geist Fallback\", -apple-system, \"system-ui\", Roboto, sans-serif, -apple-system, \"system-ui\", \"Segoe UI\", Roboto, sans-serif",
+      "h1Size": "54.72px",
+      "monoFamily": "\"Geist Mono\", \"Geist Mono Fallback\", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace, ui-monospace, SFMono-Regular, Menlo, Consolas, monospace",
+      "htmlClass": "scroll-smooth has-custom-cursor",
+      "bodyClass": "__variable_629dad __variable_3cd4b9 font-sans antialiased"
+    },
+    {
+      "path": "/security",
+      "width": 1440,
+      "bodyFamily": "Geist, \"Geist Fallback\", -apple-system, \"system-ui\", Roboto, sans-serif, -apple-system, \"system-ui\", \"Segoe UI\", Roboto, sans-serif",
+      "h1Family": "Geist, \"Geist Fallback\", -apple-system, \"system-ui\", Roboto, sans-serif, -apple-system, \"system-ui\", \"Segoe UI\", Roboto, sans-serif",
+      "h1Size": "36px",
+      "monoFamily": "\"Geist Mono\", \"Geist Mono Fallback\", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace, ui-monospace, SFMono-Regular, Menlo, Consolas, monospace",
+      "htmlClass": "scroll-smooth has-custom-cursor",
+      "bodyClass": "__variable_629dad __variable_3cd4b9 font-sans antialiased"
+    },
+    {
+      "path": "/faq",
+      "width": 1440,
+      "bodyFamily": "Geist, \"Geist Fallback\", -apple-system, \"system-ui\", Roboto, sans-serif, -apple-system, \"system-ui\", \"Segoe UI\", Roboto, sans-serif",
+      "h1Family": "Geist, \"Geist Fallback\", -apple-system, \"system-ui\", Roboto, sans-serif, -apple-system, \"system-ui\", \"Segoe UI\", Roboto, sans-serif",
+      "h1Size": "16px",
+      "monoFamily": "\"Geist Mono\", \"Geist Mono Fallback\", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace, ui-monospace, SFMono-Regular, Menlo, Consolas, monospace",
+      "htmlClass": "scroll-smooth has-custom-cursor",
+      "bodyClass": "__variable_629dad __variable_3cd4b9 font-sans antialiased"
+    },
+    {
+      "path": "/compare/vyapar-vs-zoveto",
+      "width": 1440,
+      "bodyFamily": "Geist, \"Geist Fallback\", -apple-system, \"system-ui\", Roboto, sans-serif, -apple-system, \"system-ui\", \"Segoe UI\", Roboto, sans-serif",
+      "h1Family": "Geist, \"Geist Fallback\", -apple-system, \"system-ui\", Roboto, sans-serif, -apple-system, \"system-ui\", \"Segoe UI\", Roboto, sans-serif",
+      "h1Size": "43.2px",
+      "monoFamily": "\"Geist Mono\", \"Geist Mono Fallback\", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace, ui-monospace, SFMono-Regular, Menlo, Consolas, monospace",
+      "htmlClass": "scroll-smooth has-custom-cursor",
+      "bodyClass": "__variable_629dad __variable_3cd4b9 font-sans antialiased"
+    },
+    {
+      "path": "/modules/procurement",
+      "width": 1440,
+      "bodyFamily": "Geist, \"Geist Fallback\", -apple-system, \"system-ui\", Roboto, sans-serif, -apple-system, \"system-ui\", \"Segoe UI\", Roboto, sans-serif",
+      "h1Family": null,
+      "h1Size": null,
+      "monoFamily": "\"Geist Mono\", \"Geist Mono Fallback\", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace, ui-monospace, SFMono-Regular, Menlo, Consolas, monospace",
+      "htmlClass": "scroll-smooth has-custom-cursor",
+      "bodyClass": "__variable_629dad __variable_3cd4b9 font-sans antialiased"
+    }
+  ],
+  "pages": [
+    {
+      "path": "/",
+      "width": 1440,
+      "status": 200
+    },
+    {
+      "path": "/",
+      "width": 390,
+      "status": 200
+    },
+    {
+      "path": "/pricing",
+      "width": 1440,
+      "status": 200
+    },
+    {
+      "path": "/security",
+      "width": 1440,
+      "status": 200
+    },
+    {
+      "path": "/faq",
+      "width": 1440,
+      "status": 200
+    },
+    {
+      "path": "/compare/vyapar-vs-zoveto",
+      "width": 1440,
+      "status": 200
+    },
+    {
+      "path": "/modules/procurement",
+      "width": 1440,
+      "status": 200
+    }
+  ],
+  "console": [
+    {
+      "path": "/",
+      "width": 1440,
+      "text": "Loading the script 'https://cdn.razorpay.com/static/cx/razorpay-risk-detection/bundle.js' violates the following Content Security Policy directive: \"script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://www.clarity.ms https://*.posthog.com https://va.vercel-scripts.com https://checkout.razorpay.com\". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback. The action has been blocked."
+    },
+    {
+      "path": "/",
+      "width": 1440,
+      "text": "Loading the script 'https://cdn.razorpay.com/static/cx/razorpay-risk-detection/bundle.js' violates the following Content Security Policy directive: \"script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://www.clarity.ms https://*.posthog.com https://va.vercel-scripts.com https://checkout.razorpay.com\". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback. The action has been blocked."
+    },
+    {
+      "path": "/",
+      "width": 390,
+      "text": "Loading the script 'https://cdn.razorpay.com/static/cx/razorpay-risk-detection/bundle.js' violates the following Content Security Policy directive: \"script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://www.clarity.ms https://*.posthog.com https://va.vercel-scripts.com https://checkout.razorpay.com\". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback. The action has been blocked."
+    },
+    {
+      "path": "/",
+      "width": 390,
+      "text": "Loading the script 'https://cdn.razorpay.com/static/cx/razorpay-risk-detection/bundle.js' violates the following Content Security Policy directive: \"script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://www.clarity.ms https://*.posthog.com https://va.vercel-scripts.com https://checkout.razorpay.com\". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback. The action has been blocked."
+    },
+    {
+      "path": "/pricing",
+      "width": 1440,
+      "text": "Loading the script 'https://cdn.razorpay.com/static/cx/razorpay-risk-detection/bundle.js' violates the following Content Security Policy directive: \"script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://www.clarity.ms https://*.posthog.com https://va.vercel-scripts.com https://checkout.razorpay.com\". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback. The action has been blocked."
+    },
+    {
+      "path": "/pricing",
+      "width": 1440,
+      "text": "Loading the script 'https://cdn.razorpay.com/static/cx/razorpay-risk-detection/bundle.js' violates the following Content Security Policy directive: \"script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://www.clarity.ms https://*.posthog.com https://va.vercel-scripts.com https://checkout.razorpay.com\". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback. The action has been blocked."
+    },
+    {
+      "path": "/security",
+      "width": 1440,
+      "text": "Loading the script 'https://cdn.razorpay.com/static/cx/razorpay-risk-detection/bundle.js' violates the following Content Security Policy directive: \"script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://www.clarity.ms https://*.posthog.com https://va.vercel-scripts.com https://checkout.razorpay.com\". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback. The action has been blocked."
+    },
+    {
+      "path": "/security",
+      "width": 1440,
+      "text": "Loading the script 'https://cdn.razorpay.com/static/cx/razorpay-risk-detection/bundle.js' violates the following Content Security Policy directive: \"script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://www.clarity.ms https://*.posthog.com https://va.vercel-scripts.com https://checkout.razorpay.com\". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback. The action has been blocked."
+    },
+    {
+      "path": "/faq",
+      "width": 1440,
+      "text": "Loading the script 'https://cdn.razorpay.com/static/cx/razorpay-risk-detection/bundle.js' violates the following Content Security Policy directive: \"script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://www.clarity.ms https://*.posthog.com https://va.vercel-scripts.com https://checkout.razorpay.com\". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback. The action has been blocked."
+    },
+    {
+      "path": "/faq",
+      "width": 1440,
+      "text": "Loading the script 'https://cdn.razorpay.com/static/cx/razorpay-risk-detection/bundle.js' violates the following Content Security Policy directive: \"script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://www.clarity.ms https://*.posthog.com https://va.vercel-scripts.com https://checkout.razorpay.com\". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback. The action has been blocked."
+    },
+    {
+      "path": "/compare/vyapar-vs-zoveto",
+      "width": 1440,
+      "text": "Loading the script 'https://cdn.razorpay.com/static/cx/razorpay-risk-detection/bundle.js' violates the following Content Security Policy directive: \"script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://www.clarity.ms https://*.posthog.com https://va.vercel-scripts.com https://checkout.razorpay.com\". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback. The action has been blocked."
+    },
+    {
+      "path": "/compare/vyapar-vs-zoveto",
+      "width": 1440,
+      "text": "Loading the script 'https://cdn.razorpay.com/static/cx/razorpay-risk-detection/bundle.js' violates the following Content Security Policy directive: \"script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://www.clarity.ms https://*.posthog.com https://va.vercel-scripts.com https://checkout.razorpay.com\". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback. The action has been blocked."
+    },
+    {
+      "path": "/modules/procurement",
+      "width": 1440,
+      "text": "Loading the script 'https://cdn.razorpay.com/static/cx/razorpay-risk-detection/bundle.js' violates the following Content Security Policy directive: \"script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://www.clarity.ms https://*.posthog.com https://va.vercel-scripts.com https://checkout.razorpay.com\". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback. The action has been blocked."
+    },
+    {
+      "path": "/modules/procurement",
+      "width": 1440,
+      "text": "Loading the script 'https://cdn.razorpay.com/static/cx/razorpay-risk-detection/bundle.js' violates the following Content Security Policy directive: \"script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://www.clarity.ms https://*.posthog.com https://va.vercel-scripts.com https://checkout.razorpay.com\". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback. The action has been blocked."
+    }
+  ]
+}

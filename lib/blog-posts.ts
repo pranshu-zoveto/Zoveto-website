@@ -19,6 +19,23 @@ export interface BlogPost {
 /** All published blog posts. Add new entries at the TOP of this array (newest first). */
 export const BLOG_POSTS: BlogPost[] = [
   {
+    slug: "cosmetics-fmcg-manufacturing-software-2026",
+    title: "Cosmetics Manufacturing Software: 8 Operational Gaps Costing You Margin in 2026",
+    subtitle: "Compliance documentation, batch traceability, and real batch cost, what's actually broken.",
+    excerpt:
+      "Eight problems keep showing up in cosmetics and FMCG manufacturing: fragmented compliance documents, batch traceability under audit pressure, and real batch cost you only discover after quoting. Here's what's broken, and what to look for in software that fixes it.",
+    date: "2026-08-17",
+    readingTime: "10 min read",
+    category: "Industry",
+    tags: [
+      "cosmetics manufacturing software",
+      "FMCG ERP",
+      "cosmetics compliance",
+      "batch traceability",
+      "contract manufacturing",
+    ],
+  },
+  {
     slug: "cost-of-disconnected-software-india-smb",
     title: "Why SMBs Lose ₹6.5 Lakh Every Year to Disconnected Software",
     subtitle: "Stockouts, missed leads, reconciliation, and GST errors add up fast.",

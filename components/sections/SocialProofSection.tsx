@@ -92,7 +92,7 @@ export function SocialProofSection() {
                 {"\u201D"}
               </p>
 
-              <div className="mt-auto flex items-center gap-4 border-t border-border pt-8">
+              <div className="mt-auto flex items-center gap-4 pt-8">
                 <div
                   className={cn(
                     "flex h-12 w-12 items-center justify-center rounded-full font-display text-lg text-card",
@@ -110,7 +110,7 @@ export function SocialProofSection() {
           ))}
         </div>
 
-        <div className="overflow-hidden border-y border-border py-12">
+        <div className="overflow-hidden py-12">
           <div className="flex flex-wrap items-center justify-center gap-x-16 gap-y-6 opacity-70 md:gap-x-24">
             {doubled.map((item, i) => (
               <span

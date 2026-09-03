@@ -1,0 +1,246 @@
+[
+  {
+    "width": 1024,
+    "status": 200,
+    "frames": [
+      {
+        "frac": 0.02,
+        "y": 117,
+        "clip": "0px",
+        "rail": 363.68,
+        "visiblePanels": [],
+        "collisions": []
+      },
+      {
+        "frac": 0.22,
+        "y": 1287,
+        "clip": "363.68px",
+        "rail": 363.68,
+        "visiblePanels": [
+          {
+            "opacity": 0.5583,
+            "left": 693,
+            "right": 1020,
+            "width": 328
+          }
+        ],
+        "collisions": []
+      },
+      {
+        "frac": 0.38,
+        "y": 2223,
+        "clip": "363.68px",
+        "rail": 363.68,
+        "visiblePanels": [
+          {
+            "opacity": 0.8392,
+            "left": 685,
+            "right": 1013,
+            "width": 328
+          }
+        ],
+        "collisions": []
+      },
+      {
+        "frac": 0.55,
+        "y": 3218,
+        "clip": "363.68px",
+        "rail": 363.68,
+        "visiblePanels": [
+          {
+            "opacity": 0.9894,
+            "left": 681,
+            "right": 1008,
+            "width": 328
+          }
+        ],
+        "collisions": []
+      }
+    ],
+    "collisions": [],
+    "consoleErrors": []
+  },
+  {
+    "width": 1280,
+    "status": 200,
+    "frames": [
+      {
+        "frac": 0.02,
+        "y": 117,
+        "clip": "0px",
+        "rail": 436,
+        "visiblePanels": [],
+        "collisions": []
+      },
+      {
+        "frac": 0.22,
+        "y": 1287,
+        "clip": "436px",
+        "rail": 436,
+        "visiblePanels": [
+          {
+            "opacity": 0.5627,
+            "left": 876,
+            "right": 1276,
+            "width": 400
+          }
+        ],
+        "collisions": []
+      },
+      {
+        "frac": 0.38,
+        "y": 2223,
+        "clip": "436px",
+        "rail": 436,
+        "visiblePanels": [
+          {
+            "opacity": 0.8437,
+            "left": 868,
+            "right": 1268,
+            "width": 400
+          }
+        ],
+        "collisions": []
+      },
+      {
+        "frac": 0.55,
+        "y": 3218,
+        "clip": "436px",
+        "rail": 436,
+        "visiblePanels": [
+          {
+            "opacity": 0.9903,
+            "left": 864,
+            "right": 1264,
+            "width": 400
+          }
+        ],
+        "collisions": []
+      }
+    ],
+    "collisions": [],
+    "consoleErrors": []
+  },
+  {
+    "width": 1440,
+    "status": 200,
+    "frames": [
+      {
+        "frac": 0.02,
+        "y": 117,
+        "clip": "0px",
+        "rail": 436,
+        "visiblePanels": [],
+        "collisions": []
+      },
+      {
+        "frac": 0.22,
+        "y": 1287,
+        "clip": "436px",
+        "rail": 436,
+        "visiblePanels": [
+          {
+            "opacity": 0.5857,
+            "left": 1036,
+            "right": 1436,
+            "width": 400
+          }
+        ],
+        "collisions": []
+      },
+      {
+        "frac": 0.38,
+        "y": 2223,
+        "clip": "436px",
+        "rail": 436,
+        "visiblePanels": [
+          {
+            "opacity": 0.8442,
+            "left": 1028,
+            "right": 1428,
+            "width": 400
+          }
+        ],
+        "collisions": []
+      },
+      {
+        "frac": 0.55,
+        "y": 3218,
+        "clip": "436px",
+        "rail": 436,
+        "visiblePanels": [
+          {
+            "opacity": 0.9906,
+            "left": 1024,
+            "right": 1424,
+            "width": 400
+          }
+        ],
+        "collisions": []
+      }
+    ],
+    "collisions": [],
+    "consoleErrors": []
+  },
+  {
+    "width": 1920,
+    "status": 200,
+    "frames": [
+      {
+        "frac": 0.02,
+        "y": 117,
+        "clip": "0px",
+        "rail": 436,
+        "visiblePanels": [],
+        "collisions": []
+      },
+      {
+        "frac": 0.22,
+        "y": 1287,
+        "clip": "436px",
+        "rail": 436,
+        "visiblePanels": [
+          {
+            "opacity": 0.559,
+            "left": 1516,
+            "right": 1916,
+            "width": 400
+          }
+        ],
+        "collisions": []
+      },
+      {
+        "frac": 0.38,
+        "y": 2223,
+        "clip": "436px",
+        "rail": 436,
+        "visiblePanels": [
+          {
+            "opacity": 0.8502,
+            "left": 1508,
+            "right": 1908,
+            "width": 400
+          }
+        ],
+        "collisions": []
+      },
+      {
+        "frac": 0.55,
+        "y": 3218,
+        "clip": "436px",
+        "rail": 436,
+        "visiblePanels": [
+          {
+            "opacity": 0.9911,
+            "left": 1504,
+            "right": 1904,
+            "width": 400
+          }
+        ],
+        "collisions": []
+      }
+    ],
+    "collisions": [],
+    "consoleErrors": []
+  }
+]

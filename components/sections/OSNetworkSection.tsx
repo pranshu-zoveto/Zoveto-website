@@ -15,7 +15,7 @@ export function OSNetworkSection() {
 
   return (
     <motion.section
-      className="hidden md:block bg-background border-y border-border py-section-mobile md:py-section scroll-mt-24"
+      className="hidden md:block bg-background py-section-mobile md:py-section scroll-mt-24"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}

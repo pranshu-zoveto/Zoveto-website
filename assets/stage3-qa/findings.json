@@ -1,0 +1,34 @@
+[
+  {
+    "path": "/signup",
+    "width": 1440,
+    "box": {
+      "maxWidth": "1152px",
+      "width": 1152
+    }
+  },
+  {
+    "path": "/signup",
+    "width": 390,
+    "box": {
+      "maxWidth": "1152px",
+      "width": 390
+    }
+  },
+  {
+    "path": "/blog",
+    "width": 1440,
+    "box": {
+      "maxWidth": "1152px",
+      "width": 1152
+    }
+  },
+  {
+    "path": "/compare",
+    "width": 1440,
+    "box": {
+      "maxWidth": "1152px",
+      "width": 1104
+    }
+  }
+]

@@ -1,0 +1,25 @@
+{
+  "signup-1440": [
+    {
+      "text": "Request early access to Zoveto",
+      "size": "56px"
+    }
+  ],
+  "signup-390": [
+    {
+      "text": "Request early access to Zoveto",
+      "size": "36px"
+    }
+  ],
+  "system-1440": [
+    {
+      "text": "Run your entire company on one system.",
+      "size": "56px"
+    }
+  ],
+  "input": {
+    "h": "48px",
+    "radius": "12px",
+    "font": "16px"
+  }
+}

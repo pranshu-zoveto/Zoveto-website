@@ -2,15 +2,15 @@
 
 import React from "react";
 import Link from "next/link";
-import { ChevronRight, Factory, Scale, Warehouse, Users, Layers, UserCheck, Sparkles, Check, type LucideIcon } from "lucide-react";
+import { ChevronRight, Factory, Scale } from "lucide-react";
 import { PricingModuleGrid } from "@/components/pricing/PricingModuleGrid";
+import { PricingSuiteBanner } from "@/components/pricing/PricingSuiteBanner";
+import { PricingQuietOffers } from "@/components/pricing/PricingQuietOffers";
 import { Text } from "@/components/ui/Text";
 import { PricingFeatureComparison } from "@/components/pricing/PricingFeatureComparison";
 import BackgroundComponents from "@/components/ui/background-components";
 import { MarketingPageView } from "@/components/tracking/MarketingPageView";
 import { ZeroClientTrustSection } from "@/components/sections/ZeroClientTrustSection";
-import { formatInr } from "@/lib/pricing-display";
-import { MODULES, BUNDLES, type PricingBundle } from "@/lib/pricing-modules";
 import { getPublicIndustries } from "@/lib/industries";
 import { cn } from "@/lib/utils";
 
@@ -27,162 +27,6 @@ const COMPARE_LINKS = [
   { href: "/compare/gohighlevel-vs-zoveto", label: "GoHighLevel vs Zoveto" },
 ] as const;
 
-const MODULE_ICON_MAP: Record<string, LucideIcon> = {
-  wms: Warehouse,
-  crm: Users,
-  erp: Layers,
-  hrms: UserCheck,
-  intelligence: Sparkles,
-};
-
-
-// ─── Bundle card ─────────────────────────────────────────────────────────────
-
-function BundleCard({ bundle }: { bundle: PricingBundle }) {
-  return (
-    <div
-      className={cn(
-        "relative flex flex-col rounded-xl border bg-card px-6 pb-7 pt-6 shadow-card sm:px-7 sm:pb-8 sm:pt-7",
-        bundle.popular
-          ? "z-[1] border-blue/30 bg-blue-light/[0.10] ring-1 ring-blue/20"
-          : "border-border"
-      )}
-    >
-      {/* Popular badge */}
-      <div className="mb-3 flex h-7 items-center">
-        {bundle.popular ? (
-          <span className="inline-flex rounded-full bg-blue px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white">
-            Most Popular
-          </span>
-        ) : null}
-      </div>
-
-      {/* Name + tagline */}
-      <h3 className="text-lg font-bold tracking-tight text-foreground">{bundle.name}</h3>
-      <p className="mt-1 text-sm leading-snug text-muted">{bundle.tagline}</p>
-
-      {/* Module label */}
-      <div className="mt-3 inline-flex w-fit rounded-full border border-border/80 bg-surface-2/60 px-3 py-1 text-[11px] font-semibold tracking-wide text-muted">
-        {bundle.moduleLabel}
-      </div>
-
-      {/* Price */}
-      <div className="mt-5 mb-1">
-        <span className="text-4xl font-bold tracking-tight text-foreground">
-          {formatInr(bundle.monthlyPrice)}
-        </span>
-        <span className="ml-1 text-xl font-semibold text-muted">/mo</span>
-        <p className="mt-0.5 text-[11px] font-semibold uppercase tracking-widest text-muted-2">
-          Excl. GST · flat rate
-        </p>
-      </div>
-
-      {/* Savings badge */}
-      <div className="mb-5 mt-2">
-        <span className="inline-flex rounded-full border border-teal/20 bg-teal-dim px-2.5 py-1 text-xs font-medium text-teal">
-          Save {formatInr(bundle.savingsVsSeparate)}/mo vs separate modules
-        </span>
-      </div>
-
-      {/* CTA */}
-      <Link
-        href={bundle.ctaHref}
-        className={cn(
-          "mb-6 flex h-11 w-full items-center justify-center rounded-xl text-sm font-semibold transition-colors",
-          bundle.popular
-            ? "bg-blue text-white hover:bg-blue/90"
-            : "border border-border bg-card text-foreground hover:border-blue/30 hover:bg-blue-light"
-        )}
-      >
-        {bundle.ctaLabel}
-      </Link>
-
-      {/* Module list */}
-      <div className="border-t border-border pt-5">
-        <p className="mb-3 text-[11px] font-semibold uppercase tracking-label text-muted-2">
-          Included modules
-        </p>
-        <ul className="flex flex-col gap-2">
-          {bundle.moduleIds.map((mid) => {
-            const mod = MODULES.find((m) => m.id === mid);
-            if (!mod) return null;
-            const Icon = MODULE_ICON_MAP[mid] ?? Layers;
-            return (
-              <li key={mid} className="flex items-center gap-2">
-                <Check className="h-3.5 w-3.5 shrink-0 text-blue" strokeWidth={2.5} />
-                <span className="text-[13px] font-medium text-foreground">
-                  {mod.name}
-                </span>
-                <span className="text-[12px] text-muted">— {mod.tagline}</span>
-                <Icon className="ml-auto h-3.5 w-3.5 shrink-0 text-muted-2" strokeWidth={1.5} />
-              </li>
-            );
-          })}
-        </ul>
-      </div>
-    </div>
-  );
-}
-
-// ─── Enterprise card ──────────────────────────────────────────────────────────
-
-function EnterpriseCard() {
-  return (
-    <div className="flex flex-col rounded-xl border border-border bg-card px-6 pb-7 pt-6 shadow-card sm:px-7 sm:pb-8 sm:pt-7">
-      <div className="mb-3 flex h-7 items-center">
-        <span className="inline-flex rounded-full border border-border px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-muted-2">
-          Enterprise
-        </span>
-      </div>
-
-      <h3 className="text-lg font-bold tracking-tight text-foreground">Custom scope</h3>
-      <p className="mt-1 text-sm leading-snug text-muted">
-        Large teams, custom SLAs, on-premise options, and procurement-friendly contracts.
-      </p>
-
-      <div className="mt-3 inline-flex w-fit rounded-full border border-border/80 bg-surface-2/60 px-3 py-1 text-[11px] font-semibold tracking-wide text-muted">
-        30+ users · bespoke
-      </div>
-
-      <div className="mt-5 mb-1">
-        <div className="text-4xl font-bold tracking-tight text-foreground">Custom</div>
-        <p className="mt-0.5 text-[11px] font-semibold uppercase tracking-widest text-muted-2">
-          Scoped after discovery
-        </p>
-      </div>
-
-      <div className="mb-5 mt-2 min-h-[1.75rem]" aria-hidden />
-
-      <Link
-        href="/contact"
-        className="mb-6 flex h-11 w-full items-center justify-center rounded-xl border border-border bg-card text-sm font-semibold text-foreground transition-colors hover:border-blue/30 hover:bg-blue-light"
-      >
-        Contact us
-      </Link>
-
-      <div className="border-t border-border pt-5">
-        <p className="mb-3 text-[11px] font-semibold uppercase tracking-label text-muted-2">
-          What's included
-        </p>
-        <ul className="flex flex-col gap-2">
-          {[
-            "All Business OS modules",
-            "Custom SLAs & uptime commitments",
-            "Dedicated success partner",
-            "On-site training options",
-            "Custom integrations",
-          ].map((feat) => (
-            <li key={feat} className="flex items-center gap-2">
-              <Check className="h-3.5 w-3.5 shrink-0 text-muted-2" strokeWidth={2.5} />
-              <span className="text-[13px] font-medium text-foreground">{feat}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>
-  );
-}
-
 // ─── Main export ──────────────────────────────────────────────────────────────
 
 export function PricingClient() {
@@ -190,45 +34,49 @@ export function PricingClient() {
     <>
       <MarketingPageView eventName="pricing_view" />
 
-      {/* ── 1. Individual modules ─────────────────────────────────────────── */}
-      <section aria-labelledby="modules-heading" className="space-y-6 md:space-y-8">
-        <div className="text-center">
-          <h2 id="modules-heading" className="text-xl font-bold tracking-tight text-foreground sm:text-2xl">
-            Pick exactly what you need
+      {/* ── 1. Recommended suite ──────────────────────────────────────────── */}
+      <section aria-labelledby="suite-heading" className="space-y-5 md:space-y-6">
+        <div className="max-w-2xl">
+          <h2 id="suite-heading" className="text-xl font-bold tracking-tight text-foreground sm:text-2xl">
+            Start with the core stack
           </h2>
           <p className="mt-2 text-sm leading-relaxed text-muted">
-            Each module is independently purchasable. No bundle required.
+            Operations Suite is WMS, ERP, and CRM together, priced below buying them separately.
           </p>
         </div>
+        <PricingSuiteBanner />
+      </section>
 
+      {/* ── 2. Individual modules ─────────────────────────────────────────── */}
+      <section aria-labelledby="modules-heading" className="mt-12 space-y-5 md:mt-16 md:space-y-6">
+        <div className="max-w-2xl">
+          <h2 id="modules-heading" className="text-xl font-bold tracking-tight text-foreground sm:text-2xl">
+            Or buy a single module
+          </h2>
+          <p className="mt-2 text-sm leading-relaxed text-muted">
+            Each module is independently purchasable. ERP is the usual first add-on for finance and inventory.
+          </p>
+        </div>
         <PricingModuleGrid />
       </section>
 
-      {/* ── 2. Bundles + Enterprise ───────────────────────────────────────── */}
-      <section aria-labelledby="bundles-heading" className="space-y-6 md:space-y-8">
-        <div className="text-center">
+      {/* ── 3. Full stack + Enterprise ────────────────────────────────────── */}
+      <section aria-labelledby="bundles-heading" className="mt-12 space-y-5 md:mt-16 md:space-y-6">
+        <div className="max-w-2xl">
           <h2 id="bundles-heading" className="text-xl font-bold tracking-tight text-foreground sm:text-2xl">
-            Or save with a bundle
+            Full stack or custom scope
           </h2>
           <p className="mt-2 text-sm leading-relaxed text-muted">
-            Pre-packaged combinations at a better effective rate than buying separately.
+            Business OS is all five modules. Enterprise is scoped after discovery.
           </p>
         </div>
+        <PricingQuietOffers />
 
-        <div className="grid grid-cols-1 gap-5 md:grid-cols-3 md:gap-6">
-          {BUNDLES.map((bundle) => (
-            <BundleCard key={bundle.id} bundle={bundle} />
-          ))}
-          <EnterpriseCard />
-        </div>
-
-        <p className="mx-auto max-w-3xl text-center text-sm leading-relaxed text-muted">
+        <p className="max-w-3xl text-sm leading-relaxed text-muted">
           <span className="font-medium text-foreground">Implementation fee:</span> quoted after discovery. Scope
           depends on users, modules, data migration, integrations, and onboarding support.
         </p>
-
-        {/* Extra-users note */}
-        <p className="text-center text-xs font-medium leading-relaxed text-muted-2">
+        <p className="text-xs font-medium leading-relaxed text-muted-2">
           Additional users, locations, and integrations available on all plans.{" "}
           <Link href="/contact" className="underline underline-offset-2 hover:text-foreground">
             Talk to us
@@ -239,7 +87,7 @@ export function PricingClient() {
 
       {/* ── 3. Billing note ───────────────────────────────────────────────── */}
       <aside
-        className="mx-auto mt-2 max-w-3xl rounded-xl border border-border bg-card/80 px-4 py-3 text-center text-xs leading-relaxed text-muted shadow-sm sm:px-5 sm:text-sm"
+        className="mx-auto mt-12 max-w-3xl rounded-xl border border-border bg-card/80 px-4 py-3 text-center text-xs leading-relaxed text-muted shadow-sm sm:px-5 sm:text-sm md:mt-16"
         aria-label="Billing and compliance information"
       >
         <p className="font-medium text-foreground">Billing &amp; compliance</p>

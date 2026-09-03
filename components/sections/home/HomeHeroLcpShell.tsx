@@ -20,8 +20,8 @@ export function HomeHeroLcpShell({ variant }: HomeHeroLcpShellProps) {
     <section
       aria-label="Introduction"
       className={cn(
-        "relative z-[1] flex flex-col items-center justify-center bg-[#f5f5f7] px-5 text-center",
-        "hidden min-h-[calc(100dvh-4.5rem)] scroll-mt-[4.5rem] py-10 lg:flex",
+        "relative z-[1] flex flex-col items-center justify-center bg-[#f5f5f7] px-6 text-center",
+        "hidden min-h-[calc(100dvh-60px)] scroll-mt-[60px] py-10 lg:flex",
       )}
     >
       <HomeHeroAboveFold showPills showScrollHint />

@@ -15,7 +15,7 @@ export function SystemShiftSection() {
   return (
     <section
       aria-labelledby="system-shift-heading"
-      className="border-y border-border/70 bg-transparent py-section-tight-mobile text-center md:py-section-tight"
+      className="bg-transparent py-section-tight-mobile text-center md:py-section-tight"
     >
       <div className="container mx-auto max-w-content px-4 sm:px-6">
         <motion.h2

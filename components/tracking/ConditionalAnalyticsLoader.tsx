@@ -6,14 +6,15 @@ import {
   hasAnalyticsConsent,
   readConsentClient,
 } from "@/lib/cookieConsent";
+import { getGa4MeasurementId } from "@/lib/ga4-measurement-id";
 
 /**
  * Loads GA4 via the Google tag (gtag.js) only after analytics consent.
- * Script URL is `googletagmanager.com/gtag/js` - that is the official GA4 loader,
- * not a Google Tag Manager container.
+ * Script URL is `googletagmanager.com/gtag/js` - that is the official Google tag loader,
+ * not a Google Tag Manager container (`GTM-…`).
  * `send_page_view: false` avoids double-counting: {@link AnalyticsRouteTracker} sends page_view.
  *
- * Set `NEXT_PUBLIC_GA_MEASUREMENT_ID` in `.env.local` / Vercel (must match GA Admin → Data streams).
+ * Measurement ID defaults to `G-XRM9Y716DJ`. Override with `NEXT_PUBLIC_GA_MEASUREMENT_ID`.
  * Only this component injects the Google tag - do not add a second gtag snippet in `layout` or per-page.
  */
 export function ConditionalAnalyticsLoader() {
@@ -30,7 +31,7 @@ export function ConditionalAnalyticsLoader() {
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    const mid = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID?.trim();
+    const mid = getGa4MeasurementId();
     if (!enabled || !mid) {
       document.getElementById("zoveto-ga4")?.remove();
       document.getElementById("zoveto-ga4-config")?.remove();

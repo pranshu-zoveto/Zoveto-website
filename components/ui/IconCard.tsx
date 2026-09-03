@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 export type IconCardVariant = "list" | "card";
 
 export type IconCardProps = {
-  /** `list` is the homepage hairline row. `card` is a large icon chip — prefer 2–4 per row, not dense grids. */
+  /** `list` is the homepage spacing row. `card` is a large icon chip — prefer 2–4 per row, not dense grids. */
   variant?: IconCardVariant;
   /** 1-based index, rendered as 01, 02, ... in mono. */
   index?: number;
@@ -17,7 +17,7 @@ export type IconCardProps = {
   /** Right-aligned proof, price, or CTA. */
   aside?: React.ReactNode;
   children?: React.ReactNode;
-  /** Draw a top hairline. First rows should leave this false. */
+  /** Extra top padding on later rows. First rows should leave this false. */
   divided?: boolean;
   className?: string;
   as?: "li" | "article" | "div";
@@ -26,7 +26,7 @@ export type IconCardProps = {
 /**
  * Shared icon/list primitive for marketing surfaces.
  *
- * - `list`: numbered or plain rule-divided row (homepage de-boxing).
+ * - `list`: numbered or plain spaced row (homepage de-boxing).
  * - `card`: icon well on a 14px-radius surface. Keep card grids sparse (2–4
  *   large instances), not a wall of 9–12 small icon boxes.
  */
@@ -86,7 +86,7 @@ export function IconCard({
     <Tag
       className={cn(
         "flex flex-col gap-2 py-5 md:flex-row md:items-start md:justify-between md:gap-6 lg:gap-8",
-        divided && "border-t border-border",
+        divided && "pt-6",
         className,
       )}
     >

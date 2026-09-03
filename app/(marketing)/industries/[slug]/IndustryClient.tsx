@@ -58,7 +58,7 @@ export function IndustryClient({ slug }: { slug: string }) {
           <Text variant="body-base" className="mb-8 max-w-prose text-pretty text-muted">
             Specific failure modes for {data.name.toLowerCase()} teams, not generic “efficiency” language.
           </Text>
-          <div className="divide-y divide-border border-t border-border">
+          <div>
             {data.painPoints.map((p, i) => (
               <IconCard
                 key={p.title}
@@ -114,7 +114,7 @@ export function IndustryClient({ slug }: { slug: string }) {
             </Text>
           </div>
         </div>
-        <ol className="divide-y divide-border border-t border-border">
+        <ol>
           {data.systemFlowSteps.map((step, idx) => (
             <IconCard
               key={step.title}

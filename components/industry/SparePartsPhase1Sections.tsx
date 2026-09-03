@@ -18,7 +18,7 @@ export function SparePartsPhase1Sections() {
   const waHref = getWhatsAppFloatHref();
 
   return (
-    <div className="mt-12 space-y-16 border-t border-border pt-12 md:mt-16 md:space-y-20 md:pt-16">
+    <div className="mt-12 space-y-16 pt-4 md:mt-16 md:space-y-20 md:pt-6">
       {SPARE_PARTS_PHASE1_SECTIONS.map((section, idx) => (
         <section key={section.h2} aria-labelledby={`sp-p1-s${idx}`}>
           <Text variant="heading-1" as="h2" id={`sp-p1-s${idx}`} className="mb-6 text-xl text-foreground md:text-2xl">

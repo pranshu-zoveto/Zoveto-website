@@ -1,0 +1,2046 @@
+{
+  "pages": {
+    "home": {
+      "390": {
+        "status": 200,
+        "overflowX": 0,
+        "textFails": [
+          {
+            "tag": "A",
+            "text": "↓Scroll to explore modules",
+            "ratio": 3.33,
+            "min": 4.5,
+            "fs": 10,
+            "color": "rgb(134, 134, 139)",
+            "bg": "rgb(245,245,247)"
+          },
+          {
+            "tag": "SPAN",
+            "text": "Step 1",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 12,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          },
+          {
+            "tag": "SPAN",
+            "text": "Step 2",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 12,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          },
+          {
+            "tag": "P",
+            "text": "Trust checks",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 12,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          },
+          {
+            "tag": "SPAN",
+            "text": "01",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 12,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          },
+          {
+            "tag": "SPAN",
+            "text": "02",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 12,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          },
+          {
+            "tag": "SPAN",
+            "text": "03",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 12,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          },
+          {
+            "tag": "SPAN",
+            "text": "04",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 12,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          }
+        ],
+        "textFailCount": 8,
+        "borderFaint": [
+          {
+            "tag": "BUTTON",
+            "cls": "inline-flex items-center justify-center whitespace-nowrap rounded-lg border tran",
+            "ratio": 1,
+            "border": "rgba(67, 56, 202, 0.25)",
+            "text": "Request early access"
+          },
+          {
+            "tag": "BUTTON",
+            "cls": "inline-flex items-center justify-center whitespace-nowrap rounded-lg border tran",
+            "ratio": 1,
+            "border": "rgba(67, 56, 202, 0.25)",
+            "text": "See implementation path"
+          },
+          {
+            "tag": "DIV",
+            "cls": "inline-block px-3 py-1 rounded-full border text-xs font-semibold tracking-wide m",
+            "ratio": 1.11,
+            "border": "rgb(228, 228, 231)",
+            "text": "Pricing"
+          }
+        ],
+        "borderFaintCount": 3,
+        "buttonBlend": [],
+        "buttonBlendCount": 0,
+        "tokens": {
+          "bg": "#ffffff",
+          "fg": "#0a0a0c",
+          "border": "#e4e4e7",
+          "muted": "#6b6b70",
+          "muted2": "#97979c",
+          "blue": "#4338ca"
+        }
+      },
+      "1440": {
+        "status": 200,
+        "overflowX": 0,
+        "textFails": [
+          {
+            "tag": "BUTTON",
+            "text": "↓Scroll to zoom modules",
+            "ratio": 3.33,
+            "min": 4.5,
+            "fs": 10,
+            "color": "rgb(134, 134, 139)",
+            "bg": "rgb(245,245,247)"
+          }
+        ],
+        "textFailCount": 1,
+        "borderFaint": [
+          {
+            "tag": "BUTTON",
+            "cls": "inline-flex items-center justify-center gap-2 whitespace-nowrap border transitio",
+            "ratio": 1,
+            "border": "rgba(67, 56, 202, 0.25)",
+            "text": "Request early access"
+          },
+          {
+            "tag": "A",
+            "cls": "",
+            "ratio": 1,
+            "border": "rgba(0, 113, 227, 0.25)",
+            "text": "Request early access"
+          }
+        ],
+        "borderFaintCount": 2,
+        "buttonBlend": [],
+        "buttonBlendCount": 0,
+        "tokens": {
+          "bg": "#ffffff",
+          "fg": "#0a0a0c",
+          "border": "#e4e4e7",
+          "muted": "#6b6b70",
+          "muted2": "#97979c",
+          "blue": "#4338ca"
+        }
+      }
+    },
+    "pricing": {
+      "390": {
+        "status": 200,
+        "overflowX": 0,
+        "textFails": [
+          {
+            "tag": "P",
+            "text": "Pricing",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 11,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          },
+          {
+            "tag": "P",
+            "text": "Excl. GST",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 11,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          },
+          {
+            "tag": "P",
+            "text": "Excl. GST · flat rate",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 11,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          },
+          {
+            "tag": "P",
+            "text": "Included modules",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 11,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          },
+          {
+            "tag": "SPAN",
+            "text": "Enterprise",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 10,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          },
+          {
+            "tag": "P",
+            "text": "Scoped after discovery",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 11,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          },
+          {
+            "tag": "P",
+            "text": "What's included",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 11,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          },
+          {
+            "tag": "P",
+            "text": "Additional users, locations, and integrations available on all plans. Talk to us",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 12,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          },
+          {
+            "tag": "A",
+            "text": "Talk to us",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 12,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          },
+          {
+            "tag": "P",
+            "text": "By booking a demo or creating an account, you agree to our Terms of Service and ",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 12,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          },
+          {
+            "tag": "P",
+            "text": "Trust checks",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 12,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          },
+          {
+            "tag": "SPAN",
+            "text": "01",
+            "ratio": 2.69,
+            "min": 4.5,
+            "fs": 11,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(246,246,247)"
+          }
+        ],
+        "textFailCount": 18,
+        "borderFaint": [
+          {
+            "tag": "DIV",
+            "cls": "flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-blu",
+            "ratio": 1.12,
+            "border": "rgb(228, 228, 231)",
+            "text": ""
+          },
+          {
+            "tag": "A",
+            "cls": "mb-5 flex h-10 w-full items-center justify-center rounded-lg border text-sm font",
+            "ratio": 1.12,
+            "border": "rgb(228, 228, 231)",
+            "text": "Start 15-day free trial"
+          },
+          {
+            "tag": "DIV",
+            "cls": "flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-blu",
+            "ratio": 1.12,
+            "border": "rgb(228, 228, 231)",
+            "text": ""
+          },
+          {
+            "tag": "A",
+            "cls": "mb-5 flex h-10 w-full items-center justify-center rounded-lg border text-sm font",
+            "ratio": 1.12,
+            "border": "rgb(228, 228, 231)",
+            "text": "Start 15-day free trial"
+          },
+          {
+            "tag": "SPAN",
+            "cls": "inline-flex rounded-full border border-teal/20 bg-teal-dim px-2.5 py-1 text-xs f",
+            "ratio": 1.11,
+            "border": "rgb(228, 228, 231)",
+            "text": "Save ₹9,998/mo vs separate modules"
+          },
+          {
+            "tag": "SPAN",
+            "cls": "inline-flex rounded-full border border-teal/20 bg-teal-dim px-2.5 py-1 text-xs f",
+            "ratio": 1.11,
+            "border": "rgb(228, 228, 231)",
+            "text": "Save ₹11,996/mo vs separate modules"
+          },
+          {
+            "tag": "BUTTON",
+            "cls": "inline-flex items-center justify-center whitespace-nowrap rounded-lg border tran",
+            "ratio": 1,
+            "border": "rgba(67, 56, 202, 0.25)",
+            "text": "See implementation path"
+          },
+          {
+            "tag": "ARTICLE",
+            "cls": "float-card reveal-item flex h-full min-h-0 flex-col rounded-xl p-4 sm:p-6",
+            "ratio": 1.14,
+            "border": "rgba(0, 0, 0, 0.06)",
+            "text": ""
+          }
+        ],
+        "borderFaintCount": 15,
+        "buttonBlend": [],
+        "buttonBlendCount": 0,
+        "tokens": {
+          "bg": "#ffffff",
+          "fg": "#0a0a0c",
+          "border": "#e4e4e7",
+          "muted": "#6b6b70",
+          "muted2": "#97979c",
+          "blue": "#4338ca"
+        }
+      },
+      "1440": {
+        "status": 200,
+        "overflowX": 0,
+        "textFails": [
+          {
+            "tag": "P",
+            "text": "Pricing",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 11,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          },
+          {
+            "tag": "P",
+            "text": "Excl. GST",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 11,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          },
+          {
+            "tag": "P",
+            "text": "Excl. GST · flat rate",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 11,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          },
+          {
+            "tag": "P",
+            "text": "Included modules",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 11,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          },
+          {
+            "tag": "SPAN",
+            "text": "Enterprise",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 10,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          },
+          {
+            "tag": "P",
+            "text": "Scoped after discovery",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 11,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          },
+          {
+            "tag": "P",
+            "text": "What's included",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 11,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          },
+          {
+            "tag": "P",
+            "text": "Additional users, locations, and integrations available on all plans. Talk to us",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 12,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          },
+          {
+            "tag": "A",
+            "text": "Talk to us",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 12,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          },
+          {
+            "tag": "P",
+            "text": "By booking a demo or creating an account, you agree to our Terms of Service and ",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 14,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          },
+          {
+            "tag": "P",
+            "text": "Trust checks",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 12,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          },
+          {
+            "tag": "SPAN",
+            "text": "01",
+            "ratio": 2.69,
+            "min": 4.5,
+            "fs": 11,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(246,246,247)"
+          }
+        ],
+        "textFailCount": 22,
+        "borderFaint": [
+          {
+            "tag": "BUTTON",
+            "cls": "inline-flex items-center justify-center gap-2 whitespace-nowrap border transitio",
+            "ratio": 1,
+            "border": "rgba(67, 56, 202, 0.25)",
+            "text": "Request early access"
+          },
+          {
+            "tag": "DIV",
+            "cls": "flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-blu",
+            "ratio": 1.12,
+            "border": "rgb(228, 228, 231)",
+            "text": ""
+          },
+          {
+            "tag": "A",
+            "cls": "mb-5 flex h-10 w-full items-center justify-center rounded-lg border text-sm font",
+            "ratio": 1.12,
+            "border": "rgb(228, 228, 231)",
+            "text": "Start 15-day free trial"
+          },
+          {
+            "tag": "DIV",
+            "cls": "flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-blu",
+            "ratio": 1.12,
+            "border": "rgb(228, 228, 231)",
+            "text": ""
+          },
+          {
+            "tag": "A",
+            "cls": "mb-5 flex h-10 w-full items-center justify-center rounded-lg border text-sm font",
+            "ratio": 1.12,
+            "border": "rgb(228, 228, 231)",
+            "text": "Start 15-day free trial"
+          },
+          {
+            "tag": "SPAN",
+            "cls": "inline-flex rounded-full border border-teal/20 bg-teal-dim px-2.5 py-1 text-xs f",
+            "ratio": 1.11,
+            "border": "rgb(228, 228, 231)",
+            "text": "Save ₹9,998/mo vs separate modules"
+          },
+          {
+            "tag": "SPAN",
+            "cls": "inline-flex rounded-full border border-teal/20 bg-teal-dim px-2.5 py-1 text-xs f",
+            "ratio": 1.11,
+            "border": "rgb(228, 228, 231)",
+            "text": "Save ₹11,996/mo vs separate modules"
+          },
+          {
+            "tag": "BUTTON",
+            "cls": "inline-flex items-center justify-center whitespace-nowrap rounded-lg border tran",
+            "ratio": 1,
+            "border": "rgba(67, 56, 202, 0.25)",
+            "text": "See implementation path"
+          }
+        ],
+        "borderFaintCount": 17,
+        "buttonBlend": [],
+        "buttonBlendCount": 0,
+        "tokens": {
+          "bg": "#ffffff",
+          "fg": "#0a0a0c",
+          "border": "#e4e4e7",
+          "muted": "#6b6b70",
+          "muted2": "#97979c",
+          "blue": "#4338ca"
+        }
+      }
+    },
+    "compare": {
+      "390": {
+        "status": 200,
+        "overflowX": 0,
+        "textFails": [
+          {
+            "tag": "SPAN",
+            "text": "8 guides",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 12,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          },
+          {
+            "tag": "SPAN",
+            "text": "Compare",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 11,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          },
+          {
+            "tag": "P",
+            "text": "Suite breadth vs one record",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 11,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          },
+          {
+            "tag": "SPAN",
+            "text": "11 decision rows",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 12,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          },
+          {
+            "tag": "P",
+            "text": "Vouchers vs warehouse truth",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 11,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          },
+          {
+            "tag": "P",
+            "text": "DIY modules vs guided OS",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 11,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          },
+          {
+            "tag": "SPAN",
+            "text": "Matrix + verdict",
+            "ratio": 2.69,
+            "min": 4.5,
+            "fs": 10,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(246,246,247)"
+          },
+          {
+            "tag": "P",
+            "text": "Bookkeeping vs branch ops",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 11,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          },
+          {
+            "tag": "P",
+            "text": "Programme ERP vs SMB spine",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 11,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          },
+          {
+            "tag": "P",
+            "text": "Billing app vs operating spine",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 11,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          },
+          {
+            "tag": "P",
+            "text": "CRM depth vs execution loop",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 11,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          },
+          {
+            "tag": "P",
+            "text": "Marketing suite vs business ops",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 11,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          }
+        ],
+        "textFailCount": 12,
+        "borderFaint": [
+          {
+            "tag": "SPAN",
+            "cls": "flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border text-sm fo",
+            "ratio": 1.11,
+            "border": "rgb(228, 228, 231)",
+            "text": "Z"
+          },
+          {
+            "tag": "SPAN",
+            "cls": "flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border text-sm fo",
+            "ratio": 1.12,
+            "border": "rgb(228, 228, 231)",
+            "text": "T"
+          },
+          {
+            "tag": "A",
+            "cls": "inline-flex items-center gap-2 whitespace-nowrap rounded-lg border transition-[b",
+            "ratio": 1,
+            "border": "rgba(67, 56, 202, 0.25)",
+            "text": "Talk to us about your stack"
+          }
+        ],
+        "borderFaintCount": 3,
+        "buttonBlend": [],
+        "buttonBlendCount": 0,
+        "tokens": {
+          "bg": "#ffffff",
+          "fg": "#0a0a0c",
+          "border": "#e4e4e7",
+          "muted": "#6b6b70",
+          "muted2": "#97979c",
+          "blue": "#4338ca"
+        }
+      },
+      "1440": {
+        "status": 200,
+        "overflowX": 0,
+        "textFails": [
+          {
+            "tag": "SPAN",
+            "text": "8 guides",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 12,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          },
+          {
+            "tag": "SPAN",
+            "text": "Compare",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 11,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          },
+          {
+            "tag": "P",
+            "text": "Suite breadth vs one record",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 11,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          },
+          {
+            "tag": "SPAN",
+            "text": "11 decision rows",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 12,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          },
+          {
+            "tag": "P",
+            "text": "Vouchers vs warehouse truth",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 11,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          },
+          {
+            "tag": "P",
+            "text": "DIY modules vs guided OS",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 11,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          },
+          {
+            "tag": "SPAN",
+            "text": "Matrix + verdict",
+            "ratio": 2.69,
+            "min": 4.5,
+            "fs": 10,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(246,246,247)"
+          },
+          {
+            "tag": "P",
+            "text": "Bookkeeping vs branch ops",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 11,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          },
+          {
+            "tag": "P",
+            "text": "Programme ERP vs SMB spine",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 11,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          },
+          {
+            "tag": "P",
+            "text": "Billing app vs operating spine",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 11,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          },
+          {
+            "tag": "P",
+            "text": "CRM depth vs execution loop",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 11,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          },
+          {
+            "tag": "P",
+            "text": "Marketing suite vs business ops",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 11,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          }
+        ],
+        "textFailCount": 12,
+        "borderFaint": [
+          {
+            "tag": "BUTTON",
+            "cls": "inline-flex items-center justify-center gap-2 whitespace-nowrap border transitio",
+            "ratio": 1,
+            "border": "rgba(67, 56, 202, 0.25)",
+            "text": "Request early access"
+          },
+          {
+            "tag": "SPAN",
+            "cls": "flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border text-sm fo",
+            "ratio": 1.11,
+            "border": "rgb(228, 228, 231)",
+            "text": "Z"
+          },
+          {
+            "tag": "SPAN",
+            "cls": "flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border text-sm fo",
+            "ratio": 1.12,
+            "border": "rgb(228, 228, 231)",
+            "text": "T"
+          },
+          {
+            "tag": "A",
+            "cls": "inline-flex items-center gap-2 whitespace-nowrap rounded-lg border transition-[b",
+            "ratio": 1,
+            "border": "rgba(67, 56, 202, 0.25)",
+            "text": "Talk to us about your stack"
+          }
+        ],
+        "borderFaintCount": 4,
+        "buttonBlend": [],
+        "buttonBlendCount": 0,
+        "tokens": {
+          "bg": "#ffffff",
+          "fg": "#0a0a0c",
+          "border": "#e4e4e7",
+          "muted": "#6b6b70",
+          "muted2": "#97979c",
+          "blue": "#4338ca"
+        }
+      }
+    },
+    "contact": {
+      "390": {
+        "status": 200,
+        "overflowX": 0,
+        "textFails": [
+          {
+            "tag": "P",
+            "text": "Scope the first workflows before rollout",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 13,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          },
+          {
+            "tag": "P",
+            "text": "Phone, WhatsApp, and email above",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 13,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          },
+          {
+            "tag": "P",
+            "text": "Role access, audit trails, and export posture",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 13,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          },
+          {
+            "tag": "LABEL",
+            "text": "Full name *",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 12,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          },
+          {
+            "tag": "LABEL",
+            "text": "Work email *",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 12,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          },
+          {
+            "tag": "LABEL",
+            "text": "Company *",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 12,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          },
+          {
+            "tag": "LABEL",
+            "text": "Company type *",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 12,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          },
+          {
+            "tag": "LABEL",
+            "text": "Number of employees *",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 12,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          },
+          {
+            "tag": "LABEL",
+            "text": "Phone (optional)",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 12,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          },
+          {
+            "tag": "LABEL",
+            "text": "Preferred date",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 12,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          },
+          {
+            "tag": "LABEL",
+            "text": "Preferred time",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 12,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          },
+          {
+            "tag": "LABEL",
+            "text": "Notes (optional)",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 12,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          }
+        ],
+        "textFailCount": 17,
+        "borderFaint": [
+          {
+            "tag": "BUTTON",
+            "cls": "inline-flex items-center justify-center whitespace-nowrap rounded-lg border tran",
+            "ratio": 1,
+            "border": "rgba(67, 56, 202, 0.25)",
+            "text": "See implementation path"
+          },
+          {
+            "tag": "ARTICLE",
+            "cls": "float-card reveal-item flex h-full min-h-0 flex-col rounded-xl p-4 sm:p-6",
+            "ratio": 1.14,
+            "border": "rgba(0, 0, 0, 0.06)",
+            "text": ""
+          },
+          {
+            "tag": "ARTICLE",
+            "cls": "float-card reveal-item flex h-full min-h-0 flex-col rounded-xl p-4 sm:p-6",
+            "ratio": 1.14,
+            "border": "rgba(0, 0, 0, 0.06)",
+            "text": ""
+          },
+          {
+            "tag": "ARTICLE",
+            "cls": "float-card reveal-item flex h-full min-h-0 flex-col rounded-xl p-4 sm:p-6",
+            "ratio": 1.14,
+            "border": "rgba(0, 0, 0, 0.06)",
+            "text": ""
+          },
+          {
+            "tag": "ARTICLE",
+            "cls": "float-card reveal-item flex h-full min-h-0 flex-col rounded-xl p-4 sm:p-6",
+            "ratio": 1.14,
+            "border": "rgba(0, 0, 0, 0.06)",
+            "text": ""
+          }
+        ],
+        "borderFaintCount": 5,
+        "buttonBlend": [],
+        "buttonBlendCount": 0,
+        "tokens": {
+          "bg": "#ffffff",
+          "fg": "#0a0a0c",
+          "border": "#e4e4e7",
+          "muted": "#6b6b70",
+          "muted2": "#97979c",
+          "blue": "#4338ca"
+        }
+      },
+      "1440": {
+        "status": 200,
+        "overflowX": 0,
+        "textFails": [
+          {
+            "tag": "P",
+            "text": "Scope the first workflows before rollout",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 13,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          },
+          {
+            "tag": "P",
+            "text": "Phone, WhatsApp, and email above",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 13,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          },
+          {
+            "tag": "P",
+            "text": "Role access, audit trails, and export posture",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 13,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          },
+          {
+            "tag": "LABEL",
+            "text": "Full name *",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 12,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          },
+          {
+            "tag": "LABEL",
+            "text": "Work email *",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 12,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          },
+          {
+            "tag": "LABEL",
+            "text": "Company *",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 12,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          },
+          {
+            "tag": "LABEL",
+            "text": "Company type *",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 12,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          },
+          {
+            "tag": "LABEL",
+            "text": "Number of employees *",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 12,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          },
+          {
+            "tag": "LABEL",
+            "text": "Phone (optional)",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 12,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          },
+          {
+            "tag": "LABEL",
+            "text": "Preferred date",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 12,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          },
+          {
+            "tag": "LABEL",
+            "text": "Preferred time",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 12,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          },
+          {
+            "tag": "LABEL",
+            "text": "Notes (optional)",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 12,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          }
+        ],
+        "textFailCount": 17,
+        "borderFaint": [
+          {
+            "tag": "BUTTON",
+            "cls": "inline-flex items-center justify-center gap-2 whitespace-nowrap border transitio",
+            "ratio": 1,
+            "border": "rgba(67, 56, 202, 0.25)",
+            "text": "Request early access"
+          },
+          {
+            "tag": "BUTTON",
+            "cls": "inline-flex items-center justify-center whitespace-nowrap rounded-lg border tran",
+            "ratio": 1,
+            "border": "rgba(67, 56, 202, 0.25)",
+            "text": "See implementation path"
+          },
+          {
+            "tag": "ARTICLE",
+            "cls": "float-card reveal-item flex h-full min-h-0 flex-col rounded-xl p-4 sm:p-6",
+            "ratio": 1.14,
+            "border": "rgba(0, 0, 0, 0.06)",
+            "text": ""
+          },
+          {
+            "tag": "ARTICLE",
+            "cls": "float-card reveal-item flex h-full min-h-0 flex-col rounded-xl p-4 sm:p-6",
+            "ratio": 1.14,
+            "border": "rgba(0, 0, 0, 0.06)",
+            "text": ""
+          },
+          {
+            "tag": "ARTICLE",
+            "cls": "float-card reveal-item flex h-full min-h-0 flex-col rounded-xl p-4 sm:p-6",
+            "ratio": 1.14,
+            "border": "rgba(0, 0, 0, 0.06)",
+            "text": ""
+          },
+          {
+            "tag": "ARTICLE",
+            "cls": "float-card reveal-item flex h-full min-h-0 flex-col rounded-xl p-4 sm:p-6",
+            "ratio": 1.14,
+            "border": "rgba(0, 0, 0, 0.06)",
+            "text": ""
+          }
+        ],
+        "borderFaintCount": 6,
+        "buttonBlend": [],
+        "buttonBlendCount": 0,
+        "tokens": {
+          "bg": "#ffffff",
+          "fg": "#0a0a0c",
+          "border": "#e4e4e7",
+          "muted": "#6b6b70",
+          "muted2": "#97979c",
+          "blue": "#4338ca"
+        }
+      }
+    },
+    "blog": {
+      "390": {
+        "status": 200,
+        "overflowX": 0,
+        "textFails": [
+          {
+            "tag": "SPAN",
+            "text": "10 min read",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 12,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          }
+        ],
+        "textFailCount": 1,
+        "borderFaint": [],
+        "borderFaintCount": 0,
+        "buttonBlend": [],
+        "buttonBlendCount": 0,
+        "tokens": {
+          "bg": "#ffffff",
+          "fg": "#0a0a0c",
+          "border": "#e4e4e7",
+          "muted": "#6b6b70",
+          "muted2": "#97979c",
+          "blue": "#4338ca"
+        }
+      },
+      "1440": {
+        "status": 200,
+        "overflowX": 0,
+        "textFails": [
+          {
+            "tag": "SPAN",
+            "text": "10 min read",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 12,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          },
+          {
+            "tag": "P",
+            "text": "Ready to see it live?",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 11,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          },
+          {
+            "tag": "P",
+            "text": "Published by",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 11,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          },
+          {
+            "tag": "P",
+            "text": "Topics",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 11,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          },
+          {
+            "tag": "SPAN",
+            "text": "11 min read",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 12,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          },
+          {
+            "tag": "P",
+            "text": "Stockouts, missed leads, manual reconciliation, and GST errors silently drain SM",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 14,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          },
+          {
+            "tag": "SPAN",
+            "text": "12 min read",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 12,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          },
+          {
+            "tag": "P",
+            "text": "Everything businesses need to know about GST-compliant ERP software in 2026: e-i",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 14,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          },
+          {
+            "tag": "P",
+            "text": "Zoho One bundles 45+ apps on one subscription. Zoveto is one unified platform. T",
+            "ratio": 2.91,
+            "min": 4.5,
+            "fs": 14,
+            "color": "rgb(151, 151, 156)",
+            "bg": "rgb(255,255,255)"
+          }
+        ],
+        "textFailCount": 9,
+        "borderFaint": [
+          {
+            "tag": "BUTTON",
+            "cls": "inline-flex items-center justify-center gap-2 whitespace-nowrap border transitio",
+            "ratio": 1,
+            "border": "rgba(67, 56, 202, 0.25)",
+            "text": "Request early access"
+          }
+        ],
+        "borderFaintCount": 1,
+        "buttonBlend": [],
+        "buttonBlendCount": 0,
+        "tokens": {
+          "bg": "#ffffff",
+          "fg": "#0a0a0c",
+          "border": "#e4e4e7",
+          "muted": "#6b6b70",
+          "muted2": "#97979c",
+          "blue": "#4338ca"
+        }
+      }
+    }
+  },
+  "homepageRhythm": {
+    "390": [
+      {
+        "heading": "ZOVETO",
+        "id": "",
+        "hidden": false,
+        "pt": "32px",
+        "pb": "32px",
+        "ptKind": "section-tight-mobile",
+        "pbKind": "section-tight-mobile",
+        "h": 788
+      },
+      {
+        "heading": "One operating record. Every team working from it.",
+        "id": "product-deep-dive",
+        "hidden": true,
+        "pt": "80px",
+        "pb": "80px",
+        "ptKind": "OTHER:80px",
+        "pbKind": "OTHER:80px",
+        "h": 0
+      },
+      {
+        "heading": "ZOVETO",
+        "id": "product-deep-dive",
+        "hidden": true,
+        "pt": "0px",
+        "pb": "0px",
+        "ptKind": "OTHER:0px",
+        "pbKind": "OTHER:0px",
+        "h": 0
+      },
+      {
+        "heading": "See it running.",
+        "id": "",
+        "hidden": false,
+        "pt": "56px",
+        "pb": "56px",
+        "ptKind": "section-mobile",
+        "pbKind": "section-mobile",
+        "h": 405
+      },
+      {
+        "heading": "Live platform",
+        "id": "",
+        "hidden": false,
+        "pt": "32px",
+        "pb": "32px",
+        "ptKind": "section-tight-mobile",
+        "pbKind": "section-tight-mobile",
+        "h": 236
+      },
+      {
+        "heading": "Your business is bleeding.",
+        "id": "problem",
+        "hidden": false,
+        "pt": "56px",
+        "pb": "56px",
+        "ptKind": "section-mobile",
+        "pbKind": "section-mobile",
+        "h": 916
+      },
+      {
+        "heading": "One operating system for warehouse, finance, and CRM",
+        "id": "",
+        "hidden": true,
+        "pt": "32px",
+        "pb": "32px",
+        "ptKind": "section-tight-mobile",
+        "pbKind": "section-tight-mobile",
+        "h": 0
+      },
+      {
+        "heading": "What actually changes when you run on Zoveto",
+        "id": "features",
+        "hidden": true,
+        "pt": "56px",
+        "pb": "56px",
+        "ptKind": "section-mobile",
+        "pbKind": "section-mobile",
+        "h": 0
+      },
+      {
+        "heading": "Excel is your assistant. Zoveto is your assistant's operating system.",
+        "id": "",
+        "hidden": true,
+        "pt": "56px",
+        "pb": "56px",
+        "ptKind": "section-mobile",
+        "pbKind": "section-mobile",
+        "h": 0
+      },
+      {
+        "heading": "Every founder we talk to says this",
+        "id": "",
+        "hidden": false,
+        "pt": "56px",
+        "pb": "56px",
+        "ptKind": "section-mobile",
+        "pbKind": "section-mobile",
+        "h": 1018
+      },
+      {
+        "heading": "From signup to full operations in three moves",
+        "id": "how-it-works",
+        "hidden": false,
+        "pt": "56px",
+        "pb": "56px",
+        "ptKind": "section-mobile",
+        "pbKind": "section-mobile",
+        "h": 807
+      },
+      {
+        "heading": "Built for teams evaluating Zoveto before public client proof exists.",
+        "id": "",
+        "hidden": false,
+        "pt": "56px",
+        "pb": "56px",
+        "ptKind": "section-mobile",
+        "pbKind": "section-mobile",
+        "h": 1155
+      },
+      {
+        "heading": "Pay for what you use. Scale when you're ready.",
+        "id": "pricing",
+        "hidden": false,
+        "pt": "56px",
+        "pb": "56px",
+        "ptKind": "section-mobile",
+        "pbKind": "section-mobile",
+        "h": 1436
+      },
+      {
+        "heading": "Answers for operators, founders, and IT",
+        "id": "faq",
+        "hidden": false,
+        "pt": "56px",
+        "pb": "56px",
+        "ptKind": "section-mobile",
+        "pbKind": "section-mobile",
+        "h": 837
+      },
+      {
+        "heading": "Run the company on one stack",
+        "id": "cta",
+        "hidden": false,
+        "pt": "56px",
+        "pb": "56px",
+        "ptKind": "section-mobile",
+        "pbKind": "section-mobile",
+        "h": 427
+      }
+    ],
+    "768": [
+      {
+        "heading": "ZOVETO",
+        "id": "",
+        "hidden": false,
+        "pt": "40px",
+        "pb": "40px",
+        "ptKind": "section-tight",
+        "pbKind": "section-tight",
+        "h": 968
+      },
+      {
+        "heading": "One operating record. Every team working from it.",
+        "id": "product-deep-dive",
+        "hidden": false,
+        "pt": "80px",
+        "pb": "80px",
+        "ptKind": "OTHER:80px",
+        "pbKind": "OTHER:80px",
+        "h": 2136
+      },
+      {
+        "heading": "ZOVETO",
+        "id": "product-deep-dive",
+        "hidden": true,
+        "pt": "0px",
+        "pb": "0px",
+        "ptKind": "OTHER:0px",
+        "pbKind": "OTHER:0px",
+        "h": 0
+      },
+      {
+        "heading": "See it running.",
+        "id": "",
+        "hidden": false,
+        "pt": "88px",
+        "pb": "88px",
+        "ptKind": "section",
+        "pbKind": "section",
+        "h": 679
+      },
+      {
+        "heading": "Live platform",
+        "id": "",
+        "hidden": false,
+        "pt": "40px",
+        "pb": "40px",
+        "ptKind": "section-tight",
+        "pbKind": "section-tight",
+        "h": 197
+      },
+      {
+        "heading": "Your business is bleeding.",
+        "id": "problem",
+        "hidden": false,
+        "pt": "88px",
+        "pb": "88px",
+        "ptKind": "section",
+        "pbKind": "section",
+        "h": 949
+      },
+      {
+        "heading": "One operating system for warehouse, finance, and CRM",
+        "id": "",
+        "hidden": false,
+        "pt": "40px",
+        "pb": "40px",
+        "ptKind": "section-tight",
+        "pbKind": "section-tight",
+        "h": 217
+      },
+      {
+        "heading": "What actually changes when you run on Zoveto",
+        "id": "features",
+        "hidden": false,
+        "pt": "88px",
+        "pb": "88px",
+        "ptKind": "section",
+        "pbKind": "section",
+        "h": 3350
+      },
+      {
+        "heading": "Excel is your assistant. Zoveto is your assistant's operating system.",
+        "id": "",
+        "hidden": false,
+        "pt": "88px",
+        "pb": "88px",
+        "ptKind": "section",
+        "pbKind": "section",
+        "h": 1027
+      },
+      {
+        "heading": "Every founder we talk to says this",
+        "id": "",
+        "hidden": false,
+        "pt": "88px",
+        "pb": "88px",
+        "ptKind": "section",
+        "pbKind": "section",
+        "h": 825
+      },
+      {
+        "heading": "From signup to full operations in three moves",
+        "id": "how-it-works",
+        "hidden": false,
+        "pt": "88px",
+        "pb": "88px",
+        "ptKind": "section",
+        "pbKind": "section",
+        "h": 1027
+      },
+      {
+        "heading": "Built for teams evaluating Zoveto before public client proof exists.",
+        "id": "",
+        "hidden": false,
+        "pt": "88px",
+        "pb": "88px",
+        "ptKind": "section",
+        "pbKind": "section",
+        "h": 1040
+      },
+      {
+        "heading": "Pay for what you use. Scale when you're ready.",
+        "id": "pricing",
+        "hidden": false,
+        "pt": "88px",
+        "pb": "88px",
+        "ptKind": "section",
+        "pbKind": "section",
+        "h": 1035
+      },
+      {
+        "heading": "Answers for operators, founders, and IT",
+        "id": "faq",
+        "hidden": false,
+        "pt": "88px",
+        "pb": "88px",
+        "ptKind": "section",
+        "pbKind": "section",
+        "h": 718
+      },
+      {
+        "heading": "Run the company on one stack",
+        "id": "cta",
+        "hidden": false,
+        "pt": "88px",
+        "pb": "88px",
+        "ptKind": "section",
+        "pbKind": "section",
+        "h": 484
+      }
+    ],
+    "1024": [
+      {
+        "heading": "ZOVETO",
+        "id": "",
+        "hidden": true,
+        "pt": "40px",
+        "pb": "40px",
+        "ptKind": "section-tight",
+        "pbKind": "section-tight",
+        "h": 0
+      },
+      {
+        "heading": "One operating record. Every team working from it.",
+        "id": "product-deep-dive",
+        "hidden": true,
+        "pt": "80px",
+        "pb": "80px",
+        "ptKind": "OTHER:80px",
+        "pbKind": "OTHER:80px",
+        "h": 0
+      },
+      {
+        "heading": "ZOVETO",
+        "id": "product-deep-dive",
+        "hidden": false,
+        "pt": "0px",
+        "pb": "0px",
+        "ptKind": "OTHER:0px",
+        "pbKind": "OTHER:0px",
+        "h": 5850
+      },
+      {
+        "heading": "See it running.",
+        "id": "",
+        "hidden": false,
+        "pt": "88px",
+        "pb": "88px",
+        "ptKind": "section",
+        "pbKind": "section",
+        "h": 823
+      },
+      {
+        "heading": "Live platform",
+        "id": "",
+        "hidden": false,
+        "pt": "40px",
+        "pb": "40px",
+        "ptKind": "section-tight",
+        "pbKind": "section-tight",
+        "h": 169
+      },
+      {
+        "heading": "Your business is bleeding.",
+        "id": "problem",
+        "hidden": false,
+        "pt": "88px",
+        "pb": "88px",
+        "ptKind": "section",
+        "pbKind": "section",
+        "h": 751
+      },
+      {
+        "heading": "One operating system for warehouse, finance, and CRM",
+        "id": "",
+        "hidden": false,
+        "pt": "40px",
+        "pb": "40px",
+        "ptKind": "section-tight",
+        "pbKind": "section-tight",
+        "h": 167
+      },
+      {
+        "heading": "What actually changes when you run on Zoveto",
+        "id": "features",
+        "hidden": false,
+        "pt": "88px",
+        "pb": "88px",
+        "ptKind": "section",
+        "pbKind": "section",
+        "h": 1966
+      },
+      {
+        "heading": "Excel is your assistant. Zoveto is your assistant's operating system.",
+        "id": "",
+        "hidden": false,
+        "pt": "88px",
+        "pb": "88px",
+        "ptKind": "section",
+        "pbKind": "section",
+        "h": 758
+      },
+      {
+        "heading": "Every founder we talk to says this",
+        "id": "",
+        "hidden": false,
+        "pt": "88px",
+        "pb": "88px",
+        "ptKind": "section",
+        "pbKind": "section",
+        "h": 659
+      },
+      {
+        "heading": "From signup to full operations in three moves",
+        "id": "how-it-works",
+        "hidden": false,
+        "pt": "88px",
+        "pb": "88px",
+        "ptKind": "section",
+        "pbKind": "section",
+        "h": 1043
+      },
+      {
+        "heading": "Built for teams evaluating Zoveto before public client proof exists.",
+        "id": "",
+        "hidden": false,
+        "pt": "88px",
+        "pb": "88px",
+        "ptKind": "section",
+        "pbKind": "section",
+        "h": 650
+      },
+      {
+        "heading": "Pay for what you use. Scale when you're ready.",
+        "id": "pricing",
+        "hidden": false,
+        "pt": "88px",
+        "pb": "88px",
+        "ptKind": "section",
+        "pbKind": "section",
+        "h": 969
+      },
+      {
+        "heading": "Answers for operators, founders, and IT",
+        "id": "faq",
+        "hidden": false,
+        "pt": "88px",
+        "pb": "88px",
+        "ptKind": "section",
+        "pbKind": "section",
+        "h": 718
+      },
+      {
+        "heading": "Run the company on one stack",
+        "id": "cta",
+        "hidden": false,
+        "pt": "88px",
+        "pb": "88px",
+        "ptKind": "section",
+        "pbKind": "section",
+        "h": 498
+      }
+    ],
+    "1440": [
+      {
+        "heading": "ZOVETO",
+        "id": "",
+        "hidden": true,
+        "pt": "40px",
+        "pb": "40px",
+        "ptKind": "section-tight",
+        "pbKind": "section-tight",
+        "h": 0
+      },
+      {
+        "heading": "One operating record. Every team working from it.",
+        "id": "product-deep-dive",
+        "hidden": true,
+        "pt": "80px",
+        "pb": "80px",
+        "ptKind": "OTHER:80px",
+        "pbKind": "OTHER:80px",
+        "h": 0
+      },
+      {
+        "heading": "ZOVETO",
+        "id": "product-deep-dive",
+        "hidden": false,
+        "pt": "0px",
+        "pb": "0px",
+        "ptKind": "OTHER:0px",
+        "pbKind": "OTHER:0px",
+        "h": 5850
+      },
+      {
+        "heading": "See it running.",
+        "id": "",
+        "hidden": false,
+        "pt": "88px",
+        "pb": "88px",
+        "ptKind": "section",
+        "pbKind": "section",
+        "h": 895
+      },
+      {
+        "heading": "Live platform",
+        "id": "",
+        "hidden": false,
+        "pt": "40px",
+        "pb": "40px",
+        "ptKind": "section-tight",
+        "pbKind": "section-tight",
+        "h": 150
+      },
+      {
+        "heading": "Your business is bleeding.",
+        "id": "problem",
+        "hidden": false,
+        "pt": "88px",
+        "pb": "88px",
+        "ptKind": "section",
+        "pbKind": "section",
+        "h": 745
+      },
+      {
+        "heading": "One operating system for warehouse, finance, and CRM",
+        "id": "",
+        "hidden": false,
+        "pt": "40px",
+        "pb": "40px",
+        "ptKind": "section-tight",
+        "pbKind": "section-tight",
+        "h": 167
+      },
+      {
+        "heading": "What actually changes when you run on Zoveto",
+        "id": "features",
+        "hidden": false,
+        "pt": "88px",
+        "pb": "88px",
+        "ptKind": "section",
+        "pbKind": "section",
+        "h": 2033
+      },
+      {
+        "heading": "Excel is your assistant. Zoveto is your assistant's operating system.",
+        "id": "",
+        "hidden": false,
+        "pt": "88px",
+        "pb": "88px",
+        "ptKind": "section",
+        "pbKind": "section",
+        "h": 704
+      },
+      {
+        "heading": "Every founder we talk to says this",
+        "id": "",
+        "hidden": false,
+        "pt": "88px",
+        "pb": "88px",
+        "ptKind": "section",
+        "pbKind": "section",
+        "h": 659
+      },
+      {
+        "heading": "From signup to full operations in three moves",
+        "id": "how-it-works",
+        "hidden": false,
+        "pt": "88px",
+        "pb": "88px",
+        "ptKind": "section",
+        "pbKind": "section",
+        "h": 1043
+      },
+      {
+        "heading": "Built for teams evaluating Zoveto before public client proof exists.",
+        "id": "",
+        "hidden": false,
+        "pt": "88px",
+        "pb": "88px",
+        "ptKind": "section",
+        "pbKind": "section",
+        "h": 650
+      },
+      {
+        "heading": "Pay for what you use. Scale when you're ready.",
+        "id": "pricing",
+        "hidden": false,
+        "pt": "88px",
+        "pb": "88px",
+        "ptKind": "section",
+        "pbKind": "section",
+        "h": 969
+      },
+      {
+        "heading": "Answers for operators, founders, and IT",
+        "id": "faq",
+        "hidden": false,
+        "pt": "88px",
+        "pb": "88px",
+        "ptKind": "section",
+        "pbKind": "section",
+        "h": 718
+      },
+      {
+        "heading": "Run the company on one stack",
+        "id": "cta",
+        "hidden": false,
+        "pt": "88px",
+        "pb": "88px",
+        "ptKind": "section",
+        "pbKind": "section",
+        "h": 510
+      }
+    ]
+  },
+  "interactions": {
+    "problem": {
+      "chipCount": 5,
+      "a1": "Inbox",
+      "a2": "Inbox",
+      "cycleOk": false,
+      "hover": {
+        "lastLabel": "Chaos",
+        "a3": "Inbox",
+        "hoverOk": false
+      },
+      "click": {
+        "firstLabel": "Inbox",
+        "a4": "Inbox",
+        "clickOk": true
+      }
+    },
+    "animatedTextCycle": {
+      "visible": true,
+      "w1": "team",
+      "w2": "workflow",
+      "changed": true
+    },
+    "reveal": {
+      "atTop": [
+        {
+          "revealed": false,
+          "top": 9868,
+          "inView": false,
+          "preview": "RecordsDisconnected tools and chat threadsRecordsO"
+        },
+        {
+          "revealed": false,
+          "top": 10685,
+          "inView": false,
+          "preview": "I still have to check everything myself.89% fewer "
+        },
+        {
+          "revealed": false,
+          "top": 11411,
+          "inView": false,
+          "preview": "Step 1Connect your business in one workspaceSign u"
+        },
+        {
+          "revealed": false,
+          "top": 12105,
+          "inView": false,
+          "preview": "Early operator trustBuilt for teams evaluating Zov"
+        },
+        {
+          "revealed": false,
+          "top": 12978,
+          "inView": false,
+          "preview": "WMSWarehouse ManagementBarcode & QR scanning, Pick"
+        },
+        {
+          "revealed": false,
+          "top": 13611,
+          "inView": false,
+          "preview": "BuyingFeaturesPricingGeneralFAQAnswers for operato"
+        }
+      ],
+      "afterScroll": [
+        {
+          "revealed": true,
+          "top": 1466,
+          "inView": false,
+          "preview": "RecordsDisconnected tools and chat threa"
+        },
+        {
+          "revealed": false,
+          "top": 2283,
+          "inView": false,
+          "preview": "I still have to check everything myself."
+        },
+        {
+          "revealed": false,
+          "top": 3009,
+          "inView": false,
+          "preview": "Step 1Connect your business in one works"
+        },
+        {
+          "revealed": false,
+          "top": 3703,
+          "inView": false,
+          "preview": "Early operator trustBuilt for teams eval"
+        },
+        {
+          "revealed": false,
+          "top": 4576,
+          "inView": false,
+          "preview": "WMSWarehouse ManagementBarcode & QR scan"
+        },
+        {
+          "revealed": false,
+          "top": 5209,
+          "inView": false,
+          "preview": "BuyingFeaturesPricingGeneralFAQAnswers f"
+        }
+      ]
+    },
+    "problem768": {
+      "chipCount": 5,
+      "clickOk": true
+    },
+    "comparison768Visible": true
+  },
+  "pricingContact": {
+    "pricing": {
+      "floatCards": 6,
+      "trustExists": true,
+      "trustHasGradientPanel": true,
+      "trustListHairlines": 0,
+      "trustFloatCards": 4,
+      "moduleCards": 15,
+      "hasWmsCard": true
+    },
+    "contact": {
+      "floatCards": 4,
+      "trustExists": true,
+      "trustFloatCards": 4,
+      "trustHasGradientPanel": true
+    }
+  }
+}

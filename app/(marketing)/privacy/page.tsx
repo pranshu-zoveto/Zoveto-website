@@ -119,7 +119,7 @@ export default function PrivacyPage() {
             apply to payment fields they collect directly);
           </li>
           <li>
-            <strong>Analytics</strong>: where enabled and only if you consent (e.g. Google Analytics, Microsoft Clarity),
+            <strong>Analytics</strong>: where enabled and only if you consent (e.g. Google Analytics, Google Tag Manager, Microsoft Clarity),
             to understand aggregated traffic and UX diagnostics on our marketing site.
           </li>
           <li>

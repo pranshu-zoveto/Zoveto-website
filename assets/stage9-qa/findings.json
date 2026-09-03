@@ -1,0 +1,114 @@
+{
+  "overflow": [],
+  "cta": {
+    "viewportH": 900,
+    "buttons": [
+      {
+        "text": "Request early access",
+        "top": 8
+      },
+      {
+        "text": "Request early access",
+        "top": 8
+      },
+      {
+        "text": "Request early access",
+        "top": 581
+      },
+      {
+        "text": "View pricing",
+        "top": 581
+      },
+      {
+        "text": "Open WhatsApp with a prefilled message to Zoveto",
+        "top": 812
+      }
+    ]
+  },
+  "procurementReveal": [
+    {
+      "y": 0,
+      "revealed": 0,
+      "unrevealed": 2,
+      "lowOpacity": []
+    },
+    {
+      "y": 495,
+      "revealed": 1,
+      "unrevealed": 1,
+      "lowOpacity": []
+    },
+    {
+      "y": 990,
+      "revealed": 2,
+      "unrevealed": 0,
+      "lowOpacity": []
+    },
+    {
+      "y": 1485,
+      "revealed": 2,
+      "unrevealed": 0,
+      "lowOpacity": []
+    },
+    {
+      "y": 1980,
+      "revealed": 2,
+      "unrevealed": 0,
+      "lowOpacity": []
+    },
+    {
+      "y": 2475,
+      "revealed": 2,
+      "unrevealed": 0,
+      "lowOpacity": []
+    },
+    {
+      "y": 2970,
+      "revealed": 2,
+      "unrevealed": 0,
+      "lowOpacity": []
+    },
+    {
+      "y": 3404,
+      "revealed": 2,
+      "unrevealed": 0,
+      "lowOpacity": []
+    },
+    {
+      "y": 3404,
+      "revealed": 2,
+      "unrevealed": 0,
+      "lowOpacity": []
+    },
+    {
+      "y": 3404,
+      "revealed": 2,
+      "unrevealed": 0,
+      "lowOpacity": []
+    },
+    {
+      "y": 3404,
+      "revealed": 2,
+      "unrevealed": 0,
+      "lowOpacity": []
+    },
+    {
+      "y": 3404,
+      "revealed": 2,
+      "unrevealed": 0,
+      "lowOpacity": []
+    },
+    {
+      "y": 3404,
+      "revealed": 2,
+      "unrevealed": 0,
+      "lowOpacity": []
+    },
+    {
+      "y": 3404,
+      "revealed": 2,
+      "unrevealed": 0,
+      "lowOpacity": []
+    }
+  ]
+}

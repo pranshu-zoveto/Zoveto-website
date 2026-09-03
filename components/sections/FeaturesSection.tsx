@@ -222,13 +222,13 @@ function TransformationBlock({
   );
 
   const footer = (
-    <p className="mt-8 border-t border-border pt-6 text-sm font-semibold text-foreground sm:text-base">
+    <p className="mt-8 pt-2 text-sm font-semibold text-foreground sm:text-base">
       <span className="text-muted-2">Bottom line:</span> {bottomLine}
     </p>
   );
 
   return (
-    <article className={cn(className, divided && "border-t border-border pt-8 md:pt-8")}>
+    <article className={cn(className, divided && "pt-8")}>
       <h3 className={cn("mb-8 text-xl font-bold tracking-tight text-foreground sm:text-2xl", titleClassName)}>{title}</h3>
 
       {screenshot && screenshotBeside ? (

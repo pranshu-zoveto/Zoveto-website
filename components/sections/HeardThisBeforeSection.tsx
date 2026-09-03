@@ -52,14 +52,9 @@ export function HeardThisBeforeSection() {
             ))}
           </ul>
 
-          <div className="reveal-item mt-10 grid grid-cols-1 md:grid-cols-3">
-            {PROOF_STRIP_METRICS.map((metric, i) => (
-              <div
-                key={metric.value}
-                className={`py-5 md:px-8 md:py-0 ${
-                  i > 0 ? "border-t border-border md:border-l md:border-t-0" : "md:pl-0"
-                } ${i === PROOF_STRIP_METRICS.length - 1 ? "md:pr-0" : ""}`}
-              >
+          <div className="reveal-item mt-10 grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-8">
+            {PROOF_STRIP_METRICS.map((metric) => (
+              <div key={metric.value}>
                 <p className="font-mono-geist text-lg font-semibold tabular-nums text-blue">{metric.value}</p>
                 <p className="mt-1 text-sm leading-relaxed text-muted">{metric.label}</p>
               </div>

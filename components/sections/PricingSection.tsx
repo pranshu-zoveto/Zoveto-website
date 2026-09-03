@@ -1,8 +1,8 @@
 "use client";
 
-import { PricingModuleGrid } from "@/components/pricing/PricingModuleGrid";
+import Link from "next/link";
+import { PricingCatalog } from "@/components/pricing/PricingCatalog";
 import { RevealOnScroll } from "@/components/layout/RevealOnScroll";
-import { SectionLabel } from "@/components/ui/SectionLabel";
 
 export function PricingSection() {
   return (
@@ -11,26 +11,26 @@ export function PricingSection() {
       className="relative scroll-mt-24 overflow-x-clip bg-transparent py-section-mobile md:py-section"
     >
       <div className="container relative z-10 mx-auto max-w-content px-4 sm:px-6">
-        <div className="mx-auto mb-14 max-w-3xl text-center md:mb-20">
-          <div className="mb-6 flex justify-center">
-            <SectionLabel className="mb-0 border-blue/20 bg-blue-dim text-blue">Pricing</SectionLabel>
-          </div>
-          <h2 className="mb-6 text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl md:text-5xl">
+        <div className="mb-10 max-w-3xl text-left md:mb-14">
+          <h2 className="mb-4 text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl md:text-5xl">
             Pay for what you use. Scale when you&apos;re ready.
           </h2>
-          <p className="mx-auto max-w-2xl text-lg leading-relaxed text-muted">
-            Five modules, priced independently. Add what you need — no bundle required.
+          <p className="max-w-[62ch] text-lg leading-relaxed text-muted">
+            Five modules, priced independently. Start with the suite or add one at a time.
           </p>
         </div>
 
         <RevealOnScroll>
           <div className="reveal-item">
-            <PricingModuleGrid variant="list" />
+            <PricingCatalog />
           </div>
         </RevealOnScroll>
 
-        <p className="mx-auto mt-14 max-w-2xl text-center text-sm leading-relaxed text-muted-2 md:mt-16">
-          Controlled onboarding · GST invoice on purchase · Migration assistance available
+        <p className="mt-10 max-w-2xl text-sm leading-relaxed text-muted-2 md:mt-12">
+          Controlled onboarding. GST invoice on purchase. Migration assistance available.{" "}
+          <Link href="/pricing" className="font-medium text-blue underline-offset-2 hover:underline">
+            See full pricing
+          </Link>
         </p>
       </div>
     </section>

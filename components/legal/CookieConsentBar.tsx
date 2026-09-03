@@ -130,7 +130,7 @@ export function CookieConsentBar() {
                       <Cookie className="h-5 w-5" strokeWidth={2} />
                     </div>
                     <div className="min-w-0 space-y-1.5 sm:space-y-2">
-                      <p id="cookie-consent-label" className="text-xs font-semibold uppercase tracking-[0.12em] text-foreground/70">
+                      <p id="cookie-consent-label" className="text-xs font-semibold uppercase tracking-cap text-foreground/70">
                         Cookies
                       </p>
                       <p
@@ -198,7 +198,7 @@ export function CookieConsentBar() {
           <Dialog.Overlay className="fixed inset-0 z-[210] bg-foreground/25 backdrop-blur-[2px] data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0" />
           <Dialog.Content
             className={cn(
-              "fixed z-[211] flex max-h-[min(92dvh,44rem)] w-[min(calc(100vw-1.5rem),28rem)] flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-[var(--shadow-elevated)] outline-none",
+              "fixed z-[211] flex max-h-[min(92dvh,44rem)] w-[min(calc(100vw-1.5rem),28rem)] flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-elevated outline-none",
               "left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2",
               "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95",
               "max-md:inset-x-3 max-md:bottom-[max(0.75rem,env(safe-area-inset-bottom))] max-md:top-auto max-md:max-h-[min(85dvh,36rem)] max-md:translate-x-0 max-md:translate-y-0 max-md:w-auto",
@@ -244,7 +244,7 @@ export function CookieConsentBar() {
                   <div className="min-w-0">
                     <p className="font-semibold text-foreground">Analytics</p>
                     <p className="mt-1 text-sm leading-relaxed text-foreground/80">
-                      Aggregate traffic and performance (e.g. Google Analytics) when configured.
+                      Aggregate traffic and performance (e.g. Google Analytics and Google Tag Manager) when configured.
                     </p>
                   </div>
                   <input

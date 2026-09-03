@@ -45,7 +45,7 @@ export function HowItWorksLandingSection() {
         </div>
 
         <RevealOnScroll>
-          <ol className="divide-y divide-border border-y border-border">
+          <ol className="flex flex-col gap-2 sm:gap-1">
             {STEPS.map((step, i) => {
               const Icon = step.icon;
               return (

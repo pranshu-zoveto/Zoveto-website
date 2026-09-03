@@ -45,7 +45,7 @@ export default function ProductOSPage() {
         </div>
 
         <FluidMarketingSection band={bandIndexForSection(0)} stackBase>
-        <div className="relative overflow-hidden border-y border-border bg-transparent py-20 md:py-28">
+        <div className="relative overflow-hidden bg-transparent py-20 md:py-28">
           <div
             className="absolute inset-0 opacity-[0.4]"
             style={{

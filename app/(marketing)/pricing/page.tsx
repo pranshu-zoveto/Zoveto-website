@@ -44,12 +44,11 @@ export default function PricingPage() {
       <PricingOfferSchema />
       <FAQPageSchema faqs={PRICING_PAGE_FAQ} url={canonicalUrl("/pricing")} />
       <div className="container relative z-10 mx-auto max-w-content px-4 sm:px-6">
-        <div className="mx-auto mb-10 max-w-3xl text-center md:mb-20">
-          <p className="mb-5 font-mono-plex text-[11px] font-medium uppercase tracking-[0.2em] text-muted-2">Pricing</p>
-          <Text variant="display-1" as="h1" className="mb-6 text-balance">
-            Buy what you need. <span className="text-blue">Scale when you're ready.</span>
+        <div className="mb-10 max-w-3xl md:mb-16">
+          <Text variant="display-1" as="h1" className="mb-5 text-balance">
+            Buy what you need. <span className="text-blue">Scale when you&apos;re ready.</span>
           </Text>
-          <Text variant="body-lg" className="mx-auto max-w-2xl text-pretty text-muted">
+          <Text variant="body-lg" className="max-w-[62ch] text-pretty text-muted">
             Five independently purchasable modules. Bundle them for a better rate or go full stack with Business OS.
           </Text>
         </div>

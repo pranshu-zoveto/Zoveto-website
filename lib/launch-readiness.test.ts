@@ -70,12 +70,21 @@ describe("launch readiness static checks", () => {
     const chrome = read("components/layout/SiteChromeClients.tsx");
     assert.ok(chrome.includes("CookieConsentBar"), "SiteChromeClients must include cookie banner");
     assert.ok(chrome.includes("ConditionalAnalyticsLoader"), "SiteChromeClients must load GA after consent");
+    assert.ok(chrome.includes("ConditionalGtmLoader"), "SiteChromeClients must load GTM after consent");
 
     const gaLoader = read("components/tracking/ConditionalAnalyticsLoader.tsx");
     assert.ok(
       gaLoader.includes("send_page_view: false"),
       "GA4 config must disable auto page_view (AnalyticsRouteTracker sends page_view)",
     );
+
+    const gtmLoader = read("components/tracking/ConditionalGtmLoader.tsx");
+    assert.ok(gtmLoader.includes("zoveto-gtm"), "GTM loader must use a single dedupe script id");
+    assert.ok(
+      gtmLoader.includes("googletagmanager.com/gtm.js") && gtmLoader.includes("getGtmContainerId"),
+      "GTM loader must use official gtm.js and container id helper",
+    );
+    assert.ok(gtmLoader.includes("hasAnalyticsConsent"), "GTM must gate on analytics consent");
 
     const clarityLoader = read("components/tracking/ConditionalClarityLoader.tsx");
     assert.ok(clarityLoader.includes("zoveto-clarity"), "Clarity loader must use a single dedupe script id");

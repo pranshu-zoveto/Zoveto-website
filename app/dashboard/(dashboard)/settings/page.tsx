@@ -2,6 +2,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { redirect } from "next/navigation";
 import prisma from "@/lib/db";
+import { getGa4MeasurementId } from "@/lib/ga4-measurement-id";
 import SettingsClient from "./components/SettingsClient";
 import { SettingsDashboardData } from "./types";
 
@@ -31,7 +32,7 @@ export default async function SettingsPage() {
 
   // Check which ENV vars exist so UI can show them as read-only overrides
   const envConfigs = {
-    hasGoogleAnalytics: !!process.env.NEXT_PUBLIC_GA_ID,
+    hasGoogleAnalytics: !!getGa4MeasurementId(),
     hasSentry: !!process.env.NEXT_PUBLIC_SENTRY_DSN,
     hasPostHog: !!process.env.NEXT_PUBLIC_POSTHOG_KEY,
   };

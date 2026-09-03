@@ -17,7 +17,7 @@ export default function MarketingLayout({
       <Navbar />
       <main
         id="main-content"
-        className="scroll-mt-[4.5rem] flex-1"
+        className="scroll-mt-[56px] lg:scroll-mt-[60px] flex-1"
       >
         {children}
       </main>

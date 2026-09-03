@@ -98,7 +98,7 @@ export default function SettingsClient({ data }: { data: SettingsDashboardData }
 
             <h3 className="text-lg font-medium text-zinc-100 mb-4 mt-8">Environment Integrations</h3>
             <IntegrationCard
-              title="Google Analytics (GTM)"
+              title="Google Analytics (GA4)"
               settingKey="integration_google_analytics"
               initialValue={getSettingVal("integration_google_analytics")}
               envOverride={data.envConfigs.hasGoogleAnalytics}

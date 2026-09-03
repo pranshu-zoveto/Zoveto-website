@@ -1,0 +1,26 @@
+[
+  {
+    "vp": "1440",
+    "h1Count": 2,
+    "h1Texts": [
+      "Run your business from one system",
+      "Run your business from one system"
+    ],
+    "h1Size": "76px",
+    "h1Weight": "600",
+    "h1Clip": "auto",
+    "wordSize": "48px"
+  },
+  {
+    "vp": "390",
+    "h1Count": 2,
+    "h1Texts": [
+      "Run your business from one system",
+      "Run your business from one system"
+    ],
+    "h1Size": "34.4px",
+    "h1Weight": "600",
+    "h1Clip": "auto",
+    "wordSize": "26.4px"
+  }
+]

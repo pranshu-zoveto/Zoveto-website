@@ -43,7 +43,7 @@ export function IndustriesSection() {
                 href={href}
                 className="group flex flex-col rounded-xl border border-border bg-card p-8 shadow-sm transition-colors hover:border-teal/35 md:p-10"
               >
-                <div className="mb-8 flex items-start justify-between gap-4 border-b border-border pb-6">
+                <div className="mb-8 flex items-start justify-between gap-4 pb-2">
                   <div className="flex min-w-0 items-center gap-5">
                     <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl border border-teal/20 bg-teal-dim">
                       <Icon className="h-7 w-7 stroke-[1.5] text-teal" />

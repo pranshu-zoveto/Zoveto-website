@@ -1,0 +1,74 @@
+[
+  {
+    "i": 0,
+    "id": "relative z-[1] flex min-h-[calc(100dvh-5",
+    "padTop": "40px",
+    "padBottom": "40px"
+  },
+  {
+    "i": 1,
+    "id": "product-deep-dive",
+    "padTop": "80px",
+    "padBottom": "80px"
+  },
+  {
+    "i": 2,
+    "id": "product-deep-dive",
+    "padTop": "0px",
+    "padBottom": "0px"
+  },
+  {
+    "i": 3,
+    "id": "product-demo-heading",
+    "padTop": "88px",
+    "padBottom": "88px"
+  },
+  {
+    "i": 4,
+    "id": "onboarding-credibility-heading",
+    "padTop": "40px",
+    "padBottom": "40px"
+  },
+  {
+    "i": 5,
+    "id": "problem",
+    "padTop": "88px",
+    "padBottom": "88px"
+  },
+  {
+    "i": 6,
+    "id": "system-shift-heading",
+    "padTop": "40px",
+    "padBottom": "40px"
+  },
+  {
+    "i": 7,
+    "id": "features",
+    "padTop": "88px",
+    "padBottom": "88px"
+  },
+  {
+    "i": 8,
+    "id": "hidden md:block relative overflow-hidden",
+    "padTop": "88px",
+    "padBottom": "88px"
+  },
+  {
+    "i": 9,
+    "id": "bg-transparent py-section-mobile md:py-s",
+    "padTop": "88px",
+    "padBottom": "88px"
+  },
+  {
+    "i": 10,
+    "id": "how-it-works",
+    "padTop": "88px",
+    "padBottom": "88px"
+  },
+  {
+    "i": 11,
+    "id": "home-zero-client-trust-heading",
+    "padTop": "88px",
+    "padBottom": "88px"
+  }
+]

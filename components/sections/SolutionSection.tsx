@@ -83,7 +83,7 @@ export function SolutionSection() {
 
               <p className="text-sm text-muted leading-relaxed mb-6">{mod.desc}</p>
 
-              <div className="pt-5 border-t border-border flex items-center gap-3 group-hover:border-teal/20 transition-colors">
+              <div className="pt-5 flex items-center gap-3">
                 <div
                   className={cn(
                     "w-1.5 h-1.5 rounded-full",

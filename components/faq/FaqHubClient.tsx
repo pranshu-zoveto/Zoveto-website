@@ -108,7 +108,7 @@ export function FaqHubClient() {
                 structured data.
               </p>
 
-              <div className="mt-10 grid grid-cols-3 gap-6 border-t border-border pt-8">
+              <div className="mt-10 grid grid-cols-3 gap-6 pt-2">
                 <div>
                   <p className="text-[10px] font-semibold uppercase tracking-label text-muted-2">Topics</p>
                   <p className="mt-1.5 text-2xl font-semibold tabular-nums tracking-tight text-foreground">{topicCount}</p>
@@ -171,7 +171,7 @@ export function FaqHubClient() {
 
       <div
         className={cn(
-          "sticky top-[4.25rem] z-30 border-y border-border bg-background/96 py-3 backdrop-blur-md md:top-[4.5rem] lg:hidden",
+          "sticky top-[4.25rem] z-30 bg-background/96 py-3 backdrop-blur-md md:top-[4.5rem] lg:hidden",
         )}
       >
         <div className="container mx-auto max-w-content px-4 sm:px-6">

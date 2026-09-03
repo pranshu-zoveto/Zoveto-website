@@ -12,7 +12,7 @@ export function LegalPageShell({ title, lastUpdated, pdfHref, children }: LegalP
   return (
     <main className="min-h-screen bg-background pt-24 pb-20 md:pt-28 md:pb-24">
       <article className="container mx-auto max-w-3xl px-6">
-        <header className="mb-12 border-b border-border pb-8">
+        <header className="mb-12 pb-4">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-2">Legal & Trust</p>
           <h1 className="mt-3 font-display text-3xl font-bold tracking-tight text-foreground md:text-4xl">
             {title}

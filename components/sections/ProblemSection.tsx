@@ -296,8 +296,8 @@ export function ProblemSection() {
                     mobileCardRefs.current[pain.id] = el;
                   }}
                   className={`origin-left transition-all duration-300 ease-out ${
-                    i > 0 ? "border-t border-border" : ""
-                  } ${isActive ? "scale-[1.02] opacity-100" : "opacity-40"}`}
+                    isActive ? "scale-[1.02] opacity-100" : "opacity-40"
+                  }`}
                 >
                   <button
                     type="button"

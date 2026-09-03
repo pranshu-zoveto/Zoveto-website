@@ -11,7 +11,7 @@ import { BRAND_LOGO_ICON } from "@/lib/branding";
 export function OSSchematic() {
   return (
     <motion.section
-      className="bg-surface py-24 md:py-32 lg:py-40 relative overflow-hidden border-y border-border"
+      className="bg-surface py-24 md:py-32 lg:py-40 relative overflow-hidden"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}

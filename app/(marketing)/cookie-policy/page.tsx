@@ -29,7 +29,7 @@ export default function CookiePolicyPage() {
           </li>
           <li>
             <strong>Analytics cookies:</strong> used only with your consent to understand aggregate traffic and site
-            performance (for example, Google Analytics and Microsoft Clarity).
+            performance (for example, Google Analytics, Google Tag Manager, and Microsoft Clarity).
           </li>
           <li>
             <strong>Marketing/attribution storage:</strong> used only with your consent for campaign attribution and

@@ -1,6 +1,6 @@
 # Analytics (GA4 + marketing events)
 
-Website code fires events through the consent-gated `ConditionalAnalyticsLoader` using `NEXT_PUBLIC_GA_MEASUREMENT_ID`. Do not add a second GA4 loader in `app/layout.tsx`.
+Website code fires events through the consent-gated `ConditionalAnalyticsLoader` using measurement ID `G-XRM9Y716DJ` (override with `NEXT_PUBLIC_GA_MEASUREMENT_ID`). Google Tag Manager container `GTM-MT5G5NCL` loads through `ConditionalGtmLoader` after the same analytics consent (override with `NEXT_PUBLIC_GTM_ID`). Do not add a second gtag or GTM snippet in `app/layout.tsx`. Do not add GA4 tag `G-XRM9Y716DJ` inside the GTM container, or page views will be counted twice.
 
 ## GA4 dashboard configuration required
 

@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 export type IconCardVariant = "list" | "card";
 
 export type IconCardProps = {
-  /** `list` is the homepage hairline row. `card` is the boxed icon chip used on /pricing and /contact. */
+  /** `list` is the homepage hairline row. `card` is a large icon chip — prefer 2–4 per row, not dense grids. */
   variant?: IconCardVariant;
   /** 1-based index, rendered as 01, 02, ... in mono. */
   index?: number;
@@ -27,7 +27,8 @@ export type IconCardProps = {
  * Shared icon/list primitive for marketing surfaces.
  *
  * - `list`: numbered or plain rule-divided row (homepage de-boxing).
- * - `card`: icon-in-a-rounded-box on a bordered surface (pricing/contact defaults).
+ * - `card`: icon well on a 14px-radius surface. Keep card grids sparse (2–4
+ *   large instances), not a wall of 9–12 small icon boxes.
  */
 export function IconCard({
   variant = "list",
@@ -50,15 +51,15 @@ export function IconCard({
     return (
       <Tag
         className={cn(
-          "float-card flex h-full min-h-0 flex-col rounded-xl p-4 sm:p-6",
+          "float-card flex h-full min-h-0 flex-col rounded-[14px] p-5 sm:p-7",
           className,
         )}
       >
         {Icon || indexLabel ? (
           <div className="mb-3 flex items-start justify-between gap-3">
             {Icon ? (
-              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-border/80 bg-surface-2 text-blue">
-                <Icon size={17} aria-hidden />
+              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-border/80 bg-surface-2 text-blue">
+                <Icon size={20} aria-hidden />
               </div>
             ) : (
               <span />
@@ -70,7 +71,7 @@ export function IconCard({
             ) : null}
           </div>
         ) : null}
-        <h3 className={cn("text-sm font-semibold tracking-tight text-foreground", labelClassName)}>{label}</h3>
+        <h3 className={cn("text-base font-semibold tracking-tight text-foreground", labelClassName)}>{label}</h3>
         {description ? (
           <p className="mt-2 text-sm leading-relaxed text-muted">{description}</p>
         ) : null}
@@ -95,8 +96,8 @@ export function IconCard({
             {indexLabel}
           </span>
         ) : Icon ? (
-          <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-border bg-surface-2 text-blue">
-            <Icon size={17} aria-hidden />
+          <span className="mt-0.5 flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-border bg-surface-2 text-blue">
+            <Icon size={20} aria-hidden />
           </span>
         ) : null}
         <div className="min-w-0">

@@ -28,7 +28,7 @@ test("dashboard MODULES ships complete copy blocks for every module", () => {
       assert.ok(b.trim().length > 10);
     }
     assert.ok(m.panelSide === "left" || m.panelSide === "right");
-    assert.ok(/^#[0-9A-Fa-f]{6}$/.test(m.color));
+    assert.ok(m.color === "var(--blue)" || /^#[0-9A-Fa-f]{6}$/.test(m.color));
   }
 });
 

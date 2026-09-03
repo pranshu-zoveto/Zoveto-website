@@ -55,7 +55,7 @@ function MobileCard({ module }: { module: DashboardModule }) {
             width: 48,
             height: 48,
             borderRadius: 12,
-            background: `${module.color}12`,
+            background: `color-mix(in srgb, ${module.color} 7%, transparent)`,
             display: "flex",
             alignItems: "center",
             justifyContent: "center",

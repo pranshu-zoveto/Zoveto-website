@@ -145,7 +145,7 @@ export function HeroBrain() {
   if (!enabled) {
     return (
       <div
-        className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_20%_30%,rgba(0,113,227,0.18),transparent_55%),radial-gradient(circle_at_80%_70%,rgba(52,199,89,0.14),transparent_55%)]"
+        className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_20%_30%,color-mix(in_srgb,var(--blue)_18%,transparent),transparent_55%),radial-gradient(circle_at_80%_70%,rgba(52,199,89,0.14),transparent_55%)]"
         aria-hidden
       />
     );

@@ -100,7 +100,8 @@ const SECTIONS: StorySection[] = [
   },
 ];
 
-function StoryPanel({ section }: { section: StorySection }) {
+function StoryPanel({ section, headingLevel }: { section: StorySection; headingLevel: 1 | 2 }) {
+  const TitleTag = headingLevel === 1 ? "h1" : "h2";
   const targetRef = useRef<HTMLElement | null>(null);
   const reduceMotion = useReducedMotion();
   const { scrollYProgress } = useScroll({
@@ -135,12 +136,12 @@ function StoryPanel({ section }: { section: StorySection }) {
               className="space-y-5 lg:pr-6"
             >
               <p className="text-xs font-semibold uppercase tracking-[0.22em] text-blue">{section.kicker}</p>
-              <h1
+              <TitleTag
                 id={`${section.id}-title`}
                 className="text-3xl sm:text-4xl md:text-5xl lg:text-[56px] leading-[0.98] font-semibold tracking-tight text-foreground"
               >
                 {section.title}
-              </h1>
+              </TitleTag>
               <p className="text-base sm:text-lg text-muted leading-relaxed max-w-xl">{section.description}</p>
               {section.support ? <p className="text-sm sm:text-base text-muted-2">{section.support}</p> : null}
               <p className="text-sm text-foreground/85 leading-relaxed max-w-xl">{section.answer}</p>
@@ -176,8 +177,8 @@ export function SystemScrollStory() {
   return (
     <main className="bg-background">
       <div className="snap-y snap-proximity">
-        {SECTIONS.map((section) => (
-          <StoryPanel key={section.id} section={section} />
+        {SECTIONS.map((section, index) => (
+          <StoryPanel key={section.id} section={section} headingLevel={index === 0 ? 1 : 2} />
         ))}
       </div>
     </main>

@@ -33,6 +33,9 @@ const PRIORITY_OPTIONS = [
   "AI automation and intelligence",
 ] as const;
 
+const FIELD_CLASS =
+  "w-full min-h-[48px] bg-card border border-border rounded-xl px-4 text-base text-foreground placeholder:text-muted-2 focus:outline-none focus:border-blue focus:ring-2 focus:ring-blue/15 transition-all";
+
 const formatInr = (n: number) => `₹${n.toLocaleString("en-IN")}`;
 
 function loadRazorpayCheckout(): Promise<void> {
@@ -263,7 +266,7 @@ export default function SignupClient({ preSelectedModule = null }: Props) {
         <div className="grid gap-10 lg:grid-cols-[1.05fr_1fr] lg:gap-14">
           <section className="lg:pt-8">
             <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.16em] text-muted-2">Early access</p>
-            <h1 className="max-w-lg text-balance text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
+            <h1 className="max-w-xl text-balance text-[clamp(2.25rem,4.2vw,3.5rem)] font-semibold leading-[1.08] tracking-tight text-foreground">
               Request early access to Zoveto
             </h1>
             <p className="mt-4 max-w-md text-sm leading-relaxed text-muted sm:text-base">
@@ -465,14 +468,14 @@ export default function SignupClient({ preSelectedModule = null }: Props) {
 
                     <form onSubmit={handleFormSubmit} className="space-y-4" noValidate>
                       <input
-                        className="w-full rounded-lg border border-border bg-card px-3.5 py-3 text-sm text-foreground"
+                        className={FIELD_CLASS}
                         placeholder="Full name *"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         required
                       />
                       <input
-                        className="w-full rounded-lg border border-border bg-card px-3.5 py-3 text-sm text-foreground"
+                        className={FIELD_CLASS}
                         placeholder="Work email *"
                         type="email"
                         value={email}
@@ -480,20 +483,20 @@ export default function SignupClient({ preSelectedModule = null }: Props) {
                         required
                       />
                       <input
-                        className="w-full rounded-lg border border-border bg-card px-3.5 py-3 text-sm text-foreground"
+                        className={FIELD_CLASS}
                         placeholder="Company name *"
                         value={companyName}
                         onChange={(e) => setCompanyName(e.target.value)}
                         required
                       />
                       <input
-                        className="w-full rounded-lg border border-border bg-card px-3.5 py-3 text-sm text-foreground"
+                        className={FIELD_CLASS}
                         placeholder="Phone (optional)"
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
                       />
                       <select
-                        className="w-full rounded-lg border border-border bg-card px-3.5 py-3 text-sm text-foreground"
+                        className={FIELD_CLASS}
                         value={teamSize}
                         onChange={(e) => setTeamSize(e.target.value)}
                         required
@@ -506,7 +509,7 @@ export default function SignupClient({ preSelectedModule = null }: Props) {
                         ))}
                       </select>
                       <select
-                        className="w-full rounded-lg border border-border bg-card px-3.5 py-3 text-sm text-foreground"
+                        className={FIELD_CLASS}
                         value={useCase}
                         onChange={(e) => setUseCase(e.target.value)}
                       >

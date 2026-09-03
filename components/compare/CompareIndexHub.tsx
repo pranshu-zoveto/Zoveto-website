@@ -156,7 +156,7 @@ export function CompareIndexHub() {
           </div>
         </header>
 
-        <section className="mx-auto max-w-6xl" aria-labelledby="compare-platforms-heading">
+        <section className="mx-auto max-w-content" aria-labelledby="compare-platforms-heading">
           <div className="mb-8 flex flex-col gap-3 border-b border-border pb-8 sm:flex-row sm:items-end sm:justify-between">
             <div className="max-w-2xl">
               <Text

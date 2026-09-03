@@ -278,7 +278,7 @@ export default async function BlogPostPage({
         <FAQPageSchema url={canonicalUrl(`/blog/${slug}`)} faqs={POST_FAQS[slug]} />
       )}
 
-      <div className="container mx-auto max-w-[min(100%,72rem)] px-4 sm:px-6">
+      <div className="container mx-auto max-w-content px-4 sm:px-6">
         <div className="mb-10">
           <Link
             href="/blog"

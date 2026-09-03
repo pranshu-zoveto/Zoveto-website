@@ -92,7 +92,7 @@ export function FaqHubClient() {
     <div className="relative z-10">
       <FluidMarketingSection band={bandIndexForSection(0)} stackBase>
         <div className="container mx-auto max-w-content px-4 pb-14 pt-8 sm:px-6 md:pb-20 md:pt-10">
-          <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[minmax(0,1fr)_min(17.5rem,34%)] lg:items-start lg:gap-14">
+          <div className="mx-auto grid max-w-content gap-10 lg:grid-cols-[minmax(0,1fr)_min(17.5rem,34%)] lg:items-start lg:gap-14">
             <div className="rounded-2xl border border-border/90 bg-card p-8 shadow-float md:p-10 lg:p-12">
               <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-muted-2">Help center</p>
               <h1 className="mt-4">

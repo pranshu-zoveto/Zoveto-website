@@ -46,7 +46,7 @@ export default async function BlogIndexPage({ searchParams }: { searchParams: { 
           { name: "Blog", path: "/blog" },
         ]}
       />
-      <div className="container mx-auto max-w-[min(100%,72rem)] px-4 sm:px-6">
+      <div className="container mx-auto max-w-content px-4 sm:px-6">
         {/* ── Page header ── */}
         <div className="mb-14 max-w-2xl md:mb-12">
           <p className="mb-4 font-mono-geist text-[11px] font-medium uppercase tracking-[0.2em] text-muted-2">

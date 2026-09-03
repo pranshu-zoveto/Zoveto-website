@@ -259,7 +259,7 @@ export default function SignupClient({ preSelectedModule = null }: Props) {
         onClose={() => setToast({ open: false })}
       />
 
-      <div className="container mx-auto max-w-6xl px-4 sm:px-6">
+      <div className="container mx-auto max-w-content px-4 sm:px-6">
         <div className="grid gap-10 lg:grid-cols-[1.05fr_1fr] lg:gap-14">
           <section className="lg:pt-8">
             <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.16em] text-muted-2">Early access</p>

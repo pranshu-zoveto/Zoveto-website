@@ -356,7 +356,7 @@ export function OwnerDependencyScoreClient() {
   }
 
   return (
-    <div className="mx-auto max-w-6xl space-y-8">
+    <div className="mx-auto max-w-content space-y-8">
       <section className="overflow-hidden rounded-[1.25rem] border border-border bg-card shadow-[0_18px_60px_rgba(15,23,42,0.06)]" aria-labelledby="odi-questions-heading">
         <div className="border-b border-border bg-[#fbfbf8] px-5 py-6 sm:px-8 sm:py-7">
           <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">

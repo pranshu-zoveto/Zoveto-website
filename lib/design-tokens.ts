@@ -16,7 +16,7 @@ export const tokens = {
     sans: "Geist, system-ui, sans-serif",
   },
   spacing: {
-    section: "5.5rem 1.5rem",
-    sectionMobile: "3.5rem 1.25rem",
+    section: "7.5rem 1.5rem",
+    sectionMobile: "5rem 1.25rem",
   },
 } as const;

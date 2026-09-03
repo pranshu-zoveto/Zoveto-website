@@ -121,18 +121,15 @@ export function ZeroClientTrustSection({ context = "home", className }: ZeroClie
               ) : (
                 <RevealOnScroll className="grid auto-rows-fr grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
                   {TRUST_ITEMS.map((item, index) => (
-                    <article key={item.title} className="float-card reveal-item flex h-full min-h-0 flex-col rounded-xl p-4 sm:p-6">
-                      <div className="mb-3 flex items-start justify-between gap-3">
-                        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-border/80 bg-surface-2 text-blue transition-transform duration-200 ease-[cubic-bezier(0.22,1,0.36,1)] motion-safe:hover:-translate-y-px">
-                          <item.icon size={17} aria-hidden />
-                        </div>
-                        <span className="inline-flex h-6 min-w-6 shrink-0 items-center justify-center rounded-full border border-border bg-surface px-2 text-[11px] font-semibold tabular-nums text-muted-2">
-                          {String(index + 1).padStart(2, "0")}
-                        </span>
-                      </div>
-                      <h3 className="text-sm font-semibold tracking-tight text-foreground">{item.title}</h3>
-                      <p className="mt-2 text-sm leading-relaxed text-muted">{item.desc}</p>
-                    </article>
+                    <IconCard
+                      key={item.title}
+                      variant="card"
+                      index={index + 1}
+                      icon={item.icon}
+                      label={item.title}
+                      description={item.desc}
+                      className="reveal-item"
+                    />
                   ))}
                 </RevealOnScroll>
               )}

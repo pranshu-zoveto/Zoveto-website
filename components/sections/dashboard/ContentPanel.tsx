@@ -3,23 +3,30 @@
 import React from "react";
 import { Check, ArrowRight } from "lucide-react";
 import type { DashboardModule } from "@/components/sections/dashboard/moduleData";
+import {
+  HERO_PANEL_INSET_PX,
+  HERO_PANEL_WIDTH_MAX_PX,
+  HERO_PANEL_WIDTH_MIN_PX,
+} from "@/lib/dashboard-scroll-math";
 
 interface ContentPanelProps {
   module: DashboardModule;
 }
 
 export const ContentPanel = React.forwardRef<HTMLDivElement, ContentPanelProps>(({ module }, ref) => {
-  const isRight = module.panelSide === "right";
-
   return (
     <div
       ref={ref}
+      data-hero-module-panel=""
       style={{
         position: "absolute",
         top: "50%",
-        [isRight ? "right" : "left"]: "5%",
+        right: HERO_PANEL_INSET_PX,
+        left: "auto",
         transform: "translateY(-50%)",
-        width: "min(420px, 36vw)",
+        width: `clamp(${HERO_PANEL_WIDTH_MIN_PX}px, 32vw, ${HERO_PANEL_WIDTH_MAX_PX}px)`,
+        maxHeight: "calc(100dvh - 96px)",
+        overflowY: "auto",
         opacity: 0,
         zIndex: 20,
         background: "rgba(255,255,255,0.93)",
@@ -27,7 +34,7 @@ export const ContentPanel = React.forwardRef<HTMLDivElement, ContentPanelProps>(
         WebkitBackdropFilter: "blur(20px) saturate(180%)",
         border: "1px solid rgba(0,0,0,0.08)",
         borderRadius: 24,
-        padding: "36px 32px",
+        padding: "28px 24px",
         boxShadow: "0 20px 60px rgba(0,0,0,0.12), 0 4px 16px rgba(0,0,0,0.06)",
       }}
     >

@@ -3,6 +3,23 @@ export const MIN_TILE_PX = 24;
 export const MAX_ZOOM_SCALE = 4;
 export const TARGET_FOCUS_WIDTH_PX = 300;
 
+/** Dedicated module-detail rail. Keep in sync with `--hero-panel-*` on the desktop sticky hero. */
+export const HERO_PANEL_WIDTH_MIN_PX = 280;
+export const HERO_PANEL_WIDTH_MAX_PX = 400;
+export const HERO_PANEL_WIDTH_VW = 0.32;
+export const HERO_PANEL_GAP_PX = 20;
+export const HERO_PANEL_INSET_PX = 16;
+
+export function heroPanelWidthPx(viewportWidth: number): number {
+  const w = Number.isFinite(viewportWidth) && viewportWidth > 0 ? viewportWidth : 1440;
+  return Math.min(HERO_PANEL_WIDTH_MAX_PX, Math.max(HERO_PANEL_WIDTH_MIN_PX, w * HERO_PANEL_WIDTH_VW));
+}
+
+/** Panel width + gap + inset. Dashboard zoom and clip use this so tiles never sit under the panel. */
+export function heroPanelRailPx(viewportWidth: number): number {
+  return heroPanelWidthPx(viewportWidth) + HERO_PANEL_GAP_PX + HERO_PANEL_INSET_PX;
+}
+
 /**
  * GSAP zoom focal point. Must never divide by ~0 tile width (happens before first layout /
  * font paint) or the whole dashboard scales to viewport-sized “grey slabs”.
@@ -12,6 +29,7 @@ export function getTileZoomParams(
   dashRect: DOMRect,
   viewportWidth: number,
   viewportHeight: number,
+  focusCenterX?: number,
 ): { scale: number; x: number; y: number } | null {
   if (
     tileRect.width < MIN_TILE_PX ||
@@ -27,7 +45,7 @@ export function getTileZoomParams(
 
   const tileCenterX = tileRect.left + tileRect.width / 2;
   const tileCenterY = tileRect.top + tileRect.height / 2;
-  const vpCX = viewportWidth / 2;
+  const vpCX = Number.isFinite(focusCenterX) ? (focusCenterX as number) : viewportWidth / 2;
   const vpCY = viewportHeight / 2;
   const dashCX = dashRect.left + dashRect.width / 2;
   const dashCY = dashRect.top + dashRect.height / 2;

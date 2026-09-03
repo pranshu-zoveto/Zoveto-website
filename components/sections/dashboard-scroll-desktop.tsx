@@ -1,6 +1,6 @@
 "use client";
 
-import { useLayoutEffect, useRef, useState } from "react";
+import { useLayoutEffect, useRef, useState, type CSSProperties } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { DashboardLight } from "@/components/sections/dashboard/DashboardLight";
@@ -13,7 +13,12 @@ import {
   HOME_HERO_SUBHEADING,
   HOME_HERO_VALUE_PROP,
 } from "@/lib/home-hero-copy";
-import { dashboardScrollDistancePx, getTileZoomParams, MIN_TILE_PX } from "@/lib/dashboard-scroll-math";
+import {
+  dashboardScrollDistancePx,
+  getTileZoomParams,
+  heroPanelRailPx,
+  MIN_TILE_PX,
+} from "@/lib/dashboard-scroll-math";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -23,7 +28,7 @@ function ProgressDots({ activeIdx }: { activeIdx: number }) {
       style={{
         position: "absolute",
         bottom: 28,
-        left: "50%",
+        left: "calc((100% - var(--hero-panel-width) - var(--hero-panel-gap) - var(--hero-panel-inset)) / 2)",
         transform: "translateX(-50%)",
         display: "flex",
         gap: 8,
@@ -186,6 +191,7 @@ function SectionIntro({ introRef }: { introRef: React.RefObject<HTMLDivElement> 
 export function DashboardScrollDesktop() {
   const sectionRef = useRef<HTMLElement | null>(null);
   const stickyRef = useRef<HTMLDivElement | null>(null);
+  const dashClipRef = useRef<HTMLDivElement | null>(null);
   const dashRef = useRef<HTMLDivElement | null>(null);
   const introRef = useRef<HTMLDivElement | null>(null);
   const readabilityRef = useRef<HTMLDivElement | null>(null);
@@ -197,7 +203,7 @@ export function DashboardScrollDesktop() {
   useLayoutEffect(() => {
     mountedRef.current = true;
     if (initRef.current) return;
-    if (!sectionRef.current || !stickyRef.current || !dashRef.current || !introRef.current || !readabilityRef.current) return;
+    if (!sectionRef.current || !stickyRef.current || !dashClipRef.current || !dashRef.current || !introRef.current || !readabilityRef.current) return;
 
     let cancelled = false;
     let ctx: gsap.Context | null = null;
@@ -270,7 +276,7 @@ export function DashboardScrollDesktop() {
         MODULES.forEach((mod) => {
           const panel = panelRefs.current[mod.id];
           if (!panel) return;
-          gsap.set(panel, { opacity: 0, x: mod.panelSide === "right" ? 50 : -50 });
+          gsap.set(panel, { opacity: 0, x: 28 });
         });
         gsap.set(dashRef.current, {
           willChange: "transform",
@@ -279,6 +285,7 @@ export function DashboardScrollDesktop() {
           scale: 1,
         });
         gsap.set(readabilityRef.current, { opacity: 0.95 });
+        gsap.set(stickyRef.current, { "--hero-clip-right": "0px" });
 
         if (!zoomStepsOk) {
           showStaticDashboard();
@@ -291,6 +298,8 @@ export function DashboardScrollDesktop() {
           return;
         }
 
+        const railPx = heroPanelRailPx(vw);
+        const focusCenterX = (vw - railPx) / 2;
         const scrollPx = dashboardScrollDistancePx(window.innerHeight);
         const tl = gsap.timeline({
           scrollTrigger: {
@@ -313,13 +322,14 @@ export function DashboardScrollDesktop() {
         tl.to(dashRef.current, { opacity: 1, duration: 0.45, ease: "power2.out" }, 0.08);
         tl.to(readabilityRef.current, { opacity: 0, duration: 0.45, ease: "power2.out" }, 0.12);
         tl.to(introRef.current, { opacity: 0, y: -20, duration: 0.35 }, 0.2);
+        tl.to(stickyRef.current, { "--hero-clip-right": `${railPx}px`, duration: 0.45, ease: "power2.out" } as gsap.TweenVars, 0.2);
 
         MODULES.forEach((mod, i) => {
           const t = 1 + i;
           const tile = root.querySelector(`[data-module="${mod.id}"]`) as HTMLElement | null;
           const panel = panelRefs.current[mod.id];
           if (!tile || !panel || !tileRects[mod.id]) return;
-          const params = getTileZoomParams(tileRects[mod.id], dashRect, vw, vh);
+          const params = getTileZoomParams(tileRects[mod.id], dashRect, vw, vh, focusCenterX);
           if (!params) return;
 
           tl.to(dashRef.current, { ...params, duration: 0.7, ease: "power3.inOut" }, t);
@@ -333,7 +343,7 @@ export function DashboardScrollDesktop() {
             t + 0.3
           );
           tl.to(panel, { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" }, t + 0.35);
-          tl.to(panel, { opacity: 0, x: mod.panelSide === "right" ? 50 : -50, duration: 0.35, ease: "power2.in" }, t + 0.8);
+          tl.to(panel, { opacity: 0, x: 28, duration: 0.35, ease: "power2.in" }, t + 0.8);
           tl.to(tile, { boxShadow: "0 2px 12px rgba(0,0,0,0.06)", borderColor: "#e5e5ea", duration: 0.2 }, t + 0.8);
         });
 
@@ -399,18 +409,40 @@ export function DashboardScrollDesktop() {
 
   return (
     <section ref={sectionRef} id="product-deep-dive" style={{ height: "650vh" }} className="hidden lg:block">
-      <div ref={stickyRef} className="sticky top-0 h-[100dvh] min-h-screen w-full overflow-hidden" style={{ background: "#f5f5f7" }}>
+      <div
+        ref={stickyRef}
+        className="sticky top-0 h-[100dvh] min-h-screen w-full overflow-hidden"
+        style={
+          {
+            background: "#f5f5f7",
+            "--hero-panel-width": "clamp(280px, 32vw, 400px)",
+            "--hero-panel-gap": "20px",
+            "--hero-panel-inset": "16px",
+            "--hero-clip-right": "0px",
+          } as CSSProperties
+        }
+      >
         <div
-          ref={dashRef}
+          ref={dashClipRef}
           style={{
             position: "absolute",
             inset: 0,
-            willChange: "transform",
-            transformOrigin: "center center",
-            opacity: 0,
+            overflow: "hidden",
+            clipPath: "inset(0 var(--hero-clip-right) 0 0)",
           }}
         >
-          <DashboardLight />
+          <div
+            ref={dashRef}
+            style={{
+              position: "absolute",
+              inset: 0,
+              willChange: "transform",
+              transformOrigin: "center center",
+              opacity: 0,
+            }}
+          >
+            <DashboardLight />
+          </div>
         </div>
         <div
           ref={readabilityRef}

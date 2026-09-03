@@ -1,7 +1,7 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import {
   Activity,
@@ -17,8 +17,9 @@ import {
   TrendingUp,
   Workflow,
 } from "lucide-react";
-import { DEFAULT_TEAM_IMAGE_OBJECT_CLASS, TEAM_MEMBERS, TEAM_SECTION_INTRO } from "@/lib/team";
-import { cn } from "@/lib/utils";
+import { getTeamMember, TEAM_MEMBERS, TEAM_SECTION_INTRO } from "@/lib/team";
+import { TeamCard } from "@/components/team/TeamCard";
+import { TeamModal } from "@/components/team/TeamModal";
 
 const STORY_CARDS = [
   {
@@ -70,6 +71,12 @@ const easeOut = [0.22, 1, 0.36, 1] as const;
 
 export default function AboutNarrativeClient() {
   const reduceMotion = useReducedMotion();
+  const [selectedId, setSelectedId] = useState<string | null>(null);
+  const selected = selectedId ? getTeamMember(selectedId) ?? null : null;
+
+  useEffect(() => {
+    if (selectedId && !selected) setSelectedId(null);
+  }, [selectedId, selected]);
 
   const staggerContainer = {
     hidden: {},
@@ -377,32 +384,11 @@ export default function AboutNarrativeClient() {
               </h2>
               <p className="mt-5 max-w-[58ch] text-base leading-7 text-muted">{TEAM_SECTION_INTRO}</p>
             </motion.div>
-            <motion.div variants={staggerContainer} className="grid gap-4">
+            <motion.div variants={staggerContainer} className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
             {TEAM_MEMBERS.map((member) => (
-              <motion.article
-                key={member.id}
-                variants={revealItem}
-                className="grid gap-5 rounded-[1.5rem] border border-border bg-card p-5 shadow-float transition-all duration-300 hover:-translate-y-1 hover:border-blue/25 hover:shadow-elevated motion-reduce:transform-none sm:grid-cols-[minmax(0,7.5rem)_minmax(0,1fr)] sm:gap-6"
-              >
-                <div className="relative mx-auto aspect-square w-full max-w-[7.5rem] overflow-hidden rounded-2xl bg-surface ring-1 ring-border sm:mx-0 sm:max-w-none sm:w-[7.5rem] sm:min-w-[7.5rem]">
-                  <Image
-                    src={member.image}
-                    alt={member.name}
-                    width={300}
-                    height={300}
-                    className={cn(
-                      "h-full w-full object-cover",
-                      member.imageObjectClass ?? DEFAULT_TEAM_IMAGE_OBJECT_CLASS
-                    )}
-                  />
-                </div>
-                <div>
-                  <p className="text-xl font-semibold tracking-[-0.025em] text-foreground">{member.name}</p>
-                  <p className="mt-1 text-sm font-medium text-muted">{member.role}</p>
-                  <p className="mt-3 text-sm leading-6 text-muted">{member.cardTagline}</p>
-                  <p className="mt-3 text-sm leading-6 text-foreground/82">{member.bio[0]}</p>
-                </div>
-              </motion.article>
+              <motion.div key={member.id} variants={revealItem}>
+                <TeamCard member={member} nameHeadingLevel={3} onOpen={(id) => setSelectedId(id)} />
+              </motion.div>
             ))}
             </motion.div>
           </div>
@@ -429,6 +415,13 @@ export default function AboutNarrativeClient() {
           </div>
         </footer>
       </div>
+      <TeamModal
+        member={selected}
+        open={!!selected}
+        onOpenChange={(v) => {
+          if (!v) setSelectedId(null);
+        }}
+      />
     </div>
   );
 }

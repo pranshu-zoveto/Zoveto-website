@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Text } from "@/components/ui/Text";
 import { ArrowRight, Database, Activity, Share2 } from "lucide-react";
 import { RevealOnScroll } from "@/components/layout/RevealOnScroll";
+import { IconCard } from "@/components/ui/IconCard";
 import { getPublicIndustries } from "@/lib/industries";
 
 const ARCHITECTURE_LAYERS = [
@@ -39,29 +40,23 @@ export function ProductClient() {
       <div className="flex flex-col gap-14 md:gap-20">
       <div className="grid auto-rows-fr gap-8 py-20 md:grid-cols-3 md:items-stretch md:py-28">
         {ARCHITECTURE_LAYERS.map((layer) => (
-          <article
+          <IconCard
             key={layer.id}
-            className="float-card reveal-item group flex h-full min-h-0 flex-col gap-6 p-8 transition-shadow hover:shadow-hover md:gap-7 md:p-10"
+            variant="card"
+            icon={layer.icon}
+            label={layer.title}
+            labelClassName="text-lg"
+            description={layer.desc}
+            className="reveal-item p-8 md:p-10"
           >
-            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-border bg-surface transition-colors group-hover:border-blue/30">
-              <layer.icon className="text-blue" size={22} />
-            </div>
-            <div className="flex min-h-0 flex-1 flex-col gap-3">
-              <Text variant="heading-2" as="h3" className="text-lg text-foreground">
-                {layer.title}
-              </Text>
-              <Text variant="body-base" className="leading-relaxed text-muted">
-                {layer.desc}
-              </Text>
-            </div>
-            <ul className="shrink-0 space-y-3 border-t border-border pt-7">
+            <ul className="mt-auto shrink-0 space-y-3 border-t border-border pt-7">
               {layer.features.map((f) => (
                 <li key={f} className="flex items-center gap-2 text-xs font-semibold text-foreground">
                   <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-blue" /> {f}
                 </li>
               ))}
             </ul>
-          </article>
+          </IconCard>
         ))}
       </div>
 
@@ -69,7 +64,7 @@ export function ProductClient() {
         aria-labelledby="product-industry-heading"
         className="reveal-item float-card mx-auto w-full max-w-5xl overflow-hidden"
       >
-        <div className="grid divide-y divide-border md:grid-cols-12 md:divide-x md:divide-y-0 md:items-stretch">
+        <div className="grid md:grid-cols-12 md:items-stretch">
           <div className="flex flex-col justify-center gap-4 p-8 md:col-span-5 md:p-10 lg:p-12">
             <Text variant="label-uppercase" className="text-muted-2">
               By industry

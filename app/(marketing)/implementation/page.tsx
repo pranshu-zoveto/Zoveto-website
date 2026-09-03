@@ -5,6 +5,7 @@ import { BreadcrumbSchema } from "@/components/seo/BreadcrumbSchema";
 import { FAQPageSchema } from "@/components/seo/FAQPageSchema";
 import { Button } from "@/components/ui/Button";
 import { Text } from "@/components/ui/Text";
+import { FaqAccordion } from "@/components/ui/FaqAccordion";
 import { canonicalUrl } from "@/lib/site";
 import { EARLY_ACCESS_CTA_HREF, EARLY_ACCESS_CTA_LABEL } from "@/lib/marketing-cta";
 
@@ -165,14 +166,7 @@ export default function ImplementationPage() {
           <Text variant="heading-1" as="h2" className="mb-6 text-foreground">
             Implementation FAQ
           </Text>
-          <dl className="space-y-6">
-            {FAQS.map((faq) => (
-              <div key={faq.q}>
-                <dt className="font-semibold text-foreground">{faq.q}</dt>
-                <dd className="mt-2 text-sm leading-relaxed text-muted">{faq.a}</dd>
-              </div>
-            ))}
-          </dl>
+          <FaqAccordion items={FAQS} idPrefix="implementation" />
         </section>
       </div>
     </main>

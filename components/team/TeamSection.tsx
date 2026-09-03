@@ -33,7 +33,11 @@ export function TeamSection({ primaryPage = false }: TeamSectionProps) {
       >
         <TitleTag
           id="team-section-heading"
-          className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl md:text-5xl"
+          className={
+            primaryPage
+              ? "text-4xl font-semibold tracking-tight text-foreground sm:text-5xl md:text-6xl"
+              : "text-3xl font-semibold tracking-tight text-foreground sm:text-4xl md:text-5xl"
+          }
         >
           Meet the <span className="text-muted-2">Team</span>
         </TitleTag>

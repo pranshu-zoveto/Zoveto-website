@@ -135,9 +135,9 @@ export default async function ModuleDetailPage({
             <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-blue-light border border-border flex items-center justify-center shadow-sm shrink-0">
               <data.icon className="text-blue" size={28} />
             </div>
-            <div className="text-3xl sm:text-5xl font-bold text-foreground tracking-tight leading-tight">
+            <h1 className="text-3xl sm:text-5xl font-bold text-foreground tracking-tight leading-tight">
               {data.name}
-            </div>
+            </h1>
           </div>
           <Text variant="body-lg" className="text-muted max-w-2xl">
             {pageIntro.intro}

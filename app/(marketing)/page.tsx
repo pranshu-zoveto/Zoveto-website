@@ -15,6 +15,11 @@ const ProductDemoReel = dynamic(() => import("@/components/sections/home/Product
     <div className="mx-auto aspect-video w-full max-w-content px-4 sm:px-6" aria-hidden />
   ),
 });
+const ProductTourInteractive = dynamic(() => import("@/components/sections/home/ProductTourInteractive"), {
+  loading: () => (
+    <div className="mx-auto mt-10 aspect-[1920/894] w-full max-w-content px-4 sm:px-6" aria-hidden />
+  ),
+});
 const ProblemSection = dynamic(() => import("@/components/sections/ProblemSection"));
 const SystemShiftSection = dynamic(() => import("@/components/sections/SystemShiftSection"));
 const ComparisonSection = dynamic(() => import("@/components/sections/ComparisonSection"));
@@ -130,6 +135,7 @@ export default function Home() {
             </h2>
           </div>
           <ProductDemoReel />
+          <ProductTourInteractive />
         </section>
       </FluidMarketingSection>
       <FluidMarketingSection band={bandIndexForSection(1)} stackBase>

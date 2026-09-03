@@ -1,27 +1,28 @@
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
-import { IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ZOVETO_ORGANIZATION_DESCRIPTION, ZOVETO_SITE_DEFAULT_TITLE } from "@/lib/brand-entity";
 import { BRAND_CANONICAL_ORIGIN, BRAND_LOGO_ICON } from "@/lib/branding";
 import { siteUrl } from "@/lib/site";
 
-const plexSans = IBM_Plex_Sans({
+const geistSans = Geist({
   subsets: ["latin"],
   variable: "--font-sans",
   display: "swap",
   preload: true,
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700"],
   adjustFontFallback: true,
   fallback: ["-apple-system", "BlinkMacSystemFont", "Roboto", "sans-serif"],
 });
 
-const plexMono = IBM_Plex_Mono({
+const geistMono = Geist_Mono({
   subsets: ["latin"],
-  variable: "--font-mono-plex",
+  variable: "--font-mono-geist",
   display: "swap",
   preload: false,
-  weight: ["400", "500", "600"],
+  weight: ["400", "500", "600", "700"],
+  adjustFontFallback: true,
   fallback: ["ui-monospace", "SFMono-Regular", "Menlo", "Consolas", "monospace"],
 });
 
@@ -118,7 +119,7 @@ export default function RootLayout({
       <head>
       </head>
       <body
-        className={`${plexSans.variable} ${plexMono.variable} font-sans antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}
         suppressHydrationWarning
       >
         {children}

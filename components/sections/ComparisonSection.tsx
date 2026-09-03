@@ -61,10 +61,10 @@ export function ComparisonSection() {
 
             <div className="mt-8 grid grid-cols-2 gap-x-6">
               <p className="text-xs font-medium uppercase tracking-wide text-muted-2">
-                Missing <span className="font-mono-plex font-semibold text-blue">30%</span> operational data
+                Missing <span className="font-mono-geist font-semibold text-blue">30%</span> operational data
               </p>
               <p className="text-xs font-medium uppercase tracking-wide text-muted-2">
-                <span className="font-mono-plex font-semibold text-blue">Zero</span> revenue leakage architecture
+                <span className="font-mono-geist font-semibold text-blue">Zero</span> revenue leakage architecture
               </p>
             </div>
             <p className="mt-3 text-xs text-muted-2">

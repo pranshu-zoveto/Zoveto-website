@@ -309,7 +309,7 @@ export function ProblemSection() {
                     aria-expanded={open}
                     className="flex w-full items-start gap-4 py-4 text-left"
                   >
-                    <span className="mt-1 shrink-0 font-mono-plex text-xs tabular-nums text-muted">{index}</span>
+                    <span className="mt-1 shrink-0 font-mono-geist text-xs tabular-nums text-muted">{index}</span>
                     <span className="text-lg font-semibold leading-snug text-foreground">{pain.title}</span>
                   </button>
                   <AnimatePresence initial={false}>

@@ -73,7 +73,7 @@ export function SystemModuleCard({ product, className }: Props) {
         <div className="relative w-full min-h-[2.5rem] flex items-center justify-center">
           <span
             className={cn(
-              "absolute inset-x-0 flex items-center justify-center font-mono-plex text-[0.7rem] sm:text-xs tracking-[0.2em] text-muted-2 transition-all duration-200",
+              "absolute inset-x-0 flex items-center justify-center font-mono-geist text-[0.7rem] sm:text-xs tracking-[0.2em] text-muted-2 transition-all duration-200",
               "group-hover:opacity-0 group-hover:translate-y-1 group-focus-visible:opacity-0"
             )}
           >

@@ -37,6 +37,7 @@ const config: Config = {
           "sans-serif",
         ],
         mono: [
+          "var(--font-mono-geist)",
           "ui-monospace",
           "SFMono-Regular",
           '"SF Mono"',
@@ -44,8 +45,8 @@ const config: Config = {
           "Consolas",
           "monospace",
         ],
-        "mono-plex": [
-          "var(--font-mono-plex)",
+        "mono-geist": [
+          "var(--font-mono-geist)",
           "ui-monospace",
           "SFMono-Regular",
           "Menlo",

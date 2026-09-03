@@ -36,14 +36,14 @@ export function HomeHeroAboveFold({
       {showPills ? (
         <div
           className={cn(
-            "mb-4 flex max-w-[min(92vw,40rem)] flex-wrap justify-center gap-2 sm:mb-5",
+            "mb-3 flex max-w-[min(92vw,40rem)] flex-wrap justify-center gap-1.5 sm:mb-4",
             pillsWrapperClassName,
           )}
         >
           {PILLS.map((item) => (
             <span
               key={item}
-              className="inline-flex items-center rounded-full border border-border bg-card px-4 py-2 text-[0.6875rem] font-medium uppercase tracking-[0.1em] text-muted whitespace-nowrap"
+              className="inline-flex items-center rounded-full border border-border bg-card px-2.5 py-1 text-[0.5625rem] font-medium uppercase tracking-[0.08em] text-muted-2 whitespace-nowrap"
             >
               {item}
             </span>
@@ -51,12 +51,12 @@ export function HomeHeroAboveFold({
         </div>
       ) : null}
 
-      <div className="mb-3 w-full max-w-[min(92vw,720px)]" aria-hidden>
-        <BrandHeroWordmark />
+      <div className="mb-2 w-full max-w-[min(92vw,720px)]" aria-hidden>
+        <BrandHeroWordmark compact />
       </div>
 
       <h1
-        className="mb-3 max-w-[min(92vw,40rem)] text-balance text-[clamp(1.65rem,4.5vw,2.75rem)] font-bold leading-[1.08] tracking-[-0.03em] text-[#1d1d1f]"
+        className="mb-3 max-w-[min(92vw,46rem)] text-balance text-[clamp(2.15rem,5.8vw,4.75rem)] font-semibold leading-[1.05] tracking-[-0.045em] text-[#1d1d1f]"
       >
         {HOME_HERO_VALUE_PROP}
       </h1>

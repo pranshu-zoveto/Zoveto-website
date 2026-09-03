@@ -1,6 +1,7 @@
 "use client";
 
 import { BrandHeroWordmark } from "@/components/brand/BrandHeroWordmark";
+import { HOME_HERO_SUBHEADING, HOME_HERO_VALUE_PROP } from "@/lib/home-hero-copy";
 
 const PILLS = [
   "Execution clarity",
@@ -18,24 +19,25 @@ export function DashboardDesktopLoadingFallback() {
         className="sticky top-0 flex h-[100dvh] min-h-screen flex-col items-center justify-center px-5 py-10 text-center"
         style={{ background: "#f5f5f7" }}
       >
-      <div className="mb-5 flex max-w-[min(92vw,40rem)] flex-wrap justify-center gap-2">
+      <div className="mb-4 flex max-w-[min(92vw,40rem)] flex-wrap justify-center gap-1.5">
         {PILLS.map((item) => (
           <span
             key={item}
-            className="rounded-full border border-[rgba(29,29,31,0.12)] bg-white/95 px-[18px] py-2.5 text-[11px] font-bold uppercase tracking-[0.12em] text-[#1d1d1f]"
+            className="rounded-full border border-[rgba(29,29,31,0.12)] bg-white/95 px-2.5 py-1 text-[9px] font-semibold uppercase tracking-[0.08em] text-[#86868b]"
           >
             {item}
           </span>
         ))}
       </div>
-      <p className="mb-3.5 text-[11px] font-semibold uppercase tracking-[0.28em] text-[#86868b]">Master brand</p>
+      <p className="mb-2 text-[9px] font-semibold uppercase tracking-[0.2em] text-[#86868b]">Master brand</p>
       <div className="mb-2 w-full max-w-[min(92vw,720px)]">
-        <BrandHeroWordmark as="h1" />
+        <BrandHeroWordmark compact />
       </div>
-      <p className="mb-8 max-w-[min(90vw,40rem)] text-lg font-medium leading-relaxed tracking-[-0.01em] text-[#4b5563]">
-        Your business doesn&apos;t need more tools.
-        <br aria-hidden />
-        It needs one system that runs everything.
+      <h1 className="mb-3 max-w-[min(92vw,46rem)] text-balance text-[clamp(2.15rem,5.8vw,4.75rem)] font-semibold leading-[1.05] tracking-[-0.045em] text-[#1d1d1f]">
+        {HOME_HERO_VALUE_PROP}
+      </h1>
+      <p className="mb-8 max-w-[min(90vw,40rem)] text-base font-medium leading-relaxed tracking-[-0.01em] text-[#4b5563]">
+        {HOME_HERO_SUBHEADING}
       </p>
       <a
         href="#product-deep-dive"

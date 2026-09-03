@@ -4,16 +4,20 @@ import { cn } from "@/lib/utils";
 type BrandHeroWordmarkProps = {
   as?: "h1" | "h2";
   className?: string;
+  /** Smaller mark so the value-prop sentence can lead the hero. */
+  compact?: boolean;
 };
 
 /** Master brand headline: ZOVETO + solid signature blue dot only (no typographic period). */
-export function BrandHeroWordmark({ as: Tag = "h2", className }: BrandHeroWordmarkProps) {
+export function BrandHeroWordmark({ as: Tag = "h2", className, compact = false }: BrandHeroWordmarkProps) {
   return (
     <Tag
       aria-label="Zoveto"
       className={cn(
         "flex flex-wrap items-baseline justify-center gap-x-[0.14em] gap-y-0 text-center font-semibold tracking-[-0.05em]",
-        "text-[clamp(2.75rem,9.2vw,6rem)] leading-[0.98]",
+        compact
+          ? "text-[clamp(1.65rem,4.6vw,3rem)] leading-[0.98]"
+          : "text-[clamp(2.75rem,9.2vw,6rem)] leading-[0.98]",
         className
       )}
     >

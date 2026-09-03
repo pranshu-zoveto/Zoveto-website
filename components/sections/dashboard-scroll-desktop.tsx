@@ -68,17 +68,17 @@ function SectionIntro({ introRef }: { introRef: React.RefObject<HTMLDivElement> 
         padding: "0 20px",
       }}
     >
-      <div style={{ display: "flex", gap: 8, flexWrap: "wrap", justifyContent: "center", marginBottom: 20 }}>
+      <div style={{ display: "flex", gap: 6, flexWrap: "wrap", justifyContent: "center", marginBottom: 12 }}>
         {["Execution clarity", "Unified business system", "Qualified onboarding", "Compliance-ready"].map((item) => (
           <span
             key={item}
             style={{
-              fontSize: 11,
-              fontWeight: 700,
+              fontSize: 9,
+              fontWeight: 600,
               textTransform: "uppercase",
-              letterSpacing: "0.12em",
-              color: "#1d1d1f",
-              padding: "10px 18px",
+              letterSpacing: "0.08em",
+              color: "#86868b",
+              padding: "4px 10px",
               background: "rgba(255,255,255,0.95)",
               border: "1px solid rgba(29,29,31,0.12)",
               borderRadius: 56,
@@ -90,20 +90,24 @@ function SectionIntro({ introRef }: { introRef: React.RefObject<HTMLDivElement> 
       </div>
       <div
         style={{
-          fontSize: 11,
+          fontSize: 9,
           fontWeight: 600,
-          letterSpacing: "0.28em",
+          letterSpacing: "0.2em",
           textTransform: "uppercase",
           color: "#86868b",
-          marginBottom: 14,
+          marginBottom: 8,
         }}
       >
         Master brand
       </div>
-      <div style={{ marginBottom: 12, maxWidth: "min(92vw, 720px)", marginLeft: "auto", marginRight: "auto" }}>
-        <BrandHeroWordmark as="h2" />
+      <div style={{ marginBottom: 8, maxWidth: "min(92vw, 720px)", marginLeft: "auto", marginRight: "auto" }}>
+        <BrandHeroWordmark as="h2" compact />
       </div>
-      <h1 className="sr-only">{HOME_HERO_VALUE_PROP}</h1>
+      <h1
+        className="mb-3 max-w-[min(92vw,46rem)] text-balance text-[clamp(2.15rem,5.8vw,4.75rem)] font-semibold leading-[1.05] tracking-[-0.045em] text-[#1d1d1f]"
+      >
+        {HOME_HERO_VALUE_PROP}
+      </h1>
       <p
         style={{
           fontSize: 18,

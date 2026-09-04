@@ -2,13 +2,6 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 
-const SUPPORTING_LINES = [
-  "Your ERP talks to your warehouse.",
-  "Your warehouse talks to your CRM.",
-  "Your CRM talks to your finance.",
-  "Everything talks to your AI agents.",
-] as const;
-
 export function SystemShiftSection() {
   const reduceMotion = useReducedMotion();
 
@@ -28,16 +21,10 @@ export function SystemShiftSection() {
         >
           One operating system for warehouse, finance, and CRM
         </motion.h2>
-        <ul
-          className="mt-4 flex flex-wrap items-baseline justify-center gap-x-8 gap-y-2 text-sm leading-snug text-muted md:text-[0.9375rem]"
-          role="list"
-        >
-          {SUPPORTING_LINES.map((line) => (
-            <li key={line} className="max-w-[22ch]">
-              {line}
-            </li>
-          ))}
-        </ul>
+        <p className="mx-auto mt-4 max-w-[62ch] text-pretty text-sm leading-relaxed text-muted md:text-[0.9375rem]">
+          Your ERP talks to your warehouse, your warehouse talks to your CRM, your CRM talks to your finance, and
+          everything talks to your AI agents.
+        </p>
       </div>
     </section>
   );

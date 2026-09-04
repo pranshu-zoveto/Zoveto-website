@@ -1,154 +1,296 @@
 "use client";
 
-import { useCallback, useEffect, useId, useRef, useState } from "react";
-import Image from "next/image";
+import { useCallback, useEffect, useId, useLayoutEffect, useRef, useState, type KeyboardEvent } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { MousePointer2 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import {
+  ProductTourScene,
+  TOUR_REST,
+  type TourPlayState,
+  type TourSceneId,
+} from "./ProductTourLiveScenes";
 
-const SCREENSHOT_WIDTH = 1920;
-const SCREENSHOT_HEIGHT = 894;
-const AUTOPLAY_MS = 5000;
+const EASE = [0.22, 1, 0.36, 1] as const;
+const IDLE_RESUME_MS = 12000;
 
-type TourSlide = {
-  id: string;
-  label: string;
-  src: string;
-  alt: string;
+type Step = {
+  scene: TourSceneId;
+  target: string;
+  hold: number;
   kicker: string;
   numbers: string;
+  play: Partial<TourPlayState>;
 };
 
-const SLIDES: readonly TourSlide[] = [
+const SCENES: { id: TourSceneId; label: string }[] = [
+  { id: "command-center", label: "Command Center" },
+  { id: "sales-crm", label: "Sales & CRM" },
+  { id: "warehouse", label: "Warehouse" },
+  { id: "finance", label: "Finance" },
+];
+
+const STEPS: Step[] = [
   {
-    id: "command-center",
-    label: "Command Center",
-    src: "/screenshots/command-center.jpg",
-    alt: "Zoveto Command Center with live metrics across sales, warehouse, and finance",
+    scene: "command-center",
+    target: "cc-overview",
+    hold: 1400,
+    kicker: "today's work. one screen.",
+    numbers: "Owner overview, connected surfaces, live attention queue",
+    play: { ccTab: "overview", viewAs: "Owner" },
+  },
+  {
+    scene: "command-center",
+    target: "cc-view-warehouse",
+    hold: 1500,
+    kicker: "today's work. one screen.",
+    numbers: "View as Warehouse, same Command Center, different queue",
+    play: { viewAs: "Warehouse" },
+  },
+  {
+    scene: "command-center",
+    target: "cc-roi-cost",
+    hold: 1800,
     kicker: "today's work. one screen.",
     numbers: "Revenue recovered ₹0, cost saved ₹750, time saved 3h, leads processed 0",
+    play: { viewAs: "Owner", roiFocus: "cost" },
   },
   {
-    id: "sales-crm",
-    label: "Sales & CRM",
-    src: "/screenshots/sales-quotations.jpg",
-    alt: "Zoveto sales quotations command lane with blocked decisions, approvals, and unacknowledged tasks",
+    scene: "sales-crm",
+    target: "sales-lane-ship",
+    hold: 1700,
     kicker: "lead to quote to order.",
     numbers: "18 ship-ready packs, 3 aged rework, 1 pending approval, 1 unacknowledged task",
+    play: { salesLane: "ship" },
   },
   {
-    id: "warehouse",
-    label: "Warehouse",
-    src: "/screenshots/warehouse-pick-list.jpg",
-    alt: "Zoveto warehouse pick list with orders ready to pick, pack, and dispatch",
+    scene: "sales-crm",
+    target: "sales-row-critical",
+    hold: 1700,
+    kicker: "lead to quote to order.",
+    numbers: "Price Health CRITICAL on a live quotation row",
+    play: { salesLane: "rework", salesRow: 0 },
+  },
+  {
+    scene: "warehouse",
+    target: "wh-ready",
+    hold: 1400,
     kicker: "pick. scan. ship.",
     numbers: "Ready orders 53, units to pick 317, picking 20, packing 13, ready to dispatch 33, blocked 1",
+    play: { whStat: "ready" },
   },
   {
-    id: "finance",
-    label: "Finance",
-    src: "/screenshots/finance-invoices.jpg",
-    alt: "Zoveto finance sales-invoice register with posting and GST status",
+    scene: "warehouse",
+    target: "wh-order",
+    hold: 1200,
+    kicker: "pick. scan. ship.",
+    numbers: "Select the order, then pick against inbound lots",
+    play: { orderOpen: true, whStat: null },
+  },
+  {
+    scene: "warehouse",
+    target: "wh-order-option",
+    hold: 1200,
+    kicker: "pick. scan. ship.",
+    numbers: "DEMO-SO-T-2026-0314, picking, 2 lines",
+    play: { orderOpen: true, selectedOrderId: "DEMO-SO-T-2026-0314" },
+  },
+  {
+    scene: "warehouse",
+    target: "wh-scan",
+    hold: 1600,
+    kicker: "pick. scan. ship.",
+    numbers: "Scan the rack, then the lot. Stock leaves at dispatch.",
+    play: { orderOpen: false, pickMarked: 1 },
+  },
+  {
+    scene: "warehouse",
+    target: "wh-blocked",
+    hold: 1600,
+    kicker: "pick. scan. ship.",
+    numbers: "Blocked 1: DEMOZOVETO/26-27/SO/00004, 1 shortage line",
+    play: { whStat: "blocked" },
+  },
+  {
+    scene: "finance",
+    target: "fin-posted",
+    hold: 1500,
     kicker: "GST from the same order.",
     numbers: "100 invoices, 96 posted, 3 draft",
+    play: { finFilter: "posted" },
   },
-] as const;
+  {
+    scene: "finance",
+    target: "fin-row-0",
+    hold: 1800,
+    kicker: "GST from the same order.",
+    numbers: "GST and e-way-bill status on every posted invoice",
+    play: { finFilter: "posted", financeRow: 0, invoiceOpen: true },
+  },
+];
+
+function firstStepFor(scene: TourSceneId) {
+  return Math.max(0, STEPS.findIndex((step) => step.scene === scene));
+}
+
+function playFrom(stepIndex: number): TourPlayState {
+  const next = { ...TOUR_REST };
+  const scene = STEPS[stepIndex]?.scene;
+  for (let i = 0; i <= stepIndex; i += 1) {
+    const step = STEPS[i];
+    if (step.scene !== scene) continue;
+    Object.assign(next, step.play);
+  }
+  return next;
+}
 
 export default function ProductTourInteractive() {
   const reduceMotion = useReducedMotion();
-  const [index, setIndex] = useState(0);
-  const [interacted, setInteracted] = useState(false);
-  const interactedRef = useRef(false);
-  const inViewRef = useRef(true);
+  const [mounted, setMounted] = useState(false);
+  const [stepIndex, setStepIndex] = useState(0);
+  const [isActive, setIsActive] = useState(false);
+  const [manual, setManual] = useState(false);
+  const [userPlay, setUserPlay] = useState<TourPlayState>(TOUR_REST);
+  const [pointer, setPointer] = useState({ x: 72, y: 64, w: 72, h: 28 });
+  const [clickKey, setClickKey] = useState(0);
+  const stageRef = useRef<HTMLDivElement | null>(null);
   const rootRef = useRef<HTMLDivElement | null>(null);
   const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
+  const inViewRef = useRef(false);
+  const idleRef = useRef<number | null>(null);
   const baseId = useId();
-  const slide = SLIDES[index];
 
-  const select = useCallback((next: number, fromKeyboard: boolean) => {
-    const bounded = (next + SLIDES.length) % SLIDES.length;
-    setIndex(bounded);
-    if (fromKeyboard) {
-      requestAnimationFrame(() => tabRefs.current[bounded]?.focus());
-    }
+  const step = STEPS[stepIndex];
+  const playing = mounted && reduceMotion === false && !manual;
+  const sceneIndex = SCENES.findIndex((item) => item.id === step.scene);
+  const play = manual ? userPlay : playFrom(stepIndex);
+  const scene = step.scene;
+
+  useEffect(() => {
+    setMounted(true);
   }, []);
-
-  const onManualSelect = useCallback(
-    (next: number) => {
-      interactedRef.current = true;
-      setInteracted(true);
-      select(next, false);
-    },
-    [select],
-  );
 
   useEffect(() => {
     if (!rootRef.current) return;
+    const sync = () => setIsActive(!document.hidden && inViewRef.current);
     const observer = new IntersectionObserver(
       (entries) => {
         inViewRef.current = entries.some((entry) => entry.isIntersecting);
+        sync();
       },
-      { threshold: 0, rootMargin: "120px 0px" },
+      { threshold: 0.2, rootMargin: "40px 0px" },
     );
     observer.observe(rootRef.current);
-    return () => observer.disconnect();
+    document.addEventListener("visibilitychange", sync);
+    return () => {
+      observer.disconnect();
+      document.removeEventListener("visibilitychange", sync);
+    };
+  }, []);
+
+  const measure = useCallback(() => {
+    const stage = stageRef.current;
+    if (!stage) return;
+    const target = stage.querySelector<HTMLElement>(`[data-tour="${STEPS[stepIndex].target}"]`);
+    if (!target) return;
+    const box = stage.getBoundingClientRect();
+    const hit = target.getBoundingClientRect();
+    setPointer({
+      x: hit.left - box.left,
+      y: hit.top - box.top,
+      w: hit.width,
+      h: hit.height,
+    });
+  }, [stepIndex]);
+
+  useLayoutEffect(() => {
+    if (!playing) return;
+    const id = window.requestAnimationFrame(measure);
+    return () => window.cancelAnimationFrame(id);
+  }, [measure, playing, play, step.scene]);
+
+  useEffect(() => {
+    if (!playing || !isActive) return;
+    const travel = window.setTimeout(() => setClickKey((current) => current + 1), 480);
+    const advance = window.setTimeout(() => {
+      setStepIndex((current) => (current + 1) % STEPS.length);
+    }, step.hold);
+    return () => {
+      window.clearTimeout(travel);
+      window.clearTimeout(advance);
+    };
+  }, [playing, isActive, stepIndex, step.hold]);
+
+  const armResume = useCallback(() => {
+    if (idleRef.current) window.clearTimeout(idleRef.current);
+    idleRef.current = window.setTimeout(() => {
+      setManual(false);
+    }, IDLE_RESUME_MS);
   }, []);
 
   useEffect(() => {
-    // Wait until reduced-motion is known; never cycle for that preference.
-    if (reduceMotion !== false || interacted) return;
-
-    const tick = () => {
-      if (document.hidden || interactedRef.current || !inViewRef.current) return;
-      setIndex((current) => (current + 1) % SLIDES.length);
-    };
-
-    const intervalId = window.setInterval(tick, AUTOPLAY_MS);
-
     return () => {
-      window.clearInterval(intervalId);
+      if (idleRef.current) window.clearTimeout(idleRef.current);
     };
-  }, [interacted, reduceMotion]);
+  }, []);
 
-  const onTabListKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+  const onInteract = useCallback(
+    (patch: Partial<TourPlayState>) => {
+      setUserPlay((current) => ({ ...(manual ? current : playFrom(stepIndex)), ...patch }));
+      setManual(true);
+      armResume();
+    },
+    [armResume, manual, stepIndex],
+  );
+
+  const jumpToScene = (next: number, fromKeyboard: boolean) => {
+    const index = firstStepFor(SCENES[next].id);
+    setStepIndex(index);
+    setUserPlay(playFrom(index));
+    setManual(false);
+    if (fromKeyboard) {
+      requestAnimationFrame(() => tabRefs.current[next]?.focus());
+    }
+  };
+
+  const onTabListKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
     if (event.key === "ArrowRight" || event.key === "ArrowDown") {
       event.preventDefault();
-      interactedRef.current = true;
-      setInteracted(true);
-      select(index + 1, true);
+      jumpToScene((sceneIndex + 1) % SCENES.length, true);
       return;
     }
     if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
       event.preventDefault();
-      interactedRef.current = true;
-      setInteracted(true);
-      select(index - 1, true);
+      jumpToScene((sceneIndex - 1 + SCENES.length) % SCENES.length, true);
       return;
     }
     if (event.key === "Home") {
       event.preventDefault();
-      interactedRef.current = true;
-      setInteracted(true);
-      select(0, true);
+      jumpToScene(0, true);
       return;
     }
     if (event.key === "End") {
       event.preventDefault();
-      interactedRef.current = true;
-      setInteracted(true);
-      select(SLIDES.length - 1, true);
+      jumpToScene(SCENES.length - 1, true);
     }
   };
 
   const tablistId = `${baseId}-tablist`;
   const panelId = `${baseId}-panel`;
+  const pointerX = pointer.x + pointer.w / 2;
+  const pointerY = pointer.y + pointer.h / 2;
 
   return (
-    <div ref={rootRef} className="mx-auto mt-10 w-full max-w-content px-4 sm:mt-12 sm:px-6">
+    <div ref={rootRef} className="mx-auto w-full max-w-[88rem] px-4 sm:px-6">
       <p id={`${baseId}-prompt`} className="mb-4 text-base font-medium leading-snug text-muted sm:text-lg">
-        Or click through it yourself.
+        Watch it work, or click inside and use it.
       </p>
 
       <figure aria-labelledby={`${baseId}-prompt`}>
+        <p className="sr-only">
+          Working replica of Zoveto: Command Center, Sales quotations, warehouse pick list, and finance invoices. Click
+          filters, rows, scan, and create records the same way the product does.
+        </p>
         <div className="overflow-hidden rounded-lg border border-border bg-background">
           <div className="flex items-center gap-3 border-b border-border px-3 py-2.5 sm:px-4" aria-hidden>
             <div className="flex items-center gap-1.5">
@@ -156,7 +298,7 @@ export default function ProductTourInteractive() {
               <span className="h-2 w-2 rounded-full bg-muted-2" />
               <span className="h-2 w-2 rounded-full bg-muted-2" />
             </div>
-            <p className="truncate text-[11px] font-medium tracking-wide text-muted-2">{slide.label}</p>
+            <p className="truncate text-[11px] font-medium tracking-wide text-muted-2">{SCENES[sceneIndex].label}</p>
           </div>
 
           <div
@@ -166,22 +308,21 @@ export default function ProductTourInteractive() {
             onKeyDown={onTabListKeyDown}
             className="grid grid-cols-2 gap-2 border-b border-border px-3 py-3 sm:flex sm:flex-wrap sm:px-4"
           >
-            {SLIDES.map((item, itemIndex) => {
-              const selected = itemIndex === index;
-              const tabId = `${baseId}-tab-${item.id}`;
+            {SCENES.map((item, itemIndex) => {
+              const selected = item.id === scene;
               return (
                 <button
                   key={item.id}
                   ref={(node) => {
                     tabRefs.current[itemIndex] = node;
                   }}
-                  id={tabId}
+                  id={`${baseId}-tab-${item.id}`}
                   type="button"
                   role="tab"
                   aria-selected={selected}
                   aria-controls={panelId}
                   tabIndex={selected ? 0 : -1}
-                  onClick={() => onManualSelect(itemIndex)}
+                  onClick={() => jumpToScene(itemIndex, false)}
                   className={cn(
                     "min-h-11 cursor-pointer rounded-full border px-3 py-2 text-center text-[13px] font-medium leading-none transition-colors duration-200 motion-reduce:transition-none",
                     "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
@@ -198,35 +339,69 @@ export default function ProductTourInteractive() {
 
           <div
             id={panelId}
+            ref={stageRef}
             role="tabpanel"
-            aria-labelledby={`${baseId}-tab-${slide.id}`}
+            aria-labelledby={`${baseId}-tab-${scene}`}
             className="relative aspect-[16/10] overflow-hidden bg-surface sm:aspect-[1920/894]"
           >
-            <AnimatePresence initial={false} mode="sync">
+            <AnimatePresence initial={false} mode="wait">
               <motion.div
-                key={slide.id}
+                key={scene}
                 className="absolute inset-0"
-                initial={reduceMotion ? false : { opacity: 0 }}
+                initial={playing ? { opacity: 0 } : false}
                 animate={{ opacity: 1 }}
-                exit={reduceMotion ? undefined : { opacity: 0 }}
-                transition={{ duration: reduceMotion ? 0 : 0.25, ease: [0.22, 1, 0.36, 1] }}
+                exit={playing ? { opacity: 0 } : undefined}
+                transition={{ duration: playing ? 0.22 : 0, ease: EASE }}
               >
-                <Image
-                  src={slide.src}
-                  alt={slide.alt}
-                  width={SCREENSHOT_WIDTH}
-                  height={SCREENSHOT_HEIGHT}
-                  sizes="(min-width: 1152px) 72rem, 100vw"
-                  className="h-full w-full object-cover object-top"
-                />
+                <ProductTourScene scene={scene} play={play} onInteract={onInteract} />
               </motion.div>
             </AnimatePresence>
+
+            {playing ? (
+              <>
+                <motion.div
+                  aria-hidden
+                  className="pointer-events-none absolute left-0 top-0 z-[1] rounded-md border-2 border-blue bg-blue/10"
+                  initial={false}
+                  animate={{ x: pointer.x, y: pointer.y }}
+                  transition={{ duration: 0.45, ease: EASE }}
+                  style={{ width: pointer.w, height: pointer.h }}
+                />
+                <motion.span
+                  key={clickKey}
+                  aria-hidden
+                  className="pointer-events-none absolute z-[2] h-7 w-7 rounded-full border-2 border-blue"
+                  initial={{ opacity: 0.45, scale: 0.4, x: "-50%", y: "-50%" }}
+                  animate={{ opacity: 0, scale: 2.1, x: "-50%", y: "-50%" }}
+                  transition={{ duration: 0.45, ease: EASE }}
+                  style={{ left: pointerX, top: pointerY }}
+                />
+                <motion.div
+                  aria-hidden
+                  className="pointer-events-none absolute left-0 top-0 z-[3]"
+                  initial={false}
+                  animate={{ x: pointerX, y: pointerY }}
+                  transition={{ duration: 0.45, ease: EASE }}
+                >
+                  <MousePointer2
+                    className="h-5 w-5 -translate-x-[18%] -translate-y-[12%] fill-foreground text-foreground drop-shadow-[0_1px_2px_rgba(10,10,12,0.4)]"
+                    strokeWidth={1.75}
+                  />
+                </motion.div>
+              </>
+            ) : null}
           </div>
         </div>
 
         <figcaption className="mt-4 min-h-[4.75rem] max-w-[65ch] sm:min-h-[3.5rem]">
-          <p className="text-sm font-semibold tracking-tight text-foreground sm:text-base">{slide.kicker}</p>
-          <p className="mt-1 text-sm leading-relaxed text-muted">{slide.numbers}</p>
+          <p className="text-sm font-semibold tracking-tight text-foreground sm:text-base">
+            {manual ? "You are in the product." : step.kicker}
+          </p>
+          <p className="mt-1 text-sm leading-relaxed text-muted">
+            {manual
+              ? "Filter lanes, open rows, scan a pick, or post a draft. The walkthrough resumes if you pause."
+              : step.numbers}
+          </p>
         </figcaption>
       </figure>
     </div>

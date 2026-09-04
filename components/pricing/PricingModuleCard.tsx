@@ -9,21 +9,18 @@ import { cn } from "@/lib/utils";
 
 type PricingModuleCardProps = {
   mod: PricingModule;
-  featured?: boolean;
   className?: string;
 };
 
-export function PricingModuleCard({ mod, featured = false, className }: PricingModuleCardProps) {
+export function PricingModuleCard({ mod, className }: PricingModuleCardProps) {
   const features = mod.features.slice(0, 3);
 
   return (
     <article
       aria-labelledby={`module-${mod.id}-title`}
       className={cn(
-        "flex h-full min-w-0 flex-col rounded-xl border bg-card p-5 transition-[border-color,background-color,box-shadow] duration-150 ease-out sm:p-6",
-        featured
-          ? "border-[var(--blue)] bg-[var(--blue-dim)] shadow-[0_0_0_2px_var(--blue-border)]"
-          : "border-border hover:border-[var(--blue-border)]",
+        "flex h-full min-w-0 flex-col rounded-xl border border-border bg-card p-5 transition-[border-color,background-color,box-shadow] duration-150 ease-out sm:p-6",
+        "hover:border-[var(--blue-border)]",
         className,
       )}
     >
@@ -44,10 +41,7 @@ export function PricingModuleCard({ mod, featured = false, className }: PricingM
 
       <Link
         href={`/signup?module=${mod.id.toUpperCase()}`}
-        className={cn(
-          buttonVariants({ variant: featured ? "primary" : "blue-outline", size: "md" }),
-          "mt-5 h-11 w-full",
-        )}
+        className={cn(buttonVariants({ variant: "blue-outline", size: "md" }), "mt-5 h-11 w-full")}
       >
         Start 15-day free trial
       </Link>

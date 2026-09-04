@@ -10,7 +10,9 @@ import { BrandHeroWordmark } from "@/components/brand/BrandHeroWordmark";
 import {
   HOME_HERO_PRIMARY_CTA_HREF,
   HOME_HERO_PRIMARY_CTA_LABEL,
+  HOME_HERO_SCROLL_HINT_DESKTOP,
   HOME_HERO_SUBHEADING,
+  HOME_HERO_TRUST_LINE,
   HOME_HERO_VALUE_PROP,
 } from "@/lib/home-hero-copy";
 import {
@@ -58,48 +60,21 @@ function SectionIntro({ introRef }: { introRef: React.RefObject<HTMLDivElement> 
       style={{
         position: "absolute",
         inset: 0,
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
         zIndex: 30,
         pointerEvents: "none",
-        textAlign: "center",
-        padding: "0 20px",
       }}
     >
-      <div style={{ display: "flex", gap: 6, flexWrap: "wrap", justifyContent: "center", marginBottom: 12 }}>
-        {["Execution clarity", "Unified business system", "Qualified onboarding", "Compliance-ready"].map((item) => (
-          <span
-            key={item}
-            style={{
-              fontSize: 9,
-              fontWeight: 600,
-              textTransform: "uppercase",
-              letterSpacing: "0.08em",
-              color: "#86868b",
-              padding: "4px 10px",
-              background: "rgba(255,255,255,0.95)",
-              border: "1px solid rgba(29,29,31,0.12)",
-              borderRadius: 56,
-            }}
-          >
-            {item}
-          </span>
-        ))}
-      </div>
       <div
         style={{
-          fontSize: 9,
-          fontWeight: 600,
-          letterSpacing: "0.2em",
-          textTransform: "uppercase",
-          color: "#86868b",
-          marginBottom: 8,
+          display: "flex",
+          height: "100%",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          textAlign: "center",
+          padding: "0 20px",
         }}
       >
-        Master brand
-      </div>
       <div style={{ marginBottom: 8, maxWidth: "min(92vw, 720px)", marginLeft: "auto", marginRight: "auto" }}>
         <BrandHeroWordmark as="h2" compact />
       </div>
@@ -119,7 +94,7 @@ function SectionIntro({ introRef }: { introRef: React.RefObject<HTMLDivElement> 
           marginLeft: "auto",
           marginRight: "auto",
           marginTop: 0,
-          marginBottom: 32,
+          marginBottom: 16,
           letterSpacing: "-0.01em",
         }}
       >
@@ -131,7 +106,7 @@ function SectionIntro({ introRef }: { introRef: React.RefObject<HTMLDivElement> 
           gap: 12,
           flexWrap: "wrap",
           justifyContent: "center",
-          marginBottom: 24,
+          marginBottom: 12,
           pointerEvents: "auto",
         }}
       >
@@ -157,10 +132,26 @@ function SectionIntro({ introRef }: { introRef: React.RefObject<HTMLDivElement> 
           {HOME_HERO_PRIMARY_CTA_LABEL}
         </a>
       </div>
+      <p
+        style={{
+          margin: 0,
+          maxWidth: "36ch",
+          fontSize: 14,
+          fontWeight: 500,
+          lineHeight: 1.4,
+          color: "#6e6e73",
+        }}
+      >
+        {HOME_HERO_TRUST_LINE}
+      </p>
+      </div>
       <button
         type="button"
         className="hero-scroll-nudge"
         style={{
+          position: "absolute",
+          left: "50%",
+          bottom: 52,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
@@ -175,6 +166,7 @@ function SectionIntro({ introRef }: { introRef: React.RefObject<HTMLDivElement> 
           cursor: "pointer",
           pointerEvents: "auto",
           padding: "8px 12px",
+          transform: "translateX(-50%)",
         }}
         onClick={() => window.scrollBy({ top: Math.min(window.innerHeight * 0.4, 520), behavior: "smooth" })}
       >
@@ -185,7 +177,7 @@ function SectionIntro({ introRef }: { introRef: React.RefObject<HTMLDivElement> 
         >
           ↓
         </span>
-        Scroll to zoom modules
+        {HOME_HERO_SCROLL_HINT_DESKTOP}
       </button>
     </div>
   );
@@ -288,6 +280,7 @@ export function DashboardScrollDesktop() {
           opacity: 0.72,
           scale: 1,
         });
+        gsap.set(root.querySelectorAll(".dash-tile-sub"), { opacity: 0 });
         gsap.set(readabilityRef.current, { opacity: 0.95 });
         gsap.set(stickyRef.current, { "--hero-clip-right": "0px" });
 
@@ -346,6 +339,11 @@ export function DashboardScrollDesktop() {
             },
             t + 0.3
           );
+          const tileSub = tile.querySelector(".dash-tile-sub");
+          if (tileSub) {
+            tl.to(tileSub, { opacity: 1, duration: 0.25 }, t + 0.3);
+            tl.to(tileSub, { opacity: 0, duration: 0.2 }, t + 0.8);
+          }
           tl.to(panel, { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" }, t + 0.35);
           tl.to(panel, { opacity: 0, x: 28, duration: 0.35, ease: "power2.in" }, t + 0.8);
           tl.to(tile, { boxShadow: "0 2px 12px rgba(0,0,0,0.06)", borderColor: "#e5e5ea", duration: 0.2 }, t + 0.8);
@@ -445,7 +443,7 @@ export function DashboardScrollDesktop() {
               opacity: 0,
             }}
           >
-            <DashboardLight />
+            <DashboardLight hideTileSubsUntilFocus />
           </div>
         </div>
         <div
@@ -453,9 +451,9 @@ export function DashboardScrollDesktop() {
           style={{
             position: "absolute",
             inset: 0,
-            background: "rgba(255,255,255,0.28)",
-            backdropFilter: "blur(2px)",
-            WebkitBackdropFilter: "blur(2px)",
+            background: "rgba(245, 245, 247, 0.62)",
+            backdropFilter: "blur(10px)",
+            WebkitBackdropFilter: "blur(10px)",
             pointerEvents: "none",
             zIndex: 12,
           }}

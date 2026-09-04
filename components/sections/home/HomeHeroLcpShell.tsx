@@ -24,7 +24,7 @@ export function HomeHeroLcpShell({ variant }: HomeHeroLcpShellProps) {
         "hidden min-h-[calc(100dvh-60px)] scroll-mt-[60px] py-10 lg:flex",
       )}
     >
-      <HomeHeroAboveFold showPills showScrollHint />
+      <HomeHeroAboveFold showScrollHint />
     </section>
   );
 }

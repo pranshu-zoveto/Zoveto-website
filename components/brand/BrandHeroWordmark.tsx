@@ -21,6 +21,13 @@ export function BrandHeroWordmark({ as: Tag = "h2", className, compact = false }
         className
       )}
     >
+      <span
+        aria-hidden
+        className={cn(
+          "inline-block shrink-0 rounded-full opacity-0",
+          "h-[0.3em] w-[0.3em] min-h-[11px] min-w-[11px] max-h-[22px] max-w-[22px]",
+        )}
+      />
       <span className="select-none text-[#000000]">ZOVETO</span>
       <span
         aria-hidden

@@ -1,6 +1,6 @@
 "use client";
 
-import { PricingSuiteBanner } from "@/components/pricing/PricingSuiteBanner";
+import { PricingBundleStack } from "@/components/pricing/PricingSuiteBanner";
 import { PricingQuietOffers } from "@/components/pricing/PricingQuietOffers";
 import { PricingModuleGrid } from "@/components/pricing/PricingModuleGrid";
 
@@ -13,7 +13,7 @@ type PricingCatalogProps = {
 export function PricingCatalog({ modulesLabel, showQuietOffers = false }: PricingCatalogProps) {
   return (
     <div className="flex flex-col gap-8 md:gap-10">
-      <PricingSuiteBanner />
+      <PricingBundleStack />
 
       <div>
         {modulesLabel ? (

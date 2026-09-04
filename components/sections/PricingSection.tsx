@@ -16,7 +16,7 @@ export function PricingSection() {
             Pay for what you use. Scale when you&apos;re ready.
           </h2>
           <p className="max-w-[62ch] text-lg leading-relaxed text-muted">
-            Five modules, priced independently. Start with the suite or add one at a time.
+            Five modules, priced independently. Start with a bundle or add one at a time.
           </p>
         </div>
 

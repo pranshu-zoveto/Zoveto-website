@@ -36,7 +36,7 @@ const MODULE_ICON: Record<DashboardModule["icon"], LucideIcon> = {
 const COMMAND_TILE: Tile = {
   id: "command-center",
   label: "Command Center",
-  sub: "Priorities and daily control",
+  sub: "Execution clarity",
   Icon: Terminal,
 };
 
@@ -62,7 +62,7 @@ const DASH_TILES: Tile[] = [
   ...SECONDARY_TILES,
 ];
 
-function DashTile({ id, label, sub, Icon }: Tile) {
+function DashTile({ id, label, sub, Icon, hideSubUntilFocus }: Tile & { hideSubUntilFocus?: boolean }) {
   return (
     <div
       className="dash-tile"
@@ -97,12 +97,18 @@ function DashTile({ id, label, sub, Icon }: Tile) {
         <Icon size={22} />
       </div>
       <div style={{ fontSize: 14, fontWeight: 600, color: "#1d1d1f", lineHeight: 1.3 }}>{label}</div>
-      <div style={{ fontSize: 11, color: "#6e6e73", lineHeight: 1.4 }}>{sub}</div>
+      <div
+        className="dash-tile-sub"
+        aria-hidden={hideSubUntilFocus || undefined}
+        style={{ fontSize: 11, color: "#6e6e73", lineHeight: 1.4, opacity: hideSubUntilFocus ? 0 : 1 }}
+      >
+        {sub}
+      </div>
     </div>
   );
 }
 
-export function DashboardLight() {
+export function DashboardLight({ hideTileSubsUntilFocus = false }: { hideTileSubsUntilFocus?: boolean }) {
   return (
     <div
       className="dash-wrapper"
@@ -212,7 +218,7 @@ export function DashboardLight() {
           }}
         >
           {DASH_TILES.map((tile) => (
-            <DashTile key={tile.id} {...tile} />
+            <DashTile key={tile.id} {...tile} hideSubUntilFocus={hideTileSubsUntilFocus} />
           ))}
         </div>
       </div>

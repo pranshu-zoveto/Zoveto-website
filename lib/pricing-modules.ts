@@ -130,8 +130,5 @@ export const BUNDLES: readonly PricingBundle[] = [
   },
 ] as const;
 
-/** A-la-carte catalog highlight (homepage + /pricing module cards). */
-export const FEATURED_MODULE_ID: PricingModuleId = "erp";
-
 /** Lowest module price — used for "starting from" copy. */
 export const MODULE_STARTING_PRICE = Math.min(...MODULES.map((m) => m.monthlyPrice));

@@ -4,7 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { ChevronRight, Factory, Scale } from "lucide-react";
 import { PricingModuleGrid } from "@/components/pricing/PricingModuleGrid";
-import { PricingSuiteBanner } from "@/components/pricing/PricingSuiteBanner";
+import { PricingBundleStack } from "@/components/pricing/PricingSuiteBanner";
 import { PricingQuietOffers } from "@/components/pricing/PricingQuietOffers";
 import { Text } from "@/components/ui/Text";
 import { PricingFeatureComparison } from "@/components/pricing/PricingFeatureComparison";
@@ -34,17 +34,17 @@ export function PricingClient() {
     <>
       <MarketingPageView eventName="pricing_view" />
 
-      {/* ── 1. Recommended suite ──────────────────────────────────────────── */}
+      {/* ── 1. Bundles ────────────────────────────────────────────────────── */}
       <section aria-labelledby="suite-heading" className="space-y-5 md:space-y-6">
         <div className="max-w-2xl">
           <h2 id="suite-heading" className="text-xl font-bold tracking-tight text-foreground sm:text-2xl">
-            Start with the core stack
+            Start with a bundle
           </h2>
           <p className="mt-2 text-sm leading-relaxed text-muted">
-            Operations Suite is WMS, ERP, and CRM together, priced below buying them separately.
+            Operations Suite is WMS, ERP, and CRM. Business OS is all five modules. Both are priced below buying the same modules separately.
           </p>
         </div>
-        <PricingSuiteBanner />
+        <PricingBundleStack />
       </section>
 
       {/* ── 2. Individual modules ─────────────────────────────────────────── */}
@@ -54,20 +54,20 @@ export function PricingClient() {
             Or buy a single module
           </h2>
           <p className="mt-2 text-sm leading-relaxed text-muted">
-            Each module is independently purchasable. ERP is the usual first add-on for finance and inventory.
+            Each module is independently purchasable. Mix and match if a bundle is more than you need.
           </p>
         </div>
         <PricingModuleGrid />
       </section>
 
-      {/* ── 3. Full stack + Enterprise ────────────────────────────────────── */}
+      {/* ── 3. Enterprise ─────────────────────────────────────────────────── */}
       <section aria-labelledby="bundles-heading" className="mt-12 space-y-5 md:mt-16 md:space-y-6">
         <div className="max-w-2xl">
           <h2 id="bundles-heading" className="text-xl font-bold tracking-tight text-foreground sm:text-2xl">
-            Full stack or custom scope
+            Custom scope
           </h2>
           <p className="mt-2 text-sm leading-relaxed text-muted">
-            Business OS is all five modules. Enterprise is scoped after discovery.
+            Enterprise is scoped after discovery for large teams and procurement-led buys.
           </p>
         </div>
         <PricingQuietOffers />

@@ -4,53 +4,26 @@ import { Button } from "@/components/ui/Button";
 import {
   HOME_HERO_PRIMARY_CTA_HREF,
   HOME_HERO_PRIMARY_CTA_LABEL,
+  HOME_HERO_SCROLL_HINT_MOBILE,
   HOME_HERO_SUBHEADING,
+  HOME_HERO_TRUST_LINE,
   HOME_HERO_VALUE_PROP,
 } from "@/lib/home-hero-copy";
 import { cn } from "@/lib/utils";
 
-const PILLS = [
-  "Execution clarity",
-  "Unified business system",
-  "Qualified onboarding",
-  "Compliance-ready",
-] as const;
-
 type HomeHeroAboveFoldProps = {
-  showPills?: boolean;
-  pillsWrapperClassName?: string;
   showScrollHint?: boolean;
   scrollHintClassName?: string;
   showPreviewCard?: boolean;
 };
 
 export function HomeHeroAboveFold({
-  showPills = true,
-  pillsWrapperClassName,
   showScrollHint = true,
   scrollHintClassName,
   showPreviewCard = false,
 }: HomeHeroAboveFoldProps) {
   return (
     <>
-      {showPills ? (
-        <div
-          className={cn(
-            "mb-3 flex max-w-[min(92vw,40rem)] flex-wrap justify-center gap-1.5 sm:mb-4",
-            pillsWrapperClassName,
-          )}
-        >
-          {PILLS.map((item) => (
-            <span
-              key={item}
-              className="inline-flex items-center rounded-full border border-border bg-card px-2.5 py-1 text-[0.5625rem] font-medium uppercase tracking-[0.08em] text-muted-2 whitespace-nowrap"
-            >
-              {item}
-            </span>
-          ))}
-        </div>
-      ) : null}
-
       <div className="mb-2 w-full max-w-[min(92vw,720px)]" aria-hidden>
         <BrandHeroWordmark compact />
       </div>
@@ -65,13 +38,15 @@ export function HomeHeroAboveFold({
         {HOME_HERO_SUBHEADING}
       </p>
 
-      <div className="mb-5 flex w-full max-w-sm justify-center sm:max-w-none">
+      <div className="mb-3 flex w-full max-w-sm justify-center sm:max-w-none">
         <Link href={HOME_HERO_PRIMARY_CTA_HREF} className="w-full sm:w-auto">
           <Button variant="primary" size="lg" className="min-h-[52px] w-full gap-2 sm:w-auto">
             {HOME_HERO_PRIMARY_CTA_LABEL}
           </Button>
         </Link>
       </div>
+
+      <p className="mb-5 max-w-[36ch] text-sm font-medium leading-snug text-[#6e6e73]">{HOME_HERO_TRUST_LINE}</p>
 
       {showPreviewCard ? (
         <div
@@ -112,7 +87,7 @@ export function HomeHeroAboveFold({
           <span className="text-sm leading-none motion-safe:animate-[scrollBounce_1.4s_ease-in-out_infinite]" aria-hidden>
             ↓
           </span>
-          Scroll to explore modules
+          {HOME_HERO_SCROLL_HINT_MOBILE}
         </a>
       ) : null}
     </>

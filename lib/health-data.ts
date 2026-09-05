@@ -1,43 +1,56 @@
 /**
  * lib/health-data.ts
  *
- * Aggregates site health data, mocking or pulling from internal sources,
- * and failing gracefully if Sentry/Vercel APIs aren't configured.
+ * Site health for /dashboard/health.
+ * Sentry capture is DSN-based. Issue listing needs SENTRY_AUTH_TOKEN + org + project.
+ * Vercel Speed Insights is live on Vercel automatically (no VERCEL_ACCESS_TOKEN).
  */
 
 import prisma from "@/lib/db";
+import {
+  deriveGlobalStatus,
+  isSentryCaptureConfigured,
+  isSentryIssuesApiConfigured,
+  isVercelInsightsLive,
+  type HealthGlobalStatus,
+} from "@/lib/health-status";
+import { fetchSentryUnresolvedIssues } from "@/lib/sentry-issues";
 
 export interface HealthReport {
   fetchedAt: string;
-  globalStatus: "healthy" | "degraded" | "critical";
+  globalStatus: HealthGlobalStatus;
   uptime: {
     status: "up" | "down";
     percentage: number;
     responseTimeMs: number;
   };
   errors: {
-    rate: number; // percentage
+    rate: number;
     failedApis: number;
     failedForms: number;
   };
   webVitals: {
-    status: "good" | "needs_improvement" | "poor" | "unconfigured";
+    status: "good" | "needs_improvement" | "poor" | "collecting" | "unconfigured";
     lcpMs: number | null;
     cls: number | null;
   };
-  sentryStatus: "configured" | "unconfigured";
-  vercelStatus: "configured" | "unconfigured";
+  sentryStatus: "unconfigured" | "capturing" | "live";
+  vercelStatus: "unconfigured" | "live";
   incidents: { id: string; title: string; status: string; time: string }[];
   brokenRoutes: { path: string; count: number; lastSeen: string }[];
   runtimeErrors: { id: string; message: string; count: number; lastSeen: string }[];
   trend: { date: string; responseTime: number; errors: number }[];
 }
 
+function dayKey(d: Date): string {
+  return d.toISOString().slice(0, 10);
+}
+
 export async function fetchHealthData(): Promise<HealthReport> {
   const now = new Date();
   const yesterday = new Date(now.getTime() - 24 * 60 * 60 * 1000);
+  const weekAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
 
-  // 1. Internal API / DB Health
   let dbHealthy = false;
   let responseTime = 0;
   try {
@@ -49,19 +62,26 @@ export async function fetchHealthData(): Promise<HealthReport> {
     dbHealthy = false;
   }
 
-  // 2. Fetch 404s and other error events from our new TrackingEvent table
-  const trackingEvents = await prisma.trackingEvent.findMany({
-    where: {
-      createdAt: { gte: yesterday },
-    },
-    select: { eventName: true, pagePath: true, createdAt: true },
-  });
+  const [dayEvents, weekErrorEvents, runtimeErrors] = await Promise.all([
+    prisma.trackingEvent.findMany({
+      where: { createdAt: { gte: yesterday } },
+      select: { eventName: true, pagePath: true, createdAt: true },
+    }),
+    prisma.trackingEvent.findMany({
+      where: {
+        createdAt: { gte: weekAgo },
+        eventName: { in: ["404_error", "form_submit_error", "api_error"] },
+      },
+      select: { eventName: true, createdAt: true },
+    }),
+    isSentryIssuesApiConfigured() ? fetchSentryUnresolvedIssues() : Promise.resolve([]),
+  ]);
 
   const brokenRoutesMap = new Map<string, { count: number; lastSeen: Date }>();
   let failedForms = 0;
   let failedApis = 0;
 
-  for (const ev of trackingEvents) {
+  for (const ev of dayEvents) {
     if (ev.eventName === "404_error") {
       const path = ev.pagePath || "unknown";
       const existing = brokenRoutesMap.get(path);
@@ -86,55 +106,66 @@ export async function fetchHealthData(): Promise<HealthReport> {
     }))
     .sort((a, b) => b.count - a.count);
 
-  // 3. Check for external API configurations
-  // We use the tokens if they exist, otherwise we mock unconfigured state
-  const hasSentry = !!process.env.SENTRY_AUTH_TOKEN;
-  const hasVercel = !!process.env.VERCEL_ACCESS_TOKEN;
+  const capture = isSentryCaptureConfigured();
+  const issuesApi = isSentryIssuesApiConfigured();
+  const vercelLive = isVercelInsightsLive();
 
-  // 4. Calculate Global Status
+  const sentryStatus: HealthReport["sentryStatus"] = issuesApi
+    ? "live"
+    : capture
+      ? "capturing"
+      : "unconfigured";
+
   const totalErrors = failedForms + failedApis + brokenRoutes.reduce((acc, br) => acc + br.count, 0);
-  let globalStatus: "healthy" | "degraded" | "critical" = "healthy";
-  if (!dbHealthy) globalStatus = "critical";
-  else if (totalErrors > 50 || responseTime > 1000) globalStatus = "degraded";
+  const globalStatus = deriveGlobalStatus({
+    dbHealthy,
+    totalErrors,
+    dbPingMs: responseTime,
+  });
 
-  // 5. Mock Trend Data (since we don't have historical uptime pinging yet)
+  const errorsByDay = new Map<string, number>();
+  for (const ev of weekErrorEvents) {
+    const key = dayKey(ev.createdAt);
+    errorsByDay.set(key, (errorsByDay.get(key) ?? 0) + 1);
+  }
+
   const trend = [];
   for (let i = 6; i >= 0; i--) {
-    const d = new Date(now);
-    d.setDate(d.getDate() - i);
+    const d = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() - i));
+    const key = dayKey(d);
     trend.push({
-      date: d.toISOString().slice(0, 10),
-      responseTime: Math.round(50 + Math.random() * 50),
-      errors: Math.floor(Math.random() * 5),
+      date: key,
+      responseTime: i === 0 ? responseTime : 0,
+      errors: errorsByDay.get(key) ?? 0,
     });
   }
-  // Add today's actual data to the end of trend
-  trend[trend.length - 1].responseTime = responseTime;
-  trend[trend.length - 1].errors = totalErrors;
 
   return {
     fetchedAt: now.toISOString(),
     globalStatus,
     uptime: {
       status: dbHealthy ? "up" : "down",
-      percentage: dbHealthy ? 99.99 : 0,
+      percentage: dbHealthy ? 100 : 0,
       responseTimeMs: responseTime,
     },
     errors: {
-      rate: totalErrors > 0 ? Number((totalErrors / Math.max(1, trackingEvents.length) * 100).toFixed(2)) : 0.00,
+      rate:
+        totalErrors > 0
+          ? Number(((totalErrors / Math.max(1, dayEvents.length)) * 100).toFixed(2))
+          : 0,
       failedApis,
       failedForms,
     },
-    webVitals: hasVercel
-      ? { status: "good", lcpMs: 1200, cls: 0.02 } // Would fetch from Vercel API
+    webVitals: vercelLive
+      ? { status: "collecting", lcpMs: null, cls: null }
       : { status: "unconfigured", lcpMs: null, cls: null },
-    sentryStatus: hasSentry ? "configured" : "unconfigured",
-    vercelStatus: hasVercel ? "configured" : "unconfigured",
-    incidents: !dbHealthy ? [{ id: "INC-1", title: "Database Connection Failure", status: "Active", time: now.toISOString() }] : [],
-    brokenRoutes,
-    runtimeErrors: hasSentry
-      ? [{ id: "ERR-1", message: "TypeError: Cannot read properties of undefined (reading 'map')", count: 12, lastSeen: now.toISOString() }] // Would fetch from Sentry API
+    sentryStatus,
+    vercelStatus: vercelLive ? "live" : "unconfigured",
+    incidents: !dbHealthy
+      ? [{ id: "INC-1", title: "Database connection failed", status: "Active", time: now.toISOString() }]
       : [],
+    brokenRoutes,
+    runtimeErrors,
     trend,
   };
 }

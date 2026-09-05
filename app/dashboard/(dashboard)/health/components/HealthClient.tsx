@@ -66,23 +66,26 @@ export function HealthClient({ initialReport }: { initialReport: HealthReport })
         <div className="flex flex-col rounded-xl border border-zinc-800 bg-zinc-900 p-4">
           <div className="flex items-center gap-2 text-zinc-400">
             <Server className="h-4 w-4" />
-            <span className="text-xs font-medium">Local Uptime</span>
+            <span className="text-xs font-medium">Database</span>
           </div>
           <p className="mt-2 text-2xl font-bold tabular-nums text-zinc-100">
-            {initialReport.uptime.percentage.toFixed(2)}%
+            {initialReport.uptime.status === "up" ? "Connected" : "Down"}
           </p>
-          <p className="text-[10px] text-zinc-500 mt-1">Status: {initialReport.uptime.status}</p>
+          <p className="text-[10px] text-zinc-500 mt-1">
+            Prisma ping {initialReport.uptime.responseTimeMs}ms
+          </p>
         </div>
 
         {/* Avg Response Time */}
         <div className="flex flex-col rounded-xl border border-zinc-800 bg-zinc-900 p-4">
           <div className="flex items-center gap-2 text-zinc-400">
             <Clock className="h-4 w-4" />
-            <span className="text-xs font-medium">Avg Response Time</span>
+            <span className="text-xs font-medium">DB ping</span>
           </div>
           <p className="mt-2 text-2xl font-bold tabular-nums text-zinc-100">
             {initialReport.uptime.responseTimeMs}ms
           </p>
+          <p className="text-[10px] text-zinc-500 mt-1">Health-check query, not public TTFB</p>
         </div>
 
         {/* Error Rate */}
@@ -108,7 +111,14 @@ export function HealthClient({ initialReport }: { initialReport: HealthReport })
             </div>
           </div>
           {initialReport.webVitals.status === "unconfigured" ? (
-            <p className="mt-2 text-sm font-semibold text-zinc-500">Vercel Insights Unconfigured</p>
+            <p className="mt-2 text-sm font-semibold text-zinc-500">
+              Speed Insights reports on Vercel production
+            </p>
+          ) : initialReport.webVitals.lcpMs == null ? (
+            <>
+              <p className="mt-2 text-2xl font-bold tabular-nums text-green-400">Live</p>
+              <p className="text-[10px] text-zinc-500 mt-1">Vercel Speed Insights is collecting</p>
+            </>
           ) : (
             <>
               <p className="mt-2 text-2xl font-bold tabular-nums text-green-400 capitalize">
@@ -128,10 +138,13 @@ export function HealthClient({ initialReport }: { initialReport: HealthReport })
           <h3 className="mb-4 text-sm font-semibold text-zinc-200">Response Time Trend (ms)</h3>
           <div className="flex h-32 items-end gap-1">
             {initialReport.trend.map((t) => {
-              const height = Math.max(1, (t.responseTime / maxResponseTime) * 100);
+              const height = t.responseTime === 0 ? 0 : Math.max(1, (t.responseTime / maxResponseTime) * 100);
               return (
-                <div key={t.date} className="relative flex flex-1 flex-col justify-end group">
-                  <div className="w-full rounded-t-sm bg-blue-500/80 transition-all group-hover:bg-blue-400" style={{ height: `${height}%`, minHeight: '4px' }} />
+                <div key={`rt-${t.date}`} className="relative flex flex-1 flex-col justify-end group">
+                  <div
+                    className="w-full rounded-t-sm bg-blue-500/80 transition-all group-hover:bg-blue-400"
+                    style={{ height: `${height}%`, minHeight: t.responseTime > 0 ? "4px" : "0px" }}
+                  />
                   <div className="absolute bottom-full mb-2 hidden w-auto whitespace-nowrap rounded bg-zinc-800 px-2 py-1 text-[10px] text-zinc-200 group-hover:block z-10 left-1/2 -translate-x-1/2">
                     {t.date}: {t.responseTime}ms
                   </div>
@@ -145,10 +158,13 @@ export function HealthClient({ initialReport }: { initialReport: HealthReport })
           <h3 className="mb-4 text-sm font-semibold text-zinc-200">Error Trend</h3>
           <div className="flex h-32 items-end gap-1">
             {initialReport.trend.map((t) => {
-              const height = Math.max(1, (t.errors / maxErrors) * 100);
+              const height = t.errors === 0 ? 0 : Math.max(1, (t.errors / maxErrors) * 100);
               return (
                 <div key={t.date} className="relative flex flex-1 flex-col justify-end group">
-                  <div className="w-full rounded-t-sm bg-red-500/80 transition-all group-hover:bg-red-400" style={{ height: `${height}%`, minHeight: '4px' }} />
+                  <div
+                    className="w-full rounded-t-sm bg-red-500/80 transition-all group-hover:bg-red-400"
+                    style={{ height: `${height}%`, minHeight: t.errors > 0 ? "4px" : "0px" }}
+                  />
                   <div className="absolute bottom-full mb-2 hidden w-auto whitespace-nowrap rounded bg-zinc-800 px-2 py-1 text-[10px] text-zinc-200 group-hover:block z-10 left-1/2 -translate-x-1/2">
                     {t.date}: {t.errors} errors
                   </div>
@@ -223,8 +239,14 @@ export function HealthClient({ initialReport }: { initialReport: HealthReport })
           <div className="p-0 flex-1 overflow-y-auto max-h-64">
              {initialReport.sentryStatus === "unconfigured" ? (
                <div className="p-5 text-xs text-zinc-500 text-center">
-                 Sentry Integration Unconfigured.<br/>Add SENTRY_AUTH_TOKEN to .env
+                 Sentry DSN is not set. Add NEXT_PUBLIC_SENTRY_DSN and SENTRY_DSN in Vercel to capture errors.
                </div>
+             ) : initialReport.sentryStatus === "capturing" ? (
+               <div className="p-5 text-xs text-zinc-500 text-center">
+                 Sentry is capturing errors. To list unresolved issues here, add SENTRY_AUTH_TOKEN, SENTRY_ORG, and SENTRY_PROJECT in Vercel.
+               </div>
+             ) : initialReport.runtimeErrors.length === 0 ? (
+               <div className="p-5 text-xs text-zinc-500 text-center">No unresolved Sentry issues in the last 24h.</div>
              ) : (
                 <table className="w-full text-left text-xs">
                   <tbody className="divide-y divide-zinc-800/60 text-zinc-300">

@@ -45,6 +45,10 @@ export interface DemoPayload {
   company?: string;
   industry?: string;
   companySize?: string;
+  companyType?: string;
+  employeeBand?: string;
+  role?: string;
+  timeline?: string;
   preferredDate?: string;
   preferredTime?: string;
   message?: string;
@@ -86,15 +90,8 @@ export async function createLead(data: LeadPayload): Promise<LeadResponse> {
 export async function bookDemo(data: DemoPayload): Promise<{ message: string }> {
   const fullName =
     [data.firstName, data.lastName].filter((s) => s?.trim()).join(" ").trim() || data.firstName.trim();
-  const extra = [
-    data.industry?.trim() && `Company type: ${data.industry}`,
-    data.companySize?.trim() && `Employees: ${data.companySize}`,
-    `Source: website_demo`,
-    `Notify: ${WEBSITE_FORM_NOTIFICATION_EMAIL}`,
-  ]
-    .filter(Boolean)
-    .join("\n\n");
-  const messageMerged = [data.message?.trim(), extra].filter(Boolean).join("\n\n") || undefined;
+  const companyType = data.companyType?.trim() || data.industry?.trim();
+  const employeeBand = data.employeeBand?.trim() || data.companySize?.trim();
   const body = attachUtm({
     fullName: fullName.slice(0, 200),
     email: data.email.trim(),
@@ -102,7 +99,14 @@ export async function bookDemo(data: DemoPayload): Promise<{ message: string }> 
     phone: data.phone?.trim(),
     preferredDate: data.preferredDate,
     preferredTime: data.preferredTime,
-    message: messageMerged?.slice(0, 10000),
+    message: data.message?.trim()?.slice(0, 10000) || undefined,
+    companyType,
+    employeeBand,
+    industry: data.industry?.trim() || companyType,
+    companySize: data.companySize?.trim() || employeeBand,
+    role: data.role?.trim() || undefined,
+    timeline: data.timeline?.trim() || undefined,
+    sourceUrl: typeof window !== "undefined" ? window.location.href.slice(0, 500) : undefined,
   });
   const res = await fetch("/api/demo", {
     method: "POST",

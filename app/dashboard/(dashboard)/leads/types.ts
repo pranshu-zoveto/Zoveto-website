@@ -16,6 +16,10 @@ export interface LeadRow {
   phone: string | null;
   intent: string | null;
   notes: string | null;
+  companyType: string | null;
+  employeeBand: string | null;
+  role: string | null;
+  timeline: string | null;
   status: string;
   score: number;
   utmSource: string | null;

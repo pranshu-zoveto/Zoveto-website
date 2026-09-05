@@ -8,6 +8,12 @@ import { CalendarDays, CheckCircle2 } from "lucide-react";
 import { trackEvent, trackMarketingEvent } from "@/lib/tracking";
 import { FormToast } from "@/components/ui/FormToast";
 import { PhoneInputWithCountry } from "@/components/forms/PhoneInputWithCountry";
+import {
+  DEMO_COMPANY_TYPES,
+  DEMO_EMPLOYEE_BANDS,
+  DEMO_ROLES,
+  DEMO_TIMELINES,
+} from "@/lib/demo-lead";
 
 function FieldLabel({ children }: { children: React.ReactNode }) {
   return <label className="text-xs font-medium text-muted-2 block mb-2">{children}</label>;
@@ -24,14 +30,37 @@ export function DemoBookingForm() {
   const [organization, setOrganization] = useState("");
   const [companyType, setCompanyType] = useState("");
   const [employeeBand, setEmployeeBand] = useState("");
+  const [role, setRole] = useState("");
+  const [timeline, setTimeline] = useState("");
   const [phone, setPhone] = useState("");
   const [preferredDate, setPreferredDate] = useState("");
   const [preferredTime, setPreferredTime] = useState("");
   const [message, setMessage] = useState("");
+  const [consentGiven, setConsentGiven] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
+    if (!fullName.trim() || !email.trim() || !organization.trim()) {
+      setError("Please fill in your name, work email, and company.");
+      return;
+    }
+    if (!companyType || !employeeBand) {
+      setError("Please select company type and team size.");
+      return;
+    }
+    if (!role) {
+      setError("Please select your role.");
+      return;
+    }
+    if (!timeline) {
+      setError("Please select your timeline.");
+      return;
+    }
+    if (!consentGiven) {
+      setError("Please agree to the privacy notice to continue.");
+      return;
+    }
     setStatus("submitting");
     const trimmed = fullName.trim();
     const parts = trimmed.split(/\s+/).filter(Boolean);
@@ -45,6 +74,10 @@ export function DemoBookingForm() {
         company: organization.trim(),
         industry: companyType.trim(),
         companySize: employeeBand.trim(),
+        companyType: companyType.trim(),
+        employeeBand: employeeBand.trim(),
+        role: role.trim(),
+        timeline: timeline.trim(),
         phone: phone.trim() || undefined,
         preferredDate: preferredDate || undefined,
         preferredTime: preferredTime || undefined,
@@ -55,6 +88,8 @@ export function DemoBookingForm() {
         form: "demo_booking_form",
         company_type: companyType,
         employee_band: employeeBand,
+        role,
+        timeline,
         preferred_date: preferredDate,
         preferred_time: preferredTime,
       });
@@ -146,15 +181,11 @@ export function DemoBookingForm() {
             <option value="" disabled>
               Select type…
             </option>
-            <option value="Manufacturing">Manufacturing</option>
-            <option value="Trading">Trading</option>
-            <option value="Distribution">Distribution</option>
-            <option value="Retail">Retail</option>
-            <option value="Pharma">Pharma</option>
-            <option value="Cosmetics">Cosmetics</option>
-            <option value="FMCG / consumer goods">FMCG / consumer goods</option>
-            <option value="Services">Services</option>
-            <option value="Other">Other</option>
+            {DEMO_COMPANY_TYPES.map((type) => (
+              <option key={type} value={type}>
+                {type}
+              </option>
+            ))}
           </select>
         </div>
         <div>
@@ -169,12 +200,52 @@ export function DemoBookingForm() {
             <option value="" disabled>
               Select range…
             </option>
-            <option value="1–10">1–10</option>
-            <option value="11–50">11–50</option>
-            <option value="51–200">51–200</option>
-            <option value="201–500">201–500</option>
-            <option value="501–1000">501–1,000</option>
-            <option value="1000+">1,000+</option>
+            {DEMO_EMPLOYEE_BANDS.map((band) => (
+              <option key={band.value} value={band.value}>
+                {band.label}
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
+
+      <div className="grid gap-6 sm:grid-cols-2">
+        <div>
+          <FieldLabel>Role *</FieldLabel>
+          <select
+            required
+            name="demoRole"
+            value={role}
+            onChange={(e) => setRole(e.target.value)}
+            className={inputClass}
+          >
+            <option value="" disabled>
+              Select role…
+            </option>
+            {DEMO_ROLES.map((option) => (
+              <option key={option} value={option}>
+                {option}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div>
+          <FieldLabel>Timeline *</FieldLabel>
+          <select
+            required
+            name="demoTimeline"
+            value={timeline}
+            onChange={(e) => setTimeline(e.target.value)}
+            className={inputClass}
+          >
+            <option value="" disabled>
+              Select timeline…
+            </option>
+            {DEMO_TIMELINES.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
           </select>
         </div>
       </div>
@@ -228,11 +299,31 @@ export function DemoBookingForm() {
         />
       </div>
 
+      <div className="flex items-start gap-3">
+        <input
+          type="checkbox"
+          id="demoConsent"
+          name="demoConsent"
+          checked={consentGiven}
+          onChange={(e) => setConsentGiven(e.target.checked)}
+          required
+          className="mt-1 h-4 w-4 shrink-0 rounded border-border text-blue focus:ring-blue/30"
+        />
+        <label htmlFor="demoConsent" className="text-xs text-muted-2">
+          I agree to Zoveto collecting and using these details to contact me about this
+          request, as described in the{" "}
+          <a href="/privacy" target="_blank" rel="noopener noreferrer" className="underline hover:text-foreground">
+            Privacy Policy
+          </a>
+          . *
+        </label>
+      </div>
+
       <Button
         type="submit"
         variant="outline"
         size="lg"
-        disabled={status === "submitting"}
+        disabled={status === "submitting" || !consentGiven}
         className="w-full min-h-[52px] gap-2"
       >
         <CalendarDays size={18} aria-hidden />

@@ -25,6 +25,7 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import { fetchKpis, fetchTopContent, fetchLeadTrend, type TimeRange } from "@/lib/command-center-data";
+import { isSmtpConfigured } from "@/lib/server-mail";
 import { TimeRangeTabs } from "./components/TimeRangeTabs";
 import { LeadTrendChart } from "./components/LeadTrendChart";
 
@@ -198,6 +199,7 @@ export default async function CommandCenterPage({ searchParams }: PageProps) {
     kpis.totalLeads > 0 ? ((kpis.leadsInRange / Math.max(kpis.totalLeads, 1)) * 100).toFixed(1) : "0.0";
 
   const rangeLabel = { today: "today", "7d": "last 7 days", "30d": "last 30 days" }[range];
+  const smtpConfigured = isSmtpConfigured();
 
   const now = new Date().toLocaleString("en-IN", {
     day: "numeric",
@@ -341,11 +343,18 @@ export default async function CommandCenterPage({ searchParams }: PageProps) {
               type="ok"
               message="Database connection healthy. Prisma pool responding normally."
             />
-            <AlertCard
-              type="info"
-              message="SMTP not configured locally. Email notifications are non-blocking."
-              action={{ label: "Setup guide", href: "/dashboard" }}
-            />
+            {smtpConfigured ? (
+              <AlertCard
+                type="ok"
+                message="SMTP is configured. Demo requests email info@zoveto.com."
+              />
+            ) : (
+              <AlertCard
+                type="warn"
+                message="SMTP is not configured. Demo leads still save in CRM, but info@zoveto.com will not receive email."
+                action={{ label: "Leads CRM", href: "/dashboard/leads" }}
+              />
+            )}
           </div>
         </div>
       </div>
@@ -432,10 +441,12 @@ export default async function CommandCenterPage({ searchParams }: PageProps) {
               body="Your /blog index only shows static posts. Merging CMS posts into the listing will improve discoverability and keep the page fresh."
               action={{ label: "Blog index", href: "/blog" }}
             />
-            <AIRecommendation
-              title="Configure SMTP for lead alerts"
-              body="Set MAIL_FROM and SMTP_* env vars in Vercel to receive real-time email notifications for every new demo request."
-            />
+            {!smtpConfigured && (
+              <AIRecommendation
+                title="Configure SMTP for lead alerts"
+                body="Set SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, and MAIL_FROM in Vercel, then redeploy, so every demo request emails info@zoveto.com."
+              />
+            )}
             <AIRecommendation
               title="Build the Settings page"
               body="The Settings link is live in the sidebar but has no route. A good first feature: configurable notification email and blog author defaults."

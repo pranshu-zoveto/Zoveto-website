@@ -2209,6 +2209,10 @@ export namespace Prisma {
     phone: string | null
     intent: string | null
     notes: string | null
+    companyType: string | null
+    employeeBand: string | null
+    role: string | null
+    timeline: string | null
     status: string | null
     score: number | null
     sourceUrl: string | null
@@ -2231,6 +2235,10 @@ export namespace Prisma {
     phone: string | null
     intent: string | null
     notes: string | null
+    companyType: string | null
+    employeeBand: string | null
+    role: string | null
+    timeline: string | null
     status: string | null
     score: number | null
     sourceUrl: string | null
@@ -2253,6 +2261,10 @@ export namespace Prisma {
     phone: number
     intent: number
     notes: number
+    companyType: number
+    employeeBand: number
+    role: number
+    timeline: number
     status: number
     score: number
     sourceUrl: number
@@ -2285,6 +2297,10 @@ export namespace Prisma {
     phone?: true
     intent?: true
     notes?: true
+    companyType?: true
+    employeeBand?: true
+    role?: true
+    timeline?: true
     status?: true
     score?: true
     sourceUrl?: true
@@ -2307,6 +2323,10 @@ export namespace Prisma {
     phone?: true
     intent?: true
     notes?: true
+    companyType?: true
+    employeeBand?: true
+    role?: true
+    timeline?: true
     status?: true
     score?: true
     sourceUrl?: true
@@ -2329,6 +2349,10 @@ export namespace Prisma {
     phone?: true
     intent?: true
     notes?: true
+    companyType?: true
+    employeeBand?: true
+    role?: true
+    timeline?: true
     status?: true
     score?: true
     sourceUrl?: true
@@ -2438,6 +2462,10 @@ export namespace Prisma {
     phone: string | null
     intent: string | null
     notes: string | null
+    companyType: string | null
+    employeeBand: string | null
+    role: string | null
+    timeline: string | null
     status: string
     score: number
     sourceUrl: string | null
@@ -2479,6 +2507,10 @@ export namespace Prisma {
     phone?: boolean
     intent?: boolean
     notes?: boolean
+    companyType?: boolean
+    employeeBand?: boolean
+    role?: boolean
+    timeline?: boolean
     status?: boolean
     score?: boolean
     sourceUrl?: boolean
@@ -2504,6 +2536,10 @@ export namespace Prisma {
     phone?: boolean
     intent?: boolean
     notes?: boolean
+    companyType?: boolean
+    employeeBand?: boolean
+    role?: boolean
+    timeline?: boolean
     status?: boolean
     score?: boolean
     sourceUrl?: boolean
@@ -2526,6 +2562,10 @@ export namespace Prisma {
     phone?: boolean
     intent?: boolean
     notes?: boolean
+    companyType?: boolean
+    employeeBand?: boolean
+    role?: boolean
+    timeline?: boolean
     status?: boolean
     score?: boolean
     sourceUrl?: boolean
@@ -2548,6 +2588,10 @@ export namespace Prisma {
     phone?: boolean
     intent?: boolean
     notes?: boolean
+    companyType?: boolean
+    employeeBand?: boolean
+    role?: boolean
+    timeline?: boolean
     status?: boolean
     score?: boolean
     sourceUrl?: boolean
@@ -2562,7 +2606,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type LeadOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "company" | "phone" | "intent" | "notes" | "status" | "score" | "sourceUrl" | "utmSource" | "utmMedium" | "utmCampaign" | "utmTerm" | "utmContent" | "referrer" | "respondedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["lead"]>
+  export type LeadOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "company" | "phone" | "intent" | "notes" | "companyType" | "employeeBand" | "role" | "timeline" | "status" | "score" | "sourceUrl" | "utmSource" | "utmMedium" | "utmCampaign" | "utmTerm" | "utmContent" | "referrer" | "respondedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["lead"]>
   export type LeadInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     statusHistory?: boolean | Lead$statusHistoryArgs<ExtArgs>
     deals?: boolean | Lead$dealsArgs<ExtArgs>
@@ -2585,6 +2629,10 @@ export namespace Prisma {
       phone: string | null
       intent: string | null
       notes: string | null
+      companyType: string | null
+      employeeBand: string | null
+      role: string | null
+      timeline: string | null
       status: string
       score: number
       sourceUrl: string | null
@@ -3029,6 +3077,10 @@ export namespace Prisma {
     readonly phone: FieldRef<"Lead", 'String'>
     readonly intent: FieldRef<"Lead", 'String'>
     readonly notes: FieldRef<"Lead", 'String'>
+    readonly companyType: FieldRef<"Lead", 'String'>
+    readonly employeeBand: FieldRef<"Lead", 'String'>
+    readonly role: FieldRef<"Lead", 'String'>
+    readonly timeline: FieldRef<"Lead", 'String'>
     readonly status: FieldRef<"Lead", 'String'>
     readonly score: FieldRef<"Lead", 'Int'>
     readonly sourceUrl: FieldRef<"Lead", 'String'>
@@ -17776,6 +17828,10 @@ export namespace Prisma {
     phone: 'phone',
     intent: 'intent',
     notes: 'notes',
+    companyType: 'companyType',
+    employeeBand: 'employeeBand',
+    role: 'role',
+    timeline: 'timeline',
     status: 'status',
     score: 'score',
     sourceUrl: 'sourceUrl',
@@ -18121,6 +18177,10 @@ export namespace Prisma {
     phone?: StringNullableFilter<"Lead"> | string | null
     intent?: StringNullableFilter<"Lead"> | string | null
     notes?: StringNullableFilter<"Lead"> | string | null
+    companyType?: StringNullableFilter<"Lead"> | string | null
+    employeeBand?: StringNullableFilter<"Lead"> | string | null
+    role?: StringNullableFilter<"Lead"> | string | null
+    timeline?: StringNullableFilter<"Lead"> | string | null
     status?: StringFilter<"Lead"> | string
     score?: IntFilter<"Lead"> | number
     sourceUrl?: StringNullableFilter<"Lead"> | string | null
@@ -18145,6 +18205,10 @@ export namespace Prisma {
     phone?: SortOrderInput | SortOrder
     intent?: SortOrderInput | SortOrder
     notes?: SortOrderInput | SortOrder
+    companyType?: SortOrderInput | SortOrder
+    employeeBand?: SortOrderInput | SortOrder
+    role?: SortOrderInput | SortOrder
+    timeline?: SortOrderInput | SortOrder
     status?: SortOrder
     score?: SortOrder
     sourceUrl?: SortOrderInput | SortOrder
@@ -18172,6 +18236,10 @@ export namespace Prisma {
     phone?: StringNullableFilter<"Lead"> | string | null
     intent?: StringNullableFilter<"Lead"> | string | null
     notes?: StringNullableFilter<"Lead"> | string | null
+    companyType?: StringNullableFilter<"Lead"> | string | null
+    employeeBand?: StringNullableFilter<"Lead"> | string | null
+    role?: StringNullableFilter<"Lead"> | string | null
+    timeline?: StringNullableFilter<"Lead"> | string | null
     status?: StringFilter<"Lead"> | string
     score?: IntFilter<"Lead"> | number
     sourceUrl?: StringNullableFilter<"Lead"> | string | null
@@ -18196,6 +18264,10 @@ export namespace Prisma {
     phone?: SortOrderInput | SortOrder
     intent?: SortOrderInput | SortOrder
     notes?: SortOrderInput | SortOrder
+    companyType?: SortOrderInput | SortOrder
+    employeeBand?: SortOrderInput | SortOrder
+    role?: SortOrderInput | SortOrder
+    timeline?: SortOrderInput | SortOrder
     status?: SortOrder
     score?: SortOrder
     sourceUrl?: SortOrderInput | SortOrder
@@ -18226,6 +18298,10 @@ export namespace Prisma {
     phone?: StringNullableWithAggregatesFilter<"Lead"> | string | null
     intent?: StringNullableWithAggregatesFilter<"Lead"> | string | null
     notes?: StringNullableWithAggregatesFilter<"Lead"> | string | null
+    companyType?: StringNullableWithAggregatesFilter<"Lead"> | string | null
+    employeeBand?: StringNullableWithAggregatesFilter<"Lead"> | string | null
+    role?: StringNullableWithAggregatesFilter<"Lead"> | string | null
+    timeline?: StringNullableWithAggregatesFilter<"Lead"> | string | null
     status?: StringWithAggregatesFilter<"Lead"> | string
     score?: IntWithAggregatesFilter<"Lead"> | number
     sourceUrl?: StringNullableWithAggregatesFilter<"Lead"> | string | null
@@ -19196,6 +19272,10 @@ export namespace Prisma {
     phone?: string | null
     intent?: string | null
     notes?: string | null
+    companyType?: string | null
+    employeeBand?: string | null
+    role?: string | null
+    timeline?: string | null
     status?: string
     score?: number
     sourceUrl?: string | null
@@ -19220,6 +19300,10 @@ export namespace Prisma {
     phone?: string | null
     intent?: string | null
     notes?: string | null
+    companyType?: string | null
+    employeeBand?: string | null
+    role?: string | null
+    timeline?: string | null
     status?: string
     score?: number
     sourceUrl?: string | null
@@ -19244,6 +19328,10 @@ export namespace Prisma {
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     intent?: NullableStringFieldUpdateOperationsInput | string | null
     notes?: NullableStringFieldUpdateOperationsInput | string | null
+    companyType?: NullableStringFieldUpdateOperationsInput | string | null
+    employeeBand?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: NullableStringFieldUpdateOperationsInput | string | null
+    timeline?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
     score?: IntFieldUpdateOperationsInput | number
     sourceUrl?: NullableStringFieldUpdateOperationsInput | string | null
@@ -19268,6 +19356,10 @@ export namespace Prisma {
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     intent?: NullableStringFieldUpdateOperationsInput | string | null
     notes?: NullableStringFieldUpdateOperationsInput | string | null
+    companyType?: NullableStringFieldUpdateOperationsInput | string | null
+    employeeBand?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: NullableStringFieldUpdateOperationsInput | string | null
+    timeline?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
     score?: IntFieldUpdateOperationsInput | number
     sourceUrl?: NullableStringFieldUpdateOperationsInput | string | null
@@ -19292,6 +19384,10 @@ export namespace Prisma {
     phone?: string | null
     intent?: string | null
     notes?: string | null
+    companyType?: string | null
+    employeeBand?: string | null
+    role?: string | null
+    timeline?: string | null
     status?: string
     score?: number
     sourceUrl?: string | null
@@ -19314,6 +19410,10 @@ export namespace Prisma {
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     intent?: NullableStringFieldUpdateOperationsInput | string | null
     notes?: NullableStringFieldUpdateOperationsInput | string | null
+    companyType?: NullableStringFieldUpdateOperationsInput | string | null
+    employeeBand?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: NullableStringFieldUpdateOperationsInput | string | null
+    timeline?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
     score?: IntFieldUpdateOperationsInput | number
     sourceUrl?: NullableStringFieldUpdateOperationsInput | string | null
@@ -19336,6 +19436,10 @@ export namespace Prisma {
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     intent?: NullableStringFieldUpdateOperationsInput | string | null
     notes?: NullableStringFieldUpdateOperationsInput | string | null
+    companyType?: NullableStringFieldUpdateOperationsInput | string | null
+    employeeBand?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: NullableStringFieldUpdateOperationsInput | string | null
+    timeline?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
     score?: IntFieldUpdateOperationsInput | number
     sourceUrl?: NullableStringFieldUpdateOperationsInput | string | null
@@ -20517,6 +20621,10 @@ export namespace Prisma {
     phone?: SortOrder
     intent?: SortOrder
     notes?: SortOrder
+    companyType?: SortOrder
+    employeeBand?: SortOrder
+    role?: SortOrder
+    timeline?: SortOrder
     status?: SortOrder
     score?: SortOrder
     sourceUrl?: SortOrder
@@ -20543,6 +20651,10 @@ export namespace Prisma {
     phone?: SortOrder
     intent?: SortOrder
     notes?: SortOrder
+    companyType?: SortOrder
+    employeeBand?: SortOrder
+    role?: SortOrder
+    timeline?: SortOrder
     status?: SortOrder
     score?: SortOrder
     sourceUrl?: SortOrder
@@ -20565,6 +20677,10 @@ export namespace Prisma {
     phone?: SortOrder
     intent?: SortOrder
     notes?: SortOrder
+    companyType?: SortOrder
+    employeeBand?: SortOrder
+    role?: SortOrder
+    timeline?: SortOrder
     status?: SortOrder
     score?: SortOrder
     sourceUrl?: SortOrder
@@ -21958,6 +22074,10 @@ export namespace Prisma {
     phone?: string | null
     intent?: string | null
     notes?: string | null
+    companyType?: string | null
+    employeeBand?: string | null
+    role?: string | null
+    timeline?: string | null
     status?: string
     score?: number
     sourceUrl?: string | null
@@ -21981,6 +22101,10 @@ export namespace Prisma {
     phone?: string | null
     intent?: string | null
     notes?: string | null
+    companyType?: string | null
+    employeeBand?: string | null
+    role?: string | null
+    timeline?: string | null
     status?: string
     score?: number
     sourceUrl?: string | null
@@ -22020,6 +22144,10 @@ export namespace Prisma {
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     intent?: NullableStringFieldUpdateOperationsInput | string | null
     notes?: NullableStringFieldUpdateOperationsInput | string | null
+    companyType?: NullableStringFieldUpdateOperationsInput | string | null
+    employeeBand?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: NullableStringFieldUpdateOperationsInput | string | null
+    timeline?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
     score?: IntFieldUpdateOperationsInput | number
     sourceUrl?: NullableStringFieldUpdateOperationsInput | string | null
@@ -22043,6 +22171,10 @@ export namespace Prisma {
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     intent?: NullableStringFieldUpdateOperationsInput | string | null
     notes?: NullableStringFieldUpdateOperationsInput | string | null
+    companyType?: NullableStringFieldUpdateOperationsInput | string | null
+    employeeBand?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: NullableStringFieldUpdateOperationsInput | string | null
+    timeline?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
     score?: IntFieldUpdateOperationsInput | number
     sourceUrl?: NullableStringFieldUpdateOperationsInput | string | null
@@ -22066,6 +22198,10 @@ export namespace Prisma {
     phone?: string | null
     intent?: string | null
     notes?: string | null
+    companyType?: string | null
+    employeeBand?: string | null
+    role?: string | null
+    timeline?: string | null
     status?: string
     score?: number
     sourceUrl?: string | null
@@ -22089,6 +22225,10 @@ export namespace Prisma {
     phone?: string | null
     intent?: string | null
     notes?: string | null
+    companyType?: string | null
+    employeeBand?: string | null
+    role?: string | null
+    timeline?: string | null
     status?: string
     score?: number
     sourceUrl?: string | null
@@ -22128,6 +22268,10 @@ export namespace Prisma {
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     intent?: NullableStringFieldUpdateOperationsInput | string | null
     notes?: NullableStringFieldUpdateOperationsInput | string | null
+    companyType?: NullableStringFieldUpdateOperationsInput | string | null
+    employeeBand?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: NullableStringFieldUpdateOperationsInput | string | null
+    timeline?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
     score?: IntFieldUpdateOperationsInput | number
     sourceUrl?: NullableStringFieldUpdateOperationsInput | string | null
@@ -22151,6 +22295,10 @@ export namespace Prisma {
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     intent?: NullableStringFieldUpdateOperationsInput | string | null
     notes?: NullableStringFieldUpdateOperationsInput | string | null
+    companyType?: NullableStringFieldUpdateOperationsInput | string | null
+    employeeBand?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: NullableStringFieldUpdateOperationsInput | string | null
+    timeline?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
     score?: IntFieldUpdateOperationsInput | number
     sourceUrl?: NullableStringFieldUpdateOperationsInput | string | null

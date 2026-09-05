@@ -24,6 +24,7 @@ import { updateLeadNotes, updateLeadScore, deleteLead, updateLeadStatus } from "
 import { LEAD_STATUSES } from "../types";
 import type { LeadStatus } from "../types";
 import type { LeadForDrawer } from "../types";
+import { timelineDisplayLabel } from "@/lib/demo-lead";
 
 const STATUS_COLORS: Record<string, string> = {
   NEW: "text-blue-400",
@@ -189,6 +190,10 @@ export function LeadDrawer({ lead, onClose }: Props) {
             <Row label="Email" value={lead.email} />
             <Row label="Phone" value={lead.phone} />
             <Row label="Company" value={lead.company} />
+            <Row label="Company Type" value={lead.companyType} />
+            <Row label="Employees" value={lead.employeeBand} />
+            <Row label="Role" value={lead.role} />
+            <Row label="Timeline" value={timelineDisplayLabel(lead.timeline)} />
             {lead.intent && (
               <div className="pt-2">
                 <p className="mb-1 text-[10px] text-zinc-600">Message / Intent</p>

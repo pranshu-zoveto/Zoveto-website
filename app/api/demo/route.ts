@@ -1,6 +1,17 @@
 import { NextResponse } from "next/server";
 import { sendFormNotificationEmail } from "@/lib/server-mail";
 import prisma from "@/lib/db";
+import {
+  asTrimmedString,
+  buildDemoIntent,
+  buildDemoNotificationEmail,
+  parseCompanyType,
+  parseEmployeeBand,
+  parseRole,
+  parseTimeline,
+  parseUtmFromBody,
+  scoreDemoLead,
+} from "@/lib/demo-lead";
 
 export async function POST(req: Request) {
   try {
@@ -12,46 +23,81 @@ export async function POST(req: Request) {
       // Ignored
     }
 
-    const email = typeof parsedBody.email === "string" ? parsedBody.email.trim() : "";
-    const company = typeof parsedBody.organization === "string" ? parsedBody.organization.trim() : "Demo request";
-    const fullName = typeof parsedBody.fullName === "string" ? parsedBody.fullName.trim() : "";
-    const phone = typeof parsedBody.phone === "string" ? parsedBody.phone.trim() : "";
-    const preferredDate = typeof parsedBody.preferredDate === "string" ? parsedBody.preferredDate.trim() : "";
-    const preferredTime = typeof parsedBody.preferredTime === "string" ? parsedBody.preferredTime.trim() : "";
-    const message = typeof parsedBody.message === "string" ? parsedBody.message.trim() : "";
+    const email = asTrimmedString(parsedBody.email);
+    const fullName = asTrimmedString(parsedBody.fullName);
+    const company =
+      asTrimmedString(parsedBody.organization) || asTrimmedString(parsedBody.company) || "Demo request";
+    const phone = asTrimmedString(parsedBody.phone);
+    const preferredDate = asTrimmedString(parsedBody.preferredDate);
+    const preferredTime = asTrimmedString(parsedBody.preferredTime);
+    const message = asTrimmedString(parsedBody.message);
 
-    const fullIntent = [
-      "New demo request",
-      `Phone: ${phone || "-"}`,
-      `Preferred date: ${preferredDate || "-"}`,
-      `Preferred time: ${preferredTime || "-"}`,
-      `Message: ${message || "-"}`,
-    ].join("\n");
+    if (!fullName || !email.includes("@")) {
+      return NextResponse.json({ message: "Name and work email are required." }, { status: 400 });
+    }
 
-    // Save directly to the new Prisma database
+    const companyType =
+      parseCompanyType(parsedBody.companyType) ?? parseCompanyType(parsedBody.industry);
+    const employeeBand =
+      parseEmployeeBand(parsedBody.employeeBand) ?? parseEmployeeBand(parsedBody.companySize);
+    const role = parseRole(parsedBody.role);
+    const timeline = parseTimeline(parsedBody.timeline);
+    const utm = parseUtmFromBody(parsedBody);
+    const sourceUrl = asTrimmedString(parsedBody.sourceUrl).slice(0, 500) || null;
+    const referrer = req.headers.get("referer")?.slice(0, 500) || null;
+    const intent = buildDemoIntent({ preferredDate, preferredTime, message });
+    const score = scoreDemoLead({ role, timeline });
+    const submittedAt = new Date();
+
     await prisma.lead.create({
       data: {
-        name: fullName || "Unknown",
-        email: email || "unknown@example.com",
-        company: company,
-        intent: fullIntent,
+        name: fullName,
+        email,
+        company,
+        phone: phone || null,
+        intent,
+        companyType,
+        employeeBand,
+        role,
+        timeline,
+        score,
+        sourceUrl,
+        referrer,
+        utmSource: utm.utmSource,
+        utmMedium: utm.utmMedium,
+        utmCampaign: utm.utmCampaign,
+        utmTerm: utm.utmTerm,
+        utmContent: utm.utmContent,
       },
     });
 
-    // Attempt to send the email notification as well
-    try {
-      await sendFormNotificationEmail({
-        subject: `[Website] Demo request, ${company}`,
-        replyTo: email || undefined,
-        text: [
-          `Name: ${fullName || "-"}`,
-          `Email: ${email || "-"}`,
-          `Company: ${company}`,
-          fullIntent,
-        ].join("\n"),
-      });
-    } catch (emailErr) {
-      console.warn("Failed to send notification email, but lead was saved.", emailErr);
+    const mail = buildDemoNotificationEmail({
+      fullName,
+      email,
+      phone,
+      company,
+      companyType,
+      employeeBand,
+      role,
+      timeline,
+      preferredDate,
+      preferredTime,
+      message,
+      utmSource: utm.utmSource,
+      utmCampaign: utm.utmCampaign,
+      submittedAt,
+    });
+
+    const mailResult = await sendFormNotificationEmail({
+      subject: mail.subject,
+      replyTo: email,
+      text: mail.text,
+    });
+    if (!mailResult.sent) {
+      console.error(
+        "[zoveto] Demo lead saved in CRM but staff email was not sent:",
+        mailResult.reason ?? "unknown",
+      );
     }
 
     return NextResponse.json(

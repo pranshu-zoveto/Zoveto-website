@@ -20,6 +20,7 @@ import type { LeadRow, LeadForDrawer, FunnelMetrics } from "../types";
 import { LEAD_STATUSES } from "../types";
 import type { LeadStatus } from "../types";
 import { deleteLead } from "../actions";
+import { DEMO_COMPANY_TYPES, DEMO_ROLES, DEMO_TIMELINES, timelineDisplayLabel } from "@/lib/demo-lead";
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 
@@ -40,11 +41,37 @@ function scoreColor(score: number): string {
 }
 
 function toCSV(leads: LeadRow[]): string {
-  const headers = ["Name", "Email", "Company", "Phone", "Status", "Score", "Source", "Medium", "Campaign", "Created"];
+  const headers = [
+    "Name",
+    "Email",
+    "Company",
+    "Phone",
+    "Company Type",
+    "Employees",
+    "Role",
+    "Timeline",
+    "Status",
+    "Score",
+    "Source",
+    "Medium",
+    "Campaign",
+    "Created",
+  ];
   const rows = leads.map((l) =>
     [
-      l.name, l.email, l.company ?? "", l.phone ?? "",
-      l.status, l.score, l.utmSource ?? "", l.utmMedium ?? "", l.utmCampaign ?? "",
+      l.name,
+      l.email,
+      l.company ?? "",
+      l.phone ?? "",
+      l.companyType ?? "",
+      l.employeeBand ?? "",
+      l.role ?? "",
+      timelineDisplayLabel(l.timeline) ?? l.timeline ?? "",
+      l.status,
+      l.score,
+      l.utmSource ?? "",
+      l.utmMedium ?? "",
+      l.utmCampaign ?? "",
       new Date(l.createdAt).toISOString(),
     ]
       .map((v) => `"${String(v).replace(/"/g, '""')}"`)
@@ -142,6 +169,9 @@ export function LeadsCrmClient({ leads, metrics }: Props) {
   const [search, setSearch] = useState("");
   const [statusFilter, setStatusFilter] = useState<LeadStatus | "ALL">("ALL");
   const [sourceFilter, setSourceFilter] = useState("");
+  const [companyTypeFilter, setCompanyTypeFilter] = useState("");
+  const [roleFilter, setRoleFilter] = useState("");
+  const [timelineFilter, setTimelineFilter] = useState("");
   const [selected, setSelected] = useState<Set<string>>(new Set());
   const [drawerLead, setDrawerLead] = useState<LeadForDrawer | null>(null);
   const [isBulkDeleting, startBulkDelete] = useTransition();
@@ -153,9 +183,12 @@ export function LeadsCrmClient({ leads, metrics }: Props) {
       if (q && !l.name.toLowerCase().includes(q) && !l.email.toLowerCase().includes(q) && !(l.company ?? "").toLowerCase().includes(q)) return false;
       if (statusFilter !== "ALL" && l.status !== statusFilter) return false;
       if (sourceFilter && (l.utmSource ?? "").toLowerCase() !== sourceFilter.toLowerCase()) return false;
+      if (companyTypeFilter && (l.companyType ?? "") !== companyTypeFilter) return false;
+      if (roleFilter && (l.role ?? "") !== roleFilter) return false;
+      if (timelineFilter && (l.timeline ?? "") !== timelineFilter) return false;
       return true;
     });
-  }, [leads, search, statusFilter, sourceFilter]);
+  }, [leads, search, statusFilter, sourceFilter, companyTypeFilter, roleFilter, timelineFilter]);
 
   const sources = useMemo(() => {
     const s = new Set(leads.map((l) => l.utmSource).filter(Boolean) as string[]);
@@ -276,9 +309,54 @@ export function LeadsCrmClient({ leads, metrics }: Props) {
               </select>
             </div>
           )}
-          {(statusFilter !== "ALL" || sourceFilter) && (
+          <div>
+            <label className="mb-1 block text-[10px] text-zinc-600">Company type</label>
+            <select
+              value={companyTypeFilter}
+              onChange={(e) => setCompanyTypeFilter(e.target.value)}
+              className="rounded-md border border-zinc-800 bg-zinc-900 px-2.5 py-1.5 text-xs text-zinc-300 focus:border-zinc-600 focus:outline-none"
+            >
+              <option value="">All types</option>
+              {DEMO_COMPANY_TYPES.map((type) => (
+                <option key={type} value={type}>{type}</option>
+              ))}
+            </select>
+          </div>
+          <div>
+            <label className="mb-1 block text-[10px] text-zinc-600">Role</label>
+            <select
+              value={roleFilter}
+              onChange={(e) => setRoleFilter(e.target.value)}
+              className="rounded-md border border-zinc-800 bg-zinc-900 px-2.5 py-1.5 text-xs text-zinc-300 focus:border-zinc-600 focus:outline-none"
+            >
+              <option value="">All roles</option>
+              {DEMO_ROLES.map((option) => (
+                <option key={option} value={option}>{option}</option>
+              ))}
+            </select>
+          </div>
+          <div>
+            <label className="mb-1 block text-[10px] text-zinc-600">Timeline</label>
+            <select
+              value={timelineFilter}
+              onChange={(e) => setTimelineFilter(e.target.value)}
+              className="rounded-md border border-zinc-800 bg-zinc-900 px-2.5 py-1.5 text-xs text-zinc-300 focus:border-zinc-600 focus:outline-none"
+            >
+              <option value="">All timelines</option>
+              {DEMO_TIMELINES.map((option) => (
+                <option key={option.value} value={option.value}>{option.label}</option>
+              ))}
+            </select>
+          </div>
+          {(statusFilter !== "ALL" || sourceFilter || companyTypeFilter || roleFilter || timelineFilter) && (
             <button
-              onClick={() => { setStatusFilter("ALL"); setSourceFilter(""); }}
+              onClick={() => {
+                setStatusFilter("ALL");
+                setSourceFilter("");
+                setCompanyTypeFilter("");
+                setRoleFilter("");
+                setTimelineFilter("");
+              }}
               className="mt-4 flex items-center gap-1 text-xs text-zinc-600 hover:text-zinc-400"
             >
               <X className="h-3 w-3" /> Clear filters
@@ -304,11 +382,20 @@ export function LeadsCrmClient({ leads, metrics }: Props) {
         <div className="flex h-48 flex-col items-center justify-center rounded-xl border border-dashed border-zinc-800 text-center">
           <p className="text-sm font-medium text-zinc-500">No leads found</p>
           <p className="mt-1 text-xs text-zinc-700">
-            {search || statusFilter !== "ALL" ? "Try adjusting your search or filters." : "Leads submitted via the website will appear here."}
+            {search || statusFilter !== "ALL" || sourceFilter || companyTypeFilter || roleFilter || timelineFilter
+              ? "Try adjusting your search or filters."
+              : "Leads submitted via the website will appear here."}
           </p>
-          {(search || statusFilter !== "ALL") && (
+          {(search || statusFilter !== "ALL" || sourceFilter || companyTypeFilter || roleFilter || timelineFilter) && (
             <button
-              onClick={() => { setSearch(""); setStatusFilter("ALL"); }}
+              onClick={() => {
+                setSearch("");
+                setStatusFilter("ALL");
+                setSourceFilter("");
+                setCompanyTypeFilter("");
+                setRoleFilter("");
+                setTimelineFilter("");
+              }}
               className="mt-3 text-xs text-zinc-600 underline hover:text-zinc-400"
             >
               Clear search
@@ -330,6 +417,9 @@ export function LeadsCrmClient({ leads, metrics }: Props) {
                 </th>
                 <th className="px-4 py-3 font-medium">Lead</th>
                 <th className="hidden px-4 py-3 font-medium sm:table-cell">Company</th>
+                <th className="hidden px-4 py-3 font-medium xl:table-cell">Type</th>
+                <th className="hidden px-4 py-3 font-medium xl:table-cell">Role</th>
+                <th className="hidden px-4 py-3 font-medium xl:table-cell">Timeline</th>
                 <th className="px-4 py-3 font-medium">Status</th>
                 <th className="hidden px-4 py-3 font-medium md:table-cell">Score</th>
                 <th className="hidden px-4 py-3 font-medium lg:table-cell">Source</th>
@@ -357,6 +447,15 @@ export function LeadsCrmClient({ leads, metrics }: Props) {
                   </td>
                   <td className="hidden px-4 py-3 text-zinc-400 sm:table-cell" onClick={() => openDrawer(lead)}>
                     {lead.company || "—"}
+                  </td>
+                  <td className="hidden px-4 py-3 text-zinc-400 xl:table-cell" onClick={() => openDrawer(lead)}>
+                    {lead.companyType || "—"}
+                  </td>
+                  <td className="hidden px-4 py-3 text-zinc-400 xl:table-cell" onClick={() => openDrawer(lead)}>
+                    {lead.role || "—"}
+                  </td>
+                  <td className="hidden px-4 py-3 text-zinc-400 xl:table-cell" onClick={() => openDrawer(lead)}>
+                    {timelineDisplayLabel(lead.timeline) || "—"}
                   </td>
                   <td className="px-4 py-3" onClick={(e) => e.stopPropagation()}>
                     <LeadStatusSelect leadId={lead.id} currentStatus={lead.status as LeadStatus} />

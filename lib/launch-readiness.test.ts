@@ -70,6 +70,7 @@ describe("launch readiness static checks", () => {
     const chrome = read("components/layout/SiteChromeClients.tsx");
     assert.ok(chrome.includes("CookieConsentBar"), "SiteChromeClients must include cookie banner");
     assert.ok(chrome.includes("ConditionalAnalyticsLoader"), "SiteChromeClients must load GA after consent");
+    assert.ok(chrome.includes("ConditionalGoogleAdsLoader"), "SiteChromeClients must load Google Ads after marketing consent");
     assert.ok(chrome.includes("ConditionalGtmLoader"), "SiteChromeClients must load GTM after consent");
 
     const gaLoader = read("components/tracking/ConditionalAnalyticsLoader.tsx");

@@ -33,7 +33,7 @@ export default function CookiePolicyPage() {
           </li>
           <li>
             <strong>Marketing/attribution storage:</strong> used only with your consent for campaign attribution and
-            measurement (for example, UTM tracking).
+            measurement (for example, UTM tracking and Google Ads).
           </li>
         </ul>
       </section>

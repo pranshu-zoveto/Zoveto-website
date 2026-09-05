@@ -11,6 +11,7 @@ describe("GA4 loading", () => {
     assert.doesNotMatch(layout, /googletagmanager\.com\/gtag\/js/);
     assert.doesNotMatch(layout, /GTM-MT5G5NCL/);
     assert.doesNotMatch(layout, /googletagmanager\.com\/gtm\.js/);
+    assert.doesNotMatch(layout, /AW-18133443669/);
     assert.doesNotMatch(layout, /@next\/third-parties\/google/);
   });
 
@@ -23,6 +24,22 @@ describe("GA4 loading", () => {
     assert.match(loader, /googletagmanager\.com\/gtag\/js/);
     const idSource = fs.readFileSync(path.join(process.cwd(), "lib/ga4-measurement-id.ts"), "utf8");
     assert.match(idSource, /G-XRM9Y716DJ/);
+  });
+
+  it("loads Google Ads through consent-gated ConditionalGoogleAdsLoader", () => {
+    const loader = fs.readFileSync(
+      path.join(process.cwd(), "components/tracking/ConditionalGoogleAdsLoader.tsx"),
+      "utf8",
+    );
+    assert.match(loader, /hasMarketingConsent/);
+    assert.match(loader, /getGoogleAdsId/);
+    const chrome = fs.readFileSync(
+      path.join(process.cwd(), "components/layout/SiteChromeClients.tsx"),
+      "utf8",
+    );
+    assert.match(chrome, /ConditionalGoogleAdsLoader/);
+    const idSource = fs.readFileSync(path.join(process.cwd(), "lib/google-ads-id.ts"), "utf8");
+    assert.match(idSource, /AW-18133443669/);
   });
 
   it("loads GTM through consent-gated ConditionalGtmLoader", () => {

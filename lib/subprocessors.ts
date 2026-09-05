@@ -22,6 +22,11 @@ export const SUBPROCESSORS: readonly Subprocessor[] = [
     region: "Global",
   },
   {
+    provider: "Google Ads",
+    purpose: "Paid search conversion and remarketing measurement (when marketing consent is enabled)",
+    region: "Global",
+  },
+  {
     provider: "Microsoft Clarity",
     purpose:
       "Website session replay, heatmaps, and behavioral diagnostics on the marketing site (when analytics consent is enabled)",

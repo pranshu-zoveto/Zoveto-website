@@ -261,7 +261,7 @@ export function CookieConsentBar() {
                   <div className="min-w-0">
                     <p className="font-semibold text-foreground">Marketing</p>
                     <p className="mt-1 text-sm leading-relaxed text-foreground/80">
-                      Campaign attribution and stored marketing parameters (e.g. UTM).
+                      Campaign attribution (e.g. UTM) and Google Ads measurement when configured.
                     </p>
                   </div>
                   <input

@@ -123,6 +123,10 @@ export default function PrivacyPage() {
             to understand aggregated traffic and UX diagnostics on our marketing site.
           </li>
           <li>
+            <strong>Advertising</strong>: where enabled and only if you consent to marketing cookies (Google Ads),
+            to measure ad campaigns and conversions on our marketing site.
+          </li>
+          <li>
             <strong>Communication providers</strong>: transactional email services (including Google Gmail SMTP), for account
             notifications and service communication.
           </li>

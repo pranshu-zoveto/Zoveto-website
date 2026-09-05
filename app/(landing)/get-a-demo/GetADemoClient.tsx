@@ -1,11 +1,15 @@
 "use client";
 
-import { CheckCircle2, IndianRupee, ShieldCheck, Zap } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, CheckCircle2, IndianRupee, ShieldCheck, Zap } from "lucide-react";
 import { Text } from "@/components/ui/Text";
 import { DemoBookingForm } from "@/components/forms/DemoBookingForm";
 import { ZeroClientTrustSection } from "@/components/sections/ZeroClientTrustSection";
 import BackgroundComponents from "@/components/ui/background-components";
+import { BrandDotWordmark } from "@/components/brand/BrandDotWordmark";
 import { BrandIcon } from "@/components/brand/BrandLogos";
+import { buttonVariants } from "@/components/ui/button-variants";
+import { cn } from "@/lib/utils";
 import { trackMarketingEvent } from "@/lib/tracking";
 import { LEAD_STAFF_INBOX } from "@/lib/lead-intake-mail";
 import { CONTACT_PHONE_TEL, getContactPhoneDisplay } from "@/lib/whatsapp-float";
@@ -13,32 +17,50 @@ import { CONTACT_PHONE_TEL, getContactPhoneDisplay } from "@/lib/whatsapp-float"
 const TRUST_BULLETS = [
   { icon: CheckCircle2, label: "GST-native invoicing, built in" },
   { icon: IndianRupee, label: "INR billing with Razorpay" },
-  { icon: Zap, label: "Live in 2–4 weeks, not months" },
+  { icon: Zap, label: "Live in 2-4 weeks, not months" },
 ] as const;
 
 export function GetADemoClient() {
   const phoneDisplay = getContactPhoneDisplay();
 
   return (
-    <main className="bg-background pt-8 pb-16 md:pb-24 relative overflow-hidden">
+    <div className="bg-background pt-8 pb-16 md:pb-24 relative overflow-hidden">
       <div className="absolute top-0 left-0 w-full h-full bg-blue-light/30 -z-0 opacity-60 select-none pointer-events-none" />
 
-      {/* Minimal header - brand mark only, no nav, nothing to click away to */}
       <div className="container max-w-content mx-auto px-4 sm:px-6 relative z-10 mb-10 md:mb-14">
-        <div className="flex items-center justify-between py-4">
-          <div className="flex items-center gap-2.5">
-            <BrandIcon className="h-8 w-8" priority />
-            <Text variant="heading-2" className="text-foreground text-lg tracking-tight">
-              Zoveto
-            </Text>
-          </div>
-          <a
-            href={CONTACT_PHONE_TEL}
-            className="hidden sm:inline-flex items-center gap-2 text-sm font-medium text-muted hover:text-foreground transition-colors"
-            onClick={() => trackMarketingEvent("phone_click", { source: "get_a_demo_header" })}
+        <div className="flex items-center justify-between gap-3 py-4">
+          <Link
+            href="/"
+            aria-label="Zoveto home"
+            className="inline-flex min-w-0 items-center gap-2.5 text-foreground"
           >
-            {phoneDisplay}
-          </a>
+            <BrandIcon className="h-7 w-7 shrink-0 rounded-md" priority />
+            <BrandDotWordmark />
+          </Link>
+          <div className="flex shrink-0 items-center gap-2 sm:gap-3">
+            <Link
+              href="/"
+              aria-label="Explore the Zoveto website"
+              className={cn(
+                buttonVariants({ variant: "outline", size: "sm" }),
+                "min-h-[44px] rounded-xl",
+              )}
+              onClick={() =>
+                trackMarketingEvent("cta_button_click", { source: "get_a_demo_explore" })
+              }
+            >
+              <span className="sm:hidden">Explore</span>
+              <span className="hidden sm:inline">Explore the website</span>
+              <ArrowRight size={14} className="shrink-0" aria-hidden />
+            </Link>
+            <a
+              href={CONTACT_PHONE_TEL}
+              className="hidden md:inline-flex items-center gap-2 text-sm font-medium text-muted hover:text-foreground transition-colors"
+              onClick={() => trackMarketingEvent("phone_click", { source: "get_a_demo_header" })}
+            >
+              {phoneDisplay}
+            </a>
+          </div>
         </div>
       </div>
 
@@ -54,7 +76,7 @@ export function GetADemoClient() {
             </Text>
             <Text variant="body-lg" className="text-muted max-w-lg mb-8 md:mb-10">
               Zoveto brings inventory, sales, warehouse, and GST invoicing onto one system. Book a
-              15-minute walkthrough and we&apos;ll show it running with your own numbers &mdash; not a
+              15-minute walkthrough and we&apos;ll show it running with your own numbers, not a
               generic pitch deck.
             </Text>
 
@@ -74,7 +96,7 @@ export function GetADemoClient() {
             <div className="flex items-center gap-3 rounded-xl border border-border bg-card px-4 py-3">
               <ShieldCheck size={18} className="text-blue shrink-0" aria-hidden />
               <Text variant="body-sm" className="text-muted">
-                No credit card, no obligation &mdash; this is a fit check, not a sales pitch.
+                No credit card, no obligation. This is a fit check, not a sales pitch.
               </Text>
             </div>
           </div>
@@ -119,7 +141,7 @@ export function GetADemoClient() {
           </div>
         </div>
       </div>
-    </main>
+    </div>
   );
 }
 

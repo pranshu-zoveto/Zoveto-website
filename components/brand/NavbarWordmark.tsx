@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { BrandDotWordmark } from "@/components/brand/BrandDotWordmark";
 import { cn } from "@/lib/utils";
 
 const DEFAULT_SUFFIXES = ["ERP", "WMS", "CRM", "HRMS", "AI"] as const;
@@ -9,8 +10,6 @@ const WIDTH_REF = "HRMS";
 
 const INTERVAL_MS = 1000;
 
-const staticWordClasses =
-  "inline-block align-middle leading-none font-semibold tracking-[0.08em] text-[1.1rem] sm:text-[1.3rem] lg:text-[1.45rem]";
 const suffixClasses =
   "inline-block align-middle leading-none font-medium tracking-[0.08em] text-[1.1rem] sm:text-[1.3rem] lg:text-[1.45rem] text-foreground";
 
@@ -64,19 +63,7 @@ export function NavbarWordmark({
 
   return (
     <span className={cn("inline-flex items-baseline gap-[0.12em] overflow-visible", className)}>
-      <span className={cn(staticWordClasses, "inline-flex items-baseline gap-[0.08em] text-[#000000]")} aria-hidden>
-        <span>ZOVETO</span>
-        <span
-          className="inline-block shrink-0 rounded-full bg-blue shadow-[0_0_0_1.5px_rgba(0,113,227,0.18)]"
-          style={{
-            width: "0.26em",
-            height: "0.26em",
-            minWidth: 5,
-            minHeight: 5,
-            transform: "translateY(0.06em)",
-          }}
-        />
-      </span>
+      <BrandDotWordmark />
 
       <span
         className="relative inline-grid shrink-0 grid-cols-1 grid-rows-1 justify-items-start overflow-visible"

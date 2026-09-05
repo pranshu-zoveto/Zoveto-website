@@ -11,6 +11,9 @@ const CookieConsentBar = dynamic(() => import("@/components/legal/CookieConsentB
 const ConditionalAnalyticsLoader = dynamic(() =>
   import("@/components/tracking/ConditionalAnalyticsLoader").then((m) => m.ConditionalAnalyticsLoader)
 );
+const ConditionalGoogleAdsLoader = dynamic(() =>
+  import("@/components/tracking/ConditionalGoogleAdsLoader").then((m) => m.ConditionalGoogleAdsLoader)
+);
 const ConditionalGtmLoader = dynamic(() =>
   import("@/components/tracking/ConditionalGtmLoader").then((m) => m.ConditionalGtmLoader)
 );
@@ -53,6 +56,7 @@ export function SiteChromeClients() {
         <>
           <ConditionalGtmLoader />
           <ConditionalAnalyticsLoader />
+          <ConditionalGoogleAdsLoader />
           <ConditionalPostHogLoader />
           <ConditionalClarityLoader />
           <AnalyticsRouteTracker />

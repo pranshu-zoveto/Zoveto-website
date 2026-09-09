@@ -1,3 +1,37 @@
+type RectLike = Pick<DOMRect, "left" | "top" | "width" | "height">;
+
+function asDomRect(x: number, y: number, w: number, h: number): DOMRect {
+  return {
+    x,
+    y,
+    width: w,
+    height: h,
+    top: y,
+    left: x,
+    right: x + w,
+    bottom: y + h,
+    toJSON: () => ({}),
+  } as DOMRect;
+}
+
+/**
+ * Convert viewport rects into pinned-hero space (dashboard at 0,0).
+ * Required when the animation is not at scrollY=0: getBoundingClientRect is
+ * viewport-relative, so using raw tops from below the fold throws the zoom
+ * translation off-screen.
+ */
+export function toPinnedSpaceRects(tileRect: RectLike, dashRect: RectLike): { tile: DOMRect; dash: DOMRect } {
+  return {
+    tile: asDomRect(
+      tileRect.left - dashRect.left,
+      tileRect.top - dashRect.top,
+      tileRect.width,
+      tileRect.height,
+    ),
+    dash: asDomRect(0, 0, dashRect.width, dashRect.height),
+  };
+}
+
 /** Tile / dashboard rects smaller than this are treated as not laid out yet. */
 export const MIN_TILE_PX = 24;
 export const MAX_ZOOM_SCALE = 4;

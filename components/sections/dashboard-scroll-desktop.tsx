@@ -1,6 +1,6 @@
 "use client";
 
-import { useLayoutEffect, useRef, useState, type CSSProperties } from "react";
+import { useLayoutEffect, useRef, useState, type CSSProperties, type RefObject } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { DashboardLight } from "@/components/sections/dashboard/DashboardLight";
@@ -8,18 +8,11 @@ import { ContentPanel } from "@/components/sections/dashboard/ContentPanel";
 import { MODULES } from "@/components/sections/dashboard/moduleData";
 import { BrandHeroWordmark } from "@/components/brand/BrandHeroWordmark";
 import {
-  HOME_HERO_PRIMARY_CTA_HREF,
-  HOME_HERO_PRIMARY_CTA_LABEL,
-  HOME_HERO_SCROLL_HINT_DESKTOP,
-  HOME_HERO_SUBHEADING,
-  HOME_HERO_TRUST_LINE,
-  HOME_HERO_VALUE_PROP,
-} from "@/lib/home-hero-copy";
-import {
   dashboardScrollDistancePx,
   getTileZoomParams,
   heroPanelRailPx,
   MIN_TILE_PX,
+  toPinnedSpaceRects,
 } from "@/lib/dashboard-scroll-math";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -53,7 +46,7 @@ function ProgressDots({ activeIdx }: { activeIdx: number }) {
   );
 }
 
-function SectionIntro({ introRef }: { introRef: React.RefObject<HTMLDivElement> }) {
+function SectionIntro({ introRef }: { introRef: RefObject<HTMLDivElement | null> }) {
   return (
     <div
       ref={introRef}
@@ -75,115 +68,15 @@ function SectionIntro({ introRef }: { introRef: React.RefObject<HTMLDivElement> 
           padding: "0 20px",
         }}
       >
-      <div style={{ marginBottom: 8, maxWidth: "min(92vw, 720px)", marginLeft: "auto", marginRight: "auto" }}>
-        <BrandHeroWordmark as="h2" compact />
+        <div style={{ maxWidth: "min(92vw, 720px)", marginLeft: "auto", marginRight: "auto" }}>
+          <BrandHeroWordmark as="h2" compact />
+        </div>
       </div>
-      <h1
-        className="mb-3 max-w-[min(92vw,46rem)] text-balance text-[clamp(2.15rem,5.8vw,4.75rem)] font-semibold leading-[1.05] tracking-[-0.045em] text-[#1d1d1f]"
-      >
-        {HOME_HERO_VALUE_PROP}
-      </h1>
-      <p
-        style={{
-          fontSize: 18,
-          lineHeight: 1.6,
-          color: "#4b5563",
-          fontWeight: 500,
-          maxWidth: "min(90vw, 40rem)",
-          width: "100%",
-          marginLeft: "auto",
-          marginRight: "auto",
-          marginTop: 0,
-          marginBottom: 16,
-          letterSpacing: "-0.01em",
-        }}
-      >
-        {HOME_HERO_SUBHEADING}
-      </p>
-      <div
-        style={{
-          display: "flex",
-          gap: 12,
-          flexWrap: "wrap",
-          justifyContent: "center",
-          marginBottom: 12,
-          pointerEvents: "auto",
-        }}
-      >
-        <a
-          href={HOME_HERO_PRIMARY_CTA_HREF}
-          style={{
-            minHeight: 52,
-            display: "inline-flex",
-            alignItems: "center",
-            justifyContent: "center",
-            borderRadius: 12,
-            padding: "0 24px",
-            background: "var(--blue)",
-            border: "1px solid var(--blue-border)",
-            color: "#fff",
-            fontSize: 15,
-            fontWeight: 600,
-            letterSpacing: "-0.01em",
-            textDecoration: "none",
-            boxShadow: "0 8px 24px var(--blue-shadow)",
-          }}
-        >
-          {HOME_HERO_PRIMARY_CTA_LABEL}
-        </a>
-      </div>
-      <p
-        style={{
-          margin: 0,
-          maxWidth: "36ch",
-          fontSize: 14,
-          fontWeight: 500,
-          lineHeight: 1.4,
-          color: "#6e6e73",
-        }}
-      >
-        {HOME_HERO_TRUST_LINE}
-      </p>
-      </div>
-      <button
-        type="button"
-        className="hero-scroll-nudge"
-        style={{
-          position: "absolute",
-          left: "50%",
-          bottom: 52,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          gap: 8,
-          color: "#86868b",
-          fontSize: 10,
-          fontWeight: 600,
-          letterSpacing: "0.22em",
-          textTransform: "uppercase",
-          background: "none",
-          border: "none",
-          cursor: "pointer",
-          pointerEvents: "auto",
-          padding: "8px 12px",
-          transform: "translateX(-50%)",
-        }}
-        onClick={() => window.scrollBy({ top: Math.min(window.innerHeight * 0.4, 520), behavior: "smooth" })}
-      >
-        <span
-          className="hero-scroll-arrow"
-          style={{ fontSize: 14, lineHeight: 1, animation: "scrollBounce 1.4s ease-in-out infinite" }}
-          aria-hidden
-        >
-          ↓
-        </span>
-        {HOME_HERO_SCROLL_HINT_DESKTOP}
-      </button>
     </div>
   );
 }
 
-/** Desktop pinned scroll-zoom hero - GSAP + ScrollTrigger in a standalone chunk (`next/dynamic` + `ssr:false` from homepage). */
+/** Desktop pinned scroll-zoom system animation - GSAP + ScrollTrigger in a standalone chunk. */
 export function DashboardScrollDesktop() {
   const sectionRef = useRef<HTMLElement | null>(null);
   const stickyRef = useRef<HTMLDivElement | null>(null);
@@ -225,6 +118,7 @@ export function DashboardScrollDesktop() {
           x: 0,
           y: 0,
         });
+        gsap.set(introRef.current, { opacity: 0 });
         gsap.set(readabilityRef.current, { opacity: 0 });
         MODULES.forEach((mod) => {
           const panel = panelRefs.current[mod.id];
@@ -238,12 +132,15 @@ export function DashboardScrollDesktop() {
       mm = gsap.matchMedia(root);
       mm.add("(min-width: 1024px)", () => {
         ctx = gsap.context(() => {
+        const dashRaw = root.querySelector(".dash-wrapper")?.getBoundingClientRect();
+        const dashRect = dashRaw ? toPinnedSpaceRects(dashRaw, dashRaw).dash : undefined;
         const tileRects: Record<string, DOMRect> = {};
-        MODULES.forEach((mod) => {
-          const el = root.querySelector(`[data-module="${mod.id}"]`);
-          if (el) tileRects[mod.id] = el.getBoundingClientRect();
-        });
-        const dashRect = root.querySelector(".dash-wrapper")?.getBoundingClientRect();
+        if (dashRaw) {
+          MODULES.forEach((mod) => {
+            const el = root.querySelector(`[data-module="${mod.id}"]`);
+            if (el) tileRects[mod.id] = toPinnedSpaceRects(el.getBoundingClientRect(), dashRaw).tile;
+          });
+        }
 
         const showStaticDashboard = () => {
           if (!dashRef.current || !readabilityRef.current) return;
@@ -255,6 +152,7 @@ export function DashboardScrollDesktop() {
             x: 0,
             y: 0,
           });
+          if (introRef.current) gsap.set(introRef.current, { opacity: 0 });
           gsap.set(readabilityRef.current, { opacity: 0 });
         };
 
@@ -410,7 +308,7 @@ export function DashboardScrollDesktop() {
   }, []);
 
   return (
-    <section ref={sectionRef} id="product-deep-dive" style={{ height: "650vh" }} className="hidden lg:block">
+    <section ref={sectionRef} style={{ height: "650vh" }} className="hidden lg:block">
       <div
         ref={stickyRef}
         className="sticky top-0 h-[100dvh] min-h-screen w-full overflow-hidden"

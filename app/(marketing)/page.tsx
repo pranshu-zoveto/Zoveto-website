@@ -7,16 +7,17 @@ import { OrganizationSchema } from "@/components/seo/OrganizationSchema";
 import { ProductSoftwareApplicationSchema } from "@/components/seo/ProductSoftwareApplicationSchema";
 import { WebSiteSchema } from "@/components/seo/WebSiteSchema";
 import { FluidMarketingSection, MarketingHeroFeather } from "@/components/layout/FluidMarketingSection";
-import { HomeHeroLcpShell } from "@/components/sections/home/HomeHeroLcpShell";
+import { HomeProductHero } from "@/components/sections/home/HomeProductHero";
+import { HomeProductConnects } from "@/components/sections/home/HomeProductConnects";
+import { HomeSystemIntro } from "@/components/sections/home/HomeSystemIntro";
+import { HomeSystemMobileGrid } from "@/components/sections/home/HomeSystemMobileGrid";
 import { DashboardDesktopLoadingFallback } from "@/components/sections/home/DashboardDesktopLoadingFallback";
+
 const LogoStrip = dynamic(() => import("@/components/sections/LogoStrip"));
 const ProductTourInteractive = dynamic(() => import("@/components/sections/home/ProductTourInteractive"), {
-  loading: () => (
-    <div className="mx-auto aspect-[1920/894] w-full max-w-[88rem] px-4 sm:px-6" aria-hidden />
-  ),
+  loading: () => <div className="aspect-[16/10] w-full sm:aspect-[1920/894]" aria-hidden />,
 });
 const ProblemSection = dynamic(() => import("@/components/sections/ProblemSection"));
-const SystemShiftSection = dynamic(() => import("@/components/sections/SystemShiftSection"));
 const ComparisonSection = dynamic(() => import("@/components/sections/ComparisonSection"));
 const HeardThisBeforeSection = dynamic(() => import("@/components/sections/HeardThisBeforeSection"));
 const HowItWorksLandingSection = dynamic(() => import("@/components/sections/HowItWorksLandingSection"));
@@ -26,12 +27,12 @@ const ZeroClientTrustSection = dynamic(() =>
   import("@/components/sections/ZeroClientTrustSection").then((m) => ({ default: m.ZeroClientTrustSection })),
 );
 
-/** Desktop GSAP pinned hero - defer parse/execute behind `next/dynamic` + `loading` placeholder below. */
+/** Desktop GSAP pinned system animation - defer parse/execute behind `next/dynamic`. */
 const DashboardScrollDesktop = dynamic(() => import("@/components/sections/dashboard-scroll-desktop"), {
   loading: () => <DashboardDesktopLoadingFallback />,
 });
 
-/** Mobile modules strip - client-only (Lucide + observers); split chunk so it is not on the LCP-critical path. */
+/** Tablet modules strip - client-only; split chunk so it is not on the LCP-critical path. */
 const DashboardMobileModules = dynamic(
   () => import("@/components/sections/dashboard-scroll-mobile").then((m) => ({ default: m.DashboardMobileModules })),
   {
@@ -81,93 +82,59 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <main className="relative bg-background selection:bg-blue-light selection:text-foreground">
+    <div className="relative bg-background selection:bg-blue-light selection:text-foreground">
       <OrganizationSchema />
       <WebSiteSchema />
       <ProductSoftwareApplicationSchema />
       <BreadcrumbSchema items={[{ name: "Home", path: "/" }]} />
-      {/* SSR-first LCP (<lg); desktop placeholder while GSAP chunk loads */}
-      <HomeHeroLcpShell variant="mobile" />
-      {/* Mobile/tablet (<1024): no GSAP / ScrollTrigger in initial bundles */}
-      <div className="hidden sm:block lg:hidden">
-        <DashboardMobileModules />
-      </div>
-      {/* Mobile replacement — simple 2-col module grid (<640px) */}
-      <div className="block bg-[#f5f5f7] px-4 py-14 sm:hidden lg:hidden">
-        <p className="mb-3 text-center text-[11px] uppercase tracking-[0.2em] text-muted">MODULES</p>
-        <h2 className="mb-8 text-center text-[1.65rem] font-bold leading-tight text-foreground">
-          One system.
-          <br />
-          Every function.
-        </h2>
-        <div className="mx-auto grid max-w-lg grid-cols-2 gap-3">
-          {[
-            { name: "Operations", sub: "WMS · Inventory · Dispatch" },
-            { name: "Purchase", sub: "Procurement · Suppliers" },
-            { name: "Sales", sub: "Orders · CRM · Invoicing" },
-            { name: "Finance", sub: "Accounts · GST · P&L" },
-            { name: "HR & Payroll", sub: "People · Attendance · Pay" },
-            { name: "Intelligence", sub: "Reports · Alerts · BI" },
-          ].map((m) => (
-            <div key={m.name} className="rounded-xl border border-border bg-white p-4">
-              <p className="text-[14px] font-semibold text-foreground">{m.name}</p>
-              <p className="mt-0.5 text-[11px] leading-snug text-muted">{m.sub}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-      {/* Desktop (≥1024): lazy GSAP + sticky zoom timeline */}
-      <div className="hidden lg:block">
-        <DashboardScrollDesktop />
-      </div>
-      <MarketingHeroFeather />
+
       <FluidMarketingSection band={bandIndexForSection(0)} stackBase>
-        <section aria-labelledby="product-demo-heading" className="py-section-mobile md:py-section">
-          <div className="mx-auto mb-8 w-full max-w-[88rem] px-4 sm:px-6">
-            <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-muted">The product</p>
-            <h2 id="product-demo-heading" className="text-2xl font-bold leading-tight tracking-tight text-foreground sm:text-3xl">
-              See it running.
-            </h2>
-          </div>
-          <ProductTourInteractive />
-        </section>
+        <HomeProductHero media={{ kind: "interactive", children: <ProductTourInteractive /> }} />
+        <HomeProductConnects />
       </FluidMarketingSection>
+
+      <section id="the-system" aria-labelledby="system-heading" className="bg-[#f5f5f7]">
+        <HomeSystemIntro />
+        <div className="hidden lg:block">
+          <DashboardScrollDesktop />
+        </div>
+        <div className="hidden sm:block lg:hidden">
+          <DashboardMobileModules />
+        </div>
+        <HomeSystemMobileGrid />
+      </section>
+
+      <MarketingHeroFeather />
       <FluidMarketingSection band={bandIndexForSection(1)} stackBase>
         <LogoStrip />
       </FluidMarketingSection>
       <FluidMarketingSection band={bandIndexForSection(2)} overlapTop stackBase>
         <ProblemSection />
       </FluidMarketingSection>
-      {/* SystemShift & Features: desktop-only — too much scroll on mobile */}
-      <div className="hidden sm:block">
-        <FluidMarketingSection band={bandIndexForSection(3)} stackBase>
-          <SystemShiftSection />
-        </FluidMarketingSection>
-        <FluidMarketingSection band={bandIndexForSection(4)} stackBase>
-          <FeaturesSection />
-        </FluidMarketingSection>
-      </div>
-      <FluidMarketingSection band={bandIndexForSection(5)} overlapTop stackBase>
+      <FluidMarketingSection band={bandIndexForSection(3)} stackBase>
+        <FeaturesSection />
+      </FluidMarketingSection>
+      <FluidMarketingSection band={bandIndexForSection(4)} overlapTop stackBase>
         <ComparisonSection />
       </FluidMarketingSection>
-      <FluidMarketingSection band={bandIndexForSection(6)} overlapTop stackBase>
+      <FluidMarketingSection band={bandIndexForSection(5)} overlapTop stackBase>
         <HeardThisBeforeSection />
       </FluidMarketingSection>
-      <FluidMarketingSection band={bandIndexForSection(7)} overlapTop stackBase>
+      <FluidMarketingSection band={bandIndexForSection(6)} overlapTop stackBase>
         <HowItWorksLandingSection />
       </FluidMarketingSection>
-      <FluidMarketingSection band={bandIndexForSection(8)} overlapTop stackBase>
+      <FluidMarketingSection band={bandIndexForSection(7)} overlapTop stackBase>
         <ZeroClientTrustSection context="home" />
       </FluidMarketingSection>
-      <FluidMarketingSection band={bandIndexForSection(9)} overlapTop stackBase>
+      <FluidMarketingSection band={bandIndexForSection(8)} overlapTop stackBase>
         <PricingSection />
       </FluidMarketingSection>
-      <FluidMarketingSection band={bandIndexForSection(10)} overlapTop stackBase>
+      <FluidMarketingSection band={bandIndexForSection(9)} overlapTop stackBase>
         <LandingFAQSection />
       </FluidMarketingSection>
-      <FluidMarketingSection band={bandIndexForSection(11)} overlapTop stackBase>
+      <FluidMarketingSection band={bandIndexForSection(10)} overlapTop stackBase>
         <FinalCTASection />
       </FluidMarketingSection>
-    </main>
+    </div>
   );
 }

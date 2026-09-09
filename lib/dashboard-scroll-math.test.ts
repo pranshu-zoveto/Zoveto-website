@@ -5,6 +5,7 @@ import {
   getTileZoomParams,
   heroPanelRailPx,
   MIN_TILE_PX,
+  toPinnedSpaceRects,
 } from "./dashboard-scroll-math";
 
 function rect(x: number, y: number, w: number, h: number): DOMRect {
@@ -45,6 +46,22 @@ test("heroPanelRailPx leaves more than half the viewport for the dashboard", () 
     assert.ok(rail < width / 2);
     assert.ok(width - rail > 500);
   }
+});
+
+test("toPinnedSpaceRects makes below-the-fold rects match in-viewport zoom math", () => {
+  const dashOn = rect(0, 0, 1440, 900);
+  const tileOn = rect(100, 200, 160, 120);
+  const dashOff = rect(0, 1500, 1440, 900);
+  const tileOff = rect(100, 1700, 160, 120);
+  const pinned = toPinnedSpaceRects(tileOff, dashOff);
+  assert.equal(pinned.tile.left, tileOn.left);
+  assert.equal(pinned.tile.top, tileOn.top);
+  assert.equal(pinned.dash.left, 0);
+  assert.equal(pinned.dash.top, 0);
+  const focusX = 500;
+  const fromOff = getTileZoomParams(pinned.tile, pinned.dash, 1440, 900, focusX);
+  const fromOn = getTileZoomParams(tileOn, dashOn, 1440, 900, focusX);
+  assert.deepEqual(fromOff, fromOn);
 });
 
 test("dashboardScrollDistancePx never returns zero for bad innerHeight", () => {

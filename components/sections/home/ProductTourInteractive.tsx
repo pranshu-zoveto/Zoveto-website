@@ -281,15 +281,14 @@ export default function ProductTourInteractive() {
   const pointerY = pointer.y + pointer.h / 2;
 
   return (
-    <div ref={rootRef} className="mx-auto w-full max-w-[88rem] px-4 sm:px-6">
-      <p id={`${baseId}-prompt`} className="mb-4 text-base font-medium leading-snug text-muted sm:text-lg">
-        Watch it work, or click inside and use it.
-      </p>
-
-      <figure aria-labelledby={`${baseId}-prompt`}>
+    <div ref={rootRef} className="w-full">
+      <figure aria-labelledby="product-explore-label">
         <p className="sr-only">
           Working replica of Zoveto: Command Center, Sales quotations, warehouse pick list, and finance invoices. Click
           filters, rows, scan, and create records the same way the product does.
+        </p>
+        <p className="mb-2 text-xs leading-relaxed text-muted sm:hidden">
+          Swipe sideways to see the full product screen.
         </p>
         <div className="overflow-hidden rounded-lg border border-border bg-background">
           <div className="flex items-center gap-3 border-b border-border px-3 py-2.5 sm:px-4" aria-hidden>
@@ -337,59 +336,61 @@ export default function ProductTourInteractive() {
             })}
           </div>
 
-          <div
-            id={panelId}
-            ref={stageRef}
-            role="tabpanel"
-            aria-labelledby={`${baseId}-tab-${scene}`}
-            className="relative aspect-[16/10] overflow-hidden bg-surface sm:aspect-[1920/894]"
-          >
-            <AnimatePresence initial={false} mode="wait">
-              <motion.div
-                key={scene}
-                className="absolute inset-0"
-                initial={playing ? { opacity: 0 } : false}
-                animate={{ opacity: 1 }}
-                exit={playing ? { opacity: 0 } : undefined}
-                transition={{ duration: playing ? 0.22 : 0, ease: EASE }}
-              >
-                <ProductTourScene scene={scene} play={play} onInteract={onInteract} />
-              </motion.div>
-            </AnimatePresence>
-
-            {playing ? (
-              <>
+          <div className="max-w-full overflow-x-auto overscroll-x-contain bg-surface sm:overflow-x-visible">
+            <div
+              id={panelId}
+              ref={stageRef}
+              role="tabpanel"
+              aria-labelledby={`${baseId}-tab-${scene}`}
+              className="relative aspect-[16/10] min-w-[48rem] overflow-hidden sm:min-w-0 sm:aspect-[1920/894]"
+            >
+              <AnimatePresence initial={false} mode="wait">
                 <motion.div
-                  aria-hidden
-                  className="pointer-events-none absolute left-0 top-0 z-[1] rounded-md border-2 border-blue bg-blue/10"
-                  initial={false}
-                  animate={{ x: pointer.x, y: pointer.y }}
-                  transition={{ duration: 0.45, ease: EASE }}
-                  style={{ width: pointer.w, height: pointer.h }}
-                />
-                <motion.span
-                  key={clickKey}
-                  aria-hidden
-                  className="pointer-events-none absolute z-[2] h-7 w-7 rounded-full border-2 border-blue"
-                  initial={{ opacity: 0.45, scale: 0.4, x: "-50%", y: "-50%" }}
-                  animate={{ opacity: 0, scale: 2.1, x: "-50%", y: "-50%" }}
-                  transition={{ duration: 0.45, ease: EASE }}
-                  style={{ left: pointerX, top: pointerY }}
-                />
-                <motion.div
-                  aria-hidden
-                  className="pointer-events-none absolute left-0 top-0 z-[3]"
-                  initial={false}
-                  animate={{ x: pointerX, y: pointerY }}
-                  transition={{ duration: 0.45, ease: EASE }}
+                  key={scene}
+                  className="absolute inset-0"
+                  initial={playing ? { opacity: 0 } : false}
+                  animate={{ opacity: 1 }}
+                  exit={playing ? { opacity: 0 } : undefined}
+                  transition={{ duration: playing ? 0.22 : 0, ease: EASE }}
                 >
-                  <MousePointer2
-                    className="h-5 w-5 -translate-x-[18%] -translate-y-[12%] fill-foreground text-foreground drop-shadow-[0_1px_2px_rgba(10,10,12,0.4)]"
-                    strokeWidth={1.75}
-                  />
+                  <ProductTourScene scene={scene} play={play} onInteract={onInteract} />
                 </motion.div>
-              </>
-            ) : null}
+              </AnimatePresence>
+
+              {playing ? (
+                <>
+                  <motion.div
+                    aria-hidden
+                    className="pointer-events-none absolute left-0 top-0 z-[1] rounded-md border-2 border-blue bg-blue/10"
+                    initial={false}
+                    animate={{ x: pointer.x, y: pointer.y }}
+                    transition={{ duration: 0.45, ease: EASE }}
+                    style={{ width: pointer.w, height: pointer.h }}
+                  />
+                  <motion.span
+                    key={clickKey}
+                    aria-hidden
+                    className="pointer-events-none absolute z-[2] h-7 w-7 rounded-full border-2 border-blue"
+                    initial={{ opacity: 0.45, scale: 0.4, x: "-50%", y: "-50%" }}
+                    animate={{ opacity: 0, scale: 2.1, x: "-50%", y: "-50%" }}
+                    transition={{ duration: 0.45, ease: EASE }}
+                    style={{ left: pointerX, top: pointerY }}
+                  />
+                  <motion.div
+                    aria-hidden
+                    className="pointer-events-none absolute left-0 top-0 z-[3]"
+                    initial={false}
+                    animate={{ x: pointerX, y: pointerY }}
+                    transition={{ duration: 0.45, ease: EASE }}
+                  >
+                    <MousePointer2
+                      className="h-5 w-5 -translate-x-[18%] -translate-y-[12%] fill-foreground text-foreground drop-shadow-[0_1px_2px_rgba(10,10,12,0.4)]"
+                      strokeWidth={1.75}
+                    />
+                  </motion.div>
+                </>
+              ) : null}
+            </div>
           </div>
         </div>
 

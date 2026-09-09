@@ -90,14 +90,7 @@ function MobileCard({ module }: { module: DashboardModule }) {
 /** Mobile homepage product deep dive - intentionally no GSAP (keeps LCP/TBT weight off the critical path). */
 export function DashboardMobileModules() {
   return (
-    <section id="product-deep-dive" className="bg-[#f5f5f7] px-5 py-20 lg:hidden">
-      <div className="mb-12 text-center">
-        <div className="mb-3 text-[11px] font-bold uppercase tracking-[0.2em] text-blue">How It Works</div>
-        <h2 className="text-balance text-[clamp(1.75rem,6vw,2.5rem)] font-bold tracking-[-0.03em] text-[#1d1d1f]">
-          One operating record. <span style={{ color: "var(--blue)" }}>Every team working from it.</span>
-        </h2>
-      </div>
-
+    <section className="bg-transparent px-5 pb-20 pt-4 lg:hidden">
       <div className="mx-auto flex max-w-lg flex-col gap-8 pb-12">
         {MODULES.map((module) => (
           <MobileCard key={module.id} module={module} />

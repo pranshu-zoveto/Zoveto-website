@@ -97,7 +97,7 @@ export function FeaturesSection() {
 
   return (
     <section id="features" className="relative scroll-mt-24 overflow-hidden bg-transparent py-section-mobile md:py-section">
-      <div className="container relative z-10 mx-auto max-w-[88rem] px-4 sm:px-6">
+      <div className="container relative z-10 mx-auto max-w-content px-5 sm:px-6">
         <div className="mb-12 max-w-[40rem] md:mb-16">
           <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.2em] text-muted">Outcomes</p>
           <h2 className="text-3xl font-bold leading-[1.12] tracking-tight text-foreground sm:text-4xl md:text-[2.75rem]">

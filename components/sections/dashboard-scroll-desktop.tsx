@@ -1,6 +1,6 @@
 "use client";
 
-import { useLayoutEffect, useRef, useState, type CSSProperties, type RefObject } from "react";
+import { useLayoutEffect, useRef, useState, type CSSProperties, type Ref } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { DashboardLight } from "@/components/sections/dashboard/DashboardLight";
@@ -46,7 +46,7 @@ function ProgressDots({ activeIdx }: { activeIdx: number }) {
   );
 }
 
-function SectionIntro({ introRef }: { introRef: RefObject<HTMLDivElement | null> }) {
+function SectionIntro({ introRef }: { introRef: Ref<HTMLDivElement> }) {
   return (
     <div
       ref={introRef}

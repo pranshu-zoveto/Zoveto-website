@@ -71,7 +71,7 @@ export function FaqAccordion({
               aria-controls={panelId}
               onClick={() => toggle(index)}
               className={cn(
-                "flex w-full items-start justify-between gap-4 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue/30 focus-visible:ring-offset-2 focus-visible:ring-offset-card",
+                "flex min-h-[44px] w-full items-start justify-between gap-4 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue/30 focus-visible:ring-offset-2 focus-visible:ring-offset-card",
                 unstyled ? "gap-4 px-4 py-4 md:gap-5 md:px-6 md:py-5" : "py-4",
               )}
             >

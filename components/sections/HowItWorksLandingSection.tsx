@@ -4,7 +4,6 @@ import React from "react";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { Layers, LineChart, Sparkles } from "lucide-react";
 import { RevealOnScroll } from "@/components/layout/RevealOnScroll";
-import { cn } from "@/lib/utils";
 
 const STEPS = [
   {
@@ -33,10 +32,10 @@ export function HowItWorksLandingSection() {
       id="how-it-works"
       className="relative scroll-mt-24 overflow-hidden bg-transparent py-section-mobile md:py-section"
     >
-      <div className="container relative z-10 mx-auto max-w-content px-4 sm:px-6">
+      <div className="container relative z-10 mx-auto max-w-content px-5 sm:px-6">
         <div className="mb-14 max-w-3xl md:mb-16">
           <SectionLabel className="mb-6 hidden border-blue/20 bg-blue-dim text-blue sm:inline-block">How it works</SectionLabel>
-          <h2 className="mb-6 text-2xl font-bold leading-tight tracking-tight text-foreground sm:text-3xl md:text-4xl lg:text-5xl">
+          <h2 className="mb-6 text-[clamp(1.875rem,6.2vw,2.5rem)] font-bold leading-tight tracking-tight text-foreground sm:text-3xl md:text-4xl lg:text-5xl">
             From signup to <span className="text-blue">full operations</span> in three moves
           </h2>
           <p className="max-w-2xl text-lg leading-relaxed text-muted">
@@ -49,13 +48,7 @@ export function HowItWorksLandingSection() {
             {STEPS.map((step, i) => {
               const Icon = step.icon;
               return (
-                <li
-                  key={step.title}
-                  className={cn(
-                    "reveal-item py-8 md:py-10",
-                    i === STEPS.length - 1 && "hidden sm:list-item",
-                  )}
-                >
+                <li key={step.title} className="reveal-item py-8 md:py-10">
                   <h3 className="flex flex-wrap items-center gap-x-3 gap-y-2 text-lg font-semibold tracking-tight text-foreground md:text-xl">
                     <span className="text-xs font-bold uppercase tracking-widest text-muted-2">
                       Step {i + 1}

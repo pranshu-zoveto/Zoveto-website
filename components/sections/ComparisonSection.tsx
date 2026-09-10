@@ -16,8 +16,8 @@ const COMPARISON = [
 
 export function ComparisonSection() {
   return (
-    <section className="hidden md:block relative overflow-hidden bg-transparent py-section-mobile md:py-section">
-      <div className="container relative z-10 mx-auto grid max-w-content items-start gap-16 px-4 sm:px-6 lg:grid-cols-12 lg:gap-20">
+    <section className="relative overflow-hidden bg-transparent py-section-mobile md:py-section">
+      <div className="container relative z-10 mx-auto grid max-w-content items-start gap-10 px-5 sm:px-6 md:gap-16 lg:grid-cols-12 lg:gap-20">
         <div className="space-y-6 lg:col-span-5">
           <Text variant="label-uppercase" className="text-muted-2">
             The gap
@@ -43,25 +43,32 @@ export function ComparisonSection() {
 
         <RevealOnScroll className="lg:col-span-7">
           <div className="reveal-item">
-            <div className="flex flex-col gap-6">
-            {COMPARISON.map((item) => (
-              <div
-                key={item.feature}
-                className="grid grid-cols-2 gap-x-8"
-              >
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-wide text-muted-2">{item.feature}</p>
-                  <p className="mt-1 text-sm font-medium leading-snug text-muted">{item.old}</p>
-                </div>
-                <div>
+            <div className="flex flex-col gap-5 md:hidden">
+              {COMPARISON.map((item) => (
+                <div key={item.feature} className="border-t border-border pt-5 first:border-t-0 first:pt-0">
                   <p className="text-xs font-semibold uppercase tracking-wide text-foreground">{item.feature}</p>
-                  <p className="mt-1 text-sm font-semibold leading-snug text-foreground">{item.zoveto}</p>
+                  <p className="mt-2 text-sm leading-snug text-muted">{item.old}</p>
+                  <p className="mt-2 text-sm font-semibold leading-snug text-foreground">{item.zoveto}</p>
                 </div>
-              </div>
-            ))}
+              ))}
             </div>
 
-            <div className="mt-8 grid grid-cols-2 gap-x-6">
+            <div className="hidden flex-col gap-6 md:flex">
+              {COMPARISON.map((item) => (
+                <div key={item.feature} className="grid grid-cols-2 gap-x-8">
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-wide text-muted-2">{item.feature}</p>
+                    <p className="mt-1 text-sm font-medium leading-snug text-muted">{item.old}</p>
+                  </div>
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-wide text-foreground">{item.feature}</p>
+                    <p className="mt-1 text-sm font-semibold leading-snug text-foreground">{item.zoveto}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-8 grid gap-3 md:grid-cols-2 md:gap-x-6">
               <p className="text-xs font-medium uppercase tracking-wide text-muted-2">
                 Missing <span className="font-mono-geist font-semibold text-blue">30%</span> operational data
               </p>

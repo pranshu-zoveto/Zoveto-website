@@ -16,12 +16,13 @@ export function HomeProductConnects() {
           A sales order reserves inventory. Warehouse picks against that reservation. Finance posts the invoice from
           the same record.
         </p>
-        <ol className="mt-8 flex flex-wrap items-baseline gap-x-3 gap-y-2 text-base font-semibold tracking-tight text-foreground sm:mt-10 sm:gap-x-4 sm:text-lg">
+        <ol className="mt-8 flex flex-col gap-3 text-base font-semibold tracking-tight text-foreground sm:mt-10 sm:flex-row sm:flex-wrap sm:items-baseline sm:gap-x-4 sm:gap-y-2 sm:text-lg">
           {FLOW.map((name, index) => (
-            <li key={name} className="flex items-baseline gap-3 sm:gap-4">
+            <li key={name} className="flex items-center gap-3 sm:items-baseline sm:gap-4">
               {index > 0 ? (
-                <span className="font-normal text-muted-2" aria-hidden>
-                  →
+                <span className="font-normal text-muted-2 sm:inline" aria-hidden>
+                  <span className="sm:hidden">↓</span>
+                  <span className="hidden sm:inline">→</span>
                 </span>
               ) : null}
               <span>{name}</span>

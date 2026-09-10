@@ -38,7 +38,7 @@ export function ProductClient() {
   return (
     <RevealOnScroll>
       <div className="flex flex-col gap-14 md:gap-20">
-      <div className="grid auto-rows-fr gap-8 py-20 md:grid-cols-3 md:items-stretch md:py-28">
+      <div className="grid auto-rows-fr gap-8 py-10 md:grid-cols-3 md:items-stretch md:py-28">
         {ARCHITECTURE_LAYERS.map((layer) => (
           <IconCard
             key={layer.id}

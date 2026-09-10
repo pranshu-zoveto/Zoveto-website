@@ -69,14 +69,14 @@ const LINK_COLS: { title: string; links: { label: string; href: string }[] }[] =
 const colLabel =
   "mb-4 text-xs font-semibold uppercase tracking-label text-muted";
 const linkClass =
-  "whitespace-nowrap text-[15px] font-medium leading-6 tracking-[-0.01em] text-foreground transition-colors hover:text-foreground/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue/30 focus-visible:ring-offset-2 focus-visible:ring-offset-background";
+  "text-[15px] font-medium leading-6 tracking-[-0.01em] text-foreground transition-colors hover:text-foreground/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue/30 focus-visible:ring-offset-2 focus-visible:ring-offset-background md:whitespace-nowrap";
 
 /** Site-wide editorial footer (newsletter, link grid, mega wordmark). */
 export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-muted/25 text-foreground">
+    <footer className="bg-muted/25 pb-[calc(4.5rem+env(safe-area-inset-bottom,0px))] text-foreground md:pb-0">
       <div className="container mx-auto max-w-content px-4 pt-14 sm:px-6 sm:pt-16 md:pt-18">
         <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,2.2fr)] lg:gap-16">
           <div className="max-w-xl">

@@ -67,21 +67,21 @@ interface TextProps extends React.HTMLAttributes<HTMLElement> {
 const variantClasses: Record<TextVariant, string> = {
   // ── Display ──────────────────────────────────────────────────────────
   "display-xl":
-    "text-[2.25rem] leading-[1.1] tracking-[-0.04em] font-semibold text-foreground sm:text-[2.75rem] md:text-[3.5rem] lg:text-[clamp(3.5rem,4.5vw,4.5rem)]",
+    "text-[clamp(2.5rem,8vw,4.5rem)] leading-[1.1] tracking-[-0.04em] font-semibold text-foreground sm:text-[2.75rem] md:text-[3.5rem] lg:text-[clamp(3.5rem,4.5vw,4.5rem)]",
   "display-lg":
-    "text-[2rem] leading-[1.1] tracking-[-0.035em] font-semibold text-foreground sm:text-[2.5rem] md:text-[3rem] lg:text-[clamp(3rem,3.8vw,3.5rem)]",
+    "text-[clamp(2.25rem,7vw,3.5rem)] leading-[1.1] tracking-[-0.035em] font-semibold text-foreground sm:text-[2.5rem] md:text-[3rem] lg:text-[clamp(3rem,3.8vw,3.5rem)]",
   "display-md":
-    "text-[1.75rem] leading-[1.12] tracking-[-0.03em] font-semibold text-foreground sm:text-[2.25rem] md:text-[2.75rem] lg:text-[clamp(2.5rem,3vw,2.75rem)]",
+    "text-[clamp(2rem,6.4vw,2.75rem)] leading-[1.12] tracking-[-0.03em] font-semibold text-foreground sm:text-[2.25rem] md:text-[2.75rem] lg:text-[clamp(2.5rem,3vw,2.75rem)]",
   "display-sm":
-    "text-[1.5rem] leading-[1.15] tracking-[-0.025em] font-semibold text-foreground sm:text-[1.875rem] md:text-[2.25rem] lg:text-[clamp(2rem,2.5vw,2.25rem)]",
+    "text-[clamp(1.75rem,5.6vw,2.25rem)] leading-[1.15] tracking-[-0.025em] font-semibold text-foreground sm:text-[1.875rem] md:text-[2.25rem] lg:text-[clamp(2rem,2.5vw,2.25rem)]",
 
   // Aliases (point at the canonical display variants above)
   "display-1":
-    "text-[2rem] leading-[1.1] tracking-[-0.035em] font-semibold text-foreground sm:text-[2.5rem] md:text-[3rem] lg:text-[clamp(3rem,3.8vw,3.5rem)]",
+    "text-[clamp(2.25rem,7vw,3.5rem)] leading-[1.1] tracking-[-0.035em] font-semibold text-foreground sm:text-[2.5rem] md:text-[3rem] lg:text-[clamp(3rem,3.8vw,3.5rem)]",
   "display-2":
-    "text-[1.75rem] leading-[1.12] tracking-[-0.03em] font-semibold text-foreground sm:text-[2.25rem] md:text-[2.75rem] lg:text-[clamp(2.5rem,3vw,2.75rem)]",
+    "text-[clamp(2rem,6.4vw,2.75rem)] leading-[1.12] tracking-[-0.03em] font-semibold text-foreground sm:text-[2.25rem] md:text-[2.75rem] lg:text-[clamp(2.5rem,3vw,2.75rem)]",
   "display-3":
-    "text-[1.5rem] leading-[1.15] tracking-[-0.025em] font-semibold text-foreground sm:text-[1.875rem] md:text-[2.25rem] lg:text-[clamp(2rem,2.5vw,2.25rem)]",
+    "text-[clamp(1.75rem,5.6vw,2.25rem)] leading-[1.15] tracking-[-0.025em] font-semibold text-foreground sm:text-[1.875rem] md:text-[2.25rem] lg:text-[clamp(2rem,2.5vw,2.25rem)]",
 
   // ── Headings (Tailwind type-scale tokens) ────────────────────────────
   "heading-2xl": "text-heading-xl text-foreground sm:text-heading-2xl",

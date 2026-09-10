@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 
 export default function CompareIndexPage() {
   return (
-    <main className="relative overflow-hidden bg-background pb-20 pt-32 md:pb-28 md:pt-40">
+    <main className="relative overflow-hidden bg-background pb-20 pt-24 md:pb-28 md:pt-40">
       <BreadcrumbSchema
         items={[
           { name: "Home", path: "/" },

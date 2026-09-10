@@ -7,7 +7,7 @@ export function HomeSystemIntro() {
         <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-muted">The system</p>
         <h2
           id="system-heading"
-          className="max-w-[20ch] text-balance text-[1.75rem] font-semibold leading-tight tracking-tight text-foreground sm:text-3xl"
+          className="max-w-[20ch] text-balance text-[clamp(1.875rem,6.5vw,2.25rem)] font-semibold leading-[1.15] tracking-tight text-foreground sm:text-3xl"
         >
           One system. Every function.
         </h2>

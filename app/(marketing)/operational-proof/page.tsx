@@ -26,7 +26,7 @@ export const metadata: Metadata = {
 
 export default function OperationalProofHubPage() {
   return (
-    <main className="relative overflow-hidden bg-background pt-36 md:pt-44">
+    <main className="relative overflow-hidden bg-background pt-24 md:pt-44">
       <BreadcrumbSchema
         items={[
           { name: "Home", path: "/" },

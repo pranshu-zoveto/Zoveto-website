@@ -20,10 +20,10 @@ export function SeoLandingLayout({ landing }: Props) {
   ];
 
   return (
-    <main className="relative overflow-hidden bg-background pb-16 pt-36 md:pb-24 md:pt-44">
+    <main className="relative overflow-hidden bg-background pb-16 pt-24 md:pb-24 md:pt-44">
       <BreadcrumbSchema items={crumbs} />
       <FAQPageSchema faqs={landing.faqs} url={canonicalUrl(landing.path)} />
-      <div className="container relative z-10 mx-auto max-w-content px-4 sm:px-6">
+      <div className="container relative z-10 mx-auto max-w-content px-5 sm:px-6">
         <article className="mx-auto max-w-3xl">
           <Text variant="label-uppercase" className="mb-4 text-muted-2">
             Operations · Scaling teams

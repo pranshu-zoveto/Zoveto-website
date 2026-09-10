@@ -65,10 +65,10 @@ export function NavbarWordmark({
     <span className={cn("inline-flex items-baseline gap-[0.12em] overflow-visible", className)}>
       <BrandDotWordmark />
 
-      <span
-        className="relative inline-grid shrink-0 grid-cols-1 grid-rows-1 justify-items-start overflow-visible"
-        aria-hidden
-      >
+        <span
+          className="relative hidden min-[380px]:inline-grid shrink-0 grid-cols-1 grid-rows-1 justify-items-start overflow-visible"
+          aria-hidden
+        >
         <span className={cn(suffixClasses, "invisible col-start-1 row-start-1")} aria-hidden>
           {widthToken}
         </span>

@@ -9,13 +9,13 @@ export function HomeProductHero({ media }: HomeProductHeroProps) {
   return (
     <section
       aria-labelledby="product-demo-heading"
-      className="scroll-mt-[56px] pt-24 pb-12 md:pb-16 lg:scroll-mt-[60px] lg:pt-24"
+      className="scroll-mt-[56px] pt-[4.75rem] pb-12 md:pb-16 lg:scroll-mt-[60px] lg:pt-24"
     >
       <div className={HOME_CONTAINER}>
         <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-muted">The product</p>
         <h1
           id="product-demo-heading"
-          className="max-w-[20ch] text-balance text-[1.75rem] font-semibold leading-tight tracking-tight text-foreground sm:text-3xl"
+          className="max-w-[20ch] text-balance text-[clamp(2.25rem,8vw,2.75rem)] font-semibold leading-[1.1] tracking-tight text-foreground sm:text-4xl"
         >
           See Zoveto running.
         </h1>

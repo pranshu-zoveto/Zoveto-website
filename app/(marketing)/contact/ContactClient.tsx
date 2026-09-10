@@ -112,7 +112,7 @@ function ContactMethodsPanel() {
 
 export function ContactClient() {
   return (
-    <main className="bg-background pt-28 sm:pt-32 md:pt-40 pb-16 md:pb-24 relative overflow-hidden">
+    <main className="bg-background pt-24 sm:pt-28 md:pt-40 pb-16 md:pb-24 relative overflow-hidden">
       <div className="absolute top-0 left-0 w-full h-full bg-blue-light/30 -z-0 opacity-60 select-none pointer-events-none" />
 
       <div className="container max-w-content mx-auto px-4 sm:px-6 relative z-10">

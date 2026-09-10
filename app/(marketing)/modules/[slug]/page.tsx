@@ -116,7 +116,7 @@ export default async function ModuleDetailPage({
   };
 
   return (
-    <div className="relative overflow-hidden bg-background pt-36 md:pt-44">
+    <div className="relative overflow-hidden bg-background pt-24 md:pt-44">
       <BreadcrumbSchema
         items={[
           { name: "Home", path: "/" },

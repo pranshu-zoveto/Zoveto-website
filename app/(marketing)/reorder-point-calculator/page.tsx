@@ -54,7 +54,7 @@ export const metadata: Metadata = {
 
 export default function ReorderPointCalculatorPage() {
   return (
-    <main className="relative overflow-hidden bg-background pb-16 pt-36 md:pb-24 md:pt-44">
+    <main className="relative overflow-hidden bg-background pb-16 pt-24 md:pb-24 md:pt-44">
       <BreadcrumbSchema
         items={[
           { name: "Home", path: "/" },

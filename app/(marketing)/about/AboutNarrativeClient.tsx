@@ -93,7 +93,7 @@ export default function AboutNarrativeClient() {
   };
 
   return (
-    <div className="relative overflow-hidden bg-background pb-20 pt-28 md:pt-36">
+    <div className="relative overflow-hidden bg-background pb-20 pt-24 md:pt-36">
       <motion.div
         aria-hidden
         className="pointer-events-none absolute inset-x-0 top-0 h-[40rem] bg-[radial-gradient(circle_at_15%_14%,rgba(0,113,227,0.16),transparent_50%),radial-gradient(circle_at_82%_8%,rgba(52,199,89,0.10),transparent_40%)]"

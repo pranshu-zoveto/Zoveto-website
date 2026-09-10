@@ -73,7 +73,24 @@ function FeatureComparisonTable({ page }: { page: ComparePage }) {
       <Text variant="heading-1" as="h2" id="compare-table-heading" className="mb-6 text-xl text-foreground md:text-2xl">
         Feature comparison
       </Text>
-      <div className="overflow-x-auto rounded-2xl border border-border bg-card shadow-sm">
+      <div className="space-y-3 md:hidden">
+        {page.tableRows.map((row) => (
+          <article key={row.name} className="rounded-xl border border-border bg-card p-4">
+            <h3 className="text-sm font-semibold text-foreground">{row.name}</h3>
+            <dl className="mt-3 space-y-3">
+              <div>
+                <dt className="text-[11px] font-semibold uppercase tracking-wide text-blue">Zoveto</dt>
+                <dd className="mt-1 text-sm leading-relaxed text-foreground">{row.zoveto}</dd>
+              </div>
+              <div>
+                <dt className="text-[11px] font-semibold uppercase tracking-wide text-muted-2">{page.competitor}</dt>
+                <dd className="mt-1 text-sm leading-relaxed text-muted">{row.competitor}</dd>
+              </div>
+            </dl>
+          </article>
+        ))}
+      </div>
+      <div className="hidden overflow-x-auto rounded-2xl border border-border bg-card shadow-sm md:block">
         <table className="w-full min-w-[640px] border-collapse text-left">
           <thead className="sticky top-0 z-10 shadow-[0_1px_0_0_var(--border)]">
             <tr className="border-b border-border bg-card">

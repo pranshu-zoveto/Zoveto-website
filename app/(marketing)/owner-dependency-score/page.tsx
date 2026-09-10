@@ -56,7 +56,7 @@ export default function OwnerDependencyScorePage() {
   return (
     <main
       data-owner-dependency-score="true"
-      className="relative overflow-hidden bg-[#f7f7f4] pb-16 pt-28 md:pb-24 md:pt-36"
+      className="relative overflow-hidden bg-[#f7f7f4] pb-16 pt-24 md:pb-24 md:pt-36"
     >
       <style>{`
         body:has(main[data-owner-dependency-score="true"]) .footer-mega-wordmark {

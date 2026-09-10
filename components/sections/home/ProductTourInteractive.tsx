@@ -153,6 +153,7 @@ export default function ProductTourInteractive() {
   const [userPlay, setUserPlay] = useState<TourPlayState>(TOUR_REST);
   const [pointer, setPointer] = useState({ x: 72, y: 64, w: 72, h: 28 });
   const [clickKey, setClickKey] = useState(0);
+  const [coarsePointer, setCoarsePointer] = useState(false);
   const stageRef = useRef<HTMLDivElement | null>(null);
   const rootRef = useRef<HTMLDivElement | null>(null);
   const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
@@ -162,12 +163,21 @@ export default function ProductTourInteractive() {
 
   const step = STEPS[stepIndex];
   const playing = mounted && reduceMotion === false && !manual;
+  const showPointer = playing && !coarsePointer;
   const sceneIndex = SCENES.findIndex((item) => item.id === step.scene);
   const play = manual ? userPlay : playFrom(stepIndex);
   const scene = step.scene;
 
   useEffect(() => {
     setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(pointer: coarse)");
+    const sync = () => setCoarsePointer(mq.matches);
+    sync();
+    mq.addEventListener("change", sync);
+    return () => mq.removeEventListener("change", sync);
   }, []);
 
   useEffect(() => {
@@ -305,7 +315,7 @@ export default function ProductTourInteractive() {
             role="tablist"
             aria-label="Zoveto product screens"
             onKeyDown={onTabListKeyDown}
-            className="grid grid-cols-2 gap-2 border-b border-border px-3 py-3 sm:flex sm:flex-wrap sm:px-4"
+            className="flex gap-2 overflow-x-auto overscroll-x-contain border-b border-border px-3 py-3 [-webkit-overflow-scrolling:touch] [scrollbar-width:none] sm:flex-wrap sm:overflow-visible sm:px-4 [&::-webkit-scrollbar]:hidden"
           >
             {SCENES.map((item, itemIndex) => {
               const selected = item.id === scene;
@@ -323,7 +333,7 @@ export default function ProductTourInteractive() {
                   tabIndex={selected ? 0 : -1}
                   onClick={() => jumpToScene(itemIndex, false)}
                   className={cn(
-                    "min-h-11 cursor-pointer rounded-full border px-3 py-2 text-center text-[13px] font-medium leading-none transition-colors duration-200 motion-reduce:transition-none",
+                    "min-h-11 shrink-0 cursor-pointer rounded-full border px-3 py-2 text-center text-[13px] font-medium leading-none transition-colors duration-200 motion-reduce:transition-none",
                     "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
                     selected
                       ? "border-blue bg-blue text-white"
@@ -336,13 +346,14 @@ export default function ProductTourInteractive() {
             })}
           </div>
 
-          <div className="max-w-full overflow-x-auto overscroll-x-contain bg-surface sm:overflow-x-visible">
+          <div className="relative">
+          <div className="max-w-full overflow-x-auto overscroll-x-contain bg-surface [-webkit-overflow-scrolling:touch] sm:overflow-x-visible">
             <div
               id={panelId}
               ref={stageRef}
               role="tabpanel"
               aria-labelledby={`${baseId}-tab-${scene}`}
-              className="relative aspect-[16/10] min-w-[48rem] overflow-hidden sm:min-w-0 sm:aspect-[1920/894]"
+              className="relative aspect-[16/10] min-w-[40rem] overflow-hidden sm:min-w-0 sm:aspect-[1920/894]"
             >
               <AnimatePresence initial={false} mode="wait">
                 <motion.div
@@ -357,7 +368,7 @@ export default function ProductTourInteractive() {
                 </motion.div>
               </AnimatePresence>
 
-              {playing ? (
+              {showPointer ? (
                 <>
                   <motion.div
                     aria-hidden
@@ -392,8 +403,12 @@ export default function ProductTourInteractive() {
               ) : null}
             </div>
           </div>
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-background to-transparent sm:hidden"
+          />
         </div>
-
+        </div>
         <figcaption className="mt-4 min-h-[4.75rem] max-w-[65ch] sm:min-h-[3.5rem]">
           <p className="text-sm font-semibold tracking-tight text-foreground sm:text-base">
             {manual ? "You are in the product." : step.kicker}

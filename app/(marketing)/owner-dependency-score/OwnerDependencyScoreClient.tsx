@@ -418,7 +418,7 @@ export function OwnerDependencyScoreClient() {
                         type="button"
                         onClick={() => selectAnswer(question, option)}
                         className={cn(
-                          "group flex min-h-[9.25rem] flex-col rounded-xl border p-4 text-left transition-[background-color,border-color,transform,box-shadow] duration-200",
+                          "group flex min-h-[5.75rem] flex-col rounded-xl border p-4 text-left transition-[background-color,border-color,transform,box-shadow] duration-200 sm:min-h-[9.25rem]",
                           "motion-safe:hover:-translate-y-0.5 motion-safe:active:translate-y-0",
                           "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue/35 focus-visible:ring-offset-2 focus-visible:ring-offset-card",
                           active
@@ -488,13 +488,15 @@ export function OwnerDependencyScoreClient() {
 
             <div className="p-5 sm:p-8">
               <p className="text-xs font-semibold uppercase tracking-cap text-blue">Score bands</p>
-              <div className="mt-4 grid grid-cols-5 overflow-hidden rounded-xl border border-border">
+              <div className="mt-4 overflow-hidden rounded-xl border border-border">
+                <div className="grid grid-cols-1 sm:grid-cols-5">
                 {BANDS.map((band, index) => (
-                  <div key={band.label} className={cn("min-h-[4.5rem] border-r border-border p-2.5 last:border-r-0", bandBg[index])}>
+                  <div key={band.label} className={cn("min-h-[3.5rem] border-b border-border p-3 last:border-b-0 sm:min-h-[4.5rem] sm:border-b-0 sm:border-r sm:p-2.5 sm:last:border-r-0", bandBg[index])}>
                     <p className="text-[0.72rem] font-bold leading-none">{band.min}-{band.max}</p>
                     <p className="mt-2 text-[0.68rem] font-medium leading-4">{band.label}</p>
                   </div>
                 ))}
+                </div>
               </div>
 
               <div className="mt-8 rounded-2xl border border-blue/20 bg-blue/[0.06] p-5">

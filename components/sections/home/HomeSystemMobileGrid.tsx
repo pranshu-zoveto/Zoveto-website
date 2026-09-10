@@ -17,8 +17,8 @@ export function HomeSystemMobileGrid() {
         <div className="mx-auto grid max-w-lg grid-cols-2 gap-3">
           {MODULES.map((module) => (
             <div key={module.name} className="rounded-xl border border-border bg-white p-4">
-              <p className="text-[14px] font-semibold text-foreground">{module.name}</p>
-              <p className="mt-0.5 text-[11px] leading-snug text-muted">{module.sub}</p>
+              <p className="text-[15px] font-semibold text-foreground">{module.name}</p>
+              <p className="mt-1 text-[12px] leading-snug text-muted">{module.sub}</p>
             </div>
           ))}
         </div>

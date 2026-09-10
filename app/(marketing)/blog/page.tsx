@@ -39,7 +39,7 @@ export default async function BlogIndexPage({ searchParams }: { searchParams: { 
 
   const [featured, ...rest] = allPosts;
   return (
-    <main className="relative bg-background pb-24 pt-28 md:pt-36">
+    <main className="relative bg-background pb-24 pt-24 md:pt-36">
       <BreadcrumbSchema
         items={[
           { name: "Home", path: "/" },

@@ -17,8 +17,8 @@ export function WhatsAppFloatButton() {
   return (
     <div
       className={
-        "pointer-events-none fixed bottom-[calc(6rem+env(safe-area-inset-bottom,0px))] right-4 z-[95] " +
-        "sm:bottom-[calc(6.5rem+env(safe-area-inset-bottom,0px))] sm:right-5 " +
+        "pointer-events-none fixed bottom-[calc(1rem+env(safe-area-inset-bottom,0px))] right-4 z-[95] " +
+        "sm:bottom-[calc(1.25rem+env(safe-area-inset-bottom,0px))] sm:right-5 " +
         "md:bottom-8 md:right-6"
       }
     >

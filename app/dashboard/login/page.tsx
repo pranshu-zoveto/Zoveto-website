@@ -29,8 +29,8 @@ export default function AdminLoginPage() {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-950 px-4">
-      <div className="w-full max-w-md rounded-3xl border border-zinc-800/60 bg-zinc-900/50 p-8 shadow-[0_0_60px_-15px_rgba(255,255,255,0.05)] backdrop-blur-xl">
+    <div className="flex min-h-[100dvh] items-center justify-center bg-zinc-950 px-5 py-10">
+      <div className="w-full max-w-md rounded-3xl border border-zinc-800/60 bg-zinc-900/50 p-6 shadow-[0_0_60px_-15px_rgba(255,255,255,0.05)] backdrop-blur-xl sm:p-8">
         <div className="mb-8 flex flex-col items-center">
           <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-zinc-800 bg-black text-zinc-300 shadow-inner">
             <Shield className="h-7 w-7" />
@@ -47,7 +47,7 @@ export default function AdminLoginPage() {
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full rounded-xl border border-zinc-800 bg-black px-4 py-3 text-sm text-zinc-200 outline-none transition-colors focus:border-zinc-600 focus:bg-zinc-950"
+              className="w-full rounded-xl border border-zinc-800 bg-black px-4 py-3 text-base text-zinc-200 outline-none transition-colors focus:border-zinc-600 focus:bg-zinc-950"
               placeholder="admin@zoveto.com"
             />
           </div>
@@ -58,7 +58,7 @@ export default function AdminLoginPage() {
               required
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full rounded-xl border border-zinc-800 bg-black px-4 py-3 text-sm text-zinc-200 outline-none transition-colors focus:border-zinc-600 focus:bg-zinc-950"
+              className="w-full rounded-xl border border-zinc-800 bg-black px-4 py-3 text-base text-zinc-200 outline-none transition-colors focus:border-zinc-600 focus:bg-zinc-950"
               placeholder="••••••••"
             />
           </div>

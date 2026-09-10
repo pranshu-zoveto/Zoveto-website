@@ -22,13 +22,62 @@ export function Navbar() {
   const [modulesOpen, setModulesOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [brandWordmarkFreeze, setBrandWordmarkFreeze] = useState(false);
+  const menuRef = React.useRef<HTMLDivElement | null>(null);
+  const menuButtonRef = React.useRef<HTMLButtonElement | null>(null);
+
+  const closeMenu = React.useCallback(() => {
+    setIsOpen(false);
+    setModulesOpen(false);
+  }, []);
 
   useEffect(() => {
+    document.documentElement.style.overflow = isOpen ? "hidden" : "";
     document.body.style.overflow = isOpen ? "hidden" : "";
     return () => {
+      document.documentElement.style.overflow = "";
       document.body.style.overflow = "";
     };
   }, [isOpen]);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const root = menuRef.current;
+    const previouslyFocused = document.activeElement as HTMLElement | null;
+    const focusables = () =>
+      Array.from(
+        root?.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])',
+        ) ?? [],
+      ).filter((el) => el.offsetParent !== null);
+
+    requestAnimationFrame(() => focusables()[0]?.focus());
+
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        closeMenu();
+        return;
+      }
+      if (event.key !== "Tab") return;
+      const list = focusables();
+      if (list.length === 0) return;
+      const first = list[0];
+      const last = list[list.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      (previouslyFocused ?? menuButtonRef.current)?.focus();
+    };
+  }, [isOpen, closeMenu]);
 
   useEffect(() => {
     let raf: number | null = null;
@@ -75,7 +124,7 @@ export function Navbar() {
             href="/"
             id="site-nav-brand-lockup"
             aria-label="Zoveto home"
-            className="inline-flex max-w-[12rem] items-center gap-2 overflow-visible text-foreground whitespace-nowrap xs:max-w-[13rem] sm:mr-4 sm:max-w-none"
+            className="inline-flex max-w-[8.75rem] items-center gap-2 overflow-visible text-foreground whitespace-nowrap min-[380px]:max-w-[13rem] sm:mr-4 sm:max-w-none"
             onMouseEnter={() => setBrandWordmarkFreeze(true)}
             onMouseLeave={() => setBrandWordmarkFreeze(false)}
           >
@@ -170,11 +219,11 @@ export function Navbar() {
           </div>
 
           <div className="ml-auto flex shrink-0 items-center gap-1 sm:gap-2 lg:hidden">
-            <Link href={EARLY_ACCESS_CTA_HREF} className="hidden min-w-0 sm:block">
+            <Link href={EARLY_ACCESS_CTA_HREF} className="min-w-0">
               <Button
                 variant="primary"
                 size="sm"
-                className="min-h-[44px] max-w-[10.5rem] truncate px-2.5 text-[11px] sm:max-w-none sm:px-3.5 sm:text-xs"
+                className="min-h-[44px] max-w-[9.5rem] truncate px-2.5 text-[11px] min-[380px]:max-w-none min-[380px]:px-3.5 min-[380px]:text-xs"
               >
                 {EARLY_ACCESS_CTA_LABEL_SHORT}
               </Button>
@@ -182,10 +231,15 @@ export function Navbar() {
 
             <button
               type="button"
+              ref={menuButtonRef}
               className="-mr-1 inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-lg border border-border bg-card p-2 text-foreground shadow-sm tap-active hover:bg-surface sm:-mr-2"
               aria-label={isOpen ? "Close menu" : "Open menu"}
               aria-expanded={isOpen}
-              onClick={() => { setIsOpen(!isOpen); if (isOpen) setModulesOpen(false); }}
+              aria-controls="mobile-site-menu"
+              onClick={() => {
+                if (isOpen) closeMenu();
+                else setIsOpen(true);
+              }}
             >
               {isOpen ? <X size={22} aria-hidden /> : <Menu size={22} aria-hidden />}
             </button>
@@ -194,7 +248,14 @@ export function Navbar() {
       </nav>
 
       {isOpen && (
-        <div className="fixed inset-0 z-[110] flex touch-pan-y flex-col overscroll-y-contain bg-[rgba(255,255,255,0.97)] p-5 pl-[max(1.25rem,env(safe-area-inset-left))] pr-[max(1.25rem,env(safe-area-inset-right))] backdrop-blur-md motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-top-4 motion-safe:duration-200 motion-reduce:animate-none safe-top safe-bottom lg:hidden">
+        <div
+          id="mobile-site-menu"
+          ref={menuRef}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Site menu"
+          className="fixed inset-0 z-[110] flex touch-pan-y flex-col overscroll-y-contain bg-[rgba(255,255,255,0.97)] p-5 pl-[max(1.25rem,env(safe-area-inset-left))] pr-[max(1.25rem,env(safe-area-inset-right))] backdrop-blur-md motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-top-4 motion-safe:duration-200 motion-reduce:animate-none safe-top safe-bottom lg:hidden"
+        >
           {/* ── Mobile menu header ── */}
           <div className="mb-8 flex items-center justify-between">
             <span className="inline-flex items-center gap-2.5 text-foreground">
@@ -205,7 +266,7 @@ export function Navbar() {
               type="button"
               className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-lg hover:bg-surface"
               aria-label="Close menu"
-              onClick={() => { setIsOpen(false); setModulesOpen(false); }}
+              onClick={closeMenu}
             >
               <X size={22} aria-hidden />
             </button>
@@ -240,7 +301,7 @@ export function Navbar() {
                       <li key={link.slug}>
                         <Link
                           href={link.href}
-                          onClick={() => { setIsOpen(false); setModulesOpen(false); }}
+                          onClick={closeMenu}
                           className="flex items-center gap-3 rounded-lg px-2 py-2.5 text-[0.95rem] font-medium text-muted transition-colors hover:bg-surface hover:text-foreground"
                         >
                           <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md border border-border bg-blue-light">
@@ -267,7 +328,7 @@ export function Navbar() {
                 <li key={href}>
                   <Link
                     href={href}
-                    onClick={() => { setIsOpen(false); setModulesOpen(false); }}
+                    onClick={closeMenu}
                     className="block rounded-xl px-3 py-3.5 text-[1.1rem] font-semibold tracking-[-0.01em] text-foreground transition-colors hover:bg-surface"
                   >
                     {label}
@@ -279,7 +340,7 @@ export function Navbar() {
 
           {/* ── CTA buttons ── */}
           <div className="flex flex-col gap-3 border-t border-border pt-6 mt-4">
-            <Link href={EARLY_ACCESS_CTA_HREF} onClick={() => { setIsOpen(false); setModulesOpen(false); }}>
+            <Link href={EARLY_ACCESS_CTA_HREF} onClick={closeMenu}>
               <Button variant="primary" className="h-12 w-full rounded-xl text-[0.95rem] font-semibold">
                 {EARLY_ACCESS_CTA_LABEL}
               </Button>

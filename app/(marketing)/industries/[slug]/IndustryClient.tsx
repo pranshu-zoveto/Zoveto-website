@@ -143,8 +143,11 @@ export function IndustryClient({ slug }: { slug: string }) {
           <div className="space-y-3">
             <p className="text-xs font-semibold uppercase tracking-wide text-muted-2">Dashboard</p>
             <div className="overflow-hidden rounded-2xl border border-border bg-[#f5f5f7] shadow-card">
-              <div className="max-h-[min(420px,55vh)] overflow-auto">
-                <div className="min-h-[360px] min-w-[520px] scale-[0.72] origin-top-left md:min-h-[400px] md:min-w-[720px] md:scale-[0.78]">
+              <p className="border-b border-border bg-card px-3 py-2 text-xs text-muted sm:hidden">
+                Swipe sideways to see the full dashboard.
+              </p>
+              <div className="max-h-[min(420px,55vh)] max-w-full overflow-auto overscroll-contain">
+                <div className="min-h-[360px] w-[min(100%,520px)] min-w-[320px] origin-top-left md:min-h-[400px] md:w-[720px] md:min-w-[720px]">
                   <DashboardLight />
                 </div>
               </div>

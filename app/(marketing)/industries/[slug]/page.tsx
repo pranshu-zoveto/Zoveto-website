@@ -54,7 +54,7 @@ export default async function IndustryDetailPage({ params }: { params: Promise<{
   const faqUrl = canonicalUrl(`/industries/${slug}`);
 
   return (
-    <main className="relative overflow-hidden bg-background pt-32 md:pt-40">
+    <main className="relative overflow-hidden bg-background pt-24 md:pt-40">
       <BreadcrumbSchema
         items={[
           { name: "Home", path: "/" },

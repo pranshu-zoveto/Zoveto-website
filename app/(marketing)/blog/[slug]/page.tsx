@@ -293,7 +293,7 @@ export default async function BlogPostPage({
   const related = BLOG_POSTS.filter((p) => p.slug !== slug).slice(0, 3);
 
   return (
-    <main className="relative bg-background pb-24 pt-28 md:pt-36">
+    <main className="relative bg-background pb-24 pt-24 md:pt-36">
       <BreadcrumbSchema
         items={[
           { name: "Home", path: "/" },

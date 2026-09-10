@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 
 export default function ProductOSPage() {
   return (
-    <main className="bg-background pt-36 md:pt-44 relative overflow-hidden">
+    <main className="bg-background pt-24 md:pt-44 relative overflow-hidden">
       <ProductSoftwareApplicationSchema />
       <BreadcrumbSchema
         items={[

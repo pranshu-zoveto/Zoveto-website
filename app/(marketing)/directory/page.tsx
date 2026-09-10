@@ -16,7 +16,7 @@ export default function DirectoryPage() {
   const industries = PUBLIC_INDUSTRY_SLUGS.map(getIndustryBySlug).filter(Boolean);
 
   return (
-    <main className="relative overflow-hidden bg-background pb-16 pt-32 md:pb-24 md:pt-40">
+    <main className="relative overflow-hidden bg-background pb-16 pt-24 md:pb-24 md:pt-40">
       <BreadcrumbSchema
         items={[
           { name: "Home", path: "/" },

@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 
 export default function CareersPage() {
   return (
-    <main className="bg-background px-4 pb-24 pt-32 sm:px-6 md:pt-40">
+    <main className="bg-background px-5 pb-24 pt-24 sm:px-6 md:pt-40">
       <BreadcrumbSchema
         items={[
           { name: "Home", path: "/" },

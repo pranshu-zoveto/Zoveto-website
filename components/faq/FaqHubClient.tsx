@@ -44,7 +44,7 @@ function TocMobileChips({ categories }: { categories: readonly FaqHubCategory[] 
         <a
           key={c.id}
           href={`#${c.id}`}
-          className="max-w-[min(14rem,78vw)] shrink-0 truncate rounded-xl border border-border bg-card px-3.5 py-2.5 text-left text-xs font-semibold leading-tight text-foreground shadow-sm transition-colors hover:border-blue/30 hover:bg-blue-light/25"
+          className="max-w-[min(16rem,82vw)] min-h-[44px] shrink-0 whitespace-normal rounded-xl border border-border bg-card px-3.5 py-2.5 text-left text-xs font-semibold leading-snug text-foreground shadow-sm transition-colors hover:border-blue/30 hover:bg-blue-light/25"
         >
           {c.title}
         </a>
@@ -108,7 +108,7 @@ export function FaqHubClient() {
                 structured data.
               </p>
 
-              <div className="mt-10 grid grid-cols-3 gap-6 pt-2">
+              <div className="mt-10 grid grid-cols-3 gap-3 pt-2 sm:gap-6">
                 <div>
                   <p className="text-[10px] font-semibold uppercase tracking-label text-muted-2">Topics</p>
                   <p className="mt-1.5 text-2xl font-semibold tabular-nums tracking-tight text-foreground">{topicCount}</p>
